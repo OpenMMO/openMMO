@@ -16,9 +16,9 @@ frequence : 1000
 index_gfx : 0
 index_gfx_cible : 30002
 index_icone : 55
-ligne_de_vue : 0
-controle_pvp : 0
-sort_attaque : 0
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
 success_rate : 100
 duree : 19000
 rayon_degats : 10

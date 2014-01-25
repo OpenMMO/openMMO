@@ -16,9 +16,9 @@ frequence : 6000
 index_gfx : 30001
 index_gfx_cible : 0
 index_icone : 21
-ligne_de_vue : 0
-controle_pvp : 0
-sort_attaque : 0
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
 success_rate : if(equipcount(41865)=1?100:0)
 duree : 600000
 rayon_degats : 0

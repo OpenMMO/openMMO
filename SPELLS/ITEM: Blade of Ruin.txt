@@ -16,9 +16,9 @@ frequence : 0
 index_gfx : 30009
 index_gfx_cible : 0
 index_icone : 0
-ligne_de_vue : 1
-controle_pvp : 1
-sort_attaque : 0
+ligne_de_vue : TRUE
+controle_pvp : TRUE
+sort_attaque : FALSE
 success_rate : 100
 duree : 0
 rayon_degats : 0
