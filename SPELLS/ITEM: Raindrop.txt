@@ -1,0 +1,36 @@
+Nom : ITEM: Raindrop
+Description : [11312]Raindrop: Increases the caster's elemental power of water as well as his or her resistance to water-based spells.
+ID : 10683
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : if(itemcount(41671)>24?130000:5000+(5000*(itemcount(41671))))
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 31
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : if(itemcount(41671)>24?130000:5000+(5000*(itemcount(41671))))
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_water
+		- 3 : if(equipcount(41672)>0?if(itemcount(41671)>24?25:1*itemcount(41671)):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : water
+		- 3 : if(equipcount(41672)>0?if(itemcount(41671)>24?25:1*itemcount(41671)):0)

@@ -1,0 +1,38 @@
+Nom : [7903]Cure poison
+Description : [7569]Cure poison: Removes all poisons from the target's bloodstream.
+ID : 10236
+type_attaque : 1
+type_cible : 4
+req_lvl : 5
+req_int : 26
+req_sag : 17
+cout_mana : 2
+duree : 0
+element : 4
+epuisement_attaque : 750+if((550-(self.level-5)*20)>=0?(550-(self.level-5)*20):0)
+epuisement_mental : 1000+if((550-(self.level-5)*20)>=0?(550-(self.level-5)*20):0)
+epuisement_physique : 750+if((550-(self.level-5)*20)>=0?(550-(self.level-5)*20):0)
+frequence : 0
+index_gfx : 30095
+index_gfx_cible : 0
+index_icone : 32
+ligne_de_vue : 1
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10020
+		- 2 : 75
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10344
+		- 2 : 75
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10649
+		- 2 : 50

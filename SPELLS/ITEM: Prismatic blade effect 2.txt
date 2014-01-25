@@ -1,0 +1,31 @@
+Nom : ITEM: Prismatic blade effect 2
+Description : 
+ID : 10415
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 4
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30025
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d15+10)*self.water/target.r_water)
+		- 2 : 
+		- 3 : 10

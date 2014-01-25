@@ -1,0 +1,41 @@
+Nom : Mob might and magic spell
+Description : 
+ID : 10651
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 60000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 60000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : intelligence
+		- 3 : self.int/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : self.dodge/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : self.attack/3

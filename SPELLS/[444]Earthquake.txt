@@ -1,0 +1,32 @@
+Nom : [444]Earthquake
+Description : [7678]Earthquake: Violently shakes the ground around the caster but leaves him or her unharmed. This spell has a very large area of effect.
+ID : 10082
+type_attaque : 1
+type_cible : 18
+req_lvl : 47
+req_int : 43
+req_sag : 71
+cout_mana : 11
+duree : 0
+element : 2
+epuisement_attaque : 2*(750+if((970-(self.level-47)*20)>=0?(970-(self.level-47)*20):0))
+epuisement_mental : 2*(1000+if((970-(self.level-47)*20)>=0?(970-(self.level-47)*20):0))
+epuisement_physique : 2*(750+if((970-(self.level-47)*20)>=0?(970-(self.level-47)*20):0))
+frequence : 0
+index_gfx : 30106
+index_gfx_cible : 30056
+index_icone : 11
+ligne_de_vue : 0
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 7
+Nombre de sort(s) requis : 1
+	- ID : 10037
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : 0
+		- 2 : -(((1d29+72+self.wis/11)*self.earth/target.r_earth)*(20-r)/20)
+		- 3 : 100

@@ -1,0 +1,41 @@
+Nom : ITEM: Great Axe of the Crow effect
+Description : [11296]Crow's sorrow: Reduces the target's armor class and dodge skill for a short period of time.
+ID : 10440
+type_attaque : 2
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 120000
+element : 6
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30003
+index_gfx_cible : 0
+index_icone : 10
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 120000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : ac
+		- 3 : -target.ac/5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : -target.dodge/4
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d39+31)*self.dark/target.r_dark)
+		- 2 : 
+		- 3 : 100

@@ -1,0 +1,46 @@
+Nom : ITEM: Fine wine
+Description : [11299]Fine wine: Increases the user's strength and slightly reduces mental attributes.
+ID : 10462
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 300000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 0
+index_gfx_cible : 0
+index_icone : 44
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 4
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : 50
+		- 2 : 
+		- 3 : 100
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : int
+		- 3 : -(target.int/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : wis
+		- 3 : -(target.wis/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : Strength
+		- 3 : (self.true_str/4) 

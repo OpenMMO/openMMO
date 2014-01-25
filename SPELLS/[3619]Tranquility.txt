@@ -1,0 +1,32 @@
+Nom : [3619]Tranquility
+Description : [7645]Tranquility: Increases the caster's wisdom.
+ID : 10168
+type_attaque : 1
+type_cible : 5
+req_lvl : 38
+req_int : 17
+req_sag : 71
+cout_mana : 45
+duree : 300000
+element : 5
+epuisement_attaque : 750+if((880-(self.level-38)*20)>=0?(880-(self.level-38)*20):0)
+epuisement_mental : 1000+if((880-(self.level-38)*20)>=0?(880-(self.level-38)*20):0)
+epuisement_physique : 750+if((880-(self.level-38)*20)>=0?(880-(self.level-38)*20):0)
+frequence : 0
+index_gfx : 30028
+index_gfx_cible : 0
+index_icone : 21
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10034
+nb_effets : 1
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : wis
+		- 3 : self.true_wis/3

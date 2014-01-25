@@ -1,0 +1,32 @@
+Nom : [3618]Tornado
+Description : [7644]Tornado: Envelops the target with a swirling mass of condensed air. This spell has a large area of effect.
+ID : 10142
+type_attaque : 1
+type_cible : 19
+req_lvl : 79
+req_int : 96
+req_sag : 93
+cout_mana : 18
+duree : 0
+element : 3
+epuisement_attaque : 2*(750+if((1290-(self.level-79)*20)>=0?(1290-(self.level-79)*20):0))
+epuisement_mental : 2*(1000+if((1290-(self.level-79)*20)>=0?(1290-(self.level-79)*20):0))
+epuisement_physique : 2*(750+if((1290-(self.level-79)*20)>=0?(1290-(self.level-79)*20):0))
+frequence : 0
+index_gfx : 30087
+index_gfx_cible : 30002
+index_icone : 1
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 6
+Nombre de sort(s) requis : 1
+	- ID : 10080
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d144+67+self.int/16+self.wis/16)*self.air/target.r_air)
+		- 2 : -(((1d144+67+self.int/16+self.wis/16)*self.air/target.r_air)*(20-r)/20)
+		- 3 : 100

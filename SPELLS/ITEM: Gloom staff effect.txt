@@ -1,0 +1,51 @@
+Nom : ITEM: Gloom staff effect
+Description : [7849]Sinister force: Temporarily reduces the target's elemental resistances and armor class, making it more vulnerable to attacks.
+ID : 10417
+type_attaque : 1
+type_cible : 0
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 300000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30062
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : 0
+controle_pvp : 1
+sort_attaque : 0
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : -(target.r_fire/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_water
+		- 3 : -(target.r_water/4) 
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_earth
+		- 3 : -(target.r_earth/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_air
+		- 3 : -(target.r_air/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : ac
+		- 3 : -(target.ac/4)

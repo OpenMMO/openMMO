@@ -1,0 +1,41 @@
+Nom : Mob frenzy spell
+Description : 
+ID : 10454
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 120000
+element : 2
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30007
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 120000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : ac
+		- 3 : self.ac/4
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : self.attack/4
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : (self.maxhp/2)
+		- 2 : 
+		- 3 : 100

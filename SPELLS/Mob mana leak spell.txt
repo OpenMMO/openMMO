@@ -1,0 +1,32 @@
+Nom : Mob mana leak spell
+Description : [7865]Mana leak: Gradually lowers the target's mana over a short period of time.
+ID : 10382
+type_attaque : 1
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 30000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 1500
+index_gfx : 30002
+index_gfx_cible : 0
+index_icone : 26
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 30000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10383
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 

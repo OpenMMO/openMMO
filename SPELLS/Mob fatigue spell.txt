@@ -1,0 +1,38 @@
+Nom : Mob fatigue spell
+Description : [11298]Fatigue: Prevents the target from moving or physically attacking for a short period of time.
+ID : 10652
+type_attaque : 1
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 10000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 10000
+index_gfx : 30062
+index_gfx_cible : 0
+index_icone : 10
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 10000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 14
+	- Nombre de Paramètres : 4
+		- 1 : 10000
+		- 2 : 0
+		- 3 : 10000
+		- 4 : 100
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10247
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 

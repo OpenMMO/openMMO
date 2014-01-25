@@ -1,0 +1,45 @@
+Nom : ITEM: Scroll of minor combat sense
+Description : [7682]Minor combat sense: Increases the target's attack, dodge and archery skills.
+ID : 10662
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 60000
+element : 0
+epuisement_attaque : 750+if((740-(self.level-24)*20)>=0?(740-(self.level-24)*20):0)
+epuisement_mental : 1000+if((740-(self.level-24)*20)>=0?(740-(self.level-24)*20):0)
+epuisement_physique : 750+if((740-(self.level-24)*20)>=0?(740-(self.level-24)*20):0)
+frequence : 0
+index_gfx : 30015
+index_gfx_cible : 0
+index_icone : 27
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 60000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 4
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10125
+		- 2 : 100
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : (target.true_dodge/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : skill 35
+		- 3 : target.true_skill(35)/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : (target.true_attack/3)

@@ -1,0 +1,32 @@
+Nom : [3614]Resist fire
+Description : [7640]Resist fire: Increases the caster's resistance to fire-based attacks.
+ID : 10154
+type_attaque : 1
+type_cible : 5
+req_lvl : 43
+req_int : 105
+req_sag : 34
+cout_mana : 10
+duree : 60000
+element : 4
+epuisement_attaque : 750+if((930-(self.level-43)*20)>=0?(930-(self.level-43)*20):0)
+epuisement_mental : 1000+if((930-(self.level-43)*20)>=0?(930-(self.level-43)*20):0)
+epuisement_physique : 750+if((930-(self.level-43)*20)>=0?(930-(self.level-43)*20):0)
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 32
+ligne_de_vue : 1
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 60000
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10146
+nb_effets : 1
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : self.true_r_fire

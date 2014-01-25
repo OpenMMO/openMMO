@@ -1,0 +1,32 @@
+Nom : [442]Vortex of air
+Description : [7676]Vortex of air: Sends a swirling mass of conpressed air towards the target.
+ID : 10080
+type_attaque : 2
+type_cible : 11
+req_lvl : 40
+req_int : 56
+req_sag : 55
+cout_mana : 10
+duree : 0
+element : 3
+epuisement_attaque : 750+if((900-(self.level-40)*20)>=0?(900-(self.level-40)*20):0)
+epuisement_mental : 1000+if((900-(self.level-40)*20)>=0?(900-(self.level-40)*20):0)
+epuisement_physique : 750+if((900-(self.level-40)*20)>=0?(900-(self.level-40)*20):0)
+frequence : 0
+index_gfx : 30087
+index_gfx_cible : 0
+index_icone : 2
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10078
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d52+30+self.int/24+self.wis/24)*self.air/target.r_air)
+		- 2 : 
+		- 3 : 100

@@ -1,0 +1,31 @@
+Nom : [432]Stone shard
+Description : [7667]Stone shard: Sends a small shard of stone flying towards the target.
+ID : 10035
+type_attaque : 1
+type_cible : 11
+req_lvl : 4
+req_int : 17
+req_sag : 20
+cout_mana : 2
+duree : 0
+element : 2
+epuisement_attaque : 750+if((540-(self.level-4)*20)>=0?(540-(self.level-4)*20):0)
+epuisement_mental : 1000+if((540-(self.level-4)*20)>=0?(540-(self.level-4)*20):0)
+epuisement_physique : 750+if((540-(self.level-4)*20)>=0?(540-(self.level-4)*20):0)
+frequence : 0
+index_gfx : 30025
+index_gfx_cible : 0
+index_icone : 12
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d9+11+self.wis/22)*self.earth/target.r_earth)
+		- 2 : 
+		- 3 : 100

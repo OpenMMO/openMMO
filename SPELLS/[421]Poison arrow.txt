@@ -1,0 +1,37 @@
+Nom : [421]Poison arrow
+Description : [7657]Poison arrow: Hurls a small projectile made of a poisonous substance at the target.
+ID : 10023
+type_attaque : 1
+type_cible : 11
+req_lvl : 17
+req_int : 51
+req_sag : 23
+cout_mana : 5
+duree : 501
+element : 4
+epuisement_attaque : 750+if((670-(self.level-17)*20)>=0?(670-(self.level-17)*20):0)
+epuisement_mental : 1000+if((670-(self.level-17)*20)>=0?(670-(self.level-17)*20):0)
+epuisement_physique : 750+if((670-(self.level-17)*20)>=0?(670-(self.level-17)*20):0)
+frequence : 100
+index_gfx : 30024
+index_gfx_cible : 0
+index_icone : 30
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 501
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10020
+nb_effets : 2
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d30+12+self.int/17)*self.water/target.r_water)
+		- 2 : 
+		- 3 : 100
+	- Type d'effet : 9
+	- Nombre de Paramètres : 3
+		- 1 : 10024
+		- 2 : OnTimer
+		- 3 : 100

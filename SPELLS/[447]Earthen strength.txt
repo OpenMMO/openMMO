@@ -1,0 +1,31 @@
+Nom : [447]Earthen strength
+Description : [7681]Earthen strength: Increases the target's strength.
+ID : 10124
+type_attaque : 1
+type_cible : 3
+req_lvl : 23
+req_int : 29
+req_sag : 43
+cout_mana : 30
+duree : 300000
+element : 2
+epuisement_attaque : 750+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+epuisement_mental : 1000+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+epuisement_physique : 750+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+frequence : 0
+index_gfx : 30113
+index_gfx_cible : 0
+index_icone : 13
+ligne_de_vue : 1
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : TRUE
+		- 2 : strength
+		- 3 : (10+self.wis/15+self.int/20)

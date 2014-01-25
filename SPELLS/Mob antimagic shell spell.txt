@@ -1,0 +1,56 @@
+Nom : Mob antimagic shell spell
+Description : [7855]Anti-magic shell: Dramatically reduces the target's spellcasting abilities for a moderately short time.
+ID : 10385
+type_attaque : 1
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 60000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30067
+index_gfx_cible : 0
+index_icone : 60
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 60000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 6
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dark
+		- 3 : -(target.dark/2)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : light
+		- 3 : -(target.light/2)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : fire
+		- 3 : -(target.fire/2)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : earth
+		- 3 : -(target.earth/2)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : water
+		- 3 : -(target.water/2)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : air
+		- 3 : -(target.air/2)

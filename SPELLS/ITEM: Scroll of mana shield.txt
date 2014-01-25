@@ -1,0 +1,55 @@
+Nom : ITEM: Scroll of mana shield
+Description : [7633]Mana shield: Increases the target's elemental resistances.
+ID : 10663
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 120000
+element : 4
+epuisement_attaque : 750+if((790-(self.level-29)*20)>=0?(790-(self.level-29)*20):0)
+epuisement_mental : 1000+if((790-(self.level-29)*20)>=0?(790-(self.level-29)*20):0)
+epuisement_physique : 750+if((790-(self.level-29)*20)>=0?(790-(self.level-29)*20):0)
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 32
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 120000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 6
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10146
+		- 2 : 100
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_dark
+		- 3 : target.true_r_dark/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_earth
+		- 3 : target.true_r_earth/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : target.true_r_fire/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_air
+		- 3 : target.true_r_air/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_water
+		- 3 : target.true_r_water/3

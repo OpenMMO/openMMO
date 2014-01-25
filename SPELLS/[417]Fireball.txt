@@ -1,0 +1,32 @@
+Nom : [417]Fireball
+Description : [7654]Fireball: hurls a ball of fire at the target. This spell has a medium-sized area of effect.
+ID : 10018
+type_attaque : 1
+type_cible : 17
+req_lvl : 27
+req_int : 94
+req_sag : 16
+cout_mana : 7
+duree : 0
+element : 1
+epuisement_attaque : 2*(750+if((770-(self.level-27)*20)>=0?(770-(self.level-27)*20):0))
+epuisement_mental : 2*(1000+if((770-(self.level-27)*20)>=0?(770-(self.level-27)*20):0))
+epuisement_physique : 2*(750+if((770-(self.level-27)*20)>=0?(770-(self.level-27)*20):0))
+frequence : 0
+index_gfx : 30124
+index_gfx_cible : 30014
+index_icone : 15
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 4
+Nombre de sort(s) requis : 1
+	- ID : 10017
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d52+37+self.int/14)*self.fire/target.r_fire)
+		- 2 : -(((1d52+37+self.int/14)*self.fire/target.r_fire)*(20-r)/20)
+		- 3 : 100

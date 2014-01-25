@@ -1,0 +1,52 @@
+Nom : ITEM: Bonesword of the berserker effect
+Description : [11311]Ragnarok's rage: Temporarily increases the user's offensive capabilities while decreasing the user's defensive capabilities.
+ID : 10690
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 30000
+element : 1
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30120
+index_gfx_cible : 0
+index_icone : 17
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 30000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 5
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10691
+		- 2 : OnAttackHit
+		- 3 : 100
+		- 4 : 
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : -self.true_dodge/5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : self.true_attack/5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : ac
+		- 3 : -self.ac/5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : str
+		- 3 : self.true_str/5

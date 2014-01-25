@@ -1,0 +1,91 @@
+Nom : ITEM: Gem of the Stars
+Description : [11314]Star aura: Increases the user's abilities if the Drachenrobe or Drachenplate are equipped.
+ID : 10680
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 10000+(5000*itemcount(41659))
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 21
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 10000+(5000*itemcount(41659))
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 13
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_dark
+		- 3 : if(equipcount(41665)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_earth
+		- 3 : if(equipcount(41665)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : skill 9
+		- 3 : if(equipcount(41662)>0?5*itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_air
+		- 3 : if(equipcount(41665)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : skill 29
+		- 3 : if(equipcount(41665)>0?5*itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_water
+		- 3 : if(equipcount(41665)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : fire
+		- 3 : if(equipcount(41662)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : if(equipcount(41665)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : water
+		- 3 : if(equipcount(41662)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dark
+		- 3 : if(equipcount(41662)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : air
+		- 3 : if(equipcount(41662)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : light
+		- 3 : if(equipcount(41662)>0?itemcount(41659):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : earth
+		- 3 : if(equipcount(41662)>0?itemcount(41659):0)

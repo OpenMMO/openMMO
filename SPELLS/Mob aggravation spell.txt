@@ -1,0 +1,51 @@
+Nom : Mob aggravation spell
+Description : [7854]Aggravation: Temporarily reduces the target's elemental resistances, making it more vulnerable to spells.
+ID : 10375
+type_attaque : 1
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : (30000+1d10000)
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30002
+index_gfx_cible : 0
+index_icone : 26
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : (30000+1d10000)
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_dark
+		- 3 : -(target.r_dark/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_earth
+		- 3 : -(target.r_earth/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : -(target.r_fire/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_air
+		- 3 : -(target.r_air/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_water
+		- 3 : -(target.r_water/4)

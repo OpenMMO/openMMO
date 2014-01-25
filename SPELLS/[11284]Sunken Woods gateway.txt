@@ -1,0 +1,38 @@
+Nom : [11284]Sunken Woods gateway
+Description : [7611]Sunken Woods gateway: Teleports the caster to the Sunken Woods ring of stones on Stoneheim.
+ID : 10250
+type_attaque : 1
+type_cible : 5
+req_lvl : 70
+req_int : 86
+req_sag : 84
+cout_mana : self.maxmana
+duree : 9000
+element : 3
+epuisement_attaque : 30000
+epuisement_mental : 30000
+epuisement_physique : 10000
+frequence : 1000
+index_gfx : 0
+index_gfx_cible : 0
+index_icone : 4
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 9000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10239
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 10000
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10238
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 0

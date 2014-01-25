@@ -1,0 +1,35 @@
+Nom : ITEM: Scroll of resist fire
+Description : [7640]Resist fire: Increases the caster's resistance to fire-based attacks.
+ID : 10658
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 60000
+element : 4
+epuisement_attaque : 750+if((930-(self.level-43)*20)>=0?(930-(self.level-43)*20):0)
+epuisement_mental : 1000+if((930-(self.level-43)*20)>=0?(930-(self.level-43)*20):0)
+epuisement_physique : 750+if((930-(self.level-43)*20)>=0?(930-(self.level-43)*20):0)
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 32
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 60000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : self.true_r_fire
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10154
+		- 2 : 100

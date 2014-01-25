@@ -1,0 +1,44 @@
+Nom : Runed Stone Tablet spell
+Description : 
+ID : 10749
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10756
+		- 2 : OnTimer
+		- 3 : if(self.viewflag(30509)=3?100:0)
+		- 4 : 1000
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10755
+		- 2 : OnTimer
+		- 3 : if(self.viewflag(30509)=2?100:0)
+		- 4 : 1000
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10754
+		- 2 : OnTimer
+		- 3 : if(self.viewflag(30507)>4?if(self.viewflag(30475)>=28?if(self.viewflag(30509)<=1?100:0):100):100)
+		- 4 : 1000

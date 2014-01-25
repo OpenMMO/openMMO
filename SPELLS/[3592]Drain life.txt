@@ -1,0 +1,33 @@
+Nom : [3592]Drain life
+Description : [7618]Drain life: Drains health from the target and heals the caster by the same amount.
+ID : 10152
+type_attaque : 2
+type_cible : 11
+req_lvl : 23
+req_int : 83
+req_sag : 16
+cout_mana : 6
+duree : 0
+element : 6
+epuisement_attaque : 750+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+epuisement_mental : 1000+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+epuisement_physique : 750+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+frequence : 0
+index_gfx : 30062
+index_gfx_cible : 0
+index_icone : 10
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10099
+nb_effets : 1
+	- Type d'effet : 10
+	- Nombre de Paramètres : 4
+		- 1 : if(target.r_dark=5025?0:-((1d19+17+self.int/30)*self.dark/target.r_dark))
+		- 2 : 0
+		- 3 : 100
+		- 4 : 100

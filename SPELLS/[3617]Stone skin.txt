@@ -1,0 +1,32 @@
+Nom : [3617]Stone skin
+Description : [7643]Stone skin: Greatly increases the caster's armor class.
+ID : 10147
+type_attaque : 1
+type_cible : 5
+req_lvl : 37
+req_int : 37
+req_sag : 59
+cout_mana : 45
+duree : 300000
+element : 2
+epuisement_attaque : 750+if((870-(self.level-37)*20)>=0?(870-(self.level-37)*20):0)
+epuisement_mental : 1000+if((870-(self.level-37)*20)>=0?(870-(self.level-37)*20):0)
+epuisement_physique : 750+if((870-(self.level-37)*20)>=0?(870-(self.level-37)*20):0)
+frequence : 0
+index_gfx : 30021
+index_gfx_cible : 0
+index_icone : 14
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10115
+nb_effets : 1
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : AC
+		- 3 : (10+self.int/25+self.wis/13)

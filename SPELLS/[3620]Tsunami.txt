@@ -1,0 +1,32 @@
+Nom : [3620]Tsunami
+Description : [7646]Tsunami: Sends a giant tidal wave crashing down upon the target.
+ID : 10136
+type_attaque : 2
+type_cible : 11
+req_lvl : 96
+req_int : 217
+req_sag : 58
+cout_mana : 22
+duree : 0
+element : 4
+epuisement_attaque : 750+if((1460-(self.level-96)*20)>=0?(1460-(self.level-96)*20):0)
+epuisement_mental : 1000+if((1460-(self.level-96)*20)>=0?(1460-(self.level-96)*20):0)
+epuisement_physique : 750+if((1460-(self.level-96)*20)>=0?(1460-(self.level-96)*20):0)
+frequence : 0
+index_gfx : 30085
+index_gfx_cible : 0
+index_icone : 29
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10135
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d65+93+self.int/7)*self.water/target.r_water)
+		- 2 : 
+		- 3 : 100

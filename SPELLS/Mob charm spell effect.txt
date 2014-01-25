@@ -1,0 +1,26 @@
+Nom : Mob charm spell effect
+Description : [11295]Charm: Temporarily paralyzes the target, making movement impossible for a few moments.
+ID : 10473
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 30000
+element : 6
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 30000
+frequence : 0
+index_gfx : 0
+index_gfx_cible : 0
+index_icone : 9
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 30000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 0

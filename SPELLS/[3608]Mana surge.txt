@@ -1,0 +1,56 @@
+Nom : [3608]Mana surge
+Description : [7634]Mana surge: Increases the target's elemental powers.
+ID : 10139
+type_attaque : 1
+type_cible : 3
+req_lvl : 54
+req_int : 174
+req_sag : 17
+cout_mana : 39
+duree : 180000
+element : 0
+epuisement_attaque : 750+if((1040-(self.level-54)*20)>=0?(1040-(self.level-54)*20):0)
+epuisement_mental : 1000+if((1040-(self.level-54)*20)>=0?(1040-(self.level-54)*20):0)
+epuisement_physique : 750+if((1040-(self.level-54)*20)>=0?(1040-(self.level-54)*20):0)
+frequence : 0
+index_gfx : 30055
+index_gfx_cible : 0
+index_icone : 27
+ligne_de_vue : 1
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 180000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 6
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : earth
+		- 3 : target.true_earth/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : air
+		- 3 : target.true_air/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : fire
+		- 3 : target.true_fire/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : water
+		- 3 : target.true_water/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : light
+		- 3 : target.true_light/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dark
+		- 3 : target.true_dark/4

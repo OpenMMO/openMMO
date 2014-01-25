@@ -1,0 +1,60 @@
+Nom : Mob colosseum upgrade spell 3
+Description : [11304]Magical offense upgrade: Increases the target's magical offensive capabilities for a short period of time.
+ID : 10715
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 120000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 0
+index_gfx_cible : 0
+index_icone : 3
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : if(self.viewflag(30428)=1?100:0)
+duree : 120000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 7
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dark
+		- 3 : target.true_dark/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : light
+		- 3 : target.true_light/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : fire
+		- 3 : target.true_fire/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : earth
+		- 3 : target.true_earth/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : water
+		- 3 : target.true_water/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : air
+		- 3 : target.true_air/3
+	- Type d'effet : 3
+	- Nombre de Paramètres : 2
+		- 1 : 30428
+		- 2 : 0

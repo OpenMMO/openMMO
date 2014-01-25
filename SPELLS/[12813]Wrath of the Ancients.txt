@@ -1,0 +1,32 @@
+Nom : [12813]Wrath of the Ancients
+Description : [12832]Wrath of the Ancients: Rage of the fallen races contained within the blood of a New Breed that will sometimes lash out at opponents.
+ID : 10815
+type_attaque : 1
+type_cible : 0
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : infinite
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 0
+index_gfx_cible : 0
+index_icone : 17
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : infinite
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10816
+		- 2 : OnHit
+		- 3 : 100
+		- 4 : 100

@@ -1,0 +1,31 @@
+Nom : ITEM: Frost wakizashi
+Description : 
+ID : 10234
+type_attaque : 2
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 4
+duree : 0
+element : 4
+epuisement_attaque : 0
+epuisement_mental : 600
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30099
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : 0
+controle_pvp : 1
+sort_attaque : 0
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d9+17)*self.water/target.r_water)
+		- 2 : 
+		- 3 : 100

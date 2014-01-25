@@ -1,0 +1,36 @@
+Nom : Mob chilling touch spell
+Description : [7859]Chilling touch: Inflicts a good deal of damage and reduces the target's strength for a short time.
+ID : 10384
+type_attaque : 2
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : (20000+1d10000)
+element : 4
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30023
+index_gfx_cible : 0
+index_icone : 30
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : (20000+1d10000)
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : str
+		- 3 : -(target.str/3)
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -(((self.int-14)*5/8+1d((self.int-14)*5/8))*self.water/target.r_water)
+		- 2 : 
+		- 3 : 100

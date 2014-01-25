@@ -1,0 +1,58 @@
+Nom : [3616]Sanctuary
+Description : [7642]Sanctuary: Protects the caster from all bodily harm for a short period of time.
+ID : 10148
+type_attaque : 1
+type_cible : 5
+req_lvl : 52
+req_int : 18
+req_sag : 91
+cout_mana : 120
+duree : 60000
+element : 5
+epuisement_attaque : if(120000-(self.level-52)*300<=0?0:120000-(self.level-52)*300)
+epuisement_mental : if(120000-(self.level-52)*300<=0?0:120000-(self.level-52)*300)
+epuisement_physique : 750+if((1020-(self.level-52)*20)>=0?(1020-(self.level-52)*20):0)
+frequence : 0
+index_gfx : 30028
+index_gfx_cible : 0
+index_icone : 22
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 60000
+rayon_degats : 0
+Nombre de sort(s) requis : 2
+	- ID : 10146
+	- ID : 10147
+nb_effets : 6
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : 50000
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_water
+		- 3 : 50000
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_air
+		- 3 : 50000
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_earth
+		- 3 : 50000
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_dark
+		- 3 : 50000
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : AC
+		- 3 : 9000

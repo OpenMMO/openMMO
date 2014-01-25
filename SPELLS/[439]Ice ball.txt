@@ -1,0 +1,32 @@
+Nom : [439]Ice ball
+Description : [7674]Ice ball: Sends a projectile of densely packed ice crashing down into the target.
+ID : 10077
+type_attaque : 1
+type_cible : 11
+req_lvl : 45
+req_int : 110
+req_sag : 35
+cout_mana : 11
+duree : 0
+element : 4
+epuisement_attaque : 750+if((950-(self.level-45)*20)>=0?(950-(self.level-45)*20):0)
+epuisement_mental : 1000+if((950-(self.level-45)*20)>=0?(950-(self.level-45)*20):0)
+epuisement_physique : 750+if((950-(self.level-45)*20)>=0?(950-(self.level-45)*20):0)
+frequence : 0
+index_gfx : 30023
+index_gfx_cible : 0
+index_icone : 30
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10026
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d61+53+self.int/11)*self.water/target.r_water)
+		- 2 : 
+		- 3 : 100

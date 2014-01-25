@@ -1,0 +1,32 @@
+Nom : [3597]Glacier
+Description : [7623]Glacier: Creates a huge glacier and hurls it down on the target.
+ID : 10132
+type_attaque : 1
+type_cible : 11
+req_lvl : 55
+req_int : 130
+req_sag : 40
+cout_mana : 13
+duree : 0
+element : 4
+epuisement_attaque : 750+if((1050-(self.level-55)*20)>=0?(1050-(self.level-55)*20):0)
+epuisement_mental : 1000+if((1050-(self.level-55)*20)>=0?(1050-(self.level-55)*20):0)
+epuisement_physique : 750+if((1050-(self.level-55)*20)>=0?(1050-(self.level-55)*20):0)
+frequence : 0
+index_gfx : 30085
+index_gfx_cible : 0
+index_icone : 30
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 1
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10077
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d72+64+self.int/10)*self.water/target.r_water)
+		- 2 : 
+		- 3 : 100

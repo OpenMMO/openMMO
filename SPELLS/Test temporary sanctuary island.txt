@@ -1,0 +1,36 @@
+Nom : Test temporary sanctuary island
+Description : This spell is only a test and is NOT to be used by or given to anyone but a Vircom staff member.
+ID : 10298
+type_attaque : 1
+type_cible : 0
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30080
+index_gfx_cible : 0
+index_icone : 55
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 3
+	- Nombre de Paramètres : 2
+		- 1 : 20020
+		- 2 : 2884352000
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10299
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 10000

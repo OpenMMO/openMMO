@@ -1,0 +1,27 @@
+Nom : [441]Flash
+Description : 
+ID : 10079
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 8
+duree : 0
+element : 3
+epuisement_attaque : 2*(750+if((840-(self.level-34)*20)>=0?(840-(self.level-34)*20):0))
+epuisement_mental : 2*(1000+if((840-(self.level-34)*20)>=0?(840-(self.level-34)*20):0))
+epuisement_physique : 2*(750+if((840-(self.level-34)*20)>=0?(840-(self.level-34)*20):0))
+frequence : 0
+index_gfx : 30011
+index_gfx_cible : 0
+index_icone : 2
+ligne_de_vue : 1
+controle_pvp : 1
+sort_attaque : 0
+success_rate : 100
+duree : 0
+rayon_degats : 10
+Nombre de sort(s) requis : 1
+	- ID : 10028
+nb_effets : 0

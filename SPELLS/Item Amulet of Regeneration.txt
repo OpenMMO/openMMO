@@ -1,0 +1,36 @@
+Nom : Item Amulet of Regeneration
+Description : [12819]Regeneration: Gradually restores the caster's lost HP.
+ID : 10786
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 25
+duree : 600000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 6000
+index_gfx : 30001
+index_gfx_cible : 0
+index_icone : 21
+ligne_de_vue : 0
+controle_pvp : 0
+sort_attaque : 0
+success_rate : if(equipcount(41864)=1?100:0)
+duree : 600000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10788
+		- 2 : 100
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10787
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500
