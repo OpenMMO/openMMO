@@ -1,0 +1,55 @@
+ITEM : [119]Amulet of light
+	- ID : Amulet of light
+	- IDgfx : 0
+	- IDnum : 173
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Arakas
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 1
+	- posEquip : 7
+	- radiance : 100
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 27
+	- reqSAG : 28
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 736
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 103
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 11
+		- Valeur : 100
+	- nb_sorts : 0

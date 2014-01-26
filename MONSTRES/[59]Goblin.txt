@@ -1,0 +1,70 @@
+MONSTRE : [59]Goblin
+	- ID : Goblin
+	- agilite : 19
+	- IDnum : 22512
+	- agressivite : 40
+	- arme : 0
+	- bouclier : 0
+	- CA : 4611686018427387904
+	- chance : 0
+	- endurance : 19
+	- esquive : 30
+	- force : 20
+	- ID : Goblin
+	- id_clan : 20
+	- IDnum : 22512
+	- intelligence : 21
+	- niveau : 5
+	- or_max : 27
+	- or_min : 8
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 121
+	- resistance_eau : 91
+	- resistance_feu : 91
+	- resistance_lumiere : 5025
+	- illimite : 91
+	- resistance_necromancie : 60
+	- sagesse : 19
+	- non_cach : 20001
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4610965442487008625
+	- xp_down : 4635142031924128645
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d8+4
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 70
+			- succes : 100
+	- nb_flags : 1
+		- flag 0
+			- id : 30056
+			- valeur : 1
+			- incremente : true
+	- nb_drops : 4
+		- drop 0
+			- id : 40119
+			- Chance : 4602678819172646912
+		- drop 1
+			- id : 40038
+			- Chance : 4607182418800017408
+		- drop 2
+			- id : 40623
+			- Chance : 4618441417868443648
+		- drop 3
+			- id : 40366
+			- Chance : 4611686018427387904

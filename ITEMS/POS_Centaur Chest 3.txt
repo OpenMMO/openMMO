@@ -1,0 +1,4 @@
+ITEM : Centaur Chest 3
+X : 1556
+Y : 0
+Numéro de carte : 0

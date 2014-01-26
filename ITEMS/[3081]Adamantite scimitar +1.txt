@@ -1,0 +1,55 @@
+ITEM : [3081]Adamantite scimitar +1
+	- ID : Adamantite scimitar 1
+	- IDgfx : 0
+	- IDnum : 277
+	- charges : 0
+	- degats : 1d83+145
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 8
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(862-self.agi/250*862/2<600?600:862-self.agi/250*862/2)+1d431
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 372
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 327
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : self.true_attack*15/100
+	- nb_sorts : 0

@@ -1,0 +1,4 @@
+ITEM : Road 7
+X : 2002
+Y : 0
+Numéro de carte : 0

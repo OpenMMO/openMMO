@@ -1,0 +1,61 @@
+MONSTRE : [2860]Acid slime
+	- ID : Acid Slime
+	- agilite : 47
+	- IDnum : 22581
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4630122629401935872
+	- chance : 0
+	- endurance : 47
+	- esquive : 69
+	- force : 51
+	- ID : Acid Slime
+	- id_clan : 13
+	- IDnum : 22581
+	- intelligence : 58
+	- niveau : 36
+	- or_max : 198
+	- or_min : 64
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 51
+	- resistance_eau : 102
+	- resistance_feu : 51
+	- resistance_lumiere : 5000
+	- illimite : 77
+	- resistance_necromancie : 102
+	- sagesse : 47
+	- non_cach : 20005
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4616189618054758400
+	- xp_down : 4655041960933851136
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 1d46+35
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 442
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 18
+			- distance_min : 2
+			- id_sort : 10091
+			- lvl : 0
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

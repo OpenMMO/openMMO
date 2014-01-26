@@ -1,0 +1,4 @@
+ITEM : WOODEN_ROUND_CHAIR_2_FLIP
+X : 1457
+Y : 0
+Numéro de carte : 0

@@ -1,0 +1,54 @@
+MONSTRE : [61]Organic waste
+	- ID : Organic Waste
+	- agilite : 22
+	- IDnum : 22514
+	- agressivite : 40
+	- arme : 0
+	- bouclier : 0
+	- CA : 4620693217682128896
+	- chance : 0
+	- endurance : 22
+	- esquive : 22
+	- force : 23
+	- ID : Organic Waste
+	- id_clan : 10
+	- IDnum : 22514
+	- intelligence : 24
+	- niveau : 8
+	- or_max : 44
+	- or_min : 14
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 60
+	- resistance_eau : 120
+	- resistance_feu : 60
+	- resistance_lumiere : 5000
+	- illimite : 90
+	- resistance_necromancie : 120
+	- sagesse : 22
+	- non_cach : 20005
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4611798608418072166
+	- xp_down : 4638960943670650470
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d11+6
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 106
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

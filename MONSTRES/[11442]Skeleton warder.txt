@@ -1,0 +1,57 @@
+MONSTRE : [11442]Skeleton warder
+	- ID : Skeleton Warder
+	- agilite : 82
+	- IDnum : 22719
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4630404104378646528
+	- chance : 0
+	- endurance : 82
+	- esquive : 310
+	- force : 90
+	- ID : Skeleton Warder
+	- id_clan : 34
+	- IDnum : 22719
+	- intelligence : 105
+	- niveau : 75
+	- or_max : 412
+	- or_min : 134
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 58
+	- resistance_eau : 78
+	- resistance_feu : 39
+	- resistance_lumiere : 39
+	- illimite : 5025
+	- resistance_necromancie : 58
+	- sagesse : 82
+	- non_cach : 20055
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4620164044725912863
+	- xp_down : 4665359657102622065
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d119+92
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 910
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 1
+		- drop 0
+			- id : 41711
+			- Chance : 4611686018427387904

@@ -1,0 +1,50 @@
+ITEM : [3582]Wooden staff
+	- ID : Wooden staff
+	- IDgfx : 0
+	- IDnum : 296
+	- charges : 0
+	- degats : 1d3+1
+	- difficulteSerrure : 0
+	- emplacement : Arakas
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 8
+	- posEquip : 10
+	- radiance : 0
+	- recup : if(1125-self.agi/250*1125/2<600?600:1125-self.agi/250*1125/2)+1d563
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 9
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 0

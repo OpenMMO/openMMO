@@ -1,0 +1,78 @@
+ITEM : [11155]Pain's plate
+	- ID : Pain plate
+	- IDgfx : 0
+	- IDnum : 264
+	- charges : -1
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : GM Item (reserved)
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 0
+	- posEquip : 0
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : true
+	- non_jet : true
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : true
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : true
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 574
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 3
+		- Valeur : 10
+		- Boost : 575
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 2
+		- Valeur : 10
+		- Boost : 576
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 10
+		- Boost : 577
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 10
+		- Boost : 578
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 6
+		- Valeur : 10
+	- nb_sorts : 1
+		- Sort : 10097
+		- LVL requis : 0
+		- Enclenchement : 3

@@ -1,0 +1,55 @@
+ITEM : [11260]Sword of Light
+	- ID : Sword of Light
+	- IDgfx : 0
+	- IDnum : 202
+	- charges : 0
+	- degats : 1d17+27
+	- difficulteSerrure : 0
+	- emplacement : Unused
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 7
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(787-self.agi/250*787/2<600?600:787-self.agi/250*787/2)+1d394
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 68
+	- reqINT : 0
+	- reqSAG : 23
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 3321
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : false
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 868
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 5
+	- nb_sorts : 0

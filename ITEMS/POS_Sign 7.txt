@@ -1,0 +1,4 @@
+ITEM : Sign 7
+X : 2921
+Y : 0
+Numéro de carte : 0

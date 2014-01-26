@@ -1,0 +1,4 @@
+ITEM : PURPLE_POTION
+X : 2982
+Y : 0
+Numéro de carte : 0

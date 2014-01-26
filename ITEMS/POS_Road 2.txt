@@ -1,0 +1,4 @@
+ITEM : Road 2
+X : 2413
+Y : 0
+Numéro de carte : 0

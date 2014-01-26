@@ -1,0 +1,75 @@
+ITEM : [7838]Mantle of the elements
+	- ID : Mantle of the elements
+	- IDgfx : 0
+	- IDnum : 423
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 25
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 0
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 25
+	- reqEND : 25
+	- reqFOR : 0
+	- reqINT : 128
+	- reqSAG : 53
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 28701
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 617
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 20
+		- Boost : 618
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 17
+		- Valeur : 20
+		- Boost : 619
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 18
+		- Valeur : 20
+		- Boost : 620
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 16
+		- Valeur : 20
+		- Boost : 621
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 19
+		- Valeur : 20
+	- nb_sorts : 0

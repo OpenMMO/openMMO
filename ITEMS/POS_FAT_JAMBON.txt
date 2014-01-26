@@ -1,0 +1,4 @@
+ITEM : FAT_JAMBON
+X : 1599
+Y : 0
+Numéro de carte : 0

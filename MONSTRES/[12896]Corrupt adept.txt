@@ -1,0 +1,54 @@
+MONSTRE : [12896]Corrupt adept
+	- ID : Corrupt Adept
+	- agilite : 35
+	- IDnum : 22761
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4622382067542392832
+	- chance : 0
+	- endurance : 35
+	- esquive : 102
+	- force : 38
+	- ID : Corrupt Adept
+	- id_clan : 20
+	- IDnum : 22761
+	- intelligence : 42
+	- niveau : 23
+	- or_max : 126
+	- or_min : 41
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 110
+	- resistance_eau : 83
+	- resistance_feu : 83
+	- resistance_lumiere : 5000
+	- illimite : 83
+	- resistance_necromancie : 55
+	- sagesse : 35
+	- non_cach : 20025
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4614712437376980877
+	- xp_down : 4649359684841504768
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d27+19
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 286
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

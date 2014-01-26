@@ -1,0 +1,63 @@
+MONSTRE : [11429]Wolfhound
+	- ID : Wolfhound
+	- agilite : 58
+	- IDnum : 22631
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4627448617123184640
+	- chance : 0
+	- endurance : 58
+	- esquive : 202
+	- force : 63
+	- ID : Wolfhound
+	- id_clan : 33
+	- IDnum : 22631
+	- intelligence : 72
+	- niveau : 48
+	- or_max : 264
+	- or_min : 86
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 71
+	- resistance_eau : 71
+	- resistance_feu : 71
+	- resistance_lumiere : 5000
+	- illimite : 47
+	- resistance_necromancie : 71
+	- sagesse : 58
+	- non_cach : 20045
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4618193719888938271
+	- xp_down : 4659142611539874284
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d71+55
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 586
+			- succes : 95
+	- nb_flags : 0
+	- nb_drops : 3
+		- drop 0
+			- id : 41325
+			- Chance : 4591870180066957722
+		- drop 1
+			- id : 41318
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 41576
+			- Chance : 4600877379321698714

@@ -1,0 +1,57 @@
+MONSTRE : [11455]Psykowasp commander
+	- ID : Psykowasp Commander
+	- agilite : 37
+	- IDnum : 22676
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4622945017495814144
+	- chance : 0
+	- endurance : 37
+	- esquive : 110
+	- force : 40
+	- ID : Psykowasp Commander
+	- id_clan : 45
+	- IDnum : 22676
+	- intelligence : 45
+	- niveau : 25
+	- or_max : 137
+	- or_min : 44
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 54
+	- resistance_eau : 82
+	- resistance_feu : 82
+	- resistance_lumiere : 5000
+	- illimite : 82
+	- resistance_necromancie : 109
+	- sagesse : 37
+	- non_cach : 20029
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4615063718147915776
+	- xp_down : 4650336578932551188
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d29+21
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 310
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 1
+		- drop 0
+			- id : 41540
+			- Chance : 4604480259023595110

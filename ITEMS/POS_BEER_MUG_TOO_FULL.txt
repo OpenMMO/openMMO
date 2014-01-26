@@ -1,0 +1,4 @@
+ITEM : BEER_MUG_TOO_FULL
+X : 1773
+Y : 0
+Numéro de carte : 0

@@ -1,0 +1,61 @@
+MONSTRE : [47]Brown rat
+	- ID : Brown Rat
+	- agilite : 15
+	- IDnum : 22501
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 0
+	- chance : 0
+	- endurance : 15
+	- esquive : 14
+	- force : 16
+	- ID : Brown Rat
+	- id_clan : 16
+	- IDnum : 22501
+	- intelligence : 16
+	- niveau : 1
+	- or_max : 5
+	- or_min : 1
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 124
+	- resistance_eau : 93
+	- resistance_feu : 93
+	- resistance_lumiere : 5000
+	- illimite : 93
+	- resistance_necromancie : 62
+	- sagesse : 15
+	- non_cach : 20003
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4607182418800017408
+	- xp_down : 4626604192193052672
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d4+1
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 22
+			- succes : 100
+	- nb_flags : 1
+		- flag 0
+			- id : 30057
+			- valeur : 1
+			- incremente : true
+	- nb_drops : 1
+		- drop 0
+			- id : 40015
+			- Chance : 4611686018427387904

@@ -1,0 +1,50 @@
+ITEM : [215]Jarko's spellbook
+	- ID : Jarko Spellbook
+	- IDgfx : 0
+	- IDnum : 12
+	- charges : 0
+	- degats : 2 D 10 + 10
+	- difficulteSerrure : 0
+	- emplacement : Arakas
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 3
+	- posEquip : 65535
+	- radiance : 13
+	- recup : 0
+	- reqAGI : 10
+	- reqATT : 10
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 20
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 50
+	- structure : 8
+	- texteSigne : The spellbook is written in an unknown language.
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : true
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : true
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 0

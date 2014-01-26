@@ -1,0 +1,128 @@
+MONSTRE : [11461]Obsidian assassin
+	- ID : Obsidian Assassin
+	- agilite : 95
+	- IDnum : 22643
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4631530004285489152
+	- chance : 0
+	- endurance : 95
+	- esquive : 370
+	- force : 105
+	- ID : Obsidian Assassin
+	- id_clan : 37
+	- IDnum : 22643
+	- intelligence : 123
+	- niveau : 90
+	- or_max : 495
+	- or_min : 161
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 61
+	- resistance_eau : 61
+	- resistance_feu : 61
+	- resistance_lumiere : 5000
+	- illimite : 41
+	- resistance_necromancie : 61
+	- sagesse : 95
+	- non_cach : 20042
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4621059135151852749
+	- xp_down : 4667793975846518129
+	- can_attack : true
+	- nb_types_attaques : 6
+		- Attaque 0
+			- degats : 1d156+120
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 1090
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10381
+			- lvl : 0
+			- succes : 5
+		- Attaque 2
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10344
+			- lvl : 0
+			- succes : 5
+		- Attaque 3
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10357
+			- lvl : 0
+			- succes : 5
+		- Attaque 4
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10386
+			- lvl : 0
+			- succes : 5
+		- Attaque 5
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10090
+			- lvl : 0
+			- succes : 45
+	- nb_flags : 0
+	- nb_drops : 13
+		- drop 0
+			- id : 41281
+			- Chance : 4613937818241073152
+		- drop 1
+			- id : 40372
+			- Chance : 4607182418800017408
+		- drop 2
+			- id : 40324
+			- Chance : 4602678819172646912
+		- drop 3
+			- id : 40338
+			- Chance : 4607182418800017408
+		- drop 4
+			- id : 40333
+			- Chance : 4607182418800017408
+		- drop 5
+			- id : 40741
+			- Chance : 4607182418800017408
+		- drop 6
+			- id : 40325
+			- Chance : 4607182418800017408
+		- drop 7
+			- id : 40332
+			- Chance : 4607182418800017408
+		- drop 8
+			- id : 41380
+			- Chance : 4602678819172646912
+		- drop 9
+			- id : 41322
+			- Chance : 4591870180066957722
+		- drop 10
+			- id : 41319
+			- Chance : 4600877379321698714
+		- drop 11
+			- id : 41315
+			- Chance : 4611686018427387904
+		- drop 12
+			- id : 41715
+			- Chance : 4611686018427387904

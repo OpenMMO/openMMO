@@ -1,0 +1,4 @@
+ITEM : Battle chest 1
+X : 2313
+Y : 0
+Numéro de carte : 0

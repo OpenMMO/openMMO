@@ -1,0 +1,60 @@
+ITEM : [7831]Cloak of the midnight mists
+	- ID : Cloak of the midnight mists
+	- IDgfx : 0
+	- IDnum : 278
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Unknown
+	- malusEsquive : 25
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 0
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 35
+	- reqEND : 35
+	- reqFOR : 0
+	- reqINT : 265
+	- reqSAG : 15
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : false
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 2
+		- Boost : 612
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 50
+		- Boost : 613
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 24
+		- Valeur : 50
+	- nb_sorts : 0

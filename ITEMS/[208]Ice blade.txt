@@ -1,0 +1,53 @@
+ITEM : [208]Ice blade
+	- ID : Ice blade
+	- IDgfx : 0
+	- IDnum : 2
+	- charges : -1
+	- degats : 1 d 23 + 34
+	- difficulteSerrure : 0
+	- emplacement : GM Item (for players)
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 9
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(787-self.agi/250*787/2<600?600:787-self.agi/250*787/2)+1d394
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 95
+	- reqINT : 30
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 6398
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 1
+		- Sort : 10162
+		- LVL requis : 0
+		- Enclenchement : 28

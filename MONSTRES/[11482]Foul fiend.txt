@@ -1,0 +1,94 @@
+MONSTRE : [11482]Foul fiend
+	- ID : Foul Fiend
+	- agilite : 88
+	- IDnum : 22640
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4630967054332067840
+	- chance : 0
+	- endurance : 88
+	- esquive : 338
+	- force : 97
+	- ID : Foul Fiend
+	- id_clan : 37
+	- IDnum : 22640
+	- intelligence : 113
+	- niveau : 82
+	- or_max : 451
+	- or_min : 147
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 66
+	- resistance_eau : 44
+	- resistance_feu : 88
+	- resistance_lumiere : 5000
+	- illimite : 66
+	- resistance_necromancie : 66
+	- sagesse : 88
+	- non_cach : 20040
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4620842399419785544
+	- xp_down : 4666655387575490970
+	- can_attack : true
+	- nb_types_attaques : 5
+		- Attaque 0
+			- degats : 1d142+109
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 994
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10314
+			- lvl : 0
+			- succes : 3
+		- Attaque 2
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10376
+			- lvl : 0
+			- succes : 3
+		- Attaque 3
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10090
+			- lvl : 0
+			- succes : 40
+		- Attaque 4
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10086
+			- lvl : 0
+			- succes : 40
+	- nb_flags : 0
+	- nb_drops : 4
+		- drop 0
+			- id : 40346
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 41315
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 41319
+			- Chance : 4600877379321698714
+		- drop 3
+			- id : 41322
+			- Chance : 4591870180066957722

@@ -1,0 +1,4 @@
+ITEM : WOODEN_CHAIR_2_REV
+X : 1722
+Y : 0
+Numéro de carte : 0

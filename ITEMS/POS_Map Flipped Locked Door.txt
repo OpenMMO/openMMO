@@ -1,0 +1,4 @@
+ITEM : Map Flipped Locked Door
+X : 2713
+Y : 0
+Numéro de carte : 0

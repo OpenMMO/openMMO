@@ -1,0 +1,50 @@
+ITEM : [3351]Mithril chainmail girdle
+	- ID : Mithril chainmail girdle
+	- IDgfx : 0
+	- IDnum : 235
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Nowhere
+	- malusEsquive : 4
+	- nomSerrure : 
+	- OR : 0
+	- poids : 4
+	- posEquip : 14
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 150
+	- reqEND : 150
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 6617
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : false
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 0

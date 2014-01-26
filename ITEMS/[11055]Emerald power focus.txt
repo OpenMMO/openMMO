@@ -1,0 +1,80 @@
+ITEM : [11055]Emerald power focus
+	- ID : Emerald power focus
+	- IDgfx : 0
+	- IDnum : 167
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 2
+	- posEquip : 9
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 28
+	- reqSAG : 65
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 6
+		- Boost : 648
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 19
+		- Valeur : 25
+		- Boost : 649
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 16
+		- Valeur : -15
+		- Boost : 650
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 12
+		- Valeur : -10
+		- Boost : 651
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 15
+		- Valeur : -10
+		- Boost : 652
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 13
+		- Valeur : -10
+		- Boost : 653
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 14
+		- Valeur : -10
+	- nb_sorts : 0

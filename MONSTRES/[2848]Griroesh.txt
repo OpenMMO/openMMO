@@ -1,0 +1,82 @@
+MONSTRE : [2848]Griroesh
+	- ID : Griroesh
+	- agilite : 46
+	- IDnum : 22546
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4625478292286210048
+	- chance : 0
+	- endurance : 46
+	- esquive : 150
+	- force : 50
+	- ID : Griroesh
+	- id_clan : 20
+	- IDnum : 22546
+	- intelligence : 57
+	- niveau : 35
+	- or_max : 192
+	- or_min : 62
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 103
+	- resistance_eau : 103
+	- resistance_feu : 103
+	- resistance_lumiere : 5000
+	- illimite : 103
+	- resistance_necromancie : 103
+	- sagesse : 46
+	- non_cach : 20013
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4616685014013769155
+	- xp_down : 4654641738701340672
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 1d45+33
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 430
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 20
+			- distance_min : 3
+			- id_sort : 10095
+			- lvl : 0
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 7
+		- drop 0
+			- id : 40082
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 40749
+			- Chance : 4607182418800017408
+		- drop 2
+			- id : 40038
+			- Chance : 4607182418800017408
+		- drop 3
+			- id : 40732
+			- Chance : 4607182418800017408
+		- drop 4
+			- id : 40045
+			- Chance : 4591870180066957722
+		- drop 5
+			- id : 40093
+			- Chance : 4611686018427387904
+		- drop 6
+			- id : 40366
+			- Chance : 4617315517961601024

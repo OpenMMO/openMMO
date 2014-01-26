@@ -1,0 +1,55 @@
+ITEM : [7430]Blade of heroism
+	- ID : Blade of heroism
+	- IDgfx : 0
+	- IDnum : 274
+	- charges : 0
+	- degats : 1d35+63
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(750-self.agi/250*750/2<600?600:750-self.agi/250*750/2)+1d375
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 155
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 38747
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 569
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : self.true_attack*15/100
+	- nb_sorts : 0

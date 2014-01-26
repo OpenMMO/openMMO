@@ -1,0 +1,75 @@
+ITEM : [3307]Jade ring of sorcery
+	- ID : Jade ring of sorcery
+	- IDgfx : 0
+	- IDnum : 179
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 1
+	- posEquip : 5
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 90
+	- reqSAG : 65
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 13996
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 473
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 16
+		- Valeur : 10
+		- Boost : 474
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 24
+		- Valeur : 10
+		- Boost : 475
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 18
+		- Valeur : 10
+		- Boost : 476
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 19
+		- Valeur : 10
+		- Boost : 477
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 17
+		- Valeur : 10
+	- nb_sorts : 0

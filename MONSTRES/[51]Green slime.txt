@@ -1,0 +1,54 @@
+MONSTRE : [51]Green slime
+	- ID : Green Slime
+	- agilite : 25
+	- IDnum : 22504
+	- agressivite : 60
+	- arme : 0
+	- bouclier : 0
+	- CA : 4613937818241073152
+	- chance : 0
+	- endurance : 10
+	- esquive : 8
+	- force : 15
+	- ID : Green Slime
+	- id_clan : 16
+	- IDnum : 22504
+	- intelligence : 17
+	- niveau : 2
+	- or_max : 11
+	- or_min : 3
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 61
+	- resistance_eau : 123
+	- resistance_feu : 61
+	- resistance_lumiere : 5000
+	- illimite : 93
+	- resistance_necromancie : 123
+	- sagesse : 16
+	- non_cach : 20005
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4610154794554081935
+	- xp_down : 4629981891913580544
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d5+2
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 34
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

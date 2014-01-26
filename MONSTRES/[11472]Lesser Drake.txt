@@ -1,0 +1,68 @@
+MONSTRE : [11472]Lesser Drake
+	- ID : Lesser Drake
+	- agilite : 239
+	- IDnum : 22616
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4638496509959077888
+	- chance : 0
+	- endurance : 239
+	- esquive : 1010
+	- force : 265
+	- ID : Lesser Drake
+	- id_clan : 1
+	- IDnum : 22616
+	- intelligence : 315
+	- niveau : 250
+	- or_max : 1375
+	- or_min : 449
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 63
+	- resistance_eau : 63
+	- resistance_feu : -63
+	- resistance_lumiere : 5000
+	- illimite : 63
+	- resistance_necromancie : 5000
+	- sagesse : 239
+	- non_cach : 20036
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 0
+	- xp_down : 0
+	- can_attack : true
+	- nb_types_attaques : 3
+		- Attaque 0
+			- degats : if(1d10=1?target.hp/2:1d429+337)
+			- distance_max : 1
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 3010
+			- succes : 75
+		- Attaque 1
+			- degats : 
+			- distance_max : 20
+			- distance_min : 2
+			- id_sort : 10095
+			- lvl : 0
+			- succes : 75
+		- Attaque 2
+			- degats : 
+			- distance_max : 1
+			- distance_min : 0
+			- id_sort : 10616
+			- lvl : 0
+			- succes : 25
+	- nb_flags : 0
+	- nb_drops : 0

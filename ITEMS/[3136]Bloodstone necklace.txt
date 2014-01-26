@@ -1,0 +1,55 @@
+ITEM : [3136]Bloodstone necklace
+	- ID : Bloodstone necklace
+	- IDgfx : 0
+	- IDnum : 173
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 1
+	- posEquip : 7
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 44
+	- reqSAG : 21
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 1981
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 449
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 10
+	- nb_sorts : 0

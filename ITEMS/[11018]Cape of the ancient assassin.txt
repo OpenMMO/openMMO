@@ -1,0 +1,65 @@
+ITEM : [11018]Cape of the ancient assassin
+	- ID : Cape of the Ancient Assassin
+	- IDgfx : 0
+	- IDnum : 287
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Forest of No Return
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 2
+	- posEquip : 15
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 48
+	- reqATT : 0
+	- reqEND : 13
+	- reqEND : 13
+	- reqFOR : 0
+	- reqINT : 18
+	- reqSAG : 35
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : true
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 3
+		- Boost : 959
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 22
+		- Valeur : 10
+		- Boost : 960
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10014
+		- Valeur : 15
+		- Boost : 961
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10028
+		- Valeur : 15
+	- nb_sorts : 0

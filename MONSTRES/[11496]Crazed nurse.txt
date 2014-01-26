@@ -1,0 +1,53 @@
+MONSTRE : [11496]Crazed nurse
+	- ID : Crazed Nurse
+	- agilite : 0
+	- IDnum : 22722
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4621256167635550208
+	- chance : 0
+	- endurance : 31
+	- esquive : 82
+	- force : 33
+	- ID : Crazed Nurse
+	- id_clan : 47
+	- IDnum : 22722
+	- intelligence : 0
+	- niveau : 18
+	- or_max : 0
+	- or_min : 0
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 0
+	- resistance_eau : 0
+	- resistance_feu : 0
+	- resistance_lumiere : 0
+	- illimite : 0
+	- resistance_necromancie : 0
+	- sagesse : 0
+	- non_cach : 10008
+	- vet_apparence : 41139
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 0
+	- xp_down : 0
+	- can_attack : true
+	- nb_types_attaques : 0
+	- nb_flags : 0
+	- nb_drops : 2
+		- drop 0
+			- id : 41583
+			- Chance : 4617315517961601024
+		- drop 1
+			- id : 41586
+			- Chance : 4626322717216342016

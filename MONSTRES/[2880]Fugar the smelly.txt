@@ -1,0 +1,85 @@
+MONSTRE : [2880]Fugar the smelly
+	- ID : Fugar
+	- agilite : 32
+	- IDnum : 22602
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4621819117588971520
+	- chance : 0
+	- endurance : 32
+	- esquive : 90
+	- force : 35
+	- ID : Fugar
+	- id_clan : 20
+	- IDnum : 22602
+	- intelligence : 39
+	- niveau : 20
+	- or_max : 220
+	- or_min : 70
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 112
+	- resistance_eau : 84
+	- resistance_feu : 84
+	- resistance_lumiere : 5025
+	- illimite : 84
+	- resistance_necromancie : 56
+	- sagesse : 32
+	- non_cach : 20041
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4614117962226167972
+	- xp_down : 4652491093957410816
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d23+16
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 250
+			- succes : 100
+	- nb_flags : 1
+		- flag 0
+			- id : 30056
+			- valeur : 1
+			- incremente : true
+	- nb_drops : 9
+		- drop 0
+			- id : 40029
+			- Chance : 4611686018427387904
+		- drop 1
+			- id : 40026
+			- Chance : 4613937818241073152
+		- drop 2
+			- id : 40027
+			- Chance : 4613937818241073152
+		- drop 3
+			- id : 40025
+			- Chance : 4613937818241073152
+		- drop 4
+			- id : 40028
+			- Chance : 4613937818241073152
+		- drop 5
+			- id : 40075
+			- Chance : 4611686018427387904
+		- drop 6
+			- id : 40623
+			- Chance : 4611686018427387904
+		- drop 7
+			- id : 40623
+			- Chance : 4611686018427387904
+		- drop 8
+			- id : 40015
+			- Chance : 4617315517961601024

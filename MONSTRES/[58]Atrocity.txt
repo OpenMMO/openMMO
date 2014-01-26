@@ -1,0 +1,63 @@
+MONSTRE : [58]Atrocity
+	- ID : Atrocity
+	- agilite : 20
+	- IDnum : 22511
+	- agressivite : 55
+	- arme : 0
+	- bouclier : 0
+	- CA : 4611686018427387904
+	- chance : 0
+	- endurance : 20
+	- esquive : 30
+	- force : 20
+	- ID : Atrocity
+	- id_clan : 10
+	- IDnum : 22511
+	- intelligence : 20
+	- niveau : 5
+	- or_max : 27
+	- or_min : 8
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 91
+	- resistance_eau : 60
+	- resistance_feu : 121
+	- resistance_lumiere : 5000
+	- illimite : 91
+	- resistance_necromancie : 91
+	- sagesse : 18
+	- non_cach : 20026
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4607182418800017408
+	- xp_down : 4635118810238550016
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d8+4
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 70
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 3
+		- drop 0
+			- id : 40623
+			- Chance : 4613937818241073152
+		- drop 1
+			- id : 40623
+			- Chance : 4617315517961601024
+		- drop 2
+			- id : 40095
+			- Chance : 4602678819172646912

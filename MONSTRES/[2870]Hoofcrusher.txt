@@ -1,0 +1,69 @@
+MONSTRE : [2870]Hoofcrusher
+	- ID : Hoofcrusher
+	- agilite : 51
+	- IDnum : 22592
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4626322717216342016
+	- chance : 0
+	- endurance : 51
+	- esquive : 174
+	- force : 56
+	- ID : Hoofcrusher
+	- id_clan : 24
+	- IDnum : 22592
+	- intelligence : 64
+	- niveau : 41
+	- or_max : 450
+	- or_min : 146
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 99
+	- resistance_eau : 74
+	- resistance_feu : 74
+	- resistance_lumiere : 5000
+	- illimite : 74
+	- resistance_necromancie : 49
+	- sagesse : 51
+	- non_cach : 20014
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4617349294958806303
+	- xp_down : 4661566902737725030
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d56+42
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 502
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 5
+		- drop 0
+			- id : 40372
+			- Chance : 4611686018427387904
+		- drop 1
+			- id : 40623
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 40366
+			- Chance : 4617315517961601024
+		- drop 3
+			- id : 40046
+			- Chance : 4607182418800017408
+		- drop 4
+			- id : 40725
+			- Chance : 4602678819172646912

@@ -1,0 +1,4 @@
+ITEM : Apple
+X : 1575
+Y : 0
+Numéro de carte : 0

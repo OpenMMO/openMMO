@@ -1,0 +1,65 @@
+ITEM : [11416]Runed halberd
+	- ID : Runed halberd
+	- IDgfx : 0
+	- IDnum : 498
+	- charges : 0
+	- degats : 1d178+303
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 10
+	- radiance : 0
+	- recup : if(1500-self.agi/250*1500/2<1500/2?1500/2:1500-self.agi/250*1500/2)+1d750
+	- reqAGI : 0
+	- reqATT : 500
+	- reqEND : 150
+	- reqEND : 150
+	- reqFOR : 425
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 3
+		- Boost : 1011
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : self.true_attack*30/100
+		- Boost : 1012
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10002
+		- Valeur : 10
+		- Boost : 1013
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10027
+		- Valeur : 25
+	- nb_sorts : 0

@@ -1,0 +1,94 @@
+MONSTRE : [2886]Liedric Throatcutter
+	- ID : Liedric Throatcutter
+	- agilite : 48
+	- IDnum : 22608
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4622945017495814144
+	- chance : 0
+	- endurance : 48
+	- esquive : 200
+	- force : 52
+	- ID : Liedric Throatcutter
+	- id_clan : 23
+	- IDnum : 22608
+	- intelligence : 59
+	- niveau : 37
+	- or_max : 406
+	- or_min : 132
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 77
+	- resistance_eau : 77
+	- resistance_feu : 77
+	- resistance_lumiere : 5000
+	- illimite : 103
+	- resistance_necromancie : 77
+	- sagesse : 48
+	- non_cach : 20042
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4616853898999795548
+	- xp_down : 4659956206163963412
+	- can_attack : true
+	- nb_types_attaques : 5
+		- Attaque 0
+			- degats : 1d50+34
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 450
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10120
+			- lvl : 0
+			- succes : 40
+		- Attaque 2
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10086
+			- lvl : 0
+			- succes : 40
+		- Attaque 3
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10122
+			- lvl : 0
+			- succes : 15
+		- Attaque 4
+			- degats : 
+			- distance_max : 25
+			- distance_min : 14
+			- id_sort : 10094
+			- lvl : 0
+			- succes : 40
+	- nb_flags : 0
+	- nb_drops : 4
+		- drop 0
+			- id : 40596
+			- Chance : 4621819117588971520
+		- drop 1
+			- id : 40621
+			- Chance : 4617315517961601024
+		- drop 2
+			- id : 40591
+			- Chance : 4613937818241073152
+		- drop 3
+			- id : 40395
+			- Chance : 4611686018427387904

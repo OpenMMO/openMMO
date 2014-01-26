@@ -1,0 +1,55 @@
+ITEM : [7790]Hickory recurve bow +1
+	- ID : Hickory recurve bow 1
+	- IDgfx : 0
+	- IDnum : 421
+	- charges : 0
+	- degats : 1d31+68+2*arrow_dmg
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 8
+	- posEquip : 8
+	- radiance : 0
+	- recup : 900
+	- reqAGI : 169
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 40
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 46620
+	- structure : 13
+	- texteSigne : 
+	- arc : true
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 718
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10035
+		- Valeur : true_skill(35)*15/100
+	- nb_sorts : 0

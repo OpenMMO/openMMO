@@ -1,0 +1,55 @@
+ITEM : [3554]Sword of Justice *
+	- ID : Sword of justice
+	- IDgfx : 0
+	- IDnum : 2
+	- charges : 0
+	- degats : 1d14+23
+	- difficulteSerrure : 0
+	- emplacement : Marked for deletion
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 8
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(825-self.agi/250*825/2<600?600:825-self.agi/250*825/2)+1d413
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 71
+	- reqINT : 20
+	- reqSAG : 23
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 3638
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : true
+	- illimite : false
+	- invocation : false
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 66
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 3
+		- Valeur : 5
+	- nb_sorts : 0

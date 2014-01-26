@@ -1,0 +1,101 @@
+MONSTRE : [2890]Hurbag Nailripper
+	- ID : Hurbag Nailripper
+	- agilite : 50
+	- IDnum : 22612
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4626604192193052672
+	- chance : 0
+	- endurance : 50
+	- esquive : 178
+	- force : 50
+	- ID : Hurbag Nailripper
+	- id_clan : 15
+	- IDnum : 22612
+	- intelligence : 83
+	- niveau : 42
+	- or_max : 462
+	- or_min : 150
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 98
+	- resistance_eau : 74
+	- resistance_feu : 74
+	- resistance_lumiere : 5000
+	- illimite : 74
+	- resistance_necromancie : 49
+	- sagesse : 50
+	- non_cach : 20008
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4617484402947627418
+	- xp_down : 4661844859277226803
+	- can_attack : true
+	- nb_types_attaques : 6
+		- Attaque 0
+			- degats : 1d58+44
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 514
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10096
+			- lvl : 0
+			- succes : 20
+		- Attaque 2
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10120
+			- lvl : 0
+			- succes : 30
+		- Attaque 3
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10086
+			- lvl : 0
+			- succes : 30
+		- Attaque 4
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10122
+			- lvl : 0
+			- succes : 20
+		- Attaque 5
+			- degats : 
+			- distance_max : 25
+			- distance_min : 15
+			- id_sort : 10088
+			- lvl : 0
+			- succes : 20
+	- nb_flags : 0
+	- nb_drops : 4
+		- drop 0
+			- id : 40212
+			- Chance : 4617315517961601024
+		- drop 1
+			- id : 40396
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 40346
+			- Chance : 4616189618054758400
+		- drop 3
+			- id : 40622
+			- Chance : 4617315517961601024

@@ -1,0 +1,53 @@
+MONSTRE : [11448]Raving lunatic
+	- ID : Raving Lunatic
+	- agilite : 0
+	- IDnum : 22724
+	- agressivite : 0
+	- arme : 0
+	- bouclier : 0
+	- CA : 0
+	- chance : 0
+	- endurance : 0
+	- esquive : 0
+	- force : 0
+	- ID : Raving Lunatic
+	- id_clan : 0
+	- IDnum : 22724
+	- intelligence : 0
+	- niveau : 0
+	- or_max : 0
+	- or_min : 0
+	- puissance_air : 0
+	- puissance_eau : 0
+	- puissance_feu : 0
+	- puissance_lumiere : 0
+	- puissance_necromancie : 0
+	- puissance_terre : 0
+	- resistance_air : 0
+	- resistance_eau : 0
+	- resistance_feu : 0
+	- resistance_lumiere : 0
+	- illimite : 0
+	- resistance_necromancie : 0
+	- sagesse : 0
+	- non_cach : 0
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 0
+	- xp_down : 0
+	- can_attack : true
+	- nb_types_attaques : 0
+	- nb_flags : 0
+	- nb_drops : 2
+		- drop 0
+			- id : 41591
+			- Chance : 4630826316843712512
+		- drop 1
+			- id : 41593
+			- Chance : 4626322717216342016

@@ -1,0 +1,96 @@
+MONSTRE : [11473]Leprechaun
+	- ID : Leprechaun
+	- agilite : 64
+	- IDnum : 22650
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4628293042053316608
+	- chance : 0
+	- endurance : 64
+	- esquive : 230
+	- force : 70
+	- ID : Leprechaun
+	- id_clan : 41
+	- IDnum : 22650
+	- intelligence : 81
+	- niveau : 55
+	- or_max : 302
+	- or_min : 98
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 108
+	- resistance_eau : 81
+	- resistance_feu : 81
+	- resistance_lumiere : 5000
+	- illimite : 81
+	- resistance_necromancie : 54
+	- sagesse : 64
+	- non_cach : 20041
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4618610302854470042
+	- xp_down : 4661151947049402368
+	- can_attack : true
+	- nb_types_attaques : 4
+		- Attaque 0
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10119
+			- lvl : 0
+			- succes : 60
+		- Attaque 1
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10365
+			- lvl : 0
+			- succes : 5
+		- Attaque 2
+			- degats : 
+			- distance_max : 12
+			- distance_min : 1
+			- id_sort : 10364
+			- lvl : 0
+			- succes : 35
+		- Attaque 3
+			- degats : 1d81+62
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 10347
+			- lvl : 670
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 7
+		- drop 0
+			- id : 40361
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 40346
+			- Chance : 4607182418800017408
+		- drop 2
+			- id : 41318
+			- Chance : 4611686018427387904
+		- drop 3
+			- id : 41325
+			- Chance : 4591870180066957722
+		- drop 4
+			- id : 41576
+			- Chance : 4600877379321698714
+		- drop 5
+			- id : 41209
+			- Chance : 4602678819172646912
+		- drop 6
+			- id : 40244
+			- Chance : 4607182418800017408
