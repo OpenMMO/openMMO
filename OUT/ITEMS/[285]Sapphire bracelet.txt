@@ -1,0 +1,60 @@
+ITEM : [285]Sapphire bracelet
+	- ID : Sapphire bracelet
+	- IDgfx : 0
+	- IDnum : 237
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Arakas
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 2
+	- posEquip : 6
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 33
+	- reqSAG : 33
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 1600
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 2
+		- Boost : 14
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 7
+		- Boost : 16
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 7
+	- nb_sorts : 0

@@ -1,0 +1,55 @@
+ITEM : [3208]Fine steel dagger +1
+	- ID : Fine steel dagger 1
+	- IDgfx : 0
+	- IDnum : 274
+	- charges : 0
+	- degats : 1d21+34
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 4
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(675-self.agi/250*675/2<600?600:675-self.agi/250*675/2)+1d338
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 97
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 13924
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 351
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : self.true_attack*15/100
+	- nb_sorts : 0

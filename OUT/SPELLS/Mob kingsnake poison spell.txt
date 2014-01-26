@@ -1,0 +1,32 @@
+Nom : Mob kingsnake poison spell
+Description : [11302]Kingsnake poison: Gradually reduces the target's HP and slows its movement until the spell is cured or its effects wear off.
+ID : 10649
+type_attaque : 1
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : if(self.end>250?60000:600000-(self.end*2400))
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 2500
+epuisement_physique : 0
+frequence : 2000
+index_gfx : 30091
+index_gfx_cible : 0
+index_icone : 10
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : if(self.end>250?60000:600000-(self.end*2400))
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10650
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 

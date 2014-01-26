@@ -1,0 +1,4 @@
+ITEM : WOODEN_CHAIR_FLIP
+X : 1412
+Y : 0
+Numéro de carte : 0

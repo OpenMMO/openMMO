@@ -1,0 +1,75 @@
+ITEM : [3109]Ancient platemail leggings
+	- ID : Ancient platemail leggings
+	- IDgfx : 0
+	- IDnum : 266
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 4
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 300
+	- reqEND : 300
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 43976
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 276
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 12
+		- Valeur : 10
+		- Boost : 277
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 22
+		- Valeur : 10
+		- Boost : 278
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 15
+		- Valeur : 10
+		- Boost : 279
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 13
+		- Valeur : 10
+		- Boost : 280
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 14
+		- Valeur : 10
+	- nb_sorts : 0

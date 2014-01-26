@@ -1,0 +1,47 @@
+Nom : [3605]Major combat sense
+Description : [7631]Major combat sense: Greatly increases the target's strength, attack, dodge and archery skills.
+ID : 10144
+type_attaque : 1
+type_cible : 3
+req_lvl : 66
+req_int : 114
+req_sag : 64
+cout_mana : 15
+duree : 30000
+element : 0
+epuisement_attaque : 750+if((1160-(self.level-66)*20)>=0?(1160-(self.level-66)*20):0)
+epuisement_mental : 1000+if((1160-(self.level-66)*20)>=0?(1160-(self.level-66)*20):0)
+epuisement_physique : 750+if((1160-(self.level-66)*20)>=0?(1160-(self.level-66)*20):0)
+frequence : 0
+index_gfx : 30063
+index_gfx_cible : 0
+index_icone : 27
+ligne_de_vue : TRUE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 30000
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10125
+nb_effets : 4
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : target.true_dodge/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : target.true_attack/2
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : STR
+		- 3 : target.true_str/4
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : skill 35
+		- 3 : target.true_skill(35)/2

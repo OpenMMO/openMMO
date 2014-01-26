@@ -1,0 +1,54 @@
+MONSTRE : [111]Failed summon
+	- ID : Failed Summon
+	- agilite : 46
+	- IDnum : 22561
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4630122629401935872
+	- chance : 0
+	- endurance : 46
+	- esquive : 60
+	- force : 50
+	- ID : Failed Summon
+	- id_clan : 23
+	- IDnum : 22561
+	- intelligence : 57
+	- niveau : 35
+	- or_max : 192
+	- or_min : 62
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 51
+	- resistance_eau : 103
+	- resistance_feu : 51
+	- resistance_lumiere : 5000
+	- illimite : 77
+	- resistance_necromancie : 103
+	- sagesse : 46
+	- non_cach : 20005
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4616651237016563876
+	- xp_down : 4654602156282740736
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d45+33
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 430
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

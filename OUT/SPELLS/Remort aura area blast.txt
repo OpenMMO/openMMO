@@ -1,0 +1,31 @@
+Nom : Remort aura area blast
+Description : 
+ID : 10698
+type_attaque : 2
+type_cible : 18
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 1
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30010
+index_gfx_cible : 30124
+index_icone : 0
+ligne_de_vue : FALSE
+controle_pvp : TRUE
+sort_attaque : TRUE
+success_rate : self.viewflag(30419)
+duree : 0
+rayon_degats : 6
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : 0
+		- 2 : if(target.r_fire<5000?-((self.str+self.agi+self.end+self.int+self.wis)/5-1d5):0)
+		- 3 : 100

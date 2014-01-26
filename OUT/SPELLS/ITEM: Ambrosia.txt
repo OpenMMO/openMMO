@@ -1,0 +1,71 @@
+Nom : ITEM: Ambrosia
+Description : [11288]Ambrosia: Increases the user's elemental powers and slightly reduces mental attributes.
+ID : 10464
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 1200000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 0
+index_gfx_cible : 0
+index_icone : 44
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 1200000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 9
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : 250
+		- 2 : 
+		- 3 : 100
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : wis
+		- 3 : -(target.wis/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : int
+		- 3 : -(target.int/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : air
+		- 3 : (self.true_air/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : earth
+		- 3 : (self.true_earth/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dark
+		- 3 : (self.true_dark/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : light
+		- 3 : (self.true_light/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : water
+		- 3 : (self.true_water/10)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : fire
+		- 3 : (self.true_fire/10)

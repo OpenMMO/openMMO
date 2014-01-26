@@ -1,0 +1,70 @@
+MONSTRE : [11474]Jade kingsnake
+	- ID : Jade Kingsnake
+	- agilite : 41
+	- IDnum : 22727
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4617315517961601024
+	- chance : 0
+	- endurance : 41
+	- esquive : 100
+	- force : 45
+	- ID : Jade Kingsnake
+	- id_clan : 35
+	- IDnum : 22727
+	- intelligence : 51
+	- niveau : 30
+	- or_max : 165
+	- or_min : 53
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 79
+	- resistance_eau : 53
+	- resistance_feu : 106
+	- resistance_lumiere : 5000
+	- illimite : 79
+	- resistance_necromancie : 79
+	- sagesse : 41
+	- non_cach : 20019
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4616167100056621548
+	- xp_down : 4652810699997372744
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 1d10+40
+			- distance_max : 1
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 450
+			- succes : 50
+		- Attaque 1
+			- degats : 
+			- distance_max : 1
+			- distance_min : 0
+			- id_sort : 10649
+			- lvl : 0
+			- succes : 50
+	- nb_flags : 0
+	- nb_drops : 3
+		- drop 0
+			- id : 41661
+			- Chance : 4602678819172646912
+		- drop 1
+			- id : 41666
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 41625
+			- Chance : 4607182418800017408

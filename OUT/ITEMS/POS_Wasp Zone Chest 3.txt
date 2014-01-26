@@ -1,0 +1,4 @@
+ITEM : Wasp Zone Chest 3
+X : 2248
+Y : 0
+Numéro de carte : 0

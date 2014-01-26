@@ -1,0 +1,76 @@
+MONSTRE : [11430]Widow hatchling
+	- ID : Widow Hatchling
+	- agilite : 77
+	- IDnum : 22646
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4630122629401935872
+	- chance : 0
+	- endurance : 77
+	- esquive : 290
+	- force : 85
+	- ID : Widow Hatchling
+	- id_clan : 40
+	- IDnum : 22646
+	- intelligence : 99
+	- niveau : 70
+	- or_max : 385
+	- or_min : 125
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 97
+	- resistance_eau : 72
+	- resistance_feu : 72
+	- resistance_lumiere : 5000
+	- illimite : 72
+	- resistance_necromancie : 48
+	- sagesse : 77
+	- non_cach : 20033
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4619803756755723223
+	- xp_down : 4664172305490903040
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 
+			- distance_max : 10
+			- distance_min : 0
+			- id_sort : 10344
+			- lvl : 0
+			- succes : 10
+		- Attaque 1
+			- degats : 1d110+84
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 10321
+			- lvl : 850
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 5
+		- drop 0
+			- id : 41312
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 41316
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 41320
+			- Chance : 4600877379321698714
+		- drop 3
+			- id : 41324
+			- Chance : 4591870180066957722
+		- drop 4
+			- id : 41404
+			- Chance : 4602678819172646912

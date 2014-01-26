@@ -1,0 +1,71 @@
+ITEM : [11172]Ring of the berserker
+	- ID : Ring of the berserker
+	- IDgfx : 0
+	- IDnum : 177
+	- charges : -1
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Madrigan's mad house
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 1
+	- posEquip : 5
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 20
+	- reqSAG : 25
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 718
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 3
+		- Boost : 874
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 3
+		- Valeur : 10
+		- Boost : 875
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : 25
+		- Boost : 876
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 9
+		- Valeur : -25
+	- nb_sorts : 2
+		- Sort : 10485
+		- LVL requis : 0
+		- Enclenchement : 28
+		- Sort : 10485
+		- LVL requis : 0
+		- Enclenchement : 14

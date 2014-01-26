@@ -1,0 +1,36 @@
+Nom : Item Amulet of Renewal
+Description : [12821]Renewal: Gradually restores the caster's lost mana.
+ID : 10790
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 25
+duree : 600000
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 6000
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 27
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : if(equipcount(41866)=1?100:0)
+duree : 600000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10792
+		- 2 : 100
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10791
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500

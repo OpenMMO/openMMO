@@ -1,0 +1,80 @@
+MONSTRE : [2849]Araf'Kul
+	- ID : Araf Kul
+	- agilite : 37
+	- IDnum : 22547
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4622945017495814144
+	- chance : 0
+	- endurance : 37
+	- esquive : 110
+	- force : 40
+	- ID : Araf Kul
+	- id_clan : 15
+	- IDnum : 22547
+	- intelligence : 45
+	- niveau : 25
+	- or_max : 274
+	- or_min : 88
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 109
+	- resistance_eau : 82
+	- resistance_feu : 82
+	- resistance_lumiere : 5000
+	- illimite : 82
+	- resistance_necromancie : 54
+	- sagesse : 37
+	- non_cach : 20008
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4615063718147915776
+	- xp_down : 4654840178559921684
+	- can_attack : true
+	- nb_types_attaques : 3
+		- Attaque 0
+			- degats : 1d29+21
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 310
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 12
+			- distance_min : 2
+			- id_sort : 10096
+			- lvl : 0
+			- succes : 100
+		- Attaque 2
+			- degats : 
+			- distance_max : 20
+			- distance_min : 13
+			- id_sort : 10088
+			- lvl : 0
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 4
+		- drop 0
+			- id : 40005
+			- Chance : 4621819117588971520
+		- drop 1
+			- id : 40123
+			- Chance : 4619567317775286272
+		- drop 2
+			- id : 40124
+			- Chance : 4625759767262920704
+		- drop 3
+			- id : 40623
+			- Chance : 4621819117588971520

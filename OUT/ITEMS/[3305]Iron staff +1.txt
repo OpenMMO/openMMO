@@ -1,0 +1,55 @@
+ITEM : [3305]Iron staff +1
+	- ID : Iron staff 1
+	- IDgfx : 0
+	- IDnum : 118
+	- charges : 0
+	- degats : 1d6+4
+	- difficulteSerrure : 0
+	- emplacement : Arakas
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 10
+	- posEquip : 10
+	- radiance : 0
+	- recup : if(1312-self.agi/250*1312/2<1312/2?1312/2:1312-self.agi/250*1312/2)+1d656
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 12
+	- reqINT : 21
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 261
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 401
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : self.true_attack*15/100
+	- nb_sorts : 0

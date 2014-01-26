@@ -1,0 +1,4 @@
+ITEM : Oracle chest 2
+X : 2900
+Y : 0
+Numéro de carte : 0

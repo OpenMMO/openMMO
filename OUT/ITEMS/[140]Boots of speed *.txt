@@ -1,0 +1,60 @@
+ITEM : [140]Boots of speed *
+	- ID : Boots of speed
+	- IDgfx : 0
+	- IDnum : 213
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Marked for deletion
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 3
+	- posEquip : 1
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 25
+	- reqEND : 25
+	- reqFOR : 0
+	- reqINT : 20
+	- reqSAG : 20
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 310
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : false
+	- detr_renaiss : true
+	- illimite : false
+	- invocation : false
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 2
+		- Boost : 53
+		- INT requis : 25
+		- SAG requis : 10
+		- Stat : 6
+		- Valeur : 10
+		- Boost : 54
+		- INT requis : 20
+		- SAG requis : 10
+		- Stat : 9
+		- Valeur : 10
+	- nb_sorts : 0

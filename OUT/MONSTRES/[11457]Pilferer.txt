@@ -1,0 +1,107 @@
+MONSTRE : [11457]Pilferer
+	- ID : Pilferer
+	- agilite : 55
+	- IDnum : 22620
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4626885667169763328
+	- chance : 0
+	- endurance : 55
+	- esquive : 190
+	- force : 60
+	- ID : Pilferer
+	- id_clan : 35
+	- IDnum : 22620
+	- intelligence : 69
+	- niveau : 45
+	- or_max : 247
+	- or_min : 80
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 72
+	- resistance_eau : 72
+	- resistance_feu : 72
+	- resistance_lumiere : 5000
+	- illimite : 48
+	- resistance_necromancie : 72
+	- sagesse : 55
+	- non_cach : 20042
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4617810913920611779
+	- xp_down : 4658174337619989627
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 1d64+49
+			- distance_max : 10
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 550
+			- succes : 50
+		- Attaque 1
+			- degats : 
+			- distance_max : 10
+			- distance_min : 0
+			- id_sort : 10094
+			- lvl : 0
+			- succes : 50
+	- nb_flags : 1
+		- flag 0
+			- id : 30388
+			- valeur : 1
+			- incremente : true
+	- nb_drops : 14
+		- drop 0
+			- id : 40622
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 41306
+			- Chance : 4617315517961601024
+		- drop 2
+			- id : 41348
+			- Chance : 4611686018427387904
+		- drop 3
+			- id : 41349
+			- Chance : 4607182418800017408
+		- drop 4
+			- id : 41350
+			- Chance : 4607182418800017408
+		- drop 5
+			- id : 41351
+			- Chance : 4607182418800017408
+		- drop 6
+			- id : 41352
+			- Chance : 4607182418800017408
+		- drop 7
+			- id : 41353
+			- Chance : 4607182418800017408
+		- drop 8
+			- id : 41324
+			- Chance : 4591870180066957722
+		- drop 9
+			- id : 41321
+			- Chance : 4600877379321698714
+		- drop 10
+			- id : 41317
+			- Chance : 4611686018427387904
+		- drop 11
+			- id : 41206
+			- Chance : 4602678819172646912
+		- drop 12
+			- id : 40244
+			- Chance : 4598175219545276416
+		- drop 13
+			- id : 40244
+			- Chance : 4607182418800017408

@@ -1,0 +1,60 @@
+ITEM : [7839]Robe of the Arch Magi
+	- ID : Robe of the Arch Magi
+	- IDgfx : 0
+	- IDnum : 423
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Oracle zone
+	- malusEsquive : 25
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 0
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 27
+	- reqEND : 27
+	- reqFOR : 0
+	- reqINT : 190
+	- reqSAG : 15
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 2
+		- Boost : 622
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 50
+		- Boost : 623
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 17
+		- Valeur : 20
+	- nb_sorts : 0

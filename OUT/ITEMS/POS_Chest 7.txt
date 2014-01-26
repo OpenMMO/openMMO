@@ -1,0 +1,4 @@
+ITEM : Chest 7
+X : 733
+Y : 0
+Numéro de carte : 0

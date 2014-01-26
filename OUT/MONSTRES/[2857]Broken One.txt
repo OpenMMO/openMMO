@@ -1,0 +1,71 @@
+MONSTRE : [2857]Broken One
+	- ID : Broken One
+	- agilite : 51
+	- IDnum : 22573
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4626322717216342016
+	- chance : 0
+	- endurance : 51
+	- esquive : 174
+	- force : 56
+	- ID : Broken One
+	- id_clan : 24
+	- IDnum : 22573
+	- intelligence : 64
+	- niveau : 41
+	- or_max : 225
+	- or_min : 73
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 74
+	- resistance_eau : 99
+	- resistance_feu : 49
+	- resistance_lumiere : 49
+	- illimite : 5025
+	- resistance_necromancie : 74
+	- sagesse : 51
+	- non_cach : 20009
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4617349294958806303
+	- xp_down : 4657063303110354534
+	- can_attack : true
+	- nb_types_attaques : 3
+		- Attaque 0
+			- degats : 1d56+42
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 502
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 15
+			- distance_min : 7
+			- id_sort : 10119
+			- lvl : 0
+			- succes : 30
+		- Attaque 2
+			- degats : 
+			- distance_max : 15
+			- distance_min : 7
+			- id_sort : 10086
+			- lvl : 0
+			- succes : 45
+	- nb_flags : 0
+	- nb_drops : 1
+		- drop 0
+			- id : 40601
+			- Chance : 4611686018427387904

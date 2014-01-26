@@ -1,0 +1,80 @@
+ITEM : [11046]Drachenrobe
+	- ID : Drachenrobe
+	- IDgfx : 0
+	- IDnum : 278
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Forest of No Return
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 0
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 25
+	- reqEND : 25
+	- reqFOR : 0
+	- reqINT : 98
+	- reqSAG : 73
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : true
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : true
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : true
+	- nb_grpITEM : 0
+	- nb_boost : 6
+		- Boost : 943
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 16
+		- Valeur : 10
+		- Boost : 944
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 24
+		- Valeur : 10
+		- Boost : 945
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 19
+		- Valeur : 10
+		- Boost : 946
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 17
+		- Valeur : 10
+		- Boost : 947
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 18
+		- Valeur : 10
+		- Boost : 948
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 23
+		- Valeur : 10
+	- nb_sorts : 0

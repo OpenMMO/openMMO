@@ -1,0 +1,63 @@
+ITEM : [7827]Cloak of damnation
+	- ID : Cloak of damnation
+	- IDgfx : 0
+	- IDnum : 423
+	- charges : -1
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Unknown
+	- malusEsquive : 25
+	- nomSerrure : 
+	- OR : 0
+	- poids : 5
+	- posEquip : 0
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 31
+	- reqEND : 31
+	- reqFOR : 0
+	- reqINT : 277
+	- reqSAG : 15
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : false
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 2
+		- Boost : 624
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 75
+		- Boost : 625
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 17
+		- Valeur : 10
+	- nb_sorts : 1
+		- Sort : 10305
+		- LVL requis : 0
+		- Enclenchement : 14

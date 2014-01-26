@@ -1,0 +1,64 @@
+MONSTRE : [2858]Vampire bat
+	- ID : Vampire Bat
+	- agilite : 49
+	- IDnum : 22574
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 0
+	- chance : 0
+	- endurance : 49
+	- esquive : 257
+	- force : 53
+	- ID : Vampire Bat
+	- id_clan : 24
+	- IDnum : 22574
+	- intelligence : 60
+	- niveau : 38
+	- or_max : 209
+	- or_min : 68
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 50
+	- resistance_eau : 101
+	- resistance_feu : 50
+	- resistance_lumiere : 50
+	- illimite : 5025
+	- resistance_necromancie : 101
+	- sagesse : 49
+	- non_cach : 20002
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4617011524986753516
+	- xp_down : 4655959701299323208
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 1d50+37
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 466
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 12
+			- distance_min : 3
+			- id_sort : 10119
+			- lvl : 0
+			- succes : 75
+	- nb_flags : 0
+	- nb_drops : 1
+		- drop 0
+			- id : 40630
+			- Chance : 4616189618054758400

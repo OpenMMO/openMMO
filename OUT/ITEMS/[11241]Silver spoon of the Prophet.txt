@@ -1,0 +1,65 @@
+ITEM : [11241]Silver spoon of the Prophet
+	- ID : Silver spoon of the Prophet
+	- IDgfx : 0
+	- IDnum : 111
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Madrigan's mad house
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 1
+	- posEquip : 9
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 3
+		- Boost : 901
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 10
+		- Boost : 902
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 23
+		- Valeur : 10
+		- Boost : 903
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 11
+		- Valeur : 100
+	- nb_sorts : 0

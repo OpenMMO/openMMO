@@ -1,0 +1,31 @@
+Nom : [3604]Light
+Description : [7630]Light: Enables all within the vicinity of the caster to see clearly even in darkness.
+ID : 10097
+type_attaque : 1
+type_cible : 5
+req_lvl : 2
+req_int : 18
+req_sag : 15
+cout_mana : 10
+duree : 600000
+element : 1
+epuisement_attaque : 750+if((520-(self.level-1)*20)>=0?(520-(self.level-1)*20):0)
+epuisement_mental : 1000+if((520-(self.level-1)*20)>=0?(520-(self.level-1)*20):0)
+epuisement_physique : 750+if((520-(self.level-1)*20)>=0?(520-(self.level-1)*20):0)
+frequence : 0
+index_gfx : 30012
+index_gfx_cible : 0
+index_icone : 59
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 600000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : TRUE
+		- 2 : Radiance
+		- 3 : 100

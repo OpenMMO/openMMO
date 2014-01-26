@@ -1,0 +1,54 @@
+MONSTRE : [12898]Roaming cadaver
+	- ID : Roaming Cadaver
+	- agilite : 57
+	- IDnum : 22763
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4626885667169763328
+	- chance : 0
+	- endurance : 57
+	- esquive : 190
+	- force : 62
+	- ID : Roaming Cadaver
+	- id_clan : 20
+	- IDnum : 22763
+	- intelligence : 71
+	- niveau : 46
+	- or_max : 258
+	- or_min : 84
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 71
+	- resistance_eau : 95
+	- resistance_feu : 47
+	- resistance_lumiere : 47
+	- illimite : 5025
+	- resistance_necromancie : 71
+	- sagesse : 57
+	- non_cach : 20011
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4618072685648952689
+	- xp_down : 4658815484840378368
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d69+53
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 574
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

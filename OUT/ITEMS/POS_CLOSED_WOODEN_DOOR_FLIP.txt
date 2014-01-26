@@ -1,0 +1,4 @@
+ITEM : CLOSED_WOODEN_DOOR_FLIP
+X : 1454
+Y : 0
+Numéro de carte : 0

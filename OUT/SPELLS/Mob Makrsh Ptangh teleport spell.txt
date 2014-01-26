@@ -1,0 +1,36 @@
+Nom : Mob Makrsh Ptangh teleport spell
+Description : 
+ID : 10596
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 2500
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30032
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10597
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 1500
+	- Type d'effet : 3
+	- Nombre de Paramètres : 2
+		- 1 : 30422
+		- 2 : target.viewflag(30422)+1d15-if(target.viewflag(30422)>16?16:0)

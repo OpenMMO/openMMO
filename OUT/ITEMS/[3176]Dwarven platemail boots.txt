@@ -1,0 +1,75 @@
+ITEM : [3176]Dwarven platemail boots
+	- ID : Dwarven platemail boots
+	- IDgfx : 0
+	- IDnum : 265
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Nowhere
+	- malusEsquive : 11
+	- nomSerrure : 
+	- OR : 0
+	- poids : 8
+	- posEquip : 1
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 160
+	- reqEND : 160
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 9830
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : false
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 211
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 12
+		- Valeur : 4
+		- Boost : 212
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 22
+		- Valeur : 4
+		- Boost : 213
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 15
+		- Valeur : 4
+		- Boost : 214
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 13
+		- Valeur : 4
+		- Boost : 215
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 14
+		- Valeur : 4
+	- nb_sorts : 0

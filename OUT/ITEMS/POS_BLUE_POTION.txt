@@ -1,0 +1,4 @@
+ITEM : BLUE_POTION
+X : 1674
+Y : 0
+Numéro de carte : 0

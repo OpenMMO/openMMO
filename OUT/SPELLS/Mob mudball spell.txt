@@ -1,0 +1,46 @@
+Nom : Mob mudball spell
+Description : [7868]Mudball: Inflicts considerable damage on the target and temporarily reduces Attack, Dodge and Archery skills.
+ID : 10348
+type_attaque : 1
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : (10000+1d5000)
+element : 2
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30025
+index_gfx_cible : 0
+index_icone : 12
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : (10000+1d5000)
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 4
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((self.wis-12+1d((self.wis-12)*1/2))*self.earth/target.r_earth)
+		- 2 : 
+		- 3 : 100
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : -target.attack/5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : -target.dodge/5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : skill 35
+		- 3 : -target.true_skill(35)/5

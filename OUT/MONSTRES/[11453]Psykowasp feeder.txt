@@ -1,0 +1,74 @@
+MONSTRE : [11453]Psykowasp feeder
+	- ID : Psykowasp Feeder
+	- agilite : 27
+	- IDnum : 22673
+	- agressivite : 75
+	- arme : 0
+	- bouclier : 0
+	- CA : 4617315517961601024
+	- chance : 0
+	- endurance : 27
+	- esquive : 66
+	- force : 29
+	- ID : Psykowasp Feeder
+	- id_clan : 45
+	- IDnum : 22673
+	- intelligence : 31
+	- niveau : 14
+	- or_max : 77
+	- or_min : 25
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 58
+	- resistance_eau : 87
+	- resistance_feu : 87
+	- resistance_lumiere : 5000
+	- illimite : 87
+	- resistance_necromancie : 116
+	- sagesse : 27
+	- non_cach : 20029
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4614590840187041874
+	- xp_down : 4644487177072782868
+	- can_attack : true
+	- nb_types_attaques : 3
+		- Attaque 0
+			- degats : 1d25+11
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 178
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10091
+			- lvl : 0
+			- succes : 0
+		- Attaque 2
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10357
+			- lvl : 0
+			- succes : 0
+	- nb_flags : 0
+	- nb_drops : 2
+		- drop 0
+			- id : 41532
+			- Chance : 4617315517961601024
+		- drop 1
+			- id : 41540
+			- Chance : 4599075939470750515

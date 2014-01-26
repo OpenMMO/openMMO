@@ -1,0 +1,31 @@
+Nom : [3591]Clear thought
+Description : [7617]Clear thought: Increases the caster's intelligence.
+ID : 10149
+type_attaque : 1
+type_cible : 5
+req_lvl : 28
+req_int : 74
+req_sag : 28
+cout_mana : 21
+duree : 180000
+element : 4
+epuisement_attaque : 750+if((780-(self.level-28)*20)>=0?(780-(self.level-28)*20):0)
+epuisement_mental : 1000+if((780-(self.level-28)*20)>=0?(780-(self.level-28)*20):0)
+epuisement_physique : 750+if((780-(self.level-28)*20)>=0?(780-(self.level-28)*20):0)
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 31
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 180000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : int
+		- 3 : self.true_int/4

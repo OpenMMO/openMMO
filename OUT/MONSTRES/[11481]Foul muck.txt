@@ -1,0 +1,98 @@
+MONSTRE : [11481]Foul muck
+	- ID : Foul Muck
+	- agilite : 64
+	- IDnum : 22657
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4628293042053316608
+	- chance : 0
+	- endurance : 64
+	- esquive : 230
+	- force : 70
+	- ID : Foul Muck
+	- id_clan : 43
+	- IDnum : 22657
+	- intelligence : 81
+	- niveau : 55
+	- or_max : 302
+	- or_min : 98
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 54
+	- resistance_eau : 108
+	- resistance_feu : 54
+	- resistance_lumiere : 5000
+	- illimite : 81
+	- resistance_necromancie : 108
+	- sagesse : 64
+	- non_cach : 20005
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4618610302854470042
+	- xp_down : 4661151947049402368
+	- can_attack : true
+	- nb_types_attaques : 6
+		- Attaque 0
+			- degats : 1d81+62
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 670
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 10
+			- distance_min : 6
+			- id_sort : 10348
+			- lvl : 0
+			- succes : 30
+		- Attaque 2
+			- degats : 
+			- distance_max : 10
+			- distance_min : 6
+			- id_sort : 10391
+			- lvl : 0
+			- succes : 3
+		- Attaque 3
+			- degats : 
+			- distance_max : 10
+			- distance_min : 2
+			- id_sort : 10091
+			- lvl : 0
+			- succes : 25
+		- Attaque 4
+			- degats : 
+			- distance_max : 5
+			- distance_min : 2
+			- id_sort : 10333
+			- lvl : 0
+			- succes : 5
+		- Attaque 5
+			- degats : 
+			- distance_max : 5
+			- distance_min : 2
+			- id_sort : 10371
+			- lvl : 0
+			- succes : 10
+	- nb_flags : 0
+	- nb_drops : 3
+		- drop 0
+			- id : 41323
+			- Chance : 4591870180066957722
+		- drop 1
+			- id : 41320
+			- Chance : 4600877379321698714
+		- drop 2
+			- id : 41316
+			- Chance : 4611686018427387904

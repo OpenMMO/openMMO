@@ -1,0 +1,61 @@
+MONSTRE : [77]Kraanian worker
+	- ID : Kraanian Worker
+	- agilite : 27
+	- IDnum : 22530
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4619567317775286272
+	- chance : 0
+	- endurance : 32
+	- esquive : 66
+	- force : 28
+	- ID : Kraanian Worker
+	- id_clan : 18
+	- IDnum : 22530
+	- intelligence : 29
+	- niveau : 14
+	- or_max : 77
+	- or_min : 25
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 116
+	- resistance_eau : 87
+	- resistance_feu : 87
+	- resistance_lumiere : 5000
+	- illimite : 87
+	- resistance_necromancie : 58
+	- sagesse : 27
+	- non_cach : 20025
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4612969544321188495
+	- xp_down : 4644013419502606746
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 1d16+11
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 178
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 20
+			- distance_min : 5
+			- id_sort : 10091
+			- lvl : 0
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

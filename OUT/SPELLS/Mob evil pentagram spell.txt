@@ -1,0 +1,41 @@
+Nom : Mob evil pentagram spell
+Description : Evil pentagram: This is a mob spell and must not be used by players.
+ID : 10367
+type_attaque : 2
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 30000
+element : 6
+epuisement_attaque : 0
+epuisement_mental : 2000
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30006
+index_gfx_cible : 0
+index_icone : 8
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 30000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : self.maxhp
+		- 2 : 
+		- 3 : 100
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : int
+		- 3 : self.int/3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : self.attack/3

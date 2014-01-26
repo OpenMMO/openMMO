@@ -1,0 +1,50 @@
+ITEM : [7815]Oak flatbow
+	- ID : Oak flatbow
+	- IDgfx : 0
+	- IDnum : 86
+	- charges : 0
+	- degats : 1d31+69+arrow_dmg
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 7
+	- posEquip : 8
+	- radiance : 0
+	- recup : 1000
+	- reqAGI : 213
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 31
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 37721
+	- structure : 13
+	- texteSigne : 
+	- arc : true
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 0

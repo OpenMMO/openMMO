@@ -1,0 +1,93 @@
+MONSTRE : [2891]Grott
+	- ID : Grott
+	- agilite : 50
+	- IDnum : 22613
+	- agressivite : -100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4624633867356078080
+	- chance : 0
+	- endurance : 50
+	- esquive : 200
+	- force : 55
+	- ID : Grott
+	- id_clan : 24
+	- IDnum : 22613
+	- intelligence : 63
+	- niveau : 40
+	- or_max : 440
+	- or_min : 142
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 75
+	- resistance_eau : 75
+	- resistance_feu : 75
+	- resistance_lumiere : 5000
+	- illimite : 75
+	- resistance_necromancie : 75
+	- sagesse : 50
+	- non_cach : 20010
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4617236704968122040
+	- xp_down : 4661311860020546109
+	- can_attack : true
+	- nb_types_attaques : 4
+		- Attaque 0
+			- degats : 1d56+39
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 490
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10120
+			- lvl : 0
+			- succes : 40
+		- Attaque 2
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10086
+			- lvl : 0
+			- succes : 40
+		- Attaque 3
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10122
+			- lvl : 0
+			- succes : 15
+	- nb_flags : 0
+	- nb_drops : 6
+		- drop 0
+			- id : 40182
+			- Chance : 4619567317775286272
+		- drop 1
+			- id : 40640
+			- Chance : 4617315517961601024
+		- drop 2
+			- id : 40346
+			- Chance : 4616189618054758400
+		- drop 3
+			- id : 40372
+			- Chance : 4613937818241073152
+		- drop 4
+			- id : 40622
+			- Chance : 4616189618054758400
+		- drop 5
+			- id : 40244
+			- Chance : 4613937818241073152

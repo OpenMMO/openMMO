@@ -1,0 +1,63 @@
+MONSTRE : [64]Orc scout
+	- ID : Orc Scout
+	- agilite : 23
+	- IDnum : 22518
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4616189618054758400
+	- chance : 0
+	- endurance : 23
+	- esquive : 46
+	- force : 24
+	- ID : Orc Scout
+	- id_clan : 15
+	- IDnum : 22518
+	- intelligence : 25
+	- niveau : 9
+	- or_max : 49
+	- or_min : 16
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 119
+	- resistance_eau : 89
+	- resistance_feu : 89
+	- resistance_lumiere : 5000
+	- illimite : 89
+	- resistance_necromancie : 59
+	- sagesse : 23
+	- non_cach : 20008
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4611686018427387904
+	- xp_down : 4639727962982187008
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d11+7
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 118
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 3
+		- drop 0
+			- id : 40029
+			- Chance : 4600877379321698714
+		- drop 1
+			- id : 40027
+			- Chance : 4599075939470750515
+		- drop 2
+			- id : 40025
+			- Chance : 4607182418800017408

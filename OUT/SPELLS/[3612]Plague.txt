@@ -1,0 +1,42 @@
+Nom : [3612]Plague
+Description : [7638]Plague: The plague spell lowers the target's max HP and ability to cast Light spells, as well as periodically dealing a small amount of damage.
+ID : 10107
+type_attaque : 1
+type_cible : 11
+req_lvl : 33
+req_int : 112
+req_sag : 16
+cout_mana : 40
+duree : 300000
+element : 6
+epuisement_attaque : 750+if((830-(self.level-33)*20)>=0?(830-(self.level-33)*20):0)
+epuisement_mental : 1000+if((830-(self.level-33)*20)>=0?(830-(self.level-33)*20):0)
+epuisement_physique : 750+if((830-(self.level-33)*20)>=0?(830-(self.level-33)*20):0)
+frequence : 6000
+index_gfx : 30062
+index_gfx_cible : 0
+index_icone : 6
+ligne_de_vue : TRUE
+controle_pvp : TRUE
+sort_attaque : FALSE
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : light
+		- 3 : -(target.light/50)
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10105
+		- 2 : OnTimer
+		- 3 : if(target.r_dark<=1000?100:0)
+		- 4 : 
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : max hp
+		- 3 : -target.maxhp/4

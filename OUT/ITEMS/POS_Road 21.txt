@@ -1,0 +1,4 @@
+ITEM : Road 21
+X : 920
+Y : 0
+Numéro de carte : 0

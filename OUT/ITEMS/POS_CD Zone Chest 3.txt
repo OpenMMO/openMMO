@@ -1,0 +1,4 @@
+ITEM : CD Zone Chest 3
+X : 1886
+Y : 0
+Numéro de carte : 0

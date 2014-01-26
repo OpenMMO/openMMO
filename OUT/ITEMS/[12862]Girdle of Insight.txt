@@ -1,0 +1,60 @@
+ITEM : [12862]Girdle of Insight
+	- ID : Girdle of Insight
+	- IDgfx : 0
+	- IDnum : 235
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Addon
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 0
+	- posEquip : 14
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 60
+	- reqSAG : 60
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 1
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : true
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 2
+		- Boost : 1020
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 25
+		- Boost : 1021
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 25
+	- nb_sorts : 0

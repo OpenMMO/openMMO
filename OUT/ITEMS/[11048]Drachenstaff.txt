@@ -1,0 +1,55 @@
+ITEM : [11048]Drachenstaff
+	- ID : Drachenstaff
+	- IDgfx : 0
+	- IDnum : 294
+	- charges : 0
+	- degats : 1d9+13
+	- difficulteSerrure : 0
+	- emplacement : Forest of No Return
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 2
+	- posEquip : 10
+	- radiance : 0
+	- recup : if(1575-self.agi/250*1575/2<1575/2?1575/2:1575-self.agi/250*1575/2)+1d788
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 135
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : true
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : true
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : true
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 940
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 50
+	- nb_sorts : 0

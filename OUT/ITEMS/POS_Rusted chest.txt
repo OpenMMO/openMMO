@@ -1,0 +1,4 @@
+ITEM : Rusted chest
+X : 233
+Y : 0
+Numéro de carte : 0

@@ -1,0 +1,32 @@
+Nom : [3593]Entangle
+Description : [7619]Entangle: Temporarily reduces the target's capacity to move and dodge attacks.
+ID : 10150
+type_attaque : 1
+type_cible : 9
+req_lvl : 31
+req_int : 34
+req_sag : 52
+cout_mana : 10
+duree : 0
+element : 2
+epuisement_attaque : 750+if((810-(self.level-31)*20)>=0?(810-(self.level-31)*20):0)
+epuisement_mental : 1000+if((810-(self.level-31)*20)>=0?(810-(self.level-31)*20):0)
+epuisement_physique : 750+if((810-(self.level-31)*20)>=0?(810-(self.level-31)*20):0)
+frequence : 0
+index_gfx : 30068
+index_gfx_cible : 0
+index_icone : 57
+ligne_de_vue : TRUE
+controle_pvp : TRUE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10151
+		- 2 : OnTimer
+		- 3 : 50*self.earth/target.r_earth
+		- 4 : 

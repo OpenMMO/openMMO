@@ -1,0 +1,42 @@
+Nom : ITEM: Hammer of true sight
+Description : [7612]True sight: Allows the caster to see everything that is hidden or invisible.
+ID : 10677
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 300000
+element : 2
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30003
+index_gfx_cible : 0
+index_icone : 13
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 4
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10262
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10399
+		- 2 : 100
+	- Type d'effet : 16
+	- Nombre de Paramètres : 2
+		- 1 : 100
+		- 2 : 30020
+	- Type d'effet : 17
+	- Nombre de Paramètres : 2
+		- 1 : 100
+		- 2 : 30003

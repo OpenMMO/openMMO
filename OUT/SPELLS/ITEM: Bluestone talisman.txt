@@ -1,0 +1,73 @@
+Nom : ITEM: Bluestone talisman
+Description : [11292]Bluestone talisman: Protects from physical attacks and spells. The more pieces of bluestone armor equipped, the more effective this is.
+ID : 10487
+type_attaque : 2
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 120000
+element : 4
+epuisement_attaque : 0
+epuisement_mental : 1000
+epuisement_physique : 0
+frequence : 120000
+index_gfx : 0
+index_gfx_cible : 0
+index_icone : 32
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 120000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 9
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : AC
+		- 3 : if(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560)<6?(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560))*5:50)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_fire
+		- 3 : if(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560)<6?(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560))*4:40)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_water
+		- 3 : if(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560)<6?(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560))*4:40)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_air
+		- 3 : if(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560)<6?(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560))*4:40)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_earth
+		- 3 : if(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560)<6?(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560))*4:40)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : r_dark
+		- 3 : if(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560)<6?(equipcount(41555)+equipcount(41556)+equipcount(41557)+equipcount(41558)+equipcount(41559)+equipcount(41560))*4:40)
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10488
+		- 2 : OnHit
+		- 3 : 100
+		- 4 : 250
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10719
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : mana
+		- 3 : -(self.maxmana/10)

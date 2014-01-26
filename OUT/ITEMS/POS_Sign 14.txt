@@ -1,0 +1,4 @@
+ITEM : Sign 14
+X : 1638
+Y : 0
+Numéro de carte : 0

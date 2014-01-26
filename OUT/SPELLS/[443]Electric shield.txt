@@ -1,0 +1,33 @@
+Nom : [443]Electric shield
+Description : [7677]Electric shield: Protective shield that counters every physical attack with a small jolt of energy.
+ID : 10081
+type_attaque : 1
+type_cible : 5
+req_lvl : 49
+req_int : 65
+req_sag : 64
+cout_mana : 24
+duree : 120000
+element : 3
+epuisement_attaque : 750+if((990-(self.level-49)*20)>=0?(990-(self.level-49)*20):0)
+epuisement_mental : 1000+if((990-(self.level-49)*20)>=0?(990-(self.level-49)*20):0)
+epuisement_physique : 750+if((990-(self.level-49)*20)>=0?(990-(self.level-49)*20):0)
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 3
+ligne_de_vue : TRUE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 120000
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10078
+nb_effets : 1
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10083
+		- 2 : OnHit
+		- 3 : 100
+		- 4 : 

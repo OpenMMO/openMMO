@@ -1,0 +1,70 @@
+ITEM : [11415]Darkwood shield
+	- ID : Darkwood shield
+	- IDgfx : 0
+	- IDnum : 467
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 10
+	- posEquip : 9
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 500
+	- reqEND : 180
+	- reqEND : 180
+	- reqFOR : 150
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 4
+		- Boost : 1007
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 14
+		- Valeur : 10
+		- Boost : 1008
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 13
+		- Valeur : -10
+		- Boost : 1009
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10001
+		- Valeur : 10
+		- Boost : 1010
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10002
+		- Valeur : 25
+	- nb_sorts : 0

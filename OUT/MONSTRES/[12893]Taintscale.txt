@@ -1,0 +1,68 @@
+MONSTRE : [12893]Taintscale
+	- ID : Taintscale
+	- agilite : 30
+	- IDnum : 22758
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4620693217682128896
+	- chance : 0
+	- endurance : 30
+	- esquive : 78
+	- force : 32
+	- ID : Taintscale
+	- id_clan : 20
+	- IDnum : 22758
+	- intelligence : 35
+	- niveau : 17
+	- or_max : 93
+	- or_min : 30
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 86
+	- resistance_eau : 57
+	- resistance_feu : 114
+	- resistance_lumiere : 5000
+	- illimite : 86
+	- resistance_necromancie : 86
+	- sagesse : 30
+	- non_cach : 20019
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4613487458278336102
+	- xp_down : 4645920412469821440
+	- can_attack : true
+	- nb_types_attaques : 3
+		- Attaque 0
+			- degats : 1d20+13
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 214
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10119
+			- lvl : 0
+			- succes : 75
+		- Attaque 2
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10747
+			- lvl : 0
+			- succes : 25
+	- nb_flags : 0
+	- nb_drops : 0

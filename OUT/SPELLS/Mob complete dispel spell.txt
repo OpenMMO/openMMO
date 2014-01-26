@@ -1,0 +1,114 @@
+Nom : Mob complete dispel spell
+Description : 
+ID : 10274
+type_attaque : 1
+type_cible : 0
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30095
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 22
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10023
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10038
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10149
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10081
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10150
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10115
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10170
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10123
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10154
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10124
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10172
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10125
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10139
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10144
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10146
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10171
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10168
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10147
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10259
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10258
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10267
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10692
+		- 2 : 100

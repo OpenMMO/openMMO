@@ -1,0 +1,93 @@
+MONSTRE : [107]Orc battlemage
+	- ID : Orc Battlemage
+	- agilite : 45
+	- IDnum : 22557
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4625478292286210048
+	- chance : 0
+	- endurance : 45
+	- esquive : 146
+	- force : 49
+	- ID : Orc Battlemage
+	- id_clan : 15
+	- IDnum : 22557
+	- intelligence : 55
+	- niveau : 34
+	- or_max : 187
+	- or_min : 61
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 103
+	- resistance_eau : 78
+	- resistance_feu : 78
+	- resistance_lumiere : 5000
+	- illimite : 78
+	- resistance_necromancie : 51
+	- sagesse : 45
+	- non_cach : 20008
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4616189618054758400
+	- xp_down : 4654223924282785792
+	- can_attack : true
+	- nb_types_attaques : 4
+		- Attaque 0
+			- degats : 1d42+32
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 418
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10120
+			- lvl : 0
+			- succes : 40
+		- Attaque 2
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10086
+			- lvl : 0
+			- succes : 40
+		- Attaque 3
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10122
+			- lvl : 0
+			- succes : 15
+	- nb_flags : 0
+	- nb_drops : 6
+		- drop 0
+			- id : 40623
+			- Chance : 4611686018427387904
+		- drop 1
+			- id : 40346
+			- Chance : 4616189618054758400
+		- drop 2
+			- id : 40349
+			- Chance : 4611686018427387904
+		- drop 3
+			- id : 40593
+			- Chance : 4607182418800017408
+		- drop 4
+			- id : 40590
+			- Chance : 4605380978949069210
+		- drop 5
+			- id : 40231
+			- Chance : 4607182418800017408

@@ -1,0 +1,41 @@
+Nom : [11273]Bless
+Description : [7567]Bless: Increases the target's max HP, attack and archery skills.
+ID : 10267
+type_attaque : 1
+type_cible : 3
+req_lvl : 59
+req_int : 19
+req_sag : 102
+cout_mana : 140
+duree : 1800000
+element : 5
+epuisement_attaque : 750+if((1090-(self.level-59)*20)>=0?(1090-(self.level-59)*20):0)
+epuisement_mental : 1000+if((1090-(self.level-59)*20)>=0?(1090-(self.level-59)*20):0)
+epuisement_physique : 750+if((1090-(self.level-59)*20)>=0?(1090-(self.level-59)*20):0)
+frequence : 0
+index_gfx : 30051
+index_gfx_cible : 0
+index_icone : 21
+ligne_de_vue : TRUE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 1800000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : max hp
+		- 3 : 1d(self.wis/4)+self.wis
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : self.wis/2
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : skill 35
+		- 3 : self.wis/2

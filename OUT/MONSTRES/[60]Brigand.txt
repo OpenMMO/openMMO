@@ -1,0 +1,69 @@
+MONSTRE : [60]Brigand
+	- ID : Brigand
+	- agilite : 21
+	- IDnum : 22513
+	- agressivite : 40
+	- arme : 0
+	- bouclier : 0
+	- CA : 4611686018427387904
+	- chance : 0
+	- endurance : 21
+	- esquive : 43
+	- force : 21
+	- ID : Brigand
+	- id_clan : 11
+	- IDnum : 22513
+	- intelligence : 23
+	- niveau : 7
+	- or_max : 38
+	- or_min : 12
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 90
+	- resistance_eau : 90
+	- resistance_feu : 90
+	- resistance_lumiere : 5000
+	- illimite : 60
+	- resistance_necromancie : 90
+	- sagesse : 21
+	- non_cach : 20006
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4611415802449745674
+	- xp_down : 4637635900217785057
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d10+5
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 94
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 5
+		- drop 0
+			- id : 40020
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 40021
+			- Chance : 4607182418800017408
+		- drop 2
+			- id : 40019
+			- Chance : 4607182418800017408
+		- drop 3
+			- id : 40623
+			- Chance : 4624633867356078080
+		- drop 4
+			- id : 40095
+			- Chance : 4607182418800017408

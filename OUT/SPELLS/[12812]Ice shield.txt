@@ -1,0 +1,32 @@
+Nom : [12812]Ice shield
+Description : [12831]Ice shield: Protective shield that counters every physical attack with a freezing cloud of ice.
+ID : 10812
+type_attaque : 1
+type_cible : 5
+req_lvl : 84
+req_int : 191
+req_sag : 53
+cout_mana : 100
+duree : 300000
+element : 4
+epuisement_attaque : 750+if((1340-(self.level-84)*20)>=0?(1340-(self.level-84)*20):0)
+epuisement_mental : 1000+if((1340-(self.level-84)*20)>=0?(1340-(self.level-84)*20):0)
+epuisement_physique : 750+if((1340-(self.level-84)*20)>=0?(1340-(self.level-84)*20):0)
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 31
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 1
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10813
+		- 2 : OnHit
+		- 3 : 100
+		- 4 : 100

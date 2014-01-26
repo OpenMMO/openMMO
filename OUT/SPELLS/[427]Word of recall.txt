@@ -1,0 +1,48 @@
+Nom : [427]Word of recall
+Description : [7662]Word of recall: Magically transports the caster back to his or her sanctuary.
+ID : 10029
+type_attaque : 1
+type_cible : 5
+req_lvl : 21
+req_int : 36
+req_sag : 36
+cout_mana : 100
+duree : 0
+element : 3
+epuisement_attaque : 30000
+epuisement_mental : 30000
+epuisement_physique : 30000
+frequence : 0
+index_gfx : 30012
+index_gfx_cible : 0
+index_icone : 4
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 6
+	- Type d'effet : 11
+	- Nombre de Paramètres : 0
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10716
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10715
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10714
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10713
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10769
+		- 2 : 100

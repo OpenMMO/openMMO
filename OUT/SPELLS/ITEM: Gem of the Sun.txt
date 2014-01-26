@@ -1,0 +1,36 @@
+Nom : ITEM: Gem of the Sun
+Description : [11315]Sun aura: Increases the user's abilities if the Drachenhelm or Drachenshield are equipped.
+ID : 10679
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 10000+(5000*itemcount(41658))
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 17
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 10000+(5000*itemcount(41658))
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : if(equipcount(41661)>0?10*itemcount(41658):0)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : if(equipcount(41664)>0?10*itemcount(41658):0)

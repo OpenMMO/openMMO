@@ -1,0 +1,4 @@
+ITEM : DECOR015
+X : 2858
+Y : 0
+Numéro de carte : 0

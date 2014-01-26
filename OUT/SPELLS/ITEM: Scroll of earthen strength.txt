@@ -1,0 +1,35 @@
+Nom : ITEM: Scroll of earthen strength
+Description : [7681]Earthen strength: Increases the target's strength.
+ID : 10657
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 300000
+element : 2
+epuisement_attaque : 750+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+epuisement_mental : 1000+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+epuisement_physique : 750+if((730-(self.level-23)*20)>=0?(730-(self.level-23)*20):0)
+frequence : 0
+index_gfx : 30021
+index_gfx_cible : 0
+index_icone : 13
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : TRUE
+		- 2 : strength
+		- 3 : (10+self.wis/15+self.int/20)
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10124
+		- 2 : 100

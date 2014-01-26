@@ -1,0 +1,32 @@
+Nom : [433]Shatter
+Description : [7668]Shatter: Hits the target with enough force to shatter it to pieces.
+ID : 10037
+type_attaque : 2
+type_cible : 11
+req_lvl : 18
+req_int : 26
+req_sag : 37
+cout_mana : 5
+duree : 0
+element : 2
+epuisement_attaque : 750+if((680-(self.level-18)*20)>=0?(680-(self.level-18)*20):0)
+epuisement_mental : 1000+if((680-(self.level-18)*20)>=0?(680-(self.level-18)*20):0)
+epuisement_physique : 750+if((680-(self.level-18)*20)>=0?(680-(self.level-18)*20):0)
+frequence : 0
+index_gfx : 30073
+index_gfx_cible : 0
+index_icone : 12
+ligne_de_vue : TRUE
+controle_pvp : TRUE
+sort_attaque : TRUE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10035
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d5+26+self.wis/17)*self.earth/target.r_earth)
+		- 2 : 
+		- 3 : 100

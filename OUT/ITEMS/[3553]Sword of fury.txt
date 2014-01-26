@@ -1,0 +1,55 @@
+ITEM : [3553]Sword of fury
+	- ID : Sword of fury
+	- IDgfx : 0
+	- IDnum : 277
+	- charges : 0
+	- degats : 1d12+17
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 7
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(787-self.agi/250*787/2<600?600:787-self.agi/250*787/2)+1d394
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 59
+	- reqINT : 21
+	- reqSAG : 24
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 2521
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 114
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : 15
+	- nb_sorts : 0

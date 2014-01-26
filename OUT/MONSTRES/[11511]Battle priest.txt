@@ -1,0 +1,69 @@
+MONSTRE : [11511]Battle priest
+	- ID : Battle priest
+	- agilite : 27
+	- IDnum : 22710
+	- agressivite : 0
+	- arme : 0
+	- bouclier : 0
+	- CA : 4619567317775286272
+	- chance : 0
+	- endurance : 27
+	- esquive : 66
+	- force : 29
+	- ID : Battle priest
+	- id_clan : 46
+	- IDnum : 22710
+	- intelligence : 31
+	- niveau : 14
+	- or_max : 77
+	- or_min : 25
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 87
+	- resistance_eau : 87
+	- resistance_feu : 87
+	- resistance_lumiere : 5000
+	- illimite : 116
+	- resistance_necromancie : 87
+	- sagesse : 27
+	- non_cach : 10009
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4613915300242936300
+	- xp_down : 4643952374617032622
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d17+10
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 215
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 5
+		- drop 0
+			- id : 41542
+			- Chance : 4617315517961601024
+		- drop 1
+			- id : 41541
+			- Chance : 4604930618986332160
+		- drop 2
+			- id : 40609
+			- Chance : 4611686018427387904
+		- drop 3
+			- id : 40023
+			- Chance : 4607182418800017408
+		- drop 4
+			- id : 41409
+			- Chance : 4611686018427387904

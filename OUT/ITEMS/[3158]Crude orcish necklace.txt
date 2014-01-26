@@ -1,0 +1,60 @@
+ITEM : [3158]Crude orcish necklace
+	- ID : Crude orcish necklace
+	- IDgfx : 0
+	- IDnum : 174
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Arakas
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 2
+	- posEquip : 7
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 29
+	- reqSAG : 36
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 1981
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 2
+		- Boost : 442
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 8
+		- Valeur : 25
+		- Boost : 877
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 10035
+		- Valeur : 25
+	- nb_sorts : 0

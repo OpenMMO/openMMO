@@ -1,0 +1,32 @@
+Nom : [430]Heal serious
+Description : [7665]Heal serious: Restores health to the target.
+ID : 10033
+type_attaque : 2
+type_cible : 3
+req_lvl : 13
+req_int : 16
+req_sag : 34
+cout_mana : 4
+duree : 0
+element : 5
+epuisement_attaque : 750+if((630-(self.level-13)*20)>=0?(630-(self.level-13)*20):0)
+epuisement_mental : 1000+if((630-(self.level-13)*20)>=0?(630-(self.level-13)*20):0)
+epuisement_physique : 750+if((630-(self.level-13)*20)>=0?(630-(self.level-13)*20):0)
+frequence : 0
+index_gfx : 30096
+index_gfx_cible : 0
+index_icone : 24
+ligne_de_vue : TRUE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 1
+	- ID : 10032
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : (1d5+20+self.wis/18)*self.light/100)
+		- 2 : 
+		- 3 : 100

@@ -1,0 +1,33 @@
+Nom : [3610]Meteor
+Description : [7636]Meteor: Hurls a small fragment of a meteor down from the heavens, devastating the target on impact. This spell has a small area of effect.
+ID : 10126
+type_attaque : 1
+type_cible : 19
+req_lvl : 100
+req_int : 309
+req_sag : 18
+cout_mana : 23
+duree : 0
+element : 1
+epuisement_attaque : 750+if((1500-(self.level-100)*20)>=0?(1500-(self.level-100)*20):0)
+epuisement_mental : 1000+if((1500-(self.level-100)*20)>=0?(1500-(self.level-100)*20):0)
+epuisement_physique : 750+if((1500-(self.level-100)*20)>=0?(1500-(self.level-100)*20):0)
+frequence : 0
+index_gfx : 30102
+index_gfx_cible : 0
+index_icone : 16
+ligne_de_vue : TRUE
+controle_pvp : TRUE
+sort_attaque : TRUE
+success_rate : 100
+duree : 0
+rayon_degats : 2
+Nombre de sort(s) requis : 2
+	- ID : 10130
+	- ID : 10129
+nb_effets : 1
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : -((1d157+125+self.int/7)*self.fire/target.r_fire)
+		- 2 : -((1d157+125+self.int/7)*self.fire/target.r_fire)
+		- 3 : 100

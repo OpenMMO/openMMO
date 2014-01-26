@@ -1,0 +1,4 @@
+ITEM : BREAD
+X : 1514
+Y : 0
+Numéro de carte : 0

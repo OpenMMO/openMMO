@@ -1,0 +1,75 @@
+ITEM : [3385]Onyx ring
+	- ID : Onyx ring
+	- IDgfx : 0
+	- IDnum : 179
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 1
+	- posEquip : 5
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 29
+	- reqSAG : 31
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 1067
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 478
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 6
+		- Valeur : 2
+		- Boost : 479
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 2
+		- Boost : 480
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 3
+		- Valeur : 2
+		- Boost : 482
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 2
+		- Boost : 483
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 2
+		- Valeur : 2
+	- nb_sorts : 0

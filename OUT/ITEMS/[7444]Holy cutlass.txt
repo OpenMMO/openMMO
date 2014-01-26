@@ -1,0 +1,50 @@
+ITEM : [7444]Holy cutlass
+	- ID : Holy cutlass
+	- IDgfx : 0
+	- IDnum : 1
+	- charges : 0
+	- degats : if(target.r_dark=5025?1d35+62:1d31+54)
+	- difficulteSerrure : 0
+	- emplacement : GM Item (for players)
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 7
+	- posEquip : 8
+	- radiance : 0
+	- recup : if(787-self.agi/250*787/2<600?600:787-self.agi/250*787/2)+1d394
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 120
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 0

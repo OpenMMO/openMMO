@@ -1,0 +1,89 @@
+MONSTRE : [11497]Colony sentinel
+	- ID : Colony Sentinel
+	- agilite : 57
+	- IDnum : 22625
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4627167142146473984
+	- chance : 0
+	- endurance : 57
+	- esquive : 198
+	- force : 62
+	- ID : Colony Sentinel
+	- id_clan : 32
+	- IDnum : 22625
+	- intelligence : 71
+	- niveau : 47
+	- or_max : 258
+	- or_min : 84
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 47
+	- resistance_eau : 71
+	- resistance_feu : 71
+	- resistance_lumiere : 5000
+	- illimite : 71
+	- resistance_necromancie : 95
+	- sagesse : 57
+	- non_cach : 20029
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4618069870899185582
+	- xp_down : 4658817090127354921
+	- can_attack : true
+	- nb_types_attaques : 3
+		- Attaque 0
+			- degats : 1d69+53
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 574
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10091
+			- lvl : 0
+			- succes : 80
+		- Attaque 2
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10314
+			- lvl : 0
+			- succes : 3
+	- nb_flags : 0
+	- nb_drops : 7
+		- drop 0
+			- id : 40563
+			- Chance : 4602678819172646912
+		- drop 1
+			- id : 41323
+			- Chance : 4591870180066957722
+		- drop 2
+			- id : 41320
+			- Chance : 4600877379321698714
+		- drop 3
+			- id : 41316
+			- Chance : 4611686018427387904
+		- drop 4
+			- id : 41335
+			- Chance : 4587366580439587226
+		- drop 5
+			- id : 41331
+			- Chance : 4596373779694328218
+		- drop 6
+			- id : 41327
+			- Chance : 4607182418800017408

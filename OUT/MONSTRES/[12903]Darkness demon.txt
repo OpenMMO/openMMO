@@ -1,0 +1,58 @@
+MONSTRE : [12903]Darkness demon
+	- ID : Darkness Demon
+	- agilite : 68
+	- IDnum : 22768
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4629137466983448576
+	- chance : 0
+	- endurance : 68
+	- esquive : 730
+	- force : 75
+	- ID : Darkness Demon
+	- id_clan : 20
+	- IDnum : 22768
+	- intelligence : 87
+	- niveau : 60
+	- or_max : 330
+	- or_min : 107
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 87
+	- resistance_eau : 87
+	- resistance_feu : 87
+	- resistance_lumiere : 5000
+	- illimite : 87
+	- resistance_necromancie : 87
+	- sagesse : 68
+	- non_cach : 20013
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4619011010631315331
+	- xp_down : 4662075536816734208
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d90+69
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 730
+			- succes : 100
+	- nb_flags : 1
+		- flag 0
+			- id : 30512
+			- valeur : 1
+			- incremente : false
+	- nb_drops : 0

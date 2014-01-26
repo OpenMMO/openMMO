@@ -1,0 +1,51 @@
+Nom : ITEM: Sapphire hilted spell effect
+Description : [7853]Sapphire strength: Briefly increases the wielder's physical attributes.
+ID : 10411
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 30000
+element : 3
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30004
+index_gfx_cible : 0
+index_icone : 3
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 30000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : agility
+		- 3 : self.true_agi/4
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : strength
+		- 3 : self.true_str/4
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : endurance
+		- 3 : self.true_end/4
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : dodge
+		- 3 : self.true_dodge/4
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : self.true_attack/4

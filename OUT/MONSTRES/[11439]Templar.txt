@@ -1,0 +1,63 @@
+MONSTRE : [11439]Templar
+	- ID : Templar
+	- agilite : 31
+	- IDnum : 22712
+	- agressivite : 0
+	- arme : 0
+	- bouclier : 0
+	- CA : 4621256167635550208
+	- chance : 0
+	- endurance : 31
+	- esquive : 82
+	- force : 33
+	- ID : Templar
+	- id_clan : 46
+	- IDnum : 22712
+	- intelligence : 36
+	- niveau : 18
+	- or_max : 99
+	- or_min : 32
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 85
+	- resistance_eau : 85
+	- resistance_feu : 85
+	- resistance_lumiere : 5000
+	- illimite : 113
+	- resistance_necromancie : 85
+	- sagesse : 31
+	- non_cach : 10009
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4613712638259704627
+	- xp_down : 4646681978203684209
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d21+14
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 226
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 3
+		- drop 0
+			- id : 41545
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 40350
+			- Chance : 4607182418800017408
+		- drop 2
+			- id : 40038
+			- Chance : 4611686018427387904

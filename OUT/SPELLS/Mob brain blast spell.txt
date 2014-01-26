@@ -1,0 +1,41 @@
+Nom : Mob brain blast spell
+Description : [11294]Brain blast: Temporarily reduces the target's intelligence and ability to fight physically.
+ID : 10452
+type_attaque : 2
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 120000
+element : 6
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 5000
+index_gfx : 30024
+index_gfx_cible : 0
+index_icone : 9
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 120000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 3
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : int
+		- 3 : -(target.int/4)
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : attack
+		- 3 : -target.attack/5
+	- Type d'effet : 2
+	- Nombre de Paramètres : 3
+		- 1 : 
+		- 2 : skill 35
+		- 3 : -target.true_skill(35)/5

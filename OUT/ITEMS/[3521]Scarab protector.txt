@@ -1,0 +1,75 @@
+ITEM : [3521]Scarab protector
+	- ID : Scarab protector
+	- IDgfx : 0
+	- IDnum : 235
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 4
+	- nomSerrure : 
+	- OR : 0
+	- poids : 3
+	- posEquip : 14
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 100
+	- reqEND : 100
+	- reqFOR : 0
+	- reqINT : 53
+	- reqSAG : 40
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 4730
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 119
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 15
+		- Valeur : 5
+		- Boost : 496
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 12
+		- Valeur : 5
+		- Boost : 497
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 14
+		- Valeur : 5
+		- Boost : 498
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 13
+		- Valeur : 5
+		- Boost : 499
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 22
+		- Valeur : 5
+	- nb_sorts : 0

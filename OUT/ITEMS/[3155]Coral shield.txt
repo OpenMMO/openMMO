@@ -1,0 +1,55 @@
+ITEM : [3155]Coral shield
+	- ID : Coral shield
+	- IDgfx : 0
+	- IDnum : 273
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Nowhere
+	- malusEsquive : 30
+	- nomSerrure : 
+	- OR : 0
+	- poids : 12
+	- posEquip : 9
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 180
+	- reqEND : 180
+	- reqFOR : 0
+	- reqINT : 90
+	- reqSAG : 65
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 49634
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : false
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 1
+		- Boost : 467
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 13
+		- Valeur : 50
+	- nb_sorts : 0

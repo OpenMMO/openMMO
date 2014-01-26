@@ -1,0 +1,69 @@
+MONSTRE : [11485]Faith warrior
+	- ID : Faith warrior
+	- agilite : 28
+	- IDnum : 22711
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4617315517961601024
+	- chance : 0
+	- endurance : 28
+	- esquive : 50
+	- force : 30
+	- ID : Faith warrior
+	- id_clan : 46
+	- IDnum : 22711
+	- intelligence : 33
+	- niveau : 15
+	- or_max : 82
+	- or_min : 26
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 86
+	- resistance_eau : 86
+	- resistance_feu : 86
+	- resistance_lumiere : 5000
+	- illimite : 115
+	- resistance_necromancie : 86
+	- sagesse : 28
+	- non_cach : 10010
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4613870264246662595
+	- xp_down : 4645079857820619244
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d23+13
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 190
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 5
+		- drop 0
+			- id : 41543
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 40623
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 40029
+			- Chance : 4607182418800017408
+		- drop 3
+			- id : 40027
+			- Chance : 4607182418800017408
+		- drop 4
+			- id : 40144
+			- Chance : 4611686018427387904

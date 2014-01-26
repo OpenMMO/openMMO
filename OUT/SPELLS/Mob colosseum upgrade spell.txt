@@ -1,0 +1,56 @@
+Nom : Mob colosseum upgrade spell
+Description : 
+ID : 10706
+type_attaque : 1
+type_cible : 4
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 0
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30051
+index_gfx_cible : 0
+index_icone : 0
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 5
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10716
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10715
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10712
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10714
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10713
+		- 2 : OnTimer
+		- 3 : 100
+		- 4 : 500

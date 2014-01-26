@@ -1,0 +1,4 @@
+ITEM : Centaur Chest 1
+X : 1683
+Y : 0
+Numéro de carte : 0

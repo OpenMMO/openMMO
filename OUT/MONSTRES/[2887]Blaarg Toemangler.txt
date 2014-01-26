@@ -1,0 +1,84 @@
+MONSTRE : [2887]Blaarg Toemangler
+	- ID : Blaarg Toemangler
+	- agilite : 49
+	- IDnum : 22609
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4626041242239631360
+	- chance : 0
+	- endurance : 49
+	- esquive : 130
+	- force : 53
+	- ID : Blaarg Toemangler
+	- id_clan : 15
+	- IDnum : 22609
+	- intelligence : 60
+	- niveau : 38
+	- or_max : 418
+	- or_min : 136
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 101
+	- resistance_eau : 76
+	- resistance_feu : 76
+	- resistance_lumiere : 5000
+	- illimite : 76
+	- resistance_necromancie : 50
+	- sagesse : 49
+	- non_cach : 20008
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4616989006988616663
+	- xp_down : 4660418704735071109
+	- can_attack : true
+	- nb_types_attaques : 4
+		- Attaque 0
+			- degats : 1d50+37
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 498
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10120
+			- lvl : 0
+			- succes : 40
+		- Attaque 2
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10086
+			- lvl : 0
+			- succes : 40
+		- Attaque 3
+			- degats : 
+			- distance_max : 13
+			- distance_min : 3
+			- id_sort : 10122
+			- lvl : 0
+			- succes : 15
+	- nb_flags : 0
+	- nb_drops : 3
+		- drop 0
+			- id : 40396
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 40637
+			- Chance : 4617315517961601024
+		- drop 2
+			- id : 40212
+			- Chance : 4617315517961601024

@@ -1,0 +1,75 @@
+ITEM : [7427]Azure plate helm
+	- ID : Azure plate helm
+	- IDgfx : 0
+	- IDnum : 267
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : GM Item (for players)
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 0
+	- posEquip : 3
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 100
+	- reqEND : 100
+	- reqFOR : 0
+	- reqINT : 50
+	- reqSAG : 50
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : true
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 544
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 3
+		- Valeur : 8
+		- Boost : 545
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 6
+		- Valeur : 8
+		- Boost : 546
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 2
+		- Valeur : 8
+		- Boost : 547
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 8
+		- Boost : 548
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 8
+	- nb_sorts : 0

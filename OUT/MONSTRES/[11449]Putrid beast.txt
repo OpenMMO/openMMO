@@ -1,0 +1,101 @@
+MONSTRE : [11449]Putrid beast
+	- ID : Putrid Beast
+	- agilite : 89
+	- IDnum : 22641
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4630967054332067840
+	- chance : 0
+	- endurance : 89
+	- esquive : 342
+	- force : 98
+	- ID : Putrid Beast
+	- id_clan : 37
+	- IDnum : 22641
+	- intelligence : 114
+	- niveau : 83
+	- or_max : 456
+	- or_min : 149
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 43
+	- resistance_eau : 65
+	- resistance_feu : 65
+	- resistance_lumiere : 5000
+	- illimite : 65
+	- resistance_necromancie : 87
+	- sagesse : 89
+	- non_cach : 20038
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4620873361667223716
+	- xp_down : 4666794514279311606
+	- can_attack : true
+	- nb_types_attaques : 6
+		- Attaque 0
+			- degats : 1d143+111
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 1006
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10350
+			- lvl : 0
+			- succes : 5
+		- Attaque 2
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10378
+			- lvl : 0
+			- succes : 3
+		- Attaque 3
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10359
+			- lvl : 0
+			- succes : 3
+		- Attaque 4
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10119
+			- lvl : 0
+			- succes : 30
+		- Attaque 5
+			- degats : 
+			- distance_max : 10
+			- distance_min : 1
+			- id_sort : 10120
+			- lvl : 0
+			- succes : 30
+	- nb_flags : 0
+	- nb_drops : 4
+		- drop 0
+			- id : 40372
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 41318
+			- Chance : 4611686018427387904
+		- drop 2
+			- id : 41325
+			- Chance : 4591870180066957722
+		- drop 3
+			- id : 41576
+			- Chance : 4600877379321698714

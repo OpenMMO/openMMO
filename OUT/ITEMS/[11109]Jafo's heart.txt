@@ -1,0 +1,75 @@
+ITEM : [11109]Jafo's heart
+	- ID : Jafo Heart
+	- IDgfx : 0
+	- IDnum : 174
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 2
+	- posEquip : 7
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 10
+	- reqEND : 10
+	- reqFOR : 0
+	- reqINT : 95
+	- reqSAG : 110
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : true
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : true
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 666
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 3
+		- Valeur : 10
+		- Boost : 667
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 10
+		- Boost : 668
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 10
+		- Boost : 669
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 6
+		- Valeur : 10
+		- Boost : 670
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 2
+		- Valeur : 10
+	- nb_sorts : 0

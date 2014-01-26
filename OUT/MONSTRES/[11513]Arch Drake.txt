@@ -1,0 +1,61 @@
+MONSTRE : [11513]Arch Drake
+	- ID : Arch Drake
+	- agilite : 914
+	- IDnum : 22618
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4647503709213818880
+	- chance : 0
+	- endurance : 914
+	- esquive : 4010
+	- force : 1015
+	- ID : Arch Drake
+	- id_clan : 1
+	- IDnum : 22618
+	- intelligence : 1215
+	- niveau : 1000
+	- or_max : 5500
+	- or_min : 1799
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 63
+	- resistance_eau : 63
+	- resistance_feu : -63
+	- resistance_lumiere : 5000
+	- illimite : 63
+	- resistance_necromancie : 5000
+	- sagesse : 914
+	- non_cach : 20036
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 0
+	- xp_down : 0
+	- can_attack : true
+	- nb_types_attaques : 2
+		- Attaque 0
+			- degats : 1d1715+1352
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 12010
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 20
+			- distance_min : 2
+			- id_sort : 10095
+			- lvl : 0
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

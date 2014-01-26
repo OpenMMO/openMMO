@@ -1,0 +1,4 @@
+ITEM : CUP_FULL
+X : 1782
+Y : 0
+Numéro de carte : 0

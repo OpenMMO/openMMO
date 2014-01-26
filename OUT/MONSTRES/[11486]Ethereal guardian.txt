@@ -1,0 +1,96 @@
+MONSTRE : [11486]Ethereal guardian
+	- ID : Oracle Gate Guardian 2
+	- agilite : 127
+	- IDnum : 22681
+	- agressivite : 100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4633922541587529728
+	- chance : 0
+	- endurance : 127
+	- esquive : 510
+	- force : 140
+	- ID : Oracle Gate Guardian 2
+	- id_clan : 1
+	- IDnum : 22681
+	- intelligence : 165
+	- niveau : 125
+	- or_max : 687
+	- or_min : 224
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 31
+	- resistance_eau : 31
+	- resistance_feu : 63
+	- resistance_lumiere : 5000
+	- illimite : 47
+	- resistance_necromancie : 63
+	- sagesse : 127
+	- non_cach : 20036
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4621886671583382077
+	- xp_down : 4672234337062617088
+	- can_attack : true
+	- nb_types_attaques : 7
+		- Attaque 0
+			- degats : 
+			- distance_max : 20
+			- distance_min : 1
+			- id_sort : 10096
+			- lvl : 0
+			- succes : 70
+		- Attaque 1
+			- degats : 
+			- distance_max : 20
+			- distance_min : 1
+			- id_sort : 10425
+			- lvl : 0
+			- succes : 5
+		- Attaque 2
+			- degats : 
+			- distance_max : 20
+			- distance_min : 1
+			- id_sort : 10427
+			- lvl : 0
+			- succes : 5
+		- Attaque 3
+			- degats : 
+			- distance_max : 20
+			- distance_min : 1
+			- id_sort : 10429
+			- lvl : 0
+			- succes : 5
+		- Attaque 4
+			- degats : 
+			- distance_max : 20
+			- distance_min : 1
+			- id_sort : 10431
+			- lvl : 0
+			- succes : 5
+		- Attaque 5
+			- degats : 1d215+128
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 1510
+			- succes : 100
+		- Attaque 6
+			- degats : 
+			- distance_max : 20
+			- distance_min : 1
+			- id_sort : 10382
+			- lvl : 0
+			- succes : 10
+	- nb_flags : 0
+	- nb_drops : 0

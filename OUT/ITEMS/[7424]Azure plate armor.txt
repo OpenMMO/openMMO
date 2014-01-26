@@ -1,0 +1,75 @@
+ITEM : [7424]Azure plate armor
+	- ID : Azure plate armor
+	- IDgfx : 0
+	- IDnum : 264
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : GM Item (for players)
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 0
+	- posEquip : 0
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 100
+	- reqEND : 100
+	- reqFOR : 0
+	- reqINT : 50
+	- reqSAG : 50
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : true
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : false
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 519
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 3
+		- Valeur : 10
+		- Boost : 520
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 6
+		- Valeur : 10
+		- Boost : 521
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 2
+		- Valeur : 10
+		- Boost : 522
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 1
+		- Valeur : 10
+		- Boost : 523
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 4
+		- Valeur : 10
+	- nb_sorts : 0

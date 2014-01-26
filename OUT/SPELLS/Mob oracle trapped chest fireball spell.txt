@@ -1,0 +1,61 @@
+Nom : Mob oracle trapped chest fireball spell
+Description : 
+ID : 10420
+type_attaque : 2
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 0
+element : 1
+epuisement_attaque : 0
+epuisement_mental : 0
+epuisement_physique : 0
+frequence : 0
+index_gfx : 30009
+index_gfx_cible : 30014
+index_icone : 0
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 8
+Nombre de sort(s) requis : 0
+nb_effets : 6
+	- Type d'effet : 1
+	- Nombre de Paramètres : 3
+		- 1 : 0
+		- 2 : if(target.type=1?if(target.maxhp>1000?-50:-(target.maxhp/20)):0)
+		- 3 : 100
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10423
+		- 2 : OnTimer
+		- 3 : if(target.hp=self.hp?100:0)
+		- 4 : 1500
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10422
+		- 2 : OnTimer
+		- 3 : if(target.hp=self.hp?100:0)
+		- 4 : 1000
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10422
+		- 2 : OnTimer
+		- 3 : if(target.hp=self.hp?100:0)
+		- 4 : 700
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10421
+		- 2 : OnTimer
+		- 3 : if(target.hp=self.hp?100:0)
+		- 4 : 200
+	- Type d'effet : 9
+	- Nombre de Paramètres : 4
+		- 1 : 10421
+		- 2 : OnTimer
+		- 3 : if(target.hp=self.hp?100:0)
+		- 4 : 400

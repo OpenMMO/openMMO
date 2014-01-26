@@ -1,0 +1,4 @@
+ITEM : Madrigan Chest
+X : 2724
+Y : 0
+Numéro de carte : 0

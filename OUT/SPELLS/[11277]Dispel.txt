@@ -1,0 +1,118 @@
+Nom : [11277]Dispel
+Description : [7572]Dispel: Negates most harmful effects that are anchored on the target.
+ID : 10248
+type_attaque : 1
+type_cible : 4
+req_lvl : 56
+req_int : 99
+req_sag : 57
+cout_mana : 13
+duree : 0
+element : 0
+epuisement_attaque : 2750+if((1060-(self.level-56)*20)>=0?(1060-(self.level-56)*20):0)
+epuisement_mental : 3000+if((1060-(self.level-56)*20)>=0?(1060-(self.level-56)*20):0)
+epuisement_physique : 2750+if((1060-(self.level-56)*20)>=0?(1060-(self.level-56)*20):0)
+frequence : 0
+index_gfx : 30055
+index_gfx_cible : 0
+index_icone : 28
+ligne_de_vue : TRUE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 0
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 23
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10107
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10038
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10364
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10350
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10378
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10351
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10352
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10379
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10348
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10359
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10386
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10382
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10358
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10375
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10320
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10385
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10652
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10391
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10384
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10381
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10473
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10453
+		- 2 : 100
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10452
+		- 2 : 100

@@ -1,0 +1,34 @@
+Nom : ITEM: Scroll of invisibility
+Description : [7575]Invisibility: Renders the target completely invisible.
+ID : 10667
+type_attaque : 1
+type_cible : 5
+req_lvl : 0
+req_int : 0
+req_sag : 0
+cout_mana : 0
+duree : 300000
+element : 3
+epuisement_attaque : 750+if((1080-(self.level-58)*20)>=0?(1080-(self.level-58)*20):0)
+epuisement_mental : 1000+if((1080-(self.level-58)*20)>=0?(1080-(self.level-58)*20):0)
+epuisement_physique : 750+if((1080-(self.level-58)*20)>=0?(1080-(self.level-58)*20):0)
+frequence : 0
+index_gfx : 30015
+index_gfx_cible : 0
+index_icone : 4
+ligne_de_vue : FALSE
+controle_pvp : FALSE
+sort_attaque : FALSE
+success_rate : 100
+duree : 300000
+rayon_degats : 0
+Nombre de sort(s) requis : 0
+nb_effets : 2
+	- Type d'effet : 13
+	- Nombre de Paramètres : 2
+		- 1 : 10257
+		- 2 : 100
+	- Type d'effet : 15
+	- Nombre de Paramètres : 2
+		- 1 : 100
+		- 2 : 30015

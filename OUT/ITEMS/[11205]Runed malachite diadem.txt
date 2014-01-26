@@ -1,0 +1,75 @@
+ITEM : [11205]Runed malachite diadem
+	- ID : Runed malachite diadem
+	- IDgfx : 0
+	- IDnum : 279
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Stoneheim
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 3
+	- posEquip : 3
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 98
+	- reqSAG : 108
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 0
+	- structure : 2
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 5
+		- Boost : 641
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 12
+		- Valeur : 10
+		- Boost : 642
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 22
+		- Valeur : 10
+		- Boost : 643
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 15
+		- Valeur : 10
+		- Boost : 644
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 13
+		- Valeur : 10
+		- Boost : 645
+		- INT requis : 0
+		- SAG requis : 0
+		- Stat : 14
+		- Valeur : 10
+	- nb_sorts : 0

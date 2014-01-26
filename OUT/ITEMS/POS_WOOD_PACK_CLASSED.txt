@@ -1,0 +1,4 @@
+ITEM : WOOD_PACK_CLASSED
+X : 2595
+Y : 0
+Numéro de carte : 0

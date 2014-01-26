@@ -1,0 +1,54 @@
+MONSTRE : [49]Dungeon bat
+	- ID : Dungeon Bat
+	- agilite : 16
+	- IDnum : 22503
+	- agressivite : 40
+	- arme : 0
+	- bouclier : 0
+	- CA : 0
+	- chance : 0
+	- endurance : 16
+	- esquive : 23
+	- force : 17
+	- ID : Dungeon Bat
+	- id_clan : 16
+	- IDnum : 22503
+	- intelligence : 17
+	- niveau : 2
+	- or_max : 11
+	- or_min : 3
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 61
+	- resistance_eau : 93
+	- resistance_feu : 93
+	- resistance_lumiere : 5000
+	- illimite : 93
+	- resistance_necromancie : 123
+	- sagesse : 16
+	- non_cach : 20002
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4610244866546629345
+	- xp_down : 4630038186908922675
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d5+2
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 34
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

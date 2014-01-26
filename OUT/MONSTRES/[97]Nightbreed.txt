@@ -1,0 +1,68 @@
+MONSTRE : [97]Nightbreed
+	- ID : Nightbreed
+	- agilite : 36
+	- IDnum : 22550
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 0
+	- chance : 0
+	- endurance : 36
+	- esquive : 166
+	- force : 39
+	- ID : Nightbreed
+	- id_clan : 24
+	- IDnum : 22550
+	- intelligence : 43
+	- niveau : 24
+	- or_max : 132
+	- or_min : 43
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 55
+	- resistance_eau : 82
+	- resistance_feu : 82
+	- resistance_lumiere : 5000
+	- illimite : 82
+	- resistance_necromancie : 110
+	- sagesse : 36
+	- non_cach : 20002
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4614951128157231514
+	- xp_down : 4649883756063767921
+	- can_attack : true
+	- nb_types_attaques : 3
+		- Attaque 0
+			- degats : 1d28+20
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 298
+			- succes : 100
+		- Attaque 1
+			- degats : 
+			- distance_max : 15
+			- distance_min : 5
+			- id_sort : 10094
+			- lvl : 0
+			- succes : 35
+		- Attaque 2
+			- degats : 
+			- distance_max : 15
+			- distance_min : 5
+			- id_sort : 10120
+			- lvl : 0
+			- succes : 60
+	- nb_flags : 0
+	- nb_drops : 0

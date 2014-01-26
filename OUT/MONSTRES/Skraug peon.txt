@@ -1,0 +1,54 @@
+MONSTRE : Skraug peon
+	- ID : Skraug Peon
+	- agilite : 100
+	- IDnum : 22733
+	- agressivite : -100
+	- arme : 0
+	- bouclier : 0
+	- CA : 4636737291354636288
+	- chance : 0
+	- endurance : 100
+	- esquive : 100
+	- force : 100
+	- ID : Skraug Peon
+	- id_clan : 42
+	- IDnum : 22733
+	- intelligence : 100
+	- niveau : 100
+	- or_max : 0
+	- or_min : 0
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 100
+	- resistance_eau : 100
+	- resistance_feu : 100
+	- resistance_lumiere : 100
+	- illimite : 100
+	- resistance_necromancie : 100
+	- sagesse : 100
+	- non_cach : 20047
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 0
+	- xp_down : 0
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d100
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 100
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 0

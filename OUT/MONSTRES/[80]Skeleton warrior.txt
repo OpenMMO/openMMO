@@ -1,0 +1,66 @@
+MONSTRE : [80]Skeleton warrior
+	- ID : Skeleton Warrior
+	- agilite : 28
+	- IDnum : 22534
+	- agressivite : 50
+	- arme : 0
+	- bouclier : 0
+	- CA : 4619567317775286272
+	- chance : 0
+	- endurance : 35
+	- esquive : 70
+	- force : 30
+	- ID : Skeleton Warrior
+	- id_clan : 20
+	- IDnum : 22534
+	- intelligence : 34
+	- niveau : 15
+	- or_max : 82
+	- or_min : 26
+	- puissance_air : 100
+	- puissance_eau : 100
+	- puissance_feu : 100
+	- puissance_lumiere : 100
+	- puissance_necromancie : 100
+	- puissance_terre : 100
+	- resistance_air : 86
+	- resistance_eau : 115
+	- resistance_feu : 57
+	- resistance_lumiere : 57
+	- illimite : 5025
+	- resistance_necromancie : 86
+	- sagesse : 28
+	- non_cach : 20012
+	- vet_apparence : 0
+	- non_jet : 0
+	- vet_dos : 0
+	- vet_main : 0
+	- vet_pied : 0
+	- vet_tete : 0
+	- vitesse : 0
+	- volonte : 0
+	- xp_coup : 4613172206304420168
+	- xp_down : 4644640053169508844
+	- can_attack : true
+	- nb_types_attaques : 1
+		- Attaque 0
+			- degats : 1d17+12
+			- distance_max : 0
+			- distance_min : 0
+			- id_sort : 0
+			- lvl : 190
+			- succes : 100
+	- nb_flags : 0
+	- nb_drops : 4
+		- drop 0
+			- id : 40351
+			- Chance : 4607182418800017408
+		- drop 1
+			- id : 40733
+			- Chance : 4617315517961601024
+		- drop 2
+			- id : 40366
+			- Chance : 4613937818241073152
+		- drop 3
+			- id : 40598
+			- Chance : 4591149604126578442

@@ -1,0 +1,56 @@
+ITEM : [261]Purrr blade
+	- ID : GM Purrr Blade
+	- IDgfx : 0
+	- IDnum : 274
+	- charges : -1
+	- degats : 1
+	- difficulteSerrure : 0
+	- emplacement : GM Item (reserved)
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 3
+	- posEquip : 8
+	- radiance : 100
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 1
+	- structure : 1
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : false
+	- illimite : false
+	- invocation : false
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : false
+	- non_rebut : false
+	- non_mul : false
+	- non_vol : false
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : false
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 2
+		- Sort : 10025
+		- LVL requis : 0
+		- Enclenchement : 28
+		- Sort : 10028
+		- LVL requis : 0
+		- Enclenchement : 14

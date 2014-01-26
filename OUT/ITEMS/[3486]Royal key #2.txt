@@ -1,0 +1,50 @@
+ITEM : [3486]Royal key #2
+	- ID : Royal Key 2
+	- IDgfx : 0
+	- IDnum : 32
+	- charges : 0
+	- degats : 
+	- difficulteSerrure : 0
+	- emplacement : Raven's Dust
+	- malusEsquive : 0
+	- nomSerrure : 
+	- OR : 0
+	- poids : 0
+	- posEquip : 65535
+	- radiance : 0
+	- recup : 0
+	- reqAGI : 0
+	- reqATT : 0
+	- reqEND : 0
+	- reqEND : 0
+	- reqFOR : 0
+	- reqINT : 0
+	- reqSAG : 0
+	- respawn : 0
+	- respawnGlobal : 0
+	- sellPrice : 585
+	- structure : 8
+	- texteSigne : 
+	- arc : false
+	- arme : false
+	- armure : false
+	- bijou : false
+	- detr_renaiss : true
+	- illimite : false
+	- invocation : true
+	- magique : false
+	- non_cach : false
+	- non_equip : false
+	- non_jet : true
+	- non_rebut : true
+	- non_mul : false
+	- non_vol : true
+	- potion : false
+	- rebut : true
+	- signe : false
+	- unique : false
+	- unknown : false
+	- unknown2 : true
+	- nb_grpITEM : 0
+	- nb_boost : 0
+	- nb_sorts : 0
