@@ -24,6 +24,7 @@ public class Main {
 		DDA ddaFile = null;
 		VSB vsbFile = null;
 		DPD dpdFile = null;
+		WDA wdaFile = null;
 		
 		//Détection de l'OS
 		OSValidator.detect();
@@ -59,6 +60,28 @@ public class Main {
 		System.out.println("Création du dossier de sortie des MONSTRES.");
 		File outMONSTRES = new File(Params.t4cOUT+"MONSTRES/");
 		outMONSTRES.mkdirs();
+		System.out.println("Création du dossier de sortie des SPELLFX.");
+		File outSPELLFX = new File(Params.t4cOUT+"SPELLFX/");
+		outSPELLFX.mkdirs();
+		System.out.println("Création du dossier de sortie des ICONES.");
+		File outICONES = new File(Params.t4cOUT+"ICONES/");
+		outICONES.mkdirs();
+		System.out.println("Création du dossier de sortie des LIEUX.");
+		File outLIEUX = new File(Params.t4cOUT+"LIEUX/");
+		outLIEUX.mkdirs();
+		System.out.println("Création du dossier de sortie des FLAGS.");
+		File outFLAGS = new File(Params.t4cOUT+"FLAGS/");
+		outFLAGS.mkdirs();
+		System.out.println("Création du dossier de sortie des CLANS.");
+		File outCLANS = new File(Params.t4cOUT+"CLANS/");
+		outCLANS.mkdirs();
+		System.out.println("Création du dossier de sortie des SPAWN.");
+		File outSPAWNS = new File(Params.t4cOUT+"SPAWN/");
+		outSPAWNS.mkdirs();
+		System.out.println("Création du dossier de sortie des ITEM_POS.");
+		File outITEM_POS = new File(Params.t4cOUT+"ITEM_POS/");
+		outITEM_POS.mkdirs();
+		
 		
 		//ensuite on liste les fichiers sources
 		FileLister explorer = new FileLister();
@@ -96,10 +119,11 @@ public class Main {
 			System.out.println("Décryptage de "+wda.size()+" fichier(s) WDA.");
 			iter = wda.iterator();
 			while(iter.hasNext()){
-				WDA.decrypt(iter.next());
+				wdaFile = new WDA();
+				wdaFile.decrypt(iter.next());
 			}
 			
-			/*//SONS
+			//SONS
 			System.out.println("Décryptage de "+sons.size()+" fichier(s) ._ .");
 			File snmci = null;
 			File snmcd = null;
@@ -118,9 +142,9 @@ public class Main {
 			iter = map.iterator();
 			while(iter.hasNext()){
 				MAP.Map_Load(iter.next(), (short)0x2000);//0x2000 : client version >= 1.6x ; 0x1000 : client version <= 1.6x
-			}*/
+			}
 			
-			/*//DPD
+			//DPD
 			System.out.println("Décryptage de "+dpd.size()+" fichier(s) DPD.");
 			iter = dpd.iterator();
 			while(iter.hasNext()){
@@ -142,7 +166,7 @@ public class Main {
 			while(iter.hasNext()){
 				ddaFile = new DDA();
 				ddaFile.decrypt(iter.next(),didFile.sprites,DPD.palettes);
-			}*/
+			}
 			
 		}catch(NullPointerException e){
 			e.printStackTrace();

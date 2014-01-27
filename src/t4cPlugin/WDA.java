@@ -66,35 +66,7 @@ Structure des fichiers WDA :
 
 
 
-Bloc des Groupes de créatures
-=============================
-4		unsigned long		Nombre de groupes de créatures
 
-Pour chaque groupe de créatures:
-{
-	4		unsigned long		Temps d'apparition minimum
-	4		unsigned long		Temps d'apparition maximum
-	4		unsigned long		Distance maximale d'apparition par-rapport à la position indiquée
-	4		unsigned long		Nombre minimal d'apparitions
-	4		unsigned long		Taille de la chaîne de caractères suivante
-	(variable)	char *			Nom du groupe de créatures
-	4		unsigned long		Nombre de créatures
-
-	Pour chaque créature:
-	{
-		4		unsigned long		Taille de la chaîne de caractères suivante
-		(variable)	char *			ID de la créature
-	}
-
-	4		unsigned long		Nombre de positions d'apparition
-
-	Pour chaque position d'apparition:
-	{
-		4		unsigned long		Position X
-		4		unsigned long		Position Y
-		4		unsigned long		Numéro de la carte (indice Z)
-	}
-}
 
 Bloc des Téléportations
 =======================
@@ -109,8 +81,63 @@ Pour chaque téléportation:
 	4		unsigned long		Position Y d'arrivée
 	4		unsigned long		Numéro de la carte (indice Z) d'arrivée
 }
+*/
+	class Teleportation{
+		public static int id=0;
+		int x1;
+		int y1;
+		int num_carte1;
+		int x2;
+		int y2;
+		int num_carte2;
 
-Bloc des Relations entre clans
+		public Teleportation(ByteBuffer buf) {
+			byte b1, b2, b3, b4;
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			x1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- x1 : "+x1);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			y1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- y1 : "+y1);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			num_carte1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- num_carte1 : "+num_carte1);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			x2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- x2 : "+x2);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			y2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- y2 : "+y2);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			num_carte2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- num_carte2 : "+num_carte2);
+
+		}
+	}
+/*Bloc des Relations entre clans
 ==============================
 4		unsigned long		ID du clan la plus élevée (cf. bloc des clans)
 4		unsigned long		Nombre de relations entre clans
@@ -121,7 +148,31 @@ Pour chaque relation entre clans:
 	2		unsigned short		ID du second clan
 	2		signed short		Relation entre les clans (-100 = amour, 0 = neutre, 100 = haine)
 }
-
+*/
+	class Clan_relation{
+		static int id = 0;
+		int id1;
+		int id2;
+		short rel;//Relation entre les clans (-100 = amour, 0 = neutre, 100 = haine)
+		public Clan_relation(ByteBuffer buf) {
+			byte b1, b2;
+			b1 = buf.get();
+			b2 = buf.get();
+			id1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
+			System.out.println("		- id1 : "+id1);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			id2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
+			System.out.println("		- id2 : "+id2);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			rel = tools.ByteArrayToNumber.bytesToShort(new byte[]{b2,b1});
+			System.out.println("		- rel : "+rel);
+		}
+	}
+/*
 Bloc des Clans
 ==============
 4		unsigned long		Nombre de clans
@@ -131,8 +182,33 @@ Pour chaque clan:
 	2		unsigned short		ID du clan
 	4		unsigned long		Taille de la chaîne de caractères suivante
 	(variable)	char *			Nom du clan
-}
-
+}*/
+	class Clan{
+		int id;
+		int taille_nom;
+		String nom="";
+		public Clan(ByteBuffer buf) {
+			byte b1, b2, b3, b4;
+			b1 = buf.get();
+			b2 = buf.get();
+			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
+			System.out.println("		- id : "+id);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- taille_nom : "+taille_nom);
+			for (int i=0 ; i<taille_nom ; i++){
+				b1 = buf.get();
+				String s = new String(new byte[]{b1});
+				nom += s;
+			}
+			System.out.println("					- nom : "+nom);
+		}
+	}
+/*
 Bloc des Flags
 ==============
 4		unsigned long		Nombre de flags
@@ -143,7 +219,35 @@ Pour chaque flag:
 	4		unsigned long		Taille de la chaîne de caractères suivante
 	(variable)	char *			Nom du flag
 }
-
+*/
+	class Flag{
+		int id;
+		int taille_nom;
+		String nom="";
+		public Flag(ByteBuffer buf) {
+			byte b1, b2, b3, b4;
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- id : "+id);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- taille_nom : "+taille_nom);
+			for (int i=0 ; i<taille_nom ; i++){
+				b1 = buf.get();
+				String s = new String(new byte[]{b1});
+				nom += s;
+			}
+			System.out.println("					- nom : "+nom);
+		}
+	}
+/*
 1		unsigned char		Présence ou non de blocs supplémentaires
 
 Bloc des Apparences d'objets
@@ -156,7 +260,35 @@ Pour chaque apparence d'objet:
 	4		unsigned long		Taille de la chaîne de caractères suivante
 	(variable)	char *			Nom de l'apparence d'objet
 }
-
+*/
+	class Gfx_item{
+		int id;
+		int taille_nom;
+		String nom="";
+		public Gfx_item(ByteBuffer buf) {
+			byte b1, b2, b3, b4;
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- id : "+id);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- taille_nom : "+taille_nom);
+			for (int i=0 ; i<taille_nom ; i++){
+				b1 = buf.get();
+				String s = new String(new byte[]{b1});
+				nom += s;
+			}
+			System.out.println("					- nom : "+nom);
+		}
+	}
+/*
 Bloc des Apparences de créatures
 ================================
 4		unsigned long		Nombre d'apparences de créatures
@@ -168,7 +300,43 @@ Pour chaque apparence de créature:
 	4		unsigned long		Taille de la chaîne de caractères suivante
 	(variable)	char *			Nom de l'apparence d'objet
 }
-
+*/
+	class Gfx_creatures{
+		int id;
+		int id2;
+		int taille_nom;
+		String nom="";
+		public Gfx_creatures(ByteBuffer buf) {
+			byte b1, b2, b3, b4;
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- id : "+id);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			id2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- id2??? : "+id2);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- taille_nom : "+taille_nom);
+			for (int i=0 ; i<taille_nom ; i++){
+				b1 = buf.get();
+				String s = new String(new byte[]{b1});
+				nom += s;
+			}
+			System.out.println("					- nom : "+nom);
+		}
+	}
+/*
 Bloc des Lieux
 ==============
 4		unsigned long		Nombre de lieux
@@ -178,7 +346,29 @@ Pour chaque lieu:
 	4		unsigned long		Taille de la chaîne de caractères suivante
 	(variable)	char *			Nom du lieu
 }
+*/
+	class Lieu{
+		int taille_nom;
+		String nom="";	
+		public Lieu(ByteBuffer buf) {
+			byte b1, b2, b3, b4;
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- taille_nom : "+taille_nom);
+			for (int i=0 ; i<taille_nom ; i++){
+				b1 = buf.get();
+				String s = new String(new byte[]{b1});
+				nom += s;
+			}
+			System.out.println("					- nom : "+nom);
+		}
 
+
+	}
+/*
 Bloc des Icônes
 ===============
 4		unsigned long		Nombre d'icônes
@@ -189,7 +379,37 @@ Pour chaque icône:
 	4		unsigned long		Taille de la chaîne de caractères suivante
 	(variable)	char *			Nom de l'icône
 }
-
+*/
+	class Icone{
+		int id;
+		int taille_nom;
+		String nom="";
+		public Icone(ByteBuffer buf) {
+			byte b1, b2, b3, b4;
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- id : "+id);
+			
+			b1 = buf.get();
+			b2 = buf.get();
+			b3 = buf.get();
+			b4 = buf.get();
+			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+			System.out.println("		- taille_nom : "+taille_nom);
+			for (int i=0 ; i<taille_nom ; i++){
+				b1 = buf.get();
+				String s = new String(new byte[]{b1});
+				nom += s;
+			}
+			System.out.println("					- nom : "+nom);
+		}
+		
+	}
+	
+/*
 Bloc des Effets de sort
 =======================
 4		unsigned long		Nombre d'effets de sort
@@ -202,20 +422,59 @@ Pour chaque effet de sort:
 }
  * 
  */
+class Fx_spell{
+	int id;
+	int taille_nom;
+	String nom="";
+	
+	public Fx_spell(ByteBuffer buf) {
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- id : "+id);
+		
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- taille_nom : "+taille_nom);
+		for (int i=0 ; i<taille_nom ; i++){
+			b1 = buf.get();
+			String s = new String(new byte[]{b1});
+			nom += s;
+		}
+		System.out.println("					- nom : "+nom);
+	}
+	
+}
 
 public class WDA {
-	
-	private static int marqueur = 0;//vérifier plus tard qu'il vaut 68775
-	private static byte type = 0; //Type de WDA (T4C Worlds(RO) = 0x01, T4C Edit(RW) = 0x00)
-	private static ByteBuffer buf;
+	private int marqueur = 0;//vérifier plus tard qu'il vaut 68775
+	private byte type = 0; //Type de WDA (T4C Worlds(RO) = 0x01, T4C Edit(RW) = 0x00)
+	private ByteBuffer buf;
 	private static ArrayList<SPELL> sorts = new ArrayList<SPELL>();
 	private static ArrayList<COLMAP> colmaps = new ArrayList<COLMAP>();
 	private static ArrayList<ITEM> items = new ArrayList<ITEM>();
 	private static ArrayList<ITEMPOS> item_pos = new ArrayList<ITEMPOS>();
 	private static ArrayList<CREATURE> creatures = new ArrayList<CREATURE>();
+	private static ArrayList<CREATUREBLOC> blocs_creatures = new ArrayList<CREATUREBLOC>();
+	private static ArrayList<Teleportation> teleportations = new ArrayList<Teleportation>();
+	private static ArrayList<Clan_relation> clan_relations = new ArrayList<Clan_relation>();
+	private static ArrayList<Clan> clans = new ArrayList<Clan>();
+	private static ArrayList<Flag> flags = new ArrayList<Flag>();
+	private static ArrayList<Gfx_item> gfx_items = new ArrayList<Gfx_item>();
+	private static ArrayList<Gfx_creatures> gfx_creatures = new ArrayList<Gfx_creatures>();
+	private static ArrayList<Lieu> lieux = new ArrayList<Lieu>();
+	private static ArrayList<Icone> icones = new ArrayList<Icone>();
+	private static ArrayList<Fx_spell> fx_sorts = new ArrayList<Fx_spell>();
 
 	
-	public static void decrypt (File wda_data){
+
+	public void decrypt (File wda_data){
 		// Algorithme de cryptage, version C. Parcourt tout le buffer wda_data sur wda_data_size
 		// octets et masque ou démasque l'encryption des données sur celui-ci.
 		// Pour chaque octet de wda_data jusqu'à wda_data_size...
@@ -253,7 +512,7 @@ public class WDA {
 				System.exit(1);
 			}else {
 				System.out.println("	- Marqueur correct : "+marqueur+" : fichier PNJ");
-				extractPNJ();
+				extractPNJ(buf);
 				return;
 			}
 		} else{
@@ -262,27 +521,489 @@ public class WDA {
 		type = buf.get();
 		if (type == 0){
 			System.out.println("	- Type de fichier WDA : T4C Edit");
-			extractEDIT();
+			extract(buf);
 		} else{
 			System.out.println("	- Type de fichier WDA : T4C Worlds");
-			extractWORLD();
+			extract(buf);
 		}
 	}
 
-	private static void extractWORLD() {
-		extractSPELL();// pour les sorts
-		extractMAP();//pour les cartes
-		extractITEM();//pour les items
-		extractCREATURE();//pour les créatures
+	private static void extract(ByteBuffer buf) {
+		extractSPELL(buf);// pour les sorts
+		extractMAP(buf);//pour les cartes
+		extractITEM(buf);//pour les items
+		extractCREATURE(buf);//pour les créatures
+		extractCREATUREBLOC(buf);//pour les blocs de spawn
+		extractTeleportations(buf);//pour les téléportations
+		extractClanRelations(buf);//pour les relations entre les clans
+		extractClans(buf);//pour les clans
+		extractFlags(buf);//pour les flags
+		if (buf.get() == 0) return;
+		extractGfxItems(buf);//pour les apparences d'objets
+		extractGfxCreatures(buf);//pour les apparences de creatures
+		extractLieux(buf);//pour les lieux
+		extractIcones(buf);//pour les icones
+		extractFxSpells(buf);//pour les effets de sorts
+
+	}
+
+	private static void extractFxSpells(ByteBuffer buf) {
+		int nb_fx;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_fx = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre de blocs d'effets de sorts : "+nb_fx);
+		
+		for (int i=0 ; i<nb_fx ; i++){
+			fx_sorts.add(new Fx_spell(buf));
+		}
+		
+		Iterator<Fx_spell> iter_fx_sorts = fx_sorts.iterator();
+		while(iter_fx_sorts.hasNext()){
+			Fx_spell fx = iter_fx_sorts.next();
+			File f = new File (Params.t4cOUT+"SPELLFX/"+fx.nom+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"SPELLFX/"+f.getName()),Params.CHARSET);
+				pw.write("SPELLFX : "+fx.nom+Params.LINE);
+				pw.write("	- id : "+fx.id+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+		}		
+	}
+	
+	private static void extractIcones(ByteBuffer buf) {
+		int nb_icones;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_icones = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre d'icones : "+nb_icones);
+		
+		for (int i=0 ; i<nb_icones ; i++){
+			icones.add(new Icone(buf));
+		}
+		
+		Iterator<Icone> iter_icones = icones.iterator();
+		while(iter_icones.hasNext()){
+			Icone ic = iter_icones.next();
+			File f = new File (Params.t4cOUT+"ICONES/"+ic.nom+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"ICONES/"+f.getName()),Params.CHARSET);
+				pw.write("ICONES : "+ic.nom+Params.LINE);
+				pw.write("	- id : "+ic.id+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+		}		
+	}
+	
+	private static void extractLieux(ByteBuffer buf) {
+		int nb_lieux;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_lieux = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre de lieux : "+nb_lieux);
+		
+		for (int i=0 ; i<nb_lieux ; i++){
+			lieux.add(new Lieu(buf));
+		}
+		
+		Iterator<Lieu> iter_lieux = lieux.iterator();
+		while(iter_lieux.hasNext()){
+			Lieu l = iter_lieux.next();
+			File f = new File (Params.t4cOUT+"LIEUX/"+l.nom+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"LIEUX/"+f.getName()),Params.CHARSET);
+				pw.write("LIEU : "+l.nom+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+		}		
+	}
+	
+	private static void extractGfxCreatures(ByteBuffer buf) {
+		int nb_gfx_creatures;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_gfx_creatures = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre d'apparences de créatures : "+nb_gfx_creatures);
+		
+		for (int i=0 ; i<nb_gfx_creatures ; i++){
+			gfx_creatures.add(new Gfx_creatures(buf));
+		}
+		
+		Iterator<Gfx_creatures> iter_gfx_creatures = gfx_creatures.iterator();
+		while(iter_gfx_creatures.hasNext()){
+			Gfx_creatures ct = iter_gfx_creatures.next();
+			File f = new File (Params.t4cOUT+"MONSTRES/GFX_"+ct.nom+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"MONSTRES/"+f.getName()),Params.CHARSET);
+				pw.write("GFX MONSTRE : "+ct.nom+Params.LINE);
+				pw.write("	- id : "+ct.id+Params.LINE);
+				pw.write("	- id2 : "+ct.id2+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+		}		
+	}
+	
+	private static void extractGfxItems(ByteBuffer buf) {
+		int nb_gfx_items;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_gfx_items = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre d'apparences d'objets : "+nb_gfx_items);
+		
+		for (int i=0 ; i<nb_gfx_items ; i++){
+			gfx_items.add(new Gfx_item(buf));
+		}
+		
+		Iterator<Gfx_item> iter_gfx_items = gfx_items.iterator();
+		while(iter_gfx_items.hasNext()){
+			Gfx_item it = iter_gfx_items.next();
+			File f = new File (Params.t4cOUT+"ITEMS/GFX_"+it.nom+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"ITEMS/"+f.getName()),Params.CHARSET);
+				pw.write("GFX ITEM : "+it.nom+Params.LINE);
+				pw.write("	- id : "+it.id+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+		}		
+	}
+
+	
+	private static void extractFlags(ByteBuffer buf) {
+		int nb_flags;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_flags = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre de flags : "+nb_flags);
+		
+		for (int i=0 ; i<nb_flags ; i++){
+			flags.add(new Flag(buf));
+		}
+		
+		Iterator<Flag> iter_flags = flags.iterator();
+		while(iter_flags.hasNext()){
+			Flag fl = iter_flags.next();
+			File f = new File (Params.t4cOUT+"FLAGS/"+fl.nom+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"FLAGS/"+f.getName()),Params.CHARSET);
+				pw.write("FLAGS : "+fl.nom+Params.LINE);
+				pw.write("	- id : "+fl.id+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+		}		
+	}
+
+	
+	private static void extractClans(ByteBuffer buf) {
+		int nb_clans;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_clans = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre de clans : "+nb_clans);
+		
+		for (int i=0 ; i<nb_clans ; i++){
+			clans.add(new Clan(buf));
+		}
+		
+		Iterator<Clan> iter_clans = clans.iterator();
+		while(iter_clans.hasNext()){
+			Clan cl = iter_clans.next();
+			File f = new File (Params.t4cOUT+"CLANS/"+cl.nom+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"CLANS/"+f.getName()),Params.CHARSET);
+				pw.write("CLANS : "+cl.nom+Params.LINE);
+				pw.write("	- id : "+cl.id+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+		}		
+	}
+
+	
+	private static void extractClanRelations(ByteBuffer buf) {
+		int nb_clan_relations;
+		int id_sup;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		id_sup = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition de l'id supérieure des clans : "+id_sup);
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_clan_relations = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre de blocs de relations entre clans : "+nb_clan_relations);
+		
+		for (int i=0 ; i<nb_clan_relations ; i++){
+			clan_relations.add(new Clan_relation(buf));
+		}
+		
+		Iterator<Clan_relation> iter_clan_relations = clan_relations.iterator();
+		while(iter_clan_relations.hasNext()){
+			Clan_relation clr = iter_clan_relations.next();
+			File f = new File (Params.t4cOUT+"CLANS/REL_"+Clan_relation.id+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"CLANS/"+f.getName()),Params.CHARSET);
+				pw.write("RELATION : "+Clan_relation.id+Params.LINE);
+				pw.write("			- id1 : "+clr.id1+Params.LINE);						
+				pw.write("			- id2 : "+clr.id2+Params.LINE);						
+				pw.write("			- rel : "+clr.rel+Params.LINE);						
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+			Clan_relation.id++;
+		}		
+	}
+
+	
+	private static void extractTeleportations(ByteBuffer buf) {
+		int nb_teleportations;;
+		byte b1, b2, b3, b4;
+		b1 = buf.get();
+		b2 = buf.get();
+		b3 = buf.get();
+		b4 = buf.get();
+		nb_teleportations = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		System.out.println("		- Définition du nombre de blocs de téléportations : "+nb_teleportations);
+		
+		for (int i=0 ; i<nb_teleportations ; i++){
+			teleportations.add(new Teleportation(buf));
+		}
+		
+		Iterator<Teleportation> iter_teleportations = teleportations.iterator();
+		while(iter_teleportations.hasNext()){
+			Teleportation t = iter_teleportations.next();
+			File f = new File (Params.t4cOUT+"LIEUX/TEL_"+Teleportation.id+".txt");
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"LIEUX/"+f.getName()),Params.CHARSET);
+				pw.write("TELEPORTATION : "+Teleportation.id+Params.LINE);
+				pw.write("	- x1 : "+t.x1+Params.LINE);
+				pw.write("	- y1 : "+t.y1+Params.LINE);
+				pw.write("	- num_carte1 : "+t.num_carte1+Params.LINE);
+				pw.write("	- x2 : "+t.x2+Params.LINE);
+				pw.write("	- y2 : "+t.y2+Params.LINE);
+				pw.write("	- num_carte2 : "+t.num_carte2+Params.LINE);
+				pw.close();
+			}
+			catch(IOException exc){
+				System.err.println("Erreur I/O");
+				exc.printStackTrace();
+				Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+				while (iter.hasNext()){
+					System.err.println(iter.next());
+				}
+			}
+			Teleportation.id++;
+		}		
 	}
 
 /*
+	 * Bloc des Groupes de créatures
+=============================
+4		unsigned long		Nombre de groupes de créatures
+
+
+	 */
+private static void extractCREATUREBLOC(ByteBuffer buf) {
+	int nb_blocs;
+	byte b1, b2, b3, b4;
+	b1 = buf.get();
+	b2 = buf.get();
+	b3 = buf.get();
+	b4 = buf.get();
+	nb_blocs = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+	System.out.println("		- Définition du nombre de blocs de créatures : "+nb_blocs);
+	
+	for (int i=0 ; i<nb_blocs ; i++){
+		blocs_creatures.add(new CREATUREBLOC(buf));
+	}
+	
+	Iterator<CREATUREBLOC> iter_creature_bloc = blocs_creatures.iterator();
+	while(iter_creature_bloc.hasNext()){
+		CREATUREBLOC sp = iter_creature_bloc.next();
+		File f = new File (Params.t4cOUT+"SPAWN/"+sp.nom+".txt");
+		try {
+			f.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"SPAWN/"+f.getName()),Params.CHARSET);
+			pw.write("SPAWN BLOC : "+sp.nom+Params.LINE);
+			pw.write("	- max_dist : "+sp.max_dist+Params.LINE);
+			pw.write("	- min_time : "+sp.min_time+Params.LINE);
+			pw.write("	- max_time : "+sp.max_time+Params.LINE);
+			pw.write("	- min_spawn : "+sp.min_spawn+Params.LINE);
+			pw.write("	- nb_creatures : "+sp.nb_creatures+Params.LINE);
+			for (int i=0 ; i<sp.nb_creatures ; i++){
+				pw.write("			- id : "+sp.creatures.get(i).id+Params.LINE);						
+			}
+			pw.write("	- nb_pos : "+sp.nb_pos+Params.LINE);
+			for (int i=0 ; i<sp.nb_pos ; i++){
+				pw.write("		- x : "+sp.positions.get(i).x+Params.LINE);						
+				pw.write("		- y : "+sp.positions.get(i).y+Params.LINE);						
+				pw.write("		- num_carte : "+sp.positions.get(i).num_carte+Params.LINE);						
+			}
+			pw.close();
+		}
+		catch(IOException exc){
+			System.err.println("Erreur I/O");
+			exc.printStackTrace();
+			Iterator<String> iter = Charset.availableCharsets().keySet().iterator();
+			while (iter.hasNext()){
+				System.err.println(iter.next());
+			}
+		}
+	}
+}
+
+	/*
  * Bloc des Créatures
 ==================
 4		unsigned long		Nombre de créatures
 
  */
-	private static void extractCREATURE() {
+	private static void extractCREATURE(ByteBuffer buf) {
 		int nb_creature;
 		byte b1, b2, b3, b4;
 		b1 = buf.get();
@@ -388,13 +1109,7 @@ public class WDA {
 		}
 	}
 
-	private static void extractEDIT() {
-			extractSPELL();
-			extractMAP();
-	}
-
-
-	private static void extractMAP() {
+	private static void extractMAP(ByteBuffer buf) {
 		int nb_map;
 		byte b1, b2, b3, b4;
 		b1 = buf.get();
@@ -409,7 +1124,7 @@ public class WDA {
 		}
 	}
 
-	private static void extractSPELL() {
+	private static void extractSPELL(ByteBuffer buf) {
 		int nb_sorts;
 		byte b1, b2, b3, b4;
 		b1 = buf.get();
@@ -507,7 +1222,7 @@ public class WDA {
 		}
 	}
 
-	private static void extractITEM() {
+	private static void extractITEM(ByteBuffer buf) {
 		int nb_item;
 		byte b1, b2, b3, b4;
 		b1 = buf.get();
@@ -628,7 +1343,7 @@ public class WDA {
 		Iterator<ITEMPOS> iter_item_pos = item_pos.iterator();
 		while(iter_item_pos.hasNext()){
 			ITEMPOS p = iter_item_pos.next();
-			File f = new File (Params.t4cOUT+"ITEMS/"+"POS_"+p.nom+".txt");
+			File f = new File (Params.t4cOUT+"ITEM_POS/"+p.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -636,7 +1351,7 @@ public class WDA {
 				e.printStackTrace();
 			}
 			try {
-				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"ITEMS/"+f.getName()),Params.CHARSET);
+				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"ITEM_POS/"+f.getName()),Params.CHARSET);
 				pw.write("ITEM : "+p.nom+Params.LINE);
 				pw.write("X : "+p.x+Params.LINE);
 				pw.write("Y : "+p.y+Params.LINE);
@@ -654,7 +1369,7 @@ public class WDA {
 		}
 	}
 	
-	private static void extractPNJ() {
+	private static void extractPNJ(ByteBuffer buf) {
 		
 	}
 }
