@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Huge Blue
+	- id : 246

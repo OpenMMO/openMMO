@@ -1,0 +1,2 @@
+ICONES : Item torch
+	- id : 54

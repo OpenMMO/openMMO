@@ -1,0 +1,2 @@
+FLAGS : Flag hermit trust
+	- id : 30068

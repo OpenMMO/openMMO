@@ -1,0 +1,2 @@
+FLAGS : Global Flag Crypt Chest 3 Destroyed
+	- id : 30460

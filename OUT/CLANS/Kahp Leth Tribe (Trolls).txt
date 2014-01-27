@@ -1,0 +1,2 @@
+CLANS : Kahp Leth Tribe (Trolls)
+	- id : 29

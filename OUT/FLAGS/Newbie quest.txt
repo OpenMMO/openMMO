@@ -1,0 +1,2 @@
+FLAGS : Newbie quest
+	- id : 30062

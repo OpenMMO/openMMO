@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal X GP
+	- id : 30317

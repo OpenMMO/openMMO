@@ -1,0 +1,2 @@
+GFX ITEM : Gem: Dark gem
+	- id : 474

@@ -1,0 +1,2 @@
+SPELLFX : Heal serious with blue ball
+	- id : 30095

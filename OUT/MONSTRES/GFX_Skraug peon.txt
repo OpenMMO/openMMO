@@ -1,0 +1,3 @@
+GFX MONSTRE : Skraug peon
+	- id : 20047
+	- id2 : 25047

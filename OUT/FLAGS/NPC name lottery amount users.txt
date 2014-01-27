@@ -1,0 +1,2 @@
+FLAGS : NPC name lottery amount users
+	- id : 30132

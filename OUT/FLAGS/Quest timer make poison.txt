@@ -1,0 +1,2 @@
+FLAGS : Quest timer make poison
+	- id : 30170

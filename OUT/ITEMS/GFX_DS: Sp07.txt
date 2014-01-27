@@ -1,0 +1,2 @@
+GFX ITEM : DS: Sp07
+	- id : 768

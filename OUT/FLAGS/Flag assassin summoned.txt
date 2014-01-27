@@ -1,0 +1,2 @@
+FLAGS : Flag assassin summoned
+	- id : 30247

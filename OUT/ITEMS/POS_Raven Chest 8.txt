@@ -1,4 +1,0 @@
-ITEM : Raven Chest 8
-X : 1396
-Y : 0
-Numéro de carte : 0

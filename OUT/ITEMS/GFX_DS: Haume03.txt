@@ -1,0 +1,2 @@
+GFX ITEM : DS: Haume03
+	- id : 682

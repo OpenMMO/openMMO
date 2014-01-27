@@ -1,0 +1,2 @@
+GFX ITEM : Armor: Cloth armor
+	- id : 285

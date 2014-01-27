@@ -1,0 +1,11 @@
+SPAWN BLOC : Anthor The Mad
+	- max_dist : 1
+	- min_time : 600
+	- max_time : 600
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : ANTHORTHEMAD
+	- nb_pos : 1
+		- x : 881
+		- y : 653
+		- num_carte : 0

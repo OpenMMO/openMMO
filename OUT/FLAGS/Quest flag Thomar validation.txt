@@ -1,0 +1,2 @@
+FLAGS : Quest flag Thomar validation
+	- id : 30200

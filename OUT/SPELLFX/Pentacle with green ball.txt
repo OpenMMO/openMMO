@@ -1,0 +1,2 @@
+SPELLFX : Pentacle with green ball
+	- id : 30106

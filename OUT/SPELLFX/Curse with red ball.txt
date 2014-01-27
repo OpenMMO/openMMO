@@ -1,0 +1,2 @@
+SPELLFX : Curse with red ball
+	- id : 30057

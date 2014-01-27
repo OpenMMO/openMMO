@@ -1,0 +1,2 @@
+GFX ITEM : DS: BusterSlayer02
+	- id : 709

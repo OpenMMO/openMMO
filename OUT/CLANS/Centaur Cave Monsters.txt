@@ -1,0 +1,2 @@
+CLANS : Centaur Cave Monsters
+	- id : 43

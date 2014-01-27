@@ -1,0 +1,2 @@
+FLAGS : Flag Good Quest Completed On RD
+	- id : 30357

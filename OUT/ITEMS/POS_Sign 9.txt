@@ -1,4 +1,0 @@
-ITEM : Sign 9
-X : 2875
-Y : 0
-Numéro de carte : 0

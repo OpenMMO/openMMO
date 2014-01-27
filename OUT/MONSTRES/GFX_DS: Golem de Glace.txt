@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Golem de Glace
+	- id : 20129
+	- id2 : 25129

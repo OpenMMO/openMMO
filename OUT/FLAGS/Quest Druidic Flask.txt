@@ -1,0 +1,2 @@
+FLAGS : Quest Druidic Flask
+	- id : 30028

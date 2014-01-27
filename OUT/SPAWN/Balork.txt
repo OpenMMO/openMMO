@@ -1,0 +1,11 @@
+SPAWN BLOC : Balork
+	- max_dist : 1
+	- min_time : 850
+	- max_time : 900
+	- min_spawn : 6
+	- nb_creatures : 1
+			- id : BALORK
+	- nb_pos : 1
+		- x : 235
+		- y : 452
+		- num_carte : 1

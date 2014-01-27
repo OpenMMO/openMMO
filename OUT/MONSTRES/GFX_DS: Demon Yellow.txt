@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Demon Yellow
+	- id : 20078
+	- id2 : 25078

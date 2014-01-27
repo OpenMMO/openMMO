@@ -1,0 +1,2 @@
+GFX ITEM : Helmet: Leather helm
+	- id : 11

@@ -1,0 +1,2 @@
+CLANS : Asmordia Inhabitant
+	- id : 8

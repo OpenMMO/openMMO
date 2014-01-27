@@ -1,0 +1,2 @@
+GFX ITEM : DS: Remort LightBlue Wings
+	- id : 584

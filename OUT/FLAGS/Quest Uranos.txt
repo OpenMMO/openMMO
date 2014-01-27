@@ -1,0 +1,2 @@
+FLAGS : Quest Uranos
+	- id : 30003

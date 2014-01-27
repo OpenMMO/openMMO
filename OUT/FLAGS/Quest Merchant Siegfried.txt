@@ -1,0 +1,2 @@
+FLAGS : Quest Merchant Siegfried
+	- id : 30001

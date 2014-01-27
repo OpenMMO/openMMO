@@ -1,0 +1,3 @@
+GFX MONSTRE : Human Guard
+	- id : 10006
+	- id2 : 15006

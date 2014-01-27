@@ -1,0 +1,2 @@
+GFX ITEM : Boot: Leather boots
+	- id : 260

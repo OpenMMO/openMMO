@@ -1,0 +1,3 @@
+GFX MONSTRE : Mummy
+	- id : 20011
+	- id2 : 25011

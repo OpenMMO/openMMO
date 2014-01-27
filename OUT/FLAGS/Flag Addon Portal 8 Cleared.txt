@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Portal 8 Cleared
+	- id : 30525

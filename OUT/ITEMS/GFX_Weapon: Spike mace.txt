@@ -1,0 +1,2 @@
+GFX ITEM : Weapon: Spike mace
+	- id : 120

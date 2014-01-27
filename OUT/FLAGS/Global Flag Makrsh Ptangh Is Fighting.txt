@@ -1,0 +1,2 @@
+FLAGS : Global Flag Makrsh Ptangh Is Fighting
+	- id : 30465

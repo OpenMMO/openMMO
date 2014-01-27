@@ -1,0 +1,2 @@
+FLAGS : Death Pos Recall
+	- id : 20020

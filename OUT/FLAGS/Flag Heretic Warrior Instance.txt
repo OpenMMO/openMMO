@@ -1,0 +1,2 @@
+FLAGS : Flag Heretic Warrior Instance
+	- id : 30403

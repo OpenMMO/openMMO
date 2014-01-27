@@ -1,0 +1,2 @@
+SPELLFX : Freeze with blue ball
+	- id : 30080

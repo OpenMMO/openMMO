@@ -1,0 +1,2 @@
+FLAGS : Flag Lord Stonecrest Repop Delay
+	- id : 30413

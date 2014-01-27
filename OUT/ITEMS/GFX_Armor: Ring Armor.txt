@@ -1,0 +1,2 @@
+GFX ITEM : Armor: Ring Armor
+	- id : 206

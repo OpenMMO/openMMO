@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Blue whool ball
+	- id : 95

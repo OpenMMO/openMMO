@@ -1,0 +1,2 @@
+FLAGS : Flag Crypt Random Chest
+	- id : 30412

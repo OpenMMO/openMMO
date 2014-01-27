@@ -1,0 +1,2 @@
+CLANS : Jarko's Mountain
+	- id : 20

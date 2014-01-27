@@ -1,0 +1,2 @@
+SPELLFX : Rocks fly with green ball
+	- id : 30113

@@ -1,0 +1,3 @@
+GFX MONSTRE : Priest
+	- id : 20044
+	- id2 : 15003

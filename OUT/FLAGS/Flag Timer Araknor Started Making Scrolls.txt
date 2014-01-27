@@ -1,0 +1,2 @@
+FLAGS : Flag Timer Araknor Started Making Scrolls
+	- id : 30434

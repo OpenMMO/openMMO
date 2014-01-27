@@ -1,0 +1,2 @@
+FLAGS : NPC Thorbin gold
+	- id : 30103

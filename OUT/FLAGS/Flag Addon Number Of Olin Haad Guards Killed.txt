@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Number Of Olin Haad Guards Killed
+	- id : 30474

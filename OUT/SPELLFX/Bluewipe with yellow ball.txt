@@ -1,0 +1,2 @@
+SPELLFX : Bluewipe with yellow ball
+	- id : 30053

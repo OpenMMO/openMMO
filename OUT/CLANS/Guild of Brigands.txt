@@ -1,0 +1,2 @@
+CLANS : Guild of Brigands
+	- id : 11

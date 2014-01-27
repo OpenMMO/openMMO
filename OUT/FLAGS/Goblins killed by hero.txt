@@ -1,0 +1,2 @@
+FLAGS : Goblins killed by hero
+	- id : 30056

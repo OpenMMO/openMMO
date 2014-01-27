@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal T
+	- id : 30276

@@ -1,0 +1,2 @@
+CLANS : SunShadow Inhabitant
+	- id : 5

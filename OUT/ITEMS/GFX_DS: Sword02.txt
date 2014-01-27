@@ -1,0 +1,2 @@
+GFX ITEM : DS: Sword02
+	- id : 715

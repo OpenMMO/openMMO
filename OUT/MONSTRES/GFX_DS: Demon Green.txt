@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Demon Green
+	- id : 20075
+	- id2 : 25075

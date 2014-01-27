@@ -1,0 +1,2 @@
+FLAGS : Flag hermit teleport
+	- id : 30071

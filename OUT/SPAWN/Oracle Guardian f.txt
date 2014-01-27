@@ -1,0 +1,14 @@
+SPAWN BLOC : Oracle Guardian f
+	- max_dist : 2
+	- min_time : 200
+	- max_time : 300
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : ORACLEGUARDIAN1F
+	- nb_pos : 2
+		- x : 2860
+		- y : 2280
+		- num_carte : 2
+		- x : 2812
+		- y : 2328
+		- num_carte : 2

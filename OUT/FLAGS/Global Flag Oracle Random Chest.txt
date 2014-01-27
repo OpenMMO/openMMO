@@ -1,0 +1,2 @@
+FLAGS : Global Flag Oracle Random Chest
+	- id : 30393

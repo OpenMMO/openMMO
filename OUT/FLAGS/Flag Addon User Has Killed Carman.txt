@@ -1,0 +1,2 @@
+FLAGS : Flag Addon User Has Killed Carman
+	- id : 30515

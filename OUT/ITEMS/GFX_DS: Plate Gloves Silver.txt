@@ -1,0 +1,2 @@
+GFX ITEM : DS: Plate Gloves Silver
+	- id : 604

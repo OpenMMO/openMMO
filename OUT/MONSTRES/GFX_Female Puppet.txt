@@ -1,0 +1,3 @@
+GFX MONSTRE : Female Puppet
+	- id : 10012
+	- id2 : 0

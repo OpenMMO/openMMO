@@ -1,0 +1,2 @@
+GFX ITEM : DS: Ancient Axe
+	- id : 647

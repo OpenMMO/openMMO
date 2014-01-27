@@ -1,0 +1,2 @@
+FLAGS : Flag User HP Before Arena
+	- id : 30284

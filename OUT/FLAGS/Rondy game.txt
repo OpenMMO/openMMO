@@ -1,0 +1,2 @@
+FLAGS : Rondy game
+	- id : 30064

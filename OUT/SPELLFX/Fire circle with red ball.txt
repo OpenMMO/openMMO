@@ -1,0 +1,2 @@
+SPELLFX : Fire circle with red ball
+	- id : 30121

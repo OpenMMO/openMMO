@@ -1,0 +1,2 @@
+SPELLFX : Greenwipe with purple ball
+	- id : 30094

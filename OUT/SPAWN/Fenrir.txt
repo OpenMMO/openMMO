@@ -1,0 +1,11 @@
+SPAWN BLOC : Fenrir
+	- max_dist : 1
+	- min_time : 600
+	- max_time : 600
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : FENRIR
+	- nb_pos : 1
+		- x : 157
+		- y : 211
+		- num_carte : 0

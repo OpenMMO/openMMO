@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Slain Bloodlust
+	- id : 30351

@@ -1,0 +1,2 @@
+FLAGS : Flag User Bought Magical Defense Upgrade
+	- id : 30429

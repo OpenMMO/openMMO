@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Purple potion
+	- id : 101

@@ -1,0 +1,3 @@
+GFX MONSTRE : Kraanian tank
+	- id : 20037
+	- id2 : 25037

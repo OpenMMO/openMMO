@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal H
+	- id : 30264

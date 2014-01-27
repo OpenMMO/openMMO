@@ -1,0 +1,2 @@
+SPELLFX : Firewipe with black ball
+	- id : 30071

@@ -1,0 +1,2 @@
+GFX ITEM : Corpse: Skaven Corpse 3 - I
+	- id : 549

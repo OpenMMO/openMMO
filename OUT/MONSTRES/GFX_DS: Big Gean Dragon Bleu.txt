@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Big Gean Dragon Bleu
+	- id : 20133
+	- id2 : 25133

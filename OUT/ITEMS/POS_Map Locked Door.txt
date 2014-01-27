@@ -1,4 +1,0 @@
-ITEM : Map Locked Door
-X : 2739
-Y : 0
-Numéro de carte : 0

@@ -1,0 +1,3 @@
+GFX MONSTRE : Invisible Warrior
+	- id : 21043
+	- id2 : 25043

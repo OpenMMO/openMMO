@@ -1,4 +1,0 @@
-ITEM : Map cauldron
-X : 1214
-Y : 0
-Numéro de carte : 0

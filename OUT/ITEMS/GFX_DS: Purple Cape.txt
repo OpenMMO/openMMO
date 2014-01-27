@@ -1,0 +1,2 @@
+GFX ITEM : DS: Purple Cape
+	- id : 654

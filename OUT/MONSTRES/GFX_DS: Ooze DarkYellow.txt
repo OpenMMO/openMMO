@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Ooze DarkYellow
+	- id : 20088
+	- id2 : 25088

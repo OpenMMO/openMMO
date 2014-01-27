@@ -1,0 +1,2 @@
+GFX ITEM : DS: Bow08
+	- id : 750

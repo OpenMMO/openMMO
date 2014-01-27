@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Wood pack mixed
+	- id : 72

@@ -1,0 +1,2 @@
+FLAGS : Flag PC Has Attacked Oracle
+	- id : 30418

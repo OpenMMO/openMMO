@@ -1,0 +1,2 @@
+GFX ITEM : DS: Sp02
+	- id : 764

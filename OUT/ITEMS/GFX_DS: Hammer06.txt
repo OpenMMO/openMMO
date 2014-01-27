@@ -1,0 +1,2 @@
+GFX ITEM : DS: Hammer06
+	- id : 787

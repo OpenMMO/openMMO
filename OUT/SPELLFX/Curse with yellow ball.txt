@@ -1,0 +1,2 @@
+SPELLFX : Curse with yellow ball
+	- id : 30059

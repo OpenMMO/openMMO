@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Skeleton bone
+	- id : 181

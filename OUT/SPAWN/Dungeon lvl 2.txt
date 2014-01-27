@@ -1,0 +1,21 @@
+SPAWN BLOC : Dungeon lvl 2
+	- max_dist : 3
+	- min_time : 15
+	- max_time : 40
+	- min_spawn : 6
+	- nb_creatures : 2
+			- id : Giant Spider
+			- id : Giant Bat
+	- nb_pos : 4
+		- x : 330
+		- y : 60
+		- num_carte : 1
+		- x : 309
+		- y : 66
+		- num_carte : 1
+		- x : 281
+		- y : 72
+		- num_carte : 1
+		- x : 325
+		- y : 79
+		- num_carte : 1

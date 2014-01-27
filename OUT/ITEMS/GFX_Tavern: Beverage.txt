@@ -1,0 +1,2 @@
+GFX ITEM : Tavern: Beverage
+	- id : 38

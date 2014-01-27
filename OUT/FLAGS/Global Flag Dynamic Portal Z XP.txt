@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal Z XP
+	- id : 30345

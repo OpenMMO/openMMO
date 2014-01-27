@@ -1,4 +1,0 @@
-ITEM : Sign 21
-X : 291
-Y : 0
-Numéro de carte : 0

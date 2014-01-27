@@ -1,0 +1,2 @@
+GFX ITEM : DS: Sp03
+	- id : 758

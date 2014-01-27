@@ -1,0 +1,2 @@
+FLAGS : Quest global Caballero alive
+	- id : 30190

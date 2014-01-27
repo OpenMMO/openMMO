@@ -1,0 +1,2 @@
+GFX ITEM : Treasure: Gold bar
+	- id : 54

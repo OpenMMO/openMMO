@@ -1,0 +1,2 @@
+SPELLFX : Poison cloud with green ball
+	- id : 30109

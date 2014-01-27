@@ -1,0 +1,2 @@
+FLAGS : Quest kraanian egg done
+	- id : 30125

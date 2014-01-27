@@ -1,4 +1,0 @@
-ITEM : Mordenthal Dungeon 3
-X : 436
-Y : 0
-Numéro de carte : 0

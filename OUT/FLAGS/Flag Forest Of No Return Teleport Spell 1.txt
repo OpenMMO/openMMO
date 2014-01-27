@@ -1,0 +1,2 @@
+FLAGS : Flag Forest Of No Return Teleport Spell 1
+	- id : 30431

@@ -1,0 +1,2 @@
+ICONES : Item axe
+	- id : 34

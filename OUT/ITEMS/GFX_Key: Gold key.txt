@@ -1,0 +1,2 @@
+GFX ITEM : Key: Gold key
+	- id : 32

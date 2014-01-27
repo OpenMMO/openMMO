@@ -1,0 +1,2 @@
+FLAGS : Quest island access
+	- id : 30143

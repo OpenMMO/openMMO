@@ -1,4 +1,0 @@
-ITEM : Oracle door i1
-X : 2668
-Y : 0
-Numéro de carte : 0

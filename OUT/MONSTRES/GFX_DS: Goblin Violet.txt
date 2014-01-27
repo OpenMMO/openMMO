@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Goblin Violet
+	- id : 20080
+	- id2 : 25080

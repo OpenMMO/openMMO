@@ -1,0 +1,2 @@
+GFX ITEM : DS: Plate Helm Purple
+	- id : 638

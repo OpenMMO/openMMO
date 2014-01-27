@@ -1,0 +1,9 @@
+SPAWN BLOC : Morlokk & Worm (Sunken)
+	- max_dist : 1
+	- min_time : 60
+	- max_time : 120
+	- min_spawn : 5
+	- nb_creatures : 2
+			- id : Morlokk
+			- id : Yoggoth Worm
+	- nb_pos : 0

@@ -1,0 +1,2 @@
+SPELLFX : Flak
+	- id : 30012

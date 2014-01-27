@@ -1,0 +1,2 @@
+CLANS : Orkanis Castle
+	- id : 19

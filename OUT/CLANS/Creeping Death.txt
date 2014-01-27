@@ -1,0 +1,2 @@
+CLANS : Creeping Death
+	- id : 40

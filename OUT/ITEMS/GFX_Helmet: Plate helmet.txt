@@ -1,0 +1,2 @@
+GFX ITEM : Helmet: Plate helmet
+	- id : 267

@@ -1,0 +1,2 @@
+FLAGS : Item Quest Sigfried report
+	- id : 30047

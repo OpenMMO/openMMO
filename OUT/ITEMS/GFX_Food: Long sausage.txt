@@ -1,0 +1,2 @@
+GFX ITEM : Food: Long sausage
+	- id : 74

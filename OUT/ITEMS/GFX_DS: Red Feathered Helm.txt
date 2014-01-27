@@ -1,0 +1,2 @@
+GFX ITEM : DS: Red Feathered Helm
+	- id : 575

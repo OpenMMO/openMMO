@@ -1,0 +1,2 @@
+FLAGS : Flag knowledge potion of mana
+	- id : 30226

@@ -1,0 +1,2 @@
+GFX ITEM : Sleeve: Ring Sleeves
+	- id : 207

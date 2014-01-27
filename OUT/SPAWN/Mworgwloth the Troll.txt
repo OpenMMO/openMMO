@@ -1,0 +1,11 @@
+SPAWN BLOC : Mworgwloth the Troll
+	- max_dist : 1
+	- min_time : 1200
+	- max_time : 1500
+	- min_spawn : 6
+	- nb_creatures : 1
+			- id : MHORGWLOTH
+	- nb_pos : 1
+		- x : 1566
+		- y : 174
+		- num_carte : 0

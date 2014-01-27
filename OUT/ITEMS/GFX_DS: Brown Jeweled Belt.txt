@@ -1,0 +1,2 @@
+GFX ITEM : DS: Brown Jeweled Belt
+	- id : 554

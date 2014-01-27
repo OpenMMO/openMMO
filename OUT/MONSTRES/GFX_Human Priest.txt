@@ -1,0 +1,3 @@
+GFX MONSTRE : Human Priest
+	- id : 20044
+	- id2 : 25044

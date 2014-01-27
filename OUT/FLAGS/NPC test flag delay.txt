@@ -1,0 +1,2 @@
+FLAGS : NPC test flag delay
+	- id : 30161

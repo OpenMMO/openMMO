@@ -1,0 +1,2 @@
+GFX ITEM : Glove: Leather gloves
+	- id : 259

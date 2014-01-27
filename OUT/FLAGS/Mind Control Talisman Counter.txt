@@ -1,0 +1,2 @@
+FLAGS : Mind Control Talisman Counter
+	- id : 30470

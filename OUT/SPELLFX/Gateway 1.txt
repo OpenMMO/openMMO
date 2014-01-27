@@ -1,0 +1,2 @@
+SPELLFX : Gateway 1
+	- id : 30032

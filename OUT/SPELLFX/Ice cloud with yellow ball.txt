@@ -1,0 +1,2 @@
+SPELLFX : Ice cloud with yellow ball
+	- id : 30100

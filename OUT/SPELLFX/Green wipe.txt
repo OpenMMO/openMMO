@@ -1,0 +1,2 @@
+SPELLFX : Green wipe
+	- id : 30003

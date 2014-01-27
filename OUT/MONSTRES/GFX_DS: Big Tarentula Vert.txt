@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Big Tarentula Vert
+	- id : 20118
+	- id2 : 25118

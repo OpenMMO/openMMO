@@ -1,4 +1,0 @@
-ITEM : Sign 20
-X : 276
-Y : 0
-Numéro de carte : 0

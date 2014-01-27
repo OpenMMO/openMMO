@@ -1,0 +1,2 @@
+GFX ITEM : Furniture: Wooden chair2
+	- id : 105

@@ -1,0 +1,11 @@
+SPAWN BLOC : Bonedead
+	- max_dist : 1
+	- min_time : 1100
+	- max_time : 1300
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Bonedead
+	- nb_pos : 1
+		- x : 442
+		- y : 164
+		- num_carte : 1

@@ -1,0 +1,2 @@
+FLAGS : Flag Counter Drum Of Fate
+	- id : 30291

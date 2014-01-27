@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Demon Black
+	- id : 20077
+	- id2 : 25077

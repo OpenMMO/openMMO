@@ -1,0 +1,2 @@
+ICONES : Earth boost
+	- id : 13

@@ -1,0 +1,2 @@
+GFX ITEM : Potion: LargePot Green
+	- id : 250

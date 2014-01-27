@@ -1,0 +1,2 @@
+SPELLFX : Meteor with purple ball
+	- id : 30104

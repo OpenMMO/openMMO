@@ -1,0 +1,3 @@
+GFX MONSTRE : Mage (grey)
+	- id : 10002
+	- id2 : 15002

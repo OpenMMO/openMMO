@@ -1,0 +1,2 @@
+FLAGS : NPC prisoner flag
+	- id : 30050

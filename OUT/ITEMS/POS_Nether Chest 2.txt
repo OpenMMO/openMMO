@@ -1,4 +1,0 @@
-ITEM : Nether Chest 2
-X : 2065
-Y : 0
-Numéro de carte : 0

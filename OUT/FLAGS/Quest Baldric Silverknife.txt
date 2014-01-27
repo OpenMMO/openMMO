@@ -1,0 +1,2 @@
+FLAGS : Quest Baldric Silverknife
+	- id : 30163

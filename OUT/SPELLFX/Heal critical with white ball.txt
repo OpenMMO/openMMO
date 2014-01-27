@@ -1,0 +1,2 @@
+SPELLFX : Heal critical with white ball
+	- id : 30098

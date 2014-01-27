@@ -1,0 +1,2 @@
+FLAGS : Quest killed tomb raider
+	- id : 30122

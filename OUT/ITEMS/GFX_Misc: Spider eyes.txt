@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Spider eyes
+	- id : 182

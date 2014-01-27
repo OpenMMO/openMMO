@@ -1,0 +1,2 @@
+FLAGS : Global Flag Bloodlust Is On The Map
+	- id : 30445

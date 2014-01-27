@@ -1,0 +1,2 @@
+GFX ITEM : Food: Chicken
+	- id : 77

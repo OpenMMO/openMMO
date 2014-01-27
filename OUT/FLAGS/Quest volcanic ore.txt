@@ -1,0 +1,2 @@
+FLAGS : Quest volcanic ore
+	- id : 30176

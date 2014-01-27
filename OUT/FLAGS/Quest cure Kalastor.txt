@@ -1,0 +1,2 @@
+FLAGS : Quest cure Kalastor
+	- id : 30120

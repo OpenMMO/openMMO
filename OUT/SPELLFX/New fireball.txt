@@ -1,0 +1,2 @@
+SPELLFX : New fireball
+	- id : 30124

@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Wooden door closed
+	- id : 15

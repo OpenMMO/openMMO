@@ -1,4 +1,0 @@
-ITEM : EMPTY_MUG
-X : 1500
-Y : 0
-Numéro de carte : 0

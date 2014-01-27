@@ -1,0 +1,2 @@
+GFX ITEM : DS: Sp05
+	- id : 766

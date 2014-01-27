@@ -1,0 +1,3 @@
+GFX MONSTRE : Centaur shaman
+	- id : 20053
+	- id2 : 25053

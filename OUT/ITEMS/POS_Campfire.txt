@@ -1,4 +1,0 @@
-ITEM : Campfire
-X : 2604
-Y : 0
-Numéro de carte : 0

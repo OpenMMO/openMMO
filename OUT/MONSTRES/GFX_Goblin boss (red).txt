@@ -1,0 +1,3 @@
+GFX MONSTRE : Goblin boss (red)
+	- id : 20041
+	- id2 : 25041

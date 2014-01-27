@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal G
+	- id : 30263

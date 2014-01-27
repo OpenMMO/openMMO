@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal N GP
+	- id : 30307

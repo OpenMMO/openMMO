@@ -1,0 +1,2 @@
+GFX ITEM : Treasure: Big coin stack
+	- id : 162

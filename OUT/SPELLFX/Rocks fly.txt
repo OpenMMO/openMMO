@@ -1,0 +1,2 @@
+SPELLFX : Rocks fly
+	- id : 30021

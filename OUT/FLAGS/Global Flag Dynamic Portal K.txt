@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal K
+	- id : 30267

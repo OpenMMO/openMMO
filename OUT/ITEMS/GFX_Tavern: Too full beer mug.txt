@@ -1,0 +1,2 @@
+GFX ITEM : Tavern: Too full beer mug
+	- id : 36

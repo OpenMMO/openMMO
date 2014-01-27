@@ -1,0 +1,2 @@
+FLAGS : Quest cuthana
+	- id : 30140

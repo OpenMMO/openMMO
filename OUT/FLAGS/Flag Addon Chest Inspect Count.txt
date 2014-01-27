@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Chest Inspect Count
+	- id : 30514

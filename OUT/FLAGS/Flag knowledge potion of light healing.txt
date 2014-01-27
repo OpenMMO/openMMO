@@ -1,0 +1,2 @@
+FLAGS : Flag knowledge potion of light healing
+	- id : 30222

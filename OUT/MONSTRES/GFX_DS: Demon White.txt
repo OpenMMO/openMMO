@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Demon White
+	- id : 20079
+	- id2 : 25079

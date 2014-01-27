@@ -1,0 +1,2 @@
+GFX ITEM : Armor: Leather armor
+	- id : 8

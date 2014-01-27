@@ -1,0 +1,2 @@
+CLANS : Stoneheim Wolves
+	- id : 33

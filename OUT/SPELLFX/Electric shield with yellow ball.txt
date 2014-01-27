@@ -1,0 +1,2 @@
+SPELLFX : Electric shield with yellow ball
+	- id : 30065

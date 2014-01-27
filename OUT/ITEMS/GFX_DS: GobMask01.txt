@@ -1,0 +1,2 @@
+GFX ITEM : DS: GobMask01
+	- id : 873

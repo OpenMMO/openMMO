@@ -1,0 +1,2 @@
+SPELLFX : Small explosion with purple ball
+	- id : 30119

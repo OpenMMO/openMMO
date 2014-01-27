@@ -1,0 +1,2 @@
+SPELLFX : Great explosion with black ball
+	- id : 30089

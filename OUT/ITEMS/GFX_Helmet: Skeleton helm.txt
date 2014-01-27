@@ -1,0 +1,2 @@
+GFX ITEM : Helmet: Skeleton helm
+	- id : 469

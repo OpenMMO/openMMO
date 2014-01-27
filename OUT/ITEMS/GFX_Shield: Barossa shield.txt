@@ -1,0 +1,2 @@
+GFX ITEM : Shield: Barossa shield
+	- id : 273

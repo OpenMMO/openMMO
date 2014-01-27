@@ -1,4 +1,0 @@
-ITEM : Road 11
-X : 1458
-Y : 0
-Numéro de carte : 0

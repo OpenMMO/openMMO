@@ -1,0 +1,2 @@
+ICONES : Fire boost
+	- id : 17

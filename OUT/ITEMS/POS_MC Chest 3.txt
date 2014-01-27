@@ -1,4 +1,0 @@
-ITEM : MC Chest 3
-X : 1078
-Y : 0
-Numéro de carte : 0

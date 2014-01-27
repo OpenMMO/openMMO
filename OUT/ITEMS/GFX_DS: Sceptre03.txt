@@ -1,0 +1,2 @@
+GFX ITEM : DS: Sceptre03
+	- id : 755

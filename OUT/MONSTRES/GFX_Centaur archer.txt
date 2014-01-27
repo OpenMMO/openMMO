@@ -1,0 +1,3 @@
+GFX MONSTRE : Centaur archer
+	- id : 20052
+	- id2 : 25052

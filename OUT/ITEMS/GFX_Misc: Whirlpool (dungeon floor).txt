@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Whirlpool (dungeon floor)
+	- id : 477

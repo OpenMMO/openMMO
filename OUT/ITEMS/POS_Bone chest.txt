@@ -1,4 +1,0 @@
-ITEM : Bone chest
-X : 124
-Y : 0
-Numéro de carte : 0

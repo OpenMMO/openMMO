@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Petit Dragon Rouge
+	- id : 20115
+	- id2 : 25115

@@ -1,0 +1,3 @@
+GFX MONSTRE : Invisible Kobold
+	- id : 21004
+	- id2 : 25004

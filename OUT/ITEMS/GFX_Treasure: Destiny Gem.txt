@@ -1,0 +1,2 @@
+GFX ITEM : Treasure: Destiny Gem
+	- id : 203

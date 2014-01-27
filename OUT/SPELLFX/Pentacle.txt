@@ -1,0 +1,2 @@
+SPELLFX : Pentacle
+	- id : 30006

@@ -1,0 +1,11 @@
+SPAWN BLOC : Bulldaoza
+	- max_dist : 1
+	- min_time : 1000
+	- max_time : 1150
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Bulldaoza
+	- nb_pos : 1
+		- x : 375
+		- y : 987
+		- num_carte : 1

@@ -1,0 +1,2 @@
+FLAGS : Flag Artherk Free Heal
+	- id : 30004

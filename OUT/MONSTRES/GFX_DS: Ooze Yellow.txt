@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Ooze Yellow
+	- id : 20092
+	- id2 : 25092

@@ -1,0 +1,2 @@
+GFX ITEM : Sign: Pawn shop
+	- id : 360

@@ -1,0 +1,11 @@
+SPAWN BLOC : T-Bone
+	- max_dist : 1
+	- min_time : 1100
+	- max_time : 1300
+	- min_spawn : 6
+	- nb_creatures : 1
+			- id : T-Bone
+	- nb_pos : 1
+		- x : 189
+		- y : 2975
+		- num_carte : 2

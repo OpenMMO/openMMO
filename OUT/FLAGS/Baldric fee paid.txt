@@ -1,0 +1,2 @@
+FLAGS : Baldric fee paid
+	- id : 30212

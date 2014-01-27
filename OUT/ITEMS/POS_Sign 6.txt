@@ -1,4 +1,0 @@
-ITEM : Sign 6
-X : 1521
-Y : 0
-Numéro de carte : 0

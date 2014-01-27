@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal J XP
+	- id : 30329

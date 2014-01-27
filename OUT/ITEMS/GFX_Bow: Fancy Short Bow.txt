@@ -1,0 +1,2 @@
+GFX ITEM : Bow: Fancy Short Bow
+	- id : 449

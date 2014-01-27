@@ -1,0 +1,2 @@
+GFX ITEM : DS: SkShield
+	- id : 677

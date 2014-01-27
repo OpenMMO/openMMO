@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Nexus 1 Activated
+	- id : 30482

@@ -1,0 +1,2 @@
+GFX ITEM : DS: Plate Helm Green
+	- id : 626

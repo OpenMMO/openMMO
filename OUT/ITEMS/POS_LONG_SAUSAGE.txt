@@ -1,4 +1,0 @@
-ITEM : LONG_SAUSAGE
-X : 1627
-Y : 0
-Numéro de carte : 0

@@ -1,0 +1,2 @@
+FLAGS : Who Has The Stone Flag
+	- id : 30040

@@ -1,0 +1,2 @@
+GFX ITEM : DS: Ruby Bracelet
+	- id : 553

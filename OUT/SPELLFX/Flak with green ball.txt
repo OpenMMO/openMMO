@@ -1,0 +1,2 @@
+SPELLFX : Flak with green ball
+	- id : 30073

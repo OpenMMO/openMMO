@@ -1,0 +1,2 @@
+GFX ITEM : Helmet: Horned Helmet
+	- id : 276

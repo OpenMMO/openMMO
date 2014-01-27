@@ -1,0 +1,2 @@
+FLAGS : Flag Pilferers Killed
+	- id : 30388

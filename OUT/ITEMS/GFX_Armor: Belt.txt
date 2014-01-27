@@ -1,0 +1,2 @@
+GFX ITEM : Armor: Belt
+	- id : 235

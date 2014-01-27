@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Changed Difficulty Level
+	- id : 30457

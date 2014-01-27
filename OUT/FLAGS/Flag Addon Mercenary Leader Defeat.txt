@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Mercenary Leader Defeat
+	- id : 30534

@@ -1,0 +1,2 @@
+SPELLFX : Heal Critical
+	- id : 30018

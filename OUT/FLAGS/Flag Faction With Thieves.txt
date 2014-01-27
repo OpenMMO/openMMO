@@ -1,0 +1,2 @@
+FLAGS : Flag Faction With Thieves
+	- id : 30367

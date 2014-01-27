@@ -1,4 +1,0 @@
-ITEM : Road 17
-X : 367
-Y : 0
-Numéro de carte : 0

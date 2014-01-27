@@ -1,0 +1,17 @@
+SPAWN BLOC : Lighthaven Ranger
+	- max_dist : 1
+	- min_time : 30
+	- max_time : 60
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Lighthaven Ranger
+	- nb_pos : 3
+		- x : 2777
+		- y : 1201
+		- num_carte : 0
+		- x : 2783
+		- y : 1203
+		- num_carte : 0
+		- x : 2780
+		- y : 1209
+		- num_carte : 0

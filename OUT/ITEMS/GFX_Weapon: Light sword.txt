@@ -1,0 +1,2 @@
+GFX ITEM : Weapon: Light sword
+	- id : 271

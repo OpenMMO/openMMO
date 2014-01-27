@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Petit Dragon Dore
+	- id : 20116
+	- id2 : 25116

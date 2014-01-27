@@ -1,0 +1,2 @@
+GFX ITEM : Ring: Ring 2
+	- id : 177

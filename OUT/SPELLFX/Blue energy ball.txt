@@ -1,0 +1,2 @@
+SPELLFX : Blue energy ball
+	- id : 30044

@@ -1,0 +1,2 @@
+GFX ITEM : DS: Goblin Mask
+	- id : 565

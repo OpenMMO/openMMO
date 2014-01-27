@@ -1,0 +1,2 @@
+GFX ITEM : DS: Dague04
+	- id : 740

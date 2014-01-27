@@ -1,4 +1,0 @@
-ITEM : Oracle chest 13
-X : 2692
-Y : 0
-Numéro de carte : 0

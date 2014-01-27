@@ -1,0 +1,2 @@
+FLAGS : Quest rod of mana
+	- id : 30124

@@ -1,0 +1,2 @@
+FLAGS : Quest flag Mordrick status
+	- id : 30108

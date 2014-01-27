@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Potion Orange
+	- id : 253

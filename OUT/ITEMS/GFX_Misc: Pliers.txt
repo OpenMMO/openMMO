@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Pliers
+	- id : 64

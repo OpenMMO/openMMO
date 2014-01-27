@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal A XP
+	- id : 30320

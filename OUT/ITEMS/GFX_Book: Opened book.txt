@@ -1,0 +1,2 @@
+GFX ITEM : Book: Opened book
+	- id : 128

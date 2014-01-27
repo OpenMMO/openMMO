@@ -1,0 +1,11 @@
+SPAWN BLOC : Brownbark
+	- max_dist : 1
+	- min_time : 1200
+	- max_time : 1250
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : AARONBROWNBARK
+	- nb_pos : 1
+		- x : 812
+		- y : 1568
+		- num_carte : 0

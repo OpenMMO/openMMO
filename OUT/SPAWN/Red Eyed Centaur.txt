@@ -1,0 +1,20 @@
+SPAWN BLOC : Red Eyed Centaur
+	- max_dist : 2
+	- min_time : 120
+	- max_time : 360
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : MOBREDEYEDCENTAUR
+	- nb_pos : 4
+		- x : 973
+		- y : 962
+		- num_carte : 0
+		- x : 971
+		- y : 968
+		- num_carte : 0
+		- x : 1089
+		- y : 1014
+		- num_carte : 0
+		- x : 926
+		- y : 1082
+		- num_carte : 0

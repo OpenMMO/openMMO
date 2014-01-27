@@ -1,0 +1,2 @@
+FLAGS : Quest for Maleak plant
+	- id : 30082

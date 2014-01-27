@@ -1,0 +1,2 @@
+GFX ITEM : Treasure: Bronze bar pack
+	- id : 57

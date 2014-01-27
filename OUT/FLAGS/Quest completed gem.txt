@@ -1,0 +1,2 @@
+FLAGS : Quest completed gem
+	- id : 30168

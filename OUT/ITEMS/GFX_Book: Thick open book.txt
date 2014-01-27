@@ -1,0 +1,2 @@
+GFX ITEM : Book: Thick open book
+	- id : 129

@@ -1,0 +1,2 @@
+FLAGS : Flag delay Kirlor
+	- id : 30114

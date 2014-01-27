@@ -1,0 +1,2 @@
+FLAGS : Global Flag Addon Mercenary Leader Spawned
+	- id : 30546

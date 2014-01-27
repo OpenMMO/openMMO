@@ -1,0 +1,2 @@
+GFX ITEM : Weapon: Dagger
+	- id : 274

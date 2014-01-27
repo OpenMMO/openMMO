@@ -1,0 +1,2 @@
+FLAGS : Quest Flag Will Of Artherk Quest
+	- id : 30289

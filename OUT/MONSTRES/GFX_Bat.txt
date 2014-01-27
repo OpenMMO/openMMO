@@ -1,0 +1,3 @@
+GFX MONSTRE : Bat
+	- id : 20002
+	- id2 : 25002

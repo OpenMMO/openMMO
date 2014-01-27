@@ -1,0 +1,2 @@
+FLAGS : Balork killed
+	- id : 30079

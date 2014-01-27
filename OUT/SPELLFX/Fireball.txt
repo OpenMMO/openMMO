@@ -1,0 +1,2 @@
+SPELLFX : Fireball
+	- id : 30017

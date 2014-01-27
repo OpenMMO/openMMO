@@ -1,0 +1,2 @@
+FLAGS : Flag Nimli friendship
+	- id : 30177

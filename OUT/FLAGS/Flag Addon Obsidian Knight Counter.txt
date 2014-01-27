@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Obsidian Knight Counter
+	- id : 30533

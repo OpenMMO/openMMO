@@ -1,0 +1,2 @@
+SPELLFX : Pentacle with red ball
+	- id : 30105

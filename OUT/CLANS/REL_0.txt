@@ -1,0 +1,4 @@
+RELATION : 0
+			- id1 : 9
+			- id2 : 10
+			- rel : -100

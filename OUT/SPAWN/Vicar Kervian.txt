@@ -1,0 +1,11 @@
+SPAWN BLOC : Vicar Kervian
+	- max_dist : 1
+	- min_time : 1100
+	- max_time : 1400
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : VICARKERVIAN
+	- nb_pos : 1
+		- x : 1470
+		- y : 2594
+		- num_carte : 1

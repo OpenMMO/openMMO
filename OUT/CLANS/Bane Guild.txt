@@ -1,0 +1,2 @@
+CLANS : Bane Guild
+	- id : 23

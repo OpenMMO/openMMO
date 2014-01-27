@@ -1,0 +1,2 @@
+GFX ITEM : Legging: Studded legging
+	- id : 286

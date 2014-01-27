@@ -1,0 +1,2 @@
+FLAGS : Quest completed ritual
+	- id : 30208

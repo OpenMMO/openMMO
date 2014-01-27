@@ -1,0 +1,2 @@
+FLAGS : Quest sword of might
+	- id : 30218

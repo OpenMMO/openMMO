@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Petit Dragon vert
+	- id : 20114
+	- id2 : 25114

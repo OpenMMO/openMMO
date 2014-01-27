@@ -1,4 +1,0 @@
-ITEM : CD Zone Chest 5
-X : 1750
-Y : 0
-Numéro de carte : 0

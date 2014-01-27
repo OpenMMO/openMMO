@@ -1,0 +1,2 @@
+FLAGS : Flag Arena Level
+	- id : 30468

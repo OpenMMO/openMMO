@@ -1,0 +1,2 @@
+FLAGS : Flag Adventurer
+	- id : 30016

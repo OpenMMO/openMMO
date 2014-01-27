@@ -1,0 +1,29 @@
+SPAWN BLOC : Ooze
+	- max_dist : 2
+	- min_time : 18
+	- max_time : 30
+	- min_spawn : 6
+	- nb_creatures : 1
+			- id : Organic Waste
+	- nb_pos : 7
+		- x : 439
+		- y : 426
+		- num_carte : 2
+		- x : 432
+		- y : 441
+		- num_carte : 2
+		- x : 419
+		- y : 462
+		- num_carte : 2
+		- x : 215
+		- y : 482
+		- num_carte : 2
+		- x : 173
+		- y : 509
+		- num_carte : 2
+		- x : 195
+		- y : 527
+		- num_carte : 2
+		- x : 202
+		- y : 696
+		- num_carte : 2

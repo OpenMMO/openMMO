@@ -1,0 +1,2 @@
+FLAGS : Quest Brigand Rob Diamond
+	- id : 30034

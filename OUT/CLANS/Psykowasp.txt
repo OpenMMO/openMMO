@@ -1,0 +1,2 @@
+CLANS : Psykowasp
+	- id : 45

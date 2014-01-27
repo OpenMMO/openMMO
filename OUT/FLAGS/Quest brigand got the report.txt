@@ -1,0 +1,2 @@
+FLAGS : Quest brigand got the report
+	- id : 30053

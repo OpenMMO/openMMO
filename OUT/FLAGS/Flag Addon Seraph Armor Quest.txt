@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Seraph Armor Quest
+	- id : 30531

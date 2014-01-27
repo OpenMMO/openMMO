@@ -1,0 +1,2 @@
+FLAGS : Quest Elysana make poison
+	- id : 30169

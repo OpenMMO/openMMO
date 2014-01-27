@@ -1,0 +1,2 @@
+GFX ITEM : DS: Plate Helm Emerald
+	- id : 644

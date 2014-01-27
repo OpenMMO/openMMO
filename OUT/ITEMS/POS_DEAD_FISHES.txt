@@ -1,4 +1,0 @@
-ITEM : DEAD_FISHES
-X : 1632
-Y : 0
-Numéro de carte : 0

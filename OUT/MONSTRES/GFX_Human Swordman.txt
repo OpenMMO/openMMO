@@ -1,0 +1,3 @@
+GFX MONSTRE : Human Swordman
+	- id : 20043
+	- id2 : 25043

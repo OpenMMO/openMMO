@@ -1,0 +1,2 @@
+FLAGS : Flag Lightbringer of Artherk
+	- id : 30348

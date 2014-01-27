@@ -1,0 +1,2 @@
+FLAGS : Global Flag Addon Mercenary B Killed Counter
+	- id : 30542

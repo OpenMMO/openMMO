@@ -1,0 +1,2 @@
+FLAGS : Quest Nissus Fangs of True Resolve
+	- id : 30293

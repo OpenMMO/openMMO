@@ -1,4 +1,0 @@
-ITEM : Chest 10
-X : 1648
-Y : 0
-Numéro de carte : 0

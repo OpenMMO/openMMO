@@ -1,0 +1,2 @@
+FLAGS : Quest Flag Artherk Heart
+	- id : 30353

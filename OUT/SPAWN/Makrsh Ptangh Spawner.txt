@@ -1,0 +1,20 @@
+SPAWN BLOC : Makrsh Ptangh Spawner
+	- max_dist : 1
+	- min_time : 120
+	- max_time : 360
+	- min_spawn : 0
+	- nb_creatures : 1
+			- id : MAKRSHPTANGHSPAWNER
+	- nb_pos : 4
+		- x : 2215
+		- y : 245
+		- num_carte : 1
+		- x : 2315
+		- y : 245
+		- num_carte : 1
+		- x : 2215
+		- y : 345
+		- num_carte : 1
+		- x : 2315
+		- y : 345
+		- num_carte : 1

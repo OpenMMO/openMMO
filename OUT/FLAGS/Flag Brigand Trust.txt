@@ -1,0 +1,2 @@
+FLAGS : Flag Brigand Trust
+	- id : 30035

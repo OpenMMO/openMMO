@@ -1,0 +1,2 @@
+FLAGS : Flag talked to hermit
+	- id : 30182

@@ -1,0 +1,2 @@
+SPELLFX : Medium explosion
+	- id : 30019

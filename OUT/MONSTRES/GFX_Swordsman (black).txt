@@ -1,0 +1,3 @@
+GFX MONSTRE : Swordsman (black)
+	- id : 20043
+	- id2 : 15001

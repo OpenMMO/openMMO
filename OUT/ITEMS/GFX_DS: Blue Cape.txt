@@ -1,0 +1,2 @@
+GFX ITEM : DS: Blue Cape
+	- id : 657

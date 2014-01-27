@@ -1,0 +1,2 @@
+SPELLFX : Small explosion
+	- id : 30009

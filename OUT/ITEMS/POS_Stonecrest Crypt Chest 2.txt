@@ -1,4 +1,0 @@
-ITEM : Stonecrest Crypt Chest 2
-X : 1058
-Y : 0
-Numéro de carte : 0

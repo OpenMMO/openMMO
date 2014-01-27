@@ -1,0 +1,2 @@
+ICONES : Item gloves
+	- id : 41

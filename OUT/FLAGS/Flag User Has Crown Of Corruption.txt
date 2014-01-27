@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Crown Of Corruption
+	- id : 30368

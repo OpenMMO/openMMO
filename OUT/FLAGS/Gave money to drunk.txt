@@ -1,0 +1,2 @@
+FLAGS : Gave money to drunk
+	- id : 30086

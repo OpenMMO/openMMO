@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Mini yeti brun
+	- id : 20098
+	- id2 : 25098

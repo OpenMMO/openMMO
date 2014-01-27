@@ -1,0 +1,2 @@
+SPELLFX : Heal Serious
+	- id : 30001

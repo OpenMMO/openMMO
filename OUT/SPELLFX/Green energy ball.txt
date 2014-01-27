@@ -1,0 +1,2 @@
+SPELLFX : Green energy ball
+	- id : 30046

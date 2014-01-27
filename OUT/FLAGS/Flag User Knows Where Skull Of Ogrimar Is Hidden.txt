@@ -1,0 +1,2 @@
+FLAGS : Flag User Knows Where Skull Of Ogrimar Is Hidden
+	- id : 30380

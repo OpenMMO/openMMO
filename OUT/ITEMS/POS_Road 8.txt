@@ -1,4 +1,0 @@
-ITEM : Road 8
-X : 552
-Y : 0
-Numéro de carte : 0

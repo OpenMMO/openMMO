@@ -1,0 +1,2 @@
+FLAGS : Flag Wrath of Marc
+	- id : 30400

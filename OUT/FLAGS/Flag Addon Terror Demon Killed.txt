@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Terror Demon Killed
+	- id : 30510

@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Big Gean Dragon Gris
+	- id : 20134
+	- id2 : 25134

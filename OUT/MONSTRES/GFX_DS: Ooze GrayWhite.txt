@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Ooze GrayWhite
+	- id : 20093
+	- id2 : 25093

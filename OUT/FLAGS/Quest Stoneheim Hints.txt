@@ -1,0 +1,2 @@
+FLAGS : Quest Stoneheim Hints
+	- id : 30390

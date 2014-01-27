@@ -1,4 +1,0 @@
-ITEM : Raven Chest 4
-X : 320
-Y : 0
-Numéro de carte : 0

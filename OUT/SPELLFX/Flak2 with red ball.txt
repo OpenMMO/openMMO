@@ -1,0 +1,2 @@
+SPELLFX : Flak2 with red ball
+	- id : 30076

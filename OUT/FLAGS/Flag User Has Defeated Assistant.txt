@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Defeated Assistant
+	- id : 30416

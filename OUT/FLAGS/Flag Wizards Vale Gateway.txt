@@ -1,0 +1,2 @@
+FLAGS : Flag Wizards Vale Gateway
+	- id : 30370

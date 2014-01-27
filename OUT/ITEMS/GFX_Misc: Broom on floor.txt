@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Broom on floor
+	- id : 62

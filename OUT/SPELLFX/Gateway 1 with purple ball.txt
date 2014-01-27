@@ -1,0 +1,2 @@
+SPELLFX : Gateway 1 with purple ball
+	- id : 30084

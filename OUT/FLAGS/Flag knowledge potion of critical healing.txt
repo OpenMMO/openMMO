@@ -1,0 +1,2 @@
+FLAGS : Flag knowledge potion of critical healing
+	- id : 30224

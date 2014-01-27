@@ -1,0 +1,11 @@
+SPAWN BLOC : Death Jester
+	- max_dist : 1
+	- min_time : 1100
+	- max_time : 1300
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Death Jester
+	- nb_pos : 1
+		- x : 183
+		- y : 2328
+		- num_carte : 1

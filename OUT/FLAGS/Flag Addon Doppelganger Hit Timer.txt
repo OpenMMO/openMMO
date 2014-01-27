@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Doppelganger Hit Timer
+	- id : 30528

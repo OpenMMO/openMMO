@@ -1,0 +1,2 @@
+GFX ITEM : DS: Hache011
+	- id : 732

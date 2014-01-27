@@ -1,0 +1,2 @@
+FLAGS : Flag Counter Purifier Killed
+	- id : 30346

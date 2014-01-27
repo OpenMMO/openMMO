@@ -1,0 +1,2 @@
+FLAGS : NPC Do You Believe
+	- id : 30391

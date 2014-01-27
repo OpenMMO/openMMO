@@ -1,0 +1,3 @@
+GFX MONSTRE : Dromadary
+	- id : 20030
+	- id2 : 25030

@@ -1,0 +1,2 @@
+FLAGS : Flag Addon User Knows About Doppelganger
+	- id : 30526

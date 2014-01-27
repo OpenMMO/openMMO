@@ -1,0 +1,2 @@
+GFX ITEM : Bow: Quiver
+	- id : 422

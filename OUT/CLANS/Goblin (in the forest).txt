@@ -1,0 +1,2 @@
+CLANS : Goblin (in the forest)
+	- id : 17

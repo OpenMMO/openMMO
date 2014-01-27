@@ -1,0 +1,2 @@
+GFX ITEM : DS: Plate Legs Gold
+	- id : 601

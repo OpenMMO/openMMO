@@ -1,0 +1,3 @@
+GFX MONSTRE : Kobold
+	- id : 20004
+	- id2 : 25004

@@ -1,0 +1,2 @@
+GFX ITEM : Helmet: Shaven helmet
+	- id : 462

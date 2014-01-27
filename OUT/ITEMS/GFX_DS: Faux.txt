@@ -1,0 +1,2 @@
+GFX ITEM : DS: Faux
+	- id : 647

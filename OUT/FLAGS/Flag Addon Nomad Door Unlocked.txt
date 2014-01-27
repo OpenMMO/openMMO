@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Nomad Door Unlocked
+	- id : 30547

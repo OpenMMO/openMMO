@@ -1,0 +1,2 @@
+GFX ITEM : Bow: Yellow Quiver
+	- id : 452

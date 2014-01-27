@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal Q
+	- id : 30273

@@ -1,0 +1,2 @@
+FLAGS : Quest Jaken weapon choice
+	- id : 30174

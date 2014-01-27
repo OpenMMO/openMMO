@@ -1,0 +1,2 @@
+GFX ITEM : DS: Azure Bracelet
+	- id : 557

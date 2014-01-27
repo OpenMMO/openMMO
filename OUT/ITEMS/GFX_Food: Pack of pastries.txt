@@ -1,0 +1,2 @@
+GFX ITEM : Food: Pack of pastries
+	- id : 79

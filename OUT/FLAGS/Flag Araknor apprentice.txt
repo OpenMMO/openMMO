@@ -1,0 +1,2 @@
+FLAGS : Flag Araknor apprentice
+	- id : 30158

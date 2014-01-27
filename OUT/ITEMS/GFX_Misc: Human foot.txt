@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Human foot
+	- id : 328

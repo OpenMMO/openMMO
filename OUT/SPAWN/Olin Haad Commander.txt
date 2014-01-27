@@ -1,0 +1,11 @@
+SPAWN BLOC : Olin Haad Commander
+	- max_dist : 1
+	- min_time : 60
+	- max_time : 120
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : OLINHAADCOMMANDER
+	- nb_pos : 1
+		- x : 2973
+		- y : 246
+		- num_carte : 0

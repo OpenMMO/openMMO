@@ -1,0 +1,2 @@
+GFX ITEM : Legging: Ring leggings
+	- id : 208

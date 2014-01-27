@@ -1,0 +1,26 @@
+SPAWN BLOC : Olin Haad Sentry
+	- max_dist : 1
+	- min_time : 150
+	- max_time : 180
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Olin Haad Sentry
+	- nb_pos : 6
+		- x : 2780
+		- y : 1201
+		- num_carte : 0
+		- x : 2776
+		- y : 1204
+		- num_carte : 0
+		- x : 2779
+		- y : 1204
+		- num_carte : 0
+		- x : 2784
+		- y : 1205
+		- num_carte : 0
+		- x : 2778
+		- y : 1207
+		- num_carte : 0
+		- x : 2782
+		- y : 1208
+		- num_carte : 0

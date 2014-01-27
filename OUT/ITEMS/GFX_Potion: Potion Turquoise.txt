@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Potion Turquoise
+	- id : 254

@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: GM Robe
+	- id : 20096
+	- id2 : 25096

@@ -1,0 +1,2 @@
+GFX ITEM : Ring: Ring 3
+	- id : 178

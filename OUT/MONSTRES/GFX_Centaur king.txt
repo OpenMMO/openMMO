@@ -1,0 +1,3 @@
+GFX MONSTRE : Centaur king
+	- id : 20054
+	- id2 : 25054

@@ -1,0 +1,2 @@
+ICONES : None attack area
+	- id : 25

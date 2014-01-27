@@ -1,0 +1,2 @@
+FLAGS : Quest killed orc magus
+	- id : 30096

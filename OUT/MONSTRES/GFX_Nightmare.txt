@@ -1,0 +1,3 @@
+GFX MONSTRE : Nightmare
+	- id : 20027
+	- id2 : 25027

@@ -1,0 +1,2 @@
+SPELLFX : Lightning Bolt
+	- id : 30002

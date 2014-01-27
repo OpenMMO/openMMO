@@ -1,0 +1,2 @@
+GFX ITEM : Wing: White Wing
+	- id : 473

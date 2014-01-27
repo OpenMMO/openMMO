@@ -1,0 +1,2 @@
+GFX ITEM : Legging: Chain legging
+	- id : 268

@@ -1,0 +1,2 @@
+GFX ITEM : Container: Backpack
+	- id : 48

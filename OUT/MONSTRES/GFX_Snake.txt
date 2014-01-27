@@ -1,0 +1,3 @@
+GFX MONSTRE : Snake
+	- id : 20019
+	- id2 : 25019

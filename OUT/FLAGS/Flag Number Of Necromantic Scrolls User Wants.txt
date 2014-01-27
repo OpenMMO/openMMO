@@ -1,0 +1,2 @@
+FLAGS : Flag Number Of Necromantic Scrolls User Wants
+	- id : 30433

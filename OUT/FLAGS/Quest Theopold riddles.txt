@@ -1,0 +1,2 @@
+FLAGS : Quest Theopold riddles
+	- id : 30173

@@ -1,0 +1,2 @@
+GFX ITEM : DS: Plate Boots Green
+	- id : 624

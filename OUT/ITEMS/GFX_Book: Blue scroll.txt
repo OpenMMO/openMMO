@@ -1,0 +1,2 @@
+GFX ITEM : Book: Blue scroll
+	- id : 127

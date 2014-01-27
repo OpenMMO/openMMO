@@ -1,4 +1,0 @@
-ITEM : Raven Chest 9
-X : 907
-Y : 0
-Numéro de carte : 0

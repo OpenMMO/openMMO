@@ -1,0 +1,2 @@
+GFX ITEM : Treasure: Coin stack
+	- id : 161

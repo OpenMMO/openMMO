@@ -1,0 +1,2 @@
+FLAGS : Troll Stone Of Life
+	- id : 30032

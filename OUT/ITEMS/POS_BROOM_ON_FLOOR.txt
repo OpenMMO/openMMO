@@ -1,4 +1,0 @@
-ITEM : BROOM_ON_FLOOR
-X : 2896
-Y : 0
-Numéro de carte : 0

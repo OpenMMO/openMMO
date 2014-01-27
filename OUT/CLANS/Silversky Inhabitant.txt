@@ -1,0 +1,2 @@
+CLANS : Silversky Inhabitant
+	- id : 3

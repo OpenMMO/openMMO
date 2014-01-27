@@ -1,0 +1,2 @@
+FLAGS : Flag Sigfried scam
+	- id : 30106

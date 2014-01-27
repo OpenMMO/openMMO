@@ -1,0 +1,2 @@
+SPELLFX : Curse
+	- id : 30015

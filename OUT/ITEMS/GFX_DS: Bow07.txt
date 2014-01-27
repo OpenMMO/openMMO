@@ -1,0 +1,2 @@
+GFX ITEM : DS: Bow07
+	- id : 749

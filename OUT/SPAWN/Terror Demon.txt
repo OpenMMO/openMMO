@@ -1,0 +1,11 @@
+SPAWN BLOC : Terror Demon
+	- max_dist : 1
+	- min_time : 30
+	- max_time : 60
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Terror Demon
+	- nb_pos : 1
+		- x : 1477
+		- y : 1793
+		- num_carte : 1

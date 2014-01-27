@@ -1,0 +1,2 @@
+FLAGS : Global Flag Addon Number Of Olin Haad Assassins Present
+	- id : 30473

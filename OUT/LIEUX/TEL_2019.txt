@@ -1,0 +1,7 @@
+TELEPORTATION : 2019
+	- x1 : 2988
+	- y1 : 192
+	- num_carte1 : 2
+	- x2 : 2063
+	- y2 : 1132
+	- num_carte2 : 2

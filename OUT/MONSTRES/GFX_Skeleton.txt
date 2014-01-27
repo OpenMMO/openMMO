@@ -1,0 +1,3 @@
+GFX MONSTRE : Skeleton
+	- id : 20012
+	- id2 : 25012

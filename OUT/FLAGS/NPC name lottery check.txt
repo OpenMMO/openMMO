@@ -1,0 +1,2 @@
+FLAGS : NPC name lottery check
+	- id : 30134

@@ -1,0 +1,3 @@
+GFX MONSTRE : Human Thief
+	- id : 20042
+	- id2 : 25042

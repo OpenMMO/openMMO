@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Ancient Power Activated
+	- id : 30548

@@ -1,0 +1,11 @@
+SPAWN BLOC : Iago Caballero
+	- max_dist : 1
+	- min_time : 1800
+	- max_time : 3600
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : IAGOCABALLERO
+	- nb_pos : 1
+		- x : 812
+		- y : 2714
+		- num_carte : 0

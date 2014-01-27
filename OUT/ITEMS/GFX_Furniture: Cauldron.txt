@@ -1,0 +1,2 @@
+GFX ITEM : Furniture: Cauldron
+	- id : 501

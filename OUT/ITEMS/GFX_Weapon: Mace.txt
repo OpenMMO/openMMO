@@ -1,0 +1,2 @@
+GFX ITEM : Weapon: Mace
+	- id : 119

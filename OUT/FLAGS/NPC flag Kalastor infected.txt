@@ -1,0 +1,2 @@
+FLAGS : NPC flag Kalastor infected
+	- id : 30118

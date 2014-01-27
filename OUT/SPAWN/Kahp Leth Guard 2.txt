@@ -1,0 +1,26 @@
+SPAWN BLOC : Kahp Leth Guard 2
+	- max_dist : 1
+	- min_time : 500
+	- max_time : 1000
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : KAHPLETHGUARD2
+	- nb_pos : 6
+		- x : 2789
+		- y : 539
+		- num_carte : 2
+		- x : 2771
+		- y : 557
+		- num_carte : 2
+		- x : 2799
+		- y : 558
+		- num_carte : 2
+		- x : 2790
+		- y : 567
+		- num_carte : 2
+		- x : 2819
+		- y : 569
+		- num_carte : 2
+		- x : 2801
+		- y : 587
+		- num_carte : 2

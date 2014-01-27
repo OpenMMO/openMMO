@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Key of Ogrimar
+	- id : 30373

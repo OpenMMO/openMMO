@@ -1,0 +1,11 @@
+SPAWN BLOC : Bend Hayjes the rotten
+	- max_dist : 1
+	- min_time : 800
+	- max_time : 1300
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Bend Hayjes
+	- nb_pos : 1
+		- x : 456
+		- y : 1909
+		- num_carte : 1

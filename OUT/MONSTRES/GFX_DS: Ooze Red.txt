@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Ooze Red
+	- id : 20090
+	- id2 : 25090

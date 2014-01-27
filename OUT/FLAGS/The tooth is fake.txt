@@ -1,0 +1,2 @@
+FLAGS : The tooth is fake
+	- id : 30084

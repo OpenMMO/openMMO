@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Used Ancient Ring
+	- id : 30398

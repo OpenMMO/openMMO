@@ -1,0 +1,2 @@
+GFX ITEM : Staff: Wooden Staff
+	- id : 118

@@ -1,0 +1,2 @@
+GFX ITEM : DS: Shield02
+	- id : 872

@@ -1,0 +1,2 @@
+FLAGS : Global Flag Addon Mercenary Lieutenant A Killed Timer
+	- id : 30538

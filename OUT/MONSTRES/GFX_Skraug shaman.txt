@@ -1,0 +1,3 @@
+GFX MONSTRE : Skraug shaman
+	- id : 20048
+	- id2 : 25048

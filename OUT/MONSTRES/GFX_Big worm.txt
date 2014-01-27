@@ -1,0 +1,3 @@
+GFX MONSTRE : Big worm
+	- id : 20017
+	- id2 : 25017

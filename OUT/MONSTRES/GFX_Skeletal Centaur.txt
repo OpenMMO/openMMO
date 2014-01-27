@@ -1,0 +1,3 @@
+GFX MONSTRE : Skeletal Centaur
+	- id : 20063
+	- id2 : 25063

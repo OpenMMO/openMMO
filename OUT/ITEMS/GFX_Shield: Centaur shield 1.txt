@@ -1,0 +1,2 @@
+GFX ITEM : Shield: Centaur shield 1
+	- id : 460

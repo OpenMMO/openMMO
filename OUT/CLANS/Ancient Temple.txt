@@ -1,0 +1,2 @@
+CLANS : Ancient Temple
+	- id : 21

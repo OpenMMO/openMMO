@@ -1,0 +1,2 @@
+SPELLFX : Heal serious with white ball
+	- id : 30096

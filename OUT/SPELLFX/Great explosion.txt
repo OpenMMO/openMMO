@@ -1,0 +1,2 @@
+SPELLFX : Great explosion
+	- id : 30010

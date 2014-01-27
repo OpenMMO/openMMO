@@ -1,4 +1,0 @@
-ITEM : HOURGLASS
-X : 1818
-Y : 0
-Numéro de carte : 0

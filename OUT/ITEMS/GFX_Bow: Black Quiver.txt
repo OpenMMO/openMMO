@@ -1,0 +1,2 @@
+GFX ITEM : Bow: Black Quiver
+	- id : 455

@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Nexus 24 Activated
+	- id : 30505

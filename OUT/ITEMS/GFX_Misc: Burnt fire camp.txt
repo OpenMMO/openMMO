@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Burnt fire camp
+	- id : 201

@@ -1,0 +1,3 @@
+GFX MONSTRE : NPC Warrior
+	- id : 10010
+	- id2 : 15010

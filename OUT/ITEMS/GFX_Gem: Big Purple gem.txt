@@ -1,0 +1,2 @@
+GFX ITEM : Gem: Big Purple gem
+	- id : 475

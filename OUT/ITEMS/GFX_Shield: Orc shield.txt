@@ -1,0 +1,2 @@
+GFX ITEM : Shield: Orc shield
+	- id : 282

@@ -1,0 +1,2 @@
+SPELLFX : Heal critical with blue ball
+	- id : 30097

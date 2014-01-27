@@ -1,4 +1,0 @@
-ITEM : Mordenthal Dungeon 6
-X : 499
-Y : 0
-Numéro de carte : 0

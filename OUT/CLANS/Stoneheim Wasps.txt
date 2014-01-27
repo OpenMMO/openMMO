@@ -1,0 +1,2 @@
+CLANS : Stoneheim Wasps
+	- id : 32

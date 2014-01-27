@@ -1,0 +1,2 @@
+GFX ITEM : Weapon: Darksword
+	- id : 275

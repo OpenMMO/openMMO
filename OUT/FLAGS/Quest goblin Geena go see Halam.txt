@@ -1,0 +1,2 @@
+FLAGS : Quest goblin Geena go see Halam
+	- id : 30128

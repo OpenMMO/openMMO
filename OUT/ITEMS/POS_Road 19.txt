@@ -1,4 +1,0 @@
-ITEM : Road 19
-X : 573
-Y : 0
-Numéro de carte : 0

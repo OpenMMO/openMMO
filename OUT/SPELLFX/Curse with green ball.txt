@@ -1,0 +1,2 @@
+SPELLFX : Curse with green ball
+	- id : 30060

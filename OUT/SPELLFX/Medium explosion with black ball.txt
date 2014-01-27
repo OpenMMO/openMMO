@@ -1,0 +1,2 @@
+SPELLFX : Medium explosion with black ball
+	- id : 30115

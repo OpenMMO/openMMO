@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Goblin Yellow
+	- id : 20085
+	- id2 : 25085

@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Kitchen knife
+	- id : 113

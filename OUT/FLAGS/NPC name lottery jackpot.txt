@@ -1,0 +1,2 @@
+FLAGS : NPC name lottery jackpot
+	- id : 30131

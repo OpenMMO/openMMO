@@ -1,4 +1,0 @@
-ITEM : Sign 16
-X : 359
-Y : 0
-Numéro de carte : 0

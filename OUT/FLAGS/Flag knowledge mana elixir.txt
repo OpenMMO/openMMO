@@ -1,0 +1,2 @@
+FLAGS : Flag knowledge mana elixir
+	- id : 30227

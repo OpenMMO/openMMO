@@ -1,0 +1,2 @@
+SPELLFX : Meteor with black ball
+	- id : 30103

@@ -1,0 +1,27 @@
+SPAWN BLOC : Olin Haad Soldiers
+	- max_dist : 1
+	- min_time : 30
+	- max_time : 60
+	- min_spawn : 1
+	- nb_creatures : 2
+			- id : Olin Haad Soldier 10
+			- id : Olin Haad Soldier 12
+	- nb_pos : 6
+		- x : 2973
+		- y : 239
+		- num_carte : 0
+		- x : 2965
+		- y : 241
+		- num_carte : 0
+		- x : 2980
+		- y : 241
+		- num_carte : 0
+		- x : 2982
+		- y : 248
+		- num_carte : 0
+		- x : 2967
+		- y : 250
+		- num_carte : 0
+		- x : 2976
+		- y : 253
+		- num_carte : 0

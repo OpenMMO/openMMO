@@ -1,0 +1,2 @@
+FLAGS : Flag Araknor
+	- id : 30006

@@ -1,0 +1,2 @@
+FLAGS : Quest Scroll
+	- id : 30002

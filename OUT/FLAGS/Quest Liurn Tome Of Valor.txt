@@ -1,0 +1,2 @@
+FLAGS : Quest Liurn Tome Of Valor
+	- id : 30420

@@ -1,0 +1,2 @@
+FLAGS : Global Flag Addon Mercenary A Killed Counter
+	- id : 30541

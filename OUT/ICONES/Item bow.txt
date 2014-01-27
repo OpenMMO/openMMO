@@ -1,0 +1,2 @@
+ICONES : Item bow
+	- id : 37

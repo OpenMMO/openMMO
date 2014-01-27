@@ -1,0 +1,2 @@
+GFX ITEM : Book: Opened scroll
+	- id : 126

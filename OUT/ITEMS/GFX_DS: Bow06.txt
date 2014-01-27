@@ -1,0 +1,2 @@
+GFX ITEM : DS: Bow06
+	- id : 748

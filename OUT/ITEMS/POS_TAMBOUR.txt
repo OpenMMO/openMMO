@@ -1,4 +1,0 @@
-ITEM : TAMBOUR
-X : 1652
-Y : 0
-Numéro de carte : 0

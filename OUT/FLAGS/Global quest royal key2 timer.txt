@@ -1,0 +1,2 @@
+FLAGS : Global quest royal key2 timer
+	- id : 30138

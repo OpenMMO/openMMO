@@ -1,0 +1,2 @@
+GFX ITEM : Glove: Plate gauntlets
+	- id : 263

@@ -1,0 +1,2 @@
+GFX ITEM : Gem: Small purple gem
+	- id : 499

@@ -1,0 +1,2 @@
+GFX ITEM : Container: Troll Corpse
+	- id : 426

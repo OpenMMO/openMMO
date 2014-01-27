@@ -1,0 +1,2 @@
+FLAGS : Global Flag Crypt Chest 2 Destroyed
+	- id : 30459

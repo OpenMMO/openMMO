@@ -1,0 +1,2 @@
+SPELLFX : Boulders
+	- id : 30031

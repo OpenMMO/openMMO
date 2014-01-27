@@ -1,4 +1,0 @@
-ITEM : WOOD_PACK_MIXED
-X : 2839
-Y : 0
-Numéro de carte : 0

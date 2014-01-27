@@ -1,0 +1,2 @@
+FLAGS : Flag Skeletal Centaurs Killed
+	- id : 30387

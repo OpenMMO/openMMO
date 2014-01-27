@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Big Gean Dragon Rouge
+	- id : 20130
+	- id2 : 25130

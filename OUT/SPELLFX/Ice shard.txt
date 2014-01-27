@@ -1,0 +1,2 @@
+SPELLFX : Ice shard
+	- id : 30023

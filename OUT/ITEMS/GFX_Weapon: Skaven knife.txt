@@ -1,0 +1,2 @@
+GFX ITEM : Weapon: Skaven knife
+	- id : 464

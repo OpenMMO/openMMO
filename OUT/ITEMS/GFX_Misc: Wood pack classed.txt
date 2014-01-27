@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Wood pack classed
+	- id : 71

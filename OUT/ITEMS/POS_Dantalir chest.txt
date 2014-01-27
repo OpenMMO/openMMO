@@ -1,4 +1,0 @@
-ITEM : Dantalir chest
-X : 127
-Y : 0
-Numéro de carte : 0

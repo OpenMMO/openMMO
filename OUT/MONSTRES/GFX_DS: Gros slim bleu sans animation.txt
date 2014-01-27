@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Gros slim bleu sans animation
+	- id : 20107
+	- id2 : 25107

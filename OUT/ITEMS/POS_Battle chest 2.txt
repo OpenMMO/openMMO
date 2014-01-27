@@ -1,4 +1,0 @@
-ITEM : Battle chest 2
-X : 2109
-Y : 0
-Numéro de carte : 0

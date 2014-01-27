@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Moyen Dragon Vert
+	- id : 20112
+	- id2 : 25112

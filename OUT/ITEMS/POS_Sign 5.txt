@@ -1,4 +1,0 @@
-ITEM : Sign 5
-X : 1459
-Y : 0
-Numéro de carte : 0

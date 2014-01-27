@@ -1,4 +1,0 @@
-ITEM : Road 13
-X : 694
-Y : 0
-Numéro de carte : 0

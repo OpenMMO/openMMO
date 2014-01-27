@@ -1,0 +1,2 @@
+GFX ITEM : DS: NewBow01
+	- id : 661

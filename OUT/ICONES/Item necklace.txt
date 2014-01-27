@@ -1,0 +1,2 @@
+ICONES : Item necklace
+	- id : 43

@@ -1,0 +1,2 @@
+SPELLFX : Call lightning
+	- id : 30013

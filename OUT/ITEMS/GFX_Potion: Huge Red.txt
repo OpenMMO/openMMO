@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Huge Red
+	- id : 248

@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Black potion
+	- id : 99

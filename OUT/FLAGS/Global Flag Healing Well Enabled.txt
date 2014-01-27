@@ -1,0 +1,2 @@
+FLAGS : Global Flag Healing Well Enabled
+	- id : 30256

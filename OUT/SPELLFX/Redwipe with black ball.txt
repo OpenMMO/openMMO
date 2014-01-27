@@ -1,0 +1,2 @@
+SPELLFX : Redwipe with black ball
+	- id : 30112

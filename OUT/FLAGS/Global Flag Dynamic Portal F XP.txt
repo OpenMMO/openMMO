@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal F XP
+	- id : 30325

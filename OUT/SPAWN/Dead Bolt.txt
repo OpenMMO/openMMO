@@ -1,0 +1,12 @@
+SPAWN BLOC : Dead Bolt
+	- max_dist : 1
+	- min_time : 1100
+	- max_time : 1300
+	- min_spawn : 6
+	- nb_creatures : 2
+			- id : Dead Bolt
+			- id : Dead Bolt
+	- nb_pos : 1
+		- x : 851
+		- y : 1707
+		- num_carte : 2

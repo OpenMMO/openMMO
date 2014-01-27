@@ -1,0 +1,2 @@
+GFX ITEM : DS: Black Cape
+	- id : 655

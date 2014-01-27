@@ -1,4 +1,0 @@
-ITEM : WOODEN_ROUND_CHAIR_2
-X : 1602
-Y : 0
-Numéro de carte : 0

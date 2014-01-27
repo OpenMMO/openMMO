@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Goblin Gray
+	- id : 20084
+	- id2 : 25084

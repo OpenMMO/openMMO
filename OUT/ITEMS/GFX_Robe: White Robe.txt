@@ -1,0 +1,2 @@
+GFX ITEM : Robe: White Robe
+	- id : 425

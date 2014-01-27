@@ -1,0 +1,2 @@
+SPELLFX : Poison cloud
+	- id : 30026

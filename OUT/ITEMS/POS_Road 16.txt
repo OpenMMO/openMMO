@@ -1,4 +1,0 @@
-ITEM : Road 16
-X : 361
-Y : 0
-Numéro de carte : 0

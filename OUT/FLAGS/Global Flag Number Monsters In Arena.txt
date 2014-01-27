@@ -1,0 +1,2 @@
+FLAGS : Global Flag Number Monsters In Arena
+	- id : 30455

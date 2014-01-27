@@ -1,0 +1,2 @@
+SPELLFX : Freeze
+	- id : 30020

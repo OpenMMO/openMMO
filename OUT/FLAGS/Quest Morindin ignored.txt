@@ -1,0 +1,2 @@
+FLAGS : Quest Morindin ignored
+	- id : 30144

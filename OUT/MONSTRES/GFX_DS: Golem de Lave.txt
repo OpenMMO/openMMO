@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Golem de Lave
+	- id : 20128
+	- id2 : 25128

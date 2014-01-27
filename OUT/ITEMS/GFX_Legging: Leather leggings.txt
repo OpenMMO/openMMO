@@ -1,0 +1,2 @@
+GFX ITEM : Legging: Leather leggings
+	- id : 261

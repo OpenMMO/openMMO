@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Volcanoe Rock
+	- id : 204

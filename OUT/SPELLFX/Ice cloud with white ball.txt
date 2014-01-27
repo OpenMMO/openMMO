@@ -1,0 +1,2 @@
+SPELLFX : Ice cloud with white ball
+	- id : 30101

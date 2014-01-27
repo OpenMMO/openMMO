@@ -1,0 +1,2 @@
+SPELLFX : Curse with black ball
+	- id : 30062

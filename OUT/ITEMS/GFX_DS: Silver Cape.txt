@@ -1,0 +1,2 @@
+GFX ITEM : DS: Silver Cape
+	- id : 653

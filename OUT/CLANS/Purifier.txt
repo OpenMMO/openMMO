@@ -1,0 +1,2 @@
+CLANS : Purifier
+	- id : 39

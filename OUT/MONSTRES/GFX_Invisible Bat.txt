@@ -1,0 +1,3 @@
+GFX MONSTRE : Invisible Bat
+	- id : 21002
+	- id2 : 25002

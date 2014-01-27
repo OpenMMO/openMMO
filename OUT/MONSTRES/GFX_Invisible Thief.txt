@@ -1,0 +1,3 @@
+GFX MONSTRE : Invisible Thief
+	- id : 21042
+	- id2 : 15004

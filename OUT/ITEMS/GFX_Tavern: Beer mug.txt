@@ -1,0 +1,2 @@
+GFX ITEM : Tavern: Beer mug
+	- id : 35

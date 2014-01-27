@@ -1,0 +1,2 @@
+FLAGS : Colosseum Monster Disable
+	- id : 30472

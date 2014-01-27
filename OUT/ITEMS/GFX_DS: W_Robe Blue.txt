@@ -1,0 +1,2 @@
+GFX ITEM : DS: W_Robe Blue
+	- id : 586

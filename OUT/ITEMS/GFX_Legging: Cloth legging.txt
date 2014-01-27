@@ -1,0 +1,2 @@
+GFX ITEM : Legging: Cloth legging
+	- id : 284

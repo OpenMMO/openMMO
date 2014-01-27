@@ -1,0 +1,2 @@
+GFX ITEM : DS: WitchHat02
+	- id : 659

@@ -1,0 +1,2 @@
+GFX ITEM : DS: GlaiveSlayer02
+	- id : 714

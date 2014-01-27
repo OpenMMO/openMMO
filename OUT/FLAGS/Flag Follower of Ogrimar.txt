@@ -1,0 +1,2 @@
+FLAGS : Flag Follower of Ogrimar
+	- id : 30350

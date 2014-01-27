@@ -1,0 +1,11 @@
+SPAWN BLOC : Quentin Tarantula
+	- max_dist : 1
+	- min_time : 1300
+	- max_time : 1800
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : MOBQUENTINTARANTULA
+	- nb_pos : 1
+		- x : 1731
+		- y : 247
+		- num_carte : 2

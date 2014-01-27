@@ -1,0 +1,11 @@
+SPAWN BLOC : Venadar
+	- max_dist : 1
+	- min_time : 5
+	- max_time : 10
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : VENADAR
+	- nb_pos : 1
+		- x : 2345
+		- y : 545
+		- num_carte : 2

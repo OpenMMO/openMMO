@@ -1,0 +1,2 @@
+FLAGS : Rats killed
+	- id : 30057

@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Goblin Blue
+	- id : 20081
+	- id2 : 25081

@@ -1,0 +1,2 @@
+FLAGS : Quest Dionysus Recharge Harp
+	- id : 30407

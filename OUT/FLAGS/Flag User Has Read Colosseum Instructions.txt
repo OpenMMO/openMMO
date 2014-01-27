@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Read Colosseum Instructions
+	- id : 30454

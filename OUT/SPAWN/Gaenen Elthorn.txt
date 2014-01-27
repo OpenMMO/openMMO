@@ -1,0 +1,11 @@
+SPAWN BLOC : Gaenen Elthorn
+	- max_dist : 1
+	- min_time : 8
+	- max_time : 8
+	- min_spawn : 0
+	- nb_creatures : 1
+			- id : GAENENELTHORN
+	- nb_pos : 1
+		- x : 2660
+		- y : 2416
+		- num_carte : 2

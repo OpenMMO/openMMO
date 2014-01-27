@@ -1,0 +1,2 @@
+FLAGS : NPC name lottery start
+	- id : 30133

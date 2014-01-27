@@ -1,0 +1,2 @@
+GFX ITEM : DS: Plate Armor Black
+	- id : 611

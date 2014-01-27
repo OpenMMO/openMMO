@@ -1,0 +1,2 @@
+FLAGS : Quest vault code one
+	- id : 30185

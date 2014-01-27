@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Dragon Tooth
+	- id : 245

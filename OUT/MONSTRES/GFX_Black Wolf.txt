@@ -1,0 +1,3 @@
+GFX MONSTRE : Black Wolf
+	- id : 20046
+	- id2 : 25046

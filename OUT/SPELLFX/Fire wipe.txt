@@ -1,0 +1,2 @@
+SPELLFX : Fire wipe
+	- id : 30005

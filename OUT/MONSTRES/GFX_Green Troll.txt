@@ -1,0 +1,3 @@
+GFX MONSTRE : Green Troll
+	- id : 20010
+	- id2 : 25010

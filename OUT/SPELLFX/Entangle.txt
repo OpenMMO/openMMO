@@ -1,0 +1,2 @@
+SPELLFX : Entangle
+	- id : 30029

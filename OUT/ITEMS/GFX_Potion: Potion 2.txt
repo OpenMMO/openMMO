@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Potion 2
+	- id : 241

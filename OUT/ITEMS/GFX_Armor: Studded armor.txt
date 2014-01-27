@@ -1,0 +1,2 @@
+GFX ITEM : Armor: Studded armor
+	- id : 283

@@ -1,0 +1,20 @@
+SPAWN BLOC : Tomb Raider
+	- max_dist : 1
+	- min_time : 900
+	- max_time : 1150
+	- min_spawn : 6
+	- nb_creatures : 1
+			- id : Tomb Raider
+	- nb_pos : 4
+		- x : 1121
+		- y : 129
+		- num_carte : 1
+		- x : 428
+		- y : 204
+		- num_carte : 1
+		- x : 21
+		- y : 461
+		- num_carte : 1
+		- x : 71
+		- y : 620
+		- num_carte : 1

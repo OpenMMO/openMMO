@@ -1,0 +1,2 @@
+FLAGS : Quest Timer Fangs Of True Resolve
+	- id : 30288

@@ -1,0 +1,17 @@
+SPAWN BLOC : Hunter1
+	- max_dist : 1
+	- min_time : 300
+	- max_time : 600
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : MOBHUNTER1
+	- nb_pos : 3
+		- x : 495
+		- y : 553
+		- num_carte : 0
+		- x : 437
+		- y : 755
+		- num_carte : 0
+		- x : 607
+		- y : 925
+		- num_carte : 0

@@ -1,0 +1,2 @@
+FLAGS : Global Flag Dynamic Portal Q XP
+	- id : 30336

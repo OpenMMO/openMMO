@@ -1,0 +1,2 @@
+FLAGS : NPC flag Geena infected
+	- id : 30117

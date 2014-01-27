@@ -1,0 +1,26 @@
+SPAWN BLOC : Moon Tug Sentry 2
+	- max_dist : 1
+	- min_time : 500
+	- max_time : 1000
+	- min_spawn : 1
+	- nb_creatures : 1
+			- id : MOONTUGGUARD2
+	- nb_pos : 6
+		- x : 2580
+		- y : 261
+		- num_carte : 2
+		- x : 2590
+		- y : 283
+		- num_carte : 2
+		- x : 2554
+		- y : 286
+		- num_carte : 2
+		- x : 2612
+		- y : 290
+		- num_carte : 2
+		- x : 2578
+		- y : 293
+		- num_carte : 2
+		- x : 2589
+		- y : 314
+		- num_carte : 2

@@ -1,0 +1,3 @@
+GFX MONSTRE : Kraanian flying
+	- id : 20034
+	- id2 : 25034

@@ -1,0 +1,2 @@
+SPELLFX : None
+	- id : 0

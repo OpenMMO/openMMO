@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Runed Stone Tablet Teleport
+	- id : 30509

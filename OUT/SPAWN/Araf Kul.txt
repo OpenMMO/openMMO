@@ -1,0 +1,11 @@
+SPAWN BLOC : Araf Kul
+	- max_dist : 1
+	- min_time : 800
+	- max_time : 1300
+	- min_spawn : 8
+	- nb_creatures : 1
+			- id : Araf Kul
+	- nb_pos : 1
+		- x : 2654
+		- y : 565
+		- num_carte : 0

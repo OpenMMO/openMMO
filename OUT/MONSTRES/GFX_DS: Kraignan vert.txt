@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Kraignan vert
+	- id : 20103
+	- id2 : 25103

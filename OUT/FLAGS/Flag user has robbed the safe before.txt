@@ -1,0 +1,2 @@
+FLAGS : Flag user has robbed the safe before
+	- id : 30192

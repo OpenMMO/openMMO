@@ -1,0 +1,3 @@
+GFX MONSTRE : Skraug warrior Moon Tug
+	- id : 20062
+	- id2 : 25062

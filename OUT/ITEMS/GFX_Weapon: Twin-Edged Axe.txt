@@ -1,0 +1,2 @@
+GFX ITEM : Weapon: Twin-Edged Axe
+	- id : 122

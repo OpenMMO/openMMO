@@ -1,4 +1,0 @@
-ITEM : CHANDELLE_SUR_PIED
-X : 1687
-Y : 0
-Numéro de carte : 0

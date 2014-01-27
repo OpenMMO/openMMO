@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Arcane Spellbook
+	- id : 30383

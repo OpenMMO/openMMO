@@ -1,0 +1,2 @@
+FLAGS : Quest flag death jester done
+	- id : 30172

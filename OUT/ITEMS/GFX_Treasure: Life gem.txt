@@ -1,0 +1,2 @@
+GFX ITEM : Treasure: Life gem
+	- id : 211

@@ -1,0 +1,2 @@
+GFX ITEM : Sign: Armor shop
+	- id : 373

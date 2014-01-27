@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Blue Flask
+	- id : 236

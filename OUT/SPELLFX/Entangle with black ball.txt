@@ -1,0 +1,2 @@
+SPELLFX : Entangle with black ball
+	- id : 30069

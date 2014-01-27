@@ -1,4 +1,0 @@
-ITEM : Raven Chest 5
-X : 1319
-Y : 0
-Numéro de carte : 0

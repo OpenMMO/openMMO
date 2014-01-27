@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Long whool ball
+	- id : 92

@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Ice shard
+	- id : 210

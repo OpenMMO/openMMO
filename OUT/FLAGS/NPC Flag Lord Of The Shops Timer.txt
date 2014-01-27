@@ -1,0 +1,2 @@
+FLAGS : NPC Flag Lord Of The Shops Timer
+	- id : 30467

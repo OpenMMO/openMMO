@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Slim brun-vert avec des piques
+	- id : 20100
+	- id2 : 25100

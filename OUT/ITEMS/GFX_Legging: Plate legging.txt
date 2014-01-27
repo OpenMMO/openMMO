@@ -1,0 +1,2 @@
+GFX ITEM : Legging: Plate legging
+	- id : 266

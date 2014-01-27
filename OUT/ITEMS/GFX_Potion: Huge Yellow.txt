@@ -1,0 +1,2 @@
+GFX ITEM : Potion: Huge Yellow
+	- id : 249

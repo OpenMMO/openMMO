@@ -1,0 +1,2 @@
+GFX ITEM : DS: Remort Red Wings
+	- id : 580

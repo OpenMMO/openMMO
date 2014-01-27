@@ -1,0 +1,2 @@
+FLAGS : NPC Caballero
+	- id : 30214

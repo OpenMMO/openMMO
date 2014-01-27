@@ -1,0 +1,2 @@
+GFX ITEM : Bow: Fancy Long Bow
+	- id : 450

@@ -1,0 +1,2 @@
+GFX ITEM : DS: White Square Bracelet
+	- id : 558

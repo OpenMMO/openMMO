@@ -1,0 +1,2 @@
+GFX ITEM : Bow: Blue Quiver
+	- id : 451

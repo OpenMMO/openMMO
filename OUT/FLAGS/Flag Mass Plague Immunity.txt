@@ -1,0 +1,2 @@
+FLAGS : Flag Mass Plague Immunity
+	- id : 30399

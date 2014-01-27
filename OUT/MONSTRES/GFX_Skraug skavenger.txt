@@ -1,0 +1,3 @@
+GFX MONSTRE : Skraug skavenger
+	- id : 20049
+	- id2 : 25049

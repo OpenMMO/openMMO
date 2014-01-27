@@ -1,4 +1,0 @@
-ITEM : WOODEN_VASE
-X : 1719
-Y : 0
-Numéro de carte : 0

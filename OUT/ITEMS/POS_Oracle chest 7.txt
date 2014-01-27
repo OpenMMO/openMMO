@@ -1,4 +1,0 @@
-ITEM : Oracle chest 7
-X : 2836
-Y : 0
-Numéro de carte : 0

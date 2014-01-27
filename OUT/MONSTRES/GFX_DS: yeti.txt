@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: yeti
+	- id : 20097
+	- id2 : 25097

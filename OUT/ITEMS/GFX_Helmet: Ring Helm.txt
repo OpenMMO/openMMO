@@ -1,0 +1,2 @@
+GFX ITEM : Helmet: Ring Helm
+	- id : 205

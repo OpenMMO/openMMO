@@ -1,0 +1,36 @@
+SPAWN BLOC : Ancient Temple
+	- max_dist : 2
+	- min_time : 20
+	- max_time : 35
+	- min_spawn : 5
+	- nb_creatures : 2
+			- id : Scavenger Bat
+			- id : Cursed Being
+	- nb_pos : 9
+		- x : 496
+		- y : 208
+		- num_carte : 1
+		- x : 548
+		- y : 216
+		- num_carte : 1
+		- x : 519
+		- y : 237
+		- num_carte : 1
+		- x : 558
+		- y : 238
+		- num_carte : 1
+		- x : 463
+		- y : 241
+		- num_carte : 1
+		- x : 495
+		- y : 261
+		- num_carte : 1
+		- x : 497
+		- y : 301
+		- num_carte : 1
+		- x : 472
+		- y : 303
+		- num_carte : 1
+		- x : 511
+		- y : 308
+		- num_carte : 1

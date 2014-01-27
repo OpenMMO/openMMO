@@ -1,0 +1,11 @@
+SPAWN BLOC : Eye-Patched Qardos
+	- max_dist : 1
+	- min_time : 800
+	- max_time : 1300
+	- min_spawn : 5
+	- nb_creatures : 1
+			- id : Eye-Patched Qardos
+	- nb_pos : 1
+		- x : 879
+		- y : 2441
+		- num_carte : 0

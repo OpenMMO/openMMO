@@ -1,4 +1,0 @@
-ITEM : Oracle sign 1
-X : 2836
-Y : 0
-Numéro de carte : 0

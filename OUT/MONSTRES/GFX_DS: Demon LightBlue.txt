@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Demon LightBlue
+	- id : 20076
+	- id2 : 25076

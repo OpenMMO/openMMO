@@ -1,0 +1,2 @@
+FLAGS : Global Flag Island Maze Preset
+	- id : 30251

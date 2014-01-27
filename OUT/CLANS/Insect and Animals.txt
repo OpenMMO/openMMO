@@ -1,0 +1,2 @@
+CLANS : Insect and Animals
+	- id : 16

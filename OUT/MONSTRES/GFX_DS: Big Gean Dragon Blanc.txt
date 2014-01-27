@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Big Gean Dragon Blanc
+	- id : 20135
+	- id2 : 25135

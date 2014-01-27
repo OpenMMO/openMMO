@@ -1,4 +1,0 @@
-ITEM : Ordinary chest
-X : 318
-Y : 0
-Numéro de carte : 0

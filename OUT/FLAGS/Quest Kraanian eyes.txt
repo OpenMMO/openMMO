@@ -1,0 +1,2 @@
+FLAGS : Quest Kraanian eyes
+	- id : 30195

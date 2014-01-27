@@ -1,0 +1,11 @@
+SPAWN BLOC : Harvester Of Life
+	- max_dist : 1
+	- min_time : 120
+	- max_time : 120
+	- min_spawn : 0
+	- nb_creatures : 1
+			- id : HARVESTEROFLIFE
+	- nb_pos : 1
+		- x : 2710
+		- y : 1040
+		- num_carte : 1

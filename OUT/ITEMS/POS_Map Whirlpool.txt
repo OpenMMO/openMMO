@@ -1,4 +1,0 @@
-ITEM : Map Whirlpool
-X : 2061
-Y : 0
-Numéro de carte : 0

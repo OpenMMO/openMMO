@@ -1,0 +1,2 @@
+FLAGS : Global Flag Addon Gluriurl Present
+	- id : 30545

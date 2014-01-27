@@ -1,0 +1,2 @@
+FLAGS : Flag Addon User Rewarded For Killing Carman
+	- id : 30549

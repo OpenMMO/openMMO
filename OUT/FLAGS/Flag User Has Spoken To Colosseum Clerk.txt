@@ -1,0 +1,2 @@
+FLAGS : Flag User Has Spoken To Colosseum Clerk
+	- id : 30453

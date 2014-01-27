@@ -1,0 +1,2 @@
+FLAGS : Flag User Bought Magical Offense Upgrade
+	- id : 30428

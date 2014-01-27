@@ -1,0 +1,2 @@
+FLAGS : Flag Addon Nexus 19 Activated
+	- id : 30500

@@ -1,0 +1,3 @@
+GFX MONSTRE : DS: Big Gean Dragon Noir
+	- id : 20136
+	- id2 : 25136

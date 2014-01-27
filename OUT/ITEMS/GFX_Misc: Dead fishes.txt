@@ -1,0 +1,2 @@
+GFX ITEM : Misc: Dead fishes
+	- id : 82
