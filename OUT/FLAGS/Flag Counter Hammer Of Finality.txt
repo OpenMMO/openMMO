@@ -1,2 +1,0 @@
-FLAGS : Flag Counter Hammer Of Finality
-	- id : 30444

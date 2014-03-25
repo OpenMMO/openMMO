@@ -1,2 +1,0 @@
-ICONES : Light heal area
-	- id : 23

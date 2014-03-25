@@ -1,2 +1,0 @@
-ICONES : Item boots
-	- id : 36

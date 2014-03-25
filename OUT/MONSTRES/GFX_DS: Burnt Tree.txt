@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Burnt Tree
-	- id : 20070
-	- id2 : 25070

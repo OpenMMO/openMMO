@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge potion of greater protection from evil
-	- id : 30244

@@ -1,2 +1,0 @@
-ICONES : Earth attack single
-	- id : 12

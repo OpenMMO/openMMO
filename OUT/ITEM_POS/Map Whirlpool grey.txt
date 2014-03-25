@@ -1,4 +1,0 @@
-ITEM : Map Whirlpool grey
-X : 1111
-Y : 0
-Numéro de carte : 0

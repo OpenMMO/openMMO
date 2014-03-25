@@ -1,3 +1,0 @@
-GFX MONSTRE : Small worm
-	- id : 20016
-	- id2 : 25016

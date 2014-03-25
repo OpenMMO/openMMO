@@ -1,2 +1,0 @@
-GFX ITEM : Book: Red book
-	- id : 45

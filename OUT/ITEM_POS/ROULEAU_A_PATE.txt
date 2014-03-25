@@ -1,4 +1,0 @@
-ITEM : ROULEAU_A_PATE
-X : 1673
-Y : 0
-Numéro de carte : 0

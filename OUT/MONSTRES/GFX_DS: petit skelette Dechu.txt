@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: petit skelette Dechu
-	- id : 20124
-	- id2 : 25124

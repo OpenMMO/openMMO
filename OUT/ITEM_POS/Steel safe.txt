@@ -1,4 +1,0 @@
-ITEM : Steel safe
-X : 200
-Y : 0
-Numéro de carte : 0

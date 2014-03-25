@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge potion of serious healing
-	- id : 30223

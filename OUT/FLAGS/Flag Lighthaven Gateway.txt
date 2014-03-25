@@ -1,2 +1,0 @@
-FLAGS : Flag Lighthaven Gateway
-	- id : 30362

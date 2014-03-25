@@ -1,2 +1,0 @@
-GFX ITEM : Boot: Black leather boot
-	- id : 288

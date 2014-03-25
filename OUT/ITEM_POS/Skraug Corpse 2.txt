@@ -1,4 +1,0 @@
-ITEM : Skraug Corpse 2
-X : 2579
-Y : 0
-Numéro de carte : 0

@@ -1,4 +1,0 @@
-ITEM : LONGUE_VUE
-X : 1580
-Y : 0
-Numéro de carte : 0

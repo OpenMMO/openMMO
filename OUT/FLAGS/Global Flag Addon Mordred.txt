@@ -1,2 +1,0 @@
-FLAGS : Global Flag Addon Mordred
-	- id : 30532

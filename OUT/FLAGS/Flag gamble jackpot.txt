@@ -1,2 +1,0 @@
-FLAGS : Flag gamble jackpot
-	- id : 30157

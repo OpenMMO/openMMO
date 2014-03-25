@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge potion of partial earth resistance
-	- id : 30236

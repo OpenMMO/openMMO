@@ -1,3 +1,0 @@
-GFX MONSTRE : Skeleton Servant 1
-	- id : 20055
-	- id2 : 25055

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Slim brun avec des piques
-	- id : 20099
-	- id2 : 25099

@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge hyper potion of violent rage
-	- id : 30245

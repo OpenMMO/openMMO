@@ -1,2 +1,0 @@
-FLAGS : Flag Forest Of No Return Teleport Spell 2
-	- id : 30432

@@ -1,4 +1,0 @@
-RELATION : 75
-			- id1 : 12
-			- id2 : 15
-			- rel : 70

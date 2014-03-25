@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Golem de terre
-	- id : 20127
-	- id2 : 25127

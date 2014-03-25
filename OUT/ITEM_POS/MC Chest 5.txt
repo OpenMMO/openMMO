@@ -1,4 +1,0 @@
-ITEM : MC Chest 5
-X : 1157
-Y : 0
-Numéro de carte : 0

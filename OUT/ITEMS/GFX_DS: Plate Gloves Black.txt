@@ -1,2 +1,0 @@
-GFX ITEM : DS: Plate Gloves Black
-	- id : 610

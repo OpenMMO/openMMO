@@ -1,2 +1,0 @@
-FLAGS : Quest Nimli flag
-	- id : 30180

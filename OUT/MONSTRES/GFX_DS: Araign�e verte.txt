@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Araign�e verte
-	- id : 20101
-	- id2 : 25101

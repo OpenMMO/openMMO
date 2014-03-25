@@ -1,7 +1,0 @@
-TELEPORTATION : 1999
-	- x1 : 788
-	- y1 : 1392
-	- num_carte1 : 0
-	- x2 : 908
-	- y2 : 1419
-	- num_carte2 : 2

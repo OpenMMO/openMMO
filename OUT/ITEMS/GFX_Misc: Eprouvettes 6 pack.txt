@@ -1,2 +1,0 @@
-GFX ITEM : Misc: Eprouvettes 6 pack
-	- id : 67

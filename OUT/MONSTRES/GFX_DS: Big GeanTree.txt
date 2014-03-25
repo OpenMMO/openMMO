@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big GeanTree
-	- id : 20122
-	- id2 : 25122

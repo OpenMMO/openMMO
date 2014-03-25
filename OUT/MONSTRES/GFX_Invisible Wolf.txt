@@ -1,3 +1,0 @@
-GFX MONSTRE : Invisible Wolf
-	- id : 21045
-	- id2 : 25045

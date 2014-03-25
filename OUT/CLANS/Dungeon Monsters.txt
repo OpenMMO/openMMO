@@ -1,2 +1,0 @@
-CLANS : Dungeon Monsters
-	- id : 10

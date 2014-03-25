@@ -1,2 +1,0 @@
-GFX ITEM : Shield: Roman shield
-	- id : 272

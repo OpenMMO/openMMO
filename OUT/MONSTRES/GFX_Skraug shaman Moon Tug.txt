@@ -1,3 +1,0 @@
-GFX MONSTRE : Skraug shaman Moon Tug
-	- id : 20060
-	- id2 : 25060

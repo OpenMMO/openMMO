@@ -1,2 +1,0 @@
-SPELLFX : Fire bolt
-	- id : 30014

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big Gean Dragon Jaune
-	- id : 20132
-	- id2 : 25132

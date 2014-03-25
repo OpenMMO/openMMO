@@ -1,2 +1,0 @@
-FLAGS : Global Flag Addon Random Chest
-	- id : 30513

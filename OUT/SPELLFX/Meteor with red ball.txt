@@ -1,2 +1,0 @@
-SPELLFX : Meteor with red ball
-	- id : 30102

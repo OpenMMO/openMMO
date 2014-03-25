@@ -1,7 +1,0 @@
-TELEPORTATION : 2017
-	- x1 : 2697
-	- y1 : 2229
-	- num_carte1 : 2
-	- x2 : 2422
-	- y2 : 3022
-	- num_carte2 : 2

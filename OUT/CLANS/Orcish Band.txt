@@ -1,2 +1,0 @@
-CLANS : Orcish Band
-	- id : 15

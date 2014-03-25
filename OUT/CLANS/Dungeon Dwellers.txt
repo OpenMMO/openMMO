@@ -1,2 +1,0 @@
-CLANS : Dungeon Dwellers
-	- id : 9

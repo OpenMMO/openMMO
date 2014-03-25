@@ -1,4 +1,0 @@
-ITEM : Road 9
-X : 534
-Y : 0
-Numéro de carte : 0

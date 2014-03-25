@@ -1,4 +1,0 @@
-ITEM : Mad Chest 3
-X : 2798
-Y : 0
-Numéro de carte : 0

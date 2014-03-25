@@ -1,3 +1,0 @@
-GFX MONSTRE : Unicorn
-	- id : 20020
-	- id2 : 25020

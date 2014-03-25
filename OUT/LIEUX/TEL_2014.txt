@@ -1,7 +1,0 @@
-TELEPORTATION : 2014
-	- x1 : 2653
-	- y1 : 2353
-	- num_carte1 : 2
-	- x2 : 2693
-	- y2 : 2161
-	- num_carte2 : 2

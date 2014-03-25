@@ -1,2 +1,0 @@
-FLAGS : Quest Forest Wanderer Gifts
-	- id : 30439

@@ -1,2 +1,0 @@
-GFX ITEM : Potion: Red Flask
-	- id : 258

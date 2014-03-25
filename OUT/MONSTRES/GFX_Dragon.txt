@@ -1,3 +1,0 @@
-GFX MONSTRE : Dragon
-	- id : 20028
-	- id2 : 25028

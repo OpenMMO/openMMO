@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Chaos Demon Killed
-	- id : 30511

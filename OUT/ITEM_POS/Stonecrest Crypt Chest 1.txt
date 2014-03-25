@@ -1,4 +1,0 @@
-ITEM : Stonecrest Crypt Chest 1
-X : 757
-Y : 0
-Numéro de carte : 0

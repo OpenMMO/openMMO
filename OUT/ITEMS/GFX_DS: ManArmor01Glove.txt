@@ -1,2 +1,0 @@
-GFX ITEM : DS: ManArmor01Glove
-	- id : 884

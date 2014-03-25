@@ -1,2 +1,0 @@
-SPELLFX : Entangle with green ball
-	- id : 30068

@@ -1,2 +1,0 @@
-FLAGS : Global flag orc quest
-	- id : 30095

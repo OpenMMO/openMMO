@@ -1,2 +1,0 @@
-SPELLFX : White energy ball
-	- id : 30047

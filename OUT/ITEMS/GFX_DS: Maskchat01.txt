@@ -1,2 +1,0 @@
-GFX ITEM : DS: Maskchat01
-	- id : 685

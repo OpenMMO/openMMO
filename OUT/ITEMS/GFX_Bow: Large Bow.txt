@@ -1,2 +1,0 @@
-GFX ITEM : Bow: Large Bow
-	- id : 421

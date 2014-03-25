@@ -1,2 +1,0 @@
-GFX ITEM : Shield: Skeleton shield
-	- id : 470

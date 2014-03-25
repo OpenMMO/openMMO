@@ -1,2 +1,0 @@
-FLAGS : Flag Times Asked For Bones
-	- id : 30385

@@ -1,2 +1,0 @@
-FLAGS : Quest user is a traitor
-	- id : 30051

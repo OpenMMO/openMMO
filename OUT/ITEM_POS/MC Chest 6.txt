@@ -1,4 +1,0 @@
-ITEM : MC Chest 6
-X : 1063
-Y : 0
-Numéro de carte : 0

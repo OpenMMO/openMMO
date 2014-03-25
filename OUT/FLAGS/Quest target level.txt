@@ -1,2 +1,0 @@
-FLAGS : Quest target level
-	- id : 30220

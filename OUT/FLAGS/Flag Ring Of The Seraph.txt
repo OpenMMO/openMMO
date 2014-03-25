@@ -1,2 +1,0 @@
-FLAGS : Flag Ring Of The Seraph
-	- id : 30290

@@ -1,2 +1,0 @@
-FLAGS : Quest Kobold Hair 25
-	- id : 30009

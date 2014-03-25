@@ -1,2 +1,0 @@
-GFX ITEM : Food: Fat ham
-	- id : 76

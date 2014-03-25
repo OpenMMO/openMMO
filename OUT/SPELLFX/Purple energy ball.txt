@@ -1,2 +1,0 @@
-SPELLFX : Purple energy ball
-	- id : 30049

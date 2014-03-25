@@ -1,2 +1,0 @@
-FLAGS : Flag User Has Entered Colosseum
-	- id : 30452

@@ -1,2 +1,0 @@
-GFX ITEM : Armor: Plate armor
-	- id : 262

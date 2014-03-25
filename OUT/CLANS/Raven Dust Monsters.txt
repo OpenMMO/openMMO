@@ -1,2 +1,0 @@
-CLANS : Raven Dust Monsters
-	- id : 24

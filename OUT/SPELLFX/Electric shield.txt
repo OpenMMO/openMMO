@@ -1,2 +1,0 @@
-SPELLFX : Electric shield
-	- id : 30016

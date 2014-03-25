@@ -1,2 +1,0 @@
-FLAGS : Item Quest Stone Of Life
-	- id : 30031

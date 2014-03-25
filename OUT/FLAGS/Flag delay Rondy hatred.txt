@@ -1,2 +1,0 @@
-FLAGS : Flag delay Rondy hatred
-	- id : 30113

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: petit Pikatchou rose
-	- id : 20125
-	- id2 : 25125

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Ooze Black
-	- id : 20091
-	- id2 : 25091

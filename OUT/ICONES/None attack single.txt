@@ -1,2 +1,0 @@
-ICONES : None attack single
-	- id : 26

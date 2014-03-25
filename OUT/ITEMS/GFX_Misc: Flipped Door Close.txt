@@ -1,2 +1,0 @@
-GFX ITEM : Misc: Flipped Door Close
-	- id : 130

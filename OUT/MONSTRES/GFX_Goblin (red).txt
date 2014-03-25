@@ -1,3 +1,0 @@
-GFX MONSTRE : Goblin (red)
-	- id : 20001
-	- id2 : 25001

@@ -1,4 +1,0 @@
-ITEM : EMPTY_GLASS
-X : 1439
-Y : 0
-Numéro de carte : 0

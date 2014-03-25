@@ -1,2 +1,0 @@
-SPELLFX : Poison cloud with purple ball
-	- id : 30110

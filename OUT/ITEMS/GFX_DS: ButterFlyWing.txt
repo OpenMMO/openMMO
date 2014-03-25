@@ -1,2 +1,0 @@
-GFX ITEM : DS: ButterFlyWing
-	- id : 670

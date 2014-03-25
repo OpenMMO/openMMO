@@ -1,2 +1,0 @@
-SPELLFX : Curse with purple ball
-	- id : 30063

@@ -1,2 +1,0 @@
-CLANS : Madrigan
-	- id : 47

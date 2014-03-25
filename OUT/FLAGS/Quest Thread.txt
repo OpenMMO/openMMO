@@ -1,2 +1,0 @@
-FLAGS : Quest Thread
-	- id : 30090

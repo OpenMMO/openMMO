@@ -1,2 +1,0 @@
-FLAGS : Global Flag Dynamic Portal W GP
-	- id : 30316

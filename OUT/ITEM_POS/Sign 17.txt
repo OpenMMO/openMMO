@@ -1,4 +1,0 @@
-ITEM : Sign 17
-X : 262
-Y : 0
-Numéro de carte : 0

@@ -1,2 +1,0 @@
-FLAGS : Flag Brownbark friend
-	- id : 30166

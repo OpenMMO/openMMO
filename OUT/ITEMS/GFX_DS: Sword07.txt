@@ -1,2 +1,0 @@
-GFX ITEM : DS: Sword07
-	- id : 720

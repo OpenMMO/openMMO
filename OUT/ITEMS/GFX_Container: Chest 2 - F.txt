@@ -1,2 +1,0 @@
-GFX ITEM : Container: Chest 2 - F
-	- id : 20

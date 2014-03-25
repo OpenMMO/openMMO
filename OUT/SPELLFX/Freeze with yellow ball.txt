@@ -1,2 +1,0 @@
-SPELLFX : Freeze with yellow ball
-	- id : 30081

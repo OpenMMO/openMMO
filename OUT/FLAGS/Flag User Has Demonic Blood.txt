@@ -1,2 +1,0 @@
-FLAGS : Flag User Has Demonic Blood
-	- id : 30382

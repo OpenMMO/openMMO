@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Darkness Demon Killed
-	- id : 30512

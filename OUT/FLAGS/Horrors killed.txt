@@ -1,2 +1,0 @@
-FLAGS : Horrors killed
-	- id : 30181

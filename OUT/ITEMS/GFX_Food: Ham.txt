@@ -1,2 +1,0 @@
-GFX ITEM : Food: Ham
-	- id : 73

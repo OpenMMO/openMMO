@@ -1,3 +1,0 @@
-GFX MONSTRE : Wolf
-	- id : 20045
-	- id2 : 25045

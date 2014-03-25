@@ -1,3 +1,0 @@
-GFX MONSTRE : Scorpion
-	- id : 20024
-	- id2 : 25024

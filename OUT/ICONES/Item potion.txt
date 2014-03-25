@@ -1,2 +1,0 @@
-ICONES : Item potion
-	- id : 44

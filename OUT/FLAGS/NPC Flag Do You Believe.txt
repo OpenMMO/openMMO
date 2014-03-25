@@ -1,2 +1,0 @@
-FLAGS : NPC Flag Do You Believe
-	- id : 30411

@@ -1,2 +1,0 @@
-ICONES : Item quiver
-	- id : 46

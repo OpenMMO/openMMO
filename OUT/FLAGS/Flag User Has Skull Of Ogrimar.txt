@@ -1,2 +1,0 @@
-FLAGS : Flag User Has Skull Of Ogrimar
-	- id : 30381

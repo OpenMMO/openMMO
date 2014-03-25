@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Kraignan volant bleu sans animation
-	- id : 20104
-	- id2 : 25104

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big Abail Brun
-	- id : 20123
-	- id2 : 25123

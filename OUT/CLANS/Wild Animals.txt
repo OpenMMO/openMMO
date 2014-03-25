@@ -1,2 +1,0 @@
-CLANS : Wild Animals
-	- id : 13

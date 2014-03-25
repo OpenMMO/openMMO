@@ -1,4 +1,0 @@
-ITEM : Wooden Door
-X : 2798
-Y : 0
-Numéro de carte : 0

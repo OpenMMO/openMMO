@@ -1,2 +1,0 @@
-FLAGS : Flag Gateway Learned
-	- id : 30361

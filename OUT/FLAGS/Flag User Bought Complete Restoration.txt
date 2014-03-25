@@ -1,2 +1,0 @@
-FLAGS : Flag User Bought Complete Restoration
-	- id : 30425

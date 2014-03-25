@@ -1,2 +1,0 @@
-GFX ITEM : Food: Sausage pack
-	- id : 75

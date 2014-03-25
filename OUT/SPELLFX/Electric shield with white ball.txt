@@ -1,2 +1,0 @@
-SPELLFX : Electric shield with white ball
-	- id : 30066

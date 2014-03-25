@@ -1,2 +1,0 @@
-ICONES : Fire
-	- id : 58

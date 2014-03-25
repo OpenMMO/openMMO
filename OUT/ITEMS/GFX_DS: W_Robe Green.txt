@@ -1,2 +1,0 @@
-GFX ITEM : DS: W_Robe Green
-	- id : 587

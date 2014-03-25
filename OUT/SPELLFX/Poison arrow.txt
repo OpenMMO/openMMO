@@ -1,2 +1,0 @@
-SPELLFX : Poison arrow
-	- id : 30024

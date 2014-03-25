@@ -1,2 +1,0 @@
-FLAGS : Flag User Has Blood Of Ogrimar
-	- id : 30372

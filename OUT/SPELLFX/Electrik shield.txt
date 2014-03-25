@@ -1,2 +1,0 @@
-SPELLFX : Electrik shield
-	- id : 30004

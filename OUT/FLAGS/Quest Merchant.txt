@@ -1,2 +1,0 @@
-FLAGS : Quest Merchant
-	- id : 30000

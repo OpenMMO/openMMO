@@ -1,2 +1,0 @@
-GFX ITEM : DS: 3 Ruby Ring
-	- id : 562

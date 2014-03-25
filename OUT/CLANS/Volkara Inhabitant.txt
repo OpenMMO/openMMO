@@ -1,2 +1,0 @@
-CLANS : Volkara Inhabitant
-	- id : 6

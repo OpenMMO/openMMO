@@ -1,2 +1,0 @@
-ICONES : Water attack single
-	- id : 30

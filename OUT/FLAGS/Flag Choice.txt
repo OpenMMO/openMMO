@@ -1,2 +1,0 @@
-FLAGS : Flag Choice
-	- id : 30010

@@ -1,3 +1,0 @@
-GFX MONSTRE : Skraug warrior
-	- id : 20050
-	- id2 : 25050

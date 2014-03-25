@@ -1,2 +1,0 @@
-FLAGS : Flag title Mordrick
-	- id : 30107

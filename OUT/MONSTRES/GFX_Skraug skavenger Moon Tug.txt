@@ -1,3 +1,0 @@
-GFX MONSTRE : Skraug skavenger Moon Tug
-	- id : 20061
-	- id2 : 25061

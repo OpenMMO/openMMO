@@ -1,2 +1,0 @@
-GFX ITEM : Misc: Wooden log
-	- id : 70

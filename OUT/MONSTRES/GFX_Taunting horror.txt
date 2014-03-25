@@ -1,3 +1,0 @@
-GFX MONSTRE : Taunting horror
-	- id : 20038
-	- id2 : 25038

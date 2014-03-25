@@ -1,4 +1,0 @@
-ITEM : FISHING_POLE
-X : 1633
-Y : 0
-Numéro de carte : 0

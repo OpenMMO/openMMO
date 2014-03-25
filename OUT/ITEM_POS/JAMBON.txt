@@ -1,4 +1,0 @@
-ITEM : JAMBON
-X : 1700
-Y : 0
-Numéro de carte : 0

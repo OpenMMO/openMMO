@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Camp Assault
-	- id : 30544

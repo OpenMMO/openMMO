@@ -1,4 +1,0 @@
-ITEM : Fake Wooden Door
-X : 2776
-Y : 0
-Numéro de carte : 0

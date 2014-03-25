@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Ooze DarkGreen
-	- id : 20087
-	- id2 : 25087

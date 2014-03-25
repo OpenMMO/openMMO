@@ -1,2 +1,0 @@
-FLAGS : Damien Has Removed Elvenbane
-	- id : 30469

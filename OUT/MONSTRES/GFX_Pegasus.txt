@@ -1,3 +1,0 @@
-GFX MONSTRE : Pegasus
-	- id : 20023
-	- id2 : 25023

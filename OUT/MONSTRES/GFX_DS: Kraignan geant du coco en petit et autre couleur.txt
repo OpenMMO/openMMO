@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Kraignan geant du coco en petit et autre couleur
-	- id : 20105
-	- id2 : 25105

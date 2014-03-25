@@ -1,3 +1,0 @@
-GFX MONSTRE : Agmorkian
-	- id : 20036
-	- id2 : 25036

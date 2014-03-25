@@ -1,3 +1,0 @@
-GFX MONSTRE : Puppet
-	- id : 10011
-	- id2 : 0

@@ -1,2 +1,0 @@
-SPELLFX : Ice cloud with blue ball
-	- id : 30099

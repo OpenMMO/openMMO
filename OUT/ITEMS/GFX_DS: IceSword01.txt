@@ -1,2 +1,0 @@
-GFX ITEM : DS: IceSword01
-	- id : 876

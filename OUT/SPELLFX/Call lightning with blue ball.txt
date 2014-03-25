@@ -1,2 +1,0 @@
-SPELLFX : Call lightning with blue ball
-	- id : 30086

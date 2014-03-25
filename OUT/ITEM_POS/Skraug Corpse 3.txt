@@ -1,4 +1,0 @@
-ITEM : Skraug Corpse 3
-X : 2114
-Y : 0
-Numéro de carte : 0

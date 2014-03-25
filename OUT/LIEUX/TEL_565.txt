@@ -1,7 +1,0 @@
-TELEPORTATION : 565
-	- x1 : 830
-	- y1 : 1091
-	- num_carte1 : 1
-	- x2 : 1043
-	- y2 : 1092
-	- num_carte2 : 1

@@ -1,4 +1,0 @@
-ITEM : Oracle door g
-X : 2786
-Y : 0
-Numéro de carte : 0

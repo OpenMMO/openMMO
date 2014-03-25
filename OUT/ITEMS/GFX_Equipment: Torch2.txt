@@ -1,2 +1,0 @@
-GFX ITEM : Equipment: Torch2
-	- id : 214

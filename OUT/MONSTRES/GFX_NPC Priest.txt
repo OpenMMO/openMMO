@@ -1,3 +1,0 @@
-GFX MONSTRE : NPC Priest
-	- id : 10009
-	- id2 : 15009

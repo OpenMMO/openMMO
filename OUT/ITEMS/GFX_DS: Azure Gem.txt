@@ -1,2 +1,0 @@
-GFX ITEM : DS: Azure Gem
-	- id : 559

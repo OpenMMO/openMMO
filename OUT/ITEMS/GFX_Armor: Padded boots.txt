@@ -1,2 +1,0 @@
-GFX ITEM : Armor: Padded boots
-	- id : 213

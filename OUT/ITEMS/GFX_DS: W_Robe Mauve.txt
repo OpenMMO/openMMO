@@ -1,2 +1,0 @@
-GFX ITEM : DS: W_Robe Mauve
-	- id : 593

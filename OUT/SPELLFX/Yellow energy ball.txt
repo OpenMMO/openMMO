@@ -1,2 +1,0 @@
-SPELLFX : Yellow energy ball
-	- id : 30045

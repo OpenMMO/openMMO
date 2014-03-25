@@ -1,2 +1,0 @@
-FLAGS : NPC Ironleg delay
-	- id : 30151

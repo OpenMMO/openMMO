@@ -1,2 +1,0 @@
-GFX ITEM : Sign: Flip Potion sign
-	- id : 348

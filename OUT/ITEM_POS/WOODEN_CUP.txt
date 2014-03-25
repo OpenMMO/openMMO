@@ -1,4 +1,0 @@
-ITEM : WOODEN_CUP
-X : 2821
-Y : 0
-Numéro de carte : 0

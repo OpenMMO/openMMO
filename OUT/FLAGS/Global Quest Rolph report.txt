@@ -1,2 +1,0 @@
-FLAGS : Global Quest Rolph report
-	- id : 30042

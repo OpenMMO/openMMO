@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge potion of regeneration
-	- id : 30228

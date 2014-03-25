@@ -1,2 +1,0 @@
-GFX ITEM : Furniture: Wooden round chair
-	- id : 104

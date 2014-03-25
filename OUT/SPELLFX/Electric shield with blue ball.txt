@@ -1,2 +1,0 @@
-SPELLFX : Electric shield with blue ball
-	- id : 30064

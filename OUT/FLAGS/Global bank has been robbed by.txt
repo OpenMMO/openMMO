@@ -1,2 +1,0 @@
-FLAGS : Global bank has been robbed by
-	- id : 30202

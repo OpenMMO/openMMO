@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Gobelin avec masque tout bleu
-	- id : 20102
-	- id2 : 25102

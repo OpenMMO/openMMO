@@ -1,2 +1,0 @@
-SPELLFX : Glacier
-	- id : 30030

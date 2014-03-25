@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big GeanSkelette
-	- id : 20121
-	- id2 : 25121

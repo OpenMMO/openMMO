@@ -1,2 +1,0 @@
-FLAGS : Flag Gaenen Can Be Hit
-	- id : 30417

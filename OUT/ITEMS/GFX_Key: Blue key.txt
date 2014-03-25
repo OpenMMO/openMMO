@@ -1,2 +1,0 @@
-GFX ITEM : Key: Blue key
-	- id : 30

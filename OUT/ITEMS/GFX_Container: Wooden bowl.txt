@@ -1,2 +1,0 @@
-GFX ITEM : Container: Wooden bowl
-	- id : 52

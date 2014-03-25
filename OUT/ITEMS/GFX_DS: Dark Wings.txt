@@ -1,2 +1,0 @@
-GFX ITEM : DS: Dark Wings
-	- id : 578

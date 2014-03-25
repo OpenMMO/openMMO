@@ -1,3 +1,0 @@
-GFX MONSTRE : Beholder
-	- id : 20015
-	- id2 : 25015

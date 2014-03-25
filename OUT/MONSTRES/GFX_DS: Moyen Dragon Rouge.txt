@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Moyen Dragon Rouge
-	- id : 20113
-	- id2 : 25113

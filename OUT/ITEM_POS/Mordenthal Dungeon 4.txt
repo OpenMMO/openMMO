@@ -1,4 +1,0 @@
-ITEM : Mordenthal Dungeon 4
-X : 539
-Y : 0
-Numéro de carte : 0

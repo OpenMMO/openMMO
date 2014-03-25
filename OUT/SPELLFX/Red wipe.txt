@@ -1,2 +1,0 @@
-SPELLFX : Red wipe
-	- id : 30007

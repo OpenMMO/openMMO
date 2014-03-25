@@ -1,3 +1,0 @@
-GFX MONSTRE : Spider
-	- id : 20007
-	- id2 : 25007

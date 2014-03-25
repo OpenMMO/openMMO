@@ -1,2 +1,0 @@
-FLAGS : Flag Kolus
-	- id : 30021

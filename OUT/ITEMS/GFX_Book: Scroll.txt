@@ -1,2 +1,0 @@
-GFX ITEM : Book: Scroll
-	- id : 14

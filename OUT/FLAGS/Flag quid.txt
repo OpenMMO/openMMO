@@ -1,2 +1,0 @@
-FLAGS : Flag quid
-	- id : 30072

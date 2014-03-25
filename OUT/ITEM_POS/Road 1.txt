@@ -1,4 +1,0 @@
-ITEM : Road 1
-X : 1696
-Y : 0
-Numéro de carte : 0

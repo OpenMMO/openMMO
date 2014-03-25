@@ -1,2 +1,0 @@
-SPELLFX : Boulders with green ball
-	- id : 30056

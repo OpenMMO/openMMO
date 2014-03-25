@@ -1,3 +1,0 @@
-GFX MONSTRE : Skraug peon Moon Tug
-	- id : 20059
-	- id2 : 25059

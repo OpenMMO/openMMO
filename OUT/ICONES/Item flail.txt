@@ -1,2 +1,0 @@
-ICONES : Item flail
-	- id : 39

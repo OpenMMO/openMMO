@@ -1,2 +1,0 @@
-GFX ITEM : DS: Sword05
-	- id : 718

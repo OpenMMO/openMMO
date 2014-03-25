@@ -1,4 +1,0 @@
-ITEM : Sign 19
-X : 243
-Y : 0
-Numéro de carte : 0

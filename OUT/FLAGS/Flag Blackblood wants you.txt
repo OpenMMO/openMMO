@@ -1,2 +1,0 @@
-FLAGS : Flag Blackblood wants you
-	- id : 30102

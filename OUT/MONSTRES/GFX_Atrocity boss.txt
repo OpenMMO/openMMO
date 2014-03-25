@@ -1,3 +1,0 @@
-GFX MONSTRE : Atrocity boss
-	- id : 20040
-	- id2 : 25040

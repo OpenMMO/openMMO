@@ -1,2 +1,0 @@
-FLAGS : Flag Makrsh Ptangh Gateway
-	- id : 30422

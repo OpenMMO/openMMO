@@ -1,3 +1,0 @@
-GFX MONSTRE : Skeleton King
-	- id : 20057
-	- id2 : 25057

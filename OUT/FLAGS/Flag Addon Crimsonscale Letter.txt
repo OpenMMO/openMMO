@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Crimsonscale Letter
-	- id : 30551

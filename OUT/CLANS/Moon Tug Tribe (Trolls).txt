@@ -1,2 +1,0 @@
-CLANS : Moon Tug Tribe (Trolls)
-	- id : 28

@@ -1,2 +1,0 @@
-FLAGS : Flag Conversation With Oracle
-	- id : 30395

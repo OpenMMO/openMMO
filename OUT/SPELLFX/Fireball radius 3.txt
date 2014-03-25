@@ -1,2 +1,0 @@
-SPELLFX : Fireball radius 3
-	- id : 30125

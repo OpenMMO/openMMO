@@ -1,8 +1,0 @@
-SPAWN BLOC : Minotaur Warrior
-	- max_dist : 2
-	- min_time : 200
-	- max_time : 350
-	- min_spawn : 5
-	- nb_creatures : 1
-			- id : Minotaur Warrior
-	- nb_pos : 0

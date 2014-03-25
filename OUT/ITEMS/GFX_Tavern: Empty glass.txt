@@ -1,2 +1,0 @@
-GFX ITEM : Tavern: Empty glass
-	- id : 37

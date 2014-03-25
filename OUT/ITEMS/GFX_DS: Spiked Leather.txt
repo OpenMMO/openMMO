@@ -1,2 +1,0 @@
-GFX ITEM : DS: Spiked Leather
-	- id : 577

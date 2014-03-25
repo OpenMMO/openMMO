@@ -1,2 +1,0 @@
-FLAGS : Flag Princess Delilah Gave Feather
-	- id : 30008

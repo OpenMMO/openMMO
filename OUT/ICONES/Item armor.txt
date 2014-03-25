@@ -1,2 +1,0 @@
-ICONES : Item armor
-	- id : 33

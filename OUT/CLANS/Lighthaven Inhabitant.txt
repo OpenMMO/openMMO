@@ -1,2 +1,0 @@
-CLANS : Lighthaven Inhabitant
-	- id : 1

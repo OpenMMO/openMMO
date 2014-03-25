@@ -1,2 +1,0 @@
-CLANS : Stoneheim Undead
-	- id : 34

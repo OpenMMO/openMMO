@@ -1,2 +1,0 @@
-FLAGS : Flag Delvar potion
-	- id : 30041

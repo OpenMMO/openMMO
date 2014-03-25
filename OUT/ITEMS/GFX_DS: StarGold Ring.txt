@@ -1,2 +1,0 @@
-GFX ITEM : DS: StarGold Ring
-	- id : 564

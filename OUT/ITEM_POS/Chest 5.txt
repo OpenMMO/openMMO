@@ -1,4 +1,0 @@
-ITEM : Chest 5
-X : 117
-Y : 0
-Numéro de carte : 0

@@ -1,4 +1,0 @@
-ITEM : DECOR011
-X : 2899
-Y : 0
-Numéro de carte : 0

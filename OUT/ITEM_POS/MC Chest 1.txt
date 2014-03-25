@@ -1,4 +1,0 @@
-ITEM : MC Chest 1
-X : 1323
-Y : 0
-Numéro de carte : 0

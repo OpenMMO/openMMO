@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge potion of partial fire resistance
-	- id : 30237

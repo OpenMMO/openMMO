@@ -1,3 +1,0 @@
-GFX MONSTRE : Draconian (Leather)
-	- id : 20067
-	- id2 : 25067

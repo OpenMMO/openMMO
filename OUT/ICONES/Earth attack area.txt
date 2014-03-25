@@ -1,2 +1,0 @@
-ICONES : Earth attack area
-	- id : 11

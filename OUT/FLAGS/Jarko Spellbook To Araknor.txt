@@ -1,2 +1,0 @@
-FLAGS : Jarko Spellbook To Araknor
-	- id : 30025

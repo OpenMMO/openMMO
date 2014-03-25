@@ -1,2 +1,0 @@
-GFX ITEM : DS: Plate Boots Black
-	- id : 612

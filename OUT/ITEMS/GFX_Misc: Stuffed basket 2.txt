@@ -1,2 +1,0 @@
-GFX ITEM : Misc: Stuffed basket 2
-	- id : 144

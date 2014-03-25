@@ -1,2 +1,0 @@
-ICONES : Fire attack area
-	- id : 15

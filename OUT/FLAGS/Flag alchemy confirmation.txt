@@ -1,2 +1,0 @@
-FLAGS : Flag alchemy confirmation
-	- id : 30221

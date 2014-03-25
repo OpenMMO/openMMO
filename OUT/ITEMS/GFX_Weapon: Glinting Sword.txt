@@ -1,2 +1,0 @@
-GFX ITEM : Weapon: Glinting Sword
-	- id : 202

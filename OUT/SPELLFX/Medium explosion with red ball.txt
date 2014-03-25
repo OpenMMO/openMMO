@@ -1,2 +1,0 @@
-SPELLFX : Medium explosion with red ball
-	- id : 30114

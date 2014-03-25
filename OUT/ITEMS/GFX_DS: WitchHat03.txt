@@ -1,2 +1,0 @@
-GFX ITEM : DS: WitchHat03
-	- id : 660

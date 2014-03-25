@@ -1,2 +1,0 @@
-GFX ITEM : DS: Necro Staff
-	- id : 649

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Orc avec une hache et bouclier
-	- id : 20106
-	- id2 : 25106

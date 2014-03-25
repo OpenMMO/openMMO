@@ -1,2 +1,0 @@
-GFX ITEM : Potion: Yellow potion
-	- id : 98

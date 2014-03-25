@@ -1,2 +1,0 @@
-GFX ITEM : Container: Crates
-	- id : 107

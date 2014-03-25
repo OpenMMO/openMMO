@@ -1,2 +1,0 @@
-FLAGS : NPC name lottery elapse time
-	- id : 30136

@@ -1,2 +1,0 @@
-CLANS : Windhowl Inhabitant
-	- id : 2

@@ -1,2 +1,0 @@
-CLANS : Hawk's Nest Inhabitant
-	- id : 4

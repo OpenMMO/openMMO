@@ -1,2 +1,0 @@
-FLAGS : Flag Counter Neoflare Killed
-	- id : 30347

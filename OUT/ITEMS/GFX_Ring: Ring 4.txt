@@ -1,2 +1,0 @@
-GFX ITEM : Ring: Ring 4
-	- id : 179

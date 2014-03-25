@@ -1,2 +1,0 @@
-GFX ITEM : Robe: Red Robe
-	- id : 423

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Lizard
-	- id : 20095
-	- id2 : 25095

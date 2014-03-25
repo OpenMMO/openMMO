@@ -1,2 +1,0 @@
-FLAGS : Flag Dragon
-	- id : 30024

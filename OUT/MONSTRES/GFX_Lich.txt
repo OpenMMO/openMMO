@@ -1,3 +1,0 @@
-GFX MONSTRE : Lich
-	- id : 20058
-	- id2 : 25058

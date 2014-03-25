@@ -1,2 +1,0 @@
-GFX ITEM : Helmet: Chainmail coif
-	- id : 270

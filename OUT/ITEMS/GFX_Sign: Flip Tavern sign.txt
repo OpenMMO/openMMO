@@ -1,2 +1,0 @@
-GFX ITEM : Sign: Flip Tavern sign
-	- id : 331

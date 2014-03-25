@@ -1,2 +1,0 @@
-FLAGS : Flag audience w king
-	- id : 30197

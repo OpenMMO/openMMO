@@ -1,2 +1,0 @@
-FLAGS : Flag first time trust
-	- id : 30085

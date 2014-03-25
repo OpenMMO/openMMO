@@ -1,2 +1,0 @@
-ICONES : Item cape
-	- id : 53

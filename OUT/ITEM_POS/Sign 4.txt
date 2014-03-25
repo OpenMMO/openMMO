@@ -1,4 +1,0 @@
-ITEM : Sign 4
-X : 1552
-Y : 0
-Numéro de carte : 0

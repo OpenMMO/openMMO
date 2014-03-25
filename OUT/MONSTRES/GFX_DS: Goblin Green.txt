@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Goblin Green
-	- id : 20082
-	- id2 : 25082

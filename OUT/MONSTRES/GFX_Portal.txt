@@ -1,3 +1,0 @@
-GFX MONSTRE : Portal
-	- id : 297
-	- id2 : 0

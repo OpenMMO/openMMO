@@ -1,2 +1,0 @@
-ICONES : Dark defense
-	- id : 7

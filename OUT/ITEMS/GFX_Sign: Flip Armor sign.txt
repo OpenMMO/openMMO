@@ -1,2 +1,0 @@
-GFX ITEM : Sign: Flip Armor sign
-	- id : 374

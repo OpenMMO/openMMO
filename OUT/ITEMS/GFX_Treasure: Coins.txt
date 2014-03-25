@@ -1,2 +1,0 @@
-GFX ITEM : Treasure: Coins
-	- id : 160

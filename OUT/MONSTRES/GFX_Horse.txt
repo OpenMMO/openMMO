@@ -1,3 +1,0 @@
-GFX MONSTRE : Horse
-	- id : 20022
-	- id2 : 25022

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Shadow Boubou
-	- id : 20126
-	- id2 : 25126

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big Skelly
-	- id : 20072
-	- id2 : 25072

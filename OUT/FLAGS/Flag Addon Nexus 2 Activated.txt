@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Nexus 2 Activated
-	- id : 30483

@@ -1,2 +1,0 @@
-GFX ITEM : DS: iceBow01
-	- id : 874

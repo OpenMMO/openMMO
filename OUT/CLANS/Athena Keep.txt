@@ -1,2 +1,0 @@
-CLANS : Athena Keep
-	- id : 46

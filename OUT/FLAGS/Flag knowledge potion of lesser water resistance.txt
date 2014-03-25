@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge potion of lesser water resistance
-	- id : 30232

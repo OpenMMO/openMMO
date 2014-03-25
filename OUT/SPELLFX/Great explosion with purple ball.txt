@@ -1,2 +1,0 @@
-SPELLFX : Great explosion with purple ball
-	- id : 30090

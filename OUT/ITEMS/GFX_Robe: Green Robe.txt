@@ -1,2 +1,0 @@
-GFX ITEM : Robe: Green Robe
-	- id : 424

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big Tarentula brun
-	- id : 20117
-	- id2 : 25117

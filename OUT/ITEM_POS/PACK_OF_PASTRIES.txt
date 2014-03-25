@@ -1,4 +1,0 @@
-ITEM : PACK_OF_PASTRIES
-X : 1684
-Y : 0
-Numéro de carte : 0

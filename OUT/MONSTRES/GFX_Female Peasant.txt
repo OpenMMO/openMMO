@@ -1,3 +1,0 @@
-GFX MONSTRE : Female Peasant
-	- id : 10008
-	- id2 : 15008

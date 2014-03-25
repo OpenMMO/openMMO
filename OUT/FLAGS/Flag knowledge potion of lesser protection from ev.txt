@@ -1,2 +1,0 @@
-FLAGS : Flag knowledge potion of lesser protection from ev
-	- id : 30233

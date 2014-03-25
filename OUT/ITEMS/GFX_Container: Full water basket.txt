@@ -1,2 +1,0 @@
-GFX ITEM : Container: Full water basket
-	- id : 102

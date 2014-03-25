@@ -1,2 +1,0 @@
-GFX ITEM : DS: Remort DarkGold Wings
-	- id : 583

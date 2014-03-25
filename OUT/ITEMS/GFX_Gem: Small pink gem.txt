@@ -1,2 +1,0 @@
-GFX ITEM : Gem: Small pink gem
-	- id : 164

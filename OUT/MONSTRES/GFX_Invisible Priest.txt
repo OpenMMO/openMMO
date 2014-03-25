@@ -1,3 +1,0 @@
-GFX MONSTRE : Invisible Priest
-	- id : 21044
-	- id2 : 15003

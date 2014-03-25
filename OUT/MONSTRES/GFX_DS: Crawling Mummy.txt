@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Crawling Mummy
-	- id : 20069
-	- id2 : 25069

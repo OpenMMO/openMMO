@@ -1,2 +1,0 @@
-FLAGS : Flag Thief
-	- id : 30020

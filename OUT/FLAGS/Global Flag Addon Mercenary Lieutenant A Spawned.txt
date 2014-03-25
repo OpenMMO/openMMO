@@ -1,2 +1,0 @@
-FLAGS : Global Flag Addon Mercenary Lieutenant A Spawned
-	- id : 30535

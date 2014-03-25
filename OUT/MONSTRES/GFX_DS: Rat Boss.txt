@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Rat Boss
-	- id : 20071
-	- id2 : 25071

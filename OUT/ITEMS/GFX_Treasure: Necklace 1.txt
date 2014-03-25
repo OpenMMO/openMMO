@@ -1,2 +1,0 @@
-GFX ITEM : Treasure: Necklace 1
-	- id : 172

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Skraug version Dialsoft 01
-	- id : 20111
-	- id2 : 25111

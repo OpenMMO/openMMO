@@ -1,2 +1,0 @@
-GFX ITEM : Container: Opened chest
-	- id : 42

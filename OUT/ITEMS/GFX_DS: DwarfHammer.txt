@@ -1,2 +1,0 @@
-GFX ITEM : DS: DwarfHammer
-	- id : 662

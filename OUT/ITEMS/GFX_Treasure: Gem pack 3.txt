@@ -1,2 +1,0 @@
-GFX ITEM : Treasure: Gem pack 3
-	- id : 170

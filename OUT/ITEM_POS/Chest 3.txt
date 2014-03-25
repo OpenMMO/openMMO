@@ -1,4 +1,0 @@
-ITEM : Chest 3
-X : 217
-Y : 0
-Numéro de carte : 0

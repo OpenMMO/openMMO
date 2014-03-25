@@ -1,2 +1,0 @@
-SPELLFX : Stone shard
-	- id : 30025

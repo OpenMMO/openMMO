@@ -1,4 +1,0 @@
-ITEM : BANJO
-X : 2849
-Y : 0
-Numéro de carte : 0

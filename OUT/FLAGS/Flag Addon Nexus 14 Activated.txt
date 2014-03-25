@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Nexus 14 Activated
-	- id : 30495

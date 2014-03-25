@@ -1,3 +1,0 @@
-GFX MONSTRE : Wasp
-	- id : 20029
-	- id2 : 25029

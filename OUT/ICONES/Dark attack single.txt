@@ -1,2 +1,0 @@
-ICONES : Dark attack single
-	- id : 6

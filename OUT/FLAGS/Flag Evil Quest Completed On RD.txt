@@ -1,2 +1,0 @@
-FLAGS : Flag Evil Quest Completed On RD
-	- id : 30007

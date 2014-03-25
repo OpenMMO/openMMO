@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big Chien Noir
-	- id : 20120
-	- id2 : 25120

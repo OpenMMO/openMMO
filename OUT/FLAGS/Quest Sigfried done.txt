@@ -1,2 +1,0 @@
-FLAGS : Quest Sigfried done
-	- id : 30048

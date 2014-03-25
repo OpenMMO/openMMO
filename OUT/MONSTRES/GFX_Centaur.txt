@@ -1,3 +1,0 @@
-GFX MONSTRE : Centaur
-	- id : 20021
-	- id2 : 25021

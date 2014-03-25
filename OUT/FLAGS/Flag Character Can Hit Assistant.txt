@@ -1,2 +1,0 @@
-FLAGS : Flag Character Can Hit Assistant
-	- id : 30415

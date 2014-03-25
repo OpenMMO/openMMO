@@ -1,4 +1,0 @@
-ITEM : Theodore Chest 3
-X : 1445
-Y : 0
-Numéro de carte : 0

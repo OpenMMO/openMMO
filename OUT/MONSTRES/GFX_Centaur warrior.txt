@@ -1,3 +1,0 @@
-GFX MONSTRE : Centaur warrior
-	- id : 20051
-	- id2 : 25051

@@ -1,2 +1,0 @@
-SPELLFX : Meteor
-	- id : 30040

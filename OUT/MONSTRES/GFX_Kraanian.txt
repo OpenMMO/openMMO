@@ -1,3 +1,0 @@
-GFX MONSTRE : Kraanian
-	- id : 20025
-	- id2 : 25025

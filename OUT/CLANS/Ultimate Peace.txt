@@ -1,2 +1,0 @@
-CLANS : Ultimate Peace
-	- id : 27

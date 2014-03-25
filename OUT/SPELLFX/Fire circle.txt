@@ -1,2 +1,0 @@
-SPELLFX : Fire circle
-	- id : 30120

@@ -1,2 +1,0 @@
-SPELLFX : Bless
-	- id : 30028

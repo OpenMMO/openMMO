@@ -1,2 +1,0 @@
-FLAGS : Flag paid Kiadus bribe
-	- id : 30171

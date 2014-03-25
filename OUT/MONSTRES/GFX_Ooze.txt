@@ -1,3 +1,0 @@
-GFX MONSTRE : Ooze
-	- id : 20005
-	- id2 : 25005

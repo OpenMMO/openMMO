@@ -1,2 +1,0 @@
-ICONES : Light heal single
-	- id : 24

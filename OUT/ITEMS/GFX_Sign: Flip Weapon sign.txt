@@ -1,2 +1,0 @@
-GFX ITEM : Sign: Flip Weapon sign
-	- id : 391

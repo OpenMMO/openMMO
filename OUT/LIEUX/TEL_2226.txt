@@ -1,7 +1,0 @@
-TELEPORTATION : 2226
-	- x1 : 1635
-	- y1 : 2014
-	- num_carte1 : 1
-	- x2 : 1638
-	- y2 : 2057
-	- num_carte2 : 1

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big Gean Dragon Dore
-	- id : 20131
-	- id2 : 25131

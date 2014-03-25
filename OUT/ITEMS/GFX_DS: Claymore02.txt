@@ -1,2 +1,0 @@
-GFX ITEM : DS: Claymore02
-	- id : 712

@@ -1,4 +1,0 @@
-ITEM : DECOR003
-X : 1689
-Y : 0
-Numéro de carte : 0

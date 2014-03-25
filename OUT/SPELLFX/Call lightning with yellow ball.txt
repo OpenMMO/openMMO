@@ -1,2 +1,0 @@
-SPELLFX : Call lightning with yellow ball
-	- id : 30087

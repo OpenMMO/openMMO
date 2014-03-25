@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Goblin LightBlue
-	- id : 20083
-	- id2 : 25083

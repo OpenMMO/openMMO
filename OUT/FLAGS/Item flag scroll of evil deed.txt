@@ -1,2 +1,0 @@
-FLAGS : Item flag scroll of evil deed
-	- id : 30183

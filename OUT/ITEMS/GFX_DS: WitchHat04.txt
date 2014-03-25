@@ -1,2 +1,0 @@
-GFX ITEM : DS: WitchHat04
-	- id : 877

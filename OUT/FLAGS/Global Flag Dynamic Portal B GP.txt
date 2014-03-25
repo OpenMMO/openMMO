@@ -1,2 +1,0 @@
-FLAGS : Global Flag Dynamic Portal B GP
-	- id : 30295

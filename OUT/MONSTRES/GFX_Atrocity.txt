@@ -1,3 +1,0 @@
-GFX MONSTRE : Atrocity
-	- id : 20026
-	- id2 : 25026

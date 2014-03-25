@@ -1,2 +1,0 @@
-ICONES : Light defense
-	- id : 22

@@ -1,2 +1,0 @@
-ICONES : Light attack single
-	- id : 20

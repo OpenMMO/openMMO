@@ -1,2 +1,0 @@
-GFX ITEM : Helmet: Golden crown
-	- id : 279

@@ -1,2 +1,0 @@
-CLANS : Guild of Druids
-	- id : 12

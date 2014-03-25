@@ -1,2 +1,0 @@
-GFX ITEM : DS: Remort Blue Wings
-	- id : 579

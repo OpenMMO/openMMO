@@ -1,2 +1,0 @@
-FLAGS : Global quest Crowbanner timer
-	- id : 30246

@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Big Chien Brun
-	- id : 20119
-	- id2 : 25119

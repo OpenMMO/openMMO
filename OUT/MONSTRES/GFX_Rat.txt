@@ -1,3 +1,0 @@
-GFX MONSTRE : Rat
-	- id : 20003
-	- id2 : 25003

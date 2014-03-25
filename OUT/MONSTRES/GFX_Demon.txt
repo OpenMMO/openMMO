@@ -1,3 +1,0 @@
-GFX MONSTRE : Demon
-	- id : 20013
-	- id2 : 25013

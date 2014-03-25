@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Nexus Stones Activated
-	- id : 30507

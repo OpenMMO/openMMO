@@ -1,3 +1,0 @@
-GFX MONSTRE : Minotaur
-	- id : 20014
-	- id2 : 25014

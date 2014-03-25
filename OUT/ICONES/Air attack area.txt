@@ -1,2 +1,0 @@
-ICONES : Air attack area
-	- id : 1

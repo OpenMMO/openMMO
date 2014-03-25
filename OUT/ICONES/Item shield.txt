@@ -1,2 +1,0 @@
-ICONES : Item shield
-	- id : 49

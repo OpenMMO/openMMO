@@ -1,2 +1,0 @@
-FLAGS : Menark Wants A Potion
-	- id : 30443

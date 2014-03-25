@@ -1,2 +1,0 @@
-SPELLFX : Curse with blue ball
-	- id : 30058

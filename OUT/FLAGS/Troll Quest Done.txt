@@ -1,2 +1,0 @@
-FLAGS : Troll Quest Done
-	- id : 30039

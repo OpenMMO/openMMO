@@ -1,2 +1,0 @@
-CLANS : Kraanian Colony
-	- id : 18

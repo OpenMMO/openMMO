@@ -1,2 +1,0 @@
-FLAGS : Guardians killed
-	- id : 30137

@@ -1,2 +1,0 @@
-FLAGS : Flag User Bought Physical Offense Upgrade
-	- id : 30426

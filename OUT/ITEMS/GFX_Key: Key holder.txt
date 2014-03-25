@@ -1,2 +1,0 @@
-GFX ITEM : Key: Key holder
-	- id : 33

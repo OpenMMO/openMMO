@@ -1,2 +1,0 @@
-FLAGS : Flag Zhakar has the egg
-	- id : 30123

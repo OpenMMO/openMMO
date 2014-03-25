@@ -1,2 +1,0 @@
-FLAGS : Flag Zhakar Is Busy Making Spellbook
-	- id : 30424

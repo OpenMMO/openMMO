@@ -1,2 +1,0 @@
-SPELLFX : Small explosion with red ball
-	- id : 30117

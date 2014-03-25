@@ -1,2 +1,0 @@
-GFX ITEM : DS: Remort Gold Wings
-	- id : 581

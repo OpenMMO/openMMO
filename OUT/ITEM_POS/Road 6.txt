@@ -1,4 +1,0 @@
-ITEM : Road 6
-X : 2461
-Y : 0
-Numéro de carte : 0

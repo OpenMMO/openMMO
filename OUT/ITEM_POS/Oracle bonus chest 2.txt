@@ -1,4 +1,0 @@
-ITEM : Oracle bonus chest 2
-X : 2668
-Y : 0
-Numéro de carte : 0

@@ -1,2 +1,0 @@
-FLAGS : Flag Nightcreepers Killed
-	- id : 30389

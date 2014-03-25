@@ -1,2 +1,0 @@
-FLAGS : Flag User Has Killed Makrsh Ptangh
-	- id : 30466

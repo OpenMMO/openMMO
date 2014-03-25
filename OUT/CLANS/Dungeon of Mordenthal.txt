@@ -1,2 +1,0 @@
-CLANS : Dungeon of Mordenthal
-	- id : 36

@@ -1,2 +1,0 @@
-GFX ITEM : DS: Bow04
-	- id : 746

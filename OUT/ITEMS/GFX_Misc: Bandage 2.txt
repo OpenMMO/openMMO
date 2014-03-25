@@ -1,2 +1,0 @@
-GFX ITEM : Misc: Bandage 2
-	- id : 51

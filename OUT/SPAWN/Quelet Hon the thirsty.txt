@@ -1,8 +1,0 @@
-SPAWN BLOC : Quelet Hon the thirsty
-	- max_dist : 1
-	- min_time : 800
-	- max_time : 1300
-	- min_spawn : 5
-	- nb_creatures : 1
-			- id : Quelet Hon the thirsty
-	- nb_pos : 0

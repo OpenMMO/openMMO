@@ -1,2 +1,0 @@
-GFX ITEM : Treasure: Gold bar pack
-	- id : 55

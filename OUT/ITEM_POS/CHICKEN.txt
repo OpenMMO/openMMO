@@ -1,4 +1,0 @@
-ITEM : CHICKEN
-X : 1821
-Y : 0
-Numéro de carte : 0

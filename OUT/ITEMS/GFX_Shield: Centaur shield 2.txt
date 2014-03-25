@@ -1,2 +1,0 @@
-GFX ITEM : Shield: Centaur shield 2
-	- id : 461

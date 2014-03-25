@@ -1,2 +1,0 @@
-FLAGS : Flag Darkfang Souvenirs
-	- id : 30441

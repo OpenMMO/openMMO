@@ -1,2 +1,0 @@
-FLAGS : Global Quest Sigfried report
-	- id : 30044

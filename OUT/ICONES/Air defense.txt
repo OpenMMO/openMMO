@@ -1,2 +1,0 @@
-ICONES : Air defense
-	- id : 4

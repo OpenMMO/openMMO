@@ -1,2 +1,0 @@
-FLAGS : Flag ring of trust given
-	- id : 30069

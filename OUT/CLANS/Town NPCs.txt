@@ -1,2 +1,0 @@
-CLANS : Town NPCs
-	- id : 25

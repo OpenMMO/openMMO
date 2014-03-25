@@ -1,2 +1,0 @@
-GFX ITEM : Weapon: Warhammer
-	- id : 5

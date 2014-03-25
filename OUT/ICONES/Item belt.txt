@@ -1,2 +1,0 @@
-ICONES : Item belt
-	- id : 35

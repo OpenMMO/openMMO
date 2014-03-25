@@ -1,2 +1,0 @@
-CLANS : Orc Deserter
-	- id : 22

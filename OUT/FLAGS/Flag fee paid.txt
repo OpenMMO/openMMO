@@ -1,2 +1,0 @@
-FLAGS : Flag fee paid
-	- id : 30074

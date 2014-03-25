@@ -1,4 +1,0 @@
-ITEM : Mordenthal Dungeon 1
-X : 543
-Y : 0
-Numéro de carte : 0

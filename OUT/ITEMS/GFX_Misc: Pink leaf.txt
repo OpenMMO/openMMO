@@ -1,2 +1,0 @@
-GFX ITEM : Misc: Pink leaf
-	- id : 239

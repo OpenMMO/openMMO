@@ -1,2 +1,0 @@
-ICONES : Earth defense
-	- id : 14

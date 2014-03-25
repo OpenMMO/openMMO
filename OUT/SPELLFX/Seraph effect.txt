@@ -1,2 +1,0 @@
-SPELLFX : Seraph effect
-	- id : 30126

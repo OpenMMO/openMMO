@@ -1,3 +1,0 @@
-GFX MONSTRE : Tarantula
-	- id : 20033
-	- id2 : 25033

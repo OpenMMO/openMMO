@@ -1,2 +1,0 @@
-FLAGS : Quest royal key4
-	- id : 30148

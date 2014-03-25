@@ -1,4 +1,0 @@
-ITEM : Mordenthal Dungeon 2
-X : 503
-Y : 0
-Numéro de carte : 0

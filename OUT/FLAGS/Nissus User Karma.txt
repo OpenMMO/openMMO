@@ -1,2 +1,0 @@
-FLAGS : Nissus User Karma
-	- id : 30292

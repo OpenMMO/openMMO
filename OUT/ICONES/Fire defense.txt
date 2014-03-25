@@ -1,2 +1,0 @@
-ICONES : Fire defense
-	- id : 18

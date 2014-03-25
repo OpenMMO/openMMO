@@ -1,4 +1,0 @@
-ITEM : Sign 18
-X : 266
-Y : 0
-Numéro de carte : 0

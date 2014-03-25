@@ -1,4 +1,0 @@
-ITEM : BEVERAGE
-X : 1782
-Y : 0
-Numéro de carte : 0

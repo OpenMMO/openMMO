@@ -1,3 +1,0 @@
-GFX MONSTRE : Brigand
-	- id : 20006
-	- id2 : 25006

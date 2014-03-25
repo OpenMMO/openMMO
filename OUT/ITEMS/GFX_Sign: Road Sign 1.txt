@@ -1,2 +1,0 @@
-GFX ITEM : Sign: Road Sign 1
-	- id : 291

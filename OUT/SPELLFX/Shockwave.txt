@@ -1,2 +1,0 @@
-SPELLFX : Shockwave
-	- id : 30008

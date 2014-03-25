@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Dark Goblin
-	- id : 20068
-	- id2 : 25068

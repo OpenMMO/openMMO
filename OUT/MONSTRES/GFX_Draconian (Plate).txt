@@ -1,3 +1,0 @@
-GFX MONSTRE : Draconian (Plate)
-	- id : 20065
-	- id2 : 25065

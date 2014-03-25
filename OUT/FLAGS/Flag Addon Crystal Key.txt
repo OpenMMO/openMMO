@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Crystal Key
-	- id : 30508

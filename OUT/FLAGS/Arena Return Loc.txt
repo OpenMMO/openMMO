@@ -1,2 +1,0 @@
-FLAGS : Arena Return Loc
-	- id : 30471

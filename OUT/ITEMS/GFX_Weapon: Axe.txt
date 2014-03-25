@@ -1,2 +1,0 @@
-GFX ITEM : Weapon: Axe
-	- id : 7

@@ -1,2 +1,0 @@
-FLAGS : Flag Shadeen player A
-	- id : 30184

@@ -1,2 +1,0 @@
-FLAGS : Global Flag Addon Number Of Urik Thieves Present
-	- id : 30476

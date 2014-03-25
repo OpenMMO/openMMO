@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Whitecat
-	- id : 20094
-	- id2 : 25094

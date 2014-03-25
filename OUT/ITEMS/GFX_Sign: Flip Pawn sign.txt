@@ -1,2 +1,0 @@
-GFX ITEM : Sign: Flip Pawn sign
-	- id : 361

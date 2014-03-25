@@ -1,3 +1,0 @@
-GFX MONSTRE : Kraanian milliped
-	- id : 20035
-	- id2 : 25035

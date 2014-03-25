@@ -1,2 +1,0 @@
-GFX ITEM : DS: Orange Gem
-	- id : 560

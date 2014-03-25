@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Skraug version bouillie de pixel
-	- id : 20110
-	- id2 : 25110

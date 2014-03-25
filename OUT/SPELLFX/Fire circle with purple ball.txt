@@ -1,2 +1,0 @@
-SPELLFX : Fire circle with purple ball
-	- id : 30123

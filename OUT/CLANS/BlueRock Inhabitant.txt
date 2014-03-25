@@ -1,2 +1,0 @@
-CLANS : BlueRock Inhabitant
-	- id : 7

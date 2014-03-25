@@ -1,3 +1,0 @@
-GFX MONSTRE : Invisible Demon
-	- id : 21013
-	- id2 : 25013

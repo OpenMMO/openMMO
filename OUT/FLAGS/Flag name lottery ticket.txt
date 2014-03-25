@@ -1,2 +1,0 @@
-FLAGS : Flag name lottery ticket
-	- id : 30129

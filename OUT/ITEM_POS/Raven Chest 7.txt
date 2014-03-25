@@ -1,4 +1,0 @@
-ITEM : Raven Chest 7
-X : 63
-Y : 0
-Numéro de carte : 0

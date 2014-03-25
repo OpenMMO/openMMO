@@ -1,2 +1,0 @@
-FLAGS : Flag Khimtesar Test Failed
-	- id : 30436

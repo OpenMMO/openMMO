@@ -1,2 +1,0 @@
-GFX ITEM : Armor: Plate with sleeves
-	- id : 264

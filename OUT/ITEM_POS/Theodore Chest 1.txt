@@ -1,4 +1,0 @@
-ITEM : Theodore Chest 1
-X : 1370
-Y : 0
-Numéro de carte : 0

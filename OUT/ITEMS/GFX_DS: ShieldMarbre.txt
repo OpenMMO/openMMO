@@ -1,2 +1,0 @@
-GFX ITEM : DS: ShieldMarbre
-	- id : 895

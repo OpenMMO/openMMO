@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Demon Violet
-	- id : 20073
-	- id2 : 25073

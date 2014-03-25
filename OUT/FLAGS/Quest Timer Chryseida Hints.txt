@@ -1,2 +1,0 @@
-FLAGS : Quest Timer Chryseida Hints
-	- id : 30463

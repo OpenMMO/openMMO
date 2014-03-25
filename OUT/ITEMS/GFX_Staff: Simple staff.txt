@@ -1,2 +1,0 @@
-GFX ITEM : Staff: Simple staff
-	- id : 296

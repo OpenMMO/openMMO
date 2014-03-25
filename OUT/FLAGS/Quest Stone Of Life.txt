@@ -1,2 +1,0 @@
-FLAGS : Quest Stone Of Life
-	- id : 30030

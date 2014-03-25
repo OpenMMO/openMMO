@@ -1,2 +1,0 @@
-ICONES : Dark attack area
-	- id : 5

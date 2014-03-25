@@ -1,3 +1,0 @@
-GFX MONSTRE : Orc
-	- id : 20008
-	- id2 : 25008

@@ -1,2 +1,0 @@
-GFX ITEM : Tavern: Empty mug
-	- id : 34

@@ -1,3 +1,0 @@
-GFX MONSTRE : Pig
-	- id : 20031
-	- id2 : 25031

@@ -1,2 +1,0 @@
-GFX ITEM : DS: AxeDestruction
-	- id : 664

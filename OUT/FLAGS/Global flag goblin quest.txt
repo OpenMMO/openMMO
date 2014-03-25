@@ -1,2 +1,0 @@
-FLAGS : Global flag goblin quest
-	- id : 30098

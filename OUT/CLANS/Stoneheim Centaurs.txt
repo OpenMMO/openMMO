@@ -1,2 +1,0 @@
-CLANS : Stoneheim Centaurs
-	- id : 30

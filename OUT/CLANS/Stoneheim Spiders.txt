@@ -1,2 +1,0 @@
-CLANS : Stoneheim Spiders
-	- id : 31

@@ -1,2 +1,0 @@
-FLAGS : Flag User Has Skull Of Evil
-	- id : 30379

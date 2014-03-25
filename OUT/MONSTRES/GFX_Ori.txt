@@ -1,3 +1,0 @@
-GFX MONSTRE : Ori
-	- id : 20032
-	- id2 : 25032

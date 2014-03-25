@@ -1,3 +1,0 @@
-GFX MONSTRE : DS: Goblin White
-	- id : 20086
-	- id2 : 25086

@@ -1,2 +1,0 @@
-GFX ITEM : DS: Red Belt
-	- id : 556

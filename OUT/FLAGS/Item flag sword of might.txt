@@ -1,2 +1,0 @@
-FLAGS : Item flag sword of might
-	- id : 30217

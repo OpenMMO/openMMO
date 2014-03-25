@@ -1,2 +1,0 @@
-FLAGS : Flag Addon Doppelganger Portal Used To Enter
-	- id : 30527

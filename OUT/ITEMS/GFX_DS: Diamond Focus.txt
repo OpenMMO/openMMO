@@ -1,2 +1,0 @@
-GFX ITEM : DS: Diamond Focus
-	- id : 569

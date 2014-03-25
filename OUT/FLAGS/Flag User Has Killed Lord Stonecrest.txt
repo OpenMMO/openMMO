@@ -1,2 +1,0 @@
-FLAGS : Flag User Has Killed Lord Stonecrest
-	- id : 30396

@@ -1,2 +1,0 @@
-FLAGS : NPC Caballero heal
-	- id : 30196

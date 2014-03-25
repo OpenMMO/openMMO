@@ -1,2 +1,0 @@
-GFX ITEM : Cape: Red Cape
-	- id : 287

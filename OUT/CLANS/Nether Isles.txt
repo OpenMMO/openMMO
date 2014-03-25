@@ -1,2 +1,0 @@
-CLANS : Nether Isles
-	- id : 38

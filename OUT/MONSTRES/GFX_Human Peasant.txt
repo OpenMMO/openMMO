@@ -1,3 +1,0 @@
-GFX MONSTRE : Human Peasant
-	- id : 10005
-	- id2 : 15005

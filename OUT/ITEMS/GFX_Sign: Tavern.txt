@@ -1,2 +1,0 @@
-GFX ITEM : Sign: Tavern
-	- id : 330

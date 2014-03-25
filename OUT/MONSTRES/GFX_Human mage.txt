@@ -1,3 +1,0 @@
-GFX MONSTRE : Human mage
-	- id : 20039
-	- id2 : 25039

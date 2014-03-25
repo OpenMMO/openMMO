@@ -1,4 +1,0 @@
-ITEM : Wasp Zone Chest 1
-X : 2166
-Y : 0
-Numéro de carte : 0

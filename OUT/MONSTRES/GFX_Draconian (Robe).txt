@@ -1,3 +1,0 @@
-GFX MONSTRE : Draconian (Robe)
-	- id : 20066
-	- id2 : 25066

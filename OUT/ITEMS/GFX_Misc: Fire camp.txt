@@ -1,2 +1,0 @@
-GFX ITEM : Misc: Fire camp
-	- id : 190

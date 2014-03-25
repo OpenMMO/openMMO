@@ -1,2 +1,0 @@
-GFX ITEM : Key: Iron key
-	- id : 29

@@ -1,2 +1,0 @@
-GFX ITEM : DS: Sword04
-	- id : 717

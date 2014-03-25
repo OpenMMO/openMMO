@@ -1,2 +1,0 @@
-SPELLFX : Black energy ball
-	- id : 30048

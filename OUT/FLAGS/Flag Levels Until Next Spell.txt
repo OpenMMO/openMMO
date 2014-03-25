@@ -1,2 +1,0 @@
-FLAGS : Flag Levels Until Next Spell
-	- id : 30360

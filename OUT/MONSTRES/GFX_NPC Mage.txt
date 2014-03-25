@@ -1,3 +1,0 @@
-GFX MONSTRE : NPC Mage
-	- id : 10007
-	- id2 : 15007

@@ -1,2 +1,0 @@
-FLAGS : Flag Druids Point Gateway
-	- id : 30364

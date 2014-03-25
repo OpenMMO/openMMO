@@ -1,2 +1,0 @@
-FLAGS : Flag Dark Cleric Instance
-	- id : 30402

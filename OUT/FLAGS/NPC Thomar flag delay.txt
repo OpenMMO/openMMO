@@ -1,2 +1,0 @@
-FLAGS : NPC Thomar flag delay
-	- id : 30199

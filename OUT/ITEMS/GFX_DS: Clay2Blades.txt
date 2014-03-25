@@ -1,2 +1,0 @@
-GFX ITEM : DS: Clay2Blades
-	- id : 665

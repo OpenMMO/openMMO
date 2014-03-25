@@ -1,4 +1,0 @@
-ITEM : Raven Chest 6
-X : 92
-Y : 0
-Numéro de carte : 0

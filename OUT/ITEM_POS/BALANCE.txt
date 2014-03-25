@@ -1,4 +1,0 @@
-ITEM : BALANCE
-X : 1698
-Y : 0
-Numéro de carte : 0

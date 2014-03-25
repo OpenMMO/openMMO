@@ -1,3 +1,0 @@
-GFX MONSTRE : Zombie
-	- id : 20009
-	- id2 : 25009

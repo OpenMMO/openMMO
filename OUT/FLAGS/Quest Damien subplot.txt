@@ -1,2 +1,0 @@
-FLAGS : Quest Damien subplot
-	- id : 30210

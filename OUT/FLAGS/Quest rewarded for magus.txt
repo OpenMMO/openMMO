@@ -1,2 +1,0 @@
-FLAGS : Quest rewarded for magus
-	- id : 30097
