@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 import tools.OSValidator;
 
@@ -31,8 +33,9 @@ public class GDXEditor extends Game{
 	public static ScreenManager sm = null;
 	private static ByteBuffer map_buffer;
 	public static MapFile mapf;
-
-
+		
+	private static List<String> mapsName = Arrays.asList("v2_cavernmap.map", "v2_dungeonmap.map", "v2_leoworld.map", "v2_underworld.map", "v2_worldmap.map");
+	
 		public static void main(String[] args) {
 			//paramétrage de l'appli en fonction de l'os.
 			OSValidator.detect();	
@@ -60,10 +63,11 @@ public class GDXEditor extends Game{
 			//recherche de données
 			Params.STATUS = "Chargement des fichiers de donnée.";
 			FileLister explorer = new FileLister();
-			dpd.addAll(explorer.lister(new File("."+File.separator+"data"+File.separator+"game_files"+File.separator), ".dpd"));
-			did.addAll(explorer.lister(new File("."+File.separator+"data"+File.separator+"game_files"+File.separator), ".did"));
-			map.addAll(explorer.lister(new File("."+File.separator+"data"+File.separator+"game_files"+File.separator), ".map"));
-			dda.addAll(explorer.lister(new File("."+File.separator+"data"+File.separator+"game_files"+File.separator), ".dda"));
+			File game_files = new File("."+File.separator+"data"+File.separator+"game_files"+File.separator);
+			dpd.addAll(explorer.lister(game_files, ".dpd"));
+			did.addAll(explorer.lister(game_files, ".did"));
+			map.addAll(explorer.lister(game_files, ".map"));
+			dda.addAll(explorer.lister(game_files, ".dda"));
 			decrypted.addAll(explorer.lister(new File("."+File.separator+"data"+File.separator), ".decrypt"));
 			
 			if (!new File (Params.SPRITES+"sprites_drawn").exists()) Params.draw_sprites = true;
@@ -73,34 +77,121 @@ public class GDXEditor extends Game{
 				decrypt = true;
 			}
 			
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_cavernmap.map.decrypt.bin").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_dungeonmap.map.decrypt.bin").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_leoworld.map.decrypt.bin").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_underworld.map.decrypt.bin").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_worldmap.map.decrypt.bin").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_cavernmap.map.decrypt").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_dungeonmap.map.decrypt").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_leoworld.map.decrypt").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_underworld.map.decrypt").exists())mapData = true;
-			if (!new File ("."+File.separator+"data"+File.separator+"v2_worldmap.map.decrypt").exists())mapData = true;
+			mapData = checkMapExists();
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_cavernmap.map.decrypt.bin").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_dungeonmap.map.decrypt.bin").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_leoworld.map.decrypt.bin").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_underworld.map.decrypt.bin").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_worldmap.map.decrypt.bin").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_cavernmap.map.decrypt").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_dungeonmap.map.decrypt").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_leoworld.map.decrypt").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_underworld.map.decrypt").exists())mapData = true;
+//			if (!new File ("."+File.separator+"data"+File.separator+"v2_worldmap.map.decrypt").exists())mapData = true;
 			
-			int nb_tile_dir = -1;
-			int nb_sprite_dir = -2;
-			int nb_tile_atlas = -3;
-			int nb_sprite_atlas = -4;
+			repack_tuiles = checkRepack("tuiles");
+			repack_sprites = checkRepack("sprites");
 			
+//			int nb_tile_dir = -1;
+//			int nb_sprite_dir = -2;
+//			int nb_tile_atlas = -3;
+//			int nb_sprite_atlas = -4;
+//			
+//			
+//			File dir = new File("data"+File.separator+"sprites"+File.separator+"tuiles");
+//			if(dir.exists())nb_tile_dir = explorer.listerDir(dir).size();
+//			dir = new File("data"+File.separator+"sprites"+File.separator+"sprites");
+//			if(dir.exists())nb_sprite_dir = explorer.listerDir(dir).size();
+//			dir = new File("."+File.separator+"data"+File.separator+"atlas"+File.separator+"tuiles"+File.separator);
+//			if(dir.exists())nb_tile_atlas = explorer.lister(dir,".atlas").size();
+//			dir = new File("."+File.separator+"data"+File.separator+"atlas"+File.separator+"sprites"+File.separator);
+//			if(dir.exists())nb_sprite_atlas = explorer.lister(dir,".atlas").size();
+//			//System.err.println(nb_tile_atlas+"/"+nb_tile_dir+" "+nb_sprite_atlas+"/"+nb_sprite_dir);
+//			if (nb_tile_dir != nb_tile_atlas) repack_tuiles = true; 
+//			if (nb_sprite_dir != nb_sprite_atlas) repack_sprites = true;			
+		}
+		
+		/**
+		 * Vérifie que les maps ont déjà été écrites en clair.
+		 * @param fileName
+		 * @return true si toutes les cartes existent, false si au moins une n'existe pas.
+		 */
+		private static Boolean checkMapExists() {
+			String baseFileName = "."+File.separator+"data"+File.separator;
+			String decrypt = ".decrypt";
+			String decryptBin = ".decrypt.bin";
+			Boolean mapNotFound = false;
+			Iterator<String> mapsNameIt = mapsName.iterator();
 			
-			File dir = new File("data"+File.separator+"sprites"+File.separator+"tuiles");
-			if(dir.exists())nb_tile_dir = explorer.listerDir(dir).size();
-			dir = new File("data"+File.separator+"sprites"+File.separator+"sprites");
-			if(dir.exists())nb_sprite_dir = explorer.listerDir(dir).size();
-			dir = new File("."+File.separator+"data"+File.separator+"atlas"+File.separator+"tuiles"+File.separator);
-			if(dir.exists())nb_tile_atlas = explorer.lister(dir,".atlas").size();
-			dir = new File("."+File.separator+"data"+File.separator+"atlas"+File.separator+"sprites"+File.separator);
-			if(dir.exists())nb_sprite_atlas = explorer.lister(dir,".atlas").size();
-			//System.err.println(nb_tile_atlas+"/"+nb_tile_dir+" "+nb_sprite_atlas+"/"+nb_sprite_dir);
-			if (nb_tile_dir != nb_tile_atlas) repack_tuiles = true; 
-			if (nb_sprite_dir != nb_sprite_atlas) repack_sprites = true;			
+			while (mapsNameIt.hasNext() && !mapNotFound) {
+				String mapName = mapsNameIt.next();
+				//Vérification de l'existance de la version .decrypt et .decrypt.bin
+				mapNotFound = !checkFileExists(baseFileName + mapName + decrypt) ||
+						!checkFileExists(baseFileName + mapName + decryptBin);
+			}
+			return mapNotFound;
+		}
+		
+		/**
+		 * Il faut repack les elements choisis si le nombre dans l'atlas et le repertoire ne sont pas identiques ou
+		 * si un répertoire est manquant.
+		 * @param explorer
+		 * @param repackElementsName
+		 * @return
+		 */
+		private static Boolean checkRepack(String repackElementsName)
+		{
+			try {
+				int nb_dir = getNbElementsDir(repackElementsName);
+				int nb_atlas = getNbElementsAtlas(repackElementsName);
+				
+				return nb_dir != nb_atlas; 
+			} catch (FileNotFoundException e) {
+				//Le repertoire n'existant pas, il faut repack
+				return true;
+			}
+		}
+		
+		/**
+		 * 
+		 * @param elementsName
+		 * @return le nombre d'éléments du type voulu dans le répertoire de sprite
+		 * @throws FileNotFoundException si le répertoire n'existe pas
+		 */
+		private static int getNbElementsDir(String elementsName) throws FileNotFoundException
+		{
+			File dir = new File("data"+File.separator+"sprites"+File.separator+elementsName);
+			
+			if(dir.exists()) {
+				return (new FileLister()).listerDir(dir).size();
+			}
+			else {
+				throw new FileNotFoundException();
+			}
+		}
+		
+		/**
+		 * 
+		 * @param elementsName
+		 * @return le nombre d'éléments du type voulu dans le répertoire d'atlas
+		 * @throws FileNotFoundException
+		 */
+		private static int getNbElementsAtlas(String elementsName) throws FileNotFoundException
+		{
+			File atlas = new File("."+File.separator+"data"+File.separator+"atlas"+File.separator
+					+elementsName+File.separator);
+			
+			if(atlas.exists()) {
+				return (new FileLister()).lister(atlas, ".atlas").size();
+			}
+			else {
+				throw new FileNotFoundException();
+			}
+		}
+		
+		private static Boolean checkFileExists(String fileName) {
+			File file = new File(fileName);
+			return file.exists();
 		}
 
 		private static void decrypt(){
