@@ -5,9 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
@@ -24,6 +22,7 @@ import javax.imageio.ImageWriter;
 import javax.imageio.stream.FileImageOutputStream;
 
 import t4cPlugin.DPDPalette.Pixel;
+import tools.DataInputManager;
 
 public class DDA {
 
@@ -62,7 +61,7 @@ public class DDA {
 		}
 		buf = ByteBuffer.allocate((int)f.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(f));
+			DataInputManager in = new DataInputManager (f);
 			while (buf.position() < buf.capacity()){
 				buf.put(in.readByte());
 			}

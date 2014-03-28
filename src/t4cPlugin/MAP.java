@@ -3,10 +3,8 @@ package t4cPlugin;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -19,6 +17,8 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.FileImageOutputStream;
+
+import tools.DataInputManager;
 
 
 public class MAP {
@@ -44,7 +44,7 @@ public class MAP {
 		tmp_unpack = ByteBuffer.allocate(128 * 128 * Short.SIZE);
 		raw_data = ByteBuffer.allocate((int)f.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(f));
+			DataInputManager in = new DataInputManager (f);
 			while (raw_data.position() < (int)f.length()){
 				raw_data.put(in.readByte());
 			}

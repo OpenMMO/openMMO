@@ -1,9 +1,7 @@
 package t4cPlugin;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -11,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
+
+import tools.DataInputManager;
 
 public class DID {
 
@@ -77,7 +77,7 @@ public class DID {
 		byte b1,b2,b3,b4;
 		header = ByteBuffer.allocate(41);
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(f));
+			DataInputManager in = new DataInputManager (f);
 			while (header.position()<header.capacity()){
 				header.put(in.readByte());
 			}

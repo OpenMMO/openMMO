@@ -2,9 +2,7 @@ package t4cPlugin;
 
 import java.awt.Point;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -16,6 +14,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import tools.DataInputManager;
 import tools.OSValidator;
 
 import com.badlogic.gdx.Game;
@@ -395,7 +394,7 @@ public class GDXEditor extends Game{
 			//System.out.println("	- Chargement de la carte : "+map.getName());
 			map_buffer = ByteBuffer.allocate((int)map.length());
 			try {
-				DataInputStream in = new DataInputStream (new FileInputStream(map));
+				DataInputManager in = new DataInputManager (map);
 				while (map_buffer.position()<map_buffer.capacity()){
 					map_buffer.put(in.readByte());
 				}

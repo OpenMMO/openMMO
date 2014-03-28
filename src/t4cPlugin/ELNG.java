@@ -1,14 +1,14 @@
 package t4cPlugin;
 
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.Iterator;
+
+import tools.DataInputManager;
 
 
 /**
@@ -23,7 +23,7 @@ public class ELNG {
 		//System.out.println("	- Décryptage du fichier ELNG : "+f.getName());
 		CharBuffer buf = CharBuffer.allocate((int)f.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(f));
+			DataInputManager in = new DataInputManager (f);
 			for(int index = 0 ; index<f.length(); index++){
 				int character = (in.read() ^ ElngCryptKey.key[index%7823]);
 				buf.put((char)character);

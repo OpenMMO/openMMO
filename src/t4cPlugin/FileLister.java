@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class FileLister {
-	
+	//TODO classe utilitaire statique
 	private static ArrayList<File> result = new ArrayList<File>();
 	
 	public FileLister(){}

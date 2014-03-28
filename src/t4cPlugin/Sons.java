@@ -1,14 +1,14 @@
 package t4cPlugin;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+
 import tools.ByteArrayToNumber;
+import tools.DataInputManager;
 
 public class Sons {
 	
@@ -27,7 +27,7 @@ public class Sons {
 		System.out.println("	- Lecture de l'index des sons.");
 		buf_snmci = ByteBuffer.allocate((int)snmci_.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(snmci_));
+			DataInputManager in = new DataInputManager(snmci_);
 			for(long index = 0 ; index<snmci_.length(); index++){
 				buf_snmci.put(in.readByte());
 			}
@@ -95,7 +95,7 @@ public class Sons {
 		System.out.println("	- Lecture du ficher des MP3.");
 		buf_snmcd = ByteBuffer.allocate((int)snmcd_.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(snmcd_));
+			DataInputManager in = new DataInputManager (snmcd_);
 			for(long index = 0 ; index<snmcd_.length(); index++){
 				buf_snmcd.put(in.readByte());
 			}
@@ -143,7 +143,7 @@ public class Sons {
 		System.out.println("	- Lecture du fichier des WAVE.");
 		buf_snmcf = ByteBuffer.allocate((int)snmcf_.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(snmcf_));
+			DataInputManager in = new DataInputManager (snmcf_);
 			for(long index = 0 ; index<snmcf_.length(); index++){
 				buf_snmcf.put(in.readByte());
 			}
@@ -212,7 +212,7 @@ public class Sons {
 		long nbsound = 0;
 		ByteBuffer buf_snmci = ByteBuffer.allocate((int)snmci_.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(snmci_));
+			DataInputManager in = new DataInputManager (snmci_);
 			for(long index = 0 ; index<snmci_.length(); index++){
 				buf_snmci.put(in.readByte());
 			}
@@ -227,7 +227,7 @@ public class Sons {
 		System.out.println("	- Lecture du ficher des MP3.");
 		ByteBuffer buf_snmcf = ByteBuffer.allocate((int)snmcf_.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(snmcf_));
+			DataInputManager in = new DataInputManager (snmcf_);
 			for(long index = 0 ; index<snmcf_.length(); index++){
 				buf_snmcf.put(in.readByte());
 			}
@@ -243,7 +243,7 @@ public class Sons {
 		System.out.println("	- Lecture du fichier des WAVE.");
 		ByteBuffer buf_snmcd = ByteBuffer.allocate((int)snmcd_.length());
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(snmcd_));
+			DataInputManager in = new DataInputManager (snmcd_);
 			for(long index = 0 ; index<snmcd_.length(); index++){
 				buf_snmcd.put(in.readByte());
 			}

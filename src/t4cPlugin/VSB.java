@@ -1,10 +1,10 @@
 package t4cPlugin;
 
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+
+import tools.DataInputManager;
 
 
 /**
@@ -102,7 +102,7 @@ public class VSB {
 			e.printStackTrace();
 		}
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(f));
+			DataInputManager in = new DataInputManager (f);
 			while (buf.position() < (int)f.length()){
 				buf.put(in.readByte());
 			}

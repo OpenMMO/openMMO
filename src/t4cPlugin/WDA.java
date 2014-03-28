@@ -5,9 +5,7 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.IndexColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -21,6 +19,7 @@ import javax.imageio.ImageIO;
 import t4cPlugin.SPELL.spell_effect;
 import t4cPlugin.SPELL.spell_effect.param_effet;
 import tools.BitBuffer;
+import tools.DataInputManager;
 import tools.Fast_Forward;
 
 
@@ -440,7 +439,7 @@ public class WDA {
 		int wda_data_size = (int) wda.length();
 		buf = ByteBuffer.allocate(wda_data_size);
 		try {
-			DataInputStream in = new DataInputStream (new FileInputStream(wda));
+			DataInputManager in = new DataInputManager (wda);
 			while (buf.position() < (int)wda.length()){
 				buf.put(in.readByte());
 			}
