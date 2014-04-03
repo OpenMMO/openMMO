@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class MapPixel implements Serializable{
 
 	/**
-	 * 
+	 * C'est un pixel de la carte. il contient toutes les infos sur cette zone.
 	 */
 	private static final long serialVersionUID = 6974577196048084070L;
 	public boolean tuile;

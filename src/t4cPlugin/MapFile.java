@@ -13,7 +13,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class MapFile implements Serializable{
 	/**
-	 * 
+	 * C'est une carte de 3072 x 3072 pixels. Elle contient de quoi retrouver
+	 * les informations par coordonnées ou par ID.
 	 */
 	private static final long serialVersionUID = -6379650965770348303L;
 	private File nom;
@@ -68,6 +69,12 @@ public class MapFile implements Serializable{
 		return nom.getName();
 	}
 	
+	/**
+	 * Si notre pixel est une tuile, on lui appliue l'effet de zone.
+	 * On récupère le modulo de cette tuile puis on l'applique à ses coordonnées.
+	 * On modifie le nom de la tuile du pixel en conséuquence.
+	 * @param coord
+	 */
 	public void setZone(Point coord){
 		if (pixels.containsKey(coord)){
 			MapPixel pixel = pixels.get(coord);

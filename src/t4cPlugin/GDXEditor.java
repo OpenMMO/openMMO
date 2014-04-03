@@ -193,6 +193,14 @@ public class GDXEditor extends Game{
 			return file.exists();
 		}
 
+		/**
+		 * Décrypte les fichiers T4C. D'abord on extrait les palettes des fichiers .dpd
+		 * ensuite on extrait les informations sur les ressources graphiques contenues
+		 * dans les fichiers .did. Grâce à ces informations, on extrait d'autres informations
+		 * ainsi que les ressources graphiques des fichiers .dda. Enfin on écrit un fichier
+		 * Params.SPRITES/sprites_drawn pour confirmer que les ressources graphiques ont été
+		 * extraites.
+		 */
 		private static void decrypt(){
 			Params.STATUS = "Décryptage des palettes.";
 			//DPD
@@ -225,6 +233,10 @@ public class GDXEditor extends Game{
 			}
 			Params.draw_sprites = false;
 
+			/*
+			 * Ici on pourra ajouter un moyen de contrôle pour être certains
+			 * que les ressources graphiques ont été correctement extraites.
+			 */
 			File fi = new File (Params.SPRITES+"sprites_drawn");
 			if (!fi.exists()){
 				try {
@@ -246,6 +258,17 @@ public class GDXEditor extends Game{
 			AssetsLoader.pack_sprites();
 		}
 		
+		/**
+		 * On utilise les données extraites pour écrire les informations
+		 * en clair. Ça permettra de les utiliser pour écrire des cartes
+		 * plus utilisables.
+		 * 
+		 * On écrit un fichier texte Params.SPRITES/sprite_data contenant
+		 * ligne par ligne toutes les informations concernant les sprites
+		 * dont on dispose. On sépare les tuiles (cases de sol de 32 x 16)
+		 * des sprites (éléments de décors de tailles diverses, personnages,
+		 * effets graphiques).
+		 */
 		private static void format(){
 			Params.STATUS = "Formattage des données.";
 			OutputStreamWriter dat_file = null;
@@ -291,6 +314,10 @@ public class GDXEditor extends Game{
 			}
 		}
 		
+		/**
+		 * Décrypte les cartes puis les réécrit en clair grâce au
+		 * fichier sprite_data.
+		 */
 		private static void writeMapData(){
 			Params.STATUS = "Écriture des cartes en clair.";
 			MapFile m = null;
@@ -372,6 +399,11 @@ public class GDXEditor extends Game{
 			}
 		}
 		
+		/**
+		 * Permet de connaître l'ID d'un point sur la carte chargée en lecture.
+		 * @param coord : Coordonnées du point sur la carte dont on veut récupérer l'ID
+		 * @return l'ID recherché.
+		 */
 		private static int getID(Point coord){
 			byte b1=0,b2=0;
 			int result = 0;
@@ -389,9 +421,12 @@ public class GDXEditor extends Game{
 			return result;
 		}
 		
+		/**
+		 * Charge une carte en vue de la décrypter.
+		 * @param map : le fichier contenant la carte à décrypter.
+		 */
 		private static void map_load(File map){
 			map_loaded = false;
-			//System.out.println("	- Chargement de la carte : "+map.getName());
 			map_buffer = ByteBuffer.allocate((int)map.length());
 			try {
 				DataInputManager in = new DataInputManager (map);
@@ -408,6 +443,9 @@ public class GDXEditor extends Game{
 			map_loaded = true;
 		}
 		
+		/**
+		 * Réduit la taille du tampon utilisé pour charger les cartes à 1 octet.
+		 */
 		private static void map_unload(){
 			map_loaded = false;
 			map_buffer = ByteBuffer.allocate(1);
