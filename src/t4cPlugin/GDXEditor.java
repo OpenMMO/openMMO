@@ -35,6 +35,15 @@ public class GDXEditor extends Game{
 		
 	private static List<String> mapsName = Arrays.asList("v2_cavernmap.map", "v2_dungeonmap.map", "v2_leoworld.map", "v2_underworld.map", "v2_worldmap.map");
 	
+		/**
+		 * Pour améliorer le décryptage, je pense revoir les fonction 'à l'envers'
+		 * Actuellement, on décrypte tout, puis on regroupe tout, puis on réécrit tout.
+		 * Maintenant je sais ce qu'on a à écrire, donc je pense mettre en place une
+		 * fonction qui écrive les atlas directement depuis les fichiers dda et did,
+		 * puis une fonction qui écrive les cartes en clair directement depuis les cartes
+		 * cryptées.
+		 * @param args
+		 */
 		public static void main(String[] args) {
 			//paramétrage de l'appli en fonction de l'os.
 			OSValidator.detect();	

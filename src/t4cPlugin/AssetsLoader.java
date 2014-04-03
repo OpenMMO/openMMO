@@ -10,6 +10,12 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 
+/**
+ * C'est la classe qui gère la création et le chargement des ressources externes (Atlas pour le moment)
+ * Les musiques seront chargées ici aussi.
+ * @author synoga
+ *
+ */
 public class AssetsLoader {
 	private static ArrayList<File> sprites = new ArrayList<File>();
 	public static ArrayList<File> spritlas = new ArrayList<File>();
@@ -24,8 +30,12 @@ public class AssetsLoader {
 	
 	private static int loaded = 0;
 
-
-
+	/**
+	 * On empacte les sprites dans des atlas.
+	 * Pour retrouver plus tard les ressources graphiques,
+	 * il faut chercher un atlas correspondant au nom de dossier,
+	 * puis une région d'atlas correspondant au nom du sprite.
+	 */
 	public static void pack_sprites(){
 		Settings settings = new Settings();
 		settings.pot = false;
@@ -71,6 +81,12 @@ public class AssetsLoader {
 		}
 	}
 	
+	/**
+	 * On empacte les tuiles dans des atlas.
+	 * Pour retrouver plus tard les ressources graphiques,
+	 * il faut chercher un atlas correspondant au nom de dossier,
+	 * puis une région d'atlas correspondant au nom de la tuile.
+	 */
 	public static void pack_tuiles(){
 		Settings settings = new Settings();
 		settings.pot = false;
@@ -117,6 +133,9 @@ public class AssetsLoader {
 		}
 	}
 	
+	/**
+	 * On fait une liste de nos atlas de sprites, et on les charge tous.
+	 */
 	public static void loadSprites(){
 		System.out.println("LoadSprites");
 		FileLister explorer = new FileLister();
@@ -148,6 +167,11 @@ public class AssetsLoader {
 
 	}
 	
+	/**
+	 * On cherche un atlas de sprites en particulier, puis on le charge
+	 * @param name : nom de l'atlas recherché.
+	 * @return : l'atlas chargé.
+	 */
 	public static TextureAtlas load(final String name){
 		System.out.println("Loading Sprite Atlas : " +name);
 		Gdx.app.postRunnable(new Runnable(){
@@ -169,6 +193,9 @@ public class AssetsLoader {
 		return sprite_atlases.get(name);
 	}
 	
+	/**
+	 * On fait une liste de nos atlas de tuiles, puis on les charge.
+	 */
 	public static void loadSols() {
 		int loaded = 1;
 		System.out.println("LoadSols");
@@ -200,6 +227,10 @@ public class AssetsLoader {
 		loadsols = true;
 	}
 	
+	/**
+	 * Dans libGDX on doit se débarasser manuellement d'un certain nombre d'objets.
+	 * une liste se trouve sur le wiki de libGDX.
+	 */
 	public static void dispose(){
 		Iterator<String> iter_tuiles = tile_atlases.keySet().iterator();
 		while(iter_tuiles.hasNext()){
