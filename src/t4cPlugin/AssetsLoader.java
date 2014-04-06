@@ -14,12 +14,26 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 
+/**
+ * C'est la classe qui gère la création et le chargement des ressources externes (Atlas pour le moment)
+ * Les musiques seront chargées ici aussi.
+ * @author synoga
+ *
+ */
 public enum AssetsLoader {
 	
 	INSTANCE;
 	
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	
+	private static int loaded = 0;
+
+	/**
+	 * On empacte les sprites dans des atlas.
+	 * Pour retrouver plus tard les ressources graphiques,
+	 * il faut chercher un atlas correspondant au nom de dossier,
+	 * puis une région d'atlas correspondant au nom du sprite.
+	 */
 	public static void pack_sprites(){
 		Settings settings = new Settings();
 		settings.pot = false;
@@ -55,6 +69,12 @@ public enum AssetsLoader {
 		ThreadsUtil.executeInThread(r);
 	}
 	
+	/**
+	 * On empacte les tuiles dans des atlas.
+	 * Pour retrouver plus tard les ressources graphiques,
+	 * il faut chercher un atlas correspondant au nom de dossier,
+	 * puis une région d'atlas correspondant au nom de la tuile.
+	 */
 	public static void pack_tuiles(){
 		Settings settings = new Settings();
 		settings.pot = false;
@@ -91,6 +111,9 @@ public enum AssetsLoader {
 		ThreadsUtil.executeInThread(r);
 	}
 	
+	/**
+	 * On fait une liste de nos atlas de sprites, et on les charge tous.
+	 */
 	public static void loadSprites(){
 		System.out.println("LoadSprites");
 		FileLister explorer = new FileLister();
@@ -105,6 +128,11 @@ public enum AssetsLoader {
 		}
 	}
 	
+	/**
+	 * On cherche un atlas de sprites en particulier, puis on le charge
+	 * @param name : nom de l'atlas recherché.
+	 * @return : l'atlas chargé.
+	 */
 	public static TextureAtlas load(final String name){
 		System.out.println("Loading Sprite Atlas : " +name);
 		loadingStatus.addOneSpriteAtlas();
@@ -114,6 +142,9 @@ public enum AssetsLoader {
 		return ta;
 	}
 	
+	/**
+	 * On fait une liste de nos atlas de tuiles, puis on les charge.
+	 */
 	public static void loadSols() {
 		System.out.println("LoadSols");
 		
@@ -136,6 +167,10 @@ public enum AssetsLoader {
 //		System.out.println("LoadSols OK");
 	}
 	
+	/**
+	 * Dans libGDX on doit se débarasser manuellement d'un certain nombre d'objets.
+	 * une liste se trouve sur le wiki de libGDX.
+	 */
 	public static void dispose(){
 		//TODO ensure all elements are loaded and no thread will update a map during the iteration
 		Iterator<TextureAtlas> iter_tuiles = loadingStatus.getTexturesAtlasTiles().iterator();
