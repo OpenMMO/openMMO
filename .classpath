@@ -13,5 +13,7 @@
 	<classpathentry kind="lib" path="lib/gdx/gdx-backend-lwjgl.jar" sourcepath="lib/gdx/sources/gdx-backend-lwjgl-sources.jar"/>
 	<classpathentry kind="lib" path="lib/gdx/gdx-backend-lwjgl-natives.jar"/>
 	<classpathentry kind="lib" path="lib/gdx/extensions/gdx-tools/gdx-tools.jar" sourcepath="lib/gdx/extensions/gdx-tools/sources/gdx-tools-sources.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-api-2.0-rc1.jar" sourcepath="lib/log4j-api-2.0-rc1.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-core-2.0-rc1.jar" sourcepath="lib/log4j-core-2.0-rc1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

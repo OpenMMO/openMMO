@@ -11,10 +11,15 @@ import java.util.zip.Inflater;
 
 import javax.imageio.ImageIO;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import tools.DataInputManager;
 
 public class DPD {
 
+	private static Logger logger = LogManager.getLogger(DPD.class.getSimpleName());
+	
 /**
   
   PStructureDpd = ^StructureDpd;
@@ -50,7 +55,7 @@ public class DPD {
 	private byte azt;
 	
 	public void decrypt(File f){
-		System.out.println("Lecture du fichier "+f.getName());
+		logger.info("Lecture du fichier "+f.getName());
 		byte b1,b2,b3,b4;
 		header = ByteBuffer.allocate(41);
 		try {
@@ -62,33 +67,33 @@ public class DPD {
 			for (int i=0 ; i<16 ; i++){
 				header_hashMd5[i] = header.get();
 			}
-			//System.out.println("	- HashMD5 : "+tools.ByteArrayToHexString.print(header_hashMd5));
+			//logger.info("	- HashMD5 : "+tools.ByteArrayToHexString.print(header_hashMd5));
 			b1 = header.get();
 			b2 = header.get();
 			b3 = header.get();
 			b4 = header.get();
 			header_taille_unZip = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("	- header_taille_unZip : "+header_taille_unZip);
+			//logger.info("	- header_taille_unZip : "+header_taille_unZip);
 			b1 = header.get();
 			b2 = header.get();
 			b3 = header.get();
 			b4 = header.get();
 			header_taille_zip = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("	- header_taille_zip : "+header_taille_zip);
+			//logger.info("	- header_taille_zip : "+header_taille_zip);
 			for (int i=0 ; i<17 ; i++){
 				header_hashMd52[i] = header.get();
 			}
-			//System.out.println("	- HashMD52 : "+tools.ByteArrayToHexString.print(header_hashMd52));
+			//logger.info("	- HashMD52 : "+tools.ByteArrayToHexString.print(header_hashMd52));
 			ByteBuffer buf_hash = ByteBuffer.allocate(33);
 			buf_hash.put(header_hashMd5);
 			buf_hash.put(header_hashMd52);
 			buf_hash.rewind();
 			buf_hash.get(header_hash);
 			azt = header_hashMd52[16];
-			//System.out.println(new String(header_hash));
-			//System.out.println(tools.ByteArrayToHexString.print(header_hash));
-			//System.out.println(""+azt);
-			//System.out.println(tools.ByteArrayToHexString.print(new byte[]{azt}));
+			//logger.info(new String(header_hash));
+			//logger.info(tools.ByteArrayToHexString.print(header_hash));
+			//logger.info(""+azt);
+			//logger.info(tools.ByteArrayToHexString.print(new byte[]{azt}));
 
 
 			buf = ByteBuffer.allocate(header_taille_zip);
@@ -113,7 +118,7 @@ public class DPD {
 			e.printStackTrace();
 		}
 	     decompresser.end();
-		//System.out.println("	- Taille décompressée : "+taille_unZip);
+		//logger.info("	- Taille décompressée : "+taille_unZip);
 
 		//Ensuite on décrypte le fichier avec la clé
 		for (int i=0; i<bufUnZip.capacity(); i++){
@@ -121,7 +126,7 @@ public class DPD {
 		}
 		nb_palettes = taille_unZip/(64 + 768);
 		Params.total_palette = nb_palettes;
-		//System.out.println("	- Nombre de palettes : "+nb_palettes);
+		//logger.info("	- Nombre de palettes : "+nb_palettes);
 
 		for(int i=0 ; i<nb_palettes ; i++){
 			palettes.add(new DPDPalette(bufUnZip));
@@ -153,10 +158,10 @@ public class DPD {
 					e.printStackTrace();
 					System.exit(1);
 				}
-				System.out.println("Palette écrite : "+"."+File.separator+"data"+File.separator+"palettes"+File.separator+pal.nom+".bmp");
+				logger.info("Palette écrite : "+"."+File.separator+"data"+File.separator+"palettes"+File.separator+pal.nom+".bmp");
 				Params.nb_palette++;
 			}
 		}
-		System.out.println("Fichier "+f.getName()+" lu.");
+		logger.info("Fichier "+f.getName()+" lu.");
 	}
 }

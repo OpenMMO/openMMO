@@ -7,13 +7,20 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import tools.DataInputManager;
 
 public class DID {
 
+	
+	private static Logger logger = LogManager.getLogger(DID.class.getSimpleName());
+	
 /**
   
   StructureDid = Record
@@ -43,14 +50,14 @@ public class DID {
 	int taille_unZip;
 	int nb_sprites;
 	static Sprite black;
-	static HashMap<Integer,String> ids = new HashMap<Integer,String>();
-	public static HashMap<Integer,Sprite> sprites_with_ids = new HashMap<Integer,Sprite>();
-	static HashMap<Integer,Sprite> sprites_without_ids = new HashMap<Integer,Sprite>();
+	static Map<Integer,String> ids = new HashMap<Integer,String>();
+	public static Map<Integer,Sprite> sprites_with_ids = new HashMap<Integer,Sprite>();
+	static Map<Integer,Sprite> sprites_without_ids = new HashMap<Integer,Sprite>();
 
 
 	public void decrypt(File f){
 		Params.STATUS = "Lecture du fichier "+f.getName();
-		System.out.println("Lecture du fichier "+f.getName());
+		logger.info("Lecture du fichier "+f.getName());
 		//d'abord on récupère les ID depuis notre fichier
 		//et on formate tout ça pour avoir une hashmap <int, string>
 		String filePath = Params.IDS;
@@ -66,7 +73,7 @@ public class DID {
 					value = line.substring(line.indexOf("Name: ")+6);
 					ids.put(key,value);
 					Params.STATUS = "ID mappée : "+key+"=>"+value;
-					System.out.println("ID mappée : "+key+"=>"+value);
+					logger.info("ID mappée : "+key+"=>"+value);
 				}
 			} finally {
 				buff.close();
@@ -85,24 +92,24 @@ public class DID {
 			for (int i=0 ; i<16 ; i++){
 				header_hashMd5[i] = header.get();
 			}
-			//System.out.println("	- HashMD5 : "+tools.ByteArrayToHexString.print(header_hashMd5));
+			//logger.info("	- HashMD5 : "+tools.ByteArrayToHexString.print(header_hashMd5));
 			b1 = header.get();
 			b2 = header.get();
 			b3 = header.get();
 			b4 = header.get();
 			header_taille_unZip = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("	- header_taille_unZip : "+header_taille_unZip);
+			//logger.info("	- header_taille_unZip : "+header_taille_unZip);
 			b1 = header.get();
 			b2 = header.get();
 			b3 = header.get();
 			b4 = header.get();
 			header_taille_zip = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("	- header_taille_zip : "+header_taille_zip);
+			//logger.info("	- header_taille_zip : "+header_taille_zip);
 			for (int i=0 ; i<17 ; i++){
 				header_hashMd52[i] = header.get();
 			}
-			//System.out.println("	- HashMD52 : "+tools.ByteArrayToHexString.print(header_hashMd52));
-			//System.out.println("	- Taille header : "+header.position());
+			//logger.info("	- HashMD52 : "+tools.ByteArrayToHexString.print(header_hashMd52));
+			//logger.info("	- Taille header : "+header.position());
 
 			buf = ByteBuffer.allocate(header_taille_zip);
 			while (buf.position() < buf.capacity()){
@@ -126,17 +133,17 @@ public class DID {
 			e.printStackTrace();
 		}
 	     decompresser.end();
-		//System.out.println("	- Taille décompressée : "+taille_unZip+"/"+header_taille_zip);
+		//logger.info("	- Taille décompressée : "+taille_unZip+"/"+header_taille_zip);
 
 		//Ensuite on décrypte le fichier avec la clé
 		for (int i=0; i<bufUnZip.capacity(); i++){
 			bufUnZip.array()[i] ^= clef;
 		}
 		nb_sprites = taille_unZip/(64 + 256 + 4 + 8);
-		//System.out.println("	- Nombre de sprites : "+nb_sprites);
+		//logger.info("	- Nombre de sprites : "+nb_sprites);
 
 		for(int i=0 ; i<nb_sprites ; i++){
-			//System.out.println("Ajout du sprite "+i+"/"+nb_sprites);
+			//logger.info("Ajout du sprite "+i+"/"+nb_sprites);
 			sprites.add(new Sprite(bufUnZip));
 		}
 	}

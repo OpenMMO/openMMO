@@ -8,6 +8,9 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.Iterator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import tools.DataInputManager;
 
 
@@ -19,8 +22,11 @@ import tools.DataInputManager;
  *
  */
 public class ELNG {	
+	
+	private static Logger logger = LogManager.getLogger(ELNG.class.getSimpleName());
+	
 	public void decrypt (File f){
-		//System.out.println("	- Décryptage du fichier ELNG : "+f.getName());
+		//logger.info("	- Décryptage du fichier ELNG : "+f.getName());
 		CharBuffer buf = CharBuffer.allocate((int)f.length());
 		try {
 			DataInputManager in = new DataInputManager (f);
@@ -47,8 +53,8 @@ public class ELNG {
 				System.err.println(iter.next());
 			}
 		}
-		System.out.println("	- Fichier "+Params.t4cOUT+"ELNG/"+f.getName()+" écrit.");
+		logger.info("	- Fichier "+Params.t4cOUT+"ELNG/"+f.getName()+" écrit.");
 		Params.nb_elng++;
-		//System.out.println("");
+		//logger.info("");
 	}
 }

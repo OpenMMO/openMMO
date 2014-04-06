@@ -9,12 +9,18 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import t4cPlugin.utils.LoadingStatus;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class MapFile implements Serializable{
+	
+	private static Logger logger = LogManager.getLogger(MapFile.class.getSimpleName());
+	
 	/**
 	 * C'est une carte de 3072 x 3072 pixels. Elle contient de quoi retrouver
 	 * les informations par coordonnées ou par ID.
@@ -36,7 +42,7 @@ public class MapFile implements Serializable{
 			ObjectOutputStream oos = new ObjectOutputStream(fout);   
 			oos.writeObject(this);
 			oos.close();
-			System.out.println(nom.getPath()+" écrit.");
+			logger.info(nom.getPath()+" écrit.");
 		}catch(Exception ex){
 		   ex.printStackTrace();
 		   System.exit(1);
@@ -50,7 +56,7 @@ public class MapFile implements Serializable{
 			ObjectInputStream ois = new ObjectInputStream(fin);
 			map = (MapFile) ois.readObject();
 			ois.close();
-			System.out.println(nom.getPath()+" lu.");
+			logger.info(nom.getPath()+" lu.");
 		}catch(Exception ex){
 		   ex.printStackTrace();
 		   System.exit(1);

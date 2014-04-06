@@ -21,12 +21,15 @@ import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.FileImageOutputStream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import t4cPlugin.DPDPalette.Pixel;
 import tools.DataInputManager;
 
 public class DDA {
 
-
+	private static Logger logger = LogManager.getLogger(DDA.class.getSimpleName());
 
 	  /**
 	  StructureDda = Array Of Record
@@ -46,7 +49,7 @@ public class DDA {
 	private int numDDA;	
 	
 	public void decrypt(File f) {
-		System.out.println("Lecture des entêtes dans le fichier "+f.getName());
+		logger.info("Lecture des entêtes dans le fichier "+f.getName());
 		Params.total_sprites = DID.sprites_without_ids.size();
 		numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
 		
@@ -145,7 +148,7 @@ public class DDA {
 	
 	
 	private void voidSprite(Sprite didsprite) {
-		System.out.println(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : VIDE "+didsprite.nom);
+		logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : VIDE "+didsprite.nom);
 	}
 	
 	private void write(Sprite didsprite) {
@@ -170,20 +173,20 @@ public class DDA {
 			buf.get(data.array());
 		}catch(BufferUnderflowException e){
 			e.printStackTrace();
-			System.out.println("sprite : "+didsprite.nom);
-			System.out.println("chemin : "+didsprite.chemin);
-			System.out.println("type : "+didsprite.type);
-			System.out.println("ombre : "+didsprite.ombre);
-			System.out.println("hauteur : "+didsprite.hauteur);
-			System.out.println("largeur : "+didsprite.largeur);
-			System.out.println("offsetY : "+didsprite.offsetY);
-			System.out.println("offsetX : "+didsprite.offsetX);
-			System.out.println("offsetY2 : "+didsprite.offsetY2);
-			System.out.println("offsetX2 : "+didsprite.offsetX2);
-			System.out.println("Inconnu : "+didsprite.inconnu9);
-			System.out.println("Couleur trans : "+didsprite.couleurTrans);
-			System.out.println("taille_zip : "+didsprite.taille_zip);
-			System.out.println("taille_unzip : "+didsprite.taille_unzip);
+			logger.info("sprite : "+didsprite.nom);
+			logger.info("chemin : "+didsprite.chemin);
+			logger.info("type : "+didsprite.type);
+			logger.info("ombre : "+didsprite.ombre);
+			logger.info("hauteur : "+didsprite.hauteur);
+			logger.info("largeur : "+didsprite.largeur);
+			logger.info("offsetY : "+didsprite.offsetY);
+			logger.info("offsetX : "+didsprite.offsetX);
+			logger.info("offsetY2 : "+didsprite.offsetY2);
+			logger.info("offsetX2 : "+didsprite.offsetX2);
+			logger.info("Inconnu : "+didsprite.inconnu9);
+			logger.info("Couleur trans : "+didsprite.couleurTrans);
+			logger.info("taille_zip : "+didsprite.taille_zip);
+			logger.info("taille_unzip : "+didsprite.taille_unzip);
 			System.exit(1);
 		}
 		data.rewind();
@@ -213,12 +216,12 @@ public class DDA {
 					img.setRGB(x,y,col);
 				}
 				x++;
-				//System.out.println("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
+				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
 			}
 			y++;
 			x = 0;
 		}
-		//System.out.println(Sprite.maxX/*+(2*Sprite.maxOffsetX)*/+" "+ Sprite.maxY/*+(2*Sprite.maxOffsetY)*/+" "+ Transparency.BITMASK);
+		//logger.info(Sprite.maxX/*+(2*Sprite.maxOffsetX)*/+" "+ Sprite.maxY/*+(2*Sprite.maxOffsetY)*/+" "+ Transparency.BITMASK);
 		GraphicsConfiguration gc = img.createGraphics().getDeviceConfiguration();
 		//BufferedImage out =	gc.createCompatibleImage(DDASprite.maxs.get(didsprite.chemin).width+(DDASprite.maxOffsets.get(didsprite.chemin).width)/*+(DDASprite.minOffsets.get(didsprite.chemin).width)*/, DDASprite.maxs.get(didsprite.chemin).height+(DDASprite.maxOffsets.get(didsprite.chemin).height)/*+(DDASprite.minOffsets.get(didsprite.chemin).height)*/, Transparency.BITMASK);
 		BufferedImage out =	gc.createCompatibleImage(didsprite.largeur, didsprite.hauteur, Transparency.BITMASK);
@@ -240,7 +243,7 @@ public class DDA {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		System.out.println(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : SIMPLE "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.nom);	
+		logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : SIMPLE "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.nom);	
 	}
 
 	private void rleUncompress(Sprite didsprite) {
@@ -336,7 +339,7 @@ public class DDA {
 					img.setRGB(x,y,col);
 				}
 				x++;
-				//System.out.println("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
+				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
 			}
 			y++;
 			x = 0;
@@ -397,7 +400,7 @@ public class DDA {
 					img.setRGB(x,y,col);
 				}
 				x++;
-				//System.out.println("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
+				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
 			}
 			y++;
 			x = 0;
@@ -480,7 +483,7 @@ public class DDA {
 					img.setRGB(x,y,col);
 				}
 				x++;
-				//System.out.println("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
+				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
 			}
 			y++;
 			x = 0;
@@ -521,7 +524,7 @@ public class DDA {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		//System.out.println(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : "+didsprite.type+" "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.getNom());
+		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : "+didsprite.type+" "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.getNom());
 	}
 		
 	public static class DDASprite{
@@ -558,16 +561,16 @@ public class DDA {
 				b4 = buf.get();
 				header[i] = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1}) ^ clefDda[i];
 				header_buf.put((byte)((header[i]>>24)& 0xFF));
-				//System.out.println(""+(byte)((header[i]>>24)& 0xFF));
+				//logger.info(""+(byte)((header[i]>>24)& 0xFF));
 
 				header_buf.put((byte)((header[i]>>16)& 0xFF));
-				//System.out.println(""+(byte)((header[i]>>16)& 0xFF));
+				//logger.info(""+(byte)((header[i]>>16)& 0xFF));
 
 				header_buf.put((byte)((header[i]>>8)& 0xFF));
-				//System.out.println(""+(byte)((header[i]>>8)& 0xFF));
+				//logger.info(""+(byte)((header[i]>>8)& 0xFF));
 
 				header_buf.put((byte)((header[i]>>0)& 0xFF));
-				//System.out.println(""+(byte)((header[i]>>0)& 0xFF));
+				//logger.info(""+(byte)((header[i]>>0)& 0xFF));
 
 			}
 			header_buf.rewind();
@@ -577,59 +580,59 @@ public class DDA {
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.ombre = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
-			//System.out.println("ombre : "+ombre);
+			//logger.info("ombre : "+ombre);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.type = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
-			//System.out.println("type : "+type);
+			//logger.info("type : "+type);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.hauteur = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
-			//System.out.println("hauteur : "+didsprite.hauteur);
+			//logger.info("hauteur : "+didsprite.hauteur);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.largeur = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
-			//System.out.println("largeur : "+didsprite.largeur);
+			//logger.info("largeur : "+didsprite.largeur);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.offsetY = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
-			//System.out.println("offsetY : "+didsprite.offsetY);
+			//logger.info("offsetY : "+didsprite.offsetY);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.offsetX = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
-			//System.out.println("offsetY : "+didsprite.offsetX);
+			//logger.info("offsetY : "+didsprite.offsetX);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.offsetY2 = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
-			//System.out.println("offsetY2 : "+offsetY2+" "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
+			//logger.info("offsetY2 : "+offsetY2+" "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
 
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.offsetX2 = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
-			//System.out.println("offsetX2 : "+offsetX2+" "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
+			//logger.info("offsetX2 : "+offsetX2+" "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
 
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.couleurTrans = b2;//tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
-			//System.out.println("Couleur trans : "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
+			//logger.info("Couleur trans : "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			sprite.inconnu9 = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
-			//System.out.println("Inconnu : "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
+			//logger.info("Inconnu : "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
 
 			b1 = header_buf.get();
 			b2 = header_buf.get();
 			b3 = header_buf.get();
 			b4 = header_buf.get();			
 			sprite.taille_unzip = tools.ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,b1,b2,b3,b4});
-			//System.out.println("taille_unzip : "+taille_unzip);
+			//logger.info("taille_unzip : "+taille_unzip);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
@@ -666,7 +669,7 @@ public class DDA {
 			Iterator<Integer> iter_id = sprite.id.iterator();
 			while(iter_id.hasNext()){
 				int id = iter_id.next();
-				//System.out.println("Calcul du modulo : "+sprite.nom+"@"+sprite.chemin+"{"+sprite.largeur+","+sprite.hauteur+"}");
+				//logger.info("Calcul du modulo : "+sprite.nom+"@"+sprite.chemin+"{"+sprite.largeur+","+sprite.hauteur+"}");
 				if ((sprite.largeur == 32) & (sprite.hauteur == 16) & (sprite.nom.contains("(")) & sprite.nom.contains(")")){
 					sprite.tuile = true;
 					DDA.tuiles.put(id,sprite);

@@ -3,6 +3,9 @@ package t4cPlugin;
 import java.awt.Point;
 import java.io.File;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import t4cPlugin.utils.LoadingStatus;
 
 import com.badlogic.gdx.Gdx;
@@ -31,6 +34,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
 public class GdxMap implements Screen, InputProcessor{
+	
+	private static Logger logger = LogManager.getLogger(GdxMap.class.getSimpleName());
 
 	private boolean loaded = false;
 	private boolean render_tuiles = true;
@@ -120,7 +125,7 @@ public class GdxMap implements Screen, InputProcessor{
 					nb_tuiles++;
 				}else{//Case connue
 					if(px.tuile){//tuile
-						//System.out.println(px.tex);
+						//logger.info(px.tex);
 						texRegion = map.getCell(new Point(x,y));
 						Cell cell = new Cell();
 						if (texRegion == null){
@@ -310,16 +315,16 @@ public class GdxMap implements Screen, InputProcessor{
 	public boolean keyUp(int keycode) {
 		if (keycode == Keys.F1){
 			render_tuiles = toggle(render_tuiles);
-			System.out.println("TOGGLE TUILES : "+render_tuiles);
+			logger.info("TOGGLE TUILES : "+render_tuiles);
 		}
 		if (keycode == Keys.F2){
 			render_sprites = toggle(render_sprites);
-			System.out.println("TOGGLE SPRITES : "+render_sprites);
+			logger.info("TOGGLE SPRITES : "+render_sprites);
 		}
 		if (keycode == Keys.F3){
 			Point dest = new Point(lh_temple.getCoord().x, lh_temple.getCoord().y);
 			if (!moving)move(dest);
-			System.out.println("Goto : "+lh_temple.getNom());
+			logger.info("Goto : "+lh_temple.getNom());
 		}
 		if (keycode == Keys.SPACE){
 			tools.HeapDumper.dumpHeap("."+File.separator+"data"+File.separator+"heap"+File.separator+"heap.bin", true);
@@ -381,7 +386,7 @@ public class GdxMap implements Screen, InputProcessor{
 		Point p = new Point((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 		if (map.pixels.containsKey(p)){
 			MapPixel px = map.pixels.get(p);	
-			System.out.println(p.x +","+ p.y +" "+px.atlas+" "+px.tex+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y);
+			logger.info(p.x +","+ p.y +" "+px.atlas+" "+px.tex+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y);
 			Params.STATUS = p.x +","+ p.y +" "+px.atlas+" "+px.tex+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y;
 			if(px.tuile){
 

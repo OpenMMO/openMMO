@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import tools.DataInputManager;
 
 
@@ -87,6 +90,8 @@ typedef struct
  */
 public class VSB {
 	
+	private static Logger logger = LogManager.getLogger(VSB.class.getSimpleName());
+	
 	private ByteBuffer buf;
 	
 	private int unLong;
@@ -96,7 +101,7 @@ public class VSB {
 		int size = (int) f.length();
 		buf = ByteBuffer.allocate(size);
 		try {
-			System.out.println("- Lecture du fichier "+f.getCanonicalPath()+" : "+(int)f.length()+" octets = "+(int)f.length()/1024+"Ko");
+			logger.info("- Lecture du fichier "+f.getCanonicalPath()+" : "+(int)f.length()+" octets = "+(int)f.length()/1024+"Ko");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,14 +129,14 @@ public class VSB {
 		b3 = buf.get();
 		b4 = buf.get();
 		unLong = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("	- Un Long : "+unLong);
+		//logger.info("	- Un Long : "+unLong);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_chunks = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("	- Nombre de chunks : "+nb_chunks);
+		//logger.info("	- Nombre de chunks : "+nb_chunks);
 
 	}
 }

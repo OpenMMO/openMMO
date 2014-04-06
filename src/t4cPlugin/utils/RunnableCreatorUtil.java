@@ -2,6 +2,9 @@ package t4cPlugin.utils;
 
 import java.io.File;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import t4cPlugin.Params;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -11,6 +14,7 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 public class RunnableCreatorUtil {
 
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	private static Logger logger = LogManager.getLogger(RunnableCreatorUtil.class.getSimpleName());
 	
 	private RunnableCreatorUtil() {
 		//Utility class
@@ -47,7 +51,7 @@ public class RunnableCreatorUtil {
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
 				Params.STATUS = "Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas();
-				System.out.println("Info : Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
+				logger.info("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 			}
 		};
 		return r;

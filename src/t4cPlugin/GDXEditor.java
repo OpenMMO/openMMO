@@ -14,6 +14,9 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import tools.DataInputManager;
 import tools.OSValidator;
 
@@ -22,6 +25,8 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 public class GDXEditor extends Game{
+	
+	private static Logger logger = LogManager.getLogger(GDXEditor.class.getSimpleName());
 	
 	public static boolean decrypt = false, repack_tuiles = false, format = false, mapData = false, repack_sprites = false, map_loaded = false;
 	private static ArrayList<File> did = new ArrayList<File>();
@@ -45,6 +50,7 @@ public class GDXEditor extends Game{
 		 * @param args
 		 */
 		public static void main(String[] args) {
+			logger.info("Démarrage.");
 			//paramétrage de l'appli en fonction de l'os.
 			OSValidator.detect();	
 			Params.IDS = "."+File.separator+"data"+File.separator+"id.txt";
@@ -70,6 +76,7 @@ public class GDXEditor extends Game{
 
 		private static void checkData() {
 			//recherche de données
+			logger.info("Vérification des données.");
 			Params.STATUS = "Chargement des fichiers de donnée.";
 			FileLister explorer = new FileLister();
 			File game_files = new File("."+File.separator+"data"+File.separator+"game_files"+File.separator);
@@ -82,6 +89,7 @@ public class GDXEditor extends Game{
 			if (!new File (Params.SPRITES+"sprites_drawn").exists()) Params.draw_sprites = true;
 			
 			if (!new File (Params.SPRITES+"sprite_data").exists()){
+				logger.info("Il est nécessaire de formater et décrypter.");
 				format = true;
 				decrypt = true;
 			}
@@ -111,6 +119,7 @@ public class GDXEditor extends Game{
 				mapNotFound = !checkFileExists(baseFileName + mapName + decrypt) ||
 						!checkFileExists(baseFileName + mapName + decryptBin);
 			}
+			logger.info("Cartes décryptées : " + !mapNotFound);
 			return mapNotFound;
 		}
 		
@@ -130,6 +139,7 @@ public class GDXEditor extends Game{
 				return nb_dir != nb_atlas; 
 			} catch (FileNotFoundException e) {
 				//Le repertoire n'existant pas, il faut repack
+				logger.info("Il faut repack les " + repackElementsName);
 				return true;
 			}
 		}
@@ -187,7 +197,7 @@ public class GDXEditor extends Game{
 		private static void decrypt(){
 			Params.STATUS = "Décryptage des palettes.";
 			//DPD
-			System.out.println(dpd.size()+" fichier(s) DPD trouvé(s).");
+			logger.info(dpd.size()+" fichier(s) DPD trouvé(s).");
 			File dir = new File ("."+File.separator+"data"+File.separator+"palettes"+File.separator);
 			if (!dir.exists()) dir.mkdirs();
 			Iterator<File> iter_dpd = dpd.iterator();
@@ -198,7 +208,7 @@ public class GDXEditor extends Game{
 			}
 			Params.STATUS = "décryptage des informations de tuiles/sprites.";
 			//DID
-			System.out.println(did.size()+" fichier(s) DID trouvé(s).");
+			logger.info(did.size()+" fichier(s) DID trouvé(s).");
 			Iterator<File> iter_did = did.iterator();
 			while(iter_did.hasNext()){
 				File f = iter_did.next();
@@ -207,7 +217,7 @@ public class GDXEditor extends Game{
 			}
 			Params.STATUS = "extraction des tuiles/sprites.";
 			//DDA
-			System.out.println(dda.size()+" fichier(s) DDA trouvé(s).");
+			logger.info(dda.size()+" fichier(s) DDA trouvé(s).");
 			Iterator<File> iter_dda2 = dda.iterator();
 			while(iter_dda2.hasNext()){
 				File f = iter_dda2.next();
@@ -225,18 +235,20 @@ public class GDXEditor extends Game{
 				try {
 					fi.createNewFile();
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.fatal(e);
 					System.exit(1);
 				}
 			}
 		}
 		
 		private static void repacktuiles(){
+			logger.info("Empaquetage des tuiles.");
 			Params.STATUS = "Empaquetage des tuiles.";
 			AssetsLoader.pack_tuiles();
 		}
 
 		private static void repacksprites(){
+			logger.info("Empaquetage des sprites.");
 			Params.STATUS = "Empaquetage des sprites.";
 			AssetsLoader.pack_sprites();
 		}
@@ -258,7 +270,7 @@ public class GDXEditor extends Game{
 			try {
 				dat_file = new OutputStreamWriter(new FileOutputStream(Params.SPRITES+"sprite_data"));
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				logger.fatal(e);
 				System.exit(1);
 			}
 			Iterator<Integer> iter_tuile = DDA.tuiles.keySet().iterator();
@@ -266,33 +278,33 @@ public class GDXEditor extends Game{
 				int key = iter_tuile.next();
 				Sprite tuile = DDA.tuiles.get(key);
 				try {
-					//System.out.println("	- 1"+"|"+key+"|"+tuile.chemin+"|"+tuile.nom+"|"+tuile.type+"|"+tuile.ombre+"|"+tuile.largeur+"|"+tuile.hauteur+"|"+tuile.couleurTrans+"|"+tuile.offsetX+"|"+tuile.offsetY+"|"+tuile.offsetX2+"|"+tuile.offsetY2+"|"+tuile.numDda+"|"+tuile.moduloX+"|"+tuile.moduloY);
+					//logger.info("	- 1"+"|"+key+"|"+tuile.chemin+"|"+tuile.nom+"|"+tuile.type+"|"+tuile.ombre+"|"+tuile.largeur+"|"+tuile.hauteur+"|"+tuile.couleurTrans+"|"+tuile.offsetX+"|"+tuile.offsetY+"|"+tuile.offsetX2+"|"+tuile.offsetY2+"|"+tuile.numDda+"|"+tuile.moduloX+"|"+tuile.moduloY);
 					dat_file.write("1"+";"+key+";"+tuile.chemin+";"+tuile.nom+";"+tuile.type+";"+tuile.ombre+";"+tuile.largeur+";"+tuile.hauteur+";"+tuile.couleurTrans+";"+tuile.offsetX+";"+tuile.offsetY+";"+tuile.offsetX2+";"+tuile.offsetY2+";"+tuile.numDda+";"+tuile.moduloX+";"+tuile.moduloY+Params.LINE);
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.fatal(e);
 					System.exit(1);
 				}
 			}
-			System.out.println("Tuiles OK.");
+			logger.info("Tuiles OK.");
 			
 			Iterator<Integer> iter_sprite = DDA.sprites.keySet().iterator();
 			while (iter_sprite.hasNext()){
 				int key = iter_sprite.next();
 				Sprite sprite = DDA.sprites.get(key);
 				try {
-					//System.out.println("	- 0"+"|"+key+"|"+sprite.chemin+"|"+sprite.nom+"|"+sprite.type+"|"+sprite.ombre+"|"+sprite.largeur+"|"+sprite.hauteur+"|"+sprite.couleurTrans+"|"+sprite.offsetX+"|"+sprite.offsetY+"|"+sprite.offsetX2+"|"+sprite.offsetY2+"|"+sprite.numDda+"|"+sprite.moduloX+"|"+sprite.moduloY);
+					//logger.info("	- 0"+"|"+key+"|"+sprite.chemin+"|"+sprite.nom+"|"+sprite.type+"|"+sprite.ombre+"|"+sprite.largeur+"|"+sprite.hauteur+"|"+sprite.couleurTrans+"|"+sprite.offsetX+"|"+sprite.offsetY+"|"+sprite.offsetX2+"|"+sprite.offsetY2+"|"+sprite.numDda+"|"+sprite.moduloX+"|"+sprite.moduloY);
 					dat_file.write("0"+";"+key+";"+sprite.chemin+";"+sprite.nom+";"+sprite.type+";"+sprite.ombre+";"+sprite.largeur+";"+sprite.hauteur+";"+sprite.couleurTrans+";"+sprite.offsetX+";"+sprite.offsetY+";"+sprite.offsetX2+";"+sprite.offsetY2+";"+sprite.numDda+";-1;-1"+Params.LINE);
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.fatal(e);
 					System.exit(1);
 				}
 			}
-			System.out.println("Sprites OK.");
+			logger.info("Sprites OK.");
 			
 			try {
 				dat_file.close();
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				logger.fatal(e1);
 				System.exit(1);
 			}
 		}
@@ -315,7 +327,7 @@ public class GDXEditor extends Game{
 					mapFile.Map_load_block(f, 0x00002000);//On décrypte
 				}
 			}
-			System.out.println("Décryptage des cartes OK, lecture des cartes decryptées.");
+			logger.info("Décryptage des cartes OK, lecture des cartes decryptées.");
 			Params.STATUS = "Décodage des cartes OK.";
 			FileLister explorer = new FileLister();
 			decrypted.addAll(explorer.lister(new File("."+File.separator+"data"+File.separator), ".map.decrypt"));//Pour chaque fichier de carte décrypté
@@ -323,7 +335,7 @@ public class GDXEditor extends Game{
 			while (iter_decrypted.hasNext()){
 				f = iter_decrypted.next();
 				if (!new File("."+File.separator+"data"+File.separator+f.getName()+".bin").exists()){
-					System.out.println("Traitement de la carte "+f.getName());
+					logger.info("Traitement de la carte "+f.getName());
 					Params.STATUS = "Réécriture de la carte : "+f.getName();
 					map_load(f);//On charge la carte
 					m = new MapFile(new File("."+File.separator+"data"+File.separator+f.getName()+".bin"));
@@ -331,7 +343,7 @@ public class GDXEditor extends Game{
 					try {
 						sprite_data  = new BufferedReader(new FileReader(Params.SPRITES+"sprite_data"));
 					} catch (IOException e1) {
-						e1.printStackTrace();
+						logger.fatal(e1);
 						System.exit(1);
 					}
 					String line = "";
@@ -351,13 +363,13 @@ public class GDXEditor extends Game{
 							m.ids.put(id, new MapPixel(tuile, atlas, tex, new Point(offsetX,offsetY), new Point(moduloX,moduloY), id));//On enregistre une liste avec les ID, les coordonnées et les références graphiques
 						}
 					} catch (NumberFormatException | IOException e2) {
-						e2.printStackTrace();
+						logger.fatal(e2);
 						System.exit(1);
 					}
 					try {
 						sprite_data.close();
 					} catch (IOException e2) {
-						e2.printStackTrace();
+						logger.fatal(e2);
 						System.exit(1);
 					}
 					for (int y=0 ; y<3072 ; y++){//On parcourt chaque ligne
@@ -396,7 +408,7 @@ public class GDXEditor extends Game{
 				b1 = map_buffer.get();
 				b2 = map_buffer.get();
 			}else{
-				System.err.println("Buffer de carte nul");
+				logger.fatal("Buffer de carte nul");
 				System.exit(1);
 			}
 			result = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
@@ -418,8 +430,8 @@ public class GDXEditor extends Game{
 				}
 				in.close();
 			}catch(IOException exc){
-				System.err.println("Erreur d'ouverture");
-				exc.printStackTrace();
+				logger.warn("Erreur d'ouverture");
+				logger.fatal(exc);
 				System.exit(1);
 			}
 			map_buffer.rewind();

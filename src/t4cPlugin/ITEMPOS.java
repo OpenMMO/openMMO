@@ -29,34 +29,34 @@ public class ITEMPOS {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de sorts : "+nb_sorts);
+		//logger.info("		- Définition du nombre de sorts : "+nb_sorts);
 		
 		for (int i=0 ; i<taille_nom ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			nom += s;
 		}
-		//System.out.println("			- Nom : "+nom);
+		//logger.info("			- Nom : "+nom);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		x = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- x : "+x);
+		//logger.info("			- x : "+x);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- y : "+y);
+		//logger.info("			- y : "+y);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- Numéro de carte  : "+num_carte);
+		//logger.info("			- Numéro de carte  : "+num_carte);
 	}
 }

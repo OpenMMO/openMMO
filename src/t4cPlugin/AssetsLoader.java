@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.RunnableCreatorUtil;
@@ -24,10 +27,10 @@ public enum AssetsLoader {
 	
 	INSTANCE;
 	
+	private static Logger logger = LogManager.getLogger(AssetsLoader.class.getSimpleName());
+	
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	
-	private static int loaded = 0;
-
 	/**
 	 * On empacte les sprites dans des atlas.
 	 * Pour retrouver plus tard les ressources graphiques,
@@ -42,7 +45,6 @@ public enum AssetsLoader {
 		settings.rotation = false;
 		settings.ignoreBlankImages = false;
 		settings.edgePadding = false;
-		//settings.combineSubdirectories = true;
 		settings.flattenPaths = true;
 		settings.grid = true;
 		settings.limitMemory = true;
@@ -83,7 +85,6 @@ public enum AssetsLoader {
 		settings.rotation = false;
 		settings.ignoreBlankImages = false;
 		settings.edgePadding = false;
-		//settings.combineSubdirectories = true;
 		settings.flattenPaths = true;
 		settings.grid = true;
 		settings.limitMemory = true;
@@ -95,7 +96,6 @@ public enum AssetsLoader {
 		String last ="";
 		while (iter_tuiles.hasNext()){
 			File f = iter_tuiles.next();
-			//System.err.println(f.getPath()+" "+f.getName());
 			final File at = new File(FilesPath.getAtlasTilesFilePath(f.getName()));
 			Params.STATUS = "Pack Tuiles : "+at.getName();
 			if (!f.getName().equals(last) & f.isDirectory() & !at.exists()){
@@ -115,11 +115,10 @@ public enum AssetsLoader {
 	 * On fait une liste de nos atlas de sprites, et on les charge tous.
 	 */
 	public static void loadSprites(){
-		System.out.println("LoadSprites");
+		logger.info("LoadSprites");
 		FileLister explorer = new FileLister();
 		List<File> spritlas = new ArrayList<File>();
 		spritlas.addAll(explorer.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas"));
-//		loadingStatus.setNbSpritesAtlas(spritlas.size());
 		Iterator<File> iter_spritlas = spritlas.iterator();
 		while(iter_spritlas.hasNext()){
 			loadingStatus.addOneSpriteAtlas();
@@ -134,11 +133,11 @@ public enum AssetsLoader {
 	 * @return : l'atlas chargé.
 	 */
 	public static TextureAtlas load(final String name){
-		System.out.println("Loading Sprite Atlas : " +name);
+		logger.info("Loading Sprite Atlas : " +name);
 		loadingStatus.addOneSpriteAtlas();
 		Gdx.app.postRunnable(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
 		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
-		System.out.println("Sprite Atlas : " +name+" loaded.");
+		logger.info("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}
 	
@@ -146,7 +145,7 @@ public enum AssetsLoader {
 	 * On fait une liste de nos atlas de tuiles, puis on les charge.
 	 */
 	public static void loadSols() {
-		System.out.println("LoadSols");
+		logger.info("LoadSols");
 		
 		//Ensure tiles are packaged before try to use them
 		loadingStatus.waitUntilTilesPackaged();
@@ -164,7 +163,7 @@ public enum AssetsLoader {
 			final String name = iter_tuilas.next().getName();
 			Gdx.app.postRunnable(RunnableCreatorUtil.getTextureAtlasTileCreatorRunnable(name));
 		}
-//		System.out.println("LoadSols OK");
+//		logger.info("LoadSols OK");
 	}
 	
 	/**

@@ -20,7 +20,7 @@ public class Boost {
 		b3 = buf.get();
 		b4 = buf.get();
 		id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Id du boost : "+id);
+		//logger.info("					- Id du boost : "+id);
 		
 		//stat à booster
 		b1 = buf.get();
@@ -28,7 +28,7 @@ public class Boost {
 		b3 = buf.get();
 		b4 = buf.get();
 		stat = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Stat à booster : "+stat);
+		//logger.info("					- Stat à booster : "+stat);
 		
 		//Valeur
 		b1 = buf.get();
@@ -36,13 +36,13 @@ public class Boost {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_valeur = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Taille de l'emplacement: "+taille_valeur);
+		//logger.info("						- Taille de l'emplacement: "+taille_valeur);
 		for (int i=0 ; i<taille_valeur ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			valeur += s;
 		}
-		//System.out.println("					- Valeur : "+valeur);
+		//logger.info("					- Valeur : "+valeur);
 
 		//sINT requis
 		b1 = buf.get();
@@ -50,7 +50,7 @@ public class Boost {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqINT = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- INT requis : "+reqINT);
+		//logger.info("					- INT requis : "+reqINT);
 		
 		//SAG requis
 		b1 = buf.get();
@@ -58,7 +58,7 @@ public class Boost {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqSAG = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Sag requis : "+reqSAG);
+		//logger.info("					- Sag requis : "+reqSAG);
 		
 	}
 

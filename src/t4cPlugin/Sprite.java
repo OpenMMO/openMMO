@@ -4,6 +4,9 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 /**
  *   PStructureNomsSprites = ^StructureNomsSprites;
@@ -18,6 +21,9 @@ import java.util.Iterator;
  */
 
 public class Sprite {
+	
+	private static Logger logger = LogManager.getLogger(Sprite.class.getSimpleName());
+	
 	static int correspondances = 0;
 	String nom = "";
 	String chemin = "";
@@ -79,7 +85,7 @@ public class Sprite {
 		split = chemin.split("\\/");
 		chemin = split[split.length-1];
 		//if (chemin.startsWith("Cemetery Gates")) chemin = "Cemetery Gates";
-		//System.out.println("		- Chemin : "+chemin+" Nom : "+nom);
+		//logger.info("		- Chemin : "+chemin+" Nom : "+nom);
 		
 		byte b1,b2,b3,b4;
 		b1 = buf.get();
@@ -87,7 +93,7 @@ public class Sprite {
 		b3 = buf.get();
 		b4 = buf.get();
 		indexation = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Indexation : "+indexation);
+		//logger.info("		- Indexation : "+indexation);
 		
 		byte b5,b6,b7,b8;
 		b1 = buf.get();
@@ -99,7 +105,7 @@ public class Sprite {
 		b7 = buf.get();
 		b8 = buf.get();
 		numDda = tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
-		//System.out.println("		- N° DDA : "+numDda);
+		//logger.info("		- N° DDA : "+numDda);
 		
 		Iterator <Integer> iter = DID.ids.keySet().iterator();
 		while (iter.hasNext()){
@@ -108,14 +114,14 @@ public class Sprite {
 				id.add(val);
 				correspondances++;
 				DID.sprites_with_ids.put(val, this);
-				if(DID.sprites_with_ids.size() != last) System.out.println("Nombre de Sprites avec ID : "+DID.sprites_with_ids.size()+". Ajout : "+val+" => "+nom);
+				if(DID.sprites_with_ids.size() != last) logger.info("Nombre de Sprites avec ID : "+DID.sprites_with_ids.size()+". Ajout : "+val+" => "+nom);
 			}
 			/*if (nom.contains("(")&nom.contains(", ")&nom.contains(")")){
 				if (nom.contains(DID.ids.get(val))){
 					id.add(val);
 					correspondances++;
 					DID.sprites_with_ids.put(val, this);
-					if(DID.sprites_with_ids.size() != last) System.out.println(DID.sprites_with_ids.size()+" ID ajoutée(s).");
+					if(DID.sprites_with_ids.size() != last) logger.info(DID.sprites_with_ids.size()+" ID ajoutée(s).");
 
 				}
 			}*/
@@ -125,8 +131,8 @@ public class Sprite {
 			}
 		}
 		
-		//if (nom.contains("Wooden")) System.out.println(file);
-		//System.out.println("Nouveau Sprite : "+chemin+nom);
+		//if (nom.contains("Wooden")) logger.info(file);
+		//logger.info("Nouveau Sprite : "+chemin+nom);
 		Params.STATUS = "Nouveau Sprite : "+chemin+nom;
 		DID.sprites_without_ids.put(DID.sprites_without_ids.size(), this);
 
