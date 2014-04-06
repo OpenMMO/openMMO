@@ -216,10 +216,8 @@ public class GDXEditor extends Game{
 			}
 			Params.draw_sprites = false;
 
-			/*
-			 * Ici on pourra ajouter un moyen de contrôle pour être certains
-			 * que les ressources graphiques ont été correctement extraites.
-			 */
+			//TODO Ici on pourra ajouter un moyen de contrôle pour être certains que les ressources graphiques ont été correctement extraites.
+			
 			File fi = new File (Params.SPRITES+"sprites_drawn");
 			if (!fi.exists()){
 				try {
