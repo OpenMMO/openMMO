@@ -2,30 +2,24 @@ package t4cPlugin;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+
+import t4cPlugin.utils.FilesPath;
+import t4cPlugin.utils.LoadingStatus;
+import t4cPlugin.utils.RunnableCreatorUtil;
+import t4cPlugin.utils.ThreadsUtil;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 
-public class AssetsLoader {
-	private static ArrayList<File> sprites = new ArrayList<File>();
-	public static ArrayList<File> spritlas = new ArrayList<File>();
-	private static ArrayList<File> tuiles = new ArrayList<File>();
-	public static ArrayList<File> tuilas = new ArrayList<File>();
-	public static HashMap<String, TextureAtlas> tile_atlases = new HashMap<String, TextureAtlas>();
-	public static HashMap<String, TextureAtlas> sprite_atlases = new HashMap<String, TextureAtlas>();
+public enum AssetsLoader {
 	
-	private static boolean processed = false;
-	public static boolean loadsols = false;
-	public static boolean loadsprites = false;
+	INSTANCE;
 	
-	private static int loaded = 0;
-
-
-
+	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	
 	public static void pack_sprites(){
 		Settings settings = new Settings();
 		settings.pot = false;
@@ -40,35 +34,25 @@ public class AssetsLoader {
 		settings.limitMemory = true;
 
 		FileLister explorer = new FileLister();
-		sprites.addAll(explorer.listerDir(new File("data"+File.separator+"sprites"+File.separator+"sprites")));
+		List<File> sprites = new ArrayList<File>();
+		sprites.addAll(explorer.listerDir(new File(FilesPath.getSpritePath())));
 		Iterator<File> iter_sprites = sprites.iterator();
 		String last ="";
 		while (iter_sprites.hasNext()){
-			processed = false;
 			final File f = iter_sprites.next();
-			final File at = new File("data/atlas/sprites/"+f.getName()+".atlas");
+			final File at = new File(FilesPath.getAtlasSpritesFilePath(f.getName()));
 			Params.STATUS = "Pack Sprites : "+at.getName();
-			final Settings setting = settings;
 			if (!f.getName().equals(last) & f.isDirectory() & !at.exists()){
-				Thread p = new Thread("SPRITEPACKER"){
-					public void run(){
-						Params.STATUS = "Pack Sprite : "+f.getName();
-						TexturePacker.processIfModified(setting, f.getPath(), "data/atlas/sprites/", f.getName());
-						processed = true;
-					}
-				};
-				p.start();
-				while(!processed){
-					try{
-						Thread.sleep(1000);
-					}catch(InterruptedException e){
-						e.printStackTrace();
-						System.exit(1);
-					}
-				}
+				loadingStatus.addSpritesAtlasToPackage(f.getName());
+				executeSpritePacking(f, settings);
 				last = f.getName();
 			}
 		}
+	}
+	
+	private static void executeSpritePacking(File f, Settings s) {
+		Runnable r = RunnableCreatorUtil.getSpritePackerRunnable(f, s);
+		ThreadsUtil.executeInThread(r);
 	}
 	
 	public static void pack_tuiles(){
@@ -85,143 +69,83 @@ public class AssetsLoader {
 		settings.limitMemory = true;
 
 		FileLister explorer = new FileLister();
-		tuiles.addAll(explorer.listerDir(new File("data"+File.separator+"sprites"+File.separator+"tuiles")));
+		List<File> tuiles = new ArrayList<File>();
+		tuiles.addAll(explorer.listerDir(new File(FilesPath.getTuilePath())));
 		Iterator<File> iter_tuiles = tuiles.iterator();
 		String last ="";
 		while (iter_tuiles.hasNext()){
-			processed = false;
-			final File f = iter_tuiles.next();
+			File f = iter_tuiles.next();
 			//System.err.println(f.getPath()+" "+f.getName());
-			final Settings setting = settings;
-			final File at = new File("data/atlas/tuiles/"+f.getName()+".atlas");
+			final File at = new File(FilesPath.getAtlasTilesFilePath(f.getName()));
 			Params.STATUS = "Pack Tuiles : "+at.getName();
 			if (!f.getName().equals(last) & f.isDirectory() & !at.exists()){
-				Thread p = new Thread("TUILEPACKER"){
-					public void run(){
-						Params.STATUS = "Pack Tuile : "+f.getName();
-						TexturePacker.process(setting, f.getPath(), "data/atlas/tuiles/", f.getName());
-						processed = true;
-					}
-				};
-				p.start();
-				while(!processed){
-					try{
-						Thread.sleep(1000);
-					}catch(InterruptedException e){
-						e.printStackTrace();
-						System.exit(1);
-					}
-				}
+				loadingStatus.addTilesAtlasToPackage(f.getName());
+				executeTuilesPacking(f, settings);
 			}
 			last = f.getName();
 		}
 	}
 	
+	private static void executeTuilesPacking(File f, Settings settings) {
+		Runnable r = RunnableCreatorUtil.getTuilePackerRunnable(f, settings);
+		ThreadsUtil.executeInThread(r);
+	}
+	
 	public static void loadSprites(){
 		System.out.println("LoadSprites");
 		FileLister explorer = new FileLister();
-		spritlas.addAll(explorer.lister(new File("data"+File.separator+"atlas"+File.separator+"sprites"), ".atlas"));
+		List<File> spritlas = new ArrayList<File>();
+		spritlas.addAll(explorer.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas"));
+//		loadingStatus.setNbSpritesAtlas(spritlas.size());
 		Iterator<File> iter_spritlas = spritlas.iterator();
 		while(iter_spritlas.hasNext()){
+			loadingStatus.addOneSpriteAtlas();
 			final String name = iter_spritlas.next().getName();
-			Gdx.app.postRunnable(new Runnable(){
-				public void run(){
-					String nom = name.substring(0, name.length()-6);
-					TextureAtlas atlas = new TextureAtlas("data/atlas/sprites/"+nom+".atlas");
-					sprite_atlases.put(nom , atlas);
-				}
-			});		
-			while (loaded != sprite_atlases.size()){
-				try {
-					Thread.sleep(10);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-					System.exit(1);
-				}
-			}
-			loaded++;
-			//System.out.println("Info : Sprites chargés : "+AssetsLoader.sprite_atlases.size()+"/"+AssetsLoader.spritlas.size());
-			Params.STATUS = "Sprites chargés : "+AssetsLoader.sprite_atlases.size()+"/"+AssetsLoader.spritlas.size();
+			Gdx.app.postRunnable(RunnableCreatorUtil.getTextureAtlasSpriteCreatorRunnable(name));		
 		}
-//		System.out.println("LoadSprites OK");
-		loadsprites = true;
-
 	}
 	
 	public static TextureAtlas load(final String name){
 		System.out.println("Loading Sprite Atlas : " +name);
-		Gdx.app.postRunnable(new Runnable(){
-			public void run(){
-				TextureAtlas atlas = new TextureAtlas("data/atlas/sprites/"+name+".atlas");
-				sprite_atlases.put(name , atlas);
-				loaded++;
-			}
-		});		
-		while (sprite_atlases.get(name) == null){
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-				System.exit(1);
-			}
-		}
+		loadingStatus.addOneSpriteAtlas();
+		Gdx.app.postRunnable(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
+		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
 		System.out.println("Sprite Atlas : " +name+" loaded.");
-		return sprite_atlases.get(name);
+		return ta;
 	}
 	
 	public static void loadSols() {
-		int loaded = 1;
 		System.out.println("LoadSols");
+		
+		//Ensure tiles are packaged before try to use them
+		loadingStatus.waitUntilTilesPackaged();
+		
+		List<File> tuilas = new ArrayList<File>();
+		
 		FileLister explorer = new FileLister();
-		tuilas.addAll(explorer.lister(new File("data"+File.separator+"atlas"+File.separator+"tuiles"), ".atlas"));
+		tuilas.addAll(explorer.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas"));
+		//Keep the number of tiles' atlas. Will be used to know if all atlas are processed.
+		//TODO use the same method than sprite
+		loadingStatus.setNbTilesAs(tuilas.size());
+		
 		Iterator<File> iter_tuilas = tuilas.iterator();
 		while(iter_tuilas.hasNext()){
 			final String name = iter_tuilas.next().getName();
-			Gdx.app.postRunnable(new Runnable(){
-				public void run(){
-					String nom = name.substring(0, name.length()-6);
-					TextureAtlas atlas = new TextureAtlas("data/atlas/tuiles/"+nom+".atlas");
-					tile_atlases.put(nom , atlas);
-				}
-			});	
-			while (loaded != tile_atlases.size()){
-				try {
-					Thread.sleep(10);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-					System.exit(1);
-				}
-			}
-			loaded++;
-			//System.out.println("Info : Tuiles chargées : "+AssetsLoader.tile_atlases.size()+"/"+AssetsLoader.tuilas.size());
-			Params.STATUS = "Tuiles chargées : "+AssetsLoader.tile_atlases.size()+"/"+AssetsLoader.tuilas.size();
+			Gdx.app.postRunnable(RunnableCreatorUtil.getTextureAtlasTileCreatorRunnable(name));
 		}
 //		System.out.println("LoadSols OK");
-		loadsols = true;
 	}
 	
 	public static void dispose(){
-		Iterator<String> iter_tuiles = tile_atlases.keySet().iterator();
+		//TODO ensure all elements are loaded and no thread will update a map during the iteration
+		Iterator<TextureAtlas> iter_tuiles = loadingStatus.getTexturesAtlasTiles().iterator();
 		while(iter_tuiles.hasNext()){
-			String s= iter_tuiles.next();
-			tile_atlases.get(s).dispose();
+			iter_tuiles.next().dispose();
 		}
-		Iterator<String> iter_sprites = sprite_atlases.keySet().iterator();
+		Iterator<TextureAtlas> iter_sprites = loadingStatus.getTexturesAtlasSprites().iterator();
 		while(iter_sprites.hasNext()){
-			String s= iter_sprites.next();
-			sprite_atlases.get(s).dispose();
+			iter_sprites.next().dispose();
 		}
 	}
 
-	/*public static TextureRegion getTex() {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
-
-	
-	/*public static TextureRegion loadSprite(String nom){
-		TextureRegion result;
-		//result = Params.atlas.findRegion(nom);
-		return result;
-	}*/
 }

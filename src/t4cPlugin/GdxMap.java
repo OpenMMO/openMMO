@@ -3,6 +3,8 @@ package t4cPlugin;
 import java.awt.Point;
 import java.io.File;
 
+import t4cPlugin.utils.LoadingStatus;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
@@ -65,6 +67,8 @@ public class GdxMap implements Screen, InputProcessor{
 	private Lieux lh_temple= new Lieux("LH TEMPLE", "v2_worldmap",new Point(2954,1052));
 	private boolean debug = true;
 	
+	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	
 	public GdxMap(ScreenManager sm) {
 		tile_map = new TiledMap();
 		tile_layers = tile_map.getLayers();
@@ -72,14 +76,8 @@ public class GdxMap implements Screen, InputProcessor{
 	}
 
 	public void load(){
-		while(!AssetsLoader.loadsols){
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-				System.exit(1);
-			}
-		}
+		loadingStatus.waitUntilTextureAtlasTilesCreated();
+		
 		Gdx.app.postRunnable(new Runnable(){
 			public void run(){
 				style.font = new BitmapFont();
@@ -110,6 +108,10 @@ public class GdxMap implements Screen, InputProcessor{
 		TextureAtlas texAtlas = null;
 		StaticTiledMapTile tile = null;
 		Sprite sprite = null;
+		
+		loadingStatus.waitUntilTextureAtlasTilesCreated();
+		loadingStatus.waitUntilTextureAtlasSpritesCreated();
+		
 		for (int y = 0 ; y< 3072 ; y++){
 			for (int x = 0 ; x< 3072 ; x++){
 				MapPixel px = map.pixels.get(new Point(x,y));
@@ -132,7 +134,7 @@ public class GdxMap implements Screen, InputProcessor{
 						nb_tuiles++;
 					}else{//sprite
 						//Data.pixels.put(new Dimension(x,y), Data.idlist.get(px.id));
-						texAtlas = AssetsLoader.sprite_atlases.get(px.atlas);
+						texAtlas = loadingStatus.getTextureAtlasSprite(px.atlas);
 						//Si on trouve l'atlas
 						if (texAtlas != null){
 							texRegion = texAtlas.findRegion(px.tex);
@@ -151,6 +153,7 @@ public class GdxMap implements Screen, InputProcessor{
 						}
 						//Si on ne trouve pas l'atlas de sprite
 						else{
+							//TODO Pourquoi force t'on le chargement de l'atlas? Il y a un cas où l'atlas ne se crée pas normalement?
 							//System.err.println("Atlas de sprite non trouvé : "+px.atlas+"|"+px.tex+" "+px.tuile);//On affiche un message d'erreur
 							final String at = px.atlas;
 							final String tx = px.tex;
@@ -402,7 +405,7 @@ public class GdxMap implements Screen, InputProcessor{
 			}else{
 				if(!px.atlas.equals("foo")){
 					
-					Sprite sp = new Sprite(AssetsLoader.sprite_atlases.get(px.atlas).findRegion(px.tex));
+					Sprite sp = new Sprite(loadingStatus.getTextureAtlasSprite(px.atlas).findRegion(px.tex));
 					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
 					
 					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) sp.getWidth(), (int) sp.getHeight()));

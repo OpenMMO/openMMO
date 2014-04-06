@@ -9,6 +9,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 
+import t4cPlugin.utils.LoadingStatus;
+
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class MapFile implements Serializable{
@@ -19,6 +22,8 @@ public class MapFile implements Serializable{
 	private File nom;
 	public HashMap<Point,MapPixel> pixels = new HashMap<Point,MapPixel>();
 	public HashMap<Integer, MapPixel> ids = new HashMap<Integer, MapPixel>();
+	
+	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	
 	public MapFile(File name){
 		nom = name;
@@ -88,22 +93,23 @@ public class MapFile implements Serializable{
 		int resulty = 0;
 		if (pixels.containsKey(coord)){
 			MapPixel pixel = pixels.get(coord);
+			TextureAtlas tile = loadingStatus.getTextureAtlasTile(pixel.atlas);
 			if ((pixel.modulo.x>1 | pixel.modulo.y>1)){//Si c'est une tuile
 				//System.err.println("Modulo : "+pixel.tex+" "+pixel.modulo.x+","+pixel.modulo.y);
 				resultx = (coord.x % pixel.modulo.x)+1;//On applique l'effet de zone
 				resulty = (coord.y % pixel.modulo.y)+1;
 				//System.exit(0);
-				tex = AssetsLoader.tile_atlases.get(pixel.atlas).findRegion(pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
+				tex = tile.findRegion(pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
 				//System.err.println("Tuile : "+pixels.get(coord).tex+" "+pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");
 			}else{
-				tex = AssetsLoader.tile_atlases.get(pixel.atlas).findRegion(pixel.tex);
+				tex =tile.findRegion(pixel.tex);
 			}
 			if (tex == null){
 				//System.err.println("Modulo : "+pixel.tex+" "+pixel.modulo.x+","+pixel.modulo.y);
 				resultx = (coord.x % 10)+1;//On applique l'effet de zone
 				resulty = (coord.y % 10)+1;
 				//System.exit(0);
-				tex = AssetsLoader.tile_atlases.get(pixel.atlas).findRegion(pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
+				tex = tile.findRegion(pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
 				//System.err.println("Tuile : "+pixels.get(coord).tex+" "+pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");
 			}
 		}

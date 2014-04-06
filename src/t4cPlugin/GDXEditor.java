@@ -55,6 +55,7 @@ public class GDXEditor extends Game{
 			if (mapData)writeMapData();
 			if (repack_tuiles)repacktuiles();
 			if (repack_sprites)repacksprites();
+			AssetsLoader.loadSprites();
 			sm.initMap();
 		}
 
@@ -77,37 +78,10 @@ public class GDXEditor extends Game{
 			}
 			
 			mapData = checkMapExists();
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_cavernmap.map.decrypt.bin").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_dungeonmap.map.decrypt.bin").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_leoworld.map.decrypt.bin").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_underworld.map.decrypt.bin").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_worldmap.map.decrypt.bin").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_cavernmap.map.decrypt").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_dungeonmap.map.decrypt").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_leoworld.map.decrypt").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_underworld.map.decrypt").exists())mapData = true;
-//			if (!new File ("."+File.separator+"data"+File.separator+"v2_worldmap.map.decrypt").exists())mapData = true;
 			
 			repack_tuiles = checkRepack("tuiles");
 			repack_sprites = checkRepack("sprites");
 			
-//			int nb_tile_dir = -1;
-//			int nb_sprite_dir = -2;
-//			int nb_tile_atlas = -3;
-//			int nb_sprite_atlas = -4;
-//			
-//			
-//			File dir = new File("data"+File.separator+"sprites"+File.separator+"tuiles");
-//			if(dir.exists())nb_tile_dir = explorer.listerDir(dir).size();
-//			dir = new File("data"+File.separator+"sprites"+File.separator+"sprites");
-//			if(dir.exists())nb_sprite_dir = explorer.listerDir(dir).size();
-//			dir = new File("."+File.separator+"data"+File.separator+"atlas"+File.separator+"tuiles"+File.separator);
-//			if(dir.exists())nb_tile_atlas = explorer.lister(dir,".atlas").size();
-//			dir = new File("."+File.separator+"data"+File.separator+"atlas"+File.separator+"sprites"+File.separator);
-//			if(dir.exists())nb_sprite_atlas = explorer.lister(dir,".atlas").size();
-//			//System.err.println(nb_tile_atlas+"/"+nb_tile_dir+" "+nb_sprite_atlas+"/"+nb_sprite_dir);
-//			if (nb_tile_dir != nb_tile_atlas) repack_tuiles = true; 
-//			if (nb_sprite_dir != nb_sprite_atlas) repack_sprites = true;			
 		}
 		
 		/**
