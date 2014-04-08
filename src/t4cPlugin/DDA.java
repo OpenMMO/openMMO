@@ -148,7 +148,7 @@ public class DDA {
 	
 	
 	private void voidSprite(Sprite didsprite) {
-		logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : VIDE "+didsprite.nom);
+		logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : VIDE "+didsprite.getName());
 	}
 	
 	private void write(Sprite didsprite) {
@@ -160,11 +160,11 @@ public class DDA {
 			didsprite.offsetY = 0;
 			File dir = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin);
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin+File.separator+didsprite.nom+".png");
+			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
 		}else{
 			File dir = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin);
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin+File.separator+didsprite.nom+".png");
+			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
 		}
 		if (f.exists())return;
 		data = ByteBuffer.allocate(didsprite.largeur*didsprite.hauteur);
@@ -173,7 +173,7 @@ public class DDA {
 			buf.get(data.array());
 		}catch(BufferUnderflowException e){
 			e.printStackTrace();
-			logger.info("sprite : "+didsprite.nom);
+			logger.info("sprite : "+didsprite.getName());
 			logger.info("chemin : "+didsprite.chemin);
 			logger.info("type : "+didsprite.type);
 			logger.info("ombre : "+didsprite.ombre);
@@ -496,11 +496,11 @@ public class DDA {
 		if (didsprite.tuile){
 			File dir = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin);
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin+File.separator+didsprite.nom+".png");
+			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
 		}else{
 			File dir = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin);
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin+File.separator+didsprite.nom+".png");
+			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
 		}
 		if (f.exists())return;
 		GraphicsConfiguration gc = img.createGraphics().getDeviceConfiguration();
@@ -541,7 +541,7 @@ public class DDA {
 				while (iter_pal.hasNext()){
 					DPDPalette pal = iter_pal.next();
 					if (pal.nom.equals("Bright1")) bright = pal;
-					String nom = sprite.nom;
+					String nom = sprite.getName();
 					String nomPal = pal.nom;
 					if (nom.length() >= nomPal.length()-1){
 						//Si le nom du sprite et le nom de la palette commencent pareil, on attribue la palette au sprite
@@ -641,8 +641,9 @@ public class DDA {
 			sprite.taille_zip = tools.ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,b1,b2,b3,b4});
 			sprite.bufPos = buf.position();
 
-			if ((sprite.nom.contains("(")) & (sprite.nom.contains(", ")) & (sprite.nom.contains(")")) & (!Params.draw_sprites)){
-				String in = sprite.nom;
+			String nom = sprite.getName();
+			if ((nom.contains("(")) & (nom.contains(", ")) & (nom.contains(")")) & (!Params.draw_sprites)){
+				String in = nom;
 				FileLister explorer = new FileLister();
 				ArrayList<File> sprites = new ArrayList<File>();
 				//System.err.println("TILE "+Params.SPRITES+"tuiles"+File.separator+sprite.chemin+File.separator+" "+Params.SPRITES+sprite.chemin+File.separator);
@@ -670,7 +671,8 @@ public class DDA {
 			while(iter_id.hasNext()){
 				int id = iter_id.next();
 				//logger.info("Calcul du modulo : "+sprite.nom+"@"+sprite.chemin+"{"+sprite.largeur+","+sprite.hauteur+"}");
-				if ((sprite.largeur == 32) & (sprite.hauteur == 16) & (sprite.nom.contains("(")) & sprite.nom.contains(")")){
+				nom = sprite.getName();
+				if ((sprite.largeur == 32) & (sprite.hauteur == 16) & (nom.contains("(")) & nom.contains(")")){
 					sprite.tuile = true;
 					DDA.tuiles.put(id,sprite);
 					DDA.pixels.put(id,sprite);
@@ -682,7 +684,7 @@ public class DDA {
 					//System.err.println(sprite.hauteur+"|"+sprite.largeur);
 				}
 			}
-			Params.STATUS = "Sprite décrypté : "+sprite.chemin+" "+sprite.nom+" "+sprite.largeur+","+sprite.hauteur+" "+sprite.moduloX+","+sprite.moduloY+" "+sprite.tuile;
+			Params.STATUS = "Sprite décrypté : "+sprite.chemin+" "+sprite.getName()+" "+sprite.largeur+","+sprite.hauteur+" "+sprite.moduloX+","+sprite.moduloY+" "+sprite.tuile;
 		}
 	}
 }

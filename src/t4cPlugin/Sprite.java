@@ -25,7 +25,7 @@ public class Sprite {
 	private static Logger logger = LogManager.getLogger(Sprite.class.getSimpleName());
 	
 	static int correspondances = 0;
-	String nom = "";
+	private SpriteName nom;
 	String chemin = "";
 	boolean tuile = false;
 	ArrayList<Integer> id = new ArrayList<Integer>();
@@ -60,18 +60,19 @@ public class Sprite {
 	public Sprite(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
-		nom = new String(bytes);
-		nom = nom.substring(0, nom.indexOf(0x00));
-		nom = nom.replace("_","");
-		if (nom.equals("Cemetery Gates /^"))nom = "Cemetery Gates1";
-		if (nom.equals("Cemetery Gates /"))nom = "Cemetery Gates2";
-		if (nom.equals("Cemetery Gates \\v"))nom = "Cemetery Gates3";
-		if (nom.equals("Cemetery Gates v"))nom = "Cemetery Gates4";
-		if (nom.equals("Cemetery Gates -"))nom = "Cemetery Gates5";
-		if (nom.equals("Cemetery Gates >"))nom = "Cemetery Gates6";
-		if (nom.equals("Cemetery Gates ^"))nom = "Cemetery Gates7";
-		if (nom.equals("Cemetery Gates X"))nom = "Cemetery Gates8";
-		if (nom.equals("Cemetery Gates .|"))nom = "Cemetery Gates9";
+		
+		String nomExtrait = new String(bytes);
+		nomExtrait = nomExtrait.substring(0, nomExtrait.indexOf(0x00));
+		nomExtrait = nomExtrait.replace("_","");
+		if (nomExtrait.equals("Cemetery Gates /^"))nomExtrait = "Cemetery Gates1";
+		if (nomExtrait.equals("Cemetery Gates /"))nomExtrait = "Cemetery Gates2";
+		if (nomExtrait.equals("Cemetery Gates \\v"))nomExtrait = "Cemetery Gates3";
+		if (nomExtrait.equals("Cemetery Gates v"))nomExtrait = "Cemetery Gates4";
+		if (nomExtrait.equals("Cemetery Gates -"))nomExtrait = "Cemetery Gates5";
+		if (nomExtrait.equals("Cemetery Gates >"))nomExtrait = "Cemetery Gates6";
+		if (nomExtrait.equals("Cemetery Gates ^"))nomExtrait = "Cemetery Gates7";
+		if (nomExtrait.equals("Cemetery Gates X"))nomExtrait = "Cemetery Gates8";
+		if (nomExtrait.equals("Cemetery Gates .|"))nomExtrait = "Cemetery Gates9";
 
 		
 		bytes = new byte[256];
@@ -110,11 +111,12 @@ public class Sprite {
 		Iterator <Integer> iter = DID.ids.keySet().iterator();
 		while (iter.hasNext()){
 			int val = iter.next();
-			if (nom.contains(DID.ids.get(val))){
+			SpriteName sn = DID.ids.get(val);
+			if (nomExtrait.contains(sn.getName())){
 				id.add(val);
 				correspondances++;
 				DID.sprites_with_ids.put(val, this);
-				if(DID.sprites_with_ids.size() != last) logger.info("Nombre de Sprites avec ID : "+DID.sprites_with_ids.size()+". Ajout : "+val+" => "+nom);
+				if(DID.sprites_with_ids.size() != last) logger.info("Nombre de Sprites avec ID : "+DID.sprites_with_ids.size()+". Ajout : "+val+" => "+nomExtrait);
 			}
 			/*if (nom.contains("(")&nom.contains(", ")&nom.contains(")")){
 				if (nom.contains(DID.ids.get(val))){
@@ -126,14 +128,14 @@ public class Sprite {
 				}
 			}*/
 			last = DID.sprites_with_ids.size();
-			if (nom.equals("Black Tile")){
+			if (nomExtrait.equals("Black Tile")){
 				DID.black = this;
 			}
 		}
 		
-		//if (nom.contains("Wooden")) logger.info(file);
 		//logger.info("Nouveau Sprite : "+chemin+nom);
-		Params.STATUS = "Nouveau Sprite : "+chemin+nom;
+		nom = new SpriteName(nomExtrait);
+		Params.STATUS = "Nouveau Sprite : "+chemin+nomExtrait;
 		DID.sprites_without_ids.put(DID.sprites_without_ids.size(), this);
 
 
@@ -142,7 +144,7 @@ public class Sprite {
 	public Sprite(boolean tuile, String atlas, String tex, int offsetX,	int offsetY, int moduloX, int moduloY, int id) {
 		this.tuile = tuile;
 		this.chemin = atlas;
-		this.nom = tex;
+		this.nom = new SpriteName(tex);
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
 		this.moduloX = moduloX;
@@ -153,5 +155,9 @@ public class Sprite {
 
 	public int compareTo(Sprite o2) {
 		return indexation-o2.indexation;
+	}
+	
+	public String getName() {
+		return nom.getName();
 	}
 }

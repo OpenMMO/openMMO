@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
@@ -18,7 +19,6 @@ import tools.DataInputManager;
 
 public class DID {
 
-	
 	private static Logger logger = LogManager.getLogger(DID.class.getSimpleName());
 	
 /**
@@ -43,14 +43,15 @@ public class DID {
 	private byte[] header_hashMd52 = new byte[17];
 
 
-	static ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+	//TODO Mauvais! Des variables internes ne doivent être utilisées à l'extérieur de la classe qu'avec des getter/setter!
+	static List<Sprite> sprites = new ArrayList<Sprite>();
 	
 	int header_taille_unZip;
 	int header_taille_zip;
 	int taille_unZip;
 	int nb_sprites;
 	static Sprite black;
-	static Map<Integer,String> ids = new HashMap<Integer,String>();
+	static Map<Integer,SpriteName> ids = new HashMap<Integer,SpriteName>();
 	public static Map<Integer,Sprite> sprites_with_ids = new HashMap<Integer,Sprite>();
 	static Map<Integer,Sprite> sprites_without_ids = new HashMap<Integer,Sprite>();
 
@@ -71,9 +72,10 @@ public class DID {
 					String value = "";
 					key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
 					value = line.substring(line.indexOf("Name: ")+6);
-					ids.put(key,value);
-					Params.STATUS = "ID mappée : "+key+"=>"+value;
-					logger.info("ID mappée : "+key+"=>"+value);
+					SpriteName name = new SpriteName(value);
+					ids.put(key,name);
+					Params.STATUS = "ID mappée : "+key+"=>"+name.getName();
+					logger.info("ID mappée : "+key+"=>"+name.getName());
 				}
 			} finally {
 				buff.close();

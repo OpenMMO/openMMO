@@ -65,13 +65,33 @@ public class GDXEditor extends Game{
 			new LwjglApplication(sm, cfg);
 						
 			checkData();
+			
+		//	forceReload(true,true,true,true,true);
+			
 			if (decrypt)decrypt();
 			if (format)format();
 			if (mapData)writeMapData();
 			if (repack_tuiles)repacktuiles();
 			if (repack_sprites)repacksprites();
-			AssetsLoader.loadSprites();
+			
 			sm.initMap();
+		}
+		
+		/**
+		 * Fonction de debug. Sert a forcer le reload des elements, même s'ils sont déjà présents.
+		 * TODO il faudrait ajouter un paramètre pour pouvoir forcer le reload en production, en cas de données corrompues.
+		 * @param fDecrypt
+		 * @param fFormat
+		 * @param fMapData
+		 * @param fRepackTuiles
+		 * @param fRepackSprites
+		 */
+		private static void forceReload(boolean fDecrypt, boolean fFormat, boolean fMapData, boolean fRepackTuiles, boolean fRepackSprites) {
+			decrypt = fDecrypt;
+			format = fFormat;
+			mapData = fMapData;
+			repack_tuiles = fRepackTuiles;
+			repack_sprites = fRepackSprites;
 		}
 
 		private static void checkData() {
@@ -233,7 +253,7 @@ public class GDXEditor extends Game{
 				try {
 					fi.createNewFile();
 				} catch (IOException e) {
-					logger.fatal(e);
+					logger.fatal(e.getLocalizedMessage(),e);
 					System.exit(1);
 				}
 			}
@@ -277,7 +297,7 @@ public class GDXEditor extends Game{
 				Sprite tuile = DDA.tuiles.get(key);
 				try {
 					//logger.info("	- 1"+"|"+key+"|"+tuile.chemin+"|"+tuile.nom+"|"+tuile.type+"|"+tuile.ombre+"|"+tuile.largeur+"|"+tuile.hauteur+"|"+tuile.couleurTrans+"|"+tuile.offsetX+"|"+tuile.offsetY+"|"+tuile.offsetX2+"|"+tuile.offsetY2+"|"+tuile.numDda+"|"+tuile.moduloX+"|"+tuile.moduloY);
-					dat_file.write("1"+";"+key+";"+tuile.chemin+";"+tuile.nom+";"+tuile.type+";"+tuile.ombre+";"+tuile.largeur+";"+tuile.hauteur+";"+tuile.couleurTrans+";"+tuile.offsetX+";"+tuile.offsetY+";"+tuile.offsetX2+";"+tuile.offsetY2+";"+tuile.numDda+";"+tuile.moduloX+";"+tuile.moduloY+Params.LINE);
+					dat_file.write("1"+";"+key+";"+tuile.chemin+";"+tuile.getName()+";"+tuile.type+";"+tuile.ombre+";"+tuile.largeur+";"+tuile.hauteur+";"+tuile.couleurTrans+";"+tuile.offsetX+";"+tuile.offsetY+";"+tuile.offsetX2+";"+tuile.offsetY2+";"+tuile.numDda+";"+tuile.moduloX+";"+tuile.moduloY+Params.LINE);
 				} catch (IOException e) {
 					logger.fatal(e);
 					System.exit(1);
@@ -291,7 +311,7 @@ public class GDXEditor extends Game{
 				Sprite sprite = DDA.sprites.get(key);
 				try {
 					//logger.info("	- 0"+"|"+key+"|"+sprite.chemin+"|"+sprite.nom+"|"+sprite.type+"|"+sprite.ombre+"|"+sprite.largeur+"|"+sprite.hauteur+"|"+sprite.couleurTrans+"|"+sprite.offsetX+"|"+sprite.offsetY+"|"+sprite.offsetX2+"|"+sprite.offsetY2+"|"+sprite.numDda+"|"+sprite.moduloX+"|"+sprite.moduloY);
-					dat_file.write("0"+";"+key+";"+sprite.chemin+";"+sprite.nom+";"+sprite.type+";"+sprite.ombre+";"+sprite.largeur+";"+sprite.hauteur+";"+sprite.couleurTrans+";"+sprite.offsetX+";"+sprite.offsetY+";"+sprite.offsetX2+";"+sprite.offsetY2+";"+sprite.numDda+";-1;-1"+Params.LINE);
+					dat_file.write("0"+";"+key+";"+sprite.chemin+";"+sprite.getName()+";"+sprite.type+";"+sprite.ombre+";"+sprite.largeur+";"+sprite.hauteur+";"+sprite.couleurTrans+";"+sprite.offsetX+";"+sprite.offsetY+";"+sprite.offsetX2+";"+sprite.offsetY2+";"+sprite.numDda+";-1;-1"+Params.LINE);
 				} catch (IOException e) {
 					logger.fatal(e);
 					System.exit(1);

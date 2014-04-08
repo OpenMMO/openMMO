@@ -120,7 +120,7 @@ public class GdxMap implements Screen, InputProcessor{
 		for (int y = 0 ; y< 3072 ; y++){
 			for (int x = 0 ; x< 3072 ; x++){
 				MapPixel px = map.pixels.get(new Point(x,y));
-				if(px.atlas.equals("foo") & px.tex.equals("bar")){//Case inconnue
+				if(px.atlas.equals("foo") & px.getTex().equals("bar")){//Case inconnue
 					//System.err.println("Case Inconnue : "+px.id+"@"+x+","+y);
 					nb_tuiles++;
 				}else{//Case connue
@@ -142,10 +142,10 @@ public class GdxMap implements Screen, InputProcessor{
 						texAtlas = loadingStatus.getTextureAtlasSprite(px.atlas);
 						//Si on trouve l'atlas
 						if (texAtlas != null){
-							texRegion = texAtlas.findRegion(px.tex);
+							texRegion = texAtlas.findRegion(px.getTex());
 							//Si on ne trouve pas le sprite
 							if (texRegion == null) {
-								System.err.println("Sprite non trouvé : "+px.atlas+"|"+px.tex);//on affiche un message d'erreur
+								logger.warn("Sprite non trouvé : "+px.atlas+"|"+px.getTex());//on affiche un message d'erreur
 							}
 							//Si on trouve le sprite
 							else{
@@ -161,7 +161,7 @@ public class GdxMap implements Screen, InputProcessor{
 							//TODO Pourquoi force t'on le chargement de l'atlas? Il y a un cas où l'atlas ne se crée pas normalement?
 							//System.err.println("Atlas de sprite non trouvé : "+px.atlas+"|"+px.tex+" "+px.tuile);//On affiche un message d'erreur
 							final String at = px.atlas;
-							final String tx = px.tex;
+							final String tx = px.getTex();
 							final Point c = new Point(x,y);
 							texAtlas = AssetsLoader.load(at);
 							texRegion = texAtlas.findRegion(tx);
@@ -386,12 +386,12 @@ public class GdxMap implements Screen, InputProcessor{
 		Point p = new Point((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 		if (map.pixels.containsKey(p)){
 			MapPixel px = map.pixels.get(p);	
-			logger.info(p.x +","+ p.y +" "+px.atlas+" "+px.tex+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y);
-			Params.STATUS = p.x +","+ p.y +" "+px.atlas+" "+px.tex+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y;
+			logger.info(p.x +","+ p.y +" "+px.atlas+" "+px.getTex()+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y);
+			Params.STATUS = p.x +","+ p.y +" "+px.atlas+" "+px.getTex()+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y;
 			if(px.tuile){
 
 				TextButton pixel_info0 = new TextButton(p.x +","+ p.y,style);
-				TextButton pixel_info1 = new TextButton(px.atlas+" "+px.tex,style);
+				TextButton pixel_info1 = new TextButton(px.atlas+" "+px.getTex(),style);
 				TextButton pixel_info2 = new TextButton("id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y,style);
 				pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
 				pixel_info1.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+25));
@@ -410,7 +410,7 @@ public class GdxMap implements Screen, InputProcessor{
 			}else{
 				if(!px.atlas.equals("foo")){
 					
-					Sprite sp = new Sprite(loadingStatus.getTextureAtlasSprite(px.atlas).findRegion(px.tex));
+					Sprite sp = new Sprite(loadingStatus.getTextureAtlasSprite(px.atlas).findRegion(px.getTex()));
 					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
 					
 					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) sp.getWidth(), (int) sp.getHeight()));

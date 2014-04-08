@@ -133,7 +133,7 @@ public class MAP {
 
 		Sprite black = DID.sprites_with_ids.get(0);
 		try {
-			blackTile = ImageIO.read(new File(Params.t4cOUT+"SPRITES/"+black.chemin+black.nom+".bmp"));
+			blackTile = ImageIO.read(new File(Params.t4cOUT+"SPRITES/"+black.chemin+black.getName()+".bmp"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 			System.exit(1);
@@ -160,7 +160,7 @@ public class MAP {
 					Iterator<Sprite> iter_spritemap = sprites_in_map.iterator();
 					while (iter_spritemap.hasNext() & !trouve){//on cherche si on a déjà utilisé ce même sprite sur cette map
 						Sprite s = iter_spritemap.next();
-						if (sp.nom.equals(s.nom)){//si oui
+						if (sp.getName().equals(s.getName())){//si oui
 							s.pos.add(pos);//on ajoute la position à la liste de positions du sprite.
 							trouve = true;//on dit qu'on a trouvé
 						}
@@ -243,17 +243,18 @@ public class MAP {
 				int pos = iter_pos.next();
 				if((pos%3072 > X1)&(pos%3072 < X2)&((pos/3072)>Y1)&((pos/3072)<Y2)){
 					File f=null;
-					if(sprite.nom.contains("(") & sprite.nom.contains(",")){
+					String nom = sprite.getName();
+					if(nom.contains("(") & nom.contains(",")){
 						//logger.info(sprite.nom);
 						f = checkZone(sprite, pos);
 					}else{
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.getName()+".png");
 					}
 					try {
 						overlay = ImageIO.read(f);
 
 					} catch (IOException ex) {
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.getName()+".png");
 						//logger.info(sprite.chemin+sprite.nom+" | "+f.getName());
 						try {
 							overlay = ImageIO.read(f);
@@ -291,17 +292,18 @@ public class MAP {
 				int pos = iter_pos.next();
 				if((pos%3072 > X1)&(pos%3072 < X2)&((pos/3072)>Y1)&((pos/3072)<Y2)){
 					File f=null;
-					if(sprite.nom.contains("(") & sprite.nom.contains(",")){
+					String nom = sprite.getName();
+					if(nom.contains("(") & nom.contains(",")){
 						//logger.info(sprite.nom);
 						f = checkZone(sprite, pos);
 					}else{
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
 					}
 					try {
 						overlay = ImageIO.read(f);
 
 					} catch (IOException ex) {
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
 						//logger.info(sprite.chemin+sprite.nom+" | "+f.getName());
 						try {
 							overlay = ImageIO.read(f);
@@ -339,17 +341,18 @@ public class MAP {
 				int pos = iter_pos.next();
 				if((pos%3072 > X1)&(pos%3072 < X2)&((pos/3072)>Y1)&((pos/3072)<Y2)){
 					File f=null;
-					if(sprite.nom.contains("(") & sprite.nom.contains(",")){
+					String nom = sprite.getName();
+					if(nom.contains("(") & nom.contains(",")){
 						//logger.info(sprite.nom);
 						f = checkZone(sprite, pos);
 					}else{
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
 					}
 					try {
 						overlay = ImageIO.read(f);
 
 					} catch (IOException ex) {
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
 						//logger.info(sprite.chemin+sprite.nom+" | "+f.getName());
 						try {
 							overlay = ImageIO.read(f);
@@ -374,7 +377,7 @@ public class MAP {
 						int id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
 						g.setColor(Color.RED);
 						g.drawString(""+id, (((pos%3072)-X1)*w), (((pos/3072)-Y1)*h)+16);
-						logger.info(((((pos%3072)-X1)*w)+sprite.offsetX)+","+((((pos/3072)-Y1)*h)+sprite.offsetY)+" : "+sprite.nom+" "+id+" => "+sprite.id+" | "+sprite.chemin);
+						logger.info(((((pos%3072)-X1)*w)+sprite.offsetX)+","+((((pos/3072)-Y1)*h)+sprite.offsetY)+" : "+sprite.getName()+" "+id+" => "+sprite.id+" | "+sprite.chemin);
 					}
 					lastTile=currentTile;
 					currentTile++;
@@ -411,7 +414,8 @@ public class MAP {
 		Iterator<File> iter = sprites.iterator();
 		while (iter.hasNext()){
 			File f = iter.next();
-			if (f.getName().contains(sprite.nom.substring(0, sprite.nom.indexOf('(')))){
+			String nom = sprite.getName();
+			if (f.getName().contains(nom.substring(0, nom.indexOf('(')))){
 				int tmpX=0,tmpY=0;
 				tmpX = Integer.parseInt(f.getName().substring(f.getName().indexOf('(')+1, f.getName().indexOf(',')));
 				tmpY = Integer.parseInt(f.getName().substring(f.getName().indexOf(',')+2, f.getName().indexOf(')')));
@@ -422,7 +426,8 @@ public class MAP {
 		File result = null;
 		int x = (pos%moduloX)+1;
 		int y = ((pos/3072)%moduloY)+1;
-		result = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.nom.substring(0,sprite.nom.indexOf('(')+1)+x+", "+y+").bmp");
+		
+		result = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.getName().substring(0,sprite.getName().indexOf('(')+1)+x+", "+y+").bmp");
 		return result;
 		
 	}	

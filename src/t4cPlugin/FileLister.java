@@ -10,7 +10,8 @@ public class FileLister {
 	public FileLister(){}
 	
 	public ArrayList<File> lister(File repertoire, String extension){
-		purge();
+		purge();purge();
+		//TODO Null pointer, il faut vérifier que tous les atlas sont créés avant de rentrer ici.
 		File[] list = repertoire.listFiles();
 		for(int i=0;i<list.length;i++){
 			if (list[i].isDirectory()){

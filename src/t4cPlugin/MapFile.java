@@ -94,8 +94,8 @@ public class MapFile implements Serializable{
 				int resultx = (coord.x % pixel.modulo.x)+1;//On applique l'effet de zone
 				int resulty = (coord.y % pixel.modulo.y)+1;
 				//System.exit(0);
-				pixel.tex = pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")";//en remplacant le nom de la texture par le nom tenant compte de la zone.
-				System.err.println("Tuile : "+pixels.get(coord).tex);
+				pixel.setTex(pixel.getTex().substring(0,pixel.getTex().indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
+				System.err.println("Tuile : "+pixels.get(coord).getTex());
 			}
 		}
 	}
@@ -112,17 +112,17 @@ public class MapFile implements Serializable{
 				resultx = (coord.x % pixel.modulo.x)+1;//On applique l'effet de zone
 				resulty = (coord.y % pixel.modulo.y)+1;
 				//System.exit(0);
-				tex = tile.findRegion(pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
+				tex = tile.findRegion(pixel.getTex().substring(0,pixel.getTex().indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
 				//System.err.println("Tuile : "+pixels.get(coord).tex+" "+pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");
 			}else{
-				tex =tile.findRegion(pixel.tex);
+				tex =tile.findRegion(pixel.getTex());
 			}
 			if (tex == null){
 				//System.err.println("Modulo : "+pixel.tex+" "+pixel.modulo.x+","+pixel.modulo.y);
 				resultx = (coord.x % 10)+1;//On applique l'effet de zone
 				resulty = (coord.y % 10)+1;
 				//System.exit(0);
-				tex = tile.findRegion(pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
+				tex = tile.findRegion(pixel.getTex().substring(0,pixel.getTex().indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
 				//System.err.println("Tuile : "+pixels.get(coord).tex+" "+pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");
 			}
 		}

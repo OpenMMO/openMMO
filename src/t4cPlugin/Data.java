@@ -1,6 +1,5 @@
 package t4cPlugin;
 
-import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.util.ArrayList;

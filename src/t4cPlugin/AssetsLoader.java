@@ -116,6 +116,9 @@ public enum AssetsLoader {
 	 */
 	public static void loadSprites(){
 		logger.info("LoadSprites");
+		
+		loadingStatus.waitUntilSpritesPackaged();
+		
 		FileLister explorer = new FileLister();
 		List<File> spritlas = new ArrayList<File>();
 		spritlas.addAll(explorer.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas"));
