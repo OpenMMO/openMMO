@@ -1,6 +1,7 @@
 package t4cPlugin;
 
 import java.awt.Point;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -52,8 +53,9 @@ public class MapFile implements Serializable{
 	public MapFile read(){
 		MapFile map = null;
 		try{
-			FileInputStream fin = new FileInputStream(nom);
-			ObjectInputStream ois = new ObjectInputStream(fin);
+			FileInputStream fis = new FileInputStream(nom);
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			ObjectInputStream ois = new ObjectInputStream(bis);
 			map = (MapFile) ois.readObject();
 			ois.close();
 			logger.info(nom.getPath()+" lu.");
