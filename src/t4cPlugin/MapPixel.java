@@ -14,13 +14,13 @@ public class MapPixel implements Serializable{
 	 * C'est un pixel de la carte. il contient toutes les infos sur cette zone.
 	 */
 	private static final long serialVersionUID = 6974577196048084070L;
-	public boolean tuile;
-	public String atlas;
+	private boolean tuile;
+	private String atlas;
 	//TODO passer tout private
 	private SpriteName name;
-	public Point offset;
-	public Point modulo;
-	public int id;
+	private Point offset;
+	private Point modulo;
+	private int id;
 	
 	public MapPixel(boolean tuile, String atlas, String tex, Point offset, Point modulo, int id){
 		this.tuile = tuile;
@@ -42,7 +42,48 @@ public class MapPixel implements Serializable{
 		else {
 			this.name.setName(tex);
 		}
-		
 	}
 	
+	
+	public boolean isTuile() {
+		return tuile;
+	}
+	
+	//TODO vérifier l'interet de ce flag. Faire deux classes (avec héritage) ne serait-il pas plus judicieux?
+	public void setTuileFlag(boolean isTuile) {
+		tuile = isTuile;
+	}
+
+	public String getAtlas() {
+		return atlas;
+	}
+
+	//TODO rajouter une methode pour retirer les comparaisons a "foo" et "bar"
+	public void setAtlas(String atlas) {
+		this.atlas = atlas;
+	}
+
+	public Point getOffset() {
+		return offset;
+	}
+
+	public void setOffset(Point offset) {
+		this.offset = offset;
+	}
+
+	public Point getModulo() {
+		return modulo;
+	}
+
+	public void setModulo(Point modulo) {
+		this.modulo = modulo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

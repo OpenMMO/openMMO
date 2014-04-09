@@ -120,11 +120,11 @@ public class GdxMap implements Screen, InputProcessor{
 		for (int y = 0 ; y< 3072 ; y++){
 			for (int x = 0 ; x< 3072 ; x++){
 				MapPixel px = map.pixels.get(new Point(x,y));
-				if(px.atlas.equals("foo") & px.getTex().equals("bar")){//Case inconnue
+				if(px.getAtlas().equals("foo") & px.getTex().equals("bar")){//Case inconnue
 					//System.err.println("Case Inconnue : "+px.id+"@"+x+","+y);
 					nb_tuiles++;
 				}else{//Case connue
-					if(px.tuile){//tuile
+					if(px.isTuile()){//tuile
 						//logger.info(px.tex);
 						texRegion = map.getCell(new Point(x,y));
 						Cell cell = new Cell();
@@ -139,13 +139,13 @@ public class GdxMap implements Screen, InputProcessor{
 						nb_tuiles++;
 					}else{//sprite
 						//Data.pixels.put(new Dimension(x,y), Data.idlist.get(px.id));
-						texAtlas = loadingStatus.getTextureAtlasSprite(px.atlas);
+						texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());
 						//Si on trouve l'atlas
 						if (texAtlas != null){
 							texRegion = texAtlas.findRegion(px.getTex());
 							//Si on ne trouve pas le sprite
 							if (texRegion == null) {
-								logger.warn("Sprite non trouvé : "+px.atlas+"|"+px.getTex());//on affiche un message d'erreur
+								logger.warn("Sprite non trouvé : "+px.getAtlas()+"|"+px.getTex());//on affiche un message d'erreur
 							}
 							//Si on trouve le sprite
 							else{
@@ -158,9 +158,9 @@ public class GdxMap implements Screen, InputProcessor{
 						}
 						//Si on ne trouve pas l'atlas de sprite
 						else{
-							//TODO Pourquoi force t'on le chargement de l'atlas? Il y a un cas où l'atlas ne se crée pas normalement?
+							//TODO Pourquoi force t'on le chargement de l'atlas? Il y a un cas valide où l'atlas ne se crée pas normalement?
 							//System.err.println("Atlas de sprite non trouvé : "+px.atlas+"|"+px.tex+" "+px.tuile);//On affiche un message d'erreur
-							final String at = px.atlas;
+							final String at = px.getAtlas();
 							final String tx = px.getTex();
 							final Point c = new Point(x,y);
 							texAtlas = AssetsLoader.load(at);
@@ -219,8 +219,9 @@ public class GdxMap implements Screen, InputProcessor{
 				d = new Point(x,y);
 				if (Data.cases_sprites.get(d) != null){
 					Sprite sp = Data.cases_sprites.get(d);
-					float spx = (sp.getScaleX()*map.pixels.get(d).offset.x)+(x*32);
-					float spy = (sp.getScaleY()*map.pixels.get(d).offset.y)+(y*16);
+					Point offset = map.pixels.get(d).getOffset();
+					float spx = (sp.getScaleX()*offset.x)+(x*32);
+					float spy = (sp.getScaleY()*offset.y)+(y*16);
 					sp.setPosition(spx, spy);
 					sprites.addActor(new Acteur(sp));
 				}
@@ -381,18 +382,24 @@ public class GdxMap implements Screen, InputProcessor{
 		camera.zoom = 1;
 	}
 
+	
+	private String getInfoPixel(Point p, MapPixel mp) {
+		return p.x +","+ p.y +" "+mp.getAtlas()+" "+mp.getTex()+" id : "+mp.getId()+" Modulo : "+mp.getModulo().x+","+mp.getModulo().y;
+	}
+	
 	private void pop_menu(int screenX, int screenY) {
 		//On récupère les coordonnées T4C du point cliqué
 		Point p = new Point((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 		if (map.pixels.containsKey(p)){
 			MapPixel px = map.pixels.get(p);	
-			logger.info(p.x +","+ p.y +" "+px.atlas+" "+px.getTex()+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y);
-			Params.STATUS = p.x +","+ p.y +" "+px.atlas+" "+px.getTex()+" id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y;
-			if(px.tuile){
+			String status = getInfoPixel(p, px);
+			logger.info(status);
+			Params.STATUS = status;
+			if(px.isTuile()){
 
 				TextButton pixel_info0 = new TextButton(p.x +","+ p.y,style);
-				TextButton pixel_info1 = new TextButton(px.atlas+" "+px.getTex(),style);
-				TextButton pixel_info2 = new TextButton("id : "+px.id+" Modulo : "+px.modulo.x+","+px.modulo.y,style);
+				TextButton pixel_info1 = new TextButton(px.getAtlas()+" "+px.getTex(),style);
+				TextButton pixel_info2 = new TextButton("id : "+px.getId()+" Modulo : "+px.getModulo().x+","+px.getModulo().y,style);
 				pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
 				pixel_info1.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+25));
 				pixel_info2.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+45));
@@ -408,9 +415,9 @@ public class GdxMap implements Screen, InputProcessor{
 				menu.addActor(new Acteur(sp));
 				
 			}else{
-				if(!px.atlas.equals("foo")){
+				if(!px.getAtlas().equals("foo")){
 					
-					Sprite sp = new Sprite(loadingStatus.getTextureAtlasSprite(px.atlas).findRegion(px.getTex()));
+					Sprite sp = new Sprite(loadingStatus.getTextureAtlasSprite(px.getAtlas()).findRegion(px.getTex()));
 					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
 					
 					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) sp.getWidth(), (int) sp.getHeight()));
@@ -419,7 +426,7 @@ public class GdxMap implements Screen, InputProcessor{
 					
 				}else{
 					
-					TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : ID "+px.id+" inconnu",style);
+					TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : ID "+px.getId()+" inconnu",style);
 					pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
 					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) (pixel_info0.getWidth()+20),(int) (pixel_info0.getHeight()+10)));
 					menu.addActor(pixel_info0);

@@ -81,7 +81,7 @@ public class MapFile implements Serializable{
 	}
 	
 	/**
-	 * Si notre pixel est une tuile, on lui appliue l'effet de zone.
+	 * Si notre pixel est une tuile, on lui applique l'effet de zone.
 	 * On récupère le modulo de cette tuile puis on l'applique à ses coordonnées.
 	 * On modifie le nom de la tuile du pixel en conséuquence.
 	 * @param coord
@@ -89,10 +89,10 @@ public class MapFile implements Serializable{
 	public void setZone(Point coord){
 		if (pixels.containsKey(coord)){
 			MapPixel pixel = pixels.get(coord);
-			if ((pixel.modulo.x>1 | pixel.modulo.y>1) & pixel.tuile){//Si c'est une tuile
+			if ((pixel.getModulo().x>1 | pixel.getModulo().y>1) & pixel.isTuile()){//Si c'est une tuile
 				//System.err.println("Modulo : "+pixel.tex+" "+pixel.modulo.x+","+pixel.modulo.y);
-				int resultx = (coord.x % pixel.modulo.x)+1;//On applique l'effet de zone
-				int resulty = (coord.y % pixel.modulo.y)+1;
+				int resultx = (coord.x % pixel.getModulo().x)+1;//On applique l'effet de zone
+				int resulty = (coord.y % pixel.getModulo().y)+1;
 				//System.exit(0);
 				pixel.setTex(pixel.getTex().substring(0,pixel.getTex().indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
 				System.err.println("Tuile : "+pixels.get(coord).getTex());
@@ -106,11 +106,11 @@ public class MapFile implements Serializable{
 		int resulty = 0;
 		if (pixels.containsKey(coord)){
 			MapPixel pixel = pixels.get(coord);
-			TextureAtlas tile = loadingStatus.getTextureAtlasTile(pixel.atlas);
-			if ((pixel.modulo.x>1 | pixel.modulo.y>1)){//Si c'est une tuile
+			TextureAtlas tile = loadingStatus.getTextureAtlasTile(pixel.getAtlas());
+			if ((pixel.getModulo().x>1 | pixel.getModulo().y>1)){//Si c'est une tuile
 				//System.err.println("Modulo : "+pixel.tex+" "+pixel.modulo.x+","+pixel.modulo.y);
-				resultx = (coord.x % pixel.modulo.x)+1;//On applique l'effet de zone
-				resulty = (coord.y % pixel.modulo.y)+1;
+				resultx = (coord.x % pixel.getModulo().x)+1;//On applique l'effet de zone
+				resulty = (coord.y % pixel.getModulo().y)+1;
 				//System.exit(0);
 				tex = tile.findRegion(pixel.getTex().substring(0,pixel.getTex().indexOf('(')+1)+resultx+", "+resulty+")");//en remplacant le nom de la texture par le nom tenant compte de la zone.
 				//System.err.println("Tuile : "+pixels.get(coord).tex+" "+pixel.tex.substring(0,pixel.tex.indexOf('(')+1)+resultx+", "+resulty+")");
