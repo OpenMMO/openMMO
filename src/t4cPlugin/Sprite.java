@@ -108,15 +108,15 @@ public class Sprite {
 		numDda = tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
 		//logger.info("		- N° DDA : "+numDda);
 		
-		Iterator <Integer> iter = DID.ids.keySet().iterator();
+		Iterator <Integer> iter = DID.getIds().keySet().iterator();
 		while (iter.hasNext()){
 			int val = iter.next();
-			SpriteName sn = DID.ids.get(val);
+			SpriteName sn = DID.getIds().get(val);
 			if (nomExtrait.contains(sn.getName())){
 				id.add(val);
 				correspondances++;
-				DID.sprites_with_ids.put(val, this);
-				if(DID.sprites_with_ids.size() != last) logger.info("Nombre de Sprites avec ID : "+DID.sprites_with_ids.size()+". Ajout : "+val+" => "+nomExtrait);
+				DID.getSprites_with_ids().put(val, this);
+				if(DID.getSprites_with_ids().size() != last) logger.info("Nombre de Sprites avec ID : "+DID.getSprites_with_ids().size()+". Ajout : "+val+" => "+nomExtrait);
 			}
 			/*if (nom.contains("(")&nom.contains(", ")&nom.contains(")")){
 				if (nom.contains(DID.ids.get(val))){
@@ -127,16 +127,16 @@ public class Sprite {
 
 				}
 			}*/
-			last = DID.sprites_with_ids.size();
+			last = DID.getSprites_with_ids().size();
 			if (nomExtrait.equals("Black Tile")){
-				DID.black = this;
+				DID.setBlack(this);
 			}
 		}
 		
 		//logger.info("Nouveau Sprite : "+chemin+nom);
 		nom = new SpriteName(nomExtrait);
 		Params.STATUS = "Nouveau Sprite : "+chemin+nomExtrait;
-		DID.sprites_without_ids.put(DID.sprites_without_ids.size(), this);
+		DID.getSprites_without_ids().put(DID.getSprites_without_ids().size(), this);
 
 
 	}

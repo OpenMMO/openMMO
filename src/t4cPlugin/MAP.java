@@ -131,7 +131,8 @@ public class MAP {
 		byte b1,b2;
 		BufferedImage blackTile = null;
 
-		Sprite black = DID.sprites_with_ids.get(0);
+		//TODO on stock le sprite black mais on get le 0? Pourquoi?
+		Sprite black = DID.getSprites_with_ids().get(0);
 		try {
 			blackTile = ImageIO.read(new File(Params.t4cOUT+"SPRITES/"+black.chemin+black.getName()+".bmp"));
 		} catch (IOException e1) {
@@ -150,7 +151,7 @@ public class MAP {
 			b2 = map_data.get();
 			int pos = (map_data.position()-2)/2;
 			valactuelle = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});//On récupère l'id de la prochaine tuile sur la carte
-			sp = DID.sprites_with_ids.get(valactuelle);//on récupère le sprite associé à cet ID
+			sp = DID.getSprites_with_ids().get(valactuelle);//on récupère le sprite associé à cet ID
 			if (sp == null){
 				sp = black;
 			}

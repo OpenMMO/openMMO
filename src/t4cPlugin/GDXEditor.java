@@ -291,10 +291,10 @@ public class GDXEditor extends Game{
 				logger.fatal(e);
 				System.exit(1);
 			}
-			Iterator<Integer> iter_tuile = DDA.tuiles.keySet().iterator();
+			Iterator<Integer> iter_tuile = DDA.getTuiles().keySet().iterator();
 			while (iter_tuile.hasNext()){
 				int key = iter_tuile.next();
-				Sprite tuile = DDA.tuiles.get(key);
+				Sprite tuile = DDA.getTuiles().get(key);
 				try {
 					//logger.info("	- 1"+"|"+key+"|"+tuile.chemin+"|"+tuile.nom+"|"+tuile.type+"|"+tuile.ombre+"|"+tuile.largeur+"|"+tuile.hauteur+"|"+tuile.couleurTrans+"|"+tuile.offsetX+"|"+tuile.offsetY+"|"+tuile.offsetX2+"|"+tuile.offsetY2+"|"+tuile.numDda+"|"+tuile.moduloX+"|"+tuile.moduloY);
 					dat_file.write("1"+";"+key+";"+tuile.chemin+";"+tuile.getName()+";"+tuile.type+";"+tuile.ombre+";"+tuile.largeur+";"+tuile.hauteur+";"+tuile.couleurTrans+";"+tuile.offsetX+";"+tuile.offsetY+";"+tuile.offsetX2+";"+tuile.offsetY2+";"+tuile.numDda+";"+tuile.moduloX+";"+tuile.moduloY+Params.LINE);
@@ -305,10 +305,10 @@ public class GDXEditor extends Game{
 			}
 			logger.info("Tuiles OK.");
 			
-			Iterator<Integer> iter_sprite = DDA.sprites.keySet().iterator();
+			Iterator<Integer> iter_sprite = DDA.getSprites().keySet().iterator();
 			while (iter_sprite.hasNext()){
 				int key = iter_sprite.next();
-				Sprite sprite = DDA.sprites.get(key);
+				Sprite sprite = DDA.getSprites().get(key);
 				try {
 					//logger.info("	- 0"+"|"+key+"|"+sprite.chemin+"|"+sprite.nom+"|"+sprite.type+"|"+sprite.ombre+"|"+sprite.largeur+"|"+sprite.hauteur+"|"+sprite.couleurTrans+"|"+sprite.offsetX+"|"+sprite.offsetY+"|"+sprite.offsetX2+"|"+sprite.offsetY2+"|"+sprite.numDda+"|"+sprite.moduloX+"|"+sprite.moduloY);
 					dat_file.write("0"+";"+key+";"+sprite.chemin+";"+sprite.getName()+";"+sprite.type+";"+sprite.ombre+";"+sprite.largeur+";"+sprite.hauteur+";"+sprite.couleurTrans+";"+sprite.offsetX+";"+sprite.offsetY+";"+sprite.offsetX2+";"+sprite.offsetY2+";"+sprite.numDda+";-1;-1"+Params.LINE);
@@ -401,6 +401,7 @@ public class GDXEditor extends Game{
 								m.addPixel(coord, pixel);
 								//m.setZone(coord);
 							}else{//Si le pixel est introuvable, c'est que l'id n'est pas mappée
+								logger.info("ID non mappée : " + id);
 								m.addPixel(coord, false, "foo", "bar", new Point(0, 0), new Point(0, 0), id);
 							}
 						}

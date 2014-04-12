@@ -44,16 +44,17 @@ public class DID {
 
 
 	//TODO Mauvais! Des variables internes ne doivent être utilisées à l'extérieur de la classe qu'avec des getter/setter!
-	static List<Sprite> sprites = new ArrayList<Sprite>();
+	private static List<Sprite> sprites = new ArrayList<Sprite>();
 	
-	int header_taille_unZip;
-	int header_taille_zip;
-	int taille_unZip;
-	int nb_sprites;
-	static Sprite black;
-	static Map<Integer,SpriteName> ids = new HashMap<Integer,SpriteName>();
-	public static Map<Integer,Sprite> sprites_with_ids = new HashMap<Integer,Sprite>();
-	static Map<Integer,Sprite> sprites_without_ids = new HashMap<Integer,Sprite>();
+	private int header_taille_unZip;
+	private int header_taille_zip;
+	private int taille_unZip;
+	private int nb_sprites;
+	//TODO pourquoi stocker ici le sprite black? Il n'est utilisé nul part...
+	private static Sprite black;
+	private static Map<Integer,SpriteName> ids = new HashMap<Integer,SpriteName>();
+	private static Map<Integer,Sprite> sprites_with_ids = new HashMap<Integer,Sprite>();
+	private static Map<Integer,Sprite> sprites_without_ids = new HashMap<Integer,Sprite>();
 
 
 	public void decrypt(File f){
@@ -148,5 +149,45 @@ public class DID {
 			//logger.info("Ajout du sprite "+i+"/"+nb_sprites);
 			sprites.add(new Sprite(bufUnZip));
 		}
+	}
+	
+	public static Sprite getBlack() {
+		return black;
+	}
+
+
+	public static void setBlack(Sprite black) {
+		DID.black = black;
+	}
+
+
+	public static Map<Integer, SpriteName> getIds() {
+		return ids;
+	}
+
+
+	public static void setIds(Map<Integer, SpriteName> ids) {
+		DID.ids = ids;
+	}
+
+
+	public static Map<Integer, Sprite> getSprites_with_ids() {
+		return sprites_with_ids;
+	}
+
+
+	public static void setSprites_with_ids(Map<Integer, Sprite> sprites_with_ids) {
+		DID.sprites_with_ids = sprites_with_ids;
+	}
+
+
+	public static Map<Integer, Sprite> getSprites_without_ids() {
+		return sprites_without_ids;
+	}
+
+
+	public static void setSprites_without_ids(
+			Map<Integer, Sprite> sprites_without_ids) {
+		DID.sprites_without_ids = sprites_without_ids;
 	}
 }

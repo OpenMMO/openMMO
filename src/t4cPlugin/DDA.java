@@ -12,6 +12,7 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
@@ -37,11 +38,9 @@ public class DDA {
 	    Sprites : TFastStream;
 	  End;
 	  */
-	static HashMap<Integer,Sprite> tuiles = new HashMap<Integer,Sprite>();
-	static HashMap<Integer, Sprite> sprites = new HashMap<Integer,Sprite>();
-	public static HashMap<Integer, Sprite> pixels = new HashMap<Integer,Sprite>();
-	static int current_sprite = 0;
-
+	private static Map<Integer,Sprite> tuiles = new HashMap<Integer,Sprite>();
+	private static Map<Integer, Sprite> sprites = new HashMap<Integer,Sprite>();
+	private static Map<Integer, Sprite> pixels = new HashMap<Integer,Sprite>();
 	
 	private ByteBuffer buf;
 	private static int[] clefDda = new int[]{0x1458AAAA, 0x62421234, 0xF6C32355, 0xAAAAAAF3, 0x12344321, 0xDDCCBBAA, 0xAABBCCDD};
@@ -50,14 +49,14 @@ public class DDA {
 	
 	public void decrypt(File f) {
 		logger.info("Lecture des entêtes dans le fichier "+f.getName());
-		Params.total_sprites = DID.sprites_without_ids.size();
+		Params.total_sprites = DID.getSprites_without_ids().size();
 		numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
 		
-		HashMap<Integer,Sprite> didspritesindda = new HashMap<Integer,Sprite>();
-		Iterator<Integer> iteri = DID.sprites_with_ids.keySet().iterator();
+		Map<Integer,Sprite> didspritesindda = new HashMap<Integer,Sprite>();
+		Iterator<Integer> iteri = DID.getSprites_with_ids().keySet().iterator();
 		while(iteri.hasNext()){
 			int key = iteri.next();
-			Sprite sp = DID.sprites_with_ids.get(key);
+			Sprite sp = DID.getSprites_with_ids().get(key);
 			if (sp.numDda == numDDA){
 				didspritesindda.put(key, sp);
 			}
@@ -95,10 +94,10 @@ public class DDA {
 		}
 		if (Params.draw_sprites){
 			didspritesindda = new HashMap<Integer,Sprite>();
-			iteri = DID.sprites_without_ids.keySet().iterator();
+			iteri = DID.getSprites_without_ids().keySet().iterator();
 			while(iteri.hasNext()){
 				int key = iteri.next();
-				Sprite sp = DID.sprites_without_ids.get(key);
+				Sprite sp = DID.getSprites_without_ids().get(key);
 				if (sp.numDda == numDDA){
 					didspritesindda.put(key, sp);
 				}
@@ -686,5 +685,34 @@ public class DDA {
 			}
 			Params.STATUS = "Sprite décrypté : "+sprite.chemin+" "+sprite.getName()+" "+sprite.largeur+","+sprite.hauteur+" "+sprite.moduloX+","+sprite.moduloY+" "+sprite.tuile;
 		}
+	}
+
+	public static Map<Integer, Sprite> getTuiles() {
+		return tuiles;
+	}
+
+
+	public static void setTuiles(HashMap<Integer, Sprite> tuiles) {
+		DDA.tuiles = tuiles;
+	}
+
+
+	public static Map<Integer, Sprite> getSprites() {
+		return sprites;
+	}
+
+
+	public static void setSprites(HashMap<Integer, Sprite> sprites) {
+		DDA.sprites = sprites;
+	}
+
+
+	public static Map<Integer, Sprite> getPixels() {
+		return pixels;
+	}
+
+
+	public static void setPixels(HashMap<Integer, Sprite> pixels) {
+		DDA.pixels = pixels;
 	}
 }
