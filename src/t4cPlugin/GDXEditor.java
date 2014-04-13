@@ -42,6 +42,7 @@ public class GDXEditor extends Game{
 		 * fonction qui écrive les atlas directement depuis les fichiers dda et did,
 		 * puis une fonction qui écrive les cartes en clair directement depuis les cartes
 		 * cryptées.
+		 * 
 		 * @param args
 		 */
 		public static void main(String[] args) {
