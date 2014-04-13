@@ -402,7 +402,7 @@ public class GDXEditor extends Game{
 								m.addPixel(coord, pixel);
 								//m.setZone(coord);
 							}else{//Si le pixel est introuvable, c'est que l'id n'est pas mappée
-								logger.info("ID non mappée : " + id);
+							//	logger.info("ID non mappée : " + id);
 								m.addPixel(coord, false, "foo", "bar", new Point(0, 0), new Point(0, 0), id);
 							}
 						}
