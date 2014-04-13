@@ -4,6 +4,9 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 /**
  *   PStructureNomsSprites = ^StructureNomsSprites;
@@ -18,8 +21,11 @@ import java.util.Iterator;
  */
 
 public class Sprite {
+	
+	private static Logger logger = LogManager.getLogger(Sprite.class.getSimpleName());
+	
 	static int correspondances = 0;
-	String nom = "";
+	private SpriteName nom;
 	String chemin = "";
 	boolean tuile = false;
 	ArrayList<Integer> id = new ArrayList<Integer>();
@@ -54,18 +60,19 @@ public class Sprite {
 	public Sprite(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
-		nom = new String(bytes);
-		nom = nom.substring(0, nom.indexOf(0x00));
-		nom = nom.replace("_","");
-		if (nom.equals("Cemetery Gates /^"))nom = "Cemetery Gates1";
-		if (nom.equals("Cemetery Gates /"))nom = "Cemetery Gates2";
-		if (nom.equals("Cemetery Gates \\v"))nom = "Cemetery Gates3";
-		if (nom.equals("Cemetery Gates v"))nom = "Cemetery Gates4";
-		if (nom.equals("Cemetery Gates -"))nom = "Cemetery Gates5";
-		if (nom.equals("Cemetery Gates >"))nom = "Cemetery Gates6";
-		if (nom.equals("Cemetery Gates ^"))nom = "Cemetery Gates7";
-		if (nom.equals("Cemetery Gates X"))nom = "Cemetery Gates8";
-		if (nom.equals("Cemetery Gates .|"))nom = "Cemetery Gates9";
+		
+		String nomExtrait = new String(bytes);
+		nomExtrait = nomExtrait.substring(0, nomExtrait.indexOf(0x00));
+		nomExtrait = nomExtrait.replace("_","");
+		if (nomExtrait.equals("Cemetery Gates /^"))nomExtrait = "Cemetery Gates1";
+		if (nomExtrait.equals("Cemetery Gates /"))nomExtrait = "Cemetery Gates2";
+		if (nomExtrait.equals("Cemetery Gates \\v"))nomExtrait = "Cemetery Gates3";
+		if (nomExtrait.equals("Cemetery Gates v"))nomExtrait = "Cemetery Gates4";
+		if (nomExtrait.equals("Cemetery Gates -"))nomExtrait = "Cemetery Gates5";
+		if (nomExtrait.equals("Cemetery Gates >"))nomExtrait = "Cemetery Gates6";
+		if (nomExtrait.equals("Cemetery Gates ^"))nomExtrait = "Cemetery Gates7";
+		if (nomExtrait.equals("Cemetery Gates X"))nomExtrait = "Cemetery Gates8";
+		if (nomExtrait.equals("Cemetery Gates .|"))nomExtrait = "Cemetery Gates9";
 
 		
 		bytes = new byte[256];
@@ -79,7 +86,7 @@ public class Sprite {
 		split = chemin.split("\\/");
 		chemin = split[split.length-1];
 		//if (chemin.startsWith("Cemetery Gates")) chemin = "Cemetery Gates";
-		//System.out.println("		- Chemin : "+chemin+" Nom : "+nom);
+		//logger.info("		- Chemin : "+chemin+" Nom : "+nom);
 		
 		byte b1,b2,b3,b4;
 		b1 = buf.get();
@@ -87,7 +94,7 @@ public class Sprite {
 		b3 = buf.get();
 		b4 = buf.get();
 		indexation = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Indexation : "+indexation);
+		//logger.info("		- Indexation : "+indexation);
 		
 		byte b5,b6,b7,b8;
 		b1 = buf.get();
@@ -99,36 +106,37 @@ public class Sprite {
 		b7 = buf.get();
 		b8 = buf.get();
 		numDda = tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
-		//System.out.println("		- N° DDA : "+numDda);
+		//logger.info("		- N° DDA : "+numDda);
 		
-		Iterator <Integer> iter = DID.ids.keySet().iterator();
+		Iterator <Integer> iter = DID.getIds().keySet().iterator();
 		while (iter.hasNext()){
 			int val = iter.next();
-			if (nom.contains(DID.ids.get(val))){
+			SpriteName sn = DID.getIds().get(val);
+			if (nomExtrait.contains(sn.getName())){
 				id.add(val);
 				correspondances++;
-				DID.sprites_with_ids.put(val, this);
-				if(DID.sprites_with_ids.size() != last) System.out.println("Nombre de Sprites avec ID : "+DID.sprites_with_ids.size()+". Ajout : "+val+" => "+nom);
+				DID.getSprites_with_ids().put(val, this);
+				if(DID.getSprites_with_ids().size() != last) logger.info("Nombre de Sprites avec ID : "+DID.getSprites_with_ids().size()+". Ajout : "+val+" => "+nomExtrait);
 			}
 			/*if (nom.contains("(")&nom.contains(", ")&nom.contains(")")){
 				if (nom.contains(DID.ids.get(val))){
 					id.add(val);
 					correspondances++;
 					DID.sprites_with_ids.put(val, this);
-					if(DID.sprites_with_ids.size() != last) System.out.println(DID.sprites_with_ids.size()+" ID ajoutée(s).");
+					if(DID.sprites_with_ids.size() != last) logger.info(DID.sprites_with_ids.size()+" ID ajoutée(s).");
 
 				}
 			}*/
-			last = DID.sprites_with_ids.size();
-			if (nom.equals("Black Tile")){
-				DID.black = this;
+			last = DID.getSprites_with_ids().size();
+			if (nomExtrait.equals("Black Tile")){
+				DID.setBlack(this);
 			}
 		}
 		
-		//if (nom.contains("Wooden")) System.out.println(file);
-		//System.out.println("Nouveau Sprite : "+chemin+nom);
-		Params.STATUS = "Nouveau Sprite : "+chemin+nom;
-		DID.sprites_without_ids.put(DID.sprites_without_ids.size(), this);
+		//logger.info("Nouveau Sprite : "+chemin+nom);
+		nom = new SpriteName(nomExtrait);
+		Params.STATUS = "Nouveau Sprite : "+chemin+nomExtrait;
+		DID.getSprites_without_ids().put(DID.getSprites_without_ids().size(), this);
 
 
 	}
@@ -136,7 +144,7 @@ public class Sprite {
 	public Sprite(boolean tuile, String atlas, String tex, int offsetX,	int offsetY, int moduloX, int moduloY, int id) {
 		this.tuile = tuile;
 		this.chemin = atlas;
-		this.nom = tex;
+		this.nom = new SpriteName(tex);
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
 		this.moduloX = moduloX;
@@ -147,5 +155,9 @@ public class Sprite {
 
 	public int compareTo(Sprite o2) {
 		return indexation-o2.indexation;
+	}
+	
+	public String getName() {
+		return nom.getName();
 	}
 }

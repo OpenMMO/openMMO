@@ -50,6 +50,8 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
+		Params.STATUS = "Chargement des sprites";
+		AssetsLoader.loadSprites();
 		Params.STATUS = "Chargement des tuiles.";
 		AssetsLoader.loadSols();
 		Params.STATUS = "Chargement de la carte.";

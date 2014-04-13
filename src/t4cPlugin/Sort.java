@@ -17,7 +17,7 @@ public class Sort {
 		b3 = buf.get();
 		b4 = buf.get();
 		id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- ID : "+id);
+		//logger.info("					- ID : "+id);
 		
 		//Senclenchement
 		b1 = buf.get();
@@ -25,7 +25,7 @@ public class Sort {
 		b3 = buf.get();
 		b4 = buf.get();
 		enclenchement = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Enclenchement : "+enclenchement);
+		//logger.info("					- Enclenchement : "+enclenchement);
 		
 		//LVL requis
 		b1 = buf.get();
@@ -33,7 +33,7 @@ public class Sort {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqLVL = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- LVL requis : "+reqLVL);
+		//logger.info("					- LVL requis : "+reqLVL);
 	}
 
 }

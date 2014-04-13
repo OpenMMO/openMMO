@@ -17,7 +17,7 @@ public class GRPITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_objets =tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Nombre d'objets contenus : "+nb_objets);
+		//logger.info("					- Nombre d'objets contenus : "+nb_objets);
 		
 		for (int i=0 ; i<nb_objets ; i++){
 			objets.add(new Objet(buf));

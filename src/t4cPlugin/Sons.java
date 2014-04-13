@@ -7,10 +7,15 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import tools.ByteArrayToNumber;
 import tools.DataInputManager;
 
 public class Sons {
+	
+	private static Logger logger = LogManager.getLogger(Sons.class.getSimpleName());
 	
 	ByteBuffer buf_snmci = null;
 	ByteBuffer buf_snmcd = null;
@@ -24,7 +29,7 @@ public class Sons {
 	
 	public void decrypt_index(File snmci_){
 		//On commence par lire le fichier d'index snmci._
-		System.out.println("	- Lecture de l'index des sons.");
+		logger.info("	- Lecture de l'index des sons.");
 		buf_snmci = ByteBuffer.allocate((int)snmci_.length());
 		try {
 			DataInputManager in = new DataInputManager(snmci_);
@@ -47,44 +52,44 @@ public class Sons {
 		b4 = buf_snmci.get();
 		nbsound = ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
 		Params.total_sons = nbsound;
-		//System.out.println("		- Nombre de sons : "+nbsound);
+		//logger.info("		- Nombre de sons : "+nbsound);
 		
 		for (int i=0 ; i < nbsound; i++){
-			//System.out.println("	- Son "+i+" :");
+			//logger.info("	- Son "+i+" :");
 			soundList.add(new SoundListInfo());	
 			soundList.get(i).taille_name = buf_snmci.get();
-			//System.out.println("		- Longueur Du Nom : "+soundList.get(i).taille_name);
+			//logger.info("		- Longueur Du Nom : "+soundList.get(i).taille_name);
 			soundList.get(i).name = new char[soundList.get(i).taille_name];
 			for(int j=0 ; j<soundList.get(i).taille_name ; j++){
 				soundList.get(i).name[j] = (char)buf_snmci.get();
 			}
-			//System.out.println("		- Nom : "+new String(soundList.get(i).name));
+			//logger.info("		- Nom : "+new String(soundList.get(i).name));
 			
 			b1 = buf_snmci.get();
 			b2 = buf_snmci.get();
 			b3 = buf_snmci.get();
 			b4 = buf_snmci.get();
 			soundList.get(i).start = ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,b4,b3,b2,b1});
-			//System.out.println("		- Start : "+soundList.get(i).start+" o/"+soundList.get(i).start/1024+" Ko");
+			//logger.info("		- Start : "+soundList.get(i).start+" o/"+soundList.get(i).start/1024+" Ko");
 			
 			b1 = buf_snmci.get();
 			b2 = buf_snmci.get();
 			b3 = buf_snmci.get();
 			b4 = buf_snmci.get();
 			soundList.get(i).size = ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,b4,b3,b2,b1});
-			//System.out.println("		- Sound Data Size : "+soundList.get(i).size+" o/"+soundList.get(i).size/1024+" Ko");
+			//logger.info("		- Sound Data Size : "+soundList.get(i).size+" o/"+soundList.get(i).size/1024+" Ko");
 			
 			b1 = buf_snmci.get();
 			b2 = buf_snmci.get();
 			soundList.get(i).sampleRate = (int)ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,0,0,b2,b1});
-			//System.out.println("		- Sample Rate : "+soundList.get(i).sampleRate);
+			//logger.info("		- Sample Rate : "+soundList.get(i).sampleRate);
 			
 			b1 = buf_snmci.get();
 			soundList.get(i).bit_depth = ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,0,0,0,b1});
-			//System.out.println("		- Bit Depth : "+soundList.get(i).bit_depth);
+			//logger.info("		- Bit Depth : "+soundList.get(i).bit_depth);
 			
 			soundList.get(i).format = buf_snmci.get();
-			//System.out.println("		- format : "+soundList.get(i).format);
+			//logger.info("		- format : "+soundList.get(i).format);
 		}
 		ready = true;
 	}
@@ -92,7 +97,7 @@ public class Sons {
 	public void decrypt_mp3(File snmcd_){
 
 		//puis le fichier contenant les MP3, snmcd._
-		System.out.println("	- Lecture du ficher des MP3.");
+		logger.info("	- Lecture du ficher des MP3.");
 		buf_snmcd = ByteBuffer.allocate((int)snmcd_.length());
 		try {
 			DataInputManager in = new DataInputManager (snmcd_);
@@ -132,7 +137,7 @@ public class Sons {
 					System.err.println("Erreur I/O");
 					exc.printStackTrace();
 				}
-				System.out.println("	- MP3 écrit : "+Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3");
+				logger.info("	- MP3 écrit : "+Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3");
 				Params.nb_sons++;
 			}	
 		}
@@ -140,7 +145,7 @@ public class Sons {
 	
 	public void decrypt_wave(File snmcf_){
 
-		System.out.println("	- Lecture du fichier des WAVE.");
+		logger.info("	- Lecture du fichier des WAVE.");
 		buf_snmcf = ByteBuffer.allocate((int)snmcf_.length());
 		try {
 			DataInputManager in = new DataInputManager (snmcf_);
@@ -171,20 +176,20 @@ public class Sons {
 				for (int l=0 ; l<soundList.get(i).size ; l++){
 					soundList.get(i).sound.put(buf_snmcf.get());
 				}
-				//System.out.println("	- Son "+i+" :"+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
+				//logger.info("	- Son "+i+" :"+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
 				SoundHeader header = new SoundHeader();
 				header.fileSize = (int) (soundList.get(i).size+36);
-				//System.out.println("		- FileSize : "+header.fileSize);
+				//logger.info("		- FileSize : "+header.fileSize);
 				header.frequence = soundList.get(i).sampleRate;
-				//System.out.println("		- Frequence : "+header.frequence);
+				//logger.info("		- Frequence : "+header.frequence);
 				header.bitsPerSample = (short) soundList.get(i).bit_depth;
-				//System.out.println("		- BitsPerSample : "+header.bitsPerSample);
+				//logger.info("		- BitsPerSample : "+header.bitsPerSample);
 				header.bytePerBloc = (short) (header.nbrCanaux * header.bitsPerSample/8);
-				//System.out.println("		- BytePerBloc : "+header.bytePerBloc);
+				//logger.info("		- BytePerBloc : "+header.bytePerBloc);
 				header.bytePerSec = (int) (header.frequence * header.bytePerBloc);
-				//System.out.println("		- BytePerSec : "+header.bytePerSec);
+				//logger.info("		- BytePerSec : "+header.bytePerSec);
 				header.dataSize = (int) soundList.get(i).size;
-				//System.out.println("		- DataSize : "+header.dataSize);
+				//logger.info("		- DataSize : "+header.dataSize);
 				byte[] header_data = header.getData();
 				ByteBuffer buf = ByteBuffer.allocate(header_data.length+son.sound.array().length);
 				buf.put(header_data);
@@ -198,7 +203,7 @@ public class Sons {
 					System.err.println("Erreur I/O");
 					exc.printStackTrace();
 				}
-				System.out.println("	- WAVE écrit : "+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
+				logger.info("	- WAVE écrit : "+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
 				Params.nb_sons++;
 			}
 		}
@@ -208,7 +213,7 @@ public class Sons {
 	public void decrypt(File snmci_, File snmcd_, File snmcf_){
 		
 		//On commence par lire le fichier d'index snmci._
-		System.out.println("	- Lecture de l'index des sons.");
+		logger.info("	- Lecture de l'index des sons.");
 		long nbsound = 0;
 		ByteBuffer buf_snmci = ByteBuffer.allocate((int)snmci_.length());
 		try {
@@ -224,7 +229,7 @@ public class Sons {
 		}
 		
 		//puis le fichier contenant les MP3, snmcf._
-		System.out.println("	- Lecture du ficher des MP3.");
+		logger.info("	- Lecture du ficher des MP3.");
 		ByteBuffer buf_snmcf = ByteBuffer.allocate((int)snmcf_.length());
 		try {
 			DataInputManager in = new DataInputManager (snmcf_);
@@ -240,7 +245,7 @@ public class Sons {
 
 		
 		//puis le fichier contenant les WAVE, snmcd._
-		System.out.println("	- Lecture du fichier des WAVE.");
+		logger.info("	- Lecture du fichier des WAVE.");
 		ByteBuffer buf_snmcd = ByteBuffer.allocate((int)snmcd_.length());
 		try {
 			DataInputManager in = new DataInputManager (snmcd_);
@@ -261,7 +266,7 @@ public class Sons {
 		buf_snmcf.rewind();
 
 		//À partir de là on peut attaquer le décryptage
-		System.out.println("	- Décryptage de l'index des sons :");
+		logger.info("	- Décryptage de l'index des sons :");
 		
 		//On récupère le nombre de sons à extraire.
 		byte b1, b2, b3, b4;
@@ -270,54 +275,54 @@ public class Sons {
 		b3 = buf_snmci.get();
 		b4 = buf_snmci.get();
 		nbsound = ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,b4,b3,b2,b1});
-		System.out.println("		- Nombre de sons : "+nbsound);
+		logger.info("		- Nombre de sons : "+nbsound);
 		
 		//On Crée une liste de SoundListInfo et on la remplit avec les données et metadonnées récupérées dans les 3 fichiers.
 		ArrayList<SoundListInfo> soundList = new ArrayList<SoundListInfo>();
 		for (int i=0 ; i < nbsound; i++){
-			//System.out.println("	- Son "+i+" :");
+			//logger.info("	- Son "+i+" :");
 			soundList.add(new SoundListInfo());	
 			soundList.get(i).taille_name = buf_snmci.get();
-			System.out.println("		- Longueur Du Nom : "+soundList.get(i).taille_name);
+			logger.info("		- Longueur Du Nom : "+soundList.get(i).taille_name);
 			soundList.get(i).name = new char[soundList.get(i).taille_name];
 			for(int j=0 ; j<soundList.get(i).taille_name ; j++){
 				soundList.get(i).name[j] = (char)buf_snmci.get();
 			}
-			System.out.println("		- Nom : "+new String(soundList.get(i).name));
+			logger.info("		- Nom : "+new String(soundList.get(i).name));
 			
 			b1 = buf_snmci.get();
 			b2 = buf_snmci.get();
 			b3 = buf_snmci.get();
 			b4 = buf_snmci.get();
 			soundList.get(i).start = ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,b4,b3,b2,b1});
-			System.out.println("		- Start : "+soundList.get(i).start+" o/"+soundList.get(i).start/1024+" Ko");
+			logger.info("		- Start : "+soundList.get(i).start+" o/"+soundList.get(i).start/1024+" Ko");
 			
 			b1 = buf_snmci.get();
 			b2 = buf_snmci.get();
 			b3 = buf_snmci.get();
 			b4 = buf_snmci.get();
 			soundList.get(i).size = ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,b4,b3,b2,b1});
-			System.out.println("		- Sound Data Size : "+soundList.get(i).size+" o/"+soundList.get(i).size/1024+" Ko");
+			logger.info("		- Sound Data Size : "+soundList.get(i).size+" o/"+soundList.get(i).size/1024+" Ko");
 			
 			b1 = buf_snmci.get();
 			b2 = buf_snmci.get();
 			soundList.get(i).sampleRate = (int)ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,0,0,b2,b1});
-			System.out.println("		- Sample Rate : "+soundList.get(i).sampleRate);
+			logger.info("		- Sample Rate : "+soundList.get(i).sampleRate);
 			
 			b1 = buf_snmci.get();
 			soundList.get(i).bit_depth = ByteArrayToNumber.bytesToLong(new byte[]{0,0,0,0,0,0,0,b1});
-			System.out.println("		- Bit Depth : "+soundList.get(i).bit_depth);
+			logger.info("		- Bit Depth : "+soundList.get(i).bit_depth);
 			
 			soundList.get(i).format = buf_snmci.get();
 			
 			soundList.get(i).sound = ByteBuffer.allocate((int)soundList.get(i).size);
 			if (soundList.get(i).format == 0){
-				System.out.println("		- Format : MP3");
+				logger.info("		- Format : MP3");
 				for (int k=0 ; k<soundList.get(i).size ; k++){
 					soundList.get(i).sound.put(buf_snmcd.get());
 				}
 			}else{
-				System.out.println("		- Format : WAVE");
+				logger.info("		- Format : WAVE");
 				for (int l=0 ; l<soundList.get(i).size ; l++){
 					soundList.get(i).sound.put(buf_snmcf.get());
 				}
@@ -325,12 +330,12 @@ public class Sons {
 		}
 		
 		//Puis on ajoute les entêtes dans les fichier par rapport aux infos dans les SoundListInfo
-		System.out.println("	- On ajoute les entêtes et on écrit les fichiers.");
+		logger.info("	- On ajoute les entêtes et on écrit les fichiers.");
 		for (int i=0 ; i<soundList.size() ; i++){
 			SoundListInfo son = soundList.get(i);
 			String nom_fichier = new String(son.name);
 			if(son.format == 0){
-				//System.out.println("	- Son "+i+" :"+Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3");
+				//logger.info("	- Son "+i+" :"+Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3");
 				try {
 					DataOutputStream out = new DataOutputStream(new FileOutputStream(Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3"));
 					out.write(son.sound.array());
@@ -341,20 +346,20 @@ public class Sons {
 					exc.printStackTrace();
 				}
 			}else{
-				//System.out.println("	- Son "+i+" :"+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
+				//logger.info("	- Son "+i+" :"+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
 				SoundHeader header = new SoundHeader();
 				header.fileSize = (int) (soundList.get(i).size+36);
-				//System.out.println("		- FileSize : "+header.fileSize);
+				//logger.info("		- FileSize : "+header.fileSize);
 				header.frequence = soundList.get(i).sampleRate;
-				//System.out.println("		- Frequence : "+header.frequence);
+				//logger.info("		- Frequence : "+header.frequence);
 				header.bitsPerSample = (short) soundList.get(i).bit_depth;
-				//System.out.println("		- BitsPerSample : "+header.bitsPerSample);
+				//logger.info("		- BitsPerSample : "+header.bitsPerSample);
 				header.bytePerBloc = (short) (header.nbrCanaux * header.bitsPerSample/8);
-				//System.out.println("		- BytePerBloc : "+header.bytePerBloc);
+				//logger.info("		- BytePerBloc : "+header.bytePerBloc);
 				header.bytePerSec = (int) (header.frequence * header.bytePerBloc);
-				//System.out.println("		- BytePerSec : "+header.bytePerSec);
+				//logger.info("		- BytePerSec : "+header.bytePerSec);
 				header.dataSize = (int) soundList.get(i).size;
-				//System.out.println("		- DataSize : "+header.dataSize);
+				//logger.info("		- DataSize : "+header.dataSize);
 				byte[] header_data = header.getData();
 				ByteBuffer buf = ByteBuffer.allocate(header_data.length+son.sound.array().length);
 				buf.put(header_data);

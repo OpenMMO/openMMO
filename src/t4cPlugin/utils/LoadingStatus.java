@@ -55,8 +55,8 @@ public enum LoadingStatus {
 	}
 	
 	public boolean isSpritesPackaged() {
-		// We consider Tiles loaded if there is at least one on loaded state but none on toLoad state.
-		return !spritesAtlasPackaged.isEmpty() && spritesAtlasToPackage.isEmpty();
+		// We consider Sprite loaded if there is none on toLoad state.
+		return spritesAtlasToPackage.isEmpty();
 	}
 	
 	/**
@@ -67,6 +67,17 @@ public enum LoadingStatus {
 			waitLoaded();
 		}
 	}
+	
+	/**
+	 * Wait until sprite are all packaged. This will pause the thread.
+	 */
+	public void waitUntilSpritesPackaged() {
+		while (!isSpritesPackaged()) {
+			waitLoaded();
+		}
+	}
+	
+	
 	
 	/**
 	 * Wait until tiles' atlas are converted in TextureAtlas. This will pause the thread.

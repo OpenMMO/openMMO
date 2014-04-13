@@ -52,13 +52,13 @@ public class CREATUREBLOC {
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- Définition du nombre de blocs de créatures : "+nb_blocs);
+			//logger.info("		- Définition du nombre de blocs de créatures : "+nb_blocs);
 			for (int i=0 ; i<taille_id ; i++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				id += s;
 			}
-			//System.out.println("			- id : "+id);
+			//logger.info("			- id : "+id);
 		}
 	}
 	
@@ -73,21 +73,21 @@ public class CREATUREBLOC {
 			b3 = buf.get();
 			b4 = buf.get();
 			x = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("				- X : "+x);
+			//logger.info("				- X : "+x);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			y = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("				- Y : "+y);
+			//logger.info("				- Y : "+y);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			num_carte = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("				- num_carte : "+num_carte);
+			//logger.info("				- num_carte : "+num_carte);
 		}
 		
 	}
@@ -99,48 +99,48 @@ public class CREATUREBLOC {
 		b3 = buf.get();
 		b4 = buf.get();
 		min_time = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- min_time : "+min_time);
+		//logger.info("			- min_time : "+min_time);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		max_time = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- max_time : "+max_time);
+		//logger.info("			- max_time : "+max_time);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		max_dist = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- max_dist : "+max_dist);
+		//logger.info("			- max_dist : "+max_dist);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		min_spawn = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- min_spawn : "+min_spawn);
+		//logger.info("			- min_spawn : "+min_spawn);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- taille_nom : "+taille_nom);
+		//logger.info("			- taille_nom : "+taille_nom);
 		for (int i=0 ; i<taille_nom ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			nom += s;
 		}
-		//System.out.println("			- nom : "+nom);
+		//logger.info("			- nom : "+nom);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_creatures = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- nb_creatures : "+nb_creatures);
+		//logger.info("			- nb_creatures : "+nb_creatures);
 		
 		for (int i = 0 ; i<nb_creatures ; i++){
 			creatures.add(new Creature(buf));
@@ -151,7 +151,7 @@ public class CREATUREBLOC {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_pos = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("			- nb_pos : "+nb_pos);
+		//logger.info("			- nb_pos : "+nb_pos);
 		
 		for (int i = 0 ; i<nb_pos ; i++){
 			positions.add(new Position(buf));

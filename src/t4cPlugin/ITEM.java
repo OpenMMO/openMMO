@@ -88,13 +88,13 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_ID = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille de l'ID: "+taille_ID);
+		//logger.info("				- Taille de l'ID: "+taille_ID);
 		for (int i=0 ; i<taille_ID ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			ID += s;
 		}
-		//System.out.println("				- ID : "+ID);
+		//logger.info("				- ID : "+ID);
 		
 		//IDnum
 		b1 = buf.get();
@@ -102,7 +102,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		IDnum = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- IDnum : "+IDnum);
+		//logger.info("				- IDnum : "+IDnum);
 		
 		//Structure
 		b1 = buf.get();
@@ -110,7 +110,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		structure = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Structure : "+structure);
+		//logger.info("				- Structure : "+structure);
 		
 		//Nom
 		b1 = buf.get();
@@ -118,13 +118,13 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_nom ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			nom += s;
 		}
-		//System.out.println("				- Nom : "+nom);
+		//logger.info("				- Nom : "+nom);
 		
 		//IDgfx
 		b1 = buf.get();
@@ -132,35 +132,35 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		IDnum = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- IDgfx : "+IDgfx);
+		//logger.info("				- IDgfx : "+IDgfx);
 		
 		//Bitmask (type d'objet: ???|rebut|bijou|potion|magique|signe|armure|arme)
 		bitmask = buf.get();
 		BitBuffer bits = new BitBuffer(new byte[]{bitmask});
 		int tmp = bits.getBits(1);
 		if (tmp == 1) unknown = true;
-		//System.out.println("				- Unknown : "+unknown);
+		//logger.info("				- Unknown : "+unknown);
 		tmp = bits.getBits(1);
 		if (tmp == 1) rebut = true;
-		//System.out.println("				- Rebut : "+rebut);
+		//logger.info("				- Rebut : "+rebut);
 		tmp = bits.getBits(1);
 		if (tmp == 1) bijou = true;
-		//System.out.println("				- Bijou : "+bijou);
+		//logger.info("				- Bijou : "+bijou);
 		tmp = bits.getBits(1);
 		if (tmp == 1) potion = true;
-		//System.out.println("				- Potion : "+potion);
+		//logger.info("				- Potion : "+potion);
 		tmp = bits.getBits(1);
 		if (tmp == 1) magique = true;
-		//System.out.println("				- Magique : "+magique);
+		//logger.info("				- Magique : "+magique);
 		tmp = bits.getBits(1);
 		if (tmp == 1) signe = true;
-		//System.out.println("				- Signe : "+signe);
+		//logger.info("				- Signe : "+signe);
 		tmp = bits.getBits(1);
 		if (tmp == 1) armure = true;
-		//System.out.println("				- Armure : "+armure);
+		//logger.info("				- Armure : "+armure);
 		tmp = bits.getBits(1);
 		if (tmp == 1) arme = true;
-		//System.out.println("				- Arme : "+arme);
+		//logger.info("				- Arme : "+arme);
 		
 		//3 bytes non utilisés, toujours à 0
 		buf.get();
@@ -173,7 +173,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		posEquip = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- PosEquip : "+posEquip);
+		//logger.info("				- PosEquip : "+posEquip);
 
 		//SellPrice
 		b1 = buf.get();
@@ -181,7 +181,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		sellPrice = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Sell Price : "+sellPrice);
+		//logger.info("				- Sell Price : "+sellPrice);
 
 		//Poids
 		b1 = buf.get();
@@ -189,7 +189,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		poids = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Poids : "+poids);
+		//logger.info("				- Poids : "+poids);
 	
 		//CA
 		b1 = buf.get();
@@ -201,7 +201,7 @@ public class ITEM {
 		b7 = buf.get();
 		b8 = buf.get();
 		CA = tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
-		//System.out.println("				- CA : "+CA);		
+		//logger.info("				- CA : "+CA);		
 		
 		//MalusEsquive
 		b1 = buf.get();
@@ -209,7 +209,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		malusEsquive = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Malus d'esquive : "+malusEsquive);
+		//logger.info("				- Malus d'esquive : "+malusEsquive);
 		
 		//ReqEND
 		b1 = buf.get();
@@ -217,7 +217,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqEND = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- END requis : "+reqEND);
+		//logger.info("				- END requis : "+reqEND);
 		
 		//Dégats
 		b1 = buf.get();
@@ -225,13 +225,13 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_degats = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille de la formule des dégats: "+taille_degats);
+		//logger.info("				- Taille de la formule des dégats: "+taille_degats);
 		for (int i=0 ; i<taille_degats ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			degats += s;
 		}
-		//System.out.println("				- Formule des dégats : "+degats);
+		//logger.info("				- Formule des dégats : "+degats);
 		
 		//ReqATT
 		b1 = buf.get();
@@ -239,7 +239,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqATT = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- ATT requis : "+reqATT);
+		//logger.info("				- ATT requis : "+reqATT);
 		
 		//ReqFOR
 		b1 = buf.get();
@@ -247,7 +247,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqFOR = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- FOR requis : "+reqFOR);
+		//logger.info("				- FOR requis : "+reqFOR);
 		
 		//ReqAGI
 		b1 = buf.get();
@@ -255,7 +255,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqAGI = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- AGI requis : "+reqAGI);
+		//logger.info("				- AGI requis : "+reqAGI);
 		
 		//nom de l'objet serrure
 		b1 = buf.get();
@@ -263,13 +263,13 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nomSerrure = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom de l'objet serrure: "+taille_degats);
+		//logger.info("				- Taille du nom de l'objet serrure: "+taille_degats);
 		for (int i=0 ; i<taille_nomSerrure ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			nomSerrure += s;
 		}
-		//System.out.println("				- Nom de l'objet serrure : "+nomSerrure);
+		//logger.info("				- Nom de l'objet serrure : "+nomSerrure);
 		
 		//Difficulté de la serrure
 		b1 = buf.get();
@@ -277,7 +277,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		difficulteSerrure = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Difficulté de la serrure : "+difficulteSerrure);
+		//logger.info("				- Difficulté de la serrure : "+difficulteSerrure);
 		
 		//texte du signe
 		b1 = buf.get();
@@ -285,13 +285,13 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_texteSigne = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du texte du signe: "+taille_texteSigne);
+		//logger.info("				- Taille du texte du signe: "+taille_texteSigne);
 		for (int i=0 ; i<taille_texteSigne ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			texteSigne += s;
 		}
-		//System.out.println("				- Texte du signe : "+texteSigne);
+		//logger.info("				- Texte du signe : "+texteSigne);
 		
 		//OR contenu
 		b1 = buf.get();
@@ -299,7 +299,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		OR = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- OR contenu : "+OR);
+		//logger.info("				- OR contenu : "+OR);
 		
 		//Respawn global
 		b1 = buf.get();
@@ -307,7 +307,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		respawnGlobal = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Temps de Respawn Global : "+respawnGlobal);
+		//logger.info("				- Temps de Respawn Global : "+respawnGlobal);
 		
 		//Respawn
 		b1 = buf.get();
@@ -315,7 +315,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		respawn = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Temps de Respawn : "+respawn);
+		//logger.info("				- Temps de Respawn : "+respawn);
 		
 		//temps de récupération
 		b1 = buf.get();
@@ -323,13 +323,13 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_recup = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du temps de récupération: "+taille_recup);
+		//logger.info("				- Taille du temps de récupération: "+taille_recup);
 		for (int i=0 ; i<taille_recup ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			recup += s;
 		}
-		//System.out.println("				- Temps de récupération : "+recup);
+		//logger.info("				- Temps de récupération : "+recup);
 		
 		//Radiance
 		b1 = buf.get();
@@ -337,7 +337,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		radiance = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Radiance : "+radiance);
+		//logger.info("				- Radiance : "+radiance);
 		
 		//Charges
 		b1 = buf.get();
@@ -345,7 +345,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		charges = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de charges : "+charges);
+		//logger.info("				- Nombre de charges : "+charges);
 		
 		//reqINT
 		b1 = buf.get();
@@ -353,7 +353,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqINT = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- INT requis : "+reqINT);
+		//logger.info("				- INT requis : "+reqINT);
 		
 		//reqSAG
 		b1 = buf.get();
@@ -361,7 +361,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		reqSAG = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- SAG requis : "+reqSAG);
+		//logger.info("				- SAG requis : "+reqSAG);
 		
 		//byte libre, toujours 0.
 		buf.get();
@@ -372,32 +372,32 @@ public class ITEM {
 		//Bitmask2 Non-mul|détr.renaiss|non-cach|non-équip|non-rebut|non-vol|???|non-jet
 
 		bitmask2 = buf.get();
-		//System.out.println("				- Bitmask 2 : "+bitmask2);
+		//logger.info("				- Bitmask 2 : "+bitmask2);
 		bits = new BitBuffer(new byte[]{bitmask2});
 		tmp = bits.getBits(1);
 		if (tmp == 1) non_mul = true;
-		//System.out.println("				- non mul??? : "+non_mul);
+		//logger.info("				- non mul??? : "+non_mul);
 		tmp = bits.getBits(1);
 		if (tmp == 1) detr_renaiss = true;
-		//System.out.println("				- détruit à la renaissance : "+detr_renaiss);
+		//logger.info("				- détruit à la renaissance : "+detr_renaiss);
 		tmp = bits.getBits(1);
 		if (tmp == 1) non_cach = true;
-		//System.out.println("				- non cachable : "+non_cach);
+		//logger.info("				- non cachable : "+non_cach);
 		tmp = bits.getBits(1);
 		if (tmp == 1) non_equip = true;
-		//System.out.println("				- non équipable : "+non_equip);
+		//logger.info("				- non équipable : "+non_equip);
 		tmp = bits.getBits(1);
 		if (tmp == 1) non_rebut = true;
-		//System.out.println("				- non rebutable : "+non_rebut);
+		//logger.info("				- non rebutable : "+non_rebut);
 		tmp = bits.getBits(1);
 		if (tmp == 1) non_vol = true;
-		//System.out.println("				- non volable : "+non_vol);
+		//logger.info("				- non volable : "+non_vol);
 		tmp = bits.getBits(1);
 		if (tmp == 1) unknown2 = true;
-		//System.out.println("				- unknown2 : "+unknown2);
+		//logger.info("				- unknown2 : "+unknown2);
 		tmp = bits.getBits(1);
 		if (tmp == 1) non_jet = true;
-		//System.out.println("				- non jetable : "+non_jet);
+		//logger.info("				- non jetable : "+non_jet);
 		
 		//3 bytes non utilisés, toujours à 0
 		buf.get();
@@ -408,7 +408,7 @@ public class ITEM {
 		byte tmp_byte;
 		tmp_byte = buf.get();
 		if (tmp_byte == 1) unique = true;
-		//System.out.println("				- Objet unique : "+unique);
+		//logger.info("				- Objet unique : "+unique);
 		
 		//Emplacement
 		b1 = buf.get();
@@ -416,28 +416,28 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_emplacement = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille de l'emplacement: "+taille_emplacement);
+		//logger.info("				- Taille de l'emplacement: "+taille_emplacement);
 		for (int i=0 ; i<taille_emplacement ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			emplacement += s;
 		}
-		//System.out.println("				- Emplacement : "+emplacement);
+		//logger.info("				- Emplacement : "+emplacement);
 		
 		//Invocation
 		tmp_byte = buf.get();
 		if (tmp_byte == 1) invocation = true;
-		//System.out.println("				- Invocation : "+invocation);
+		//logger.info("				- Invocation : "+invocation);
 		
 		//Arc
 		tmp_byte = buf.get();
 		if (tmp_byte == 1) arc = true;
-		//System.out.println("				- Arc : "+arc);
+		//logger.info("				- Arc : "+arc);
 		
 		//Illimité
 		tmp_byte = buf.get();
 		if (tmp_byte == 1) illimite = true;
-		//System.out.println("				- Illimité : "+illimite);
+		//logger.info("				- Illimité : "+illimite);
 		
 		//nombre de groupes contenus
 		b1 = buf.get();
@@ -445,7 +445,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_grpITEM = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de groupes contenus : "+nb_grpITEM);
+		//logger.info("				- Nombre de groupes contenus : "+nb_grpITEM);
 		
 		for (int i=0 ; i<nb_grpITEM ; i++){
 			grpITEM.add(new GRPITEM(buf));
@@ -457,7 +457,7 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_boost = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de boosts : "+nb_boost);
+		//logger.info("				- Nombre de boosts : "+nb_boost);
 
 		for (int i=0 ; i<nb_boost ; i++){
 			boosts.add(new Boost(buf));
@@ -469,11 +469,11 @@ public class ITEM {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_sorts = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de sorts : "+nb_sorts);
+		//logger.info("				- Nombre de sorts : "+nb_sorts);
 		
 		for (int i=0 ; i<nb_sorts ; i++){
 			sorts.add(new Sort(buf));
 		}
-		//System.out.println("");
+		//logger.info("");
 	}
 }

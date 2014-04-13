@@ -33,20 +33,25 @@ package t4cPlugin;
  * modified by Syno
  */ 
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.net.JarURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.net.JarURLConnection;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.InvocationTargetException;
 import java.util.jar.Attributes;
-import java.io.IOException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A class loader for loading jar files, both local and remote.
  */
 class WebLoader extends URLClassLoader {
+	
+	private static Logger logger = LogManager.getLogger(URLClassLoader.class.getSimpleName());
     private URL url;
     private static WebLoader loader;
     
@@ -59,7 +64,7 @@ class WebLoader extends URLClassLoader {
 				e.printStackTrace();
 				System.exit(1);
 			}
-			System.out.println("Chargement t4cEditorfull.jar");
+			logger.info("Chargement t4cEditorfull.jar");
 		}else{
 			try {
 				u = new URL("https://dl.dropboxusercontent.com/u/48438289/t4cEditor.jar");
@@ -67,7 +72,7 @@ class WebLoader extends URLClassLoader {
 				e.printStackTrace();
 				System.exit(1);
 			}
-			System.out.println("Chargement t4cEditor.jar");
+			logger.info("Chargement t4cEditor.jar");
 		}
 		loader = new WebLoader(u);
 		try {
@@ -76,7 +81,7 @@ class WebLoader extends URLClassLoader {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		System.out.println("Chargement OK");
+		logger.info("Chargement OK");
 	}
     
     

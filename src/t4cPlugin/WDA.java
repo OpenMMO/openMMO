@@ -16,6 +16,9 @@ import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import t4cPlugin.SPELL.spell_effect;
 import t4cPlugin.SPELL.spell_effect.param_effet;
 import tools.BitBuffer;
@@ -70,6 +73,8 @@ Detect hidden      %age de succès      Effet visuel
 */
 class COLMAP {
 	
+	private static Logger logger = LogManager.getLogger(COLMAP.class.getSimpleName());
+	
 	short num_carte, tailleX, tailleY;
 	private int taille_nom;
 	String nom = "";
@@ -83,7 +88,7 @@ class COLMAP {
 		b1 = buf.get();
 		b2 = buf.get();
 		num_carte = tools.ByteArrayToNumber.bytesToShort(new byte[]{b2,b1});
-		//System.out.println("			- Carte n° : "+indiceZ);
+		//logger.info("			- Carte n° : "+indiceZ);
 		
 		//NOM
 		b1 = buf.get();
@@ -91,25 +96,25 @@ class COLMAP {
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_nom ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			nom += s;
 		}
-		//System.out.println("				- Nom : "+nom);
+		//logger.info("				- Nom : "+nom);
 		
 		//TailleX
 		b1 = buf.get();
 		b2 = buf.get();
 		tailleX = tools.ByteArrayToNumber.bytesToShort(new byte[]{b2,b1});
-		//System.out.println("				- Taille X : "+tailleX);
+		//logger.info("				- Taille X : "+tailleX);
 		
 		//TailleY
 		b1 = buf.get();
 		b2 = buf.get();
 		tailleY = tools.ByteArrayToNumber.bytesToShort(new byte[]{b2,b1});
-		//System.out.println("				- Taille Y : "+tailleY);
+		//logger.info("				- Taille Y : "+tailleY);
 		byte[] bytes = new byte[3072*3072/2];
 		buf.get(bytes,0,3072*3072/2);
 		BitBuffer bits = new BitBuffer(bytes);
@@ -132,7 +137,7 @@ class COLMAP {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("	- Carte de collision écrite : "+Params.t4cOUT+"COLMAPS/"+nom+".png");
+		logger.info("	- Carte de collision écrite : "+Params.t4cOUT+"COLMAPS/"+nom+".png");
 		Params.nb_colmap++;
 	}
 
@@ -155,42 +160,42 @@ class COLMAP {
 			b3 = buf.get();
 			b4 = buf.get();
 			x1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- x1 : "+x1);
+			//logger.info("		- x1 : "+x1);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			y1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- y1 : "+y1);
+			//logger.info("		- y1 : "+y1);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			num_carte1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- num_carte1 : "+num_carte1);
+			//logger.info("		- num_carte1 : "+num_carte1);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			x2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- x2 : "+x2);
+			//logger.info("		- x2 : "+x2);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			y2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- y2 : "+y2);
+			//logger.info("		- y2 : "+y2);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			num_carte2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- num_carte2 : "+num_carte2);
+			//logger.info("		- num_carte2 : "+num_carte2);
 
 		}
 	}
@@ -205,17 +210,17 @@ class COLMAP {
 			b1 = buf.get();
 			b2 = buf.get();
 			id1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
-			//System.out.println("		- id1 : "+id1);
+			//logger.info("		- id1 : "+id1);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			id2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
-			//System.out.println("		- id2 : "+id2);
+			//logger.info("		- id2 : "+id2);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			rel = tools.ByteArrayToNumber.bytesToShort(new byte[]{b2,b1});
-			//System.out.println("		- rel : "+rel);
+			//logger.info("		- rel : "+rel);
 		}
 	}
 
@@ -228,20 +233,20 @@ class COLMAP {
 			b1 = buf.get();
 			b2 = buf.get();
 			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
-			//System.out.println("		- id : "+id);
+			//logger.info("		- id : "+id);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- taille_nom : "+taille_nom);
+			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				nom += s;
 			}
-			//System.out.println("					- nom : "+nom);
+			//logger.info("					- nom : "+nom);
 		}
 	}
 	
@@ -256,20 +261,20 @@ class COLMAP {
 			b3 = buf.get();
 			b4 = buf.get();
 			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- id : "+id);
+			//logger.info("		- id : "+id);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- taille_nom : "+taille_nom);
+			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				nom += s;
 			}
-			//System.out.println("					- nom : "+nom);
+			//logger.info("					- nom : "+nom);
 		}
 	}
 	
@@ -284,20 +289,20 @@ class COLMAP {
 			b3 = buf.get();
 			b4 = buf.get();
 			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- id : "+id);
+			//logger.info("		- id : "+id);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- taille_nom : "+taille_nom);
+			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				nom += s;
 			}
-			//System.out.println("					- nom : "+nom);
+			//logger.info("					- nom : "+nom);
 		}
 	}
 	
@@ -313,27 +318,27 @@ class COLMAP {
 			b3 = buf.get();
 			b4 = buf.get();
 			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- id : "+id);
+			//logger.info("		- id : "+id);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			id2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- id2??? : "+id2);
+			//logger.info("		- id2??? : "+id2);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- taille_nom : "+taille_nom);
+			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				nom += s;
 			}
-			//System.out.println("					- nom : "+nom);
+			//logger.info("					- nom : "+nom);
 		}
 	}
 
@@ -347,13 +352,13 @@ class COLMAP {
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- taille_nom : "+taille_nom);
+			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				nom += s;
 			}
-			//System.out.println("					- nom : "+nom);
+			//logger.info("					- nom : "+nom);
 		}
 	}
 
@@ -368,20 +373,20 @@ class COLMAP {
 			b3 = buf.get();
 			b4 = buf.get();
 			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- id : "+id);
+			//logger.info("		- id : "+id);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- taille_nom : "+taille_nom);
+			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				nom += s;
 			}
-			//System.out.println("					- nom : "+nom);
+			//logger.info("					- nom : "+nom);
 		}
 	}
 	
@@ -397,14 +402,14 @@ class COLMAP {
 			b3 = buf.get();
 			b4 = buf.get();
 			id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- id : "+id);
+			//logger.info("		- id : "+id);
 			
 			b1 = buf.get();
 			b2 = buf.get();
 			b3 = buf.get();
 			b4 = buf.get();
 			taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("		- taille_nom : "+taille_nom);
+			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
 				if (b1 == 47 && !Params.OS.equals("Windows")) b1 = 92;
@@ -415,6 +420,9 @@ class COLMAP {
 	}
 
 public class WDA {
+	
+	private static Logger logger = LogManager.getLogger(WDA.class.getSimpleName());
+	
 	private int marqueur = 0;//vérifier plus tard qu'il vaut 68775
 	private byte type = 0; //Type de WDA (T4C Worlds(RO) = 0x01, T4C Edit(RW) = 0x00)
 	private ByteBuffer buf;
@@ -460,14 +468,14 @@ public class WDA {
 		marqueur = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
 		if (marqueur != 68775){
 			if (marqueur != 1){
-				//System.out.println("	- Marqueur érroné : "+marqueur);
+				//logger.info("	- Marqueur érroné : "+marqueur);
 				System.exit(1);
 			}else {
-				//System.out.println("	- Marqueur correct : "+marqueur+" : fichier PNJ");
+				//logger.info("	- Marqueur correct : "+marqueur+" : fichier PNJ");
 				//extractPNJ(buf);
 			}
 		}else {
-			//System.out.println("	- Marqueur correct : "+marqueur+" : fichier WORLD/EDIT");
+			//logger.info("	- Marqueur correct : "+marqueur+" : fichier WORLD/EDIT");
 			extract(buf, wda);
 		}
 		
@@ -518,7 +526,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_fx = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de blocs d'effets de sorts : "+nb_fx);
+		//logger.info("		- Définition du nombre de blocs d'effets de sorts : "+nb_fx);
 		
 		for (int i=0 ; i<nb_fx ; i++){
 			fx_sorts.add(new Fx_spell(buf));
@@ -549,7 +557,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- EFFET_SORT écrit : "+Params.t4cOUT+"SPELLFX/"+wda.getName()+"_"+fx.nom+".txt");
+			logger.info("	- EFFET_SORT écrit : "+Params.t4cOUT+"SPELLFX/"+wda.getName()+"_"+fx.nom+".txt");
 			Params.nb_effets_sorts++;
 		}		
 	}
@@ -562,7 +570,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_icones = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		///System.out.println("		- Définition du nombre d'icones : "+nb_icones);
+		///logger.info("		- Définition du nombre d'icones : "+nb_icones);
 		
 		for (int i=0 ; i<nb_icones ; i++){
 			icones.add(new Icone(buf));
@@ -592,7 +600,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- ICONE écrite : "+Params.t4cOUT+"ICONES/"+wda.getName()+"_"+ic.nom+".txt");
+			logger.info("	- ICONE écrite : "+Params.t4cOUT+"ICONES/"+wda.getName()+"_"+ic.nom+".txt");
 			Params.nb_icones++;
 		}		
 	}
@@ -605,7 +613,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_lieux = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de lieux : "+nb_lieux);
+		//logger.info("		- Définition du nombre de lieux : "+nb_lieux);
 		
 		for (int i=0 ; i<nb_lieux ; i++){
 			lieux.add(new Lieu(buf));
@@ -634,7 +642,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- LIEU écrit : "+Params.t4cOUT+"LIEUX/"+wda.getName()+"_"+l.nom+".txt");
+			logger.info("	- LIEU écrit : "+Params.t4cOUT+"LIEUX/"+wda.getName()+"_"+l.nom+".txt");
 			Params.nb_lieux++;
 		}		
 	}
@@ -647,7 +655,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_gfx_creatures = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre d'apparences de créatures : "+nb_gfx_creatures);
+		//logger.info("		- Définition du nombre d'apparences de créatures : "+nb_gfx_creatures);
 		
 		for (int i=0 ; i<nb_gfx_creatures ; i++){
 			gfx_creatures.add(new Gfx_creatures(buf));
@@ -678,7 +686,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- GFX CREATURE écrit : "+Params.t4cOUT+"MONSTRES/"+wda.getName()+"_GFX_"+ct.nom+".txt");
+			logger.info("	- GFX CREATURE écrit : "+Params.t4cOUT+"MONSTRES/"+wda.getName()+"_GFX_"+ct.nom+".txt");
 			Params.nb_gfx_creatures++;
 		}		
 	}
@@ -691,7 +699,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_gfx_items = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre d'apparences d'objets : "+nb_gfx_items);
+		//logger.info("		- Définition du nombre d'apparences d'objets : "+nb_gfx_items);
 		
 		for (int i=0 ; i<nb_gfx_items ; i++){
 			gfx_items.add(new Gfx_item(buf));
@@ -721,7 +729,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- GFX ITEM écrit : "+Params.t4cOUT+"ITEMS/"+wda.getName()+"_GFX_"+it.nom+".txt");
+			logger.info("	- GFX ITEM écrit : "+Params.t4cOUT+"ITEMS/"+wda.getName()+"_GFX_"+it.nom+".txt");
 			Params.nb_gfx_items++;
 		}		
 	}
@@ -735,7 +743,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_flags = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de flags : "+nb_flags);
+		//logger.info("		- Définition du nombre de flags : "+nb_flags);
 		
 		for (int i=0 ; i<nb_flags ; i++){
 			flags.add(new Flag(buf));
@@ -765,7 +773,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- FLAG écrit : "+Params.t4cOUT+"FLAGS/"+wda.getName()+"_"+fl.nom+".txt");
+			logger.info("	- FLAG écrit : "+Params.t4cOUT+"FLAGS/"+wda.getName()+"_"+fl.nom+".txt");
 			Params.nb_flags++;
 		}		
 	}
@@ -779,7 +787,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_clans = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de clans : "+nb_clans);
+		//logger.info("		- Définition du nombre de clans : "+nb_clans);
 		
 		for (int i=0 ; i<nb_clans ; i++){
 			clans.add(new Clan(buf));
@@ -809,7 +817,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- CLAN écrit : "+Params.t4cOUT+"CLANS/"+wda.getName()+"_"+cl.nom+".txt");
+			logger.info("	- CLAN écrit : "+Params.t4cOUT+"CLANS/"+wda.getName()+"_"+cl.nom+".txt");
 			Params.nb_clans++;
 		}		
 	}
@@ -824,13 +832,13 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		id_sup = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition de l'id supérieure des clans : "+id_sup);
+		//logger.info("		- Définition de l'id supérieure des clans : "+id_sup);
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_clan_relations = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de blocs de relations entre clans : "+nb_clan_relations);
+		//logger.info("		- Définition du nombre de blocs de relations entre clans : "+nb_clan_relations);
 		
 		for (int i=0 ; i<nb_clan_relations ; i++){
 			clan_relations.add(new Clan_relation(buf));
@@ -862,7 +870,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- RELATION INTERCLAN écrite : "+Params.t4cOUT+"CLANS/"+wda.getName()+"_REL_"+Params.nb_clan_relations+".txt");
+			logger.info("	- RELATION INTERCLAN écrite : "+Params.t4cOUT+"CLANS/"+wda.getName()+"_REL_"+Params.nb_clan_relations+".txt");
 			Params.nb_clan_relations++;
 		}		
 	}
@@ -876,7 +884,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_teleportations = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de blocs de téléportations : "+nb_teleportations);
+		//logger.info("		- Définition du nombre de blocs de téléportations : "+nb_teleportations);
 		
 		for (int i=0 ; i<nb_teleportations ; i++){
 			teleportations.add(new Teleportation(buf));
@@ -911,7 +919,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- TELEPORTATION écrite : "+Params.t4cOUT+"LIEUX/"+wda.getName()+"_TEL_"+Params.nb_teleportations+".txt");
+			logger.info("	- TELEPORTATION écrite : "+Params.t4cOUT+"LIEUX/"+wda.getName()+"_TEL_"+Params.nb_teleportations+".txt");
 			Params.nb_teleportations++;
 		}		
 	}
@@ -924,7 +932,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_blocs = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de blocs de créatures : "+nb_blocs);
+		//logger.info("		- Définition du nombre de blocs de créatures : "+nb_blocs);
 		
 		for (int i=0 ; i<nb_blocs ; i++){
 			blocs_creatures.add(new CREATUREBLOC(buf));
@@ -967,7 +975,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- SPAWN écrit : "+Params.t4cOUT+"SPAWN/"+wda.getName()+"_"+sp.nom+".txt");
+			logger.info("	- SPAWN écrit : "+Params.t4cOUT+"SPAWN/"+wda.getName()+"_"+sp.nom+".txt");
 			Params.nb_spawns++;
 		}
 	}
@@ -980,7 +988,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_creature = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de créatures : "+nb_creature);
+		//logger.info("		- Définition du nombre de créatures : "+nb_creature);
 		
 		for (int i=0 ; i<nb_creature ; i++){
 			creatures.add(new CREATURE(buf));
@@ -1075,7 +1083,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- MONSTRE écrit : "+Params.t4cOUT+"MONSTRES/"+wda.getName()+"_"+c.nom+".txt");
+			logger.info("	- MONSTRE écrit : "+Params.t4cOUT+"MONSTRES/"+wda.getName()+"_"+c.nom+".txt");
 			Params.nb_creatures++;
 		}
 	}
@@ -1088,7 +1096,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_map = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de cartes de collision : "+nb_map);
+		//logger.info("		- Définition du nombre de cartes de collision : "+nb_map);
 		for (int i = 0 ; i<nb_map ; i++){
 			colmaps.add(new COLMAP(buf, wda.getName()));
 		}
@@ -1106,7 +1114,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_sorts = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de sorts : "+nb_sorts);
+		//logger.info("		- Définition du nombre de sorts : "+nb_sorts);
 		for (int i = 0 ; i<nb_sorts ; i++){
 			sorts.add(new SPELL(buf));
 		}
@@ -1192,7 +1200,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- SORT écrit : "+Params.t4cOUT+"SPELLS/"+wda.getName()+"_"+s.nom+".txt");
+			logger.info("	- SORT écrit : "+Params.t4cOUT+"SPELLS/"+wda.getName()+"_"+s.nom+".txt");
 			Params.nb_sorts++;
 		}
 	}
@@ -1210,7 +1218,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_item = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre d' objets : "+nb_item);
+		//logger.info("		- Définition du nombre d' objets : "+nb_item);
 		
 		for (int i = 0 ; i<nb_item ; i++){
 			items.add(new ITEM(buf));
@@ -1306,7 +1314,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- ITEM écrite : "+Params.t4cOUT+"ITEMS/"+wda.getName()+"_"+o.nom+".txt");
+			logger.info("	- ITEM écrite : "+Params.t4cOUT+"ITEMS/"+wda.getName()+"_"+o.nom+".txt");
 			Params.nb_item++;	
 		}
 		
@@ -1317,7 +1325,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_pos_item = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de positions d' objets : "+nb_pos_item);
+		//logger.info("		- Définition du nombre de positions d' objets : "+nb_pos_item);
 		
 		for (int i = 0 ; i<nb_pos_item ; i++){
 			item_pos.add(new ITEMPOS(buf));
@@ -1349,7 +1357,7 @@ public class WDA {
 					System.err.println(iter.next());
 				}
 			}
-			System.out.println("	- ITEM_POS écrite : "+Params.t4cOUT+"ITEM_POS/"+p.nom+".txt");
+			logger.info("	- ITEM_POS écrite : "+Params.t4cOUT+"ITEM_POS/"+p.nom+".txt");
 			Params.nb_item_pos++;
 		}
 	}
@@ -1368,7 +1376,7 @@ public class WDA {
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_pnj = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("		- Définition du nombre de PNJ : "+nb_pnj);
+		//logger.info("		- Définition du nombre de PNJ : "+nb_pnj);
 		
 		for (int i=0; i<nb_pnj ; i++){
 			pnjs.add(new PNJ(buf));
@@ -1390,20 +1398,20 @@ class PNJ_sell_item{
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_id ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id += s;
 		}
-		//System.out.println("					- id : "+id);
+		//logger.info("					- id : "+id);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		prix = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Vend: "+id+" : "+prix);
+		//logger.info("					- Vend: "+id+" : "+prix);
 	}
 }
 
@@ -1419,21 +1427,21 @@ class PNJ_buy_type{
 		b3 = buf.get();
 		b4 = buf.get();
 		id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- id: "+id);
+		//logger.info("					- id: "+id);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		prix_min = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- prix_min: "+prix_min);
+		//logger.info("					- prix_min: "+prix_min);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		prix_max = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- achète: "+id+" "+prix_min+"/"+prix_max);
+		//logger.info("					- achète: "+id+" "+prix_min+"/"+prix_max);
 	}
 }
 
@@ -1449,21 +1457,21 @@ class PNJ_train{
 		b3 = buf.get();
 		b4 = buf.get();
 		id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- id: "+id);
+		//logger.info("				- id: "+id);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		points_max = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- points_max: "+points_max);
+		//logger.info("				- points_max: "+points_max);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		prix = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- prix: "+prix);
+		//logger.info("				- prix: "+prix);
 	}
 }
 
@@ -1479,21 +1487,21 @@ class PNJ_learn{
 		b3 = buf.get();
 		b4 = buf.get();
 		id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- id: "+id);
+		//logger.info("				- id: "+id);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		cout_pc = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- cout_pc: "+cout_pc);
+		//logger.info("				- cout_pc: "+cout_pc);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		prix = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- prix: "+prix);
+		//logger.info("				- prix: "+prix);
 	}
 }
 
@@ -1510,13 +1518,13 @@ class Keyword{
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- capacité buffer: "+buf.position()+"/"+buf.capacity());
+		//logger.info("						- capacité buffer: "+buf.position()+"/"+buf.capacity());
 		for (int i=0 ; i<taille_nom ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			nom += s;
 		}
-		//System.out.println("						- Nom : "+nom);
+		//logger.info("						- Nom : "+nom);
 	}
 }
 
@@ -1536,28 +1544,28 @@ class PNJ_replique{
 		b3 = buf.get();
 		b4 = buf.get();
 		inconnu = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- inconnu: "+inconnu);
+		//logger.info("					- inconnu: "+inconnu);
 		
 		type = buf.get();
-		//if (type == 0)System.out.println("					- type: Normale");
-		//if (type == 1)System.out.println("					- type: Initiale");
-		//if (type == 2)System.out.println("					- type: Par défaut");
+		//if (type == 0)logger.info("					- type: Normale");
+		//if (type == 1)logger.info("					- type: Initiale");
+		//if (type == 2)logger.info("					- type: Par défaut");
 
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		keyword_rel = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//if (keyword_rel == 1)System.out.println("					- Relation entre les mot-clés : ET");
-		//if (keyword_rel == 2)System.out.println("					- Relation entre les mot-clés : OU");
-		//if (keyword_rel == 3)System.out.println("					- Relation entre les mot-clés : Ordonnée");
+		//if (keyword_rel == 1)logger.info("					- Relation entre les mot-clés : ET");
+		//if (keyword_rel == 2)logger.info("					- Relation entre les mot-clés : OU");
+		//if (keyword_rel == 3)logger.info("					- Relation entre les mot-clés : Ordonnée");
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_keyword = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Nombre de mot-clés : "+nb_keyword);
+		//logger.info("					- Nombre de mot-clés : "+nb_keyword);
 
 		for (int j=0 ; j<nb_keyword ; j++){
 			keywords.add(new Keyword(buf));
@@ -1583,21 +1591,21 @@ class PNJ_replique{
 		b3 = buf.get();
 		b4 = buf.get();
 		inconnu1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- inconnu1: "+inconnu1);
+		//logger.info("					- inconnu1: "+inconnu1);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		inconnu2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- inconnu2: "+inconnu2);
+		//logger.info("					- inconnu2: "+inconnu2);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_instructions = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- Nombre d'instructions : "+nb_instructions);
+		//logger.info("					- Nombre d'instructions : "+nb_instructions);
 		
 		for (int i=0 ; i<nb_instructions ; i++){
 			instructions.add(new PNJ_instruction(buf, this));
@@ -1606,6 +1614,8 @@ class PNJ_replique{
 }
 
 class PNJ_instruction{
+	
+	private static Logger logger = LogManager.getLogger(PNJ_instruction.class.getSimpleName());
 
 	/*
 	 *  Valeur     Structure   Rôle
@@ -1697,7 +1707,7 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		ID = (byte) (b1);
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 
 		switch(ID){
 		case SayText : sayText(buf);
@@ -1738,7 +1748,7 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		inconnu1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- FIN D'INSTRUCTION");
+		//logger.info("					- FIN D'INSTRUCTION");
 	}
 
 	private void castSpell(ByteBuffer buf) {
@@ -1751,19 +1761,19 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id += s;
 		}
-		//System.out.println("						- Jeter le sort : "+id);		
+		//logger.info("						- Jeter le sort : "+id);		
 	}
 
 	private void castSpellOnNPC(ByteBuffer buf) {
@@ -1776,19 +1786,19 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id += s;
 		}
-		//System.out.println("						- Jeter le sort sur le NPC: "+id);		
+		//logger.info("						- Jeter le sort sur le NPC: "+id);		
 	}
 
 	private void fightPlayer(ByteBuffer buf) {
@@ -1797,8 +1807,8 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		buf.get();
 		buf.get();
 		buf.get();
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
-		System.out.println("						- Combattre.");		
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		logger.info("						- Combattre.");		
 	}
 
 	private void displayTrainedSkills(ByteBuffer buf) {
@@ -1807,8 +1817,8 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		buf.get();
 		buf.get();
 		buf.get();
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
-		System.out.println("						- Faire apparaître l'écran d'entrainement de compétences.");
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		logger.info("						- Faire apparaître l'écran d'entrainement de compétences.");
 	}
 
 	private void displayTaughtSkills(ByteBuffer buf) {
@@ -1817,8 +1827,8 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		buf.get();
 		buf.get();
 		buf.get();
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
-		System.out.println("						- Faire apparaître l'écran d'apprentissage de compétences.");		
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		logger.info("						- Faire apparaître l'écran d'apprentissage de compétences.");		
 	}
 
 	private void teleport(ByteBuffer buf) {
@@ -1833,13 +1843,13 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
@@ -1850,7 +1860,7 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
@@ -1861,13 +1871,13 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+taille);
+		//logger.info("						- Donner item : "+taille);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id3 += s;
 		}
-		//System.out.println("						- Téléporter en (X,Y,MONDE) "+id+","+id2+","+id3);
+		//logger.info("						- Téléporter en (X,Y,MONDE) "+id+","+id2+","+id3);
 	}
 
 	private void setFlag(ByteBuffer buf) {
@@ -1881,13 +1891,13 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
@@ -1898,13 +1908,13 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+taille);
+		//logger.info("						- Donner item : "+taille);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id2 += s;
 		}
-		//System.out.println("						- FLAG "+id+" : "+id2);		
+		//logger.info("						- FLAG "+id+" : "+id2);		
 	}
 
 	private void giveGold(ByteBuffer buf) {
@@ -1917,19 +1927,19 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id += s;
 		}
-		//System.out.println("						- Donner OR : "+id);		
+		//logger.info("						- Donner OR : "+id);		
 	}
 
 	private void giveXP(ByteBuffer buf) {
@@ -1942,19 +1952,19 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id += s;
 		}
-		//System.out.println("						- Donner XP : "+id);		
+		//logger.info("						- Donner XP : "+id);		
 	}
 
 	private void giveItem(ByteBuffer buf) {
@@ -1967,19 +1977,19 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- Donner item : "+id);
+		//logger.info("						- Donner item : "+id);
 		for (int i=0 ; i<taille ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id += s;
 		}
-		//System.out.println("						- Donner ITEM : "+id);
+		//logger.info("						- Donner ITEM : "+id);
 	}
 
 	private void shoutMessage(ByteBuffer buf) {
@@ -1994,33 +2004,33 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_params = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("					- nb_params: "+nb_params);
+		//logger.info("					- nb_params: "+nb_params);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_param1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_param1 ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			param1 += s;
 		}
-		//System.out.println("						- CC : "+param1);
+		//logger.info("						- CC : "+param1);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_param2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_param2 ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			param2 += s;
 		}
-		//System.out.println("						- Crier : "+param2+" sur CC : "+param1);
+		//logger.info("						- Crier : "+param2+" sur CC : "+param1);
 
 	}
 
@@ -2033,13 +2043,13 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		int taille_condition = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_condition ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			condition += s;
 		}
-		//System.out.println("						- IF : "+condition);
+		//logger.info("						- IF : "+condition);
 		int cas_general = buf.get();//ELSE
 		if (cas_general == 1) r.extractInstructions(buf);
 		b1 = buf.get();
@@ -2047,7 +2057,7 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		int nb_cas = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- nb_cas: "+nb_cas);
+		//logger.info("						- nb_cas: "+nb_cas);
 		
 		for (int i=0 ; i<nb_cas ; i++){
 			b1 = buf.get();
@@ -2055,17 +2065,17 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 			b3 = buf.get();
 			b4 = buf.get();
 			int taille_cas = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-			//System.out.println("						- taille_cas: "+taille_cas);
+			//logger.info("						- taille_cas: "+taille_cas);
 			for (int j=0 ; j<taille_cas ; j++){
 				b1 = buf.get();
 				String s = new String(new byte[]{b1});
 				cas += s;
 			}
-			//System.out.println("						- cas: "+cas);
+			//logger.info("						- cas: "+cas);
 			cas ="";
 			r.extractInstructions(buf);
 		}
-		//System.out.println("						- ENDIF");
+		//logger.info("						- ENDIF");
 		r.extractInstructions(buf);
 	}
 
@@ -2075,8 +2085,8 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		buf.get();
 		buf.get();
 		buf.get();
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
-		//System.out.println("						- Faire apparaître le magasin (ce que le PNJ achète).");		
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- Faire apparaître le magasin (ce que le PNJ achète).");		
 	}
 
 	private void breakConversation(ByteBuffer buf) {
@@ -2085,8 +2095,8 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		buf.get();
 		buf.get();
 		buf.get();
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
-		//System.out.println("						- Fin de la conversation.");		
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- Fin de la conversation.");		
 	}
 
 	private void displayItemsSoldByNPC(ByteBuffer buf) {
@@ -2095,8 +2105,8 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		buf.get();
 		buf.get();
 		buf.get();
-		//System.out.println("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
-		//System.out.println("						- Faire apparaître le magasin (ce que le PNJ vend).");
+		//logger.info("						- ID: "+tools.ByteArrayToHexString.print(new byte[]{ID}));
+		//logger.info("						- Faire apparaître le magasin (ce que le PNJ vend).");
 	}
 
 	private void sayText(ByteBuffer buf) {
@@ -2107,7 +2117,7 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b3 = buf.get();
 		b4 = buf.get();
 		param = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("						- param: "+param);
+		//logger.info("						- param: "+param);
 		
 		b1 = buf.get();
 		b2 = buf.get();
@@ -2115,14 +2125,14 @@ Valeur      Nom de la commande  Params  Paramètre 1    Paramètre 2    Paramèt
 		b4 = buf.get();
 
 		taille_texte = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_texte);
+		//logger.info("				- Taille du nom: "+taille_texte);
 		if (taille_texte == 1) return;
 		for (int i=0 ; i<taille_texte ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			texte += s;
 		}
-		//System.out.println("						- Dire : "+texte);
+		//logger.info("						- Dire : "+texte);
 	}
 	
 }
@@ -2158,53 +2168,53 @@ class PNJ{
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_nom = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_nom ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			nom += s;
 		}
-		//System.out.println("				- Nom : "+nom);
+		//logger.info("				- Nom : "+nom);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_id = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_id ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			id += s;
 		}
-		//System.out.println("				- id : "+id);
+		//logger.info("				- id : "+id);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		unknown = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- unknown: "+unknown);
+		//logger.info("				- unknown: "+unknown);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		taille_apparence = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Taille du nom: "+taille_nom);
+		//logger.info("				- Taille du nom: "+taille_nom);
 		for (int i=0 ; i<taille_apparence ; i++){
 			b1 = buf.get();
 			String s = new String(new byte[]{b1});
 			apparence += s;
 		}
-		//System.out.println("				- apparence : "+apparence);
+		//logger.info("				- apparence : "+apparence);
 		
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_sell_items = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre d'ITEM vendues: "+nb_sell_items);
+		//logger.info("				- Nombre d'ITEM vendues: "+nb_sell_items);
 		
 		for (int i=0 ; i<nb_sell_items ; i++){
 			sell_items.add(new PNJ_sell_item(buf));
@@ -2215,7 +2225,7 @@ class PNJ{
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_buy_types = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de types d'ITEM achetés: "+nb_buy_types);
+		//logger.info("				- Nombre de types d'ITEM achetés: "+nb_buy_types);
 		
 		for (int i=0 ; i<nb_buy_types ; i++){
 			buy_types.add(new PNJ_buy_type(buf));
@@ -2226,7 +2236,7 @@ class PNJ{
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_train = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de compétences entraînées: "+nb_train);
+		//logger.info("				- Nombre de compétences entraînées: "+nb_train);
 		
 		for (int i=0 ; i<nb_train ; i++){
 			entrainements.add(new PNJ_train(buf));
@@ -2237,7 +2247,7 @@ class PNJ{
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_learn = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de compétences apprises: "+nb_learn);
+		//logger.info("				- Nombre de compétences apprises: "+nb_learn);
 		
 		for (int i=0 ; i<nb_learn ; i++){
 			enseignements.add(new PNJ_learn(buf));
@@ -2248,19 +2258,19 @@ class PNJ{
 		b3 = buf.get();
 		b4 = buf.get();
 		inconnu1 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- inconnu1: "+inconnu1);
+		//logger.info("				- inconnu1: "+inconnu1);
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		inconnu2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- inconnu2: "+inconnu2);
+		//logger.info("				- inconnu2: "+inconnu2);
 		b1 = buf.get();
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
 		nb_repliques = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		//System.out.println("				- Nombre de répliques: "+nb_repliques);
+		//logger.info("				- Nombre de répliques: "+nb_repliques);
 		
 		for (int i=0 ; i<nb_repliques ; i++){
 			repliques.add(new PNJ_replique(buf));

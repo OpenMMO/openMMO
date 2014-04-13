@@ -40,7 +40,7 @@ public class DPDPalette {
 		buf.get(bytes);
 		nom = new String(bytes);
 		nom = nom.substring(0, nom.indexOf(0x00));
-		//System.out.println("		- Nom : "+nom);
+		//logger.info("		- Nom : "+nom);
 		//new Fast_Forward(buf, 768, false, nom);
 		for (int i=0 ; i<256 ; i++){
 			short tmp1,tmp2,tmp3;
@@ -54,7 +54,7 @@ public class DPDPalette {
 			pixels.add(new Pixel (tmp1, tmp2, tmp3));
 			//pixels.add(new Pixel (buf.get(),buf.get(), buf.get())); 
 		}
-		//System.out.println("		- Nombre de pixels extraits : "+pixels.size());
+		//logger.info("		- Nombre de pixels extraits : "+pixels.size());
 	}
 
 	public ByteBuffer getPixels() {

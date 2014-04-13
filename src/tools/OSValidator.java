@@ -1,44 +1,49 @@
 package tools;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import t4cPlugin.Params;
 
 public class OSValidator {
+	
+	private static Logger logger = LogManager.getLogger(OSValidator.class.getSimpleName());
 	 
 	private static String OS = System.getProperty("os.name").toLowerCase();
  
 	public static void detect() {
-		System.out.println("Détection de l'OS :");
+		logger.info("Détection de l'OS :");
  
 		if (isWindows()) {
-			System.out.println("	- OS : Windows");
+			logger.info("	- OS : Windows");
 			Params.OS = "Windows";
 			Params.CHARSET="windows-1258";
 			Params.SLASH='\\';
 			Params.ANTISLASH='/';
 			Params.LINE=System.getProperty("line.separator");
 		} else if (isMac()) {
-			System.out.println("	- OS : Mac");
+			logger.info("	- OS : Mac");
 			Params.OS = "Mac";
 			Params.CHARSET="UTF-8";
 			Params.SLASH='/';
 			Params.ANTISLASH='\\';
 			Params.LINE=System.getProperty("line.separator");
 		} else if (isUnix()) {
-			System.out.println("	- OS : Unix/Linux");
+			logger.info("	- OS : Unix/Linux");
 			Params.OS = "Unix";
 			Params.CHARSET="UTF-8";
 			Params.SLASH='/';
 			Params.ANTISLASH='\\';
 			Params.LINE=System.getProperty("line.separator");
 		} else if (isSolaris()) {
-			System.out.println("	- OS : Solaris");
+			logger.info("	- OS : Solaris");
 			Params.OS = "Solaris";
 			Params.CHARSET="UTF-8";
 			Params.SLASH='/';
 			Params.ANTISLASH='\\';
 			Params.LINE=System.getProperty("line.separator");
 		} else {
-			System.out.println("	- OS : Inconnu");
+			logger.fatal("	- OS : Inconnu");
 			System.exit(1);
 		}
 	}
