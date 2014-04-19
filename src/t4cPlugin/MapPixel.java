@@ -16,7 +16,6 @@ public class MapPixel implements Serializable{
 	private static final long serialVersionUID = 6974577196048084070L;
 	private boolean tuile;
 	private String atlas;
-	//TODO passer tout private
 	private SpriteName name;
 	private Point offset;
 	private Point modulo;

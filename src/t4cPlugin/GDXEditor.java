@@ -17,6 +17,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import t4cPlugin.utils.PointsManager;
 import tools.DataInputManager;
 import tools.OSValidator;
 
@@ -379,7 +380,7 @@ public class GDXEditor extends Game{
 							int moduloX = Integer.parseInt(index[14]);//On récupère le modulo pour appliquer l'effet de zone
 							int moduloY = Integer.parseInt(index[15]);
 							//System.err.println("ID "+id+" : "+tex+" "+moduloX+","+moduloY+"|"+tuile);
-							m.ids.put(id, new MapPixel(tuile, atlas, tex, new Point(offsetX,offsetY), new Point(moduloX,moduloY), id));//On enregistre une liste avec les ID, les coordonnées et les références graphiques
+							m.ids.put(id, new MapPixel(tuile, atlas, tex, PointsManager.getPoint(offsetX,offsetY), PointsManager.getPoint(moduloX,moduloY), id));//On enregistre une liste avec les ID, les coordonnées et les références graphiques
 						}
 					} catch (NumberFormatException | IOException e2) {
 						logger.fatal(e2);
@@ -394,7 +395,7 @@ public class GDXEditor extends Game{
 					for (int y=0 ; y<3072 ; y++){//On parcourt chaque ligne
 						for (int x=0 ; x<3072 ; x++){//et chaque case de la ligne
 							Params.STATUS = "Traitement de la carte "+m.getName()+" : "+x+","+y;
-							Point coord = new Point(x,y);//On récupère les coordonnées
+							Point coord = PointsManager.getPoint(x,y);//On récupère les coordonnées
 							int id = getID(coord);//On récupère l'ID
 							if(m.ids.containsKey(id)){//On vérifie dans notre liste de Cases si l'ID est présent
 								MapPixel pixel = m.ids.get(id);//Si oui, on le récupère
@@ -403,7 +404,7 @@ public class GDXEditor extends Game{
 								//m.setZone(coord);
 							}else{//Si le pixel est introuvable, c'est que l'id n'est pas mappée
 							//	logger.info("ID non mappée : " + id);
-								m.addPixel(coord, false, "foo", "bar", new Point(0, 0), new Point(0, 0), id);
+								m.addPixel(coord, false, "foo", "bar", PointsManager.getPoint(0, 0), PointsManager.getPoint(0, 0), id);
 							}
 						}
 					}

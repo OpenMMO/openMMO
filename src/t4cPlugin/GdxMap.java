@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.utils.LoadingStatus;
+import t4cPlugin.utils.PointsManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
@@ -69,7 +70,7 @@ public class GdxMap implements Screen, InputProcessor{
 	private int nb_sprites = 0;
 	private int nb_tuiles = 0;
 
-	private Lieux lh_temple= new Lieux("LH TEMPLE", "v2_worldmap",new Point(2954,1052));
+	private Lieux lh_temple= new Lieux("LH TEMPLE", "v2_worldmap",PointsManager.getPoint(2954,1052));
 	private boolean debug = true;
 	
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
@@ -119,14 +120,14 @@ public class GdxMap implements Screen, InputProcessor{
 		
 		for (int y = 0 ; y< 3072 ; y++){
 			for (int x = 0 ; x< 3072 ; x++){
-				MapPixel px = map.pixels.get(new Point(x,y));
+				MapPixel px = map.pixels.get(PointsManager.getPoint(x,y));
 				if(px.getAtlas().equals("foo") & px.getTex().equals("bar")){//Case inconnue
 					//System.err.println("Case Inconnue : "+px.id+"@"+x+","+y);
 					nb_tuiles++;
 				}else{//Case connue
 					if(px.isTuile()){//tuile
 						//logger.info(px.tex);
-						texRegion = map.getCell(new Point(x,y));
+						texRegion = map.getCell(PointsManager.getPoint(x,y));
 						Cell cell = new Cell();
 						if (texRegion == null){
 							System.exit(1);
@@ -151,7 +152,7 @@ public class GdxMap implements Screen, InputProcessor{
 							else{
 								sprite = new Sprite(texRegion);
 								sprite.flip(false, true);
-								Data.cases_sprites.put(new Point(x,y), sprite);
+								Data.cases_sprites.put(PointsManager.getPoint(x,y), sprite);
 								nb_sprites++;
 								//System.err.println("SPRITE");
 							}
@@ -162,7 +163,7 @@ public class GdxMap implements Screen, InputProcessor{
 							//System.err.println("Atlas de sprite non trouvé : "+px.atlas+"|"+px.tex+" "+px.tuile);//On affiche un message d'erreur
 							final String at = px.getAtlas();
 							final String tx = px.getTex();
-							final Point c = new Point(x,y);
+							final Point c = PointsManager.getPoint(x,y);
 							texAtlas = AssetsLoader.load(at);
 							texRegion = texAtlas.findRegion(tx);
 							sprite = new Sprite(texRegion);
@@ -213,10 +214,10 @@ public class GdxMap implements Screen, InputProcessor{
 
 	private void getSpritesInView() {
 		sprites.clear();
-		Point d = new Point(0,0);
+		Point d = PointsManager.getPoint(0,0);
 		for (int y = (int) ((camera.position.y/16)-(25+(camera.zoom * camera.viewportHeight)/32)) ; y<(int) ((camera.position.y/16)+(25+(camera.zoom * camera.viewportHeight)/32)) ; y++){
 			for (int x = (int) ((camera.position.x/32)-(25+(camera.zoom * camera.viewportWidth)/64)) ; x<(int) ((camera.position.x/32)+(25+(camera.zoom * camera.viewportWidth)/64)) ; x++){
-				d = new Point(x,y);
+				d = PointsManager.getPoint(x,y);
 				if (Data.cases_sprites.get(d) != null){
 					Sprite sp = Data.cases_sprites.get(d);
 					Point offset = map.pixels.get(d).getOffset();
@@ -323,7 +324,7 @@ public class GdxMap implements Screen, InputProcessor{
 			logger.info("TOGGLE SPRITES : "+render_sprites);
 		}
 		if (keycode == Keys.F3){
-			Point dest = new Point(lh_temple.getCoord().x, lh_temple.getCoord().y);
+			Point dest = PointsManager.getPoint(lh_temple.getCoord().x, lh_temple.getCoord().y);
 			if (!moving)move(dest);
 			logger.info("Goto : "+lh_temple.getNom());
 		}
@@ -389,7 +390,7 @@ public class GdxMap implements Screen, InputProcessor{
 	
 	private void pop_menu(int screenX, int screenY) {
 		//On récupère les coordonnées T4C du point cliqué
-		Point p = new Point((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
+		Point p = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 		if (map.pixels.containsKey(p)){
 			MapPixel px = map.pixels.get(p);	
 			String status = getInfoPixel(p, px);
