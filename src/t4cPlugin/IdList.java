@@ -1,3 +1,4 @@
+package t4cPlugin;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ import java.util.Map;
  *
  */
 public class IdList {
-	private static final Map<Integer,String> idList = new HashMap<Integer,String>();
+	private static final Map<Integer,String> idList = new HashMap<Integer,String>(3686);
 	
 	/**
 	 * Charge la liste depuis le fichier texte inital sous la forme "ID :Adresse dans T4C.exe Name: VALEUR".
