@@ -1,7 +1,25 @@
 package OpenT4C;
 
+import java.io.File;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
+import t4cPlugin.Params;
+import tools.OSValidator;
+
+
+
 public class Main {
 
+	private static Logger logger = LogManager.getLogger(Main.class.getSimpleName());
+	private static ScreenManager sm = null;
+	private static LwjglApplication app = null;
+	private static DataChecker checker = null;
+	
 	/**
 	 * Je pense retenter une écriture complète ici, en parallèle
 	 * de GDXEditor, simplement pour intégrer de meilleures habitudes de codage.
@@ -11,13 +29,37 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
+		logger.info("Démarrage.");
+		Params.SPRITES = "data"+File.separator+"sprites"+File.separator;
+		//paramétrage de l'appli en fonction de l'os.
+		OSValidator.detect();
+		logger.info("Création de l'affichage.");
 		afficher();
+		logger.info("Vérification des données.");
 		verifier();
-		decrypter();
-		formatter();
-		ecrire();
+		logger.info("Chargement des données");
 		charger();
-		
+	}
+
+	/**
+	 * Créé un affichage.
+	 */
+	private static void afficher() {
+		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
+		cfg.title = "OpenT4C v0.0";
+		cfg.useGL20 = true;
+		cfg.width = 800;
+		cfg.height = 450;
+		sm = new ScreenManager();
+		app = new LwjglApplication(sm, cfg);		
+	}
+
+	/**
+	 * Vérifie les données écrites afin de savoir ce qui doit être décrypté.
+	 */
+	private static void verifier() {
+		checker = new DataChecker(sm);
+		checker.runCheck();
 	}
 
 	/**
@@ -28,45 +70,4 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 	}
-
-	/**
-	 * Écrit les données dans un format clair et utilisable.
-	 */
-	private static void ecrire() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * Formatte les données en vue de les écrire en clair.
-	 */
-	private static void formatter() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * Décrypte les données de T4C pour récupérer les informations utiles.
-	 */
-	private static void decrypter() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * Vérifie les données écrites afin de savoir ce qui doit être décrypté, formatté, écrit.
-	 */
-	private static void verifier() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * Créé un affichage.
-	 */
-	private static void afficher() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

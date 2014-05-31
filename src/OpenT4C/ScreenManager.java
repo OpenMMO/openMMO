@@ -1,19 +1,19 @@
-package t4cPlugin;
+package OpenT4C;
+
+import t4cPlugin.GdxMap;
+import t4cPlugin.LoadScreen;
+import t4cPlugin.Params;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class ScreenManager extends Game{
-	
-	public static final int IS_IDLE = 42;
-	public static final int IS_CHECKING_SOURCE_DATA = 0;
-	public static final int CHECK_ATLAS = 1;
-	public static final int CHECK_MAPS = 2;
 
 	
 	private boolean ready = false;
 	private GdxMap worldmap;
 	private LoadScreen loadscreen = null;
+	private CheckDataScreen checkScreen = null;
 	String map ="";
 	OrthographicCamera camera;
 	public int status = 0;
@@ -28,7 +28,8 @@ public class ScreenManager extends Game{
 	
 	@Override
 	public void create() {
-		//switchLoadScreen();
+		checkScreen = new CheckDataScreen(this);
+		switchCheckDataScreen();
 	}
 /*----------------------------SWITCHS D'ECRAN CLIENT---------------------*/
 
@@ -39,8 +40,12 @@ public class ScreenManager extends Game{
 	
 	/** Vers l'ecran de chargement */
 	public void switchLoadScreen(){
-		loadscreen = new LoadScreen(this);
-		this.setScreen(loadscreen);
+		/*loadscreen = new LoadScreen(this);
+		this.setScreen(loadscreen);*/
+	}
+	
+	public void switchCheckDataScreen() {
+		this.setScreen(checkScreen);
 	}
 	
 /*-----------------------------RENDU GRAPHIQUE----------------------------*/
@@ -49,7 +54,7 @@ public class ScreenManager extends Game{
 	}
 	
 	public void dispose() {
-		AssetsLoader.dispose();
+		//AssetsLoader.dispose();
 	}
 
 	public void setReady(boolean b) {
@@ -63,18 +68,18 @@ public class ScreenManager extends Game{
 	public void initMap(){
 		setStatus(0);
 		Params.STATUS = "Chargement des sprites";
-		AssetsLoader.loadSprites();
+		//AssetsLoader.loadSprites();
 		Params.STATUS = "Chargement des tuiles.";
-		AssetsLoader.loadSols();
+		//AssetsLoader.loadSols();
 		Params.STATUS = "Chargement de la carte.";
 		loadMap();
 	}
 	
 	private void loadMap() {
-		worldmap = new GdxMap(this);
+		/*worldmap = new GdxMap(this);
 		worldmap.load();
 		switchGameScreen();
-		worldmap.readPIXMLMAP(map);
+		worldmap.readPIXMLMAP(map);*/
 	}
 	
 	
