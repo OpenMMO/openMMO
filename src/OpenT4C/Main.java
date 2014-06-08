@@ -1,14 +1,9 @@
 package OpenT4C;
 
-import java.io.File;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-
-import t4cPlugin.Params;
 import tools.OSValidator;
 
 
@@ -17,8 +12,7 @@ public class Main {
 
 	private static Logger logger = LogManager.getLogger(Main.class.getSimpleName());
 	private static ScreenManager sm = null;
-	private static LwjglApplication app = null;
-	private static DataChecker checker = null;
+	private static boolean debug_GDX = true;
 	
 	/**
 	 * Je pense retenter une écriture complète ici, en parallèle
@@ -30,14 +24,9 @@ public class Main {
 	public static void main(String[] args) {
 		
 		logger.info("Démarrage.");
-		Params.SPRITES = "data"+File.separator+"sprites"+File.separator;
-		//paramétrage de l'appli en fonction de l'os.
 		OSValidator.detect();
-		logger.info("Création de l'affichage.");
 		afficher();
-		logger.info("Vérification des données.");
 		verifier();
-		logger.info("Chargement des données");
 		charger();
 	}
 
@@ -45,21 +34,19 @@ public class Main {
 	 * Créé un affichage.
 	 */
 	private static void afficher() {
-		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-		cfg.title = "OpenT4C v0.0";
-		cfg.useGL20 = true;
-		cfg.width = 800;
-		cfg.height = 450;
+		logger.info("Création de l'affichage.");
 		sm = new ScreenManager();
-		app = new LwjglApplication(sm, cfg);		
+		SettingsManager.create();
+		new LwjglApplication(sm, SettingsManager.get());
+		if(debug_GDX)SettingsManager.printCapabilities();
 	}
 
 	/**
 	 * Vérifie les données écrites afin de savoir ce qui doit être décrypté.
 	 */
 	private static void verifier() {
-		checker = new DataChecker(sm);
-		checker.runCheck();
+		logger.info("Vérification des données.");
+		DataChecker.runCheck();
 	}
 
 	/**
@@ -67,7 +54,15 @@ public class Main {
 	 * que tout ce qui est nécessaire est présent.
 	 */
 	private static void charger() {
-		// TODO Auto-generated method stub
-		
+		logger.info("Chargement des données");
+		SpriteData.load();
+		sm.initMap();
+	}
+	
+	/**
+	 * On donne l'accès au ScreenManager
+	 */
+	public ScreenManager getScreenManager(){
+		return sm;
 	}
 }

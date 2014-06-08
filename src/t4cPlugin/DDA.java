@@ -41,9 +41,9 @@ public class DDA {
 	private static Map<Integer,Sprite> tuiles = new HashMap<Integer,Sprite>();
 	private static Map<Integer, Sprite> sprites = new HashMap<Integer,Sprite>();
 	private static Map<Integer, Sprite> pixels = new HashMap<Integer,Sprite>();
-	
-	private ByteBuffer buf;
 	private static int[] clefDda = new int[]{0x1458AAAA, 0x62421234, 0xF6C32355, 0xAAAAAAF3, 0x12344321, 0xDDCCBBAA, 0xAABBCCDD};
+
+	private ByteBuffer buf;
 	private byte[] signature = new byte[4];
 	private int numDDA;	
 	
@@ -57,7 +57,7 @@ public class DDA {
 		while(iteri.hasNext()){
 			int key = iteri.next();
 			Sprite sp = DID.getSprites_with_ids().get(key);
-			if (sp.numDda == numDDA){
+			if (sp.getNumDda() == numDDA){
 				didspritesindda.put(key, sp);
 			}
 		}
@@ -98,7 +98,7 @@ public class DDA {
 			while(iteri.hasNext()){
 				int key = iteri.next();
 				Sprite sp = DID.getSprites_without_ids().get(key);
-				if (sp.numDda == numDDA){
+				if (sp.getNumDda() == numDDA){
 					didspritesindda.put(key, sp);
 				}
 			}
@@ -127,7 +127,7 @@ public class DDA {
 					System.exit(1);
 				}
 				new DDASprite(buf, sprite);//lit l'entête du sprite et ajoute  les infos de l'entête dans le Sprite
-					switch (sprite.type){
+					switch (sprite.getType()){
 						case 1 : write(sprite);
 						break;
 						case 2 : rleUncompress(sprite);
@@ -155,35 +155,35 @@ public class DDA {
 		File f = null;
 		if (didsprite.tuile){
 			//TODO vérifier un jour à qui sert cet offset sur le premier de la zone de tuiles
-			didsprite.offsetX = 0;
-			didsprite.offsetY = 0;
-			File dir = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin);
+			didsprite.setOffsetX(0);
+			didsprite.setOffsetY(0);
+			File dir = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.getChemin());
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
+			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.getChemin()+File.separator+didsprite.getName()+".png");
 		}else{
-			File dir = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin);
+			File dir = new File(Params.SPRITES+"sprites"+File.separator+didsprite.getChemin());
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
+			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.getChemin()+File.separator+didsprite.getName()+".png");
 		}
 		if (f.exists())return;
-		data = ByteBuffer.allocate(didsprite.largeur*didsprite.hauteur);
+		data = ByteBuffer.allocate(didsprite.getLargeur()*didsprite.getHauteur());
 		try{
 			buf.position(didsprite.bufPos);
 			buf.get(data.array());
 		}catch(BufferUnderflowException e){
 			e.printStackTrace();
 			logger.info("sprite : "+didsprite.getName());
-			logger.info("chemin : "+didsprite.chemin);
-			logger.info("type : "+didsprite.type);
-			logger.info("ombre : "+didsprite.ombre);
-			logger.info("hauteur : "+didsprite.hauteur);
-			logger.info("largeur : "+didsprite.largeur);
-			logger.info("offsetY : "+didsprite.offsetY);
-			logger.info("offsetX : "+didsprite.offsetX);
-			logger.info("offsetY2 : "+didsprite.offsetY2);
-			logger.info("offsetX2 : "+didsprite.offsetX2);
+			logger.info("chemin : "+didsprite.getChemin());
+			logger.info("type : "+didsprite.getType());
+			logger.info("ombre : "+didsprite.getOmbre());
+			logger.info("hauteur : "+didsprite.getHauteur());
+			logger.info("largeur : "+didsprite.getLargeur());
+			logger.info("offsetY : "+didsprite.getOffsetY());
+			logger.info("offsetX : "+didsprite.getOffsetX());
+			logger.info("offsetY2 : "+didsprite.getOffsetY2());
+			logger.info("offsetX2 : "+didsprite.getOffsetX2());
 			logger.info("Inconnu : "+didsprite.inconnu9);
-			logger.info("Couleur trans : "+didsprite.couleurTrans);
+			logger.info("Couleur trans : "+didsprite.getCouleurTrans());
 			logger.info("taille_zip : "+didsprite.taille_zip);
 			logger.info("taille_unzip : "+didsprite.taille_unzip);
 			System.exit(1);
@@ -191,10 +191,10 @@ public class DDA {
 		data.rewind();
 		ArrayList<Pixel> pal = didsprite.palette.pixels;
 		BufferedImage img = null;
-		img = new BufferedImage(didsprite.largeur, didsprite.hauteur, BufferedImage.TYPE_INT_ARGB);
+		img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_ARGB);
 		int y = 0, x = 0;
-		while (y<didsprite.hauteur){
-			while (x<didsprite.largeur){
+		while (y<didsprite.getHauteur()){
+			while (x<didsprite.getLargeur()){
 				int b = 0;
 				try{
 					b = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,data.get()});
@@ -205,12 +205,12 @@ public class DDA {
 				Pixel px = null;
 				px = pal.get(b);
 				int red=0,green=0,blue=0,alpha=255;
-				if (b == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.couleurTrans})){
+				if (b == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){
 					img.setRGB(x, y, 0);
 				}else{
-					red = px.red;
-					green = px.green;
-					blue = px.blue;
+					red = px.getRed();
+					green = px.getGreen();
+					blue = px.getBlue();
 					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
 					img.setRGB(x,y,col);
 				}
@@ -223,7 +223,7 @@ public class DDA {
 		//logger.info(Sprite.maxX/*+(2*Sprite.maxOffsetX)*/+" "+ Sprite.maxY/*+(2*Sprite.maxOffsetY)*/+" "+ Transparency.BITMASK);
 		GraphicsConfiguration gc = img.createGraphics().getDeviceConfiguration();
 		//BufferedImage out =	gc.createCompatibleImage(DDASprite.maxs.get(didsprite.chemin).width+(DDASprite.maxOffsets.get(didsprite.chemin).width)/*+(DDASprite.minOffsets.get(didsprite.chemin).width)*/, DDASprite.maxs.get(didsprite.chemin).height+(DDASprite.maxOffsets.get(didsprite.chemin).height)/*+(DDASprite.minOffsets.get(didsprite.chemin).height)*/, Transparency.BITMASK);
-		BufferedImage out =	gc.createCompatibleImage(didsprite.largeur, didsprite.hauteur, Transparency.BITMASK);
+		BufferedImage out =	gc.createCompatibleImage(didsprite.getLargeur(), didsprite.getHauteur(), Transparency.BITMASK);
 		Graphics2D g2d = out.createGraphics();
 		g2d.setComposite(AlphaComposite.Src);
 		g2d.drawImage(img, 0, 0, null);
@@ -242,7 +242,7 @@ public class DDA {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : SIMPLE "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.nom);	
+		logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : SIMPLE "+Params.t4cOUT+"SPRITES/"+didsprite.getChemin()+File.separator+f.getName()+" | Palette : "+didsprite.palette.nom);	
 	}
 
 	private void rleUncompress(Sprite didsprite) {
@@ -253,7 +253,7 @@ public class DDA {
 		buf.position(didsprite.bufPos);
 		Y=0;
 		//pour ceux qui ont la compression Zlib en plus
-		if (didsprite.largeur > 180 | didsprite.hauteur > 180) {
+		if (didsprite.getLargeur() > 180 | didsprite.getHauteur() > 180) {
 			Inflater unzip = new Inflater();
 			byte[] bytes = new byte[(int) didsprite.taille_zip];
 			buf.get(bytes);
@@ -273,15 +273,15 @@ public class DDA {
 		}
 		data.rewind();
 		//on a les données du sprite dans data. on opère la décompression RLE
-		ByteBuffer spriteTmp =  ByteBuffer.allocate(didsprite.hauteur*didsprite.largeur);
+		ByteBuffer spriteTmp =  ByteBuffer.allocate(didsprite.getHauteur()*didsprite.getLargeur());
 		spriteTmp.rewind();
 		//on remplit de transparence
 		for (int i=0 ; i<spriteTmp.capacity() ; i++){
-			spriteTmp.put(didsprite.couleurTrans);
+			spriteTmp.put(didsprite.getCouleurTrans());
 		}
 		spriteTmp.rewind();
 		if (data != null){
-			while(Y != didsprite.hauteur){
+			while(Y != didsprite.getHauteur()){
 				b1 = data.get();
 				b2 = data.get();
 				X = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
@@ -291,8 +291,8 @@ public class DDA {
 				b = data.get();
 				if (b != 1){
 					for (int i=0 ; i<nbpix ; i++){
-						spriteTmp.put((spriteTmp.position()+i+X+(Y*didsprite.largeur)), data.get());
-						if ((i+X) == (didsprite.largeur-1)) break;//sécu pour être sur de pas dépasser;
+						spriteTmp.put((spriteTmp.position()+i+X+(Y*didsprite.getLargeur())), data.get());
+						if ((i+X) == (didsprite.getLargeur()-1)) break;//sécu pour être sur de pas dépasser;
 					}
 				}
 				b = data.get();
@@ -308,12 +308,12 @@ public class DDA {
 		ArrayList<Pixel> pal = didsprite.palette.pixels;
 		BufferedImage img = null;
 		if (didsprite.tuile){
-			img = new BufferedImage(didsprite.largeur, didsprite.hauteur, BufferedImage.TYPE_INT_RGB);
+			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_RGB);
 		}else{
-			img = new BufferedImage(didsprite.largeur, didsprite.hauteur, BufferedImage.TYPE_INT_ARGB);
+			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_ARGB);
 		}			int y = 0, x = 0;
-		while (y<didsprite.hauteur){
-			while (x<didsprite.largeur){
+		while (y<didsprite.getHauteur()){
+			while (x<didsprite.getLargeur()){
 				int c = 0;
 				try{
 					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,spriteTmp.get()});
@@ -324,16 +324,16 @@ public class DDA {
 				Pixel px = null;
 				px = pal.get(c);
 				int red=0,green=0,blue=0,alpha=255;
-				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.couleurTrans})){
-					red = px.red;
-					green = px.green;
-					blue = px.blue;
+				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){
+					red = px.getRed();
+					green = px.getGreen();
+					blue = px.getBlue();
 					int col = (0 << 24) | (red << 16) | (green << 8) | blue;
 					img.setRGB(x,y,col);
 				}else{
-					red = px.red;
-					green = px.green;
-					blue = px.blue;
+					red = px.getRed();
+					green = px.getGreen();
+					blue = px.getBlue();
 					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
 					img.setRGB(x,y,col);
 				}
@@ -373,12 +373,12 @@ public class DDA {
 		ArrayList<Pixel> pal = didsprite.palette.pixels;
 		BufferedImage img = null;
 		if (didsprite.tuile){
-			img = new BufferedImage(didsprite.largeur, didsprite.hauteur, BufferedImage.TYPE_INT_RGB);
+			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_RGB);
 		}else{
-			img = new BufferedImage(didsprite.largeur, didsprite.hauteur, BufferedImage.TYPE_INT_ARGB);
+			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_ARGB);
 		}			int y = 0, x = 0;
-		while (y<didsprite.hauteur){
-			while (x<didsprite.largeur){
+		while (y<didsprite.getHauteur()){
+			while (x<didsprite.getLargeur()){
 				int c = 0;
 				try{
 					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,unzip_data1.get()});
@@ -389,12 +389,12 @@ public class DDA {
 				Pixel px = null;
 				px = pal.get(c);
 				int red=0,green=0,blue=0,alpha=255;
-				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.couleurTrans})){
+				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){
 					img.setRGB(x, y, 0);
 				}else{
-					red = px.red;
-					green = px.green;
-					blue = px.blue;
+					red = px.getRed();
+					green = px.getGreen();
+					blue = px.getBlue();
 					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
 					img.setRGB(x,y,col);
 				}
@@ -455,13 +455,13 @@ public class DDA {
 		ArrayList<Pixel> pal = didsprite.palette.pixels;
 		BufferedImage img = null;
 		if (didsprite.tuile){
-			img = new BufferedImage(didsprite.largeur, didsprite.hauteur, BufferedImage.TYPE_INT_RGB);
+			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_RGB);
 		}else{
-			img = new BufferedImage(didsprite.largeur, didsprite.hauteur, BufferedImage.TYPE_INT_ARGB);
+			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_ARGB);
 		}
 		int y = 0, x = 0;
-		while (y<didsprite.hauteur){
-			while (x<didsprite.largeur){
+		while (y<didsprite.getHauteur()){
+			while (x<didsprite.getLargeur()){
 				int c = 0;
 				try{
 					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,unzip_data2.get()});
@@ -472,12 +472,12 @@ public class DDA {
 				Pixel px = null;
 				px = pal.get(c);
 				int red=0,green=0,blue=0,alpha=255;
-				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.couleurTrans})){
+				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){
 					img.setRGB(x, y, 0);
 				}else{
-					red = px.red;
-					green = px.green;
-					blue = px.blue;
+					red = px.getRed();
+					green = px.getGreen();
+					blue = px.getBlue();
 					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
 					img.setRGB(x,y,col);
 				}
@@ -493,17 +493,17 @@ public class DDA {
 	private void drawImage(BufferedImage img, Sprite didsprite){
 		File f = null;
 		if (didsprite.tuile){
-			File dir = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin);
+			File dir = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.getChemin());
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
+			f = new File(Params.SPRITES+"tuiles"+File.separator+didsprite.getChemin()+File.separator+didsprite.getName()+".png");
 		}else{
-			File dir = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin);
+			File dir = new File(Params.SPRITES+"sprites"+File.separator+didsprite.getChemin());
 			dir.mkdirs();
-			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.chemin+File.separator+didsprite.getName()+".png");
+			f = new File(Params.SPRITES+"sprites"+File.separator+didsprite.getChemin()+File.separator+didsprite.getName()+".png");
 		}
 		if (f.exists())return;
 		GraphicsConfiguration gc = img.createGraphics().getDeviceConfiguration();
-		BufferedImage out =	gc.createCompatibleImage(didsprite.largeur, didsprite.hauteur, Transparency.BITMASK);
+		BufferedImage out =	gc.createCompatibleImage(didsprite.getLargeur(), didsprite.getHauteur(), Transparency.BITMASK);
 		Graphics2D g2d = out.createGraphics();
 		g2d.setComposite(AlphaComposite.Src);
 		g2d.drawImage(img, 0, 0, null);
@@ -578,47 +578,47 @@ public class DDA {
 
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.ombre = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
+			sprite.setOmbre(tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2}));
 			//logger.info("ombre : "+ombre);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.type = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
+			sprite.setType(tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2}));
 			//logger.info("type : "+type);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.hauteur = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
+			sprite.setHauteur(tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2}));
 			//logger.info("hauteur : "+didsprite.hauteur);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.largeur = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
+			sprite.setLargeur(tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2}));
 			//logger.info("largeur : "+didsprite.largeur);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.offsetY = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
+			sprite.setOffsetY(tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2}));
 			//logger.info("offsetY : "+didsprite.offsetY);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.offsetX = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
+			sprite.setOffsetX(tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2}));
 			//logger.info("offsetY : "+didsprite.offsetX);
 			
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.offsetY2 = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
+			sprite.setOffsetY2(tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2}));
 			//logger.info("offsetY2 : "+offsetY2+" "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
 
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.offsetX2 = tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2});
+			sprite.setOffsetX2(tools.ByteArrayToNumber.bytesToShort(new byte[]{b1,b2}));
 			//logger.info("offsetX2 : "+offsetX2+" "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
 
 			b1 = header_buf.get();
 			b2 = header_buf.get();
-			sprite.couleurTrans = b2;//tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
+			sprite.setCouleurTrans(b2);//tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b1,b2});
 			//logger.info("Couleur trans : "+tools.ByteArrayToHexString.print(new byte[]{b1,b2}));
 			
 			b1 = header_buf.get();
@@ -646,7 +646,7 @@ public class DDA {
 				FileLister explorer = new FileLister();
 				ArrayList<File> sprites = new ArrayList<File>();
 				//System.err.println("TILE "+Params.SPRITES+"tuiles"+File.separator+sprite.chemin+File.separator+" "+Params.SPRITES+sprite.chemin+File.separator);
-				sprites.addAll(explorer.lister(new File(Params.SPRITES+"tuiles"+File.separator+sprite.chemin+File.separator), in.substring(in.indexOf(')'))+".png"));
+				sprites.addAll(explorer.lister(new File(Params.SPRITES+"tuiles"+File.separator+sprite.getChemin()+File.separator), in.substring(in.indexOf(')'))+".png"));
 				int moduloX=1, moduloY=1;
 				Iterator<File> iter = sprites.iterator();
 				while (iter.hasNext()){
@@ -671,7 +671,7 @@ public class DDA {
 				int id = iter_id.next();
 				//logger.info("Calcul du modulo : "+sprite.nom+"@"+sprite.chemin+"{"+sprite.largeur+","+sprite.hauteur+"}");
 				nom = sprite.getName();
-				if ((sprite.largeur == 32) & (sprite.hauteur == 16) & (nom.contains("(")) & nom.contains(")")){
+				if ((sprite.getLargeur() == 32) & (sprite.getHauteur() == 16) & (nom.contains("(")) & nom.contains(")")){
 					sprite.tuile = true;
 					DDA.tuiles.put(id,sprite);
 					DDA.pixels.put(id,sprite);
@@ -683,7 +683,7 @@ public class DDA {
 					//System.err.println(sprite.hauteur+"|"+sprite.largeur);
 				}
 			}
-			Params.STATUS = "Sprite décrypté : "+sprite.chemin+" "+sprite.getName()+" "+sprite.largeur+","+sprite.hauteur+" "+sprite.moduloX+","+sprite.moduloY+" "+sprite.tuile;
+			Params.STATUS = "Sprite décrypté : "+sprite.getChemin()+" "+sprite.getName()+" "+sprite.getLargeur()+","+sprite.getHauteur()+" "+sprite.moduloX+","+sprite.moduloY+" "+sprite.tuile;
 		}
 	}
 

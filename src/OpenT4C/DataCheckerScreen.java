@@ -1,7 +1,5 @@
 package OpenT4C;
 
-import t4cPlugin.Params;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
@@ -13,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
-public class CheckDataScreen implements Screen{
+public class DataCheckerScreen implements Screen{
 	private SpriteBatch batch;
 	private BitmapFont font;
 	private OrthographicCamera camera;
@@ -21,7 +19,7 @@ public class CheckDataScreen implements Screen{
 	private TextButton infos;
 	private String status = "Initialisation";
 
-	public CheckDataScreen(ScreenManager screenManager){
+	public DataCheckerScreen(ScreenManager screenManager){
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		camera = new OrthographicCamera();
@@ -50,7 +48,7 @@ public class CheckDataScreen implements Screen{
 	}
 
 	private void setStatus(){
-		status = "FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + ((Runtime.getRuntime().totalMemory())/1024/1024) + " Mo";
+		status = "Satus : " + UpdateScreenManagerStatus.getReadableStatus() + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage();
 	}
 	
 	@Override
@@ -59,12 +57,17 @@ public class CheckDataScreen implements Screen{
 		
 	}
 
+	
+	private String getMemoryUsage(){
+		return ((Runtime.getRuntime().totalMemory())/1024/1024) + " Mo";
+	}
+	
 	@Override
 	public void show() {
 		final TextButtonStyle style_normal = new TextButtonStyle();
 		style_normal.font = font;
-		infos = new TextButton(Params.STATUS, style_normal);
-		infos.setX(Gdx.graphics.getWidth()/2);
+		infos = new TextButton("DataCheckerScreen.show()", style_normal);
+		infos.setX(Gdx.graphics.getWidth()/3);
 		infos.setY(Gdx.graphics.getHeight()/2);
 		stage.addActor(infos);
 		infos.getColor().a = 0f;
@@ -74,8 +77,7 @@ public class CheckDataScreen implements Screen{
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		
+		dispose();		
 	}
 
 	@Override

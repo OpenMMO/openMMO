@@ -6,6 +6,15 @@ public class FilesPath {
 	
 	private FilesPath () {}
 	
+	public static void init(){
+		new File(getSpriteDataDirectoryPath()).mkdirs();
+		new File(getSpriteDirectoryPath()).mkdirs();
+		new File(getAtlasSpriteDirectoryPath()).mkdirs();
+		new File(getTuileDirectoryPath()).mkdirs();
+		new File(getAtlasTuileDirectoryPath()).mkdirs();
+		new File(getDataDirectoryPath()).mkdirs();
+	}
+
 	
 	public static String getSpritePath()
 	{
@@ -15,6 +24,17 @@ public class FilesPath {
 		sb.append("sprites");		
 		sb.append(File.separator);
 		sb.append("sprites");
+		
+		return sb.toString();
+	}
+	
+	public static String getSpriteDataDirectoryPath()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("sprites");		
+		sb.append(File.separator);
 		
 		return sb.toString();
 	}
@@ -135,5 +155,65 @@ public class FilesPath {
 		sb.append(".atlas");
 		
 		return sb.toString();
+	}
+
+	public static String getDataDirectoryPath() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		
+		return sb.toString();
+	}
+	
+	public static String getSourceDataDirectoryPath() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("game_files");
+		sb.append(File.separator);
+
+		return sb.toString();
+	}
+	
+	public static String getMapDataDirectoryPath(){
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		
+		return sb.toString();
+	}
+	
+	public static String getMapFilePath(String fileName) {
+		StringBuilder sb = new StringBuilder(24 + fileName.length());
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append(fileName);
+		sb.append(".decrypt");
+		
+		return sb.toString();
+	}
+
+	public static String getSpriteDataPath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("sprites");		
+		sb.append(File.separator);
+		sb.append("sprite_data");
+		
+		return sb.toString();
+	}
+
+	public static String getIdFilePath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("id.txt");		
+		
+		return sb.toString();		
 	}
 }

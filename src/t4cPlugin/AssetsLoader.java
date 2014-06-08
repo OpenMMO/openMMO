@@ -12,6 +12,7 @@ import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.RunnableCreatorUtil;
 import t4cPlugin.utils.ThreadsUtil;
+import OpenT4C.UpdateScreenManagerStatus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -30,7 +31,7 @@ public enum AssetsLoader {
 	private static Logger logger = LogManager.getLogger(AssetsLoader.class.getSimpleName());
 	
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
-	
+		
 	/**
 	 * On empacte les sprites dans des atlas.
 	 * Pour retrouver plus tard les ressources graphiques,
@@ -115,13 +116,12 @@ public enum AssetsLoader {
 	 * On fait une liste de nos atlas de sprites, et on les charge tous.
 	 */
 	public static void loadSprites(){
-		logger.info("LoadSprites");
+		logger.info("Chargement des sprites.");
 		
 		loadingStatus.waitUntilSpritesPackaged();
 		
-		FileLister explorer = new FileLister();
 		List<File> spritlas = new ArrayList<File>();
-		spritlas.addAll(explorer.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas"));
+		spritlas.addAll(FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas"));
 		Iterator<File> iter_spritlas = spritlas.iterator();
 		while(iter_spritlas.hasNext()){
 			loadingStatus.addOneSpriteAtlas();
@@ -148,15 +148,15 @@ public enum AssetsLoader {
 	 * On fait une liste de nos atlas de tuiles, puis on les charge.
 	 */
 	public static void loadSols() {
-		logger.info("LoadSols");
+		logger.info("Chargement des tuiles.");
+		UpdateScreenManagerStatus.loadingTiles();
 		
 		//Ensure tiles are packaged before try to use them
 		loadingStatus.waitUntilTilesPackaged();
 		
 		List<File> tuilas = new ArrayList<File>();
 		
-		FileLister explorer = new FileLister();
-		tuilas.addAll(explorer.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas"));
+		tuilas.addAll(FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas"));
 		//Keep the number of tiles' atlas. Will be used to know if all atlas are processed.
 		//TODO use the same method than sprite
 		loadingStatus.setNbTilesAs(tuilas.size());
@@ -166,7 +166,6 @@ public enum AssetsLoader {
 			final String name = iter_tuilas.next().getName();
 			Gdx.app.postRunnable(RunnableCreatorUtil.getTextureAtlasTileCreatorRunnable(name));
 		}
-//		logger.info("LoadSols OK");
 	}
 	
 	/**

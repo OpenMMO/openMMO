@@ -31,6 +31,11 @@ public class MapPixel implements Serializable{
 	}
 
 	public String getTex() {
+		if (atlas == null){
+			logger.warn("Attention, on tente de récupérer une texture null.");
+			logger.warn("ID : "+this.id);
+			logger.warn("nom : "+this.name);
+		}
 		return name.getName();
 	}
 
@@ -54,6 +59,12 @@ public class MapPixel implements Serializable{
 	}
 
 	public String getAtlas() {
+		if (atlas == null){
+			logger.warn("Attention, on tente de récupérer un atlas null.");
+			logger.warn("ID : "+this.id);
+			logger.warn("nom : "+this.name);
+			logger.warn("texture : "+this.getTex());
+		}
 		return atlas;
 	}
 

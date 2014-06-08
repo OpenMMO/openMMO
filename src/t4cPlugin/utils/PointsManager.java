@@ -15,6 +15,8 @@ public class PointsManager {
 	
 	private PointsManager() {
 		//classe utilitaire
+		//TODO Je capte pas pourquoi tu mets un constructeur vide dans une classe qui n'est pas censée être instanciée.
+		//TODO Pourquoi gérer des points négatifs?
 	}
 	
 	/**
@@ -72,5 +74,10 @@ public class PointsManager {
 		int index = x * xMax + y;
 		
 		return index;
+	}
+
+	public static Point getPoint(float x, float y) {
+		Point p = getPoint((int)x,(int)y);
+		return p;
 	}
 }

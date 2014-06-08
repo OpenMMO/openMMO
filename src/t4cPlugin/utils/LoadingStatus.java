@@ -7,11 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import OpenT4C.DataChecker;
+
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public enum LoadingStatus {
 	INSTANCE; //Singleton
 	
+	private static Logger logger = LogManager.getLogger(LoadingStatus.class.getSimpleName());
 	//TODO perfo check number of tiles for accordingly sizing lists.
 	private final int tilesAtlasMax = 5000;
 	//TODO perfo check number of sprites for accordingly sizing lists.

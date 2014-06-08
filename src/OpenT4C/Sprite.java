@@ -1,5 +1,6 @@
 package OpenT4C;
 
+import java.awt.Point;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,40 +26,42 @@ import t4cPlugin.SpriteName;
 public class Sprite {
 	
 	private static Logger logger = LogManager.getLogger(Sprite.class.getSimpleName());
-	
-	static int correspondances = 0;
 	private SpriteName nom;
-	String chemin = "";
-	boolean tuile = false;
-	ArrayList<Integer> id = new ArrayList<Integer>();
-	ArrayList<Integer> pos = new ArrayList<Integer>();
-	int indexation;
-	int index_next;
-	int zoneX = 1;
-	int zoneY = 1;
-	int type;//short
-	int ombre;//short
-	int largeur;//short
-	int hauteur;//short
-	int inconnu9;//short
-	byte couleurTrans;//short
-	int offsetX;//short
-	int offsetY;//short
-	int offsetX2;//short
-	int offsetY2;//short
-	static int maxOffsetX = 0;
-	static int maxOffsetY = 0;
-	static int maxX = 0;
-	static int maxY = 0;
-	long numDda;
-	public long taille_unzip = -1;
-	public long taille_zip = -1;
-	public DPDPalette palette;
-	public int bufPos = -1;
-	public int moduloX = 1;
-	public int moduloY = 1;
-	static int last = -1;
+	private String chemin = "";
+	private boolean tuile = false;
+	private boolean hasID = false;
+	private ArrayList<Integer> id = new ArrayList<Integer>();
+	private ArrayList<Integer> pos = new ArrayList<Integer>();
+	private int indexation;
+	private int index_next;
+	private int zoneX = 1;
+	private int zoneY = 1;
+	private int type;//short
+	private int ombre;//short
+	private int largeur;//short
+	private int hauteur;//short
+	private int inconnu9;//short
+	private byte couleurTrans;//short
+	private int offsetX;//short
+	private int offsetY;//short
+	private int offsetX2;//short
+	private int offsetY2;//short
+	private static int maxOffsetX = 0;
+	private static int maxOffsetY = 0;
+	private static int maxX = 0;
+	private static int maxY = 0;
+	private long numDda;
+	private long taille_unzip = -1;
+	private long taille_zip = -1;
+	private Palette palette;
+	private int bufPos = -1;
+	private int moduloX = 1;
+	private int moduloY = 1;
+	private static int last = -1;
 	
+	public Sprite(){}
+	
+	@Deprecated
 	public Sprite(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
@@ -95,7 +98,7 @@ public class Sprite {
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
-		indexation = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
+		setIndexation(tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1}));
 		//logger.info("		- Indexation : "+indexation);
 		
 		byte b5,b6,b7,b8;
@@ -110,12 +113,12 @@ public class Sprite {
 		numDda = tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
 		//logger.info("		- N° DDA : "+numDda);
 		
-		Iterator <Integer> iter = AtlasFactory.getIds().keySet().iterator();
+		/*Iterator <Integer> iter = AtlasFactory.getIds().keySet().iterator();
 		while (iter.hasNext()){
 			int val = iter.next();
 			SpriteName sn = AtlasFactory.getIds().get(val);
 			if (nomExtrait.contains(sn.getName())){
-				id.add(val);
+				getId().add(val);
 				correspondances++;
 				AtlasFactory.getSprites_with_ids().put(val, this);
 				if(AtlasFactory.getSprites_with_ids().size() != last) logger.info("Nombre de Sprites avec ID : "+AtlasFactory.getSprites_with_ids().size()+". Ajout : "+val+" => "+nomExtrait);
@@ -128,7 +131,7 @@ public class Sprite {
 					if(DID.sprites_with_ids.size() != last) logger.info(DID.sprites_with_ids.size()+" ID ajoutée(s).");
 
 				}
-			}*/
+			}
 			last = AtlasFactory.getSprites_with_ids().size();
 			if (nomExtrait.equals("Black Tile")){
 				AtlasFactory.setBlack(this);
@@ -136,29 +139,212 @@ public class Sprite {
 		}
 		
 		//logger.info("Nouveau Sprite : "+chemin+nom);
-		nom = new SpriteName(nomExtrait);
-		AtlasFactory.getSprites_without_ids().put(AtlasFactory.getSprites_without_ids().size(), this);
+		setNom(new SpriteName(nomExtrait));
+		AtlasFactory.getSprites_without_ids().put(AtlasFactory.getSprites_without_ids().size(), this);*/
 
 
 	}
 	
 	public Sprite(boolean tuile, String atlas, String tex, int offsetX,	int offsetY, int moduloX, int moduloY, int id) {
-		this.tuile = tuile;
+		this.setTuile(tuile);
 		this.chemin = atlas;
-		this.nom = new SpriteName(tex);
+		this.setSpriteName(new SpriteName(tex));
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
-		this.moduloX = moduloX;
-		this.moduloY = moduloY;
-		this.id = new ArrayList<Integer>();
+		this.setModuloX(moduloX);
+		this.setModuloY(moduloY);
+		this.setId(new ArrayList<Integer>());
 		this.id.add(id);
 	}
 
 	public int compareTo(Sprite o2) {
-		return indexation-o2.indexation;
+		return getIndexation()-o2.getIndexation();
 	}
 	
 	public String getName() {
-		return nom.getName();
+		return getSpriteName().getName();
+	}
+
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getOmbre() {
+		return ombre;
+	}
+
+	public void setOmbre(int ombre) {
+		this.ombre = ombre;
+	}
+
+	public int getLargeur() {
+		return largeur;
+	}
+
+	public void setLargeur(int largeur) {
+		this.largeur = largeur;
+	}
+
+	public int getHauteur() {
+		return hauteur;
+	}
+
+	public void setHauteur(int hauteur) {
+		this.hauteur = hauteur;
+	}
+
+	public byte getCouleurTrans() {
+		return couleurTrans;
+	}
+
+	public void setCouleurTrans(byte couleurTrans) {
+		this.couleurTrans = couleurTrans;
+	}
+
+	public int getOffsetX() {
+		return offsetX;
+	}
+
+	public void setOffsetX(int offsetX) {
+		this.offsetX = offsetX;
+	}
+
+	public int getOffsetY() {
+		return offsetY;
+	}
+
+	public void setOffsetY(int offsetY) {
+		this.offsetY = offsetY;
+	}
+
+	public int getOffsetX2() {
+		return offsetX2;
+	}
+
+	public void setOffsetX2(int offsetX2) {
+		this.offsetX2 = offsetX2;
+	}
+
+	public int getOffsetY2() {
+		return offsetY2;
+	}
+
+	public void setOffsetY2(int offsetY2) {
+		this.offsetY2 = offsetY2;
+	}
+
+	public long getNumDda() {
+		return numDda;
+	}
+
+	public void setNumDda(long numDda) {
+		this.numDda = numDda;
+	}
+
+	public SpriteName getSpriteName() {
+		return nom;
+	}
+
+	public void setSpriteName(SpriteName nom) {
+		this.nom = nom;
+	}
+
+	public int getIndexation() {
+		return indexation;
+	}
+
+	public void setIndexation(int indexation) {
+		this.indexation = indexation;
+	}
+
+	/**
+	 * donne le premier id de la liste ou -1 si le sprite n'a pas d'id associé
+	 */
+	public Integer getId() {
+		if (id.size() != 0){
+			return id.get(0);
+		} else{
+			return -1;
+		}
+	}
+
+	public void setId(ArrayList<Integer> id) {
+		this.id = id;
+	}
+
+	public boolean isTuile() {
+		return tuile;
+	}
+
+	public void setTuile(boolean tuile) {
+		this.tuile = tuile;
+	}
+
+	public Palette getPalette() {
+		return palette;
+	}
+
+	public void setPalette(Palette palette) {
+		this.palette = palette;
+	}
+
+	public int getInconnu9() {
+		return inconnu9;
+	}
+
+	public void setInconnu9(int inconnu9) {
+		this.inconnu9 = inconnu9;
+	}
+
+	public long getTaille_unzip() {
+		return taille_unzip;
+	}
+
+	public void setTaille_unzip(long taille_unzip) {
+		this.taille_unzip = taille_unzip;
+	}
+
+	public long getTaille_zip() {
+		return taille_zip;
+	}
+
+	public void setTaille_zip(long taille_zip) {
+		this.taille_zip = taille_zip;
+	}
+
+	public int getBufPos() {
+		return bufPos;
+	}
+
+	public void setBufPos(int bufPos) {
+		this.bufPos = bufPos;
+	}
+
+	public int getModuloX() {
+		return moduloX;
+	}
+
+	public void setModuloX(int moduloX) {
+		this.moduloX = moduloX;
+	}
+
+	public int getModuloY() {
+		return moduloY;
+	}
+
+	public void setModuloY(int moduloY) {
+		this.moduloY = moduloY;
 	}
 }

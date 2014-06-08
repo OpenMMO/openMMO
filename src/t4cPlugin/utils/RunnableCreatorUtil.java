@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.Params;
+import OpenT4C.MapManager;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
@@ -24,7 +25,6 @@ public class RunnableCreatorUtil {
 	{
 		Runnable r = new Runnable(){
 			public void run(){
-				Params.STATUS = "Pack Tuile : " + file.getName();
 				TexturePacker.process(setting, file.getPath(), FilesPath.getAtlasTuileDirectoryPath(), file.getName());
 				loadingStatus.addTilesAtlasPackaged(file.getName());
 			}
@@ -35,7 +35,6 @@ public class RunnableCreatorUtil {
 	public static Runnable getSpritePackerRunnable(final File file, final Settings setting) {
 		Runnable r = new Runnable() {
 			public void run() {
-				Params.STATUS = "Pack Sprite : " + file.getName();
 				TexturePacker.processIfModified(setting, file.getPath(), FilesPath.getAtlasSpriteDirectoryPath(), file.getName());
 				loadingStatus.addSpritesAtlasPackaged(file.getName());
 			}
@@ -63,7 +62,7 @@ public class RunnableCreatorUtil {
 				String nom = name.substring(0, name.length()-6);
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasSpritesFilePath(nom));
 				loadingStatus.addTextureAtlasSprite(nom, atlas);
-				Params.STATUS = "Sprites chargés : "+loadingStatus.getNbTextureAtlasSprite()+"/"+loadingStatus.getNbSpritesAtlas();
+				logger.info("Sprites chargés : "+loadingStatus.getNbTextureAtlasSprite()+"/"+loadingStatus.getNbSpritesAtlas());
 			}
 		};
 		return r;
@@ -78,5 +77,18 @@ public class RunnableCreatorUtil {
 		};
 		return r;
 	}
+
+	public static Runnable getChunkMapWatcherRunnable() {
+		Runnable r = new Runnable(){
+
+			@Override
+			public void run() {
+				MapManager.updateChunkPositions();
+			}
+			
+		};
+		return r;
+	}
+
 	
 }

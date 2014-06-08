@@ -26,7 +26,7 @@ public class Sprite {
 	
 	static int correspondances = 0;
 	private SpriteName nom;
-	String chemin = "";
+	private String chemin = "";
 	boolean tuile = false;
 	ArrayList<Integer> id = new ArrayList<Integer>();
 	ArrayList<Integer> pos = new ArrayList<Integer>();
@@ -34,21 +34,21 @@ public class Sprite {
 	int index_next;
 	int zoneX = 1;
 	int zoneY = 1;
-	int type;//short
-	int ombre;//short
-	int largeur;//short
-	int hauteur;//short
+	private int type;//short
+	private int ombre;//short
+	private int largeur;//short
+	private int hauteur;//short
 	int inconnu9;//short
-	byte couleurTrans;//short
-	int offsetX;//short
-	int offsetY;//short
-	int offsetX2;//short
-	int offsetY2;//short
+	private byte couleurTrans;//short
+	private int offsetX;//short
+	private int offsetY;//short
+	private int offsetX2;//short
+	private int offsetY2;//short
 	static int maxOffsetX = 0;
 	static int maxOffsetY = 0;
 	static int maxX = 0;
 	static int maxY = 0;
-	long numDda;
+	private long numDda;
 	public long taille_unzip = -1;
 	public long taille_zip = -1;
 	public DPDPalette palette;
@@ -77,14 +77,14 @@ public class Sprite {
 		
 		bytes = new byte[256];
 		buf.get(bytes);
-		chemin = new String(bytes);
-		chemin = chemin.substring(0, chemin.indexOf(0x00));
-		chemin = chemin.replace("_","");
-		chemin = chemin.replace(".","");
-		chemin = chemin.replace("\\", "/");
+		setChemin(new String(bytes));
+		setChemin(getChemin().substring(0, getChemin().indexOf(0x00)));
+		setChemin(getChemin().replace("_",""));
+		setChemin(getChemin().replace(".",""));
+		setChemin(getChemin().replace("\\", "/"));
 		String[] split;
-		split = chemin.split("\\/");
-		chemin = split[split.length-1];
+		split = getChemin().split("\\/");
+		setChemin(split[split.length-1]);
 		//if (chemin.startsWith("Cemetery Gates")) chemin = "Cemetery Gates";
 		//logger.info("		- Chemin : "+chemin+" Nom : "+nom);
 		
@@ -105,7 +105,7 @@ public class Sprite {
 		b6 = buf.get();
 		b7 = buf.get();
 		b8 = buf.get();
-		numDda = tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
+		setNumDda(tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1}));
 		//logger.info("		- N° DDA : "+numDda);
 		
 		Iterator <Integer> iter = DID.getIds().keySet().iterator();
@@ -134,8 +134,8 @@ public class Sprite {
 		}
 		
 		//logger.info("Nouveau Sprite : "+chemin+nom);
-		nom = new SpriteName(nomExtrait);
-		Params.STATUS = "Nouveau Sprite : "+chemin+nomExtrait;
+		this.nom = new SpriteName(nomExtrait);
+		Params.STATUS = "Nouveau Sprite : "+getChemin()+nomExtrait;
 		DID.getSprites_without_ids().put(DID.getSprites_without_ids().size(), this);
 
 
@@ -143,10 +143,10 @@ public class Sprite {
 	
 	public Sprite(boolean tuile, String atlas, String tex, int offsetX,	int offsetY, int moduloX, int moduloY, int id) {
 		this.tuile = tuile;
-		this.chemin = atlas;
+		this.setChemin(atlas);
 		this.nom = new SpriteName(tex);
-		this.offsetX = offsetX;
-		this.offsetY = offsetY;
+		this.setOffsetX(offsetX);
+		this.setOffsetY(offsetY);
 		this.moduloX = moduloX;
 		this.moduloY = moduloY;
 		this.id = new ArrayList<Integer>();
@@ -159,5 +159,93 @@ public class Sprite {
 	
 	public String getName() {
 		return nom.getName();
+	}
+
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getOmbre() {
+		return ombre;
+	}
+
+	public void setOmbre(int ombre) {
+		this.ombre = ombre;
+	}
+
+	public int getLargeur() {
+		return largeur;
+	}
+
+	public void setLargeur(int largeur) {
+		this.largeur = largeur;
+	}
+
+	public int getHauteur() {
+		return hauteur;
+	}
+
+	public void setHauteur(int hauteur) {
+		this.hauteur = hauteur;
+	}
+
+	public byte getCouleurTrans() {
+		return couleurTrans;
+	}
+
+	public void setCouleurTrans(byte couleurTrans) {
+		this.couleurTrans = couleurTrans;
+	}
+
+	public int getOffsetX() {
+		return offsetX;
+	}
+
+	public void setOffsetX(int offsetX) {
+		this.offsetX = offsetX;
+	}
+
+	public int getOffsetY() {
+		return offsetY;
+	}
+
+	public void setOffsetY(int offsetY) {
+		this.offsetY = offsetY;
+	}
+
+	public int getOffsetX2() {
+		return offsetX2;
+	}
+
+	public void setOffsetX2(int offsetX2) {
+		this.offsetX2 = offsetX2;
+	}
+
+	public int getOffsetY2() {
+		return offsetY2;
+	}
+
+	public void setOffsetY2(int offsetY2) {
+		this.offsetY2 = offsetY2;
+	}
+
+	public long getNumDda() {
+		return numDda;
+	}
+
+	public void setNumDda(long numDda) {
+		this.numDda = numDda;
 	}
 }

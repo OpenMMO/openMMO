@@ -23,14 +23,32 @@ public class DPDPalette {
 	
 	ArrayList<Pixel> pixels = new ArrayList<Pixel>();
 	
-	class Pixel{
-		short red;
-		short green;
-		short blue;
+	public class Pixel{
+		private short red;
+		private short green;
+		private short blue;
 		public Pixel(short b, short c, short d) {
-			red = b;
-			green = c;
-			blue = d;
+			setRed(b);
+			setGreen(c);
+			setBlue(d);
+		}
+		public short getRed() {
+			return red;
+		}
+		public void setRed(short red) {
+			this.red = red;
+		}
+		public short getGreen() {
+			return green;
+		}
+		public void setGreen(short green) {
+			this.green = green;
+		}
+		public short getBlue() {
+			return blue;
+		}
+		public void setBlue(short blue) {
+			this.blue = blue;
 		}
 	}
 	
@@ -62,9 +80,9 @@ public class DPDPalette {
 		Iterator<Pixel> iter = pixels.iterator();
 		while (iter.hasNext()){
 			Pixel p = iter.next();
-			palette.put((byte)((p.red)&0xFF));
-			palette.put((byte)((p.green)&0xFF));
-			palette.put((byte)((p.blue)&0xFF));
+			palette.put((byte)((p.getRed())&0xFF));
+			palette.put((byte)((p.getGreen())&0xFF));
+			palette.put((byte)((p.getBlue())&0xFF));
 		}
 		palette.rewind();
 		return palette;

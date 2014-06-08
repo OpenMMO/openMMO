@@ -25,4 +25,8 @@ public class Lieux {
 	public String getNom() {
 		return this.nom;
 	}
+
+	public String getMap() {
+		return this.carte;
+	}
 }

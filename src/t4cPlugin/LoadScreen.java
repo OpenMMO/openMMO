@@ -19,8 +19,8 @@ public class LoadScreen implements Screen{
 	private TextButton infos;
 	private ScreenManager sm;
 
-	public LoadScreen(ScreenManager sm){
-		this.sm = sm;
+	public LoadScreen(ScreenManager screenManager){
+		this.sm = screenManager;
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		camera = new OrthographicCamera();

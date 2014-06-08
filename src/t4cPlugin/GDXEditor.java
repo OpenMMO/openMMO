@@ -299,7 +299,7 @@ public class GDXEditor extends Game{
 				Sprite tuile = DDA.getTuiles().get(key);
 				try {
 					//logger.info("	- 1"+"|"+key+"|"+tuile.chemin+"|"+tuile.nom+"|"+tuile.type+"|"+tuile.ombre+"|"+tuile.largeur+"|"+tuile.hauteur+"|"+tuile.couleurTrans+"|"+tuile.offsetX+"|"+tuile.offsetY+"|"+tuile.offsetX2+"|"+tuile.offsetY2+"|"+tuile.numDda+"|"+tuile.moduloX+"|"+tuile.moduloY);
-					dat_file.write("1"+";"+key+";"+tuile.chemin+";"+tuile.getName()+";"+tuile.type+";"+tuile.ombre+";"+tuile.largeur+";"+tuile.hauteur+";"+tuile.couleurTrans+";"+tuile.offsetX+";"+tuile.offsetY+";"+tuile.offsetX2+";"+tuile.offsetY2+";"+tuile.numDda+";"+tuile.moduloX+";"+tuile.moduloY+Params.LINE);
+					dat_file.write("1"+";"+key+";"+tuile.getChemin()+";"+tuile.getName()+";"+tuile.getType()+";"+tuile.getOmbre()+";"+tuile.getLargeur()+";"+tuile.getHauteur()+";"+tuile.getCouleurTrans()+";"+tuile.getOffsetX()+";"+tuile.getOffsetY()+";"+tuile.getOffsetX2()+";"+tuile.getOffsetY2()+";"+tuile.getNumDda()+";"+tuile.moduloX+";"+tuile.moduloY+Params.LINE);
 				} catch (IOException e) {
 					logger.fatal(e);
 					System.exit(1);
@@ -313,7 +313,7 @@ public class GDXEditor extends Game{
 				Sprite sprite = DDA.getSprites().get(key);
 				try {
 					//logger.info("	- 0"+"|"+key+"|"+sprite.chemin+"|"+sprite.nom+"|"+sprite.type+"|"+sprite.ombre+"|"+sprite.largeur+"|"+sprite.hauteur+"|"+sprite.couleurTrans+"|"+sprite.offsetX+"|"+sprite.offsetY+"|"+sprite.offsetX2+"|"+sprite.offsetY2+"|"+sprite.numDda+"|"+sprite.moduloX+"|"+sprite.moduloY);
-					dat_file.write("0"+";"+key+";"+sprite.chemin+";"+sprite.getName()+";"+sprite.type+";"+sprite.ombre+";"+sprite.largeur+";"+sprite.hauteur+";"+sprite.couleurTrans+";"+sprite.offsetX+";"+sprite.offsetY+";"+sprite.offsetX2+";"+sprite.offsetY2+";"+sprite.numDda+";-1;-1"+Params.LINE);
+					dat_file.write("0"+";"+key+";"+sprite.getChemin()+";"+sprite.getName()+";"+sprite.getType()+";"+sprite.getOmbre()+";"+sprite.getLargeur()+";"+sprite.getHauteur()+";"+sprite.getCouleurTrans()+";"+sprite.getOffsetX()+";"+sprite.getOffsetY()+";"+sprite.getOffsetX2()+";"+sprite.getOffsetY2()+";"+sprite.getNumDda()+";-1;-1"+Params.LINE);
 				} catch (IOException e) {
 					logger.fatal(e);
 					System.exit(1);

@@ -1,109 +1,41 @@
 package OpenT4C;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.security.DigestInputStream;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.badlogic.gdx.Gdx;
+import t4cPlugin.AssetsLoader;
+import t4cPlugin.FileLister;
+import t4cPlugin.MAP;
+import t4cPlugin.utils.FilesPath;
+import t4cPlugin.utils.MD5Checker;
 
 /**
  * On vérifie la présence des données utiles, et on créé une liste de données manquantes.
- * En parallèle, on informe l'affichage des résultats.
+ * On informe aussi l'affichage de là où on en est.
  * @author synoga
  *
  */
 public class DataChecker {
 
-	public static final int IS_IDLE = 42;
-	public static final int IS_CHECKING_SOURCE_DATA = 0;
-	public static final int IS_CHECKING_ATLAS = 1;
-	public static final int CHECK_MAPS = 2;
-	
-	private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
-	private ScreenManager sm =  null;
-	public static HashMap<File,String> sourceData = null;
-	
-	/**
-	 * On va vérifier successivement les différentes données nécessaires au bon fonctionnement du logiciel.
-	 * On lie le ScreenManager pour pouvoir informer facilement l'affichage de l'état de la vérification.
-	 * @param sm
-	 */
-	public DataChecker(ScreenManager sm) {
-		this.sm = sm;
-		DataChecker.sourceData = new HashMap<File,String>();
-		populateSourceData();
-		setStatus(DataChecker.IS_IDLE);
-	}
-
-	/**
-	 * On ajoute les fichiers source de T4C dans la liste, il suffira d'en ajouter ici, si jamais on doit en gérer plus.
-	 */
-	private void populateSourceData() {
-		File f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2_cavernmap.map");
-		String checksum = "1f1848445f4cb1626f3ede0683388ff4";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2_dungeonmap.map");
-		checksum = "4df9dfc9466cca818ca2fd22ec560599";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2_leoworld.map");
-		checksum = "9aa2b7f484b47e3d3806e9b8a2590edc";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2_underworld.map");
-		checksum = "23186dd6acc47664dff79f6b128eb5a5";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2_worldmap.map");
-		checksum = "37bb2f1b8d27fd27d5005443bbdb4cd7";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2colori.dpd");
-		checksum = "ccde298d34934385fd9d4483685b4ea6";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2data00.dda");
-		checksum = "a234d1758ff5ef8de7a3a0c36cfb33d7";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2data01.dda");
-		checksum = "9ccdd21440fdb7946619a41a04abccf8";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2data02.dda");
-		checksum = "0b11f08c84af3cfcf562d953b01963fd";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2data03.dda");
-		checksum = "714a72aac7867e9b7f240948f66c3723";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2data04.dda");
-		checksum = "58fe5f0cf3bdbd9988a78150f1a41bca";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2data25.dda");
-		checksum = "7a86ce5a4103be85a8d57f7353a95e6e";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"game_files"+File.separatorChar+"v2datai.did");
-		checksum = "9d31f9a3b24ee2bfe0d6c269953a2a28";
-		sourceData.put(f,checksum);
-		f = new File("data"+File.separatorChar+"id.txt");
-		checksum = "aacf25cca611fc80574e7158684a82d9";
-		sourceData.put(f,checksum);		
-	}
+	 private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
 	
 	/**
 	 * D'abord les données sources, puis les données des atlas, puis les données des cartes.
 	 */
-	public void runCheck() {
-		//sm.switchCheckDataScreen();
+	public static void runCheck() {
+		SourceDataManager.populate();
+		FilesPath.init();
 		logger.info("Vérification des données source");
 		checkSourceData();
 		logger.info("Vérification des atlas");
 		checkAtlas();
-		System.exit(0);
+		logger.info("Vérification des données de sprites");
+		createSpriteDataIfAbsent();
 		logger.info("Vérification des cartes");
 		checkMap();
 	}
@@ -111,108 +43,119 @@ public class DataChecker {
 	/**
 	 * Vérifie la présence des fichiers source T4C et contrôle leur intégrité.
 	 */
-	private void checkSourceData() {
-		
-		ArrayList<File> absentFiles = new ArrayList<File>();
-		ArrayList<File> badChecksumFiles = new ArrayList<File>();
-		
-		setStatus(DataChecker.IS_CHECKING_SOURCE_DATA);
-		
-		Iterator<File> iter_source = sourceData.keySet().iterator();
+	private static void checkSourceData() {
+		UpdateScreenManagerStatus.checkingSourceData();
+		List<File> absentFiles = checkAbsentFiles();
+		stopIfAbsentFiles(absentFiles);
+		List<File> badChecksumFiles = checkChecksumFiles();
+		stopIfBadChecksum(badChecksumFiles);
+		UpdateScreenManagerStatus.idle();
+	}
+	
+	
+	private static List<File> checkAbsentFiles() {
+		List<File> result = new ArrayList<File>();
+		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
 			if(!f.exists()){
-				absentFiles.add(f);
-			}else if(!checkMD5(f)){
-				badChecksumFiles.add(f);
+				result.add(f);
 			}
 		}
-		
-		if (!absentFiles.isEmpty()){
-			logger.fatal("Fichiers manquants : " + absentFiles);
-			System.exit(1);
-		}else{
-			logger.info("Fichiers source présents.");
-		}
-		
-		if (!badChecksumFiles.isEmpty()){
-			logger.fatal("Mauvais MD5 : " + badChecksumFiles);
-			System.exit(1);
-		}else{
-			logger.info("MD5 OK");
-		}
-		
-		setStatus(DataChecker.IS_IDLE);
+		return result;
 	}
 
-	/**
-	 * Vérifie le MD5 du fichier f
-	 * @param f
-	 * @return
-	 */
-	private boolean checkMD5(File f){
-		MessageDigest md5 = null;
-		try {
-			md5 = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-			System.exit(1);
-		} 
-        FileInputStream fis = null;
-		try {
-			fis = new FileInputStream(f);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+	private static void stopIfAbsentFiles(List<File> absentFiles) {
+		if (!absentFiles.isEmpty()){
+			logger.fatal("Fichier(s) manquant(s) : "+absentFiles);
+			//TODO intégrer ici la possibilité de télécharger ces fichiers à partir d'une liste de mirroirs
 			System.exit(1);
 		}
-        BufferedInputStream bis = new BufferedInputStream(fis);
-        DigestInputStream   dis = new DigestInputStream(bis, md5);
+	}
 
-        try {
-			while (dis.read() != -1);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
+	private static List<File> checkChecksumFiles() {
+		List<File> result = new ArrayList<File>();
+		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
+		while (iter_source.hasNext()){
+			File f = iter_source.next();
+			if(!MD5Checker.check(f,SourceDataManager.getData().get(f))){
+				result.add(f);
+			}
 		}
+		return result;
+	}
 
-        try {
-			dis.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+	private static void stopIfBadChecksum(List<File> badChecksumFiles) {
+		if (!badChecksumFiles.isEmpty()){
+			logger.fatal("Fichier(s) corrompu(s) : "+badChecksumFiles);
+			//TODO intégrer ici la possibilité de télécharger ces fichiers à partir d'une liste de mirroirs
 			System.exit(1);
-		}
-        
-        String hash = tools.ByteArrayToHexString.print(md5.digest());
-        //logger.info("java MD5 : " + hash);
-        //logger.info("System MD5 : " + sourceData.get(f));
-        if(hash.equalsIgnoreCase(sourceData.get(f))){
-        	return true;
-        } else {
-        	return false;
-        }
+		}		
 	}
 	
 	/**
 	 * contrôle la présence des atlas
 	 */
-	private void checkAtlas() {
-		setStatus(DataChecker.IS_CHECKING_ATLAS);
-		// TODO Savoir si tous les atlas sont là.
-		
+	private static void checkAtlas() {
+		UpdateScreenManagerStatus.checkingAtlas();
+		// TODO Trouver mieux pour vérifier la présence des atlas et des sprites.
+		int nb_atlas = FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas").size()+FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas").size();
 		//Si les atlas ne sont pas tous présents
-		AtlasFactory.make();
+		if (nb_atlas != 628){
+			SpriteManager.loadIdsFromFile();
+			//si les sprites ne sont pas tous présents
+			int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
+			if(nb_sprites != 68439){
+				SpriteManager.decryptDPD();
+				SpriteManager.decryptDID();
+				SpriteManager.decryptDDA(true);
+			}
+			AssetsLoader.pack_tuiles();
+			AssetsLoader.pack_sprites();
+		}
+		UpdateScreenManagerStatus.idle();
 	}
 
 	/**
-	 * contrôle la présence des cartes
+	 * On vérifie la présence du fichier sprite_data, s'il est là, on arrête, s'il est pas là, on le créé.
 	 */
-	private void checkMap() {
-		// TODO Auto-generated method stub
-		
+	private static void createSpriteDataIfAbsent() {
+		UpdateScreenManagerStatus.checkingSpriteData();
+		if (!new File(FilesPath.getSpriteDataPath()).exists()){
+			SpriteData.create();
+		}
+		UpdateScreenManagerStatus.idle();
 	}
 
-	private void setStatus(final int status){
-		sm.setStatus(status);
+	/**
+	 * contrôle la présence des cartes. Si elles sont là, on arrête, sinon, on les décrypte.
+	 */
+	private static void checkMap() {
+		UpdateScreenManagerStatus.checkingMaps();
+		List<File> mapFiles = SourceDataManager.getMaps();
+		List<File> decryptedMaps = new ArrayList<File>();
+		decryptedMaps = FileLister.lister(new File(FilesPath.getMapDataDirectoryPath()), ".map.decrypt");
+		//TODO trouver mieux que ça. md5 peut-être?
+		if (mapFiles.size() != decryptedMaps.size()){
+			decryptMaps(mapFiles);
+		}
+		UpdateScreenManagerStatus.idle();
 	}
 	
+	/**
+	 * décrypte les cartes source
+	 * @param mapFiles
+	 */
+	private static void decryptMaps(List<File> mapFiles) {
+		File f = null;
+		Iterator<File> iter_maps = mapFiles.iterator();
+		while (iter_maps.hasNext()){
+			f = iter_maps.next();
+			if (!new File(FilesPath.getMapFilePath(f.getName())).exists()){
+				MAP mapFile = new MAP();
+				mapFile.Map_load_block(f, 0x00002000);
+			}
+		}
+		logger.info("Cartes Décryptées");
+	}		
 }

@@ -21,6 +21,7 @@ import javax.imageio.stream.FileImageOutputStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import t4cPlugin.utils.FilesPath;
 import tools.DataInputManager;
 
 
@@ -37,7 +38,7 @@ public class MAP {
 	
 	public void Map_load_block(File f, int rle_value){
 		logger.info("	- Décryptage de la carte "+f.getName());
-		File decryptedMap = new File("."+File.separator+"data"+File.separator+f.getName()+".decrypt");
+		File decryptedMap = new File(FilesPath.getMapFilePath(f.getName()));
 		int block_number;
 		int offset;
 		int line_number;
@@ -134,7 +135,7 @@ public class MAP {
 		//TODO on stock le sprite black mais on get le 0? Pourquoi?
 		Sprite black = DID.getSprites_with_ids().get(0);
 		try {
-			blackTile = ImageIO.read(new File(Params.t4cOUT+"SPRITES/"+black.chemin+black.getName()+".bmp"));
+			blackTile = ImageIO.read(new File(Params.t4cOUT+"SPRITES/"+black.getChemin()+black.getName()+".bmp"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 			System.exit(1);
@@ -249,13 +250,13 @@ public class MAP {
 						//logger.info(sprite.nom);
 						f = checkZone(sprite, pos);
 					}else{
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.getName()+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()+sprite.getName()+".png");
 					}
 					try {
 						overlay = ImageIO.read(f);
 
 					} catch (IOException ex) {
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.getName()+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()+sprite.getName()+".png");
 						//logger.info(sprite.chemin+sprite.nom+" | "+f.getName());
 						try {
 							overlay = ImageIO.read(f);
@@ -298,13 +299,13 @@ public class MAP {
 						//logger.info(sprite.nom);
 						f = checkZone(sprite, pos);
 					}else{
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()+nom+".png");
 					}
 					try {
 						overlay = ImageIO.read(f);
 
 					} catch (IOException ex) {
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()+nom+".png");
 						//logger.info(sprite.chemin+sprite.nom+" | "+f.getName());
 						try {
 							overlay = ImageIO.read(f);
@@ -315,7 +316,7 @@ public class MAP {
 					}
 					if (overlay == null){
 						System.err.println("Overlay null");
-						System.err.println(sprite.chemin+f.getName());
+						System.err.println(sprite.getChemin()+f.getName());
 						System.exit(1);
 					}
 					//logger.info(sprite.chemin+sprite.nom);
@@ -323,7 +324,7 @@ public class MAP {
 						logger.info(((currentTile*100)/((X2-X1)*(Y2-Y1)))+"% des Sprites dessiné(s)");
 					}
 					if (!(overlay.getWidth() == 32) | !(overlay.getHeight() == 16)) {
-						g.drawImage(overlay, (((pos%3072)-X1)*w)+sprite.offsetX, (((pos/3072)-Y1)*h)+sprite.offsetY, overlay.getWidth()/scale, overlay.getHeight()/scale, null);
+						g.drawImage(overlay, (((pos%3072)-X1)*w)+sprite.getOffsetX(), (((pos/3072)-Y1)*h)+sprite.getOffsetY(), overlay.getWidth()/scale, overlay.getHeight()/scale, null);
 					}
 					lastTile=currentTile;
 					currentTile++;
@@ -347,13 +348,13 @@ public class MAP {
 						//logger.info(sprite.nom);
 						f = checkZone(sprite, pos);
 					}else{
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()+nom+".png");
 					}
 					try {
 						overlay = ImageIO.read(f);
 
 					} catch (IOException ex) {
-						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+nom+".png");
+						f = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()+nom+".png");
 						//logger.info(sprite.chemin+sprite.nom+" | "+f.getName());
 						try {
 							overlay = ImageIO.read(f);
@@ -364,7 +365,7 @@ public class MAP {
 					}
 					if (overlay == null){
 						System.err.println("Overlay null");
-						System.err.println(sprite.chemin+f.getName());
+						System.err.println(sprite.getChemin()+f.getName());
 						System.exit(1);
 					}
 					//logger.info(sprite.chemin+sprite.nom);
@@ -378,7 +379,7 @@ public class MAP {
 						int id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
 						g.setColor(Color.RED);
 						g.drawString(""+id, (((pos%3072)-X1)*w), (((pos/3072)-Y1)*h)+16);
-						logger.info(((((pos%3072)-X1)*w)+sprite.offsetX)+","+((((pos/3072)-Y1)*h)+sprite.offsetY)+" : "+sprite.getName()+" "+id+" => "+sprite.id+" | "+sprite.chemin);
+						logger.info(((((pos%3072)-X1)*w)+sprite.getOffsetX())+","+((((pos/3072)-Y1)*h)+sprite.getOffsetY())+" : "+sprite.getName()+" "+id+" => "+sprite.id+" | "+sprite.getChemin());
 					}
 					lastTile=currentTile;
 					currentTile++;
@@ -410,7 +411,7 @@ public class MAP {
 	private File checkZone(Sprite sprite, int pos) {
 		FileLister explorer = new FileLister();
 		ArrayList<File> sprites = new ArrayList<File>();
-		sprites.addAll(explorer.lister(new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin), ".png"));
+		sprites.addAll(explorer.lister(new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()), ".png"));
 		int moduloX=0, moduloY=0;
 		Iterator<File> iter = sprites.iterator();
 		while (iter.hasNext()){
@@ -428,7 +429,7 @@ public class MAP {
 		int x = (pos%moduloX)+1;
 		int y = ((pos/3072)%moduloY)+1;
 		
-		result = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.chemin+sprite.getName().substring(0,sprite.getName().indexOf('(')+1)+x+", "+y+").bmp");
+		result = new File(Params.t4cOUT+"SPRITES"+File.separator+sprite.getChemin()+sprite.getName().substring(0,sprite.getName().indexOf('(')+1)+x+", "+y+").bmp");
 		return result;
 		
 	}	

@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class DPDPalette {
+public class Palette {
 
 	/**
 	 * PStructurePalette = ^StructurePalette;
@@ -53,14 +53,11 @@ public class DPDPalette {
 		}
 	}
 	
-	public DPDPalette(ByteBuffer buf) {
-		//new Fast_Forward(buf, 64, false, "DPD");
+	public Palette(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
 		nom = new String(bytes);
 		nom = nom.substring(0, nom.indexOf(0x00));
-		//logger.info("		- Nom : "+nom);
-		//new Fast_Forward(buf, 768, false, nom);
 		for (int i=0 ; i<256 ; i++){
 			short tmp1,tmp2,tmp3;
 			byte b;
@@ -71,9 +68,7 @@ public class DPDPalette {
 			b = buf.get();
 			tmp3 = tools.ByteArrayToNumber.bytesToShort(new byte[]{0,b});
 			pixels.add(new Pixel (tmp1, tmp2, tmp3));
-			//pixels.add(new Pixel (buf.get(),buf.get(), buf.get())); 
 		}
-		//logger.info("		- Nombre de pixels extraits : "+pixels.size());
 	}
 
 	public ByteBuffer getPixels() {
