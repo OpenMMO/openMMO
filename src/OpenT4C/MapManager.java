@@ -10,23 +10,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -76,6 +71,8 @@ public class MapManager implements Screen{
 	private Group menu, sprites, infos, tiles;
 	private boolean debug = true;
 	private static boolean do_render = false;
+	private boolean render_infos = true;
+	private boolean stage_ready = true;
 	
 	public MapManager(){
 		Gdx.app.postRunnable(new Runnable(){
@@ -165,21 +162,9 @@ public class MapManager implements Screen{
 			//TODO attention plus tard en gérant plusieurs cartes.
 			worldmap.put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
 		}
-		startChunkMapWatcher();
+		Chunk.startChunkMapWatcher();
 		m.renderChunks();
 	}
-
-	private static void startChunkMapWatcher() {
-		Runnable r = RunnableCreatorUtil.getChunkMapWatcherRunnable();
-		ThreadsUtil.executePeriodicallyInThread(r, 1, 50, TimeUnit.MILLISECONDS);
-	}
-
-
-
-	private boolean render_infos = true;
-
-
-	private boolean stage_ready = true;
 
 	@Override
 	public void render(float delta) {
@@ -229,8 +214,8 @@ public class MapManager implements Screen{
 			Point pt = iter_tiles.next();
 			Sprite sp = tile_list.get(pt);
 			Point offset = PointsManager.getPoint(0,0);
-			float spx = (sp.getScaleX()*offset.x)+(pt.x*32);
-			float spy = (sp.getScaleY()*offset.y)+(pt.y*16);
+			float spx = -(sp.getScaleX()*offset.x)+(pt.x*32);
+			float spy = -(sp.getScaleY()*offset.y)+(pt.y*16);
 			sp.setPosition(spx, spy);
 			//logger.info(pt.x+";"+pt.y);
 			tiles.addActor(new Acteur(sp));

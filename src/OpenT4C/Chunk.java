@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,6 +16,8 @@ import t4cPlugin.AssetsLoader;
 import t4cPlugin.MapPixel;
 import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.PointsManager;
+import t4cPlugin.utils.RunnableCreatorUtil;
+import t4cPlugin.utils.ThreadsUtil;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -29,6 +32,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Chunk{
 	
 	private static Logger logger = LogManager.getLogger(Chunk.class.getSimpleName());
+	private static int watcher_delay = 500;
 	private Point center = null;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private Map<Point,Sprite> chunk_sprites = null;
@@ -196,5 +200,10 @@ public class Chunk{
 
 	public Map<Point, Sprite> getTiles() {
 		return chunk_tiles;
+	}
+	
+	public static void startChunkMapWatcher() {
+		Runnable r = RunnableCreatorUtil.getChunkMapWatcherRunnable();
+		ThreadsUtil.executePeriodicallyInThread(r, 1, watcher_delay, TimeUnit.MILLISECONDS);
 	}
 }

@@ -12,7 +12,7 @@ public class Main {
 
 	private static Logger logger = LogManager.getLogger(Main.class.getSimpleName());
 	private static ScreenManager sm = null;
-	private static boolean debug_GDX = true;
+	private static boolean debug_GDX = false;
 	
 	/**
 	 * Je pense retenter une écriture complète ici, en parallèle

@@ -21,7 +21,7 @@ public class FileLister {
 		return result;
 	}
 	
-	public List<File> listerDir(File repertoire){ 
+	public static List<File> listerDir(File repertoire){ 
 		List<File> result = new ArrayList<File>();
 		File[] list = repertoire.listFiles();
 		for(int i=0;i<list.length;i++){

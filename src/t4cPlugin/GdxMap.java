@@ -34,6 +34,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
+@Deprecated
 public class GdxMap implements Screen, InputProcessor{
 	
 	private static Logger logger = LogManager.getLogger(GdxMap.class.getSimpleName());

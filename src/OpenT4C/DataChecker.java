@@ -121,6 +121,7 @@ public class DataChecker {
 	 */
 	private static void createSpriteDataIfAbsent() {
 		UpdateScreenManagerStatus.checkingSpriteData();
+		SpriteManager.loadIdsFromFile();
 		if (!new File(FilesPath.getSpriteDataPath()).exists()){
 			SpriteData.create();
 		}

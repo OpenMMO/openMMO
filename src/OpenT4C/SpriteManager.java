@@ -354,7 +354,7 @@ public class SpriteManager {
 		}
 		
 		logger.info(getSprites().size()+" sprites décryptés");
-		Iterator<SpriteName>iter_sprites = getSprites().keySet().iterator();
+/*		Iterator<SpriteName>iter_sprites = getSprites().keySet().iterator();
 		Sprite last = null;
 		while(iter_sprites.hasNext()){
 			SpriteName key = iter_sprites.next();
@@ -362,7 +362,7 @@ public class SpriteManager {
 			if (sprite.isTuile())computeModulo(sprite);
 			last = sprite;
 		}
-		
+*/		
 	}
 	
 	private static void decrypt_dda_file(File f, boolean doWrite) {
@@ -939,38 +939,7 @@ public class SpriteManager {
 		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : "+didsprite.type+" "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.getNom());
 	}
 
-	public static void computeModulo(Sprite sprite){
-		logger.info("Modulo à calculer : "+sprite.getChemin());
-		ArrayList<File> sprites = new ArrayList<File>();
-		sprites.addAll(FileLister.lister(new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin()), ".png"));
-		logger.info("Nombre de fichiers listés : "+sprites.size());
-		int moduloX=1, moduloY=1;
-		Iterator<File> iter = sprites.iterator();
-		while (iter.hasNext()){
-			File f = iter.next();
-			try{
-				int tmpX=1,tmpY=1;
-				String firstPart, secondPart;
-				firstPart = f.getName().substring(f.getName().indexOf('(')+1, f.getName().indexOf(','));
-				secondPart = f.getName().substring(f.getName().indexOf(',')+2, f.getName().indexOf(')'));
-				//logger.warn("Modulo "+f.getName()+" : "+firstPart+" | "+secondPart);
-				//TODO Réparer le nom de fichier de la tuile Lava : pas d'espace après la virgule
-				if (secondPart.equals("")){
-					secondPart = f.getName().substring(f.getName().indexOf(',')+1, f.getName().indexOf(')'));
-				}
-				tmpX = Integer.parseInt(firstPart);
-				tmpY = Integer.parseInt(secondPart);
-				if (tmpX>moduloX)moduloX = tmpX;
-				if (tmpY>moduloY)moduloY = tmpY;
-			}catch(StringIndexOutOfBoundsException exc){
-				System.err.println(sprite.getChemin()+"=>"+f.getPath());
-				System.exit(1);
-			}
-		}
-		sprite.setModuloX(moduloX);
-		sprite.setModuloY(moduloY);
-		logger.info("Modulo : "+sprite.getChemin()+" => "+moduloX+";"+moduloY);
-	}
+
 
 	public static Map<SpriteName,Sprite> getSprites() {
 		return sprites;
