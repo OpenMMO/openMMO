@@ -3,6 +3,7 @@ package t4cPlugin.utils;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class ThreadsUtil {
@@ -18,8 +19,8 @@ public class ThreadsUtil {
 		exService.execute(r);
 	}
 	
-	public static void executePeriodicallyInThread(Runnable r, int delay, int period, TimeUnit tu){
-		timerExService.scheduleAtFixedRate(r, delay, period, tu);
+	public static ScheduledFuture<?> executePeriodicallyInThread(Runnable r, int delay, int period, TimeUnit tu){
+		return timerExService.scheduleAtFixedRate(r, delay, period, tu);
 	}
 	
 	
