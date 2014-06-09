@@ -71,7 +71,12 @@ public class RunnableCreatorUtil {
 	public static Runnable getForceTextureAtlasSpriteCreatorRunnable(final String name) {
 		Runnable r = new Runnable(){
 			public void run(){
-				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasSpritesFilePath(name));
+				TextureAtlas atlas = null;
+				if(name.equals("Unknown")){
+					atlas = new TextureAtlas(FilesPath.getAtlasUnknownFilePath());
+				}else{
+					atlas = new TextureAtlas(FilesPath.getAtlasSpritesFilePath(name));
+				}
 				loadingStatus.addTextureAtlasSprite(name, atlas);
 			}
 		};

@@ -182,6 +182,8 @@ public class FilesPath {
 		
 		sb.append("data");
 		sb.append(File.separator);
+		sb.append("maps");
+		sb.append(File.separator);
 		
 		return sb.toString();
 	}
@@ -191,13 +193,15 @@ public class FilesPath {
 		
 		sb.append("data");
 		sb.append(File.separator);
+		sb.append("maps");
+		sb.append(File.separator);
 		sb.append(fileName);
 		sb.append(".decrypt");
 		
 		return sb.toString();
 	}
 
-	public static String getSpriteDataPath() {
+	public static String getSpriteDataFilePath() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("data");
 		sb.append(File.separator);
@@ -212,8 +216,20 @@ public class FilesPath {
 		StringBuilder sb = new StringBuilder();
 		sb.append("data");
 		sb.append(File.separator);
+		sb.append("sprites");		
+		sb.append(File.separator);
 		sb.append("id.txt");		
 		
 		return sb.toString();		
+	}
+
+	public static String getAtlasUnknownFilePath() {
+		StringBuilder sb = new StringBuilder(24 + 7);
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("Unknown.atlas");
+		
+		return sb.toString();
 	}
 }

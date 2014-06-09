@@ -101,11 +101,11 @@ public class DataChecker {
 		// TODO Trouver mieux pour vérifier la présence des atlas et des sprites.
 		int nb_atlas = FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas").size()+FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas").size();
 		//Si les atlas ne sont pas tous présents
-		if (nb_atlas != 628){
+		if (nb_atlas < 620){
 			SpriteManager.loadIdsFromFile();
 			//si les sprites ne sont pas tous présents
 			int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-			if(nb_sprites != 68439){
+			if(nb_sprites < 68400){
 				SpriteManager.decryptDPD();
 				SpriteManager.decryptDID();
 				SpriteManager.decryptDDA(true);
@@ -122,7 +122,7 @@ public class DataChecker {
 	private static void createSpriteDataIfAbsent() {
 		UpdateScreenManagerStatus.checkingSpriteData();
 		SpriteManager.loadIdsFromFile();
-		if (!new File(FilesPath.getSpriteDataPath()).exists()){
+		if (!new File(FilesPath.getSpriteDataFilePath()).exists()){
 			SpriteData.create();
 		}
 		UpdateScreenManagerStatus.idle();

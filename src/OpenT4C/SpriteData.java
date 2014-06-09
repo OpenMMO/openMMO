@@ -28,7 +28,7 @@ public class SpriteData {
 	public static void load(){
 		BufferedReader buf = null;
 		try {
-			buf  = new BufferedReader(new FileReader(FilesPath.getSpriteDataPath()));
+			buf  = new BufferedReader(new FileReader(FilesPath.getSpriteDataFilePath()));
 		} catch (IOException e1) {
 			logger.fatal(e1);
 			System.exit(1);
