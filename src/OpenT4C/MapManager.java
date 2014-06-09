@@ -56,7 +56,7 @@ import tools.DataInputManager;
 public class MapManager implements Screen{
 
 	private static Logger logger = LogManager.getLogger(MapManager.class.getSimpleName());
-	private static Map<String,ByteBuffer> maps = new HashMap<String,ByteBuffer>(5);
+	private static Map<String,ByteBuffer> id_maps = new HashMap<String,ByteBuffer>(5);
 	private static final Lieux startPoint = new Lieux("LH TEMPLE", "v2_worldmap",PointsManager.getPoint(2940,1065));
 	private static final Lieux mapOrigin = new Lieux("ORIGIN", "v2_worldmap",PointsManager.getPoint(Gdx.graphics.getWidth()/64,Gdx.graphics.getHeight()/32));
 	private static Map<Integer,Chunk> worldmap = new ConcurrentHashMap<Integer,Chunk>(9);
@@ -80,31 +80,33 @@ public class MapManager implements Screen{
 	public MapManager(){
 		Gdx.app.postRunnable(new Runnable(){
 			public void run(){
-				style.font = new BitmapFont();
-				stage = new Stage();
-				ui = new Stage();
-				menu = new Group();
-				sprites = new Group();
-				tiles = new Group();
-				infos = new Group();
-				batch = new SpriteBatch();
-				camera = new OrthographicCamera();
-				camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-				//center camera to 0,0
-				camera.translate(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2);
-				//center camera to start point
-				camera.translate(startPoint.getCoord().x*32,startPoint.getCoord().y*16);				
-				camera.update();
-				stage.setCamera(camera);
-				ui.addActor(menu);
-				ui.addActor(infos);
-				//logger.info("Position camera : "+camera.position);
-				setLoadInfos();
+				init();
 				controller = new InputManager(m);
 				Gdx.input.setInputProcessor(controller);
 			}
 		});
-
+	}
+	
+	private void init() {
+		style.font = new BitmapFont();
+		stage = new Stage();
+		ui = new Stage();
+		menu = new Group();
+		sprites = new Group();
+		tiles = new Group();
+		infos = new Group();
+		batch = new SpriteBatch();
+		camera = new OrthographicCamera();
+		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		//center camera to 0,0
+		camera.translate(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2);
+		//center camera to start point
+		camera.translate(startPoint.getCoord().x*32,startPoint.getCoord().y*16);				
+		camera.update();
+		stage.setCamera(camera);
+		ui.addActor(menu);
+		ui.addActor(infos);	
+		setLoadInfos();
 	}
 	
 	private void setLoadInfos(){
@@ -142,7 +144,7 @@ public class MapManager implements Screen{
 				System.exit(1);
 			}
 			buf.rewind();
-			maps.put(f.getName().substring(0, f.getName().indexOf('.')),buf);
+			id_maps.put(f.getName().substring(0, f.getName().indexOf('.')),buf);
 		}
 		UpdateScreenManagerStatus.idle();
 	}
@@ -156,7 +158,7 @@ public class MapManager implements Screen{
 	}
 
 	private static void createChunks(Lieux point) {
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point.getCoord());
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord(),chunk_size);
 		Iterator<Integer> iter_position = chunk_positions.keySet().iterator();
 		while(iter_position.hasNext()){
 			int chunkId = iter_position.next();
@@ -172,29 +174,7 @@ public class MapManager implements Screen{
 		ThreadsUtil.executePeriodicallyInThread(r, 1, 50, TimeUnit.MILLISECONDS);
 	}
 
-	private static Map<Integer, Point> computeChunkPositions(Point startpoint) {
-		Map<Integer,Point> result = new HashMap<Integer,Point>(9);
-		Point chunk0, chunk1, chunk2, chunk3, chunk4, chunk5, chunk6, chunk7, chunk8;
-		chunk0 = startpoint;
-		result.put(0, chunk0);
-		chunk1 = PointsManager.getPoint(chunk0.x+chunk_size.width-1, chunk0.y);
-		result.put(1, chunk1);
-		chunk2 = PointsManager.getPoint(chunk1.x, chunk1.y+chunk_size.height-1);
-		result.put(2, chunk2);
-		chunk3 = PointsManager.getPoint(chunk2.x-chunk_size.width+1, chunk2.y);
-		result.put(3, chunk3);
-		chunk4 = PointsManager.getPoint(chunk3.x-chunk_size.width+1, chunk3.y);
-		result.put(4, chunk4);
-		chunk5 = PointsManager.getPoint(chunk4.x, chunk4.y-chunk_size.height+1);
-		result.put(5, chunk5);
-		chunk6 = PointsManager.getPoint(chunk5.x, chunk5.y-chunk_size.height+1);
-		result.put(6, chunk6);
-		chunk7 = PointsManager.getPoint(chunk6.x+chunk_size.width-1, chunk6.y);
-		result.put(7, chunk7);
-		chunk8 = PointsManager.getPoint(chunk7.x+chunk_size.width-1, chunk7.y);
-		result.put(8, chunk8);
-		return result;
-	}
+
 
 	private boolean render_infos = true;
 
@@ -320,7 +300,7 @@ public class MapManager implements Screen{
 
 	public static int getIdAtCoordOnMap(String carte, Point point) {
 		int result = -1;
-		result = getIdAtCoord(maps.get(carte), point);
+		result = getIdAtCoord(id_maps.get(carte), point);
 		return result;
 	}
 
@@ -357,7 +337,7 @@ public class MapManager implements Screen{
 	private static void moveChunksIfNeeded(int direction) {
 		switch(direction){
 			case 0 : /*logger.info("Pas besoin de déplacer les chunks");*/ break;
-			case 1 :  moveChunksRight(); break;
+			case 1 : moveChunksRight(); break;
 			case 2 : moveChunksDownRight(); break;
 			case 3 : moveChunksDown(); break;
 			case 4 : moveChunksDownLeft(); break;
@@ -375,7 +355,7 @@ public class MapManager implements Screen{
 		worldmap.put(5, worldmap.get(7));
 		worldmap.put(3, worldmap.get(1));
 		worldmap.put(0, worldmap.get(8));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
 		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
@@ -393,7 +373,7 @@ public class MapManager implements Screen{
 		worldmap.put(5, worldmap.get(6));
 		worldmap.put(0, worldmap.get(7));
 		worldmap.put(1, worldmap.get(8));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
 		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
@@ -407,7 +387,7 @@ public class MapManager implements Screen{
 		worldmap.put(3, worldmap.get(5));
 		worldmap.put(1, worldmap.get(7));
 		worldmap.put(0, worldmap.get(6));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
@@ -425,7 +405,7 @@ public class MapManager implements Screen{
 		worldmap.put(7, worldmap.get(6));
 		worldmap.put(0, worldmap.get(5));
 		worldmap.put(3, worldmap.get(4));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
@@ -439,7 +419,7 @@ public class MapManager implements Screen{
 		worldmap.put(7, worldmap.get(5));
 		worldmap.put(1, worldmap.get(3));
 		worldmap.put(0, worldmap.get(4));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
 		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
@@ -457,7 +437,7 @@ public class MapManager implements Screen{
 		worldmap.put(5, worldmap.get(4));
 		worldmap.put(0, worldmap.get(3));
 		worldmap.put(1, worldmap.get(2));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
@@ -471,7 +451,7 @@ public class MapManager implements Screen{
 		worldmap.put(5, worldmap.get(3));
 		worldmap.put(7, worldmap.get(1));
 		worldmap.put(0, worldmap.get(2));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
@@ -489,7 +469,7 @@ public class MapManager implements Screen{
 		worldmap.put(7, worldmap.get(8));
 		worldmap.put(0, worldmap.get(1));
 		worldmap.put(3, worldmap.get(2));
-		Map<Integer,Point> chunk_positions = computeChunkPositions(point);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
 		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));

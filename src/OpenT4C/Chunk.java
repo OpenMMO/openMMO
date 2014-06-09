@@ -1,5 +1,6 @@
 package OpenT4C;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import t4cPlugin.AssetsLoader;
 import t4cPlugin.MapPixel;
 import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.PointsManager;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -105,6 +107,30 @@ public class Chunk{
 		}
 	}
 
+	public static Map<Integer, Point> computeChunkPositions(Point startpoint, Dimension chunk_size) {
+		Map<Integer,Point> result = new HashMap<Integer,Point>(9);
+		Point chunk0, chunk1, chunk2, chunk3, chunk4, chunk5, chunk6, chunk7, chunk8;
+		chunk0 = startpoint;
+		result.put(0, chunk0);
+		chunk1 = PointsManager.getPoint(chunk0.x+chunk_size.width-1, chunk0.y);
+		result.put(1, chunk1);
+		chunk2 = PointsManager.getPoint(chunk1.x, chunk1.y+chunk_size.height-1);
+		result.put(2, chunk2);
+		chunk3 = PointsManager.getPoint(chunk2.x-chunk_size.width+1, chunk2.y);
+		result.put(3, chunk3);
+		chunk4 = PointsManager.getPoint(chunk3.x-chunk_size.width+1, chunk3.y);
+		result.put(4, chunk4);
+		chunk5 = PointsManager.getPoint(chunk4.x, chunk4.y-chunk_size.height+1);
+		result.put(5, chunk5);
+		chunk6 = PointsManager.getPoint(chunk5.x, chunk5.y-chunk_size.height+1);
+		result.put(6, chunk6);
+		chunk7 = PointsManager.getPoint(chunk6.x+chunk_size.width-1, chunk6.y);
+		result.put(7, chunk7);
+		chunk8 = PointsManager.getPoint(chunk7.x+chunk_size.width-1, chunk7.y);
+		result.put(8, chunk8);
+		return result;
+	}
+	
 	/**
 	 * Crée un Sprite à partir de coordonnées et d'une carte.
 	 * @param carte
