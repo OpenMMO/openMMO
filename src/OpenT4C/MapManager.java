@@ -10,8 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,11 +27,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
 import t4cPlugin.Acteur;
 import t4cPlugin.FileLister;
+import t4cPlugin.IG_Menu;
 import t4cPlugin.Lieux;
+import t4cPlugin.MapPixel;
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.PointsManager;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
 import tools.DataInputManager;
 
 /**
@@ -234,6 +232,59 @@ public class MapManager implements Screen{
 		}
 	}
 
+	public void clearMenu(){
+		menu.clear();
+	}
+	
+	private String getInfoPixel(Point p, MapPixel mp) {
+		return p.x +","+ p.y +" "+mp.getAtlas()+" "+mp.getTex()+" id : "+mp.getId()+" Modulo : "+mp.getModulo().x+","+mp.getModulo().y;
+	}
+	
+	public void pop_menu(int screenX, int screenY) {
+		Point p = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
+		if (worldmap.get(0).getPixelAtCoord("v2_worldmap", p) != null){
+			MapPixel px = worldmap.get(0).getPixelAtCoord("v2_worldmap", p);
+			String status = getInfoPixel(p, px);
+			logger.info(status);
+			if(px.isTuile()){
+
+				TextButton pixel_info0 = new TextButton(p.x +","+ p.y,style);
+				TextButton pixel_info1 = new TextButton(px.getAtlas()+" "+px.getTex(),style);
+				TextButton pixel_info2 = new TextButton("id : "+px.getId()+" Modulo : "+px.getModulo().x+","+px.getModulo().y,style);
+				pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
+				pixel_info1.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+25));
+				pixel_info2.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+45));
+
+				Sprite sp = worldmap.get(0).getTileAtCoord("v2_worldmap", p);
+				sp.setPosition(screenX-16+pixel_info1.getWidth()/2,(int)(camera.viewportHeight-screenY+73));
+				
+				menu.addActor(new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),100));
+				menu.addActor(pixel_info0);
+				menu.addActor(pixel_info1);
+				menu.addActor(pixel_info2);
+				menu.addActor(new Acteur(sp));
+				
+			}else{
+				if(px.getAtlas() != null){
+					
+					Sprite sp = worldmap.get(0).getSpriteAtCoord("v2_worldmap", p);
+					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
+					sp.flip(false, true);
+					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) sp.getWidth(), (int) sp.getHeight()));
+					menu.addActor(new Acteur(sp));
+					
+				}else{
+					TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : ID "+px.getId()+" inconnu",style);
+					pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
+					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) (pixel_info0.getWidth()+20),(int) (pixel_info0.getHeight()+10)));
+					menu.addActor(pixel_info0);
+					
+				}
+			}
+		}
+
+	}
+	
 	private void render_camera() {
 		camera.update();		
 	}
@@ -506,6 +557,14 @@ public class MapManager implements Screen{
 
 	public OrthographicCamera getCamera() {
 		return m.camera;
+	}
+
+	public void editNextUnmappedID() {
+		logger.info("Edition de la prochaine id non mappée.");
+		Iterator<Integer> iter_id = worldmap.get(0).getUnmappedIds().keySet().iterator();
+		while(iter_id.hasNext()){
+			logger.info("ID non mappée : "+iter_id.next());
+		}
 	}
 
 }

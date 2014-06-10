@@ -13,7 +13,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class InputManager implements InputProcessor{
 	private MapManager manager = null;
+	private boolean mouseLeft = false;
 	private boolean mouseRight = false;
+	private boolean mouseMiddle = false;
 	private boolean moveleft = false;
 	private boolean moveright = false;
 	private boolean moveup = false;
@@ -24,6 +26,8 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
 	private int movedelay = 300;
+	private boolean control_right = false;
+	private boolean control_left = false;
 
 	
 	public InputManager(MapManager mapManager) {
@@ -48,6 +52,17 @@ public class InputManager implements InputProcessor{
 		if (keycode == Keys.DOWN){
 			movedown = true;
 			startMoveDown();
+		}
+		if (keycode == Keys.CONTROL_LEFT){
+			control_left  = true;
+		}
+		if (keycode == Keys.CONTROL_RIGHT){
+			control_right = true;
+		}
+		if (keycode == Keys.A){
+			if(control_left || control_right){
+				manager.editNextUnmappedID();
+			}
 		}
 		return true;
 	}
@@ -126,6 +141,12 @@ public class InputManager implements InputProcessor{
 			movedown = false;
 			stopMoveDown();
 		}
+		if (keycode == Keys.CONTROL_LEFT){
+			control_left = false;
+		}
+		if (keycode == Keys.CONTROL_RIGHT){
+			control_right = false;
+		}
 		return true;
 	}
 
@@ -156,22 +177,30 @@ public class InputManager implements InputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if (button == Buttons.LEFT) {
+		if (button == Buttons.LEFT){
+			mouseLeft = true;
+			manager.pop_menu(screenX, screenY);
 		}
 		if (button == Buttons.RIGHT) mouseRight = true;
-		if (button == Buttons.MIDDLE) {
-		}
+		if (button == Buttons.MIDDLE) mouseMiddle = true;
 		return true;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+		if (mouseLeft & button == Buttons.LEFT){
+			manager.clearMenu();
+		}
 		if (button == Buttons.LEFT){
+			mouseLeft = false;
 		}
 		if (button == Buttons.RIGHT) {
 			mouseRight = false;
 		}
 		if (button == Buttons.MIDDLE){
+			mouseMiddle = false;
+		}
+		if (mouseMiddle & button == Buttons.MIDDLE){
 		}
 		return true;
 	}

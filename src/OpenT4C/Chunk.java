@@ -38,6 +38,7 @@ public class Chunk{
 	private Map<Point,Sprite> chunk_sprites = null;
 	private Map<Point,Sprite> chunk_tiles = null;
 	private Map<Point,MapPixel> chunk_sprite_info = null;
+	private Map<Integer,List<Point>> unmapped_ids = null;
 
 	
 	/**
@@ -50,6 +51,7 @@ public class Chunk{
 		chunk_sprite_info = new HashMap<Point,MapPixel>(MapManager.getChunkSize().width*MapManager.getChunkSize().height);
 		chunk_sprites = new HashMap<Point,Sprite>(MapManager.getChunkSize().width*MapManager.getChunkSize().height);
 		chunk_tiles = new HashMap<Point,Sprite>(MapManager.getChunkSize().width*MapManager.getChunkSize().height);
+		unmapped_ids = new HashMap<Integer,List<Point>>();
 		loadingStatus.waitUntilTextureAtlasTilesCreated();
 		int upLimit = point.y-(MapManager.getChunkSize().height/2);
 		int downLimit = point.y+(MapManager.getChunkSize().height/2);
@@ -72,7 +74,7 @@ public class Chunk{
 	 * @param point
 	 * @return
 	 */
-	private Sprite getTileAtCoord(String carte, Point point) {
+	public Sprite getTileAtCoord(String carte, Point point) {
 		Sprite result = null;
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
@@ -157,7 +159,7 @@ public class Chunk{
 	 * @param point
 	 * @return
 	 */
-	private Sprite getSpriteAtCoord(String carte, Point point) {
+	public Sprite getSpriteAtCoord(String carte, Point point) {
 		Sprite result = null;
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
@@ -184,11 +186,17 @@ public class Chunk{
 	 * @param point
 	 * @return
 	 */
-	private MapPixel getPixelAtCoord(String carte, Point point) {
+	public MapPixel getPixelAtCoord(String carte, Point point) {
 		MapPixel result = null;
 		int id = MapManager.getIdAtCoordOnMap(carte, point);
 		result = SpriteData.getPixelFromId(id);
 		if (result == null){
+			if (unmapped_ids.get(id)==null){
+				unmapped_ids.put(id,new ArrayList<Point>());
+				unmapped_ids.get(id).add(point);
+			}else{
+				unmapped_ids.get(id).add(point);
+			}
 			logger.warn("ID "+id+" non mappée => "+point.x+";"+point.y+"@"+carte);
 		}
 		return result;
@@ -256,5 +264,9 @@ public class Chunk{
 	public static void startChunkMapWatcher() {
 		Runnable r = RunnableCreatorUtil.getChunkMapWatcherRunnable();
 		ThreadsUtil.executePeriodicallyInThread(r, watcher_delay, watcher_delay, TimeUnit.MILLISECONDS);
+	}
+	
+	public Map<Integer,List<Point>> getUnmappedIds(){
+		return unmapped_ids;
 	}
 }
