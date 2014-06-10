@@ -13,6 +13,7 @@ public class FilesPath {
 		new File(getTuileDirectoryPath()).mkdirs();
 		new File(getAtlasTuileDirectoryPath()).mkdirs();
 		new File(getDataDirectoryPath()).mkdirs();
+		new File(getMapDataDirectoryPath()).mkdirs();
 	}
 
 	
