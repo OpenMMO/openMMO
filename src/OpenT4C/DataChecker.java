@@ -15,8 +15,7 @@ import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.MD5Checker;
 
 /**
- * On vérifie la présence des données utiles, et on créé une liste de données manquantes.
- * On informe aussi l'affichage de là où on en est.
+ * Checks data and decrypt missing.
  * @author synoga
  *
  */
@@ -25,7 +24,7 @@ public class DataChecker {
 	 private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
 	
 	/**
-	 * D'abord les données sources, puis les données des atlas, puis les données des cartes.
+	 * Checks source data, then atlases, and finally maps.
 	 */
 	public static void runCheck() {
 		SourceDataManager.populate();
@@ -41,7 +40,7 @@ public class DataChecker {
 	}
 
 	/**
-	 * Vérifie la présence des fichiers source T4C et contrôle leur intégrité.
+	 * Checks the source data (presence and integrity)
 	 */
 	private static void checkSourceData() {
 		UpdateScreenManagerStatus.checkingSourceData();
@@ -52,7 +51,9 @@ public class DataChecker {
 		UpdateScreenManagerStatus.idle();
 	}
 	
-	
+	/**
+	 * Checks if source files are absent
+	 */
 	private static List<File> checkAbsentFiles() {
 		List<File> result = new ArrayList<File>();
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
@@ -65,6 +66,10 @@ public class DataChecker {
 		return result;
 	}
 
+	/**
+	 * Stops the program if source files are missing
+	 * @param absentFiles
+	 */
 	private static void stopIfAbsentFiles(List<File> absentFiles) {
 		if (!absentFiles.isEmpty()){
 			logger.fatal("Fichier(s) manquant(s) : "+absentFiles);
@@ -73,6 +78,10 @@ public class DataChecker {
 		}
 	}
 
+	/**
+	 * Checks source file integrity
+	 * @return a file list wich did not pas the checksum test
+	 */
 	private static List<File> checkChecksumFiles() {
 		List<File> result = new ArrayList<File>();
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
@@ -85,6 +94,10 @@ public class DataChecker {
 		return result;
 	}
 
+	/**
+	 * Stops the program if source files are corrupted
+	 * @param badChecksumFiles
+	 */
 	private static void stopIfBadChecksum(List<File> badChecksumFiles) {
 		if (!badChecksumFiles.isEmpty()){
 			logger.fatal("Fichier(s) corrompu(s) : "+badChecksumFiles);
@@ -94,30 +107,44 @@ public class DataChecker {
 	}
 	
 	/**
-	 * contrôle la présence des atlas
+	 * Checks the number of atlases and build them if some is missing
 	 */
 	private static void checkAtlas() {
 		UpdateScreenManagerStatus.checkingAtlas();
-		// TODO Trouver mieux pour vérifier la présence des atlas et des sprites.
+		// TODO Trouver mieux pour vérifier la présence des atlas.
 		int nb_atlas = FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas").size()+FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas").size();
-		//Si les atlas ne sont pas tous présents
 		if (nb_atlas < 620){
-			SpriteManager.loadIdsFromFile();
-			//si les sprites ne sont pas tous présents
-			int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-			if(nb_sprites < 68400){
-				SpriteManager.decryptDPD();
-				SpriteManager.decryptDID();
-				SpriteManager.decryptDDA(true);
-			}
-			AssetsLoader.pack_tuiles();
-			AssetsLoader.pack_sprites();
+			buildAtlas();
 		}
 		UpdateScreenManagerStatus.idle();
 	}
 
 	/**
-	 * On vérifie la présence du fichier sprite_data, s'il est là, on arrête, s'il est pas là, on le créé.
+	 * Checks the number of present sprite and build them if some is missing.
+	 * Then build atlases.
+	 */
+	private static void buildAtlas() {
+		SpriteManager.loadIdsFromFile();
+		// TODO Trouver mieux pour vérifier la présence des sprites.
+		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
+		if(nb_sprites < 68400){
+			buildSprites();
+		}
+		AssetsLoader.pack_tuiles();
+		AssetsLoader.pack_sprites();
+	}
+
+	/**
+	 * Builds Sprites from source data.
+	 */
+	private static void buildSprites() {
+		SpriteManager.decryptDPD();
+		SpriteManager.decryptDID();
+		SpriteManager.decryptDDA(true);		
+	}
+
+	/**
+	 * Checks if sprite_data file is present and build it if absent.
 	 */
 	private static void createSpriteDataIfAbsent() {
 		UpdateScreenManagerStatus.checkingSpriteData();
@@ -129,7 +156,7 @@ public class DataChecker {
 	}
 
 	/**
-	 * contrôle la présence des cartes. Si elles sont là, on arrête, sinon, on les décrypte.
+	 * Checks if maps are present and decrypt them if absent.
 	 */
 	private static void checkMap() {
 		UpdateScreenManagerStatus.checkingMaps();
@@ -144,7 +171,7 @@ public class DataChecker {
 	}
 	
 	/**
-	 * décrypte les cartes source
+	 * Decrypts maps from source data
 	 * @param mapFiles
 	 */
 	private static void decryptMaps(List<File> mapFiles) {

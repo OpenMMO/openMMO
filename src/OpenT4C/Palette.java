@@ -5,54 +5,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Palette {
-
-	/**
-	 * PStructurePalette = ^StructurePalette;
-  StructurePalette = Record
-    Nom : Array [0..63] Of Char;
-    Pixels : Array [0..255] Of Record
-      Rouge : Byte;
-      Vert : Byte;
-      Bleu : Byte;
-    End;
-  End;
-	 * @param bufUnZip
-	 */
 	
 	public String nom = "";
+	ArrayList<PalettePixel> pixels = new ArrayList<PalettePixel>();
 	
-	ArrayList<Pixel> pixels = new ArrayList<Pixel>();
-	
-	class Pixel{
-		short red;
-		short green;
-		short blue;
-		public Pixel(short b, short c, short d) {
-			red = b;
-			green = c;
-			blue = d;
-		}
-		
-		public short getRed() {
-			return red;
-		}
-		public void setRed(short red) {
-			this.red = red;
-		}
-		public short getGreen() {
-			return green;
-		}
-		public void setGreen(short green) {
-			this.green = green;
-		}
-		public short getBlue() {
-			return blue;
-		}
-		public void setBlue(short blue) {
-			this.blue = blue;
-		}
-	}
-	
+	/**
+	 * Creates a palette from a ByteBuffer (.dpd file)
+	 * @param buf
+	 */
 	public Palette(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
@@ -67,15 +27,19 @@ public class Palette {
 			tmp2 = tools.ByteArrayToNumber.bytesToShort(new byte[]{0,b});
 			b = buf.get();
 			tmp3 = tools.ByteArrayToNumber.bytesToShort(new byte[]{0,b});
-			pixels.add(new Pixel (tmp1, tmp2, tmp3));
+			pixels.add(new PalettePixel (tmp1, tmp2, tmp3));
 		}
 	}
 
+	/**
+	 * 
+	 * @return a ByteBuffer with alla the palettes pixels
+	 */
 	public ByteBuffer getPixels() {
 		ByteBuffer palette = ByteBuffer.allocate(pixels.size()*3);
-		Iterator<Pixel> iter = pixels.iterator();
+		Iterator<PalettePixel> iter = pixels.iterator();
 		while (iter.hasNext()){
-			Pixel p = iter.next();
+			PalettePixel p = iter.next();
 			palette.put((byte)((p.red)&0xFF));
 			palette.put((byte)((p.green)&0xFF));
 			palette.put((byte)((p.blue)&0xFF));

@@ -25,7 +25,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 
 /**
- * Cette classe est un morceau de la carte à afficher. Chaque carte affichée contient 9 chunks
+ * This is a chunk, part of a 9 chunks ChunkMap.
  * @author synoga
  *
  */
@@ -42,11 +42,11 @@ public class Chunk{
 
 	
 	/**
-	 * On remplit une liste de Sprites à partir du point central du Chunk
-	 * @param carte 
+	 * Creates a new Chunk form a map name and a point on the map
+	 * @param map 
 	 * @param point
 	 */
-	public Chunk(String carte, Point point) {
+	public Chunk(String map, Point point) {
 		setCenter(point);
 		chunk_sprite_info = new HashMap<Point,MapPixel>(MapManager.getChunkSize().width*MapManager.getChunkSize().height);
 		chunk_sprites = new HashMap<Point,Sprite>(MapManager.getChunkSize().width*MapManager.getChunkSize().height);
@@ -59,62 +59,103 @@ public class Chunk{
 		int rightLimit = point.x+(MapManager.getChunkSize().width/2);
 		for(int y = upLimit ; y < downLimit ; y++){
 			for(int x = leftLimit ; x < rightLimit ; x++){
-				if(!isTileAtCoord(carte,PointsManager.getPoint(x,y))){
-					chunk_sprites.put(PointsManager.getPoint(x,y),getSpriteAtCoord(carte, PointsManager.getPoint(x,y)));
+				if(!isTileAtCoord(map,PointsManager.getPoint(x,y))){
+					chunk_sprites.put(PointsManager.getPoint(x,y),getSpriteAtCoord(map, PointsManager.getPoint(x,y)));
 				}else{
-					chunk_tiles.put(PointsManager.getPoint(x,y),getTileAtCoord(carte, PointsManager.getPoint(x,y)));
+					chunk_tiles.put(PointsManager.getPoint(x,y),getTileAtCoord(map, PointsManager.getPoint(x,y)));
 				}
 			}	
 		}
 	}
 
 	/**
-	 * Retourne la tuile présente au point donné de la carte donnée.
-	 * @param carte
+	 * @param map
 	 * @param point
-	 * @return
+	 * @return the tile at given coordinates on given map
 	 */
-	public Sprite getTileAtCoord(String carte, Point point) {
+	public Sprite getTileAtCoord(String map, Point point) {
 		Sprite result = null;
-		TextureRegion texRegion = null;
-		TextureAtlas texAtlas = null;
-		MapPixel px = null;
-		px = getPixelAtCoord(carte, point);
-		if (px != null){
-			chunk_sprite_info.put(point, px);
-			texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
-			if(texAtlas == null){
-				texRegion = getUnknownTile();
-			}else{
-				String tex = px.getTex();
-				int tileModuloX = px.getModulo().x;
-				int tileModuloY = px.getModulo().y;
-				int moduloX = (point.x % tileModuloX)+1;
-				int moduloY = (point.y % tileModuloY)+1;
-				String moduloTex = tex.substring(0,tex.indexOf('(')+1)+moduloX+", "+moduloY+")";
-				texRegion = texAtlas.findRegion(moduloTex);
-				if(texRegion == null){
-					logger.fatal("Attention, on charge une texture null : "+moduloTex);
-					System.exit(1);
-				}
-			}
-		}else{
-			texRegion = getUnknownTile();
-		}
-		result = new Sprite(texRegion);
+		result = new Sprite(getTileTexRegion(map, point));
 		result.flip(false, true);
 		return result;
 	}
 
 	/**
-	 * Détermine si le point donné de la carte donné est une tuile ou un sprite
-	 * @param carte
+	 * @param map
+	 * @param point
+	 * @return the TextureRegion for a tile at given coordinates on given map.
+	 * If the ID isn't mapped or the atlas is missing or the textureRegion is missing,
+	 * returns the "unknown" tile.
+	 */
+	private TextureRegion getTileTexRegion(String map, Point point) {
+		TextureRegion result = null;
+		String moduloTex = "";
+		TextureAtlas texAtlas = null;
+		MapPixel px = null;
+		px = getPixelAtCoord(map, point);
+		if (px != null){
+			chunk_sprite_info.put(point, px);
+			texAtlas = getTileTexAtlas(px);
+			moduloTex = setModuloFromPoint(px, point);
+			result = texAtlas.findRegion(moduloTex);
+			if (result == null){
+				result = getUnknownTile();
+			}
+		}else{
+			result = getUnknownTile();
+		}
+		if(result == null){
+			logger.fatal("Attention, on charge une texture null : "+result);
+			System.exit(1);
+		}
+		return result;
+	}
+
+	/**
+	 * @param px
+	 * @return the TextureAtlas for a tile from a MapPixel
+	 * if the atlas is missing, returns the unknown atlas
+	 */
+	private TextureAtlas getTileTexAtlas(MapPixel px) {
+		TextureAtlas texAtlas = null;
+		texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
+		if(texAtlas == null){
+			return getUnknownAtlas();
+		}else{
+			return texAtlas;
+		}
+	}
+
+	/**
+	 * @return the unknown atlas
+	 */
+	private TextureAtlas getUnknownAtlas() {
+		return AssetsLoader.load("Unknown");
+	}
+
+	/**
+	 * @param px
+	 * @param point
+	 * @return a textureRegion name with zone effect
+	 */
+	private String setModuloFromPoint(MapPixel px, Point point) {
+		String tex = px.getTex();
+		int tileModuloX = px.getModulo().x;
+		int tileModuloY = px.getModulo().y;
+		int moduloX = (point.x % tileModuloX)+1;
+		int moduloY = (point.y % tileModuloY)+1;
+		return tex.substring(0,tex.indexOf('(')+1)+moduloX+", "+moduloY+")";		
+	}
+
+	/**
+	 * Tells if the given coordinate on given map is a tile or a sprite
+	 * @param map
 	 * @param point
 	 * @return
 	 */
-	private boolean isTileAtCoord(String carte, Point point) {
+	private boolean isTileAtCoord(String map, Point point) {
 		MapPixel px = null;
-		px = getPixelAtCoord(carte, point);
+		px = getPixelAtCoord(map, point);
 		if(px == null) return false;
 		if (px.isTuile()){
 			return true;
@@ -124,10 +165,10 @@ public class Chunk{
 	}
 
 	/**
-	 * Calcule la position des chunks en fonction du point central et de la taille des chunks
+	 * Compute Chunks position from the center of the first chunk and the chunks size
 	 * @param startpoint
 	 * @param chunk_size
-	 * @return
+	 * @return a Map of chunk positions
 	 */
 	public static Map<Integer, Point> computeChunkPositions(Point startpoint, Dimension chunk_size) {
 		Map<Integer,Point> result = new HashMap<Integer,Point>(9);
@@ -154,17 +195,16 @@ public class Chunk{
 	}
 	
 	/**
-	 * Retourne un Sprite à partir du point donné de la carte donnée.
-	 * @param carte
+	 * @param map
 	 * @param point
-	 * @return
+	 * @return a sprite from a given point on a given map
 	 */
-	public Sprite getSpriteAtCoord(String carte, Point point) {
+	public Sprite getSpriteAtCoord(String map, Point point) {
 		Sprite result = null;
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
 		MapPixel px = null;
-		px = getPixelAtCoord(carte, point);
+		px = getPixelAtCoord(map, point);
 		if (px != null){
 			chunk_sprite_info.put(point, px);
 			texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());
@@ -181,14 +221,13 @@ public class Chunk{
 	}
 
 	/**
-	 * retourne les informations concernant le point donné de la carte donnée
-	 * @param carte
+	 * @param map
 	 * @param point
-	 * @return
+	 * @return a MapPxiel from Point on a given map name
 	 */
-	public MapPixel getPixelAtCoord(String carte, Point point) {
+	public MapPixel getPixelAtCoord(String map, Point point) {
 		MapPixel result = null;
-		int id = MapManager.getIdAtCoordOnMap(carte, point);
+		int id = MapManager.getIdAtCoordOnMap(map, point);
 		result = SpriteData.getPixelFromId(id);
 		if (result == null){
 			if (unmapped_ids.get(id)==null){
@@ -197,44 +236,41 @@ public class Chunk{
 			}else{
 				unmapped_ids.get(id).add(point);
 			}
-			logger.warn("ID "+id+" non mappée => "+point.x+";"+point.y+"@"+carte);
+			//logger.warn("ID "+id+" non mappée => "+point.x+";"+point.y+"@"+carte);
 		}
 		return result;
 	}
 
 	/**
-	 * Retourne les sprites du chunk
-	 * @return
+	 * @return the chunk's sprites
 	 */
 	public Map<Point, Sprite> getSprites() {
 		return chunk_sprites;
 	}
 
 	/**
-	 * Returne les ID des cases du chunk
-	 * @param carte
-	 * @return
+	 * @param map
+	 * @return the chunk's ids from a map
 	 */
-	public List<Integer> getIds(String carte){
+	public List<Integer> getIds(String map){
 		List<Integer> result = new ArrayList<Integer>();
 		Iterator<Point> iter_cells = chunk_sprites.keySet().iterator();
 		while (iter_cells.hasNext()){
 			Point pt = iter_cells.next();
-			result.add(MapManager.getIdAtCoordOnMap(carte, pt));
+			result.add(MapManager.getIdAtCoordOnMap(map, pt));
 		}
 		return result;
 	}
 	
 	/**
-	 * Retourne le point central du chunk
-	 * @return
+	 * @return the chunk's center Point
 	 */
 	public Point getCenter() {
 		return center;
 	}
 
 	/**
-	 * Fixe le point central du chunk
+	 * Sets the Chunk's center Point
 	 * @param center
 	 */
 	public void setCenter(Point center) {
@@ -242,14 +278,15 @@ public class Chunk{
 	}
 
 	/**
-	 * Retourne les tuiles du chunk
-	 * @return
+	 * @return the Chunk's tiles
 	 */
 	public Map<Point, Sprite> getTiles() {
 		return chunk_tiles;
 	}
 	
-	
+	/**
+	 * @return the "Unknown" tile
+	 */
 	private TextureRegion getUnknownTile(){
 		TextureAtlas texAtlas = loadingStatus.getTextureAtlasSprite("Unknown");
 		if (texAtlas == null){
@@ -258,14 +295,17 @@ public class Chunk{
 		return texAtlas.findRegion("Unknown Tile");
 	}
 	/**
-	 * Démarre une horloge qui va vérifier périodiquement la position de la camera sur les chunks
-	 * afin de déclenché le déplacement de la chunkMap au besoin.
+	 * Starts a clock which will check the camera's position on chunk so that it can
+	 * move the chunkMap if needed.
 	 */
 	public static void startChunkMapWatcher() {
 		Runnable r = RunnableCreatorUtil.getChunkMapWatcherRunnable();
 		ThreadsUtil.executePeriodicallyInThread(r, watcher_delay, watcher_delay, TimeUnit.MILLISECONDS);
 	}
-	
+
+	/**
+	 * @return a list of unmapped ids on the Chunk
+	 */
 	public Map<Integer,List<Point>> getUnmappedIds(){
 		return unmapped_ids;
 	}

@@ -18,8 +18,7 @@ public class SourceDataManager {
 	private static Map<File,String> source_data= new HashMap<File,String>(14);
 	
 	/**
-	 * On crée une hashMap liant les fichiers source de t4c et leur MD5 pour pouvoir vérifier leur intégrité plus tard.
-	 * @return
+	 * Create a HashMap binding T4C files with their MD5 Checksum, to be able to check their integrity later.
 	 */
 	public static void populate() {
 		UpdateScreenManagerStatus.populatingSourceData();
@@ -40,10 +39,18 @@ public class SourceDataManager {
 		UpdateScreenManagerStatus.idle();
 	}
 	
+	/**
+	 * Adds a source file from a filepath and a checksum
+	 * @param filepath
+	 * @param checksum
+	 */
 	private static void addSourceFile(String filepath, String checksum){
 		source_data.put(new File(filepath), checksum);
 	}
 	
+	/**
+	 * @return return the did file (for sprite infos)
+	 */
 	public static File getDID(){
 		File result = null;
 		Iterator<File> iter_did = source_data.keySet().iterator();
@@ -57,6 +64,10 @@ public class SourceDataManager {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @return a list of map files
+	 */
 	public static List<File> getMaps() {
 		List<File> result = new ArrayList<File>(5);
 		File f = null;
@@ -70,10 +81,18 @@ public class SourceDataManager {
 		return result;
 	}
 
+	/**
+	 * 
+	 * @return a Map with data files
+	 */
 	public static Map<File, String> getData() {
 		return source_data;
 	}
 
+	/**
+	 * 
+	 * @return the dpd file (for palettes)
+	 */
 	public static File getDPD(){
 		File result = null;
 		Iterator<File> iter_dpd = source_data.keySet().iterator();
@@ -87,6 +106,10 @@ public class SourceDataManager {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @return a List with dda files (for sprites)
+	 */
 	public static ArrayList<File> getDDA() {
 		List<File> result = new ArrayList<File>();
 		File f = null;

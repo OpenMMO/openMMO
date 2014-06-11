@@ -11,6 +11,11 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
+/**
+ * Manages input, keyboard, mouse, touchscreen.
+ * @author synoga
+ *
+ */
 public class InputManager implements InputProcessor{
 	private MapManager manager = null;
 	private boolean mouseLeft = false;
@@ -25,7 +30,7 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingup;
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
-	private int movedelay = 300;
+	private int movedelay = 800;
 	private boolean control_right = false;
 	private boolean control_left = false;
 
@@ -67,6 +72,9 @@ public class InputManager implements InputProcessor{
 		return true;
 	}
 
+	/**
+	 * Starts moving left
+	 */
 	private void startMoveLeft() {
 		Runnable r = new Runnable(){
 			@Override
@@ -81,6 +89,9 @@ public class InputManager implements InputProcessor{
 		movingleft = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MICROSECONDS);
 	}
 
+	/**
+	 * Starts moving right
+	 */
 	private void startMoveRight() {
 		Runnable r = new Runnable(){
 			@Override
@@ -95,6 +106,9 @@ public class InputManager implements InputProcessor{
 		movingright = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MICROSECONDS);
 	}
 
+	/**
+	 * Starts moving up
+	 */
 	private void startMoveUp() {
 		Runnable r = new Runnable(){
 			@Override
@@ -109,6 +123,9 @@ public class InputManager implements InputProcessor{
 		movingup = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MICROSECONDS);
 	}
 
+	/**
+	 * Starts moving down
+	 */
 	private void startMoveDown() {
 		Runnable r = new Runnable(){
 			@Override
@@ -150,28 +167,38 @@ public class InputManager implements InputProcessor{
 		return true;
 	}
 
+	/**
+	 * stops moving right
+	 */
 	private void stopMoveRight() {
 		movingright.cancel(true);
 		
 	}
 
+	/**
+	 * stops moving up
+	 */
 	private void stopMoveUp() {
 		movingup.cancel(true);
 		
 	}
 
+	/**
+	 * Stops moving down
+	 */
 	private void stopMoveDown() {
 		movingdown.cancel(true);
-		
 	}
 
+	/**
+	 * Stops moving left
+	 */
 	private void stopMoveLeft() {
 		movingleft.cancel(true);
 	}
 
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -213,13 +240,11 @@ public class InputManager implements InputProcessor{
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

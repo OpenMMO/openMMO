@@ -11,6 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
+/**
+ * This is the screen seen while checking and loading data
+ * @author synoga
+ *
+ */
 public class DataCheckerScreen implements Screen{
 	private SpriteBatch batch;
 	private BitmapFont font;
@@ -29,6 +34,9 @@ public class DataCheckerScreen implements Screen{
 		stage.setCamera(camera);
 	}
 	
+	/**
+	 * Called each frame for rendering
+	 */
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
@@ -42,22 +50,28 @@ public class DataCheckerScreen implements Screen{
 		batch.end();		
 	}
 
+	/**
+	 * Updates infos on the screen
+	 */
 	private void updateInfos() {
 		infos.setText(status);
-		Gdx.app.getGraphics().setTitle("OpenT4C v0.0 "+status);
+		Gdx.app.getGraphics().setTitle("OpenT4C v0 "+status);
 	}
 
+	/**
+	 * Sets the status to be displayed on the screen
+	 */
 	private void setStatus(){
 		status = "Satus : " + UpdateScreenManagerStatus.getReadableStatus() + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage();
 	}
 	
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
 	}
 
-	
+	/**
+	 * @return the amount of memory used by the program
+	 */
 	private String getMemoryUsage(){
 		return ((Runtime.getRuntime().totalMemory())/1024/1024) + " Mo";
 	}
@@ -82,14 +96,10 @@ public class DataCheckerScreen implements Screen{
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

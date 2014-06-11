@@ -28,8 +28,7 @@ import javax.imageio.stream.FileImageOutputStream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import OpenT4C.Palette.Pixel;
-import t4cPlugin.FileLister;
+import OpenT4C.PalettePixel;
 import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
 import tools.DataInputManager;
@@ -46,8 +45,8 @@ public class SpriteManager {
 
 
 	/**
-	 * Récupère les ID depuis notre fichier
-	 * et on formate tout ça pour avoir une hashmap <int, string>
+	 * Gets IDs from id.txt file
+	 * puts info into a HashMap<Integer,SpriteName>
 	 */
 	public static void loadIdsFromFile(){
 		ids = new HashMap<Integer,SpriteName>();
@@ -74,6 +73,10 @@ public class SpriteManager {
 		}
 	}
 	
+	/**
+	 * Adds a new sprite
+	 * @param buf
+	 */
 	public static void addSprite(ByteBuffer buf) {
 		Sprite newSprite = new Sprite();
 		newSprite.setSpriteName(extractName(buf));
@@ -84,6 +87,9 @@ public class SpriteManager {
 		getSprites().put(newSprite.getSpriteName(), newSprite);
 	}
 
+	/**
+	 * Decrypts dpd file
+	 */
 	public static void decryptDPD(){
 		ByteBuffer buf = null;
 		ByteBuffer header;
@@ -98,8 +104,8 @@ public class SpriteManager {
 		int header_taille_unZip = 0;
 		int header_taille_zip;
 		
-		byte checksum;
-		byte azt;
+		/*byte checksum;
+		byte azt;*/
 		
 		File f = SourceDataManager.getDPD();
 		logger.info("Lecture du fichier "+f.getName());
@@ -123,7 +129,7 @@ public class SpriteManager {
 			buf_hash.put(header_hashMd52);
 			buf_hash.rewind();
 			buf_hash.get(header_hash);
-			azt = header_hashMd52[16];			
+			//azt = header_hashMd52[16];			
 			
 			buf = ByteBuffer.allocate(header_taille_zip);
 			while (buf.position() < buf.capacity()){
@@ -136,21 +142,23 @@ public class SpriteManager {
 		}
 		buf.rewind();
 		
-		//On opère la décompression Zlib
 	    bufUnZip = ByteBuffer.allocate(header_taille_unZip);
 		bufUnZip = unzip(buf,header_taille_unZip);
 		
-		//Ensuite on décrypte le fichier avec la clé
 		for (int i=0; i<bufUnZip.capacity(); i++){
 			bufUnZip.array()[i] ^= clef;
 		}
 		nb_palettes = header_taille_unZip/(64 + 768);
-		//logger.info("	- Nombre de palettes : "+nb_palettes);
 		palettes = extractPalettes(bufUnZip);
-		//TODO Checksum
+		//TODO Checksum ou tout du moins moyen de contrôle
 		logger.info("Fichier "+f.getName()+" lu : "+palettes.size()+" palettes.");
 	}		
 	
+	/**
+	 * Extracts Palettes from dpd file
+	 * @param bufUnZip
+	 * @return
+	 */
 	private static Map<String, Palette> extractPalettes(ByteBuffer bufUnZip) {
 		Map<String,Palette> result = new HashMap<String,Palette>(nb_palettes);
 		for(int i=0 ; i<nb_palettes ; i++){
@@ -160,13 +168,19 @@ public class SpriteManager {
 		return result;
 	}
 
+	/**
+	 * Unzips a dpd file
+	 * @param buf
+	 * @param size
+	 * @return a ByteBuffer with unzipped data
+	 */
 	private static ByteBuffer unzip(ByteBuffer buf, int size) {
 		
 		ByteBuffer result = ByteBuffer.allocate(size);
  		Inflater decompresser = new Inflater();
 	    decompresser.setInput(buf.array(), 0, buf.capacity());
 	    try {
-			int taille_unZip = decompresser.inflate(result.array());
+			decompresser.inflate(result.array());
 		} catch (DataFormatException e) {
 			e.printStackTrace();
 			logger.fatal("Décompression échouée");
@@ -176,44 +190,64 @@ public class SpriteManager {
 	    return result;
 	}
 
+	/**
+	 * 
+	 * @param header
+	 * @return a byte array with the second part of the md5 checksum
+	 */
 	private static byte[] getHeaderHashMd52(ByteBuffer header) {
 		byte[] result = new byte[17];
 		for (int i=0 ; i<17 ; i++){
 			result[i] = header.get();
 		}
-		//logger.info("	- HashMD52 : "+tools.ByteArrayToHexString.print(header_hashMd52));
 		return result;
 	}
 
+	/**
+	 * @param header
+	 * @return zipped data size
+	 */
 	private static int getHeaderTailleZip(ByteBuffer header) {
 		byte b1,b2,b3,b4;
 		b1 = header.get();
 		b2 = header.get();
 		b3 = header.get();
 		b4 = header.get();
-		//logger.info("	- header_taille_zip : "+header_taille_zip);
 		return tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
 	}
 
+	/**
+	 * 
+	 * @param header
+	 * @return unzipped data size
+	 */
 	private static int getHeaderTailleUnzip(ByteBuffer header) {
 		byte b1,b2,b3,b4;
 		b1 = header.get();
 		b2 = header.get();
 		b3 = header.get();
 		b4 = header.get();
-		//logger.info("	- header_taille_unZip : "+header_taille_unZip);
 		return tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
 	}
 
+	/**
+	 * 
+	 * @param header
+	 * @return a byte array with the second part of the md5 checksum
+	 */
 	private static byte[] getHeaderHashMD5(ByteBuffer header) {
 		byte[] result = new byte[16];
 		for (int i=0 ; i<16 ; i++){
 			result[i] = header.get();
 		}
-		//logger.info("	- HashMD5 : "+tools.ByteArrayToHexString.print(header_hashMd5));
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param newSprite
+	 * @return
+	 */
 	private static ArrayList<Integer> setIds(Sprite newSprite) {
 		List<Integer> result = new ArrayList<Integer>();
 		Iterator<Integer> iter = ids.keySet().iterator();
@@ -227,6 +261,11 @@ public class SpriteManager {
 		return (ArrayList<Integer>) result;
 	}
 
+	/**
+	 * extract the .dda number associated to a sprite
+	 * @param buf
+	 * @return
+	 */
 	private static long extractNumDDA(ByteBuffer buf) {
 		byte b1,b2,b3,b4,b5,b6,b7,b8;
 		b1 = buf.get();
@@ -240,6 +279,11 @@ public class SpriteManager {
 		return tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
 	}
 
+	/**
+	 * extract the position in the buffer to decode a sprite
+	 * @param buf
+	 * @return
+	 */
 	private static int extractIndexation(ByteBuffer buf) {
 		byte b1,b2,b3,b4;
 		b1 = buf.get();
@@ -249,6 +293,11 @@ public class SpriteManager {
 		return tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
 	}
 
+	/**
+	 * Extracts a Sprite's path
+	 * @param buf
+	 * @return
+	 */
 	private static String extractChemin(ByteBuffer buf) {
 		byte[] bytes = new byte[256];
 		buf.get(bytes);
@@ -264,6 +313,11 @@ public class SpriteManager {
 		return result;
 	}
 
+	/**
+	 * Extracts a Sprite's name
+	 * @param buf
+	 * @return
+	 */
 	private static SpriteName extractName(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
@@ -283,7 +337,7 @@ public class SpriteManager {
 	}
 	
 	/**
-	 * On extrait les informations de sprites du fichier did
+	 * Extracts sprite infos from .did file
 	 */
 	public static void decryptDID(){
 		
@@ -299,7 +353,6 @@ public class SpriteManager {
 		
 		int header_taille_unZip = 0;
 		int header_taille_zip;
-		int taille_unZip = 0;
 				
 		header = ByteBuffer.allocate(41);
 		try {
@@ -327,21 +380,18 @@ public class SpriteManager {
 		
 		buf.rewind();
 		bufUnZip = unzip(buf, header_taille_unZip);
-		//Ensuite on décrypte le fichier avec la clé
 		for (int i=0; i<bufUnZip.capacity(); i++){
 			bufUnZip.array()[i] ^= clef;
 		}
 		nb_sprites = header_taille_unZip/(64 + 256 + 4 + 8);
-		//logger.info("	- Nombre de sprites : "+nb_sprites);
 
 		for(int i=0 ; i<nb_sprites ; i++){
-			//logger.info("Ajout du sprite "+i+"/"+nb_sprites);
 			addSprite(bufUnZip);
 		}
 	}
 	
 	/**
-	 * On extrait les images des fichiers dda
+	 * Extracts sprites from .dda files
 	 */
 	public static void decryptDDA(boolean doWrite){
 		File f = null;
@@ -352,19 +402,14 @@ public class SpriteManager {
 			logger.info("Décryptage du fichier : "+f.getName());
 			decrypt_dda_file(f,doWrite);
 		}
-		
 		logger.info(getSprites().size()+" sprites décryptés");
-/*		Iterator<SpriteName>iter_sprites = getSprites().keySet().iterator();
-		Sprite last = null;
-		while(iter_sprites.hasNext()){
-			SpriteName key = iter_sprites.next();
-			Sprite sprite = getSprites().get(key);
-			if (sprite.isTuile())computeModulo(sprite);
-			last = sprite;
-		}
-*/		
 	}
 	
+	/**
+	 * Decrypts a dda file
+	 * @param f
+	 * @param doWrite
+	 */
 	private static void decrypt_dda_file(File f, boolean doWrite) {
 		ByteBuffer buf;
 		byte[] signature = new byte[4];
@@ -410,32 +455,13 @@ public class SpriteManager {
 			extractDDASprite(buf, sprite);//lit l'entête du sprite et ajoute  les infos de l'entête dans le Sprite
 			if(doWrite) doTheWriting(sprite, buf);
 		}
-			
-	/*		sprites_in_dda = new HashMap<Integer,Sprite>();
-			iteri = getSprites_without_ids().keySet().iterator();
-			while(iteri.hasNext()){
-				int key = iteri.next();
-				Sprite sp = getSprites_without_ids().get(key);
-				if (sp.numDda == numDDA){
-					sprites_in_dda.put(key, sp);
-				}
-			}
-			iter = sprites_in_dda.keySet().iterator();
-			while(iter.hasNext()){
-				int key = iter.next();
-				Sprite sprite = sprites_in_dda.get(key);
-				int indexation = sprite.getIndexation()+4;
-				try{
-					buf.position(indexation);
-				}catch(IllegalArgumentException e){
-					e.printStackTrace();
-					System.exit(1);
-				}
-				new DDASprite(buf, sprite);//lit l'entête du sprite et ajoute  les infos de l'entête dans le Sprite
-				if (doWrite) doTheWriting(sprite, buf);
-			}*/
-		}
+	}
 	
+	/**
+	 * Extract a sprite from a .dda file
+	 * @param buf
+	 * @param sprite
+	 */
 	private static void extractDDASprite(ByteBuffer buf, Sprite sprite) {
 		final int[] clefDda = new int[]{0x1458AAAA, 0x62421234, 0xF6C32355, 0xAAAAAAF3, 0x12344321, 0xDDCCBBAA, 0xAABBCCDD};
 		int[] header = new int[7];
@@ -624,7 +650,7 @@ public class SpriteManager {
 			System.exit(1);
 		}
 		data.rewind();
-		ArrayList<Pixel> pal = didsprite.getPalette().pixels;
+		ArrayList<PalettePixel> pal = didsprite.getPalette().pixels;
 		BufferedImage img = null;
 		img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_ARGB);
 		int y = 0, x = 0;
@@ -637,7 +663,7 @@ public class SpriteManager {
 					e.printStackTrace();
 					System.exit(1);
 				}
-				Pixel px = null;
+				PalettePixel px = null;
 				px = pal.get(b);
 				int red=0,green=0,blue=0,alpha=255;
 				if (b == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){
@@ -675,8 +701,8 @@ public class SpriteManager {
 			try {
 				unzip.inflate(data.array());
 			} catch (DataFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				logger.fatal(e);
 				System.exit(1);
 			}
 			unzip.end();
@@ -718,7 +744,7 @@ public class SpriteManager {
 		}
 		spriteTmp.rewind();
 		
-		ArrayList<Pixel> pal = didsprite.getPalette().pixels;
+		ArrayList<PalettePixel> pal = didsprite.getPalette().pixels;
 		BufferedImage img = null;
 		if (didsprite.isTuile()){
 			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_RGB);
@@ -734,7 +760,7 @@ public class SpriteManager {
 					e.printStackTrace();
 					System.exit(1);
 				}
-				Pixel px = null;
+				PalettePixel px = null;
 				px = pal.get(c);
 				int red=0,green=0,blue=0,alpha=255;
 				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){
@@ -783,7 +809,7 @@ public class SpriteManager {
 		unzip.end();
 		unzip_data1.rewind();
 	
-		ArrayList<Pixel> pal = didsprite.getPalette().pixels;
+		ArrayList<PalettePixel> pal = didsprite.getPalette().pixels;
 		BufferedImage img = null;
 		if (didsprite.isTuile()){
 			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_RGB);
@@ -799,7 +825,7 @@ public class SpriteManager {
 					e.printStackTrace();
 					System.exit(1);
 				}
-				Pixel px = null;
+				PalettePixel px = null;
 				px = pal.get(c);
 				int red=0,green=0,blue=0,alpha=255;
 				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){
@@ -865,7 +891,7 @@ public class SpriteManager {
 		}
 		unzip2.end();
 		
-		ArrayList<Pixel> pal = didsprite.getPalette().pixels;
+		ArrayList<PalettePixel> pal = didsprite.getPalette().pixels;
 		BufferedImage img = null;
 		if (didsprite.isTuile()){
 			img = new BufferedImage(didsprite.getLargeur(), didsprite.getHauteur(), BufferedImage.TYPE_INT_RGB);
@@ -882,7 +908,7 @@ public class SpriteManager {
 					e.printStackTrace();
 					System.exit(1);
 				}
-				Pixel px = null;
+				PalettePixel px = null;
 				px = pal.get(c);
 				int red=0,green=0,blue=0,alpha=255;
 				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,didsprite.getCouleurTrans()})){

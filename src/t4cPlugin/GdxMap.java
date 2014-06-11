@@ -71,7 +71,7 @@ public class GdxMap implements Screen, InputProcessor{
 	private int nb_sprites = 0;
 	private int nb_tuiles = 0;
 
-	private Lieux lh_temple= new Lieux("LH TEMPLE", "v2_worldmap",PointsManager.getPoint(2954,1052));
+	private Places lh_temple= new Places("LH TEMPLE", "v2_worldmap",PointsManager.getPoint(2954,1052));
 	private boolean debug = true;
 	
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;

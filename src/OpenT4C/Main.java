@@ -14,13 +14,6 @@ public class Main {
 	private static ScreenManager sm = null;
 	private static boolean debug_GDX = false;
 	
-	/**
-	 * Je pense retenter une écriture complète ici, en parallèle
-	 * de GDXEditor, simplement pour intégrer de meilleures habitudes de codage.
-	 * En définitive, on supprimera pas mal de classes dans d'autres packages pour
-	 * regrouper des trucs plus propres ici.
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		
 		logger.info("Démarrage.");
@@ -31,7 +24,7 @@ public class Main {
 	}
 
 	/**
-	 * Créé un affichage.
+	 * Sets up a display
 	 */
 	private static void afficher() {
 		logger.info("Création de l'affichage.");
@@ -42,7 +35,7 @@ public class Main {
 	}
 
 	/**
-	 * Vérifie les données écrites afin de savoir ce qui doit être décrypté.
+	 * Creates a DataChecker 
 	 */
 	private static void verifier() {
 		logger.info("Vérification des données.");
@@ -50,8 +43,7 @@ public class Main {
 	}
 
 	/**
-	 * Charge une carte dans l'éditeur, une fois qu'on est certains
-	 * que tout ce qui est nécessaire est présent.
+	 * Loads Data
 	 */
 	private static void charger() {
 		logger.info("Chargement des données");
@@ -60,7 +52,7 @@ public class Main {
 	}
 	
 	/**
-	 * On donne l'accès au ScreenManager
+	 * @return the ScreenManager
 	 */
 	public ScreenManager getScreenManager(){
 		return sm;

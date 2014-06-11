@@ -1,27 +1,11 @@
 package OpenT4C;
 
-import java.awt.Point;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.SpriteName;
-
-
-/**
- *   PStructureNomsSprites = ^StructureNomsSprites;
-  StructureNomsSprites = Record
-    Nom : Array [0..63] Of Char;
-    Chemin : Array [0..255] Of Char;
-    Indexation : LongInt;
-    NumDda : Int64;
-  End;
- * @author synoga
- *
- */
 
 public class Sprite {
 	
@@ -29,13 +13,9 @@ public class Sprite {
 	private SpriteName nom;
 	private String chemin = "";
 	private boolean tuile = false;
-	private boolean hasID = false;
 	private ArrayList<Integer> id = new ArrayList<Integer>();
 	private ArrayList<Integer> pos = new ArrayList<Integer>();
 	private int indexation;
-	private int index_next;
-	private int zoneX = 1;
-	private int zoneY = 1;
 	private int type;//short
 	private int ombre;//short
 	private int largeur;//short
@@ -46,10 +26,6 @@ public class Sprite {
 	private int offsetY;//short
 	private int offsetX2;//short
 	private int offsetY2;//short
-	private static int maxOffsetX = 0;
-	private static int maxOffsetY = 0;
-	private static int maxX = 0;
-	private static int maxY = 0;
 	private long numDda;
 	private long taille_unzip = -1;
 	private long taille_zip = -1;
@@ -57,11 +33,8 @@ public class Sprite {
 	private int bufPos = -1;
 	private int moduloX = 1;
 	private int moduloY = 1;
-	private static int last = -1;
-	
 	public Sprite(){}
 	
-	@Deprecated
 	public Sprite(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);

@@ -16,6 +16,9 @@ public class ScreenManager extends Game{
 		UpdateScreenManagerStatus.setScreenManager(this);
 	}
 
+	/**
+	 * default map is v2_worldmap
+	 */
 	public ScreenManager(){
 		map = "v2_worldmap";
 		UpdateScreenManagerStatus.setScreenManager(this);
@@ -53,7 +56,7 @@ public class ScreenManager extends Game{
 	
 	public void initMap(){
 		t4cPlugin.AssetsLoader.loadSols();
-		MapManager.loadMap();
+		MapManager.loadMaps();
 		MapManager.createChunkMap();
 		UpdateScreenManagerStatus.readyToRender();
 		MapManager.setReadyToRender();

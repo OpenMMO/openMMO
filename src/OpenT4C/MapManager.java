@@ -28,20 +28,20 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import t4cPlugin.Acteur;
 import t4cPlugin.FileLister;
 import t4cPlugin.IG_Menu;
-import t4cPlugin.Lieux;
+import t4cPlugin.Places;
 import t4cPlugin.MapPixel;
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.PointsManager;
 import tools.DataInputManager;
 
 /**
- * Classe qui gère les cartes. les chunks sont organisés comme suit :
+ * This class manages the chunkMap., chunk are placed as follow :
  * 
  *    6 7 8
  *    5 0 1
  *    4 3 2
  * 
- * la caméra se situe toujours au centre du chunk 0 à la création.
+ * At creation, the camera is at the center of chunk 0.
  * 
  * @author synoga
  *
@@ -50,8 +50,6 @@ public class MapManager implements Screen{
 
 	private static Logger logger = LogManager.getLogger(MapManager.class.getSimpleName());
 	private static Map<String,ByteBuffer> id_maps = new HashMap<String,ByteBuffer>(5);
-	private static final Lieux startPoint = new Lieux("LH TEMPLE", "v2_worldmap",PointsManager.getPoint(2940,1065));
-	private static final Lieux mapOrigin = new Lieux("ORIGIN", "v2_worldmap",PointsManager.getPoint(Gdx.graphics.getWidth()/64,Gdx.graphics.getHeight()/32));
 	private static Map<Integer,Chunk> worldmap = new ConcurrentHashMap<Integer,Chunk>(9);
 	private static MapManager m;
 	//private static final Dimension chunk_size = new Dimension(4,4);//pour tester les chunks
@@ -82,6 +80,9 @@ public class MapManager implements Screen{
 		});
 	}
 	
+	/**
+	 * Initializes the MapManager and binds the inpuManager
+	 */
 	private void init() {
 		style.font = new BitmapFont();
 		stage = new Stage();
@@ -93,10 +94,8 @@ public class MapManager implements Screen{
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		//center camera to 0,0
 		camera.translate(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2);
-		//center camera to start point
-		camera.translate(startPoint.getCoord().x*32,startPoint.getCoord().y*16);				
+		camera.translate(Places.getPlace("startpoint").getCoord().x*32,Places.getPlace("startpoint").getCoord().y*16);				
 		camera.update();
 		stage.setCamera(camera);
 		ui.addActor(menu);
@@ -104,6 +103,9 @@ public class MapManager implements Screen{
 		setLoadInfos();
 	}
 	
+	/**
+	 * Sets the on screen texts
+	 */
 	private void setLoadInfos(){
 		load = new TextButton("load", style);
 		load.setPosition(Gdx.graphics.getWidth()-200, 15);
@@ -120,9 +122,14 @@ public class MapManager implements Screen{
 		infos.addActor(info);
 	}
 	
-	public static void loadMap() {
+	/**
+	 * Loads maps from .decrypt files
+	 */
+	public static void loadMaps() {
 		logger.info("Chargement des cartes");
 		UpdateScreenManagerStatus.loadingMaps();
+		Places.createDefault();
+
 		List<File> decrypted_maps = FileLister.lister(new File(FilesPath.getDataDirectoryPath()), ".decrypt");
 		Iterator<File> iter_decrypted_maps = decrypted_maps.iterator();
 		while(iter_decrypted_maps.hasNext()){
@@ -144,15 +151,22 @@ public class MapManager implements Screen{
 		UpdateScreenManagerStatus.idle();
 	}
 
+	/**
+	 * Creates the chunkMap, a group of 9 Chunks
+	 */
 	public static void createChunkMap() {
 		UpdateScreenManagerStatus.creatingChunks();
 		m = new MapManager();
-		createChunks(startPoint);
+		createChunks(Places.getPlace("startpoint"));
 		UpdateScreenManagerStatus.idle();
 		logger.info(worldmap.get(0).getIds("v2_worldmap"));
 	}
 
-	private static void createChunks(Lieux point) {
+	/**
+	 * Creates the 9 Chunks from a starting point
+	 * @param point
+	 */
+	private static void createChunks(Places point) {
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord(),chunk_size);
 		Iterator<Integer> iter_position = chunk_positions.keySet().iterator();
 		while(iter_position.hasNext()){
@@ -181,6 +195,9 @@ public class MapManager implements Screen{
 		batch.end();
 	}
 
+	/**
+	 * Sets on screen texts
+	 */
 	private void render_infos() {
 		Gdx.app.getGraphics().setTitle("OpenT4C v0 FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + ((Runtime.getRuntime().totalMemory())/1024/1024) + " Mo");
 		load.setText("Load Text : "+UpdateScreenManagerStatus.getReadableStatus());
@@ -191,6 +208,9 @@ public class MapManager implements Screen{
 		info.setPosition(100, camera.viewportHeight - 20);		
 	}
 
+	/**
+	 * Renders chunks
+	 */
 	private void renderChunks() {
 		stage_ready = false;
 		sprites.clear();
@@ -205,6 +225,10 @@ public class MapManager implements Screen{
 		stage_ready = true;
 	}
 
+	/**
+	 * renders a given Chunk
+	 * @param chunk
+	 */
 	private void renderChunk(Chunk chunk) {
 		Map<Point, Sprite> tile_list = chunk.getTiles();
 		Iterator<Point> iter_tiles = tile_list.keySet().iterator();
@@ -232,14 +256,27 @@ public class MapManager implements Screen{
 		}
 	}
 
+	/**
+	 * Clears the on screen menu
+	 */
 	public void clearMenu(){
 		menu.clear();
 	}
 	
-	private String getInfoPixel(Point p, MapPixel mp) {
-		return p.x +","+ p.y +" "+mp.getAtlas()+" "+mp.getTex()+" id : "+mp.getId()+" Modulo : "+mp.getModulo().x+","+mp.getModulo().y;
+	/**
+	 * @param point
+	 * @param pixel
+	 * @return informations from a MapPixel and a point
+	 */
+	private String getInfoPixel(Point point, MapPixel pixel) {
+		return point.x +","+ point.y +" "+pixel.getAtlas()+" "+pixel.getTex()+" id : "+pixel.getId()+" Modulo : "+pixel.getModulo().x+","+pixel.getModulo().y;
 	}
 	
+	/**
+	 * Pops up a menu to display informations at given coordinates
+	 * @param screenX
+	 * @param screenY
+	 */
 	public void pop_menu(int screenX, int screenY) {
 		Point p = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 		if (worldmap.get(0).getPixelAtCoord("v2_worldmap", p) != null){
@@ -285,38 +322,31 @@ public class MapManager implements Screen{
 
 	}
 	
+	/**
+	 * Updates the camera
+	 */
 	private void render_camera() {
 		camera.update();		
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -326,20 +356,29 @@ public class MapManager implements Screen{
 		ui.dispose();		
 	}
 
-	public static Lieux getStartpoint() {
-		return startPoint;
-	}
-
+	/**
+	 * @return the chunk's size
+	 */
 	public static Dimension getChunkSize() {
 		return chunk_size;
 	}
 
+	/**
+	 * @param carte
+	 * @param point
+	 * @return the id at given coordinates on a given map name
+	 */
 	public static int getIdAtCoordOnMap(String carte, Point point) {
 		int result = -1;
 		result = getIdAtCoord(id_maps.get(carte), point);
 		return result;
 	}
 
+	/**
+	 * @param buf
+	 * @param point
+	 * @return the id at given coordinates from a ByteBuffer (map)
+	 */
 	private static int getIdAtCoord(ByteBuffer buf, Point point) {
 		int result = -1;
 		byte b1=0,b2=0;
@@ -360,16 +399,26 @@ public class MapManager implements Screen{
 		return result;
 	}
 
+	/**
+	 * @return the Screen
+	 */
 	public static MapManager getScreen() {
 		return m;
 	}
 
+	/**
+	 * Updates Chunks positions
+	 */
 	public static void updateChunkPositions() {
 		Point playerPosition = PointsManager.getPoint(m.camera.position.x/32, m.camera.position.y/16);
 		int direction = checkIfChunksNeedsToBeMoved(playerPosition);
 		moveChunksIfNeeded(direction);
 	}
 
+	/**
+	 * Moves ChunkMap in a given direction
+	 * @param direction
+	 */
 	private static void moveChunksIfNeeded(int direction) {
 		switch(direction){
 			case 0 : /*logger.info("Pas besoin de déplacer les chunks");*/ break;
@@ -384,6 +433,9 @@ public class MapManager implements Screen{
 		}
 	}
 
+	/**
+	 * Moves ChunkMap up and right
+	 */
 	private static void moveChunksUpRight() {
 		logger.info("Déplacement à droite et en haut");
 		Point point = worldmap.get(8).getCenter();
@@ -400,6 +452,9 @@ public class MapManager implements Screen{
 		m.renderChunks();
 	}
 
+	/**
+	 * Moves ChunkMap up
+	 */
 	private static void moveChunksUp() {
 		logger.info("Déplacement en haut"); 
 		Point point = worldmap.get(7).getCenter();
@@ -416,6 +471,9 @@ public class MapManager implements Screen{
 		m.renderChunks();
 	}
 
+	/**
+	 * Moves ChunkMap up and left
+	 */
 	private static void moveChunksUpLeft() {
 		logger.info("Déplacement à gauche et en haut");
 		Point point = worldmap.get(6).getCenter();
@@ -432,6 +490,9 @@ public class MapManager implements Screen{
 		m.renderChunks();
 	}
 
+	/**
+	 * Moves ChunkMap left
+	 */
 	private static void moveChunksLeft() {
 		logger.info("Déplacement à gauche");
 		Point point = worldmap.get(5).getCenter();
@@ -448,6 +509,9 @@ public class MapManager implements Screen{
 		m.renderChunks();
 	}
 
+	/**
+	 * Moves ChunkMap down and left
+	 */
 	private static void moveChunksDownLeft() {
 		logger.info("Déplacement à gauche et en bas");
 		Point point = worldmap.get(4).getCenter();
@@ -464,6 +528,9 @@ public class MapManager implements Screen{
 		m.renderChunks();
 	}
 
+	/**
+	 * Moves ChunkMap down
+	 */
 	private static void moveChunksDown() {
 		logger.info("Déplacement en bas");
 		Point point = worldmap.get(3).getCenter();
@@ -480,6 +547,9 @@ public class MapManager implements Screen{
 		m.renderChunks();
 	}
 
+	/**
+	 * Moves ChunkMap down and right
+	 */
 	private static void moveChunksDownRight() {
 		logger.info("Déplacement à droite et en bas");
 		Point point = worldmap.get(2).getCenter();
@@ -496,6 +566,9 @@ public class MapManager implements Screen{
 		m.renderChunks();
 	}
 
+	/**
+	 * Moves ChunkMap right
+	 */
 	private static void moveChunksRight() {
 		logger.info("Déplacement à droite");	
 		Point point = worldmap.get(1).getCenter();
@@ -513,11 +586,9 @@ public class MapManager implements Screen{
 	}
 
 	/**
-	 * compare la position du jouer par rapport à la position du chunk central.
-	 * Si on déborde du chunk dans ue direction ou une autre, on donne la direction
-	 * on doit déplacer les chunks.
+	 * Checks if ChunkMap needs to be moved. If the camera's position is farther from the center of the chunk map than chunk_size/2.
 	 * @param playerPosition
-	 * @return la direction dans laquelle on se déplace : 0 pour ne pas déplacer, 1 à droite, 2 en bas à droite, 3 en bas, 4 en bas à gauche, 5 à gauche, 6 en haut à gauche, 7 en haut, 8 en haut à droite.
+	 * @return direction to move to : 0 not to move, 1 to move right, 2 to move down right, 3 to move down, 4 to move down left, 5 to move left, 6 to move up left, 7 to move up, 8 to move up right.
 	 */
 	private static int checkIfChunksNeedsToBeMoved(Point playerPosition) {
 		int result = 0;
@@ -527,15 +598,10 @@ public class MapManager implements Screen{
 		boolean down = false;
 		Point chunkCenter = worldmap.get(0).getCenter();
 		//logger.info("ChunkWatcher : Player->"+playerPosition.x+";"+playerPosition.y + " Chunk->"+chunkCenter.x+";"+chunkCenter.y);
-		//doit-on bouger à droite?
 		if(playerPosition.x > chunkCenter.x+(chunk_size.width/2)) right = true;
-		//doit-on bouger à gauche?
 		if(playerPosition.x < chunkCenter.x-(chunk_size.width/2)) left = true;
-		//doit-on bouger en haut?
 		if(playerPosition.y < chunkCenter.y-(chunk_size.height/2)) up = true;
-		//doit-on bouger en bas?
 		if(playerPosition.y > chunkCenter.y+(chunk_size.height/2)) down = true;
-		//On déduit la direction.
 		if (right && !left && !down && !up) result = 1;
 		if (right && !left && down && !up) result = 2;
 		if (!right && !left && down && !up) result = 3;
@@ -547,6 +613,9 @@ public class MapManager implements Screen{
 		return result;
 	}
 
+	/**
+	 * Tells the renderer the stage is ready to be rendered
+	 */
 	public static void setReadyToRender() {
 		if(m == null){
 			logger.fatal("On essaye d'activer le rendu avant d'avoir instancié correctement MapManager.");
@@ -555,10 +624,16 @@ public class MapManager implements Screen{
 		do_render = true;
 	}
 
+	/**
+	 * @return the camera
+	 */
 	public OrthographicCamera getCamera() {
 		return m.camera;
 	}
 
+	/**
+	 * Focuses on the unmapped ids to fix them
+	 */
 	public void editNextUnmappedID() {
 		logger.info("Edition de la prochaine id non mappée.");
 		Iterator<Integer> iter_id = worldmap.get(0).getUnmappedIds().keySet().iterator();
