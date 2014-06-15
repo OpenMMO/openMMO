@@ -159,6 +159,7 @@ public class MapManager implements Screen{
 		m = new MapManager();
 		createChunks(Places.getPlace("startpoint"));
 		UpdateScreenManagerStatus.idle();
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		logger.info(worldmap.get(0).getIds("v2_worldmap"));
 	}
 
@@ -279,15 +280,16 @@ public class MapManager implements Screen{
 	 */
 	public void pop_menu(int screenX, int screenY) {
 		Point p = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		if (worldmap.get(0).getPixelAtCoord("v2_worldmap", p) != null){
 			MapPixel px = worldmap.get(0).getPixelAtCoord("v2_worldmap", p);
 			String status = getInfoPixel(p, px);
 			logger.info(status);
 			if(px.isTuile()){
 
-				TextButton pixel_info0 = new TextButton(p.x +","+ p.y,style);
-				TextButton pixel_info1 = new TextButton(px.getAtlas()+" "+px.getTex(),style);
-				TextButton pixel_info2 = new TextButton("id : "+px.getId()+" Modulo : "+px.getModulo().x+","+px.getModulo().y,style);
+				TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : "+px.getAtlas()+" "+px.getTex(),style);
+				TextButton pixel_info1 = new TextButton("id : "+getIdAtCoordOnMap("v2_worldmap", PointsManager.getPoint(p.x, p.y))+" Modulo : "+px.getModulo().x+","+px.getModulo().y,style);
+				TextButton pixel_info2 = new TextButton("ettre ici les infos concernant l'id",style);
 				pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
 				pixel_info1.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+25));
 				pixel_info2.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+45));
@@ -304,6 +306,7 @@ public class MapManager implements Screen{
 			}else{
 				if(px.getAtlas() != null){
 					
+					//TODO Attention lorsqu'on gèrera plusieurs cartes
 					Sprite sp = worldmap.get(0).getSpriteAtCoord("v2_worldmap", p);
 					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
 					sp.flip(false, true);
@@ -444,6 +447,7 @@ public class MapManager implements Screen{
 		worldmap.put(3, worldmap.get(1));
 		worldmap.put(0, worldmap.get(8));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
 		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
@@ -465,6 +469,7 @@ public class MapManager implements Screen{
 		worldmap.put(0, worldmap.get(7));
 		worldmap.put(1, worldmap.get(8));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
 		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
@@ -482,6 +487,7 @@ public class MapManager implements Screen{
 		worldmap.put(1, worldmap.get(7));
 		worldmap.put(0, worldmap.get(6));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
@@ -503,6 +509,7 @@ public class MapManager implements Screen{
 		worldmap.put(0, worldmap.get(5));
 		worldmap.put(3, worldmap.get(4));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
@@ -520,6 +527,7 @@ public class MapManager implements Screen{
 		worldmap.put(1, worldmap.get(3));
 		worldmap.put(0, worldmap.get(4));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
 		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
@@ -541,6 +549,7 @@ public class MapManager implements Screen{
 		worldmap.put(0, worldmap.get(3));
 		worldmap.put(1, worldmap.get(2));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
@@ -558,6 +567,7 @@ public class MapManager implements Screen{
 		worldmap.put(7, worldmap.get(1));
 		worldmap.put(0, worldmap.get(2));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
@@ -579,6 +589,7 @@ public class MapManager implements Screen{
 		worldmap.put(0, worldmap.get(1));
 		worldmap.put(3, worldmap.get(2));
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
+		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
 		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
