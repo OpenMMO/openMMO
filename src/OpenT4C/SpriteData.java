@@ -29,6 +29,7 @@ public class SpriteData {
 	 * Loads sprite data from file
 	 */
 	public static void load(){
+		UpdateScreenManagerStatus.loadingSpriteData();
 		BufferedReader buf = null;
 		initSpriteData();
 		try {
@@ -78,7 +79,7 @@ public class SpriteData {
 		int offsetY = Integer.parseInt(index[10]);
 		int moduloX = Integer.parseInt(index[14]);//On récupère le modulo pour appliquer l'effet de zone
 		int moduloY = Integer.parseInt(index[15]);
-		//System.err.println("ID "+id+" : "+tex+" "+moduloX+","+moduloY+"|"+tuile);
+		UpdateScreenManagerStatus.setSubStatus("Sprite lu => Tuile :"+tuile+"|"+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| Modulo : "+moduloX +";"+moduloY+"| ID : "+id);
 		sprite_data.put(id, new MapPixel(tuile, atlas, tex, PointsManager.getPoint(offsetX,offsetY), PointsManager.getPoint(moduloX,moduloY), id));//On enregistre une liste avec les ID, les coordonnées et les références graphiques		
 	}
 

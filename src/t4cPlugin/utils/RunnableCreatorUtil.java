@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.Params;
 import OpenT4C.MapManager;
+import OpenT4C.UpdateScreenManagerStatus;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
@@ -49,13 +50,14 @@ public class RunnableCreatorUtil {
 				String nom = name.substring(0, name.length()-6);
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
-				Params.STATUS = "Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas();
+				UpdateScreenManagerStatus.setSubStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 				logger.info("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 			}
 		};
 		return r;
 	}
 	
+	@Deprecated
 	public static Runnable getTextureAtlasSpriteCreatorRunnable(final String name) {
 		Runnable r = new Runnable(){
 			public void run(){

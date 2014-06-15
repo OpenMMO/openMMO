@@ -15,7 +15,7 @@ import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.MD5Checker;
 
 /**
- * Checks data and decrypt missing.
+ * Checks data and decodes what's missing.
  * @author synoga
  *
  */
@@ -59,6 +59,7 @@ public class DataChecker {
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
+			UpdateScreenManagerStatus.setSubStatus("Vérification présence : "+f.getName());
 			if(!f.exists()){
 				result.add(f);
 			}
@@ -80,13 +81,14 @@ public class DataChecker {
 
 	/**
 	 * Checks source file integrity
-	 * @return a file list wich did not pas the checksum test
+	 * @return a file list which did not pass the checksum test
 	 */
 	private static List<File> checkChecksumFiles() {
 		List<File> result = new ArrayList<File>();
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
+			UpdateScreenManagerStatus.setSubStatus("Vérification MD5 : "+f.getName());
 			if(!MD5Checker.check(f,SourceDataManager.getData().get(f))){
 				result.add(f);
 			}
@@ -120,7 +122,7 @@ public class DataChecker {
 	}
 
 	/**
-	 * Checks the number of present sprite and build them if some is missing.
+	 * Checks the number of present sprites and build them if some are missing.
 	 * Then build atlases.
 	 */
 	private static void buildAtlas() {

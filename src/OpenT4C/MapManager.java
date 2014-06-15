@@ -134,6 +134,7 @@ public class MapManager implements Screen{
 		Iterator<File> iter_decrypted_maps = decrypted_maps.iterator();
 		while(iter_decrypted_maps.hasNext()){
 			File f = iter_decrypted_maps.next();
+			UpdateScreenManagerStatus.setSubStatus("Chargement carte : "+f.getName());
 			ByteBuffer buf = ByteBuffer.allocate((int)f.length());
 			try {
 				DataInputManager in = new DataInputManager (f);

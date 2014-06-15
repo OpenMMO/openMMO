@@ -59,6 +59,7 @@ public class Chunk{
 		int rightLimit = point.x+(MapManager.getChunkSize().width/2);
 		for(int y = upLimit ; y < downLimit ; y++){
 			for(int x = leftLimit ; x < rightLimit ; x++){
+				UpdateScreenManagerStatus.setSubStatus("Création de chunk :"+x+";"+y);
 				if(!isTileAtCoord(map,PointsManager.getPoint(x,y))){
 					chunk_sprites.put(PointsManager.getPoint(x,y),getSpriteAtCoord(map, PointsManager.getPoint(x,y)));
 				}else{

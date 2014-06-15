@@ -30,7 +30,7 @@ public class Main {
 		logger.info("Création de l'affichage.");
 		sm = new ScreenManager();
 		SettingsManager.create();
-		new LwjglApplication(sm, SettingsManager.get());
+		new LwjglApplication(sm, SettingsManager.getSettings());
 		if(debug_GDX)SettingsManager.printCapabilities();
 	}
 
@@ -49,12 +49,5 @@ public class Main {
 		logger.info("Chargement des données");
 		SpriteData.load();
 		sm.initMap();
-	}
-	
-	/**
-	 * @return the ScreenManager
-	 */
-	public ScreenManager getScreenManager(){
-		return sm;
 	}
 }

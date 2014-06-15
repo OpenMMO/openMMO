@@ -42,7 +42,7 @@ public class SettingsManager {
 	}
 
 	/**
-	 * give a 16 multiple below a given value
+	 * gives a 16 multiple below a given value
 	 * @param height
 	 * @return
 	 */
@@ -69,7 +69,7 @@ public class SettingsManager {
 	}
 	
 	/**
-	 * gives a 32 multiple beow a given value
+	 * gives a 32 multiple below a given value
 	 * @param width
 	 * @return
 	 */
@@ -86,7 +86,7 @@ public class SettingsManager {
 	 * prints display capabilities
 	 */
 	public static void printCapabilities() {
-		//TODO faire ça mieux
+		//TODO faire ça mieux parce que ça peut être vachement long...
 		for(int i = 0 ; i < Gdx.graphics.getDisplayModes().length ; i++){
 			logger.info("Display Mode : "+Gdx.graphics.getDisplayModes()[i].width+"x"+Gdx.graphics.getDisplayModes()[i].height);
 		}
@@ -98,7 +98,7 @@ public class SettingsManager {
 	 * 
 	 * @return settings to apply to the application
 	 */
-	public static LwjglApplicationConfiguration get() {
+	public static LwjglApplicationConfiguration getSettings() {
 		return cfg;
 	}
 }
