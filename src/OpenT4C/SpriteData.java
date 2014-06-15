@@ -30,6 +30,7 @@ public class SpriteData {
 	 */
 	public static void load(){
 		BufferedReader buf = null;
+		initSpriteData();
 		try {
 			buf  = new BufferedReader(new FileReader(FilesPath.getSpriteDataFilePath()));
 		} catch (IOException e1) {
@@ -52,6 +53,13 @@ public class SpriteData {
 		} catch (IOException e) {
 			logger.fatal(e);
 			System.exit(1);
+		}
+	}
+
+	private static void initSpriteData() {
+		MapPixel unknown = new MapPixel(true, "Unknown", "Unknown tile", PointsManager.getPoint(0,0), PointsManager.getPoint(1,1),-1);
+		for (int i = 0 ; i < 16384 ; i++){
+			sprite_data.put(i, unknown);
 		}
 	}
 
@@ -78,6 +86,7 @@ public class SpriteData {
 	 * creates a sprite_data file
 	 */
 	public static void create(){
+		UpdateScreenManagerStatus.setSubStatus("Création de sprite_data");
 		SpriteManager.decryptDPD();
 		SpriteManager.decryptDID();
 		SpriteManager.decryptDDA(false);
@@ -124,12 +133,15 @@ public class SpriteData {
 	 * Computes all tiles modulo
 	 */
 	public static void computeModulos(){
+		int index = 1;
 		ArrayList<File> tileDirs = new ArrayList<File>();
 		tileDirs.addAll(FileLister.listerDir(new File(FilesPath.getTuileDirectoryPath())));
 		logger.info("Nombre de modulos à calculer : "+tileDirs.size());
 		Iterator<File> iter_tiledirs = tileDirs.iterator();
 		while (iter_tiledirs.hasNext()){
 			computeModulo(iter_tiledirs.next());
+			UpdateScreenManagerStatus.setSubStatus("Sprite extrait : "+index+"/"+tileDirs.size());
+			index++;
 		}
 	}
 	

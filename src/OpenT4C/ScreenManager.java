@@ -10,6 +10,7 @@ public class ScreenManager extends Game{
 	String map ="";
 	OrthographicCamera camera;
 	public int status = 0;
+	private String substatus = "not updated";
 	
 	public ScreenManager(String f){
 		map = f;
@@ -70,5 +71,13 @@ public class ScreenManager extends Game{
 	}
 	public int getStatus(){
 		return status;
+	}
+
+	public String getSubstatus() {
+		return substatus;
+	}
+
+	public void setSubstatus(String substatus) {
+		this.substatus = substatus;
 	}
 }

@@ -309,4 +309,8 @@ public class Chunk{
 	public Map<Integer,List<Point>> getUnmappedIds(){
 		return unmapped_ids;
 	}
+
+	public Point getOffsetFromPoint(Point point) {
+		return chunk_sprite_info.get(point).getOffset();
+	}
 }

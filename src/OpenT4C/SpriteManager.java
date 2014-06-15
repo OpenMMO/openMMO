@@ -57,20 +57,28 @@ public class SpriteManager {
 			try {
 				String line;
 				while ((line = buff.readLine()) != null) {
-					int key = 0;
-					String value = "";
-					key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
-					value = line.substring(line.indexOf("Name: ")+6);
-					SpriteName name = new SpriteName(value);
-					ids.put(key,name);
-					//logger.info("ID mappée : "+key+"=>"+name.getName());
+					readIdLine(line);
 				}
 			} finally {
 				buff.close();
 			}
 		} catch (IOException ioe) {
-			ioe.printStackTrace();System.exit(1);
+			ioe.printStackTrace();
+			System.exit(1);
 		}
+	}
+	
+	/**
+	 * Reads a line from id.txt
+	 * @param line
+	 */
+	private static void readIdLine(String line){
+		int key = 0;
+		String value = "";
+		key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
+		value = line.substring(line.indexOf("Name: ")+6);
+		SpriteName name = new SpriteName(value);
+		ids.put(key,name);
 	}
 	
 	/**
@@ -83,7 +91,7 @@ public class SpriteManager {
 		newSprite.setChemin(extractChemin(buf));
 		newSprite.setIndexation(extractIndexation(buf));
 		newSprite.setNumDda(extractNumDDA(buf));
-		newSprite.setId(setIds(newSprite));
+		newSprite.setId(getIds(newSprite));
 		getSprites().put(newSprite.getSpriteName(), newSprite);
 	}
 
@@ -148,6 +156,7 @@ public class SpriteManager {
 		for (int i=0; i<bufUnZip.capacity(); i++){
 			bufUnZip.array()[i] ^= clef;
 		}
+		
 		nb_palettes = header_taille_unZip/(64 + 768);
 		palettes = extractPalettes(bufUnZip);
 		//TODO Checksum ou tout du moins moyen de contrôle
@@ -163,6 +172,7 @@ public class SpriteManager {
 		Map<String,Palette> result = new HashMap<String,Palette>(nb_palettes);
 		for(int i=0 ; i<nb_palettes ; i++){
 			Palette p = new Palette(bufUnZip);
+			UpdateScreenManagerStatus.setSubStatus("Palette extraite : "+(i+1)+" => "+p.nom);
 			result.put(p.nom,p);
 		}
 		return result;
@@ -218,43 +228,43 @@ public class SpriteManager {
 
 	/**
 	 * 
-	 * @param header
+	 * @param buffer
 	 * @return unzipped data size
 	 */
-	private static int getHeaderTailleUnzip(ByteBuffer header) {
+	private static int getHeaderTailleUnzip(ByteBuffer buffer) {
 		byte b1,b2,b3,b4;
-		b1 = header.get();
-		b2 = header.get();
-		b3 = header.get();
-		b4 = header.get();
+		b1 = buffer.get();
+		b2 = buffer.get();
+		b3 = buffer.get();
+		b4 = buffer.get();
 		return tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
 	}
 
 	/**
 	 * 
-	 * @param header
+	 * @param buffer
 	 * @return a byte array with the second part of the md5 checksum
 	 */
-	private static byte[] getHeaderHashMD5(ByteBuffer header) {
+	private static byte[] getHeaderHashMD5(ByteBuffer buffer) {
 		byte[] result = new byte[16];
 		for (int i=0 ; i<16 ; i++){
-			result[i] = header.get();
+			result[i] = buffer.get();
 		}
 		return result;
 	}
 
 	/**
 	 * 
-	 * @param newSprite
-	 * @return
+	 * @param sprite
+	 * @return The id list of a given sprite
 	 */
-	private static ArrayList<Integer> setIds(Sprite newSprite) {
+	private static ArrayList<Integer> getIds(Sprite sprite) {
 		List<Integer> result = new ArrayList<Integer>();
 		Iterator<Integer> iter = ids.keySet().iterator();
 		while (iter.hasNext()){
 			int val = iter.next();
 			SpriteName sn = ids.get(val);
-			if (newSprite.getName().contains(sn.getName())){
+			if (sprite.getName().startsWith(sn.getName())){
 				result.add(val);
 			}
 		}
@@ -387,6 +397,7 @@ public class SpriteManager {
 
 		for(int i=0 ; i<nb_sprites ; i++){
 			addSprite(bufUnZip);
+			UpdateScreenManagerStatus.setSubStatus("Sprite décrypté : "+(i+1)+"/"+nb_sprites);
 		}
 	}
 	
@@ -440,7 +451,7 @@ public class SpriteManager {
 		buf.rewind();
 		
 		signature = getDDASignature(buf);
-		
+		int index = 1;
 		Iterator<SpriteName> iter = sprites_in_dda.keySet().iterator();
 		while(iter.hasNext()){
 			SpriteName key = iter.next();
@@ -453,7 +464,9 @@ public class SpriteManager {
 				System.exit(1);
 			}
 			extractDDASprite(buf, sprite);//lit l'entête du sprite et ajoute  les infos de l'entête dans le Sprite
-			if(doWrite) doTheWriting(sprite, buf);
+			if(doWrite) doTheWriting(sprite, buf, index, sprites_in_dda.size());
+			index++;
+
 		}
 	}
 	
@@ -475,10 +488,18 @@ public class SpriteManager {
 		while (iter_pal.hasNext()){
 			String pal = iter_pal.next();
 			if (pal.equals("Bright1")) bright = palettes.get(pal);
+			String chemin = sprite.getChemin();
 			String nom = sprite.getName();
 			if (nom.length() >= pal.length()-1){
 				//Si le nom du sprite et le nom de la palette commencent pareil, on attribue la palette au sprite
-				if(nom.substring(0, pal.length()-1).toUpperCase().contains(pal.substring(0, pal.length()-1).toUpperCase()) && palette == null) palette = palettes.get(pal);
+				if(nom.substring(0, pal.length()-1).toUpperCase().contains(pal.substring(0, pal.length()-1).toUpperCase()) && palette == null){
+					palette = palettes.get(pal);
+					break;
+				}
+			}
+			if(pal.toLowerCase().contains(chemin.toLowerCase()) || chemin.toLowerCase().contains(pal.toLowerCase())){
+				palette = palettes.get(pal);
+				break;
 			}
 		}
 		//Si on a pas trouvé, on attribue la palette Bright1
@@ -590,7 +611,8 @@ public class SpriteManager {
 		return result;
 	}
 
-	private static void doTheWriting(Sprite sprite, ByteBuffer buf){
+	private static void doTheWriting(Sprite sprite, ByteBuffer buf, int index, int nb_in_dda){
+		UpdateScreenManagerStatus.setSubStatus("Sprite écrit : "+index+"/"+nb_in_dda);
 		switch (sprite.getType()){
 		case 1 : write(sprite, buf);
 		break;
@@ -615,7 +637,7 @@ public class SpriteManager {
 		ByteBuffer data = null;
 		File f = null;
 		if (didsprite.isTuile()){
-			//TODO vérifier un jour à qui sert cet offset sur le premier de la zone de tuiles
+			//TODO vérifier un jour à qoui sert cet offset sur le premier de la zone de tuiles
 			didsprite.setOffsetX(0);
 			didsprite.setOffsetY(0);
 			File dir = new File(FilesPath.getTuileDirectoryPath()+didsprite.getChemin());
@@ -787,7 +809,6 @@ public class SpriteManager {
 	
 	private static void unzipSprite(Sprite didsprite, ByteBuffer buf) {
 		byte b1,b2,b3,b4;
-		//new Fast_Forward(buf, 16, false, "ZLIB1");
 		buf.position(didsprite.getBufPos());
 		b1=buf.get();
 		b2=buf.get();
@@ -870,7 +891,6 @@ public class SpriteManager {
 		}
 		unzip.end();
 		unzip_data1.rewind();
-		//new Fast_Forward(unzip_data1, 16, false, "ZLIB2");
 		b1=unzip_data1.get();
 		b2=unzip_data1.get();
 		b3=unzip_data1.get();

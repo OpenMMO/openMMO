@@ -127,7 +127,7 @@ public class DataChecker {
 		SpriteManager.loadIdsFromFile();
 		// TODO Trouver mieux pour vérifier la présence des sprites.
 		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-		if(nb_sprites < 68400){
+		if(nb_sprites < 68555){
 			buildSprites();
 		}
 		AssetsLoader.pack_tuiles();

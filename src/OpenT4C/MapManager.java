@@ -185,7 +185,7 @@ public class MapManager implements Screen{
 		stage.act(delta);
 		ui.act(delta);
 		batch.begin();
-			if(stage_ready)stage.draw();
+			if(stage_ready && do_render)stage.draw();
 		batch.end();
 		batch.begin();
 			if(render_infos && do_render){
@@ -236,8 +236,8 @@ public class MapManager implements Screen{
 			Point pt = iter_tiles.next();
 			Sprite sp = tile_list.get(pt);
 			Point offset = PointsManager.getPoint(0,0);
-			float spx = -(sp.getScaleX()*offset.x)+(pt.x*32);
-			float spy = -(sp.getScaleY()*offset.y)+(pt.y*16);
+			float spx = /*-(sp.getScaleX()*offset.x)+*/(pt.x*32);
+			float spy = /*-(sp.getScaleY()*offset.y)+*/(pt.y*16);
 			sp.setPosition(spx, spy);
 			//logger.info(pt.x+";"+pt.y);
 			tiles.addActor(new Acteur(sp));
@@ -247,7 +247,7 @@ public class MapManager implements Screen{
 		while(iter_sprite.hasNext()){
 			Point pt = iter_sprite.next();
 			Sprite sp = sprite_list.get(pt);
-			Point offset = PointsManager.getPoint(0,0);
+			Point offset = chunk.getOffsetFromPoint(pt);
 			float spx = (sp.getScaleX()*offset.x)+(pt.x*32);
 			float spy = (sp.getScaleY()*offset.y)+(pt.y*16);
 			sp.setPosition(spx, spy);

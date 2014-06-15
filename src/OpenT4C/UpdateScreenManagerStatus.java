@@ -11,6 +11,7 @@ public class UpdateScreenManagerStatus {
 	public static void setScreenManager(ScreenManager manager){
 		sm = manager;
 	}
+	
 	private static void setStatus(final int status){
 		if (sm == null){
 			logger.fatal("ScreenManager not set");
@@ -18,6 +19,15 @@ public class UpdateScreenManagerStatus {
 		}
 		logger.info("Set ScreenManager Status : "+getReadableStatus());
 		sm.setStatus(status);
+	}
+	
+	public static void setSubStatus(final String substatus){
+		if (sm == null){
+			logger.fatal("ScreenManager not set");
+			System.exit(1);
+		}
+		//logger.info("Set SreenManaer Substatus : "+substatus);
+		sm.setSubstatus(substatus);
 	}
 	
 	public static String getReadableStatus() {
@@ -35,6 +45,14 @@ public class UpdateScreenManagerStatus {
 		}
 		
 		return "Inconnu";
+	}
+	
+	public static String getSubStatus(){
+		if (sm == null){
+			logger.fatal("ScreenManager not set");
+			System.exit(1);
+		}
+		return sm.getSubstatus();
 	}
 	
 	public static void idle() {

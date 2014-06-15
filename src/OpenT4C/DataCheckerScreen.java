@@ -22,7 +22,7 @@ public class DataCheckerScreen implements Screen{
 	private OrthographicCamera camera;
 	private Stage stage;
 	private TextButton infos;
-	private String status = "Initialisation";
+	private TextButton substatus;
 
 	public DataCheckerScreen(ScreenManager screenManager){
 		batch = new SpriteBatch();
@@ -40,7 +40,6 @@ public class DataCheckerScreen implements Screen{
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		setStatus();
 		updateInfos();
 		camera.update();
 		stage.act(delta);
@@ -54,15 +53,9 @@ public class DataCheckerScreen implements Screen{
 	 * Updates infos on the screen
 	 */
 	private void updateInfos() {
-		infos.setText(status);
-		Gdx.app.getGraphics().setTitle("OpenT4C v0 "+status);
-	}
-
-	/**
-	 * Sets the status to be displayed on the screen
-	 */
-	private void setStatus(){
-		status = "Satus : " + UpdateScreenManagerStatus.getReadableStatus() + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage();
+		infos.setText("Satus : " + UpdateScreenManagerStatus.getReadableStatus() + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage());
+		substatus.setText(UpdateScreenManagerStatus.getSubStatus());
+		Gdx.app.getGraphics().setTitle("OpenT4C v0 Status "+UpdateScreenManagerStatus.getReadableStatus() + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage());
 	}
 	
 	@Override
@@ -86,6 +79,12 @@ public class DataCheckerScreen implements Screen{
 		stage.addActor(infos);
 		infos.getColor().a = 0f;
 		infos.addAction(Actions.alpha(1f, 3));
+		substatus = new TextButton("DataCheckerScreen.show()", style_normal);
+		substatus.setX(Gdx.graphics.getWidth()/3);
+		substatus.setY((Gdx.graphics.getHeight()/2)-20);
+		stage.addActor(substatus);
+		substatus.getColor().a = 0f;
+		substatus.addAction(Actions.alpha(1f, 3));
 		Gdx.input.setInputProcessor(stage);
 	}
 

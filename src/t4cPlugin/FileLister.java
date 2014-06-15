@@ -6,9 +6,15 @@ import java.util.List;
 
 public class FileLister {
 
-	public static List<File> lister(File repertoire, String extension){
+	/**
+	 * Lists files with given extension inside given directory and subdirectories
+	 * @param directory
+	 * @param extension
+	 * @return
+	 */
+	public static List<File> lister(File directory, String extension){
 		List<File> result = new ArrayList<File>();
-		File[] list = repertoire.listFiles();
+		File[] list = directory.listFiles();
 		for(int i=0;i<list.length;i++){
 			if (list[i].isDirectory()){
 				result.addAll(lister(list[i] , extension));
@@ -21,6 +27,11 @@ public class FileLister {
 		return result;
 	}
 	
+	/**
+	 * lists directries and subdirectories inside the given directory
+	 * @param repertoire
+	 * @return
+	 */
 	public static List<File> listerDir(File repertoire){ 
 		List<File> result = new ArrayList<File>();
 		File[] list = repertoire.listFiles();

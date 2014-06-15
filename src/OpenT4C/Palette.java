@@ -4,11 +4,15 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Palette {
 	
 	public String nom = "";
 	ArrayList<PalettePixel> pixels = new ArrayList<PalettePixel>();
-	
+	private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
+
 	/**
 	 * Creates a palette from a ByteBuffer (.dpd file)
 	 * @param buf
@@ -18,6 +22,8 @@ public class Palette {
 		buf.get(bytes);
 		nom = new String(bytes);
 		nom = nom.substring(0, nom.indexOf(0x00));
+		nom = nom.replace("_","");
+		logger.info("Palette décodée : "+nom);
 		for (int i=0 ; i<256 ; i++){
 			short tmp1,tmp2,tmp3;
 			byte b;

@@ -6,6 +6,9 @@ public class FilesPath {
 	
 	private FilesPath () {}
 	
+	/**
+	 * creates every needed directory in case it doesn't exist
+	 */
 	public static void init(){
 		new File(getSpriteDataDirectoryPath()).mkdirs();
 		new File(getSpriteDirectoryPath()).mkdirs();
@@ -16,7 +19,9 @@ public class FilesPath {
 		new File(getMapDataDirectoryPath()).mkdirs();
 	}
 
-	
+	/**
+	 * @return the sprite path
+	 */
 	public static String getSpritePath()
 	{
 		StringBuilder sb = new StringBuilder();

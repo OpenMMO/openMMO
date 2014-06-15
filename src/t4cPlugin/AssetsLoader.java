@@ -29,7 +29,6 @@ public enum AssetsLoader {
 	INSTANCE;
 	
 	private static Logger logger = LogManager.getLogger(AssetsLoader.class.getSimpleName());
-	
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 		
 	/**
