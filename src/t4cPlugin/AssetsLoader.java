@@ -139,7 +139,7 @@ public enum AssetsLoader {
 		Gdx.app.postRunnable(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
 		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
 		logger.info("Sprite Atlas : " +name+" loaded.");
-		//TODO j'en suis pas sur, mais je crois que cette fonction cause des freeze temporaires...
+		//TODO j'en suis pas sur, mais je crois que cette fonction cause des freeze temporaires parce qu'elle monopolise le thread d'affichage...
 		UpdateScreenManagerStatus.setSubStatus("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}

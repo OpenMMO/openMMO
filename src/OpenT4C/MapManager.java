@@ -16,13 +16,11 @@ import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -75,6 +73,7 @@ public class MapManager implements Screen{
 	private static boolean stage_ready = true;
 	
 	public MapManager(){
+		m = this;
 		Gdx.app.postRunnable(new Runnable(){
 			public void run(){
 				init();
@@ -85,15 +84,15 @@ public class MapManager implements Screen{
 	}
 	
 	/**
-	 * Initializes the MapManager and binds the inpuManager
+	 * Initializes the MapManager and binds the inputManager
 	 */
 	private void init() {
 		style.font = new BitmapFont();
 		stage = new Stage();
 		ui = new Stage();
 		menu = new Group();
-		sprites = new Group();
-		tiles = new Group();
+		//sprites = new Group();
+		//tiles = new Group();
 		infos = new Group();
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
@@ -128,7 +127,7 @@ public class MapManager implements Screen{
 	/**
 	 * Loads maps from .decrypt files
 	 */
-	public static void loadMaps() {
+	public void loadMaps() {
 		logger.info("Chargement des cartes");
 		UpdateScreenManagerStatus.loadingMaps();
 		Places.createDefault();
@@ -158,25 +157,21 @@ public class MapManager implements Screen{
 	/**
 	 * Creates the chunkMap, a group of 9 Chunks
 	 */
-	public static void createChunkMap() {
+	public void createChunkMap() {
 		UpdateScreenManagerStatus.creatingChunks();
-		m = new MapManager();
 		createChunks(Places.getPlace("startpoint"));
-		UpdateScreenManagerStatus.idle();
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		logger.info(worldmap.get(0).getIds("v2_worldmap"));
 	}
 
 	/**
 	 * Creates the 9 Chunks from a starting point
 	 * @param point
 	 */
-	private static void createChunks(Places point) {
+	private void createChunks(Places point) {
 		if(point == null){
 			logger.warn("On essayer de créer des chunks d'un endroit null");
 			return;
 		}
-		stage_ready = false;
+		//stage_ready = false;
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord(),chunk_size);
 		Iterator<Integer> iter_position = chunk_positions.keySet().iterator();
 		while(iter_position.hasNext()){
@@ -186,19 +181,23 @@ public class MapManager implements Screen{
 			worldmap.put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
 		}
 		Chunk.startChunkMapWatcher();
-		m.renderChunks();
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		//TODO stage_ready reste false trop longtemps au changement de chunks, ça fait un flash noir...
-		if(stage_ready)stage.act(delta);
 		render_camera();
+		if(stage_ready){
+			stage.act(delta);
+			if(do_render){
+				batch.begin();
+					stage.draw();
+				batch.end();
+			}
+		}
+
 		ui.act(delta);
-		batch.begin();
-			if(stage_ready && do_render)stage.draw();
-		batch.end();
 		batch.begin();
 			if(render_infos && do_render){
 				render_infos();
@@ -223,32 +222,46 @@ public class MapManager implements Screen{
 	 * Renders chunks
 	 */
 	private void renderChunks() {
-		stage.clear();
-		sprites.clear();
-		tiles.clear();
+		Group newChunksTiles = new Group(); 
+		Group newChunksSprites = new Group(); 
 		Iterator<Integer> iter_chunk = worldmap.keySet().iterator();
 		while (iter_chunk.hasNext()){
 			int key = iter_chunk.next();
-			renderChunk(worldmap.get(key));
+			newChunksTiles.addActor(renderChunkTiles(worldmap.get(key)));
+			newChunksSprites.addActor(renderChunkSprites(worldmap.get(key)));
 		}
-		stage.addActor(tiles);
-		stage.addActor(sprites);
+		stage_ready = false;
+		stage.clear();
+		stage.addActor(newChunksTiles);
+		stage.addActor(newChunksSprites);
 		stage_ready = true;
 	}
 
 	/**
 	 * renders a given Chunk
 	 * @param chunk
+	 * @return
 	 */
-	private void renderChunk(Chunk chunk) {
+	private Group renderChunkTiles(Chunk chunk) {
+		Group result = new Group();
 		Map<Point, Sprite> tile_list = chunk.getTiles();
 		Iterator<Point> iter_tiles = tile_list.keySet().iterator();
 		while(iter_tiles.hasNext()){
 			Point pt = iter_tiles.next();
 			Sprite sp = tile_list.get(pt);
 			sp.setPosition(pt.x*32, pt.y*16);
-			tiles.addActor(new Acteur(sp));
-		}		
+			result.addActor(new Acteur(sp));
+		}
+		return result;
+	}
+
+	/**
+	 * renders a given Chunk
+	 * @param chunk
+	 * @return
+	 */
+	private Group renderChunkSprites(Chunk chunk) {
+		Group result = new Group();
 		Map<Point, Sprite> sprite_list = chunk.getSprites();
 		Iterator<Point> iter_sprite = sprite_list.keySet().iterator();
 		while(iter_sprite.hasNext()){
@@ -258,8 +271,9 @@ public class MapManager implements Screen{
 			float spx = (sp.getScaleX()*offset.x)+(pt.x*32);
 			float spy = (sp.getScaleY()*offset.y)+(pt.y*16);
 			sp.setPosition(spx, spy);
-			sprites.addActor(new Acteur(sp));
+			result.addActor(new Acteur(sp));
 		}
+		return result;
 	}
 
 	/**
@@ -343,6 +357,11 @@ public class MapManager implements Screen{
 
 	@Override
 	public void show() {
+		if (m == null){
+			logger.warn("Attention on essaye de renre les  chunk d'un MapManager non-instancié.");
+		}else{
+			m.renderChunks();
+		}
 	}
 
 	@Override
@@ -681,11 +700,12 @@ public class MapManager implements Screen{
 		if(!stage_ready)return;
 		Chunk.stopChunkMapWatcher();
 		createChunks(place);
+		renderChunks();
 		camera.position.x = place.getCoord().x * 32;
 		camera.position.y = place.getCoord().y * 16;
 		status.setText(place.getNom());
 		status.getColor().a = 1f;
-		status.addAction(Actions.alpha(0f, 1));
+		status.addAction(Actions.alpha(0f, 2));
 	}
 	
 }

@@ -9,21 +9,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 public class ScreenManager extends Game{
 
 	private DataCheckerScreen checkScreen = null;
-	String map ="";
 	OrthographicCamera camera;
+	MapManager map;
 	public int status = 0;
 	private String substatus = "not updated";
-	
-	public ScreenManager(String f){
-		map = f;
-		UpdateScreenManagerStatus.setScreenManager(this);
-	}
-
 	/**
 	 * default map is v2_worldmap
 	 */
 	public ScreenManager(){
-		map = "v2_worldmap";
 		UpdateScreenManagerStatus.setScreenManager(this);
 	}
 	
@@ -60,8 +53,9 @@ public class ScreenManager extends Game{
 	public void initMap(){
 		AssetsLoader.loadSols();
 		AssetsLoader.load("Unknown");
-		MapManager.loadMaps();
-		MapManager.createChunkMap();
+		map = new MapManager();
+		map.loadMaps();
+		map.createChunkMap();
 		UpdateScreenManagerStatus.readyToRender();
 		MapManager.setReadyToRender();
 	}

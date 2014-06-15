@@ -33,7 +33,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Chunk{
 	
 	private static Logger logger = LogManager.getLogger(Chunk.class.getSimpleName());
-	private static int watcher_delay_ms = 500;
+	private static int watcher_delay_ms = 50;
 	private static ScheduledFuture<?> watcher;
 	private Point center = null;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;

@@ -31,8 +31,8 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingup;
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
-	private final int movedelay = 16;
-	private final float movespeed = 10f;
+	private final int movedelay_ms = 16;//un tout petit peu plus rapide que 60Hz
+	private final float movespeed = 1f;
 	private boolean control_right = false;
 	private boolean control_left = false;
 
@@ -88,7 +88,7 @@ public class InputManager implements InputProcessor{
 				}
 			}
 		};
-		movingleft = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
+		movingleft = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class InputManager implements InputProcessor{
 				}
 			}
 		};
-		movingright = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
+		movingright = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class InputManager implements InputProcessor{
 				}
 			}
 		};
-		movingup = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
+		movingup = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class InputManager implements InputProcessor{
 				}
 			}
 		};
-		movingdown = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
+		movingdown = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
 	}
 	
 	@Override
