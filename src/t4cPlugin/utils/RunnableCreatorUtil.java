@@ -5,7 +5,7 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.Params;
+import t4cPlugin.Places;
 import OpenT4C.MapManager;
 import OpenT4C.UpdateScreenManagerStatus;
 
@@ -87,15 +87,19 @@ public class RunnableCreatorUtil {
 
 	public static Runnable getChunkMapWatcherRunnable() {
 		Runnable r = new Runnable(){
-
-			@Override
 			public void run() {
 				MapManager.updateChunkPositions();
 			}
-			
 		};
 		return r;
 	}
 
-	
+	public static Runnable getChunkCreatorRunnable(final Places place) {
+		Runnable r = new Runnable(){
+			public void run() {
+				MapManager.teleport(place);
+			}
+		};
+		return r;
+	}
 }

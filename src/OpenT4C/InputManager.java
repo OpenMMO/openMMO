@@ -4,6 +4,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import t4cPlugin.Places;
+import t4cPlugin.utils.RunnableCreatorUtil;
 import t4cPlugin.utils.ThreadsUtil;
 
 import com.badlogic.gdx.Gdx;
@@ -32,7 +33,7 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
 	private final int movedelay_ms = 16;//un tout petit peu plus rapide que 60Hz
-	private final float movespeed = 1f;
+	private final float movespeed = 5f;
 	private boolean control_right = false;
 	private boolean control_left = false;
 
@@ -167,40 +168,40 @@ public class InputManager implements InputProcessor{
 			control_right = false;
 		}
 		if (keycode == Keys.F1){
-			manager.teleport(Places.getPlace("lh_temple"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("lh_temple")));
 		}
 		if (keycode == Keys.F2){
-			manager.teleport(Places.getPlace("wh_temple"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("wh_temple")));
 		}
 		if (keycode == Keys.F3){
-			manager.teleport(Places.getPlace("ss_temple"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("ss_temple")));
 		}
 		if (keycode == Keys.F4){
-			manager.teleport(Places.getPlace("sc_temple"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("sc_temple")));
 		}
 		if (keycode == Keys.F5){
-			manager.teleport(Places.getPlace("ar_rst"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("ar_rst")));
 		}
 		if (keycode == Keys.F6){
-			manager.teleport(Places.getPlace("rd_rst"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("rd_rst")));
 		}
 		if (keycode == Keys.F7){
-			manager.teleport(Places.getPlace("sh_rst"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("sh_rst")));
 		}
 		if (keycode == Keys.F8){
-			manager.teleport(Places.getPlace("ar_druides"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("ar_druides")));
 		}
 		if (keycode == Keys.F9){
-			manager.teleport(Places.getPlace("rd_druides"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("rd_druides")));
 		}
 		if (keycode == Keys.F10){
-			manager.teleport(Places.getPlace("sh_zo"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("sh_zo")));
 		}
 		if (keycode == Keys.F11){
-			manager.teleport(Places.getPlace("origin"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("origin")));
 		}
 		if (keycode == Keys.F12){
-			manager.teleport(Places.getPlace("center"));
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("center")));
 		}
 		return true;
 	}

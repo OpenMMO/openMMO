@@ -26,7 +26,6 @@ public class UpdateScreenManagerStatus {
 			logger.fatal("ScreenManager not set");
 			System.exit(1);
 		}
-		//logger.info("Set SreenManaer Substatus : "+substatus);
 		sm.setSubstatus(substatus);
 	}
 	
@@ -41,7 +40,6 @@ public class UpdateScreenManagerStatus {
 		case 6 : return "6 : Loading Sprite Data";
 		case 7 : return "7 : Loading Tiles";
 		case 8 : return "8 : Loading Maps";
-		case 9 : return "9 : Creating Chunks";
 		case 42 : return "42 : Ready To Render";
 		}
 		
@@ -82,9 +80,6 @@ public class UpdateScreenManagerStatus {
 	}
 	public static void loadingMaps() {
 		setStatus(8);				
-	}
-	public static void creatingChunks() {
-		setStatus(9);
 	}
 	public static void readyToRender() {
 		setStatus(42);		

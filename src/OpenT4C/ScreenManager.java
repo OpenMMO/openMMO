@@ -51,13 +51,14 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
+		UpdateScreenManagerStatus.loadingTiles();
 		AssetsLoader.loadSols();
 		AssetsLoader.load("Unknown");
 		map = new MapManager();
+		UpdateScreenManagerStatus.loadingMaps();
 		map.loadMaps();
-		map.createChunkMap();
 		UpdateScreenManagerStatus.readyToRender();
-		MapManager.setReadyToRender();
+		map.createChunkMap();
 	}
 	
 	public void setStatus(int status){

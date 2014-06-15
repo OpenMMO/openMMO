@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class ThreadsUtil {
 
 	private static ExecutorService exService = Executors.newFixedThreadPool(15);
-	private static ScheduledExecutorService timerExService = Executors.newScheduledThreadPool(3);
+	private static ScheduledExecutorService timerExService = Executors.newScheduledThreadPool(9);
 	
 	private ThreadsUtil() {
 		//Utility class

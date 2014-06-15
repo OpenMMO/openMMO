@@ -60,15 +60,15 @@ public class MapManager implements Screen{
 	
 	private TextButtonStyle style = new TextButtonStyle();
 	private TextButton load;
-	private TextButton status;
+	private static TextButton status;
 	private TextButton fps;
 	private TextButton info;
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Stage stage, ui;
+	private static Stage stage;
+	private Stage ui;
 	private Group menu, sprites, infos, tiles;
 	private boolean debug = true;
-	private static boolean do_render = false;
 	private boolean render_infos = true;
 	private static boolean stage_ready = true;
 	
@@ -129,7 +129,6 @@ public class MapManager implements Screen{
 	 */
 	public void loadMaps() {
 		logger.info("Chargement des cartes");
-		UpdateScreenManagerStatus.loadingMaps();
 		Places.createDefault();
 
 		List<File> decrypted_maps = FileLister.lister(new File(FilesPath.getDataDirectoryPath()), ".decrypt");
@@ -158,20 +157,18 @@ public class MapManager implements Screen{
 	 * Creates the chunkMap, a group of 9 Chunks
 	 */
 	public void createChunkMap() {
-		UpdateScreenManagerStatus.creatingChunks();
-		createChunks(Places.getPlace("startpoint"));
+		teleport(Places.getPlace("startpoint"));
 	}
 
 	/**
 	 * Creates the 9 Chunks from a starting point
 	 * @param point
 	 */
-	private void createChunks(Places point) {
+	private static void createChunks(Places point) {
 		if(point == null){
 			logger.warn("On essayer de créer des chunks d'un endroit null");
 			return;
 		}
-		//stage_ready = false;
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord(),chunk_size);
 		Iterator<Integer> iter_position = chunk_positions.keySet().iterator();
 		while(iter_position.hasNext()){
@@ -190,20 +187,18 @@ public class MapManager implements Screen{
 		render_camera();
 		if(stage_ready){
 			stage.act(delta);
-			if(do_render){
-				batch.begin();
-					stage.draw();
-				batch.end();
-			}
 		}
+		batch.begin();
+			stage.draw();
+		batch.end();
 
 		ui.act(delta);
-		batch.begin();
-			if(render_infos && do_render){
+		if(render_infos){
+			batch.begin();
 				render_infos();
 				ui.draw();	
-			}
-		batch.end();
+			batch.end();
+		}
 	}
 
 	/**
@@ -221,7 +216,7 @@ public class MapManager implements Screen{
 	/**
 	 * Renders chunks
 	 */
-	private void renderChunks() {
+	private static void renderChunks() {
 		Group newChunksTiles = new Group(); 
 		Group newChunksSprites = new Group(); 
 		Iterator<Integer> iter_chunk = worldmap.keySet().iterator();
@@ -242,7 +237,7 @@ public class MapManager implements Screen{
 	 * @param chunk
 	 * @return
 	 */
-	private Group renderChunkTiles(Chunk chunk) {
+	private static Group renderChunkTiles(Chunk chunk) {
 		Group result = new Group();
 		Map<Point, Sprite> tile_list = chunk.getTiles();
 		Iterator<Point> iter_tiles = tile_list.keySet().iterator();
@@ -260,7 +255,7 @@ public class MapManager implements Screen{
 	 * @param chunk
 	 * @return
 	 */
-	private Group renderChunkSprites(Chunk chunk) {
+	private static Group renderChunkSprites(Chunk chunk) {
 		Group result = new Group();
 		Map<Point, Sprite> sprite_list = chunk.getSprites();
 		Iterator<Point> iter_sprite = sprite_list.keySet().iterator();
@@ -360,7 +355,7 @@ public class MapManager implements Screen{
 		if (m == null){
 			logger.warn("Attention on essaye de renre les  chunk d'un MapManager non-instancié.");
 		}else{
-			m.renderChunks();
+			MapManager.renderChunks();
 		}
 	}
 
@@ -467,8 +462,6 @@ public class MapManager implements Screen{
 	 * Moves ChunkMap up and right
 	 */
 	private static void moveChunksUpRight() {
-		stage_ready = false;
-		//logger.info("Déplacement à droite et en haut");
 		Point point = worldmap.get(8).getCenter();
 		worldmap.put(4, worldmap.get(0));
 		worldmap.put(5, worldmap.get(7));
@@ -481,15 +474,13 @@ public class MapManager implements Screen{
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
 		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
 	 * Moves ChunkMap up
 	 */
 	private static void moveChunksUp() {
-		stage_ready = false;
-		//logger.info("Déplacement en haut"); 
 		Point point = worldmap.get(7).getCenter();
 		worldmap.put(2, worldmap.get(1));
 		worldmap.put(3, worldmap.get(0));
@@ -502,15 +493,13 @@ public class MapManager implements Screen{
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
 		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
 	 * Moves ChunkMap up and left
 	 */
 	private static void moveChunksUpLeft() {
-		stage_ready = false;
-		//logger.info("Déplacement à gauche et en haut");
 		Point point = worldmap.get(6).getCenter();
 		worldmap.put(2, worldmap.get(0));
 		worldmap.put(3, worldmap.get(5));
@@ -523,15 +512,13 @@ public class MapManager implements Screen{
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
 		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
 	 * Moves ChunkMap left
 	 */
 	private static void moveChunksLeft() {
-		stage_ready = false;
-		//logger.info("Déplacement à gauche");
 		Point point = worldmap.get(5).getCenter();
 		worldmap.put(8, worldmap.get(7));
 		worldmap.put(1, worldmap.get(0));
@@ -544,15 +531,13 @@ public class MapManager implements Screen{
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
 	 * Moves ChunkMap down and left
 	 */
 	private static void moveChunksDownLeft() {
-		stage_ready = false;
-		//logger.info("Déplacement à gauche et en bas");
 		Point point = worldmap.get(4).getCenter();
 		worldmap.put(8, worldmap.get(0));
 		worldmap.put(7, worldmap.get(5));
@@ -565,15 +550,13 @@ public class MapManager implements Screen{
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
 		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
 	 * Moves ChunkMap down
 	 */
 	private static void moveChunksDown() {
-		stage_ready = false;
-		//logger.info("Déplacement en bas");
 		Point point = worldmap.get(3).getCenter();
 		worldmap.put(6, worldmap.get(5));
 		worldmap.put(7, worldmap.get(0));
@@ -586,15 +569,13 @@ public class MapManager implements Screen{
 		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
 		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
 	 * Moves ChunkMap down and right
 	 */
 	private static void moveChunksDownRight() {
-		stage_ready = false;
-		//logger.info("Déplacement à droite et en bas");
 		Point point = worldmap.get(2).getCenter();
 		worldmap.put(6, worldmap.get(0));
 		worldmap.put(5, worldmap.get(3));
@@ -607,15 +588,13 @@ public class MapManager implements Screen{
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
 		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
 	 * Moves ChunkMap right
 	 */
 	private static void moveChunksRight() {
-		stage_ready = false;
-		//logger.info("Déplacement à droite");	
 		Point point = worldmap.get(1).getCenter();
 		worldmap.put(6, worldmap.get(7));
 		worldmap.put(5, worldmap.get(0));
@@ -628,7 +607,7 @@ public class MapManager implements Screen{
 		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
 		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
 		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		m.renderChunks();
+		MapManager.renderChunks();
 	}
 
 	/**
@@ -660,20 +639,9 @@ public class MapManager implements Screen{
 	}
 
 	/**
-	 * Tells the renderer the stage is ready to be rendered
-	 */
-	public static void setReadyToRender() {
-		if(m == null){
-			logger.fatal("On essaye d'activer le rendu avant d'avoir instancié correctement MapManager.");
-			System.exit(1);
-		}
-		do_render = true;
-	}
-
-	/**
 	 * @return the camera
 	 */
-	public OrthographicCamera getCamera() {
+	public static OrthographicCamera getCamera() {
 		return m.camera;
 	}
 
@@ -692,7 +660,7 @@ public class MapManager implements Screen{
 	 * Translates camera to a given place and generates chunks.
 	 * @param place
 	 */
-	public void teleport(Places place){
+	public static void teleport(Places place){
 		if(place == null){
 			logger.warn("On tente de se téléporter dans un endroit null");
 			return;
@@ -701,8 +669,8 @@ public class MapManager implements Screen{
 		Chunk.stopChunkMapWatcher();
 		createChunks(place);
 		renderChunks();
-		camera.position.x = place.getCoord().x * 32;
-		camera.position.y = place.getCoord().y * 16;
+		getCamera().position.x = place.getCoord().x * 32;
+		getCamera().position.y = place.getCoord().y * 16;
 		status.setText(place.getNom());
 		status.getColor().a = 1f;
 		status.addAction(Actions.alpha(0f, 2));

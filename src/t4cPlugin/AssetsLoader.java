@@ -140,6 +140,7 @@ public enum AssetsLoader {
 		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
 		logger.info("Sprite Atlas : " +name+" loaded.");
 		//TODO j'en suis pas sur, mais je crois que cette fonction cause des freeze temporaires parce qu'elle monopolise le thread d'affichage...
+		//TODO je pense qu'il faut affiner l'organisation des atlas pour réduire les temps de chargement par atlas.
 		UpdateScreenManagerStatus.setSubStatus("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}
@@ -149,8 +150,6 @@ public enum AssetsLoader {
 	 */
 	public static void loadSols() {
 		logger.info("Chargement des tuiles.");
-		UpdateScreenManagerStatus.loadingTiles();
-		
 		//Ensure tiles are packaged before try to use them
 		loadingStatus.waitUntilTilesPackaged();
 		

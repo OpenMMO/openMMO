@@ -230,6 +230,7 @@ public class Chunk{
 		}
 		result = new Sprite(texRegion);
 		result.flip(false, true);
+		//logger.info("Sprite : "+px.getTex());
 		return result;
 	}
 
@@ -325,6 +326,6 @@ public class Chunk{
 	}
 
 	public static void stopChunkMapWatcher() {
-		watcher.cancel(true);
+		if (watcher != null) watcher.cancel(true);
 	}
 }
