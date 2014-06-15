@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -32,7 +33,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Chunk{
 	
 	private static Logger logger = LogManager.getLogger(Chunk.class.getSimpleName());
-	private static int watcher_delay = 500;
+	private static int watcher_delay_ms = 500;
+	private static ScheduledFuture<?> watcher;
 	private Point center = null;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private Map<Point,Sprite> chunk_sprites = null;
@@ -59,7 +61,6 @@ public class Chunk{
 		int rightLimit = point.x+(MapManager.getChunkSize().width/2);
 		for(int y = upLimit ; y < downLimit ; y++){
 			for(int x = leftLimit ; x < rightLimit ; x++){
-				UpdateScreenManagerStatus.setSubStatus("Création de chunk :"+x+";"+y);
 				if(!isTileAtCoord(map,PointsManager.getPoint(x,y))){
 					chunk_sprites.put(PointsManager.getPoint(x,y),getSpriteAtCoord(map, PointsManager.getPoint(x,y)));
 				}else{
@@ -131,7 +132,12 @@ public class Chunk{
 	 * @return the unknown atlas
 	 */
 	private TextureAtlas getUnknownAtlas() {
-		return AssetsLoader.load("Unknown");
+		TextureAtlas texAtlas = null;
+		texAtlas = loadingStatus.getTextureAtlasSprite("Unknown");
+		if (texAtlas == null){
+			texAtlas = AssetsLoader.load("Unknown");
+		}
+		return texAtlas;
 	}
 
 	/**
@@ -206,14 +212,20 @@ public class Chunk{
 		TextureAtlas texAtlas = null;
 		MapPixel px = null;
 		px = getPixelAtCoord(map, point);
-		if (px != null){
-			chunk_sprite_info.put(point, px);
-			texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());
-			if (texAtlas == null){
-				texAtlas = AssetsLoader.load(px.getAtlas());
-			}
-			texRegion = texAtlas.findRegion(px.getTex());
-		}else{
+		if (px == null){
+			logger.warn("On tente de charger un MapPixel null");
+			result = new Sprite(getUnknownTile());
+			result.flip(false, true);
+			return result;
+		}
+		chunk_sprite_info.put(point, px);
+		texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());
+		if (texAtlas == null){
+			texAtlas = AssetsLoader.load(px.getAtlas());
+		}
+		texRegion = texAtlas.findRegion(px.getTex());
+		if(texRegion == null){
+			logger.warn("On tente de charger une TextureRegion null");
 			texRegion = getUnknownTile();
 		}
 		result = new Sprite(texRegion);
@@ -224,7 +236,7 @@ public class Chunk{
 	/**
 	 * @param map
 	 * @param point
-	 * @return a MapPxiel from Point on a given map name
+	 * @return a MapPixel from Point on a given map name
 	 */
 	public MapPixel getPixelAtCoord(String map, Point point) {
 		MapPixel result = null;
@@ -289,10 +301,7 @@ public class Chunk{
 	 * @return the "Unknown" tile
 	 */
 	private TextureRegion getUnknownTile(){
-		TextureAtlas texAtlas = loadingStatus.getTextureAtlasSprite("Unknown");
-		if (texAtlas == null){
-			texAtlas = AssetsLoader.load("Unknown");
-		}
+		TextureAtlas texAtlas = getUnknownAtlas();
 		return texAtlas.findRegion("Unknown Tile");
 	}
 	/**
@@ -301,7 +310,7 @@ public class Chunk{
 	 */
 	public static void startChunkMapWatcher() {
 		Runnable r = RunnableCreatorUtil.getChunkMapWatcherRunnable();
-		ThreadsUtil.executePeriodicallyInThread(r, watcher_delay, watcher_delay, TimeUnit.MILLISECONDS);
+		watcher = ThreadsUtil.executePeriodicallyInThread(r, watcher_delay_ms, watcher_delay_ms, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -313,5 +322,9 @@ public class Chunk{
 
 	public Point getOffsetFromPoint(Point point) {
 		return chunk_sprite_info.get(point).getOffset();
+	}
+
+	public static void stopChunkMapWatcher() {
+		watcher.cancel(true);
 	}
 }

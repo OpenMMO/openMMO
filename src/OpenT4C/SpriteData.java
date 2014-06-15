@@ -19,6 +19,7 @@ import t4cPlugin.FileLister;
 import t4cPlugin.MapPixel;
 import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
+import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.PointsManager;
 
 public class SpriteData {
@@ -43,6 +44,7 @@ public class SpriteData {
 			while((line = buf.readLine()) != null){//On lit le fichier sprite_data
 				readSpriteDataLine(line);
 			}
+			sprite_data.put(-1, new MapPixel(false, "Unknown", "Unknown Tile", PointsManager.getPoint(0,0), PointsManager.getPoint(1,1), -1));//On mappe l'id -1 sur la tuile inconnue
 		} catch (NumberFormatException | IOException | ArrayIndexOutOfBoundsException e) {
 			logger.fatal(line);
 			logger.fatal(e);

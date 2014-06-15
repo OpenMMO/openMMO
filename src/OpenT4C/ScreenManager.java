@@ -1,5 +1,7 @@
 package OpenT4C;
 
+import t4cPlugin.AssetsLoader;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -52,11 +54,12 @@ public class ScreenManager extends Game{
 	}
 	
 	public void dispose() {
-		t4cPlugin.AssetsLoader.dispose();
+		AssetsLoader.dispose();
 	}
 	
 	public void initMap(){
-		t4cPlugin.AssetsLoader.loadSols();
+		AssetsLoader.loadSols();
+		AssetsLoader.load("Unknown");
 		MapManager.loadMaps();
 		MapManager.createChunkMap();
 		UpdateScreenManagerStatus.readyToRender();

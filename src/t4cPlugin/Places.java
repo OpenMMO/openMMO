@@ -4,20 +4,28 @@ import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.badlogic.gdx.Gdx;
 
 import t4cPlugin.utils.PointsManager;
 
 public class Places {
+	private static Logger logger = LogManager.getLogger(Places.class.getSimpleName());
 	public static Map<String,Places> places = new HashMap<String,Places>();
-	private String nom = "";
-	private String carte = "";
-	private Point coord = PointsManager.getPoint(0,0);
+	private String nom;
+	private String carte;
+	private Point coord;
 	
 	public Places(String nom, String carte, Point coord){
 		this.nom = nom;
 		this.carte = carte;
 		this.coord = coord;
+		if (this.coord == null){
+			logger.warn("On essaye d'ajouter un endroit null");
+			return;
+		}
 		places.put(nom,this);
 	}
 	
@@ -38,7 +46,19 @@ public class Places {
 	}
 	
 	public static void createDefault(){
-		new Places("startpoint", "v2_worldmap",PointsManager.getPoint(2940,1065));
-		new Places("origin", "v2_worldmap",PointsManager.getPoint(Gdx.graphics.getWidth()/64,Gdx.graphics.getHeight()/32));
+		new Places("startpoint", "v2_worldmap",PointsManager.getPoint(2940,1065));//OK
+		new Places("origin", "v2_worldmap",PointsManager.getPoint(Gdx.graphics.getWidth()/64,Gdx.graphics.getHeight()/32));//OK
+		new Places("lh_temple", "v2_worldmap",PointsManager.getPoint(2951,1053));//OK
+		new Places("wh_temple", "v2_worldmap",PointsManager.getPoint(1675,1183));//OK
+		new Places("ss_temple", "v2_worldmap",PointsManager.getPoint(456,675));
+		new Places("sc_temple", "v2_worldmap",PointsManager.getPoint(210,675));//OK
+		new Places("ar_rst", "v2_worldmap",PointsManager.getPoint(2327,727));//OK
+		new Places("rd_rst", "v2_worldmap",PointsManager.getPoint(6,1023));
+		new Places("sh_rst", "v2_worldmap",PointsManager.getPoint(7,1023));
+		new Places("ar_druides", "v2_worldmap",PointsManager.getPoint(2970,176));//OK
+		new Places("rd_druides", "v2_worldmap",PointsManager.getPoint(9,1023));
+		new Places("sh_zo", "v2_worldmap",PointsManager.getPoint(11,1023));
+		new Places("center", "v2_worldmap",PointsManager.getPoint(1536,1536));//OK
+
 	}
 }

@@ -3,6 +3,7 @@ package OpenT4C;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import t4cPlugin.Places;
 import t4cPlugin.utils.ThreadsUtil;
 
 import com.badlogic.gdx.Gdx;
@@ -30,7 +31,8 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingup;
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
-	private int movedelay = 800;
+	private final int movedelay = 16;
+	private final float movespeed = 10f;
 	private boolean control_right = false;
 	private boolean control_left = false;
 
@@ -80,13 +82,13 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (moveleft){
-					camera.translate(-0.02f,0);					
+					if(camera.position.x > Gdx.graphics.getWidth()/2) camera.translate(-2*movespeed,0);					
 				}else{
 					
 				}
 			}
 		};
-		movingleft = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MICROSECONDS);
+		movingleft = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -97,13 +99,13 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (moveright){
-					camera.translate(0.02f,0);					
+					if(camera.position.x < (3072 * 32)-Gdx.graphics.getWidth()/2) camera.translate(2*movespeed,0);					
 				}else{
 					
 				}
 			}
 		};
-		movingright = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MICROSECONDS);
+		movingright = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -114,13 +116,13 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (moveup){
-					camera.translate(0,-0.01f);					
+					if(camera.position.y > Gdx.graphics.getHeight()/2) camera.translate(0,-movespeed);					
 				}else{
 					
 				}
 			}
 		};
-		movingup = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MICROSECONDS);
+		movingup = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
 	}
 
 	/**
@@ -131,13 +133,13 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (movedown){
-					camera.translate(0,0.01f);					
+					if(camera.position.y < (3072 * 16)-1-Gdx.graphics.getHeight()/2) camera.translate(0,movespeed);					
 				}else{
 					
 				}
 			}
 		};
-		movingdown = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MICROSECONDS);
+		movingdown = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay, TimeUnit.MILLISECONDS);
 	}
 	
 	@Override
@@ -163,6 +165,42 @@ public class InputManager implements InputProcessor{
 		}
 		if (keycode == Keys.CONTROL_RIGHT){
 			control_right = false;
+		}
+		if (keycode == Keys.F1){
+			manager.teleport(Places.getPlace("lh_temple"));
+		}
+		if (keycode == Keys.F2){
+			manager.teleport(Places.getPlace("wh_temple"));
+		}
+		if (keycode == Keys.F3){
+			manager.teleport(Places.getPlace("ss_temple"));
+		}
+		if (keycode == Keys.F4){
+			manager.teleport(Places.getPlace("sc_temple"));
+		}
+		if (keycode == Keys.F5){
+			manager.teleport(Places.getPlace("ar_rst"));
+		}
+		if (keycode == Keys.F6){
+			manager.teleport(Places.getPlace("rd_rst"));
+		}
+		if (keycode == Keys.F7){
+			manager.teleport(Places.getPlace("sh_rst"));
+		}
+		if (keycode == Keys.F8){
+			manager.teleport(Places.getPlace("ar_druides"));
+		}
+		if (keycode == Keys.F9){
+			manager.teleport(Places.getPlace("rd_druides"));
+		}
+		if (keycode == Keys.F10){
+			manager.teleport(Places.getPlace("sh_zo"));
+		}
+		if (keycode == Keys.F11){
+			manager.teleport(Places.getPlace("origin"));
+		}
+		if (keycode == Keys.F12){
+			manager.teleport(Places.getPlace("center"));
 		}
 		return true;
 	}
