@@ -1,4 +1,4 @@
-package OpenT4C;
+package opent4c;
 
 import java.awt.Dimension;
 import java.awt.Point;

@@ -1,4 +1,4 @@
-package OpenT4C;
+package opent4c;
 
 import t4cPlugin.AssetsLoader;
 

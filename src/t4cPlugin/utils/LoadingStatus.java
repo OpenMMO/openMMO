@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import opent4c.DataChecker;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import OpenT4C.DataChecker;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 

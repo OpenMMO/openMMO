@@ -1,4 +1,4 @@
-package OpenT4C;
+package opent4c;
 
 public class PalettePixel{
 	short red;

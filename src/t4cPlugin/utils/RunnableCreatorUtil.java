@@ -2,12 +2,13 @@ package t4cPlugin.utils;
 
 import java.io.File;
 
+import opent4c.MapManager;
+import opent4c.UpdateScreenManagerStatus;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.Places;
-import OpenT4C.MapManager;
-import OpenT4C.UpdateScreenManagerStatus;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;

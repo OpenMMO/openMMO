@@ -1,4 +1,4 @@
-package OpenT4C;
+package opent4c;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

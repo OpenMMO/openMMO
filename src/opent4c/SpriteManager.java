@@ -1,4 +1,4 @@
-package OpenT4C;
+package opent4c;
 
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
@@ -25,10 +25,11 @@ import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.FileImageOutputStream;
 
+import opent4c.PalettePixel;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import OpenT4C.PalettePixel;
 import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
 import tools.DataInputManager;

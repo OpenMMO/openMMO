@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import opent4c.UpdateScreenManagerStatus;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +14,6 @@ import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.RunnableCreatorUtil;
 import t4cPlugin.utils.ThreadsUtil;
-import OpenT4C.UpdateScreenManagerStatus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;

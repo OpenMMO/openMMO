@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 /**
  * Cette classe sera étendue plus tard.
- * Il s'agit de fournit un objet affichable pouvant recevoir et envoyer des actions.
+ * Il s'agit de fournir un objet affichable pouvant recevoir et envoyer des actions.
  * Elle est à ajouter à une Stage pour être affichée
  * @author synoga
  *
