@@ -10,8 +10,12 @@ import org.apache.logging.log4j.message.Message;
 
 public class Palette {
 	
-	public String nom = "";
+	private String nom = "";
 	ArrayList<PalettePixel> pixels = new ArrayList<PalettePixel>();
+	//TODO je ne sais pas à quoi servent le B, le P et 64k dans les noms de palettes donc je les dégage du nom et je les mets là pour le moment.
+	private boolean flagP = false;
+	private boolean flagB = false;
+	private boolean flag64k = false;
 	private static Logger logger = LogManager.getLogger(Palette.class.getSimpleName());
 
 	/**
@@ -21,10 +25,23 @@ public class Palette {
 	public Palette(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
-		nom = new String(bytes);
+		String nom = new String(bytes);
 		nom = nom.substring(0, nom.indexOf(0x00));
 		nom = nom.replace("_","");
-		//logger.info("Palette décodée : "+nom);
+		if(nom.endsWith("P")){
+			nom = nom.substring(0, nom.length()-1);
+			flagP = true;
+		}
+		if(nom.endsWith("B")){
+			nom = nom.substring(0, nom.length()-1);
+			flagB = true;
+		}
+/*		if(getNom().startsWith("64k")){
+			setNom(getNom().substring(3));
+			flag64k = true;
+		}*/
+		setNom(nom);
+		logger.info("Nouvelle Palette : "+getNom());
 		for (int i=0 ; i<256 ; i++){
 			short tmp1,tmp2,tmp3;
 			byte b;
@@ -59,7 +76,15 @@ public class Palette {
 	 * @return
 	 */
 	public String getName() {
-		return this.nom;
+		return this.getNom();
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	
 }

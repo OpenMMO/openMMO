@@ -381,7 +381,7 @@ public class GDXEditor extends Game{
 							int moduloX = Integer.parseInt(index[14]);//On récupère le modulo pour appliquer l'effet de zone
 							int moduloY = Integer.parseInt(index[15]);
 							//System.err.println("ID "+id+" : "+tex+" "+moduloX+","+moduloY+"|"+tuile);
-							m.ids.put(id, new MapPixel(tuile, atlas, tex, PointsManager.getPoint(offsetX,offsetY), PointsManager.getPoint(moduloX,moduloY), id));//On enregistre une liste avec les ID, les coordonnées et les références graphiques
+							m.ids.put(id, new MapPixel(tuile, atlas, tex, PointsManager.getPoint(offsetX,offsetY), PointsManager.getPoint(moduloX,moduloY), id, "foo"));//On enregistre une liste avec les ID, les coordonnées et les références graphiques
 						}
 					} catch (NumberFormatException | IOException e2) {
 						logger.fatal(e2);

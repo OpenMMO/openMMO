@@ -19,11 +19,16 @@ import t4cPlugin.FileLister;
 import t4cPlugin.MapPixel;
 import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
+import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.PointsManager;
+import t4cPlugin.utils.RunnableCreatorUtil;
+import t4cPlugin.utils.ThreadsUtil;
 
 public class SpriteData {
 	private static Logger logger = LogManager.getLogger(SpriteData.class.getSimpleName());
 	private static Map<Integer,MapPixel> sprite_data = new HashMap<Integer,MapPixel>();
+	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+
 	
 	/**
 	 * Loads sprite data from file
@@ -43,7 +48,7 @@ public class SpriteData {
 			while((line = buf.readLine()) != null){//On lit le fichier sprite_data
 				readSpriteDataLine(line);
 			}
-			sprite_data.put(-1, new MapPixel(false, "Unknown", "Unknown Tile", PointsManager.getPoint(0,0), PointsManager.getPoint(1,1), -1));//On mappe l'id -1 sur la tuile inconnue
+			sprite_data.put(-1, new MapPixel(false, "Unknown", "Unknown Tile", PointsManager.getPoint(0,0), PointsManager.getPoint(1,1), -1, "Unknown tile"));//On mappe l'id -1 sur la tuile inconnue
 		} catch (NumberFormatException | IOException | ArrayIndexOutOfBoundsException e) {
 			logger.fatal(line);
 			logger.fatal(e);
@@ -59,7 +64,7 @@ public class SpriteData {
 	}
 
 	private static void initSpriteData() {
-		MapPixel unknown = new MapPixel(true, "Unknown", "Unknown tile", PointsManager.getPoint(0,0), PointsManager.getPoint(1,1),-1);
+		MapPixel unknown = new MapPixel(true, "Unknown", "Unknown tile", PointsManager.getPoint(0,0), PointsManager.getPoint(1,1),-1, "Unknown tile");
 		for (int i = 0 ; i < 16384 ; i++){
 			sprite_data.put(i, unknown);
 		}
@@ -80,8 +85,9 @@ public class SpriteData {
 		int offsetY = Integer.parseInt(index[10]);
 		int moduloX = Integer.parseInt(index[14]);//On récupère le modulo pour appliquer l'effet de zone
 		int moduloY = Integer.parseInt(index[15]);
-		UpdateScreenManagerStatus.setSubStatus("Sprite lu => Tuile :"+tuile+"|"+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| Modulo : "+moduloX +";"+moduloY+"| ID : "+id);
-		sprite_data.put(id, new MapPixel(tuile, atlas, tex, PointsManager.getPoint(offsetX,offsetY), PointsManager.getPoint(moduloX,moduloY), id));//On enregistre une liste avec les ID, les coordonnées et les références graphiques		
+		String palette = index[16];
+		UpdateScreenManagerStatus.setSubStatus("Sprite lu => Tuile :"+tuile+"|"+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| Modulo : "+moduloX +";"+moduloY+"| ID : "+id+"| Palette : "+palette);
+		sprite_data.put(id, new MapPixel(tuile, atlas, tex, PointsManager.getPoint(offsetX,offsetY), PointsManager.getPoint(moduloX,moduloY), id, palette));//On enregistre une liste avec les ID, les coordonnées et les références graphiques		
 	}
 
 	/**
@@ -93,6 +99,8 @@ public class SpriteData {
 		if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
 		if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
 		computeModulos();
+		loadingStatus.waitUntilModulosAreComputed();
+		loadingStatus.waitUntilDdaFilesProcessed();
 		OutputStreamWriter dat_file = null;
 		try {
 			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getSpriteDataDirectoryPath()+"sprite_data"));
@@ -156,13 +164,13 @@ public class SpriteData {
 		sb.append(";");
 		sb.append(sp.getCouleurTrans().getValue());
 		sb.append(";");
-		sb.append(sp.getOffsetX().getValue());
+		sb.append(sp.getOffsetX());
 		sb.append(";");
-		sb.append(sp.getOffsetY().getValue());
+		sb.append(sp.getOffsetY());
 		sb.append(";");
-		sb.append(sp.getOffsetX2().getValue());
+		sb.append(sp.getOffsetX2());
 		sb.append(";");
-		sb.append(sp.getOffsetY2().getValue());
+		sb.append(sp.getOffsetY2());
 		sb.append(";");
 		sb.append(sp.getNumDda());
 		sb.append(";");
@@ -170,6 +178,7 @@ public class SpriteData {
 		sb.append(";");
 		sb.append(sp.getModuloY());
 		sb.append(";");
+		sb.append(sp.getPaletteName());
 		sb.append(System.lineSeparator());
 		
 		return sb.toString();
@@ -179,15 +188,13 @@ public class SpriteData {
 	 * Computes all tiles modulo
 	 */
 	public static void computeModulos(){
-		int index = 1;
 		ArrayList<File> tileDirs = new ArrayList<File>();
 		tileDirs.addAll(FileLister.listerDir(new File(FilesPath.getTuileDirectoryPath())));
 		logger.info("Nombre de modulos à calculer : "+tileDirs.size());
+		loadingStatus.setNbModulosToBeComputed(tileDirs.size());
 		Iterator<File> iter_tiledirs = tileDirs.iterator();
 		while (iter_tiledirs.hasNext()){
-			computeModulo(iter_tiledirs.next());
-			UpdateScreenManagerStatus.setSubStatus("Modulos calculés : "+index+"/"+tileDirs.size());
-			index++;
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getModuloComputerRunnable(iter_tiledirs.next()));
 		}
 	}
 	
@@ -195,7 +202,7 @@ public class SpriteData {
 	 * Computes one tile directory modulos
 	 * @param tileDir
 	 */
-	private static void computeModulo(File tileDir) {
+	public static void computeModulo(File tileDir) {
 		int moduloX=1, moduloY=1;
 		ArrayList<File> tiles = new ArrayList<File>();
 		tiles.addAll(FileLister.lister(tileDir.getAbsoluteFile(),".png"));
@@ -209,9 +216,6 @@ public class SpriteData {
 				secondPart = tile.getName().substring(tile.getName().indexOf(',')+2, tile.getName().indexOf(')'));
 				//logger.warn("Modulo "+tile.getName()+" : "+firstPart+" | "+secondPart);
 				//TODO Réparer le nom de fichier de la tuile Lava : pas d'espace après la virgule
-				if (secondPart.equals("")){
-					secondPart = tile.getName().substring(tile.getName().indexOf(',')+1, tile.getName().indexOf(')'));
-				}
 				tmpX = Integer.parseInt(firstPart);
 				tmpY = Integer.parseInt(secondPart);
 				if (tmpX>moduloX)moduloX = tmpX;
@@ -225,7 +229,7 @@ public class SpriteData {
 			while(iter_sprites.hasNext()){
 				SpriteName key = iter_sprites.next();
 				Sprite sprite = SpriteManager.getSprites().get(key);
-				if (sprite.getName().contains(tileDir.getName())){
+				if (sprite.getChemin().equals(tileDir.getName())){
 					sprite.setModuloX(moduloX);
 					sprite.setModuloY(moduloY);
 				}

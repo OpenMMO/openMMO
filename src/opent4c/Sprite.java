@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
+
 import t4cPlugin.SpriteName;
 import tools.ByteArrayToNumber;
 import tools.UnsignedInt;
@@ -27,14 +29,15 @@ public class Sprite {
 	private UnsignedShort hauteur;//short
 	private UnsignedShort inconnu9;//short
 	private UnsignedShort couleurTrans;//short
-	private UnsignedShort offsetX;//short
-	private UnsignedShort offsetY;//short
-	private UnsignedShort offsetX2;//short
-	private UnsignedShort offsetY2;//short
+	private short offsetX;//short
+	private short offsetY;//short
+	private short offsetX2;//short
+	private short offsetY2;//short
 	private long numDda;
 	private UnsignedInt taille_unzip;
 	private UnsignedInt taille_zip;
 	private Palette palette;
+	private String palette_name = "not set";
 	private int bufPos = -1;
 	private int moduloX = 1;
 	private int moduloY = 1;
@@ -126,7 +129,7 @@ public class Sprite {
 	}
 	
 	@Deprecated
-	public Sprite(boolean tuile, String atlas, String tex, UnsignedShort offsetX,	UnsignedShort offsetY, int moduloX, int moduloY, int id) {
+	public Sprite(boolean tuile, String atlas, String tex, short offsetX,	short offsetY, int moduloX, int moduloY, int id) {
 		this.setTuile(tuile);
 		this.chemin = atlas;
 		this.setSpriteName(new SpriteName(tex));
@@ -194,35 +197,35 @@ public class Sprite {
 		this.couleurTrans = couleurTrans;
 	}
 
-	public UnsignedShort getOffsetX() {
+	public short getOffsetX() {
 		return offsetX;
 	}
 
-	public void setOffsetX(UnsignedShort offsetX) {
+	public void setOffsetX(short offsetX) {
 		this.offsetX = offsetX;
 	}
 
-	public UnsignedShort getOffsetY() {
+	public short getOffsetY() {
 		return offsetY;
 	}
 
-	public void setOffsetY(UnsignedShort offsetY) {
+	public void setOffsetY(short offsetY) {
 		this.offsetY = offsetY;
 	}
 
-	public UnsignedShort getOffsetX2() {
+	public short getOffsetX2() {
 		return offsetX2;
 	}
 
-	public void setOffsetX2(UnsignedShort offsetX2) {
+	public void setOffsetX2(short offsetX2) {
 		this.offsetX2 = offsetX2;
 	}
 
-	public UnsignedShort getOffsetY2() {
+	public short getOffsetY2() {
 		return offsetY2;
 	}
 
-	public void setOffsetY2(UnsignedShort offsetY2) {
+	public void setOffsetY2(short offsetY2) {
 		this.offsetY2 = offsetY2;
 	}
 
@@ -279,6 +282,12 @@ public class Sprite {
 
 	public void setPalette(Palette palette) {
 		this.palette = palette;
+		if (palette == null){
+			logger.fatal("On essaye d'attribuer une palette null : "+getName());
+			logger.fatal("Liste des palettes : "+SpriteManager.palettes.size());
+			System.exit(1);
+		}
+		this.palette_name = palette.getName();
 	}
 
 	public UnsignedShort getInconnu9() {
@@ -336,10 +345,10 @@ public class Sprite {
 		logger.info("Tuile : "+isTuile());
 		logger.info("Largeur : "+getLargeur().getValue());
 		logger.info("Hauteur : "+getHauteur().getValue());
-		logger.info("OffsetX : "+getOffsetX().getValue());
-		logger.info("OffsetY : "+getOffsetY().getValue());
-		logger.info("OffsetX2 : "+getOffsetX2().getValue());
-		logger.info("OffsetY2 : "+getOffsetY2().getValue());
+		logger.info("OffsetX : "+getOffsetX());
+		logger.info("OffsetY : "+getOffsetY());
+		logger.info("OffsetX2 : "+getOffsetX2());
+		logger.info("OffsetY2 : "+getOffsetY2());
 		logger.info("Palette : "+getPalette().getName());
 		logger.info("Buffer Position : "+getBufPos());
 		logger.info("Couleur Transparence : "+getCouleurTrans().getValue());
@@ -352,5 +361,13 @@ public class Sprite {
 		logger.info("Taille unzip : "+getTaille_unzip().getValue());
 		logger.info("Taille zip : "+getTaille_zip().getValue());
 		logger.info("Type : "+getType().getValue());
+	}
+
+	public String getPaletteName() {
+		return palette_name;
+	}
+
+	public void setPalette_name(String palette_name) {
+		this.palette_name = palette_name;
 	}
 }

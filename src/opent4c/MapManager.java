@@ -2,8 +2,14 @@ package opent4c;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,6 +38,7 @@ import t4cPlugin.FileLister;
 import t4cPlugin.IG_Menu;
 import t4cPlugin.Places;
 import t4cPlugin.MapPixel;
+import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.PointsManager;
 import tools.DataInputManager;
@@ -70,6 +77,8 @@ public class MapManager implements Screen{
 	private Group menu, sprites, infos, tiles;
 	private boolean debug = true;
 	private boolean render_infos = true;
+	private boolean menu_poped = false;
+	private IG_Menu pop_up;
 	private static boolean stage_ready = true;
 	
 	public MapManager(){
@@ -275,6 +284,7 @@ public class MapManager implements Screen{
 	 */
 	public void clearMenu(){
 		menu.clear();
+		menu_poped = false;
 	}
 	
 	/**
@@ -283,7 +293,7 @@ public class MapManager implements Screen{
 	 * @return informations from a MapPixel and a point
 	 */
 	private String getInfoPixel(Point point, MapPixel pixel) {
-		return point.x +","+ point.y +" "+pixel.getAtlas()+" "+pixel.getTex()+" id : "+pixel.getId()+" Modulo : "+pixel.getModulo().x+","+pixel.getModulo().y;
+		return point.x +","+ point.y +" "+pixel.getAtlas()+" "+pixel.getTex()+" id : "+pixel.getId()+" Modulo : "+pixel.getModulo().x+","+pixel.getModulo().y+" Palette : "+pixel.getPalette();
 	}
 	
 	/**
@@ -292,6 +302,7 @@ public class MapManager implements Screen{
 	 * @param screenY
 	 */
 	public void pop_menu(int screenX, int screenY) {
+		setMenu_poped(true);
 		Point p = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		if (worldmap.get(0).getPixelAtCoord("v2_worldmap", p) != null){
@@ -300,20 +311,23 @@ public class MapManager implements Screen{
 			logger.info(status);
 			if(px.isTuile()){
 
-				TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : "+px.getAtlas()+" "+px.getTex(),style);
+				TextButton pixel_info0 = new TextButton(px.getAtlas()+" "+px.getTex(),style);
 				TextButton pixel_info1 = new TextButton("id : "+getIdAtCoordOnMap("v2_worldmap", PointsManager.getPoint(p.x, p.y))+" Modulo : "+px.getModulo().x+","+px.getModulo().y,style);
-				TextButton pixel_info2 = new TextButton("ettre ici les infos concernant l'id",style);
+				TextButton pixel_info2 = new TextButton("Palette : "+px.getPalette(),style);
+				TextButton pixel_info3 = new TextButton("Actions : (M)arquer",style);
 				pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
 				pixel_info1.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+25));
 				pixel_info2.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+45));
+				pixel_info3.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+65));
 
 				Sprite sp = worldmap.get(0).getTileAtCoord("v2_worldmap", p);
-				sp.setPosition(screenX-16+pixel_info1.getWidth()/2,(int)(camera.viewportHeight-screenY+73));
-				
-				menu.addActor(new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),100));
+				sp.setPosition(screenX-16+pixel_info1.getWidth()/2,(int)(camera.viewportHeight-screenY+85));
+				pop_up = new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),(5 + 16 + 65 + 10),p);
+				menu.addActor(pop_up);
 				menu.addActor(pixel_info0);
 				menu.addActor(pixel_info1);
 				menu.addActor(pixel_info2);
+				menu.addActor(pixel_info3);
 				menu.addActor(new Acteur(sp));
 				
 			}else{
@@ -323,13 +337,15 @@ public class MapManager implements Screen{
 					Sprite sp = worldmap.get(0).getSpriteAtCoord("v2_worldmap", p);
 					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
 					sp.flip(false, true);
-					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) sp.getWidth(), (int) sp.getHeight()));
+					//pop_up = new IG_Menu(screenX,(int) camera.viewportHeight-screenY,screen+20),(5 + 16 + 65 + 10),p);
+					///menu.addActor(pop_up);
 					menu.addActor(new Acteur(sp));
-					
+					logger.info("Atlas : "+px.getAtlas()+" Tex : "+px.getTex()+" ID : "+px.getId()+" Modulo : "+px.getModulo()+" Offset : "+px.getOffset()+"Palette : "+px.getPalette());
 				}else{
 					TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : ID "+px.getId()+" inconnu",style);
 					pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
-					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) (pixel_info0.getWidth()+20),(int) (pixel_info0.getHeight()+10)));
+					//pop_up = new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),(5 + 16 + 65 + 10),p);
+					//menu.addActor(pop_up);
 					menu.addActor(pixel_info0);
 					
 				}
@@ -673,6 +689,33 @@ public class MapManager implements Screen{
 		status.setText(place.getNom());
 		status.getColor().a = 1f;
 		status.addAction(Actions.alpha(0f, 2));
+	}
+
+	public boolean isMenuPoped() {
+		return menu_poped;
+	}
+
+	public void setMenu_poped(boolean menu_poped) {
+		this.menu_poped = menu_poped;
+	}
+
+	/**
+	 * 
+	 */
+	public void doActionMenuMark(Point p) {
+		Point point = PointsManager.getPoint((int)((p.x+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((p.y+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
+		MapPixel px = SpriteData.getPixelFromId(getIdAtCoordOnMap("v2_worldmap", point));
+		PrintWriter error_log = null;
+		try {
+			error_log = new PrintWriter(new BufferedWriter(new FileWriter(FilesPath.getErrorLogFilePath(),true)));
+		} catch (IOException e) {
+			logger.fatal(e);
+			System.exit(1);
+		}
+		error_log.append("mauvaise tuile : "+getInfoPixel(point, px)+System.lineSeparator());
+		error_log.flush();
+		error_log.close();
+		logger.info("Tuile marquée comme mauvaise : "+getInfoPixel(point, px));
 	}
 	
 }

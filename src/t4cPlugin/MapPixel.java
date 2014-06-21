@@ -20,14 +20,16 @@ public class MapPixel implements Serializable{
 	private Point offset;
 	private Point modulo;
 	private int id;
+	private String palette;
 	
-	public MapPixel(boolean tuile, String atlas, String tex, Point offset, Point modulo, int id){
+	public MapPixel(boolean tuile, String atlas, String tex, Point offset, Point modulo, int id, String palette){
 		this.tuile = tuile;
 		this.atlas = atlas;
 		this.name = new SpriteName(tex);
 		this.offset = offset;
 		this.modulo = modulo;
 		this.id = id;
+		this.setPalette(palette);
 	}
 
 	public String getTex() {
@@ -95,5 +97,13 @@ public class MapPixel implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getPalette() {
+		return palette;
+	}
+
+	public void setPalette(String palette) {
+		this.palette = palette;
 	}
 }

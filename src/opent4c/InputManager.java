@@ -4,6 +4,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import t4cPlugin.Places;
+import t4cPlugin.utils.PointsManager;
 import t4cPlugin.utils.RunnableCreatorUtil;
 import t4cPlugin.utils.ThreadsUtil;
 
@@ -245,7 +246,9 @@ public class InputManager implements InputProcessor{
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (button == Buttons.LEFT){
 			mouseLeft = true;
-			manager.pop_menu(screenX, screenY);
+			//if(manager.isMenuPoped())manager.clearMenu();
+			//if(!manager.isMenuPoped())manager.pop_menu(screenX, screenY);
+			manager.doActionMenuMark(PointsManager.getPoint(screenX, screenY));
 		}
 		if (button == Buttons.RIGHT) mouseRight = true;
 		if (button == Buttons.MIDDLE) mouseMiddle = true;
@@ -255,7 +258,6 @@ public class InputManager implements InputProcessor{
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		if (mouseLeft & button == Buttons.LEFT){
-			manager.clearMenu();
 		}
 		if (button == Buttons.LEFT){
 			mouseLeft = false;

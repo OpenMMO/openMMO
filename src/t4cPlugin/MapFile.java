@@ -67,7 +67,7 @@ public class MapFile implements Serializable{
 	}
 	
 	public void addPixel(Point coord, boolean tuile, String atlas, String tex, Point offset, Point modulo, int id){
-		pixels.put(coord, new MapPixel(tuile, atlas, tex, offset, modulo, id));
+		pixels.put(coord, new MapPixel(tuile, atlas, tex, offset, modulo, id, "foo"));
 	}
 	
 	public void addPixel(Point coord, MapPixel pixel){

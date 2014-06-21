@@ -20,6 +20,18 @@ public class FilesPath {
 	}
 
 	/**
+	 * @return the error log file path
+	 */
+	public static String getErrorLogFilePath(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("errors.log");
+		
+		return sb.toString();
+	}
+	
+	/**
 	 * @return the sprite path
 	 */
 	public static String getSpritePath()

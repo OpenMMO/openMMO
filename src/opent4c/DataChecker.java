@@ -17,6 +17,8 @@ import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.MD5Checker;
+import t4cPlugin.utils.RunnableCreatorUtil;
+import t4cPlugin.utils.ThreadsUtil;
 
 /**
  * Checks data and decodes what's missing.
@@ -25,10 +27,15 @@ import t4cPlugin.utils.MD5Checker;
  */
 public class DataChecker {
 
-	 private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
-	 private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
-	 public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
-	 //TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
+	private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
+	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	private static boolean sprite_data_is_ok = false;
+	private static boolean maps_are_ok = false;
+	private static boolean atlas_are_ok = false;
+	private static boolean sprites_are_ok = false;
+	public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
+	public final static int nb_expected_atlas = 641;
+	//TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
 	
 	/**
 	 * Checks source data, then atlases, and finally maps.
@@ -38,12 +45,79 @@ public class DataChecker {
 		FilesPath.init();
 		logger.info("Vérification des données source");
 		checkSourceData();
-		logger.info("Vérification des atlas");
-		checkAtlas();
-		logger.info("Vérification des données de sprites");
-		createSpriteDataIfAbsent();
-		logger.info("Vérification des cartes");
-		checkMap();
+		SpriteUtils.loadIdsFromFile();
+		checkWhatNeedsToBeDone();
+		//checkAtlas();
+		//createSpriteDataIfAbsent();
+		//checkMap();
+		makeSureEverythingIsOk();
+		Main.charger();
+	}
+
+	/**
+	 * 
+	 */
+	private static void makeSureEverythingIsOk() {
+		loadingStatus.waitUntilSpriteDataIsWritten();
+		loadingStatus.waitUntilMapsAreDecrypted();
+		loadingStatus.waitUntilSpritesPackaged();
+		loadingStatus.waitUntilTilesPackaged();
+	}
+
+	/**
+	 * sets booleans to know what has to be done and what has already be done. with that, we only do what's needed.
+	 */
+	private static void checkWhatNeedsToBeDone() {
+		//présence sprite_data non vide
+		File sprite_data = new File(FilesPath.getSpriteDataFilePath());
+		if (sprite_data.exists() && sprite_data.length() != 0){
+			sprite_data_is_ok = true;
+		}
+		logger.info("TEST présence sprite_data : "+sprite_data_is_ok);
+		//présence cartes décryptées
+		List<File> mapFiles = SourceDataManager.getMaps();
+		List<File> decryptedMaps = new ArrayList<File>();
+		decryptedMaps = FileLister.lister(new File(FilesPath.getMapDataDirectoryPath()), ".map.decrypt");
+		//TODO trouver mieux que ça. md5 peut-être?
+		if (mapFiles.size() == decryptedMaps.size()){
+			maps_are_ok  = true;
+		}
+		logger.info("TEST présence cartes : "+maps_are_ok);
+
+		//présence des atlas
+		int nb_atlas = FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas").size()+FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas").size();
+		if (nb_atlas >= nb_expected_atlas){
+			atlas_are_ok  = true;
+		}
+		logger.info("TEST présence atlas : "+atlas_are_ok);
+
+		//présence des sprites
+		// TODO Trouver mieux pour vérifier la présence des sprites.
+		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
+		if(nb_sprites >= (SpriteUtils.nb_expected_sprites-delta_ok)){
+			sprites_are_ok = true;
+		}
+		logger.info("TEST présence sprites : "+sprites_are_ok);
+
+		if (!maps_are_ok){
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getMapExtractorRunnable());
+		}
+		
+		if (!sprites_are_ok){
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteExtractorRunnable(true));
+		}
+		
+		if (!sprite_data_is_ok){
+			if(sprites_are_ok)ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteExtractorRunnable(false));
+			loadingStatus.waitUntilDdaFilesProcessed();
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteDataCreatorRunnable());
+		}
+		
+		if(!atlas_are_ok){
+			if (!sprites_are_ok) loadingStatus.waitUntilDdaFilesProcessed();
+			AssetsLoader.pack_sprites();
+			AssetsLoader.pack_tuiles();
+		}
 	}
 
 	/**
@@ -80,9 +154,16 @@ public class DataChecker {
 	private static void stopIfAbsentFiles(List<File> absentFiles) {
 		if (!absentFiles.isEmpty()){
 			logger.fatal("Fichier(s) manquant(s) : "+absentFiles);
-			//TODO intégrer ici la possibilité de télécharger ces fichiers à partir d'une liste de mirroirs
+			downloadGameFiles(absentFiles);
 			System.exit(1);
 		}
+	}
+
+	/**
+	 * @param files
+	 */
+	private static void downloadGameFiles(List<File> files) {
+		//TODO intégrer ici la possibilité de télécharger ces fichiers à partir d'une liste de mirroirs		
 	}
 
 	/**
@@ -109,7 +190,7 @@ public class DataChecker {
 	private static void stopIfBadChecksum(List<File> badChecksumFiles) {
 		if (!badChecksumFiles.isEmpty()){
 			logger.fatal("Fichier(s) corrompu(s) : "+badChecksumFiles);
-			//TODO intégrer ici la possibilité de télécharger ces fichiers à partir d'une liste de mirroirs
+			downloadGameFiles(badChecksumFiles);
 			System.exit(1);
 		}		
 	}
@@ -117,11 +198,12 @@ public class DataChecker {
 	/**
 	 * Checks the number of atlases and build them if some is missing
 	 */
+	@Deprecated
 	private static void checkAtlas() {
 		UpdateScreenManagerStatus.checkingAtlas();
 		// TODO Trouver mieux pour vérifier la présence des atlas.
 		int nb_atlas = FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas").size()+FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas").size();
-		if (nb_atlas < 620){
+		if (nb_atlas < nb_expected_atlas){
 			buildAtlas();
 		}
 	}
@@ -130,6 +212,7 @@ public class DataChecker {
 	 * Checks the number of present sprites and build them if some are missing.
 	 * Then build atlases.
 	 */
+	@Deprecated
 	private static void buildAtlas() {
 		SpriteUtils.loadIdsFromFile();
 		// TODO Trouver mieux pour vérifier la présence des sprites.
@@ -183,6 +266,7 @@ public class DataChecker {
 	/**
 	 * Builds Sprites from source data.
 	 */
+	@Deprecated
 	private static void buildSprites() {
 		SpriteManager.decryptDPD();
 		SpriteManager.decryptDID();
@@ -192,11 +276,11 @@ public class DataChecker {
 	/**
 	 * Checks if sprite_data file is present and build it if absent.
 	 */
+	@Deprecated
 	private static void createSpriteDataIfAbsent() {
-		loadingStatus.waitUntilDdaFilesProcessed();
 		UpdateScreenManagerStatus.checkingSpriteData();
-		SpriteUtils.loadIdsFromFile();
 		if (!new File(FilesPath.getSpriteDataFilePath()).exists()){
+			loadingStatus.waitUntilDdaFilesProcessed();
 			SpriteData.create();
 		}
 	}
@@ -204,6 +288,7 @@ public class DataChecker {
 	/**
 	 * Checks if maps are present and decrypt them if absent.
 	 */
+	@Deprecated
 	private static void checkMap() {
 		UpdateScreenManagerStatus.checkingMaps();
 		List<File> mapFiles = SourceDataManager.getMaps();
@@ -211,7 +296,7 @@ public class DataChecker {
 		decryptedMaps = FileLister.lister(new File(FilesPath.getMapDataDirectoryPath()), ".map.decrypt");
 		//TODO trouver mieux que ça. md5 peut-être?
 		if (mapFiles.size() != decryptedMaps.size()){
-			decryptMaps(mapFiles);
+			decryptMaps();
 		}
 	}
 	
@@ -219,8 +304,9 @@ public class DataChecker {
 	 * Decrypts maps from source data
 	 * @param mapFiles
 	 */
-	private static void decryptMaps(List<File> mapFiles) {
+	public static void decryptMaps() {
 		File f = null;
+		List<File> mapFiles = SourceDataManager.getMaps();
 		Iterator<File> iter_maps = mapFiles.iterator();
 		while (iter_maps.hasNext()){
 			f = iter_maps.next();

@@ -293,7 +293,7 @@ public class SpriteManager {
 				sprite.setSpriteName(new SpriteName("Dtm (1, 2)"));
 			}
 			if (sprite.getName().equals("Dtm1 3")){
-				sprite.setSpriteName(new SpriteName("Dtm (1,3)"));
+				sprite.setSpriteName(new SpriteName("Dtm (1, 3)"));
 			}
 			if (sprite.getName().equals("Dtm1 4")){
 				sprite.setSpriteName(new SpriteName("Dtm (1, 4)"));
@@ -382,7 +382,57 @@ public class SpriteManager {
 				sprite.setSpriteName(new SpriteName("Floor Wooden (2, 3)"));
 			}
 		}
-
+		//Il manque un espace après la virgule dans le nom des tuiles Lava(x,x) ça empêche le calcul du modulo...
+		if (sprite.getChemin().equals("Lava")){
+			if (sprite.getName().equals("Lava (1,1)")){
+				sprite.setSpriteName(new SpriteName("Lava (1, 1)"));
+			}
+			if (sprite.getName().equals("Lava (1,2)")){
+				sprite.setSpriteName(new SpriteName("Lava (1, 2)"));
+			}
+			if (sprite.getName().equals("Lava (1,3)")){
+				sprite.setSpriteName(new SpriteName("Lava (1, 3)"));
+			}
+			if (sprite.getName().equals("Lava (1,4)")){
+				sprite.setSpriteName(new SpriteName("Lava (1, 4)"));
+			}
+			if (sprite.getName().equals("Lava (2,1)")){
+				sprite.setSpriteName(new SpriteName("Lava (2, 1)"));
+			}
+			if (sprite.getName().equals("Lava (2,2)")){
+				sprite.setSpriteName(new SpriteName("Lava (2, 2)"));
+			}
+			if (sprite.getName().equals("Lava (2,3)")){
+				sprite.setSpriteName(new SpriteName("Lava (2, 3)"));
+			}
+			if (sprite.getName().equals("Lava (2,4)")){
+				sprite.setSpriteName(new SpriteName("Lava (2, 4)"));
+			}
+			if (sprite.getName().equals("Lava (3,1)")){
+				sprite.setSpriteName(new SpriteName("Lava (3, 1)"));
+			}
+			if (sprite.getName().equals("Lava (3,2)")){
+				sprite.setSpriteName(new SpriteName("Lava (3, 2)"));
+			}
+			if (sprite.getName().equals("Lava (3,3)")){
+				sprite.setSpriteName(new SpriteName("Lava (3, 3)"));
+			}
+			if (sprite.getName().equals("Lava (3,4)")){
+				sprite.setSpriteName(new SpriteName("Lava (3, 4)"));
+			}
+			if (sprite.getName().equals("Lava (4,1)")){
+				sprite.setSpriteName(new SpriteName("Lava (4, 1)"));
+			}
+			if (sprite.getName().equals("Lava (4,2)")){
+				sprite.setSpriteName(new SpriteName("Lava (4, 2)"));
+			}
+			if (sprite.getName().equals("Lava (4,3)")){
+				sprite.setSpriteName(new SpriteName("Lava (4, 3)"));
+			}
+			if (sprite.getName().equals("Lava (4,4)")){
+				sprite.setSpriteName(new SpriteName("Lava (4, 4)"));
+			}
+		}
 	}
 
 	/**
@@ -411,12 +461,13 @@ public class SpriteManager {
 	 * Extracts sprites from .dda files
 	 */
 	public static void decryptDDA(boolean doWrite){
+		logger.info("Décryptage des fichiers DDA.");
 		File f = null;
 		List<File> ddas = SourceDataManager.getDDA();
 		Iterator<File>iter_dda = ddas.iterator();
 		while (iter_dda.hasNext()){
 			f = iter_dda.next();
-			logger.info("Décryptage du fichier : "+f.getName());
+			//logger.info("Décryptage du fichier : "+f.getName());
 			ThreadsUtil.executeInThread(RunnableCreatorUtil.getDDAExtractorRunnable(f, doWrite));
 		}
 	}
@@ -427,7 +478,7 @@ public class SpriteManager {
 	public static void decryptDID(){
 		SpriteManager.initSpriteList();
 		File f = SourceDataManager.getDID();
-		logger.info("Décryptage du fichier "+f.getName());
+		logger.info("Décryptage du fichier DID.");
 		ByteBuffer buf = null;
 		ByteBuffer header;
 		ByteBuffer bufUnZip;
@@ -509,7 +560,7 @@ public class SpriteManager {
 		byte azt;*/
 		
 		File f = SourceDataManager.getDPD();
-		logger.info("Lecture du fichier "+f.getName());
+		logger.info("Décryptage du fichier DPD.");
 		
 		header = ByteBuffer.allocate(41);
 		
@@ -554,8 +605,8 @@ public class SpriteManager {
 		
 		nb_palettes_from_dpd = header_taille_unZip/(64 + 768);
 		palettes = SpriteUtils.extractPalettes(bufUnZip, nb_palettes_from_dpd);
-		//TODO Checksum ou tout du moins moyen de contrôle
-		logger.info("Fichier "+f.getName()+" lu : "+palettes.size()+" palettes.");
+		//TODO moyen de contrôle
+		//logger.info("Fichier "+f.getName()+" lu : "+palettes.size()+" palettes.");
 		setDpd_done(true);
 	}
 

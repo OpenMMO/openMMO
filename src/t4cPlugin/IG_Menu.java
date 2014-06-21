@@ -1,5 +1,7 @@
 package t4cPlugin;
 
+import java.awt.Point;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -8,16 +10,18 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class IG_Menu extends Actor{
 	ShapeRenderer shapeRenderer = new ShapeRenderer();
-	int x = 0;
-	int y = 0;
-	int w = 10;
-	int h = 10;
+	private int x = 0;
+	private int y = 0;
+	private int w = 10;
+	private int h = 10;
+	private Point point;
 	
-	public IG_Menu(int x, int y, int w, int h){
+	public IG_Menu(int x, int y, int w, int h, Point p){
 		this.x = x;
 		this.y = y;
 		this.w = w;
 		this.h = h;
+		this.setPoint(p);
 	}
     @Override
     public void draw(Batch batch, float parentAlpha) {
@@ -28,5 +32,10 @@ public class IG_Menu extends Actor{
         shapeRenderer.end();
         batch.begin();
     }
-	
+	public Point getPoint() {
+		return point;
+	}
+	public void setPoint(Point point) {
+		this.point = point;
+	}	
 }

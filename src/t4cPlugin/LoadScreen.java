@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
+@Deprecated
 public class LoadScreen implements Screen{
 	private SpriteBatch batch;
 	private BitmapFont font;

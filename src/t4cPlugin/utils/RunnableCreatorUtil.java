@@ -2,7 +2,10 @@ package t4cPlugin.utils;
 
 import java.io.File;
 
+import opent4c.DataChecker;
 import opent4c.MapManager;
+import opent4c.SpriteData;
+import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
 import opent4c.UpdateScreenManagerStatus;
 
@@ -109,6 +112,65 @@ public class RunnableCreatorUtil {
 		Runnable r = new Runnable(){
 			public void run(){
 				SpriteUtils.decrypt_dda_file(f,doWrite);
+			}
+		};
+		return r;
+	}
+	
+	public static Runnable getDataCheckerRunnable(){
+		Runnable r = new Runnable(){
+			public void run(){
+				DataChecker.runCheck();
+			}
+		};
+		return r;
+	}
+	
+	public static Runnable getModuloComputerRunnable(final File tileDir){
+		Runnable r = new Runnable(){
+			public void run(){
+				SpriteData.computeModulo(tileDir);
+				loadingStatus.addOneComputedModulo();
+				UpdateScreenManagerStatus.setSubStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
+			}
+		};
+		return r;
+	}
+
+	/**
+	 * @return
+	 */
+	public static Runnable getMapExtractorRunnable() {
+		Runnable r = new Runnable(){
+			public void run(){
+				DataChecker.decryptMaps();
+			}
+		};
+		return r;
+	}
+
+	/**
+	 * @return
+	 */
+	public static Runnable getSpriteDataCreatorRunnable() {
+		Runnable r = new Runnable(){
+			public void run(){
+				SpriteData.create();
+			}
+		};
+		return r;
+	}
+
+	/**
+	 * @param doWrite
+	 * @return
+	 */
+	public static Runnable getSpriteExtractorRunnable(final boolean doWrite) {
+		Runnable r = new Runnable(){
+			public void run(){
+				SpriteManager.decryptDPD();
+				SpriteManager.decryptDID();
+				SpriteManager.decryptDDA(doWrite);
 			}
 		};
 		return r;

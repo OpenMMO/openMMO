@@ -410,7 +410,7 @@ public class GdxMap implements Screen, InputProcessor{
 				Sprite sp = new Sprite(texRegion);
 				sp.setPosition(screenX-16+pixel_info1.getWidth()/2,(int)(camera.viewportHeight-screenY+73));
 				
-				menu.addActor(new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),100));
+				//menu.addActor(new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),100));
 				menu.addActor(pixel_info0);
 				menu.addActor(pixel_info1);
 				menu.addActor(pixel_info2);
@@ -422,7 +422,7 @@ public class GdxMap implements Screen, InputProcessor{
 					Sprite sp = new Sprite(loadingStatus.getTextureAtlasSprite(px.getAtlas()).findRegion(px.getTex()));
 					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
 					
-					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) sp.getWidth(), (int) sp.getHeight()));
+					//menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) sp.getWidth(), (int) sp.getHeight()));
 
 					menu.addActor(new Acteur(sp));
 					
@@ -430,7 +430,7 @@ public class GdxMap implements Screen, InputProcessor{
 					
 					TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : ID "+px.getId()+" inconnu",style);
 					pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
-					menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) (pixel_info0.getWidth()+20),(int) (pixel_info0.getHeight()+10)));
+					//menu.addActor(new IG_Menu(screenX,(int)camera.viewportHeight-screenY,(int) (pixel_info0.getWidth()+20),(int) (pixel_info0.getHeight()+10)));
 					menu.addActor(pixel_info0);
 					
 				}

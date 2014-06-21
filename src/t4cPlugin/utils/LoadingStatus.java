@@ -28,7 +28,9 @@ public enum LoadingStatus {
 	private final int tilesAtlasMax = 5000;
 	//TODO perfo check number of sprites for accordingly sizing lists.
 	private final int spritesAtlasMax = 5000;
-	
+	private int nb_computed_modulos = 0;
+	private int nb_modulos_to_compute = -1;
+	private int sprites_loaded_from_dda = 0;
 	//TODO perfo Check performance of Collections.synchronizedList
 	private List<String> tilesAtlasToPackage = Collections.synchronizedList(new ArrayList<String>(tilesAtlasMax));
 	private List<String> tilesAtlasPackaged = Collections.synchronizedList(new ArrayList<String>(tilesAtlasMax));
@@ -41,9 +43,6 @@ public enum LoadingStatus {
 	//TODO Is the atlas number files not the same than spritesAtlasPackaged?
 	private int nbSpritesAtlas = 0;
 	private Map<String, TextureAtlas> sprite_atlas = new ConcurrentHashMap<String, TextureAtlas>(spritesAtlasMax);
-	
-	private List<String> ddaToExtract = Collections.synchronizedList(new ArrayList<String>(SourceDataManager.getDDA().size()));
-	private List<String> ddaExtracted = Collections.synchronizedList(new ArrayList<String>(SourceDataManager.getDDA().size()));
 	
 	private final int waitLoadingTime = 100;
 	
@@ -174,9 +173,14 @@ public enum LoadingStatus {
 	}
 
 	public boolean areDdaFilesProcessed() {
-		//TODO ça chie dans la colle au niveau de la création de sprite_data lorsque les sprites sont déjà extraits.
+		//TODO ça chie dans la colle au niveau de la création de sprite_data lorsque les sprites sont déjà extraits. il faut ajouter un truc pour attendre l'extraction des infos.
+		if(sprites_loaded_from_dda < (SpriteUtils.nb_expected_sprites-DataChecker.delta_ok)){
+			return false;
+		}
 		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-		if(nb_sprites < (SpriteUtils.nb_expected_sprites-DataChecker.delta_ok))return false;
+		if(nb_sprites < (SpriteUtils.nb_expected_sprites-DataChecker.delta_ok)){
+			return false;
+		}
 		return true;
 	}
 	
@@ -204,6 +208,14 @@ public enum LoadingStatus {
 		this.nbSpritesAtlas ++;
 	}
 	
+	public synchronized void addOneSpriteFromDDA(){
+		sprites_loaded_from_dda++;
+	}
+
+	public void addOneComputedModulo(){
+		nb_computed_modulos++;
+	}
+	
 	public Collection<TextureAtlas> getTexturesAtlasTiles()
 	{
 		return tile_atlas.values();
@@ -212,20 +224,6 @@ public enum LoadingStatus {
 	public Collection<TextureAtlas> getTexturesAtlasSprites()
 	{
 		return sprite_atlas.values();
-	}
-
-	/**
-	 * Adds a dda file to be extracted
-	 */
-	public void addDDAtoExtract(String ddaFileName) {
-		ddaToExtract.add(ddaFileName);
-	}
-	
-	/**
-	 * Adds an extracted dda file
-	 */
-	public void addExtractedDDA(String ddaFileName) {
-		addElementToLoadedList(ddaFileName, ddaExtracted, ddaToExtract);
 	}
 	
 	/**
@@ -236,5 +234,85 @@ public enum LoadingStatus {
 			waitLoaded();
 		}
 		SpriteManager.setDda_done(true);
+	}
+
+	/**
+	 * Wait until modulos are computed. This will pause the thread.
+	 */
+	public void waitUntilModulosAreComputed() {
+		while (!areModulosComputed()) {
+			waitLoaded();
+		}		
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean areModulosComputed() {
+		if(nb_computed_modulos < nb_modulos_to_compute) return false;
+		return true;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getNbComputedModulos() {
+		return nb_computed_modulos;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getNbModulosToBeComputed() {
+		return nb_modulos_to_compute;
+	}
+
+	/**
+	 * @param size
+	 */
+	public void setNbModulosToBeComputed(int nb) {
+		this.nb_modulos_to_compute = nb;
+	}
+
+	/**
+	 * 
+	 */
+	public void waitUntilSpriteDataIsWritten() {
+		while (!isSpriteDataWritten()) {
+			waitLoaded();
+		}		
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean isSpriteDataWritten() {
+		File sprite_data = new File(FilesPath.getSpriteDataFilePath());
+		if (!sprite_data.exists()){
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * 
+	 */
+	public void waitUntilMapsAreDecrypted() {
+		while (!AreMapsDecrypted()) {
+			waitLoaded();
+		}	
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean AreMapsDecrypted() {
+		List<File> mapFiles = SourceDataManager.getMaps();
+		List<File> decryptedMaps = new ArrayList<File>();
+		decryptedMaps = FileLister.lister(new File(FilesPath.getMapDataDirectoryPath()), ".map.decrypt");
+		if (mapFiles.size() != decryptedMaps.size()){
+			return false;
+		}
+		return true;
 	}
 }

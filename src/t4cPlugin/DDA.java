@@ -27,7 +27,7 @@ import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.DPDPalette.Pixel;
 import tools.DataInputManager;
-
+@Deprecated
 public class DDA {
 
 	private static Logger logger = LogManager.getLogger(DDA.class.getSimpleName());
@@ -525,7 +525,8 @@ public class DDA {
 		}
 		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : "+didsprite.type+" "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.getNom());
 	}
-		
+	
+	@Deprecated
 	public static class DDASprite{
 		int[] header = new int[7];
 		long taille_zip;//int

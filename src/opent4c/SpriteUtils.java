@@ -33,6 +33,7 @@ import org.apache.logging.log4j.Logger;
 import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.LoadingStatus;
+import tools.ByteArrayToNumber;
 import tools.UnsignedInt;
 import tools.DataInputManager;
 import tools.UnsignedShort;
@@ -333,8 +334,8 @@ public class SpriteUtils {
 		File f = null;
 		if (sprite.isTuile()){
 			//TODO vérifier un jour à quoi sert cet offset sur le premier de la zone de tuiles
-			sprite.setOffsetX(new UnsignedShort());
-			sprite.setOffsetY(new UnsignedShort());
+			sprite.setOffsetX((short)0);
+			sprite.setOffsetY((short)0);
 			File dir = new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin());
 			dir.mkdirs();
 			f = new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin()+File.separator+sprite.getName()+".png");
@@ -436,31 +437,28 @@ public class SpriteUtils {
 		}		
 	}
 
-	/*static byte[] getDDASignature(ByteBuffer buf) {
-		byte[] result = new byte[4];
-		result[0] = buf.get();
-		result[1] = buf.get();
-		result[2] = buf.get();
-		result[3] = buf.get();
-		return result;
-	}*/
-
 	/**
 	 * Extract a sprite from a .dda file
 	 * @param buf
 	 * @param sprite
 	 */
 	static void extractDDASprite(ByteBuffer buf, Sprite sprite) {
-		sprite.setPalette(extractPalette(sprite));
+		Palette p = extractPalette(sprite);
+		if(p == null){
+			logger.fatal("On n'a pas trouvé une palette : "+sprite.getName());
+			System.exit(1);
+		}
+		sprite.setPalette(p);
+		logger.info("Palette : "+sprite.getName()+"<=>"+sprite.getPaletteName());
 		ByteBuffer header_buf = extractHeaderBuffer(buf);
 		sprite.setOmbre(new UnsignedShort(extractShort(header_buf,true)));
 		sprite.setType(new UnsignedShort(extractShort(header_buf,true)));
 		sprite.setHauteur(new UnsignedShort(extractShort(header_buf,true)));
 		sprite.setLargeur(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setOffsetY(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setOffsetX(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setOffsetY2(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setOffsetX2(new UnsignedShort(extractShort(header_buf,true)));
+		sprite.setOffsetY(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
+		sprite.setOffsetX(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
+		sprite.setOffsetY2(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
+		sprite.setOffsetX2(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
 		sprite.setCouleurTrans(new UnsignedShort(extractShort(header_buf,true)));
 		sprite.setInconnu9(new UnsignedShort(extractShort(header_buf,true)));
 		sprite.setTaille_unzip(new UnsignedInt(extractInt(header_buf,true)));
@@ -520,32 +518,31 @@ public class SpriteUtils {
 	}
 
 	/**
+	 * 	essai de correspondance des palettes
+	 *  dans l'idée, on cherche si le nom du sprite contient le nom d'une palette
+	 *	sinon, on attribue la palette Bright1
 	 * @return
 	 */
 	private static Palette extractPalette(Sprite sprite) {
-		Palette result = null;
-		//essai de correspondance des palettes
+		Palette result = SpriteManager.palettes.get("Bright1");
+		if (result == null){
+			logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+sprite.getName()+" / "+SpriteManager.palettes.containsKey("Bright1"));
+			System.exit(1);
+		}
 		Iterator<String> iter_pal = SpriteManager.palettes.keySet().iterator();
-		Palette bright = null;
 		while (iter_pal.hasNext()){
 			String pal = iter_pal.next();
-			if (pal.equals("Bright1")) bright = SpriteManager.palettes.get(pal);
-			String chemin = sprite.getChemin();
 			String nom = sprite.getName();
-			if (nom.length() >= pal.length()-1){
-				//Si le nom du sprite et le nom de la palette commencent pareil, on attribue la palette au sprite
-				if(nom.substring(0, pal.length()-1).toUpperCase().contains(pal.substring(0, pal.length()-1).toUpperCase()) && result == null){
-					result = SpriteManager.palettes.get(pal);
-					break;
-				}
-			}
-			if(pal.toLowerCase().contains(chemin.toLowerCase()) || chemin.toLowerCase().contains(pal.toLowerCase())){
+			if (nom.contains(pal)){
 				result = SpriteManager.palettes.get(pal);
+				if (result == null){
+					logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+sprite.getName()+" / "+SpriteManager.palettes.containsKey(pal));
+					System.exit(1);
+				}
 				break;
 			}
 		}
-		//Si on a pas trouvé, on attribue la palette Bright1
-		if (result == null) result = bright;
+
 		return result;
 	}
 
@@ -670,7 +667,6 @@ public class SpriteUtils {
 			Sprite sp = SpriteManager.getSprites().get(key);
 			if (sp.getNumDda() == numDDA){
 				sprites_in_dda.put(key, sp);
-				loadingStatus.addDDAtoExtract(f.getName());
 			}
 		}
 		ByteBuffer buf = readDDA(f);
@@ -689,6 +685,7 @@ public class SpriteUtils {
 			}
 			extractDDASprite(buf, sprite);//lit l'entête du sprite et ajoute  les infos de l'entête dans le Sprite
 			//sprite.printInfos();
+			loadingStatus.addOneSpriteFromDDA();
 			if(doWrite){
 				boolean writen = false;
 				writen = doTheWriting(sprite, buf);
@@ -700,7 +697,6 @@ public class SpriteUtils {
 			}
 			if (sprite.getType().getValue() != 9) nb_extracted_sprites++;
 			UpdateScreenManagerStatus.setSubStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+nb_expected_sprites);
-			loadingStatus.addExtractedDDA(f.getName());
 		}
 	}
 
@@ -847,7 +843,7 @@ public class SpriteUtils {
 		for(int i=1 ; i<=nb_palettes ; i++){
 			Palette p = new Palette(bufUnZip);
 			UpdateScreenManagerStatus.setSubStatus("Palettes extraites : "+i+"/"+nb_palettes);
-			result.put(p.nom,p);
+			result.put(p.getNom(),p);
 		}
 		return result;
 	}
