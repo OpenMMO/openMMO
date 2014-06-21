@@ -2,39 +2,46 @@ package opent4c;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.SpriteName;
+import tools.ByteArrayToNumber;
+import tools.UnsignedInt;
+import tools.UnsignedShort;
 
 public class Sprite {
 	
-	private static Logger logger = LogManager.getLogger(Sprite.class.getSimpleName());
+	static Logger logger = LogManager.getLogger(Sprite.class.getSimpleName());
+
 	private SpriteName nom;
 	private String chemin = "";
 	private boolean tuile = false;
 	private ArrayList<Integer> id = new ArrayList<Integer>();
-	private ArrayList<Integer> pos = new ArrayList<Integer>();
-	private int indexation;
-	private int type;//short
-	private int ombre;//short
-	private int largeur;//short
-	private int hauteur;//short
-	private int inconnu9;//short
-	private byte couleurTrans;//short
-	private int offsetX;//short
-	private int offsetY;//short
-	private int offsetX2;//short
-	private int offsetY2;//short
+	//private ArrayList<Integer> pos = new ArrayList<Integer>();
+	private UnsignedInt indexation;
+	private UnsignedShort type;//short
+	private UnsignedShort ombre;//short
+	private UnsignedShort largeur;//short
+	private UnsignedShort hauteur;//short
+	private UnsignedShort inconnu9;//short
+	private UnsignedShort couleurTrans;//short
+	private UnsignedShort offsetX;//short
+	private UnsignedShort offsetY;//short
+	private UnsignedShort offsetX2;//short
+	private UnsignedShort offsetY2;//short
 	private long numDda;
-	private long taille_unzip = -1;
-	private long taille_zip = -1;
+	private UnsignedInt taille_unzip;
+	private UnsignedInt taille_zip;
 	private Palette palette;
 	private int bufPos = -1;
 	private int moduloX = 1;
 	private int moduloY = 1;
+	
 	public Sprite(){}
 	
+	@Deprecated
 	public Sprite(ByteBuffer buf) {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
@@ -71,7 +78,7 @@ public class Sprite {
 		b2 = buf.get();
 		b3 = buf.get();
 		b4 = buf.get();
-		setIndexation(tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1}));
+		setIndexation(new UnsignedInt(new byte[]{b4,b3,b2,b1}));
 		//logger.info("		- Indexation : "+indexation);
 		
 		byte b5,b6,b7,b8;
@@ -83,7 +90,7 @@ public class Sprite {
 		b6 = buf.get();
 		b7 = buf.get();
 		b8 = buf.get();
-		numDda = tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
+		numDda = ByteArrayToNumber.bytesToLong(new byte[]{b1,b2,b3,b4,b5,b6,b7,b8});
 		//logger.info("		- N° DDA : "+numDda);
 		
 		/*Iterator <Integer> iter = AtlasFactory.getIds().keySet().iterator();
@@ -118,7 +125,8 @@ public class Sprite {
 
 	}
 	
-	public Sprite(boolean tuile, String atlas, String tex, int offsetX,	int offsetY, int moduloX, int moduloY, int id) {
+	@Deprecated
+	public Sprite(boolean tuile, String atlas, String tex, UnsignedShort offsetX,	UnsignedShort offsetY, int moduloX, int moduloY, int id) {
 		this.setTuile(tuile);
 		this.chemin = atlas;
 		this.setSpriteName(new SpriteName(tex));
@@ -130,8 +138,8 @@ public class Sprite {
 		this.id.add(id);
 	}
 
-	public int compareTo(Sprite o2) {
-		return getIndexation()-o2.getIndexation();
+	public long compareTo(Sprite o2) {
+		return getIndexation().getValue()-o2.getIndexation().getValue();
 	}
 	
 	public String getName() {
@@ -146,75 +154,75 @@ public class Sprite {
 		this.chemin = chemin;
 	}
 
-	public int getType() {
+	public UnsignedShort getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(UnsignedShort type) {
 		this.type = type;
 	}
 
-	public int getOmbre() {
+	public UnsignedShort getOmbre() {
 		return ombre;
 	}
 
-	public void setOmbre(int ombre) {
+	public void setOmbre(UnsignedShort ombre) {
 		this.ombre = ombre;
 	}
 
-	public int getLargeur() {
+	public UnsignedShort getLargeur() {
 		return largeur;
 	}
 
-	public void setLargeur(int largeur) {
+	public void setLargeur(UnsignedShort largeur) {
 		this.largeur = largeur;
 	}
 
-	public int getHauteur() {
+	public UnsignedShort getHauteur() {
 		return hauteur;
 	}
 
-	public void setHauteur(int hauteur) {
+	public void setHauteur(UnsignedShort hauteur) {
 		this.hauteur = hauteur;
 	}
 
-	public byte getCouleurTrans() {
+	public UnsignedShort getCouleurTrans() {
 		return couleurTrans;
 	}
 
-	public void setCouleurTrans(byte couleurTrans) {
+	public void setCouleurTrans(UnsignedShort couleurTrans) {
 		this.couleurTrans = couleurTrans;
 	}
 
-	public int getOffsetX() {
+	public UnsignedShort getOffsetX() {
 		return offsetX;
 	}
 
-	public void setOffsetX(int offsetX) {
+	public void setOffsetX(UnsignedShort offsetX) {
 		this.offsetX = offsetX;
 	}
 
-	public int getOffsetY() {
+	public UnsignedShort getOffsetY() {
 		return offsetY;
 	}
 
-	public void setOffsetY(int offsetY) {
+	public void setOffsetY(UnsignedShort offsetY) {
 		this.offsetY = offsetY;
 	}
 
-	public int getOffsetX2() {
+	public UnsignedShort getOffsetX2() {
 		return offsetX2;
 	}
 
-	public void setOffsetX2(int offsetX2) {
+	public void setOffsetX2(UnsignedShort offsetX2) {
 		this.offsetX2 = offsetX2;
 	}
 
-	public int getOffsetY2() {
+	public UnsignedShort getOffsetY2() {
 		return offsetY2;
 	}
 
-	public void setOffsetY2(int offsetY2) {
+	public void setOffsetY2(UnsignedShort offsetY2) {
 		this.offsetY2 = offsetY2;
 	}
 
@@ -234,11 +242,11 @@ public class Sprite {
 		this.nom = nom;
 	}
 
-	public int getIndexation() {
+	public UnsignedInt getIndexation() {
 		return indexation;
 	}
 
-	public void setIndexation(int indexation) {
+	public void setIndexation(UnsignedInt indexation) {
 		this.indexation = indexation;
 	}
 
@@ -273,27 +281,27 @@ public class Sprite {
 		this.palette = palette;
 	}
 
-	public int getInconnu9() {
+	public UnsignedShort getInconnu9() {
 		return inconnu9;
 	}
 
-	public void setInconnu9(int inconnu9) {
+	public void setInconnu9(UnsignedShort inconnu9) {
 		this.inconnu9 = inconnu9;
 	}
 
-	public long getTaille_unzip() {
+	public UnsignedInt getTaille_unzip() {
 		return taille_unzip;
 	}
 
-	public void setTaille_unzip(long taille_unzip) {
+	public void setTaille_unzip(UnsignedInt taille_unzip) {
 		this.taille_unzip = taille_unzip;
 	}
 
-	public long getTaille_zip() {
+	public UnsignedInt getTaille_zip() {
 		return taille_zip;
 	}
 
-	public void setTaille_zip(long taille_zip) {
+	public void setTaille_zip(UnsignedInt taille_zip) {
 		this.taille_zip = taille_zip;
 	}
 
@@ -319,5 +327,30 @@ public class Sprite {
 
 	public void setModuloY(int moduloY) {
 		this.moduloY = moduloY;
+	}
+	
+	public void printInfos(){
+		logger.info("Nom : "+getName());
+		logger.info("Chemin : "+getChemin());
+		logger.info("ID : "+getId());
+		logger.info("Tuile : "+isTuile());
+		logger.info("Largeur : "+getLargeur().getValue());
+		logger.info("Hauteur : "+getHauteur().getValue());
+		logger.info("OffsetX : "+getOffsetX().getValue());
+		logger.info("OffsetY : "+getOffsetY().getValue());
+		logger.info("OffsetX2 : "+getOffsetX2().getValue());
+		logger.info("OffsetY2 : "+getOffsetY2().getValue());
+		logger.info("Palette : "+getPalette().getName());
+		logger.info("Buffer Position : "+getBufPos());
+		logger.info("Couleur Transparence : "+getCouleurTrans().getValue());
+		logger.info("Inconnu9 : "+getInconnu9().getValue());
+		logger.info("Indexation : "+getIndexation().getValue());
+		logger.info("ModuloX : "+getModuloX());
+		logger.info("ModuloY : "+getModuloY());
+		logger.info("Num DDA : "+getNumDda());
+		logger.info("Ombre : "+getOmbre().getValue());
+		logger.info("Taille unzip : "+getTaille_unzip().getValue());
+		logger.info("Taille zip : "+getTaille_zip().getValue());
+		logger.info("Type : "+getType().getValue());
 	}
 }

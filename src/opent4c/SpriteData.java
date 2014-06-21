@@ -19,7 +19,6 @@ import t4cPlugin.FileLister;
 import t4cPlugin.MapPixel;
 import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
-import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.PointsManager;
 
 public class SpriteData {
@@ -90,9 +89,9 @@ public class SpriteData {
 	 */
 	public static void create(){
 		UpdateScreenManagerStatus.setSubStatus("Création de sprite_data");
-		SpriteManager.decryptDPD();
-		SpriteManager.decryptDID();
-		SpriteManager.decryptDDA(false);
+		if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
+		if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
+		if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
 		computeModulos();
 		OutputStreamWriter dat_file = null;
 		try {
@@ -122,14 +121,58 @@ public class SpriteData {
 	 */
 	private static void writeSpriteDataLine(SpriteName key, OutputStreamWriter dat_file) {
 		Sprite sp = SpriteManager.getSprites().get(key);
-		int tuile = 0;
-		if (sp.isTuile()) tuile = 1;
+		String line = buildLine(sp);
 		try {
-			dat_file.write(tuile+";"+sp.getId()+";"+sp.getChemin()+";"+sp.getName()+";"+sp.getType()+";"+sp.getOmbre()+";"+sp.getLargeur()+";"+sp.getHauteur()+";"+sp.getCouleurTrans()+";"+sp.getOffsetX()+";"+sp.getOffsetY()+";"+sp.getOffsetX2()+";"+sp.getOffsetY2()+";"+sp.getNumDda()+";"+sp.getModuloX()+";"+sp.getModuloY()+System.lineSeparator());
+			dat_file.write(line);
 		} catch (IOException e) {
 			logger.fatal(e);
 			System.exit(1);
 		}		
+	}
+
+	/**
+	 * @param sp
+	 * @return
+	 */
+	private static String buildLine(Sprite sp) {
+		int tuile = 0;
+		if (sp.isTuile()) tuile = 1;
+		StringBuilder sb = new StringBuilder();
+		sb.append(tuile);
+		sb.append(";");
+		sb.append(sp.getId());
+		sb.append(";");
+		sb.append(sp.getChemin());
+		sb.append(";");
+		sb.append(sp.getName());
+		sb.append(";");
+		sb.append(sp.getType().getValue());
+		sb.append(";");
+		sb.append(sp.getOmbre().getValue());
+		sb.append(";");
+		sb.append(sp.getLargeur().getValue());
+		sb.append(";");
+		sb.append(sp.getHauteur().getValue());
+		sb.append(";");
+		sb.append(sp.getCouleurTrans().getValue());
+		sb.append(";");
+		sb.append(sp.getOffsetX().getValue());
+		sb.append(";");
+		sb.append(sp.getOffsetY().getValue());
+		sb.append(";");
+		sb.append(sp.getOffsetX2().getValue());
+		sb.append(";");
+		sb.append(sp.getOffsetY2().getValue());
+		sb.append(";");
+		sb.append(sp.getNumDda());
+		sb.append(";");
+		sb.append(sp.getModuloX());
+		sb.append(";");
+		sb.append(sp.getModuloY());
+		sb.append(";");
+		sb.append(System.lineSeparator());
+		
+		return sb.toString();
 	}
 
 	/**
@@ -143,7 +186,7 @@ public class SpriteData {
 		Iterator<File> iter_tiledirs = tileDirs.iterator();
 		while (iter_tiledirs.hasNext()){
 			computeModulo(iter_tiledirs.next());
-			UpdateScreenManagerStatus.setSubStatus("Sprite extrait : "+index+"/"+tileDirs.size());
+			UpdateScreenManagerStatus.setSubStatus("Modulos calculés : "+index+"/"+tileDirs.size());
 			index++;
 		}
 	}
@@ -175,6 +218,7 @@ public class SpriteData {
 				if (tmpY>moduloY)moduloY = tmpY;
 			}catch(StringIndexOutOfBoundsException exc){
 				logger.fatal("Erreur dans le calcul du modulo : "+tile.getName());
+				exc.printStackTrace();
 				System.exit(1);
 			}
 			Iterator<SpriteName>iter_sprites = SpriteManager.getSprites().keySet().iterator();

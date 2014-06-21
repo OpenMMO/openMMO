@@ -6,12 +6,13 @@ import java.util.Iterator;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.message.Message;
 
 public class Palette {
 	
 	public String nom = "";
 	ArrayList<PalettePixel> pixels = new ArrayList<PalettePixel>();
-	private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
+	private static Logger logger = LogManager.getLogger(Palette.class.getSimpleName());
 
 	/**
 	 * Creates a palette from a ByteBuffer (.dpd file)
@@ -23,7 +24,7 @@ public class Palette {
 		nom = new String(bytes);
 		nom = nom.substring(0, nom.indexOf(0x00));
 		nom = nom.replace("_","");
-		logger.info("Palette décodée : "+nom);
+		//logger.info("Palette décodée : "+nom);
 		for (int i=0 ; i<256 ; i++){
 			short tmp1,tmp2,tmp3;
 			byte b;
@@ -52,6 +53,13 @@ public class Palette {
 		}
 		palette.rewind();
 		return palette;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getName() {
+		return this.nom;
 	}
 	
 }

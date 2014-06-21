@@ -2,6 +2,7 @@ package t4cPlugin;
 
 import java.io.File;
 
+@Deprecated
 public class Params {
 	public static final String t4cIN = "."+File.separator+"IN"+File.separator+"";
 	public static final String t4cOUT = "."+File.separator+"OUT"+File.separator+"";

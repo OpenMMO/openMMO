@@ -50,9 +50,9 @@ public enum AssetsLoader {
 		settings.grid = true;
 		settings.limitMemory = true;
 
-		FileLister explorer = new FileLister();
+		loadingStatus.waitUntilDdaFilesProcessed();
 		List<File> sprites = new ArrayList<File>();
-		sprites.addAll(explorer.listerDir(new File(FilesPath.getSpritePath())));
+		sprites.addAll(FileLister.listerDir(new File(FilesPath.getSpritePath())));
 		Iterator<File> iter_sprites = sprites.iterator();
 		String last ="";
 		while (iter_sprites.hasNext()){
@@ -90,9 +90,9 @@ public enum AssetsLoader {
 		settings.grid = true;
 		settings.limitMemory = true;
 
-		FileLister explorer = new FileLister();
+		loadingStatus.waitUntilDdaFilesProcessed();
 		List<File> tuiles = new ArrayList<File>();
-		tuiles.addAll(explorer.listerDir(new File(FilesPath.getTuilePath())));
+		tuiles.addAll(FileLister.listerDir(new File(FilesPath.getTuilePath())));
 		Iterator<File> iter_tuiles = tuiles.iterator();
 		String last ="";
 		while (iter_tuiles.hasNext()){
@@ -115,6 +115,7 @@ public enum AssetsLoader {
 	/**
 	 * On fait une liste de nos atlas de sprites, et on les charge tous.
 	 */
+	@Deprecated
 	public static void loadSprites(){
 		logger.info("Chargement des sprites.");
 		

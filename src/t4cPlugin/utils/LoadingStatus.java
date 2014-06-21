@@ -1,5 +1,6 @@
 package t4cPlugin.utils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -8,9 +9,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import opent4c.DataChecker;
+import opent4c.SourceDataManager;
+import opent4c.SpriteManager;
+import opent4c.SpriteUtils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import t4cPlugin.FileLister;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
@@ -36,6 +42,8 @@ public enum LoadingStatus {
 	private int nbSpritesAtlas = 0;
 	private Map<String, TextureAtlas> sprite_atlas = new ConcurrentHashMap<String, TextureAtlas>(spritesAtlasMax);
 	
+	private List<String> ddaToExtract = Collections.synchronizedList(new ArrayList<String>(SourceDataManager.getDDA().size()));
+	private List<String> ddaExtracted = Collections.synchronizedList(new ArrayList<String>(SourceDataManager.getDDA().size()));
 	
 	private final int waitLoadingTime = 100;
 	
@@ -164,6 +172,13 @@ public enum LoadingStatus {
 	public boolean areTextureAtlasTileCreated() {
 		return tile_atlas.size() == nbTilesAtlas;
 	}
+
+	public boolean areDdaFilesProcessed() {
+		//TODO ça chie dans la colle au niveau de la création de sprite_data lorsque les sprites sont déjà extraits.
+		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
+		if(nb_sprites < (SpriteUtils.nb_expected_sprites-DataChecker.delta_ok))return false;
+		return true;
+	}
 	
 	public void addTextureAtlasSprite(String name, TextureAtlas atlas) {
 		sprite_atlas.put(name, atlas);
@@ -197,5 +212,29 @@ public enum LoadingStatus {
 	public Collection<TextureAtlas> getTexturesAtlasSprites()
 	{
 		return sprite_atlas.values();
+	}
+
+	/**
+	 * Adds a dda file to be extracted
+	 */
+	public void addDDAtoExtract(String ddaFileName) {
+		ddaToExtract.add(ddaFileName);
+	}
+	
+	/**
+	 * Adds an extracted dda file
+	 */
+	public void addExtractedDDA(String ddaFileName) {
+		addElementToLoadedList(ddaFileName, ddaExtracted, ddaToExtract);
+	}
+	
+	/**
+	 * Wait until dda files are processed. This will pause the thread.
+	 */
+	public void waitUntilDdaFilesProcessed() {
+		while (!areDdaFilesProcessed()) {
+			waitLoaded();
+		}
+		SpriteManager.setDda_done(true);
 	}
 }

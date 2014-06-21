@@ -8,10 +8,14 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
+
 import t4cPlugin.AssetsLoader;
 import t4cPlugin.FileLister;
 import t4cPlugin.MAP;
+import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
+import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.MD5Checker;
 
 /**
@@ -22,6 +26,9 @@ import t4cPlugin.utils.MD5Checker;
 public class DataChecker {
 
 	 private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
+	 private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	 public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
+	 //TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
 	
 	/**
 	 * Checks source data, then atlases, and finally maps.
@@ -48,7 +55,6 @@ public class DataChecker {
 		stopIfAbsentFiles(absentFiles);
 		List<File> badChecksumFiles = checkChecksumFiles();
 		stopIfBadChecksum(badChecksumFiles);
-		UpdateScreenManagerStatus.idle();
 	}
 	
 	/**
@@ -118,7 +124,6 @@ public class DataChecker {
 		if (nb_atlas < 620){
 			buildAtlas();
 		}
-		UpdateScreenManagerStatus.idle();
 	}
 
 	/**
@@ -126,14 +131,53 @@ public class DataChecker {
 	 * Then build atlases.
 	 */
 	private static void buildAtlas() {
-		SpriteManager.loadIdsFromFile();
+		SpriteUtils.loadIdsFromFile();
 		// TODO Trouver mieux pour vérifier la présence des sprites.
 		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-		if(nb_sprites < 68555){
+		if(nb_sprites < (SpriteUtils.nb_expected_sprites-delta_ok)){
 			buildSprites();
+			loadingStatus.waitUntilDdaFilesProcessed();
+			nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
+			if(nb_sprites < (SpriteUtils.nb_expected_sprites-delta_ok)){
+				printBuildSpriteReport();
+				Gdx.app.exit();
+				System.exit(1);
+			}
 		}
+		//TODO intégrer les offsets de sprites aux atlas plutot que de la appliquer manuellement à la volée
 		AssetsLoader.pack_tuiles();
 		AssetsLoader.pack_sprites();
+	}
+
+	/**
+	 * 
+	 */
+	private static void printBuildSpriteReport() {
+		int nb_type_1 = 0;
+		int nb_type_2 = 0;
+		int nb_type_3 = 0;
+		int nb_type_9 = 0;
+		Iterator<SpriteName> iter_sprites = SpriteManager.getSprites().keySet().iterator();
+		while (iter_sprites.hasNext()){
+			SpriteName spn = iter_sprites.next();
+			Sprite sp = SpriteManager.getSprites().get(spn);
+			if (sp.getType() != null){
+				switch(sp.getType().getValue()){
+					case 1 : nb_type_1++; break;
+					case 2 : nb_type_2++; break;
+					case 3 : nb_type_3++; break;
+					case 9 : nb_type_9++; break;
+				}
+			}
+		}
+		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
+		logger.info("Rapport d'extraction de sprites.");
+		logger.info("Nombre de sprites trouvés sur le disque : "+nb_sprites);
+		logger.info("nombre de sprites de type 1 : "+nb_type_1);
+		logger.info("nombre de sprites de type 2 : "+nb_type_2);
+		logger.info("nombre de sprites de type 3 : "+nb_type_3);
+		logger.info("nombre de sprites de type 9 : "+nb_type_9);
+		logger.info("nombre de sprites total sans les void: "+(nb_type_1+nb_type_2+nb_type_9));
 	}
 
 	/**
@@ -149,12 +193,12 @@ public class DataChecker {
 	 * Checks if sprite_data file is present and build it if absent.
 	 */
 	private static void createSpriteDataIfAbsent() {
+		loadingStatus.waitUntilDdaFilesProcessed();
 		UpdateScreenManagerStatus.checkingSpriteData();
-		SpriteManager.loadIdsFromFile();
+		SpriteUtils.loadIdsFromFile();
 		if (!new File(FilesPath.getSpriteDataFilePath()).exists()){
 			SpriteData.create();
 		}
-		UpdateScreenManagerStatus.idle();
 	}
 
 	/**
@@ -169,7 +213,6 @@ public class DataChecker {
 		if (mapFiles.size() != decryptedMaps.size()){
 			decryptMaps(mapFiles);
 		}
-		UpdateScreenManagerStatus.idle();
 	}
 	
 	/**

@@ -31,7 +31,6 @@ public class UpdateScreenManagerStatus {
 	
 	public static String getReadableStatus() {
 		switch (sm.status){
-		case 0 : return "0 : Idle";
 		case 1 : return "1 : Populating Source Data";
 		case 2 : return "2 : Checking Source Data";
 		case 3 : return "3 : Checking Atlas";
@@ -54,9 +53,6 @@ public class UpdateScreenManagerStatus {
 		return sm.getSubstatus();
 	}
 	
-	public static void idle() {
-		setStatus(0);		
-	}
 	public static void populatingSourceData() {
 		setStatus(1);		
 	}

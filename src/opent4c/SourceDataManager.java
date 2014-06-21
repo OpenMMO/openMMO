@@ -36,7 +36,6 @@ public class SourceDataManager {
 		addSourceFile(FilesPath.getSourceDataDirectoryPath()+"v2data25.dda","7a86ce5a4103be85a8d57f7353a95e6e");
 		addSourceFile(FilesPath.getSourceDataDirectoryPath()+"v2datai.did","9d31f9a3b24ee2bfe0d6c269953a2a28");
 		addSourceFile(FilesPath.getIdFilePath(),"aacf25cca611fc80574e7158684a82d9");
-		UpdateScreenManagerStatus.idle();
 	}
 	
 	/**

@@ -3,6 +3,7 @@ package t4cPlugin.utils;
 import java.io.File;
 
 import opent4c.MapManager;
+import opent4c.SpriteUtils;
 import opent4c.UpdateScreenManagerStatus;
 
 import org.apache.logging.log4j.LogManager;
@@ -99,6 +100,15 @@ public class RunnableCreatorUtil {
 		Runnable r = new Runnable(){
 			public void run() {
 				MapManager.teleport(place);
+			}
+		};
+		return r;
+	}
+	
+	public static Runnable getDDAExtractorRunnable(final File f, final boolean doWrite){
+		Runnable r = new Runnable(){
+			public void run(){
+				SpriteUtils.decrypt_dda_file(f,doWrite);
 			}
 		};
 		return r;

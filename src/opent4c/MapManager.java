@@ -150,7 +150,6 @@ public class MapManager implements Screen{
 			buf.rewind();
 			id_maps.put(f.getName().substring(0, f.getName().indexOf('.')),buf);
 		}
-		UpdateScreenManagerStatus.idle();
 	}
 
 	/**

@@ -1,13 +1,16 @@
 package opent4c;
 
 import t4cPlugin.AssetsLoader;
+import t4cPlugin.utils.LoadingStatus;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
+
 public class ScreenManager extends Game{
 
+	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private DataCheckerScreen checkScreen = null;
 	OrthographicCamera camera;
 	MapManager map;
@@ -55,6 +58,7 @@ public class ScreenManager extends Game{
 		AssetsLoader.loadSols();
 		AssetsLoader.load("Unknown");
 		map = new MapManager();
+		loadingStatus.waitUntilSpritesPackaged();
 		UpdateScreenManagerStatus.loadingMaps();
 		map.loadMaps();
 		UpdateScreenManagerStatus.readyToRender();
