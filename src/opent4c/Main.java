@@ -42,7 +42,8 @@ public class Main {
 	 */
 	private static void verifier() {
 		logger.info("Vérification des données.");
-		ThreadsUtil.executeInThread(RunnableCreatorUtil.getDataCheckerRunnable());
+		DataChecker.runCheck();
+//		ThreadsUtil.executeInThread(RunnableCreatorUtil.getDataCheckerRunnable());
 	}
 
 	/**

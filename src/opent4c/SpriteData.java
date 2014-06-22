@@ -34,7 +34,6 @@ public class SpriteData {
 	 * Loads sprite data from file
 	 */
 	public static void load(){
-		UpdateScreenManagerStatus.loadingSpriteData();
 		BufferedReader buf = null;
 		initSpriteData();
 		try {
@@ -86,7 +85,7 @@ public class SpriteData {
 		int moduloX = Integer.parseInt(index[14]);//On récupère le modulo pour appliquer l'effet de zone
 		int moduloY = Integer.parseInt(index[15]);
 		String palette = index[16];
-		UpdateScreenManagerStatus.setSubStatus("Sprite lu => Tuile :"+tuile+"|"+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| Modulo : "+moduloX +";"+moduloY+"| ID : "+id+"| Palette : "+palette);
+		UpdateScreenManagerStatus.setSpriteDataStatus("Sprite lu => Tuile :"+tuile+"|"+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| Modulo : "+moduloX +";"+moduloY+"| ID : "+id+"| Palette : "+palette);
 		sprite_data.put(id, new MapPixel(tuile, atlas, tex, PointsManager.getPoint(offsetX,offsetY), PointsManager.getPoint(moduloX,moduloY), id, palette));//On enregistre une liste avec les ID, les coordonnées et les références graphiques		
 	}
 
@@ -94,7 +93,7 @@ public class SpriteData {
 	 * creates a sprite_data file
 	 */
 	public static void create(){
-		UpdateScreenManagerStatus.setSubStatus("Création de sprite_data");
+		UpdateScreenManagerStatus.setSpriteDataStatus("Création de sprite_data");
 		if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
 		if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
 		if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
@@ -235,7 +234,7 @@ public class SpriteData {
 				}
 			}
 		}
-		logger.info("Modulo : "+tileDir.getName()+" => "+moduloX+";"+moduloY);		
+		//logger.info("Modulo : "+tileDir.getName()+" => "+moduloX+";"+moduloY);		
 	}
 
 	/**

@@ -24,8 +24,16 @@ public class DataCheckerScreen implements Screen{
 	private BitmapFont font;
 	private OrthographicCamera camera;
 	private Stage stage;
-	private TextButton infos;
-	private TextButton substatus;
+	
+	final TextButtonStyle style_normal = new TextButtonStyle();
+	
+	private TextButton sourcedataStatus;
+	private TextButton mapsStatus;
+	private TextButton dpdStatus;
+	private TextButton didStatus;
+	private TextButton ddaStatus;
+	private TextButton spriteDataStatus;
+	private TextButton atlasStatus;
 
 	public DataCheckerScreen(ScreenManager screenManager){
 		batch = new SpriteBatch();
@@ -56,13 +64,23 @@ public class DataCheckerScreen implements Screen{
 	 * Updates infos on the screen
 	 */
 	private void updateInfos() {
-		infos.setText("Satus : " + UpdateScreenManagerStatus.getReadableStatus() + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage());
-		infos.setPosition(Gdx.graphics.getWidth()/2-infos.getWidth()/2, Gdx.graphics.getHeight()/2);
-		substatus.setText(UpdateScreenManagerStatus.getSubStatus());
-		substatus.setPosition(Gdx.graphics.getWidth()/2-infos.getWidth()/2, (Gdx.graphics.getHeight()/2)-20);
-		Gdx.app.getGraphics().setTitle("OpenT4C v0 Status "+UpdateScreenManagerStatus.getReadableStatus() + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage());
+		setButtonsText();
+		Gdx.app.getGraphics().setTitle("OpenT4C v0 " + " FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + getMemoryUsage());
 	}
 	
+	/**
+	 * 
+	 */
+	private void setButtonsText() {
+		sourcedataStatus.setText("État des données sources : "+UpdateScreenManagerStatus.getSourceDataStatus());
+		mapsStatus.setText("État des cartes : "+UpdateScreenManagerStatus.getMapsStatus());
+		dpdStatus.setText("État du fichier DPD : "+UpdateScreenManagerStatus.getDPDStatus());
+		didStatus.setText("État du fichier DID : "+UpdateScreenManagerStatus.getDIDStatus());
+		ddaStatus.setText("État des fichiers DDA : "+UpdateScreenManagerStatus.getDDAStatus());
+		spriteDataStatus.setText("État de sprite_data : "+UpdateScreenManagerStatus.getSpriteDataStatus());
+		atlasStatus.setText("État des atlas : "+UpdateScreenManagerStatus.getAtlasStatus());
+	}
+
 	@Override
 	public void resize(int width, int height) {
 	}
@@ -76,34 +94,108 @@ public class DataCheckerScreen implements Screen{
 	
 	@Override
 	public void show() {
-		final TextButtonStyle style_normal = new TextButtonStyle();
 		style_normal.font = font;
-		infos = new TextButton("DataCheckerScreen.show()", style_normal);
-		infos.align(Align.left);
-		infos.setPosition(Gdx.graphics.getWidth()/2-infos.getWidth()/2, Gdx.graphics.getHeight()/2);
-		stage.addActor(infos);
-		infos.getColor().a = 0f;
-		infos.addAction(Actions.alpha(1f, 3));
-		substatus = new TextButton("DataCheckerScreen.show()", style_normal);
-		substatus.align(Align.left);
-		substatus.setPosition(Gdx.graphics.getWidth()/2-infos.getWidth()/2, (Gdx.graphics.getHeight()/2)-20);
-		stage.addActor(substatus);
-		substatus.getColor().a = 0f;
-		substatus.addAction(Actions.alpha(1f, 3));
+		createButtons();
+		alignButtons();
+		positionButtons();
+		addButtonsToStage();
+		setButtonsAlpha(0f);
+		fadeButtons(1f,3);
 		Gdx.input.setInputProcessor(stage);
+	}
+
+	/**
+	 * @param alpha
+	 * @param time
+	 */
+	private void fadeButtons(float alpha, int time) {
+		sourcedataStatus.addAction(Actions.alpha(alpha, time));
+		mapsStatus.addAction(Actions.alpha(alpha, time));
+		dpdStatus.addAction(Actions.alpha(alpha, time));
+		didStatus.addAction(Actions.alpha(alpha, time));
+		ddaStatus.addAction(Actions.alpha(alpha, time));
+		spriteDataStatus.addAction(Actions.alpha(alpha, time));
+		atlasStatus.addAction(Actions.alpha(alpha, time));		
+	}
+
+	/**
+	 * @param f
+	 */
+	private void setButtonsAlpha(float f) {
+		sourcedataStatus.getColor().a = f;
+		mapsStatus.getColor().a = f;
+		dpdStatus.getColor().a = f;
+		didStatus.getColor().a = f;
+		ddaStatus.getColor().a = f;
+		spriteDataStatus.getColor().a = f;
+		atlasStatus.getColor().a = f;		
+	}
+
+	/**
+	 * 
+	 */
+	private void addButtonsToStage() {
+		stage.addActor(sourcedataStatus);
+		stage.addActor(mapsStatus);
+		stage.addActor(dpdStatus);
+		stage.addActor(didStatus);
+		stage.addActor(ddaStatus);
+		stage.addActor(spriteDataStatus);
+		stage.addActor(atlasStatus);		
+	}
+
+	/**
+	 * 
+	 */
+	private void positionButtons() {
+		sourcedataStatus.setPosition(Gdx.graphics.getWidth()/2-sourcedataStatus.getWidth()/2, 7*(Gdx.graphics.getHeight()/8));
+		mapsStatus.setPosition(Gdx.graphics.getWidth()/2-mapsStatus.getWidth()/2, 6*(Gdx.graphics.getHeight()/8));
+		dpdStatus.setPosition(Gdx.graphics.getWidth()/2-dpdStatus.getWidth()/2, 5*(Gdx.graphics.getHeight()/8));
+		didStatus.setPosition(Gdx.graphics.getWidth()/2-didStatus.getWidth()/2, 4*(Gdx.graphics.getHeight()/8));
+		ddaStatus.setPosition(Gdx.graphics.getWidth()/2-ddaStatus.getWidth()/2, 3*(Gdx.graphics.getHeight()/8));
+		spriteDataStatus.setPosition(Gdx.graphics.getWidth()/2-spriteDataStatus.getWidth()/2, 2*(Gdx.graphics.getHeight()/8));
+		atlasStatus.setPosition(Gdx.graphics.getWidth()/2-atlasStatus.getWidth()/2, 1*(Gdx.graphics.getHeight()/8));		
+	}
+
+	/**
+	 * 
+	 */
+	private void alignButtons() {
+		sourcedataStatus.align(Align.left);
+		mapsStatus.align(Align.left);
+		dpdStatus.align(Align.left);
+		didStatus.align(Align.left);
+		ddaStatus.align(Align.left);
+		spriteDataStatus.align(Align.left);
+		atlasStatus.align(Align.left);		
+	}
+
+	/**
+	 * 
+	 */
+	private void createButtons() {
+		sourcedataStatus = new TextButton("DataCheckerScreen.show()", style_normal);
+		mapsStatus = new TextButton("DataCheckerScreen.show()", style_normal);
+		dpdStatus = new TextButton("DataCheckerScreen.show()", style_normal);
+		didStatus = new TextButton("DataCheckerScreen.show()", style_normal);
+		ddaStatus = new TextButton("DataCheckerScreen.show()", style_normal);
+		spriteDataStatus = new TextButton("DataCheckerScreen.show()", style_normal);
+		atlasStatus = new TextButton("DataCheckerScreen.show()", style_normal);		
 	}
 
 	@Override
 	public void hide() {
-		dispose();		
+		fadeButtons(0,1);	
 	}
 
 	@Override
 	public void pause() {
+		stage.addAction(Actions.alpha(0.3f, 1));
 	}
 
 	@Override
 	public void resume() {
+		stage.addAction(Actions.alpha(1f, 1));
 	}
 
 	@Override

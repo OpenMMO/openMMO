@@ -23,10 +23,14 @@ public class SettingsManager {
 		cfg.useGL20 = true;
 		cfg.width = getWidth();
 		cfg.height = getHeight();
-		cfg.backgroundFPS = -1;
+		cfg.backgroundFPS = 24;
 		cfg.foregroundFPS = 60;
 		cfg.resizable = false;
 		cfg.vSyncEnabled = true;
+		cfg.allowSoftwareMode = true;
+		cfg.fullscreen = false;
+		cfg.x = -1;
+		cfg.y = -1;
 	}
 
 	/**

@@ -9,77 +9,104 @@ public class UpdateScreenManagerStatus {
 	
 	private static Logger logger = LogManager.getLogger(UpdateScreenManagerStatus.class.getSimpleName());
 	private static ScreenManager sm = null;
+	private static String sourceDataStatus = "not set";
+	private static String mapsStatus = "not set";
+	private static String dpdStatus = "not set";
+	private static String didStatus = "not set";
+	private static String ddaStatus = "not set";
+	private static String spriteDataStatus = "not set";
+	private static String atlasStatus = "not set";
 	
 	public static void setScreenManager(ScreenManager manager){
 		sm = manager;
 	}
-	
-	private static void setStatus(final int status){
-		if (sm == null){
-			logger.fatal("ScreenManager not set");
-			System.exit(1);
-		}
-		logger.info("Set ScreenManager Status : "+getReadableStatus());
-		sm.setStatus(status);
+
+	/**
+	 * @return
+	 */
+	public static String getSourceDataStatus() {
+		return sourceDataStatus ;
 	}
-	
-	public static void setSubStatus(final String substatus){
-		if (sm == null){
-			logger.fatal("ScreenManager not set");
-			System.exit(1);
-		}
-		sm.setSubstatus(substatus);
+
+	/**
+	 * @return
+	 */
+	public static String getMapsStatus() {
+		return mapsStatus ;
 	}
-	
-	public static String getReadableStatus() {
-		switch (sm.status){
-		case 1 : return "1 : Populating Source Data";
-		case 2 : return "2 : Checking Source Data";
-		case 3 : return "3 : Checking Atlas";
-		case 4 : return "4 : Checking Sprite Data";
-		case 5 : return "5 : Checking Maps";
-		case 6 : return "6 : Loading Sprite Data";
-		case 7 : return "7 : Loading Tiles";
-		case 8 : return "8 : Loading Maps";
-		case 42 : return "42 : Ready To Render";
-		}
-		
-		return "Inconnu";
+
+	/**
+	 * @return
+	 */
+	public static String getDPDStatus() {
+		return getDpdStatus() ;
 	}
-	
-	public static String getSubStatus(){
-		if (sm == null){
-			logger.fatal("ScreenManager not set");
-			System.exit(1);
-		}
-		return sm.getSubstatus();
+
+	/**
+	 * @return
+	 */
+	public static String getDIDStatus() {
+		return getDidStatus() ;
 	}
-	
-	public static void populatingSourceData() {
-		setStatus(1);		
+
+	/**
+	 * @return
+	 */
+	public static String getDDAStatus() {
+		return getDdaStatus();
 	}
-	public static void checkingSourceData() {
-		setStatus(2);		
+
+	/**
+	 * @return
+	 */
+	public static String getSpriteDataStatus() {
+		return spriteDataStatus;
 	}
-	public static void checkingAtlas() {
-		setStatus(3);		
+
+	/**
+	 * @return
+	 */
+	public static String getAtlasStatus() {
+		return atlasStatus;
 	}
-	public static void checkingSpriteData() {
-		setStatus(4);			
+
+	public static void setSourceDataStatus(String sourceDataStatus) {
+		UpdateScreenManagerStatus.sourceDataStatus = sourceDataStatus;
 	}
-	public static void checkingMaps() {
-		setStatus(5);
+
+	public static void setSpriteDataStatus(String spriteDataStatus) {
+		UpdateScreenManagerStatus.spriteDataStatus = spriteDataStatus;
 	}
-	public static void loadingSpriteData() {
-		setStatus(6);				
+
+	public static String getDidStatus() {
+		return didStatus;
 	}
-	public static void loadingTiles() {
-		setStatus(7);		
+
+	public static void setDidStatus(String didStatus) {
+		UpdateScreenManagerStatus.didStatus = didStatus;
 	}
-	public static void loadingMaps() {
-		setStatus(8);				
+
+	public static String getDpdStatus() {
+		return dpdStatus;
 	}
-	public static void readyToRender() {
-		setStatus(42);		
+
+	public static void setDpdStatus(String dpdStatus) {
+		UpdateScreenManagerStatus.dpdStatus = dpdStatus;
+	}
+
+	public static String getDdaStatus() {
+		return ddaStatus;
+	}
+
+	public static void setDdaStatus(String ddaStatus) {
+		UpdateScreenManagerStatus.ddaStatus = ddaStatus;
+	}
+
+	public static void setMapsStatus(String mapsStatus) {
+		UpdateScreenManagerStatus.mapsStatus = mapsStatus;
+	}
+
+	public static void setAtlasStatus(String atlasStatus) {
+		UpdateScreenManagerStatus.atlasStatus = atlasStatus;
 	}
 }

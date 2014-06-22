@@ -55,8 +55,7 @@ public class RunnableCreatorUtil {
 				String nom = name.substring(0, name.length()-6);
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
-				UpdateScreenManagerStatus.setSubStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
-				logger.info("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
+				UpdateScreenManagerStatus.setSpriteDataStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 			}
 		};
 		return r;
@@ -117,45 +116,12 @@ public class RunnableCreatorUtil {
 		return r;
 	}
 	
-	public static Runnable getDataCheckerRunnable(){
-		Runnable r = new Runnable(){
-			public void run(){
-				DataChecker.runCheck();
-			}
-		};
-		return r;
-	}
-	
 	public static Runnable getModuloComputerRunnable(final File tileDir){
 		Runnable r = new Runnable(){
 			public void run(){
 				SpriteData.computeModulo(tileDir);
 				loadingStatus.addOneComputedModulo();
-				UpdateScreenManagerStatus.setSubStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
-			}
-		};
-		return r;
-	}
-
-	/**
-	 * @return
-	 */
-	public static Runnable getMapExtractorRunnable() {
-		Runnable r = new Runnable(){
-			public void run(){
-				DataChecker.decryptMaps();
-			}
-		};
-		return r;
-	}
-
-	/**
-	 * @return
-	 */
-	public static Runnable getSpriteDataCreatorRunnable() {
-		Runnable r = new Runnable(){
-			public void run(){
-				SpriteData.create();
+				UpdateScreenManagerStatus.setSpriteDataStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
 			}
 		};
 		return r;
@@ -168,8 +134,6 @@ public class RunnableCreatorUtil {
 	public static Runnable getSpriteExtractorRunnable(final boolean doWrite) {
 		Runnable r = new Runnable(){
 			public void run(){
-				SpriteManager.decryptDPD();
-				SpriteManager.decryptDID();
 				SpriteManager.decryptDDA(doWrite);
 			}
 		};

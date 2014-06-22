@@ -25,7 +25,7 @@ public class SpriteManager {
 	static Logger logger = LogManager.getLogger(SpriteManager.class.getSimpleName());
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	//TODO initialiser la liste avec le nombre de sprites
-	private static Map<SpriteName,Sprite> sprites;
+	private static Map<SpriteName,Sprite> sprites = new HashMap<SpriteName,Sprite>(DataChecker.nb_expected_sprites);
 	static Map<Integer,SpriteName> ids = null;
 	static Map<String,Palette> palettes = null;
 	static int nb_palettes_from_dpd = -1;
@@ -530,7 +530,7 @@ public class SpriteManager {
 	
 		for(int i=1 ; i<=nb_sprites_from_did ; i++){
 			addSprite(bufUnZip);
-			UpdateScreenManagerStatus.setSubStatus("Sprites lu depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
+			UpdateScreenManagerStatus.setDidStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
 		}
 		setDid_done(true);
 	}

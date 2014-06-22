@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ThreadsUtil {
 
-	private static ExecutorService exService = Executors.newFixedThreadPool(15);
-	private static ScheduledExecutorService timerExService = Executors.newScheduledThreadPool(9);
+	private static ExecutorService exService = Executors.newFixedThreadPool(5);
+	private static ScheduledExecutorService timerExService = Executors.newScheduledThreadPool(5);
 	
 	private ThreadsUtil() {
 		//Utility class

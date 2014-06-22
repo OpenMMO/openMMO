@@ -12,6 +12,7 @@ import opent4c.DataChecker;
 import opent4c.SourceDataManager;
 import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
+import opent4c.UpdateScreenManagerStatus;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,6 +53,7 @@ public enum LoadingStatus {
 	
 	public void addTilesAtlasPackaged(String tileName) {
 		addElementToLoadedList(tileName, tilesAtlasPackaged, tilesAtlasToPackage);
+		UpdateScreenManagerStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
 	public boolean isTilesPackaged() {
@@ -65,6 +67,7 @@ public enum LoadingStatus {
 	
 	public void addSpritesAtlasPackaged(String spriteName) {
 		addElementToLoadedList(spriteName, spritesAtlasPackaged, spritesAtlasToPackage);
+		UpdateScreenManagerStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
 	public boolean isSpritesPackaged() {
@@ -174,11 +177,11 @@ public enum LoadingStatus {
 
 	public boolean areDdaFilesProcessed() {
 		//TODO ça chie dans la colle au niveau de la création de sprite_data lorsque les sprites sont déjà extraits. il faut ajouter un truc pour attendre l'extraction des infos.
-		if(sprites_loaded_from_dda < (SpriteUtils.nb_expected_sprites-DataChecker.delta_ok)){
+		if(sprites_loaded_from_dda < (DataChecker.nb_expected_sprites-DataChecker.delta_ok)){
 			return false;
 		}
 		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-		if(nb_sprites < (SpriteUtils.nb_expected_sprites-DataChecker.delta_ok)){
+		if(nb_sprites < (DataChecker.nb_expected_sprites-DataChecker.delta_ok)){
 			return false;
 		}
 		return true;

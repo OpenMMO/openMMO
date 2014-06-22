@@ -46,7 +46,6 @@ public class SpriteUtils {
 
 	private static int nb_extracted_sprites = 0;
 	private static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
-	public final static int nb_expected_sprites = 68450;
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 
 	
@@ -228,7 +227,7 @@ public class SpriteUtils {
 		drawImage(img,sprite);
 	}
 
-	static void rleUncompress(Sprite sprite, ByteBuffer buf) {
+	static void writeType2SpriteToDisk(Sprite sprite, ByteBuffer buf) {
 		byte b1,b2;
 		int X,Y,nbpix;
 		byte b = 0;
@@ -329,7 +328,7 @@ public class SpriteUtils {
 		drawImage(img,sprite);
 	}
 
-	static void write(Sprite sprite, ByteBuffer buf) {
+	static void writeType1SpriteToDisk(Sprite sprite, ByteBuffer buf) {
 		ByteBuffer data = null;
 		File f = null;
 		if (sprite.isTuile()){
@@ -402,17 +401,17 @@ public class SpriteUtils {
 		drawImage(img, sprite);
 	}
 
-	static void voidSprite(Sprite didsprite) {
+	static void writeType3SpriteToDisk(Sprite didsprite) {
 		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : VIDE "+didsprite.getName());
 	}
 
 	static boolean doTheWriting(Sprite sprite, ByteBuffer buf){
 		boolean writen = false;
 		switch(sprite.getType().getValue()){
-			case 1 : write(sprite, buf); break;
-			case 2 : rleUncompress(sprite, buf); break;
-			case 3 : voidSprite(sprite); writen = true; break;
-			case 9 : extractType9(sprite, buf); break;
+			case 1 : writeType1SpriteToDisk(sprite, buf); break;
+			case 2 : writeType2SpriteToDisk(sprite, buf); break;
+			case 3 : writeType3SpriteToDisk(sprite); writen = true; break;
+			case 9 : writeType9SpriteToDisk(sprite, buf); break;
 		}
 		File f;
 		if (sprite.isTuile()){
@@ -428,7 +427,7 @@ public class SpriteUtils {
 	 * @param sprite
 	 * @param buf
 	 */
-	private static void extractType9(Sprite sprite, ByteBuffer buf) {
+	private static void writeType9SpriteToDisk(Sprite sprite, ByteBuffer buf) {
 		if (sprite.getTaille_zip().getValue() == sprite.getTaille_unzip().getValue()){
 			unzipSprite(sprite, buf);
 		}else{
@@ -449,7 +448,7 @@ public class SpriteUtils {
 			System.exit(1);
 		}
 		sprite.setPalette(p);
-		logger.info("Palette : "+sprite.getName()+"<=>"+sprite.getPaletteName());
+		//logger.info("Palette : "+sprite.getName()+"<=>"+sprite.getPaletteName());
 		ByteBuffer header_buf = extractHeaderBuffer(buf);
 		sprite.setOmbre(new UnsignedShort(extractShort(header_buf,true)));
 		sprite.setType(new UnsignedShort(extractShort(header_buf,true)));
@@ -695,7 +694,7 @@ public class SpriteUtils {
 				}
 			}
 			if (sprite.getType().getValue() != 9) nb_extracted_sprites++;
-			UpdateScreenManagerStatus.setSubStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+nb_expected_sprites);
+			UpdateScreenManagerStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+DataChecker.nb_expected_sprites);
 		}
 	}
 
@@ -763,38 +762,6 @@ public class SpriteUtils {
 	}
 
 	/**
-	 * extract the position in the buffer to decode a sprite
-	 * @param buf
-	 * @return
-	 */
-	/*static int extractIndexation(ByteBuffer buf) {
-		byte b1,b2,b3,b4;
-		b1 = buf.get();
-		b2 = buf.get();
-		b3 = buf.get();
-		b4 = buf.get();
-		return tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-	}*/
-
-	/**
-	 * extract the .dda number associated to a sprite
-	 * @param buf
-	 * @return
-	 */
-	/*static long extractNumDDA(ByteBuffer buf) {
-		byte b1,b2,b3,b4,b5,b6,b7,b8;
-		b1 = buf.get();
-		b2 = buf.get();
-		b3 = buf.get();
-		b4 = buf.get();
-		b5 = buf.get();
-		b6 = buf.get();
-		b7 = buf.get();
-		b8 = buf.get();
-		return tools.ByteArrayToNumber.bytesToLong(new byte[]{b8,b7,b6,b5,b4,b3,b2,b1});
-	}*/
-
-	/**
 	 * Gets IDs from id.txt file
 	 * puts info into a HashMap<Integer,SpriteName>
 	 */
@@ -841,7 +808,7 @@ public class SpriteUtils {
 		Map<String,Palette> result = new HashMap<String,Palette>(nb_palettes);
 		for(int i=1 ; i<=nb_palettes ; i++){
 			Palette p = new Palette(bufUnZip);
-			UpdateScreenManagerStatus.setSubStatus("Palettes extraites : "+i+"/"+nb_palettes);
+			UpdateScreenManagerStatus.setDpdStatus("Palettes extraites : "+i+"/"+nb_palettes);
 			result.put(p.getNom(),p);
 		}
 		return result;

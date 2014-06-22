@@ -8,12 +8,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.badlogic.gdx.Gdx;
-
 import t4cPlugin.AssetsLoader;
 import t4cPlugin.FileLister;
 import t4cPlugin.MAP;
-import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.LoadingStatus;
 import t4cPlugin.utils.MD5Checker;
@@ -33,6 +30,7 @@ public class DataChecker {
 	private static boolean maps_are_ok = false;
 	private static boolean atlas_are_ok = false;
 	private static boolean sprites_are_ok = false;
+	public final static int nb_expected_sprites = 68450;
 	public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
 	public final static int nb_expected_atlas = 641;
 	//TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
@@ -80,9 +78,13 @@ public class DataChecker {
 	 */
 	private static void doSpriteData() {
 		if (!sprite_data_is_ok){
-			if(sprites_are_ok)ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteExtractorRunnable(false));
+			if(sprites_are_ok){
+				SpriteManager.decryptDPD();
+				SpriteManager.decryptDID();
+				ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteExtractorRunnable(false));
+			}
 			loadingStatus.waitUntilDdaFilesProcessed();
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteDataCreatorRunnable());
+			SpriteData.create();
 		}
 	}
 
@@ -91,6 +93,8 @@ public class DataChecker {
 	 */
 	private static void doSprites() {
 		if (!sprites_are_ok){
+			SpriteManager.decryptDPD();
+			SpriteManager.decryptDID();
 			ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteExtractorRunnable(true));
 		}		
 	}
@@ -100,7 +104,7 @@ public class DataChecker {
 	 */
 	private static void doMaps() {
 		if (!maps_are_ok){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getMapExtractorRunnable());
+			decryptMaps();
 		}		
 	}
 
@@ -130,7 +134,7 @@ public class DataChecker {
 	private static void checkSprites() {
 		// TODO Trouver mieux pour vérifier la présence des sprites.
 		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-		if(nb_sprites >= (SpriteUtils.nb_expected_sprites-delta_ok)){
+		if(nb_sprites >= (nb_expected_sprites-delta_ok)){
 			sprites_are_ok = true;
 		}
 		logger.info("TEST présence sprites : "+sprites_are_ok);
@@ -177,7 +181,6 @@ public class DataChecker {
 	 * Checks the source data (presence and integrity)
 	 */
 	private static void checkSourceData() {
-		UpdateScreenManagerStatus.checkingSourceData();
 		List<File> absentFiles = checkAbsentFiles();
 		stopIfAbsentFiles(absentFiles);
 		List<File> badChecksumFiles = checkChecksumFiles();
@@ -192,7 +195,7 @@ public class DataChecker {
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
-			UpdateScreenManagerStatus.setSubStatus("Vérification présence : "+f.getName());
+			UpdateScreenManagerStatus.setSourceDataStatus("Vérification présence : "+f.getName());
 			if(!f.exists()){
 				result.add(f);
 			}
@@ -228,7 +231,7 @@ public class DataChecker {
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
-			UpdateScreenManagerStatus.setSubStatus("Vérification MD5 : "+f.getName());
+			UpdateScreenManagerStatus.setSourceDataStatus("Vérification MD5 : "+f.getName());
 			if(!MD5Checker.check(f,SourceDataManager.getData().get(f))){
 				result.add(f);
 			}

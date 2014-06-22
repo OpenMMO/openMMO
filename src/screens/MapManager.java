@@ -4,11 +4,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -43,7 +40,6 @@ import t4cPlugin.FileLister;
 import t4cPlugin.IG_Menu;
 import t4cPlugin.Places;
 import t4cPlugin.MapPixel;
-import t4cPlugin.SpriteName;
 import t4cPlugin.utils.FilesPath;
 import t4cPlugin.utils.PointsManager;
 import tools.DataInputManager;
@@ -85,9 +81,11 @@ public class MapManager implements Screen{
 	private boolean menu_poped = false;
 	private IG_Menu pop_up;
 	private static boolean stage_ready = true;
+	private ScreenManager sm;
 	
-	public MapManager(){
+	public MapManager(ScreenManager screenManager){
 		m = this;
+		sm = screenManager;
 		Gdx.app.postRunnable(new Runnable(){
 			public void run(){
 				init();
@@ -149,7 +147,7 @@ public class MapManager implements Screen{
 		Iterator<File> iter_decrypted_maps = decrypted_maps.iterator();
 		while(iter_decrypted_maps.hasNext()){
 			File f = iter_decrypted_maps.next();
-			UpdateScreenManagerStatus.setSubStatus("Chargement carte : "+f.getName());
+			UpdateScreenManagerStatus.setMapsStatus("Chargement carte : "+f.getName());
 			ByteBuffer buf = ByteBuffer.allocate((int)f.length());
 			try {
 				DataInputManager in = new DataInputManager (f);
@@ -171,6 +169,7 @@ public class MapManager implements Screen{
 	 */
 	public void createChunkMap() {
 		teleport(Places.getPlace("startpoint"));
+		sm.switchGameScreen(m);
 	}
 
 	/**
@@ -187,7 +186,7 @@ public class MapManager implements Screen{
 		while(iter_position.hasNext()){
 			int chunkId = iter_position.next();
 			//TODO attention plus tard en gérant plusieurs cartes.
-			UpdateScreenManagerStatus.setSubStatus("Création du chunk :"+chunkId);
+			UpdateScreenManagerStatus.setMapsStatus("Création du chunk :"+chunkId);
 			worldmap.put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
 		}
 		Chunk.startChunkMapWatcher();
@@ -219,7 +218,7 @@ public class MapManager implements Screen{
 	 */
 	private void render_infos() {
 		Gdx.app.getGraphics().setTitle("OpenT4C v0 FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + ((Runtime.getRuntime().totalMemory())/1024/1024) + " Mo");
-		load.setText("Load Text : "+UpdateScreenManagerStatus.getReadableStatus());
+		load.setText("foo");
 		fps.setText(""+Gdx.graphics.getFramesPerSecond()+" fps");
 		info.setText("X: " + (((int)camera.position.x/32)) + " Y: " + (((int)camera.position.y/16)) + " Zoom : " + camera.zoom);
 		info.setPosition(info.getWidth()*4, info.getHeight());

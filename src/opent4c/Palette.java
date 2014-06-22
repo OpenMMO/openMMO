@@ -41,7 +41,7 @@ public class Palette {
 			flag64k = true;
 		}*/
 		setNom(nom);
-		logger.info("Nouvelle Palette : "+getNom());
+		//logger.info("Nouvelle Palette : "+getNom());
 		for (int i=0 ; i<256 ; i++){
 			short tmp1,tmp2,tmp3;
 			byte b;

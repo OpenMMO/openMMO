@@ -16,7 +16,7 @@ public class ScreenManager extends Game{
 	OrthographicCamera camera;
 	MapManager map;
 	public int status = 0;
-	private String substatus = "not updated";
+
 	/**
 	 * default map is v2_worldmap
 	 */
@@ -35,12 +35,12 @@ public class ScreenManager extends Game{
 		this.setScreen(checkScreen);
 	}
 
-	public void switchGameScreen() {
+	public void switchGameScreen(final MapManager screen) {
 		Gdx.app.postRunnable(new Runnable(){
 
 			@Override
 			public void run() {
-				setScreen(MapManager.getScreen());				
+				setScreen(screen);				
 			}
 		});
 	}
@@ -55,32 +55,11 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
-		UpdateScreenManagerStatus.loadingTiles();
 		AssetsLoader.loadSols();
 		AssetsLoader.load("Unknown");
-		map = new MapManager();
+		map = new MapManager(this);
 		loadingStatus.waitUntilSpritesPackaged();
-		UpdateScreenManagerStatus.loadingMaps();
 		map.loadMaps();
-		UpdateScreenManagerStatus.readyToRender();
 		map.createChunkMap();
-	}
-	
-	public void setStatus(int status){
-		this.status = status;
-		if (status == 42){
-			switchGameScreen();
-		}
-	}
-	public int getStatus(){
-		return status;
-	}
-
-	public String getSubstatus() {
-		return substatus;
-	}
-
-	public void setSubstatus(String substatus) {
-		this.substatus = substatus;
 	}
 }

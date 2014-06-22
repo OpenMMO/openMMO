@@ -143,7 +143,7 @@ public enum AssetsLoader {
 		logger.info("Sprite Atlas : " +name+" loaded.");
 		//TODO j'en suis pas sur, mais je crois que cette fonction cause des freeze temporaires parce qu'elle monopolise le thread d'affichage...
 		//TODO je pense qu'il faut affiner l'organisation des atlas pour réduire les temps de chargement par atlas.
-		UpdateScreenManagerStatus.setSubStatus("Sprite Atlas : " +name+" loaded.");
+		UpdateScreenManagerStatus.setAtlasStatus("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}
 	
