@@ -133,6 +133,7 @@ public class SpriteManager {
 				sprite.setSpriteName(new SpriteName("Lava (2, 5)"));
 			}
 		}
+		//idem
 		if (sprite.getChemin().equals("DungeonFloorTorch")){
 			if (sprite.getName().equals("DungeonFloorTorch1 1")){
 				sprite.setSpriteName(new SpriteName("DungeonFloorTorch (1, 1)"));
@@ -285,6 +286,7 @@ public class SpriteManager {
 				sprite.setSpriteName(new SpriteName("DungeonFloorTorch (10, 5)"));
 			}
 		}
+		//idem
 		if (sprite.getChemin().equals("Dungeon")){
 			if (sprite.getName().equals("Dtm1 1")){
 				sprite.setSpriteName(new SpriteName("Dtm (1, 1)"));
@@ -362,6 +364,7 @@ public class SpriteManager {
 				sprite.setSpriteName(new SpriteName("Dtm (5, 5)"));
 			}
 		}
+		//idem
 		if (sprite.getChemin().equals("Wooden")){
 			if (sprite.getName().equals("Floor Wooden 1")){
 				sprite.setSpriteName(new SpriteName("Floor Wooden (1, 1)"));

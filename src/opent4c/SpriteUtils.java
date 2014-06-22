@@ -512,7 +512,6 @@ public class SpriteUtils {
 		if (sprite.getChemin().equals("GenericMerge2Wooden"))result = false;
 		if (sprite.getChemin().equals("WoodenSmooth"))result = false;
 		if (sprite.getChemin().equals("Black"))result = false;
-		if (sprite.getChemin().equals("Black"))result = false;
 		
 		return result;
 	}

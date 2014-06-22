@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 
+import screens.ScreenManager;
 import t4cPlugin.utils.RunnableCreatorUtil;
 import t4cPlugin.utils.ThreadsUtil;
 import tools.OSValidator;

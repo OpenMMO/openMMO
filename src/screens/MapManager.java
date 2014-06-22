@@ -1,4 +1,4 @@
-package opent4c;
+package screens;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -16,6 +16,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import opent4c.Chunk;
+import opent4c.InputManager;
+import opent4c.SpriteData;
+import opent4c.UpdateScreenManagerStatus;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

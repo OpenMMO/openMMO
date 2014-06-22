@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import screens.MapManager;
 import t4cPlugin.AssetsLoader;
 import t4cPlugin.MapPixel;
 import t4cPlugin.utils.LoadingStatus;

@@ -3,7 +3,6 @@ package t4cPlugin.utils;
 import java.io.File;
 
 import opent4c.DataChecker;
-import opent4c.MapManager;
 import opent4c.SpriteData;
 import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
@@ -12,6 +11,7 @@ import opent4c.UpdateScreenManagerStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import screens.MapManager;
 import t4cPlugin.Places;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;

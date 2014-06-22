@@ -1,4 +1,6 @@
-package opent4c;
+package screens;
+
+import opent4c.UpdateScreenManagerStatus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

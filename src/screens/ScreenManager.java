@@ -1,5 +1,6 @@
-package opent4c;
+package screens;
 
+import opent4c.UpdateScreenManagerStatus;
 import t4cPlugin.AssetsLoader;
 import t4cPlugin.utils.LoadingStatus;
 

@@ -3,6 +3,7 @@ package opent4c;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import screens.MapManager;
 import t4cPlugin.Places;
 import t4cPlugin.utils.PointsManager;
 import t4cPlugin.utils.RunnableCreatorUtil;

@@ -3,6 +3,8 @@ package opent4c;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import screens.ScreenManager;
+
 public class UpdateScreenManagerStatus {
 	
 	private static Logger logger = LogManager.getLogger(UpdateScreenManagerStatus.class.getSimpleName());
