@@ -27,12 +27,13 @@ import javax.imageio.ImageWriteParam;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.FileImageOutputStream;
 
+import opent4c.utils.FilesPath;
+import opent4c.utils.LoadingStatus;
+import opent4c.utils.SpriteName;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.SpriteName;
-import t4cPlugin.utils.FilesPath;
-import t4cPlugin.utils.LoadingStatus;
 import tools.ByteArrayToNumber;
 import tools.UnsignedInt;
 import tools.DataInputManager;

@@ -1,4 +1,4 @@
-package t4cPlugin;
+package screens;
 
 import java.awt.Point;
 

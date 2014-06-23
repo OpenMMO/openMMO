@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import opent4c.utils.AssetsLoader;
+import opent4c.utils.FilesPath;
+import opent4c.utils.LoadingStatus;
+import opent4c.utils.MD5Checker;
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.ThreadsUtil;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.AssetsLoader;
 import t4cPlugin.FileLister;
 import t4cPlugin.MAP;
-import t4cPlugin.utils.FilesPath;
-import t4cPlugin.utils.LoadingStatus;
-import t4cPlugin.utils.MD5Checker;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
 
 /**
  * Checks data and decodes what's missing.
@@ -81,7 +82,7 @@ public class DataChecker {
 			if(sprites_are_ok){
 				SpriteManager.decryptDPD();
 				SpriteManager.decryptDID();
-				ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteExtractorRunnable(false));
+				SpriteManager.decryptDDA(false);
 			}
 			loadingStatus.waitUntilDdaFilesProcessed();
 			SpriteData.create();
@@ -95,7 +96,7 @@ public class DataChecker {
 		if (!sprites_are_ok){
 			SpriteManager.decryptDPD();
 			SpriteManager.decryptDID();
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getSpriteExtractorRunnable(true));
+			SpriteManager.decryptDDA(true);
 		}		
 	}
 
@@ -116,6 +117,7 @@ public class DataChecker {
 		loadingStatus.waitUntilMapsAreDecrypted();
 		loadingStatus.waitUntilSpritesPackaged();
 		loadingStatus.waitUntilTilesPackaged();
+		ThreadsUtil.shutDownDdaExecutor();
 	}
 
 	/**

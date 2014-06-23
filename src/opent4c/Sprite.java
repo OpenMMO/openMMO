@@ -3,12 +3,13 @@ package opent4c;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
+import opent4c.utils.SpriteName;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
 
-import t4cPlugin.SpriteName;
 import tools.ByteArrayToNumber;
 import tools.UnsignedInt;
 import tools.UnsignedShort;

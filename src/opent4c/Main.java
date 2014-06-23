@@ -1,13 +1,14 @@
 package opent4c;
 
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.ThreadsUtil;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 
 import screens.ScreenManager;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
 import tools.OSValidator;
 
 

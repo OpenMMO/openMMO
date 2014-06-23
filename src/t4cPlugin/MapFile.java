@@ -10,14 +10,15 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 
+import opent4c.MapPixel;
+import opent4c.utils.LoadingStatus;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.utils.LoadingStatus;
-
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
+@Deprecated
 public class MapFile implements Serializable{
 	
 	private static Logger logger = LogManager.getLogger(MapFile.class.getSimpleName());

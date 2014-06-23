@@ -1,8 +1,7 @@
-package t4cPlugin.utils;
+package opent4c.utils;
 
 import java.io.File;
 
-import opent4c.DataChecker;
 import opent4c.SpriteData;
 import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
@@ -14,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import screens.MapManager;
 import t4cPlugin.Places;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
@@ -75,17 +75,37 @@ public class RunnableCreatorUtil {
 	}
 	
 	public static Runnable getForceTextureAtlasSpriteCreatorRunnable(final String name) {
-		Runnable r = new Runnable(){
-			public void run(){
-				TextureAtlas atlas = null;
-				if(name.equals("Unknown")){
-					atlas = new TextureAtlas(FilesPath.getAtlasUnknownFilePath());
-				}else{
-					atlas = new TextureAtlas(FilesPath.getAtlasSpritesFilePath(name));
+		Runnable r = null;
+		if(name.equals("Unknown")){
+			r = new Runnable(){
+				public void run(){
+					Gdx.app.postRunnable(new Runnable(){
+						public void run(){
+							TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasUnknownFilePath());
+							loadingStatus.addTextureAtlasSprite(name, atlas);
+						}
+					});
 				}
-				loadingStatus.addTextureAtlasSprite(name, atlas);
-			}
-		};
+			};
+		} else{
+			r = new Runnable(){
+				public void run(){
+					Gdx.app.postRunnable(new Runnable(){
+						public void run(){
+							TextureAtlas atlas = null;
+							if(new File(FilesPath.getAtlasSpritesFilePath(name)).exists()){
+								atlas = new TextureAtlas(FilesPath.getAtlasSpritesFilePath(name));
+							} else{
+								atlas = new TextureAtlas(FilesPath.getAtlasUnknownFilePath());
+								//TODO c'est de la bidouille pour que le programme de ne plante pas, mais il faudra dégager ça une fois les atlas correctement empaquetés
+								logger.warn("Il semblerait qu'un atlas un soit pas empaqueté : "+name+". On le remplace par Unknown pour le moment.");
+							}
+							loadingStatus.addTextureAtlasSprite(name, atlas);
+						}
+					});
+				}
+			};
+		}
 		return r;
 	}
 

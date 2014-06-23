@@ -7,10 +7,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import opent4c.utils.FilesPath;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import t4cPlugin.utils.FilesPath;
 
 public class SourceDataManager {
 

@@ -1,4 +1,4 @@
-package t4cPlugin;
+package opent4c;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.graphics.g2d.Batch;

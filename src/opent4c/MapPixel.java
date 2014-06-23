@@ -1,7 +1,9 @@
-package t4cPlugin;
+package opent4c;
 
 import java.awt.Point;
 import java.io.Serializable;
+
+import opent4c.utils.SpriteName;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

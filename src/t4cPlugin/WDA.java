@@ -23,7 +23,6 @@ import t4cPlugin.SPELL.spell_effect;
 import t4cPlugin.SPELL.spell_effect.param_effet;
 import tools.BitBuffer;
 import tools.DataInputManager;
-import tools.Fast_Forward;
 
 
 /*
@@ -1380,8 +1379,6 @@ public class WDA {
 		
 		for (int i=0; i<nb_pnj ; i++){
 			pnjs.add(new PNJ(buf));
-			if (i == Params.NB) new Fast_Forward(buf, 40, true, "nb pnj");
-
 		}
 	}
 }

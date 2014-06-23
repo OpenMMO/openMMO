@@ -1,8 +1,10 @@
 package t4cPlugin;
 
+import opent4c.utils.AssetsLoader;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-
+@Deprecated
 public class ScreenManager extends Game{
 	
 	public static final int IS_IDLE = 42;

@@ -4,12 +4,12 @@ import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
 
+import opent4c.utils.PointsManager;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
-
-import t4cPlugin.utils.PointsManager;
 
 public class Places {
 	private static Logger logger = LogManager.getLogger(Places.class.getSimpleName());

@@ -3,11 +3,14 @@ package t4cPlugin;
 import java.awt.Point;
 import java.io.File;
 
+import opent4c.Acteur;
+import opent4c.MapPixel;
+import opent4c.utils.AssetsLoader;
+import opent4c.utils.LoadingStatus;
+import opent4c.utils.PointsManager;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import t4cPlugin.utils.LoadingStatus;
-import t4cPlugin.utils.PointsManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
@@ -328,9 +331,6 @@ public class GdxMap implements Screen, InputProcessor{
 			Point dest = PointsManager.getPoint(lh_temple.getCoord().x, lh_temple.getCoord().y);
 			if (!moving)move(dest);
 			logger.info("Goto : "+lh_temple.getNom());
-		}
-		if (keycode == Keys.SPACE){
-			tools.HeapDumper.dumpHeap("."+File.separator+"data"+File.separator+"heap"+File.separator+"heap.bin", true);
 		}
 		return true;
 	}

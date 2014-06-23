@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
+import opent4c.utils.SpriteName;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

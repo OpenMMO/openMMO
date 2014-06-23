@@ -4,6 +4,8 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import opent4c.utils.SpriteName;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,7 +21,7 @@ import org.apache.logging.log4j.Logger;
  * @author synoga
  *
  */
-
+@Deprecated
 public class Sprite {
 	
 	private static Logger logger = LogManager.getLogger(Sprite.class.getSimpleName());

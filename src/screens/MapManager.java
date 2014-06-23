@@ -14,10 +14,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
+import opent4c.MapPixel;
 import opent4c.SpriteData;
 import opent4c.UpdateScreenManagerStatus;
+import opent4c.utils.FilesPath;
+import opent4c.utils.PointsManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,13 +39,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
-import t4cPlugin.Acteur;
 import t4cPlugin.FileLister;
-import t4cPlugin.IG_Menu;
 import t4cPlugin.Places;
-import t4cPlugin.MapPixel;
-import t4cPlugin.utils.FilesPath;
-import t4cPlugin.utils.PointsManager;
 import tools.DataInputManager;
 
 /**
@@ -75,8 +74,7 @@ public class MapManager implements Screen{
 	private SpriteBatch batch;
 	private static Stage stage;
 	private Stage ui;
-	private Group menu, sprites, infos, tiles;
-	private boolean debug = true;
+	private Group menu, infos;
 	private boolean render_infos = true;
 	private boolean menu_poped = false;
 	private IG_Menu pop_up;

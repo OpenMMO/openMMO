@@ -10,16 +10,16 @@ import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import opent4c.utils.AssetsLoader;
+import opent4c.utils.LoadingStatus;
+import opent4c.utils.PointsManager;
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.ThreadsUtil;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import screens.MapManager;
-import t4cPlugin.AssetsLoader;
-import t4cPlugin.MapPixel;
-import t4cPlugin.utils.LoadingStatus;
-import t4cPlugin.utils.PointsManager;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;

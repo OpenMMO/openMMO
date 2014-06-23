@@ -12,17 +12,17 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import opent4c.utils.FilesPath;
+import opent4c.utils.LoadingStatus;
+import opent4c.utils.PointsManager;
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.SpriteName;
+import opent4c.utils.ThreadsUtil;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import t4cPlugin.FileLister;
-import t4cPlugin.MapPixel;
-import t4cPlugin.SpriteName;
-import t4cPlugin.utils.FilesPath;
-import t4cPlugin.utils.LoadingStatus;
-import t4cPlugin.utils.PointsManager;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
 
 public class SpriteData {
 	private static Logger logger = LogManager.getLogger(SpriteData.class.getSimpleName());

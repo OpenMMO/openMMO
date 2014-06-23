@@ -1,4 +1,4 @@
-package t4cPlugin.utils;
+package opent4c.utils;
 
 import java.io.BufferedInputStream;
 import java.io.File;

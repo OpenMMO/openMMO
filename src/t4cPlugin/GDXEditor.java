@@ -14,10 +14,13 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import opent4c.MapPixel;
+import opent4c.utils.AssetsLoader;
+import opent4c.utils.PointsManager;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.utils.PointsManager;
 import tools.DataInputManager;
 import tools.OSValidator;
 

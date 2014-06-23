@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-
+@Deprecated
 public class Data {
 	static ArrayList<File> did = new ArrayList<File>();
 	static ArrayList<File> map = new ArrayList<File>();

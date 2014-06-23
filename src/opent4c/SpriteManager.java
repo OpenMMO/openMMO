@@ -9,13 +9,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import opent4c.utils.LoadingStatus;
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.SpriteName;
+import opent4c.utils.ThreadsUtil;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.SpriteName;
-import t4cPlugin.utils.LoadingStatus;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
 import tools.ByteArrayToNumber;
 import tools.DataInputManager;
 import tools.UnsignedInt;

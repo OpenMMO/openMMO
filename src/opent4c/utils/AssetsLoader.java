@@ -1,4 +1,4 @@
-package t4cPlugin;
+package opent4c.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,10 +10,8 @@ import opent4c.UpdateScreenManagerStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.utils.FilesPath;
-import t4cPlugin.utils.LoadingStatus;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
+import t4cPlugin.FileLister;
+import t4cPlugin.Params;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -138,11 +136,12 @@ public enum AssetsLoader {
 	 */
 	public static TextureAtlas load(final String name){
 		loadingStatus.addOneSpriteAtlas();
-		Gdx.app.postRunnable(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
-		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
-		logger.info("Sprite Atlas : " +name+" loaded.");
+		ThreadsUtil.queueSpriteLoad(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
 		//TODO j'en suis pas sur, mais je crois que cette fonction cause des freeze temporaires parce qu'elle monopolise le thread d'affichage...
 		//TODO je pense qu'il faut affiner l'organisation des atlas pour réduire les temps de chargement par atlas.
+		//TODO non c'est pas ça, les gros atlas sont à peu près tous séparés, mais on a des freeze quand même...
+		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
+		logger.info("Sprite Atlas : " +name+" loaded.");
 		UpdateScreenManagerStatus.setAtlasStatus("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}

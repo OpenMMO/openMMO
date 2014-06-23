@@ -3,11 +3,11 @@ package opent4c;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import opent4c.utils.PointsManager;
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.ThreadsUtil;
 import screens.MapManager;
 import t4cPlugin.Places;
-import t4cPlugin.utils.PointsManager;
-import t4cPlugin.utils.RunnableCreatorUtil;
-import t4cPlugin.utils.ThreadsUtil;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;

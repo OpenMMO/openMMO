@@ -1,8 +1,8 @@
 package screens;
 
 import opent4c.UpdateScreenManagerStatus;
-import t4cPlugin.AssetsLoader;
-import t4cPlugin.utils.LoadingStatus;
+import opent4c.utils.AssetsLoader;
+import opent4c.utils.LoadingStatus;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
