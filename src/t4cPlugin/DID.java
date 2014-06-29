@@ -18,7 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import tools.DataInputManager;
-
+@Deprecated
 public class DID {
 
 	private static Logger logger = LogManager.getLogger(DID.class.getSimpleName());

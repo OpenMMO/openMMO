@@ -57,6 +57,7 @@ public class ScreenManager extends Game{
 	public void initMap(){
 		AssetsLoader.loadSols();
 		AssetsLoader.load("Unknown");
+		AssetsLoader.load("Highlight");
 		map = new MapManager(this);
 		loadingStatus.waitUntilSpritesPackaged();
 		map.loadMaps();

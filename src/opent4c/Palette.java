@@ -12,7 +12,7 @@ public class Palette {
 	
 	private String nom = "";
 	ArrayList<PalettePixel> pixels = new ArrayList<PalettePixel>();
-	//TODO je ne sais pas à quoi servent le B, le P et 64k dans les noms de palettes donc je les dégage du nom et je les mets là pour le moment.
+	//TODO je ne sais pas à quoi servent le B et le P dans les noms de palettes donc je les dégage du nom et je les mets là pour le moment.
 	private boolean flagP = false;
 	private boolean flagB = false;
 	private boolean flag64k = false;
@@ -75,9 +75,6 @@ public class Palette {
 	/**
 	 * @return
 	 */
-	public String getName() {
-		return this.getNom();
-	}
 
 	public String getNom() {
 		return nom;

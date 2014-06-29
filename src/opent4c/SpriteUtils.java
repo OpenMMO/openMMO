@@ -3,29 +3,21 @@
  */
 package opent4c;
 
-import java.awt.AlphaComposite;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.Transparency;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.BufferUnderflowException;
+import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
-
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.FileImageOutputStream;
 
 import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
@@ -46,425 +38,65 @@ import tools.UnsignedShort;
 public class SpriteUtils {
 
 	private static int nb_extracted_sprites = 0;
-	private static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
+	static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 
 	
-	static void drawImage(BufferedImage img, Sprite sprite){
-		File f = null;
-		if (sprite.isTuile()){
-			File dir = new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin());
-			dir.mkdirs();
-			f = new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin()+File.separator+sprite.getName()+".png");
-		}else{
-			File dir = new File(FilesPath.getSpriteDirectoryPath()+sprite.getChemin());
-			dir.mkdirs();
-			f = new File(FilesPath.getSpriteDirectoryPath()+sprite.getChemin()+File.separator+sprite.getName()+".png");
-		}
-		if (f.exists())return;
-		GraphicsConfiguration gc = img.createGraphics().getDeviceConfiguration();
-		BufferedImage out =	gc.createCompatibleImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), Transparency.BITMASK);
-		Graphics2D g2d = out.createGraphics();
-		g2d.setComposite(AlphaComposite.Src);
-		g2d.drawImage(img, 0, 0, null);
-		g2d.dispose();
-		Iterator<ImageWriter> iter = null;
-		try {
-			iter = ImageIO.getImageWritersByFormatName("png");
-			ImageWriter writer = (ImageWriter)iter.next();
-			ImageWriteParam iwp = writer.getDefaultWriteParam();
-			FileImageOutputStream output = new FileImageOutputStream(f);
-			writer.setOutput(output);
-			IIOImage image = new IIOImage(out, null, null);
-			writer.write(null, image, iwp);
-			writer.dispose();
-			output.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : "+didsprite.type+" "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.getNom());
-	}
-
-	static void unzipSpriteTwice(Sprite sprite, ByteBuffer buf) {
-		byte b1,b2,b3,b4;
-		Inflater unzip = new Inflater();
-		ByteBuffer unzip_data1 = null;
-		byte[] data = null;
-		try{
-			data = new byte[(int) sprite.getTaille_zip().getValue()];
-		}catch(NegativeArraySizeException e){
-			e.printStackTrace();
-			System.exit(1);
-		}
-		buf.position(sprite.getBufPos());
-		buf.get(data);
-		unzip.setInput(data, 0, (int) sprite.getTaille_zip().getValue());
-		unzip_data1 = ByteBuffer.allocate((int) sprite.getTaille_unzip().getValue());
-		int resultLength = 0;
-		try {
-			resultLength = unzip.inflate(unzip_data1.array());
-		} catch (DataFormatException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-		unzip.end();
-		unzip_data1.rewind();
-		b1=unzip_data1.get();
-		b2=unzip_data1.get();
-		b3=unzip_data1.get();
-		b4=unzip_data1.get();
-		resultLength -= 4;
-		int inconnu = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		Inflater unzip2 = new Inflater();
-		ByteBuffer unzip_data2 = null;
-		byte[] data2 = new byte[(int) resultLength];
-		unzip_data1.get(data2);
-		unzip2.setInput(data2, 0, (int) resultLength);
-		unzip_data2 = ByteBuffer.allocate(inconnu);
-		try {
-			unzip2.inflate(unzip_data2.array());
-		} catch (DataFormatException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-		unzip2.end();
-		
-		ArrayList<PalettePixel> pal = sprite.getPalette().pixels;
-		BufferedImage img = null;
-		if (sprite.isTuile()){
-			img = new BufferedImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), BufferedImage.TYPE_INT_RGB);
-		}else{
-			img = new BufferedImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), BufferedImage.TYPE_INT_ARGB);
-		}
-		int y = 0, x = 0;
-		while (y<sprite.getHauteur().getValue()){
-			while (x<sprite.getLargeur().getValue()){
-				int c = 0;
-				try{
-					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,unzip_data2.get()});
-				}catch (BufferUnderflowException e){
-					e.printStackTrace();
-					System.exit(1);
-				}
-				PalettePixel px = null;
-				px = pal.get(c);
-				int red=0,green=0,blue=0,alpha=255;
-				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,(byte) sprite.getCouleurTrans().getValue()})){
-					img.setRGB(x, y, 0);
-				}else{
-					red = px.getRed();
-					green = px.getGreen();
-					blue = px.getBlue();
-					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
-					img.setRGB(x,y,col);
-				}
-				x++;
-				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
-			}
-			y++;
-			x = 0;
-		}
-		drawImage(img,sprite);
-	}
-
-	static void unzipSprite(Sprite sprite, ByteBuffer buf) {
-		byte b1,b2,b3,b4;
-		buf.position(sprite.getBufPos());
-		b1=buf.get();
-		b2=buf.get();
-		b3=buf.get();
-		b4=buf.get();
-		int taille_unzip2 = tools.ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		Inflater unzip = new Inflater();
-		ByteBuffer unzip_data1 = null;
-		byte[] data = new byte[(int) sprite.getTaille_zip().getValue()];
-		buf.get(data);
-		unzip.setInput(data, 0, (int) sprite.getTaille_zip().getValue());
-		unzip_data1 = ByteBuffer.allocate((int)taille_unzip2);
-		try {
-			unzip.inflate(unzip_data1.array());
-		} catch (DataFormatException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-		unzip.end();
-		unzip_data1.rewind();
-	
-		ArrayList<PalettePixel> pal = sprite.getPalette().pixels;
-		BufferedImage img = null;
-		if (sprite.isTuile()){
-			img = new BufferedImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), BufferedImage.TYPE_INT_RGB);
-		}else{
-			img = new BufferedImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), BufferedImage.TYPE_INT_ARGB);
-		}			int y = 0, x = 0;
-		while (y<sprite.getHauteur().getValue()){
-			while (x<sprite.getLargeur().getValue()){
-				int c = 0;
-				try{
-					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,unzip_data1.get()});
-				}catch (BufferUnderflowException e){
-					e.printStackTrace();
-					System.exit(1);
-				}
-				PalettePixel px = null;
-				px = pal.get(c);
-				int red=0,green=0,blue=0,alpha=255;
-				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,(byte) sprite.getCouleurTrans().getValue()})){
-					img.setRGB(x, y, 0);
-				}else{
-					red = px.getRed();
-					green = px.getGreen();
-					blue = px.getBlue();
-					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
-					img.setRGB(x,y,col);
-				}
-				x++;
-				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
-			}
-			y++;
-			x = 0;
-		}
-		drawImage(img,sprite);
-	}
-
-	static void writeType2SpriteToDisk(Sprite sprite, ByteBuffer buf) {
-		byte b1,b2;
-		int X,Y,nbpix;
-		byte b = 0;
-		ByteBuffer data = null;
-		buf.position(sprite.getBufPos());
-		Y=0;
-		//pour ceux qui ont la compression Zlib en plus
-		if (sprite.getLargeur().getValue() > 180 | sprite.getHauteur().getValue() > 180) {
-			Inflater unzip = new Inflater();
-			byte[] bytes = new byte[(int) sprite.getTaille_zip().getValue()];
-			buf.get(bytes);
-			unzip.setInput(bytes, 0, (int) sprite.getTaille_zip().getValue());
-			data = ByteBuffer.allocate((int) sprite.getTaille_unzip().getValue());
-			try {
-				unzip.inflate(data.array());
-			} catch (DataFormatException e) {
-				e.printStackTrace();
-				logger.fatal(e);
-				System.exit(1);
-			}
-			unzip.end();
-		}else{
-			data = ByteBuffer.allocate((int) sprite.getTaille_zip().getValue());
-			buf.get(data.array());
-		}
-		data.rewind();
-		//on a les données du sprite dans data. on opère la décompression RLE
-		ByteBuffer spriteTmp =  ByteBuffer.allocate((int) (sprite.getHauteur().getValue()*sprite.getLargeur().getValue()));
-		spriteTmp.rewind();
-		//on remplit de transparence
-		for (int i=0 ; i<spriteTmp.capacity() ; i++){
-			spriteTmp.put((byte) sprite.getCouleurTrans().getValue());
-		}
-		spriteTmp.rewind();
-		if (data != null){
-			while(Y != sprite.getHauteur().getValue()){
-				b1 = data.get();
-				b2 = data.get();
-				X = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
-				b1 = data.get();
-				b2 = data.get();
-				nbpix = ((tools.ByteArrayToNumber.bytesToShort(new byte[]{0,b1})*4) + tools.ByteArrayToNumber.bytesToShort(new byte[]{0,b2}));
-				b = data.get();
-				if (b != 1){
-					for (int i=0 ; i<nbpix ; i++){
-						spriteTmp.put((int) (spriteTmp.position()+i+X+(Y*sprite.getLargeur().getValue())), data.get());
-						if ((i+X) == (sprite.getLargeur().getValue()-1)) break;//sécu pour être sur de pas dépasser;
-					}
-				}
-				b = data.get();
-				if (b == 0) {
-					break;
-				}else if (b == 2){
-					Y++;
-				}
-			}
-		}
-		spriteTmp.rewind();
-		
-		ArrayList<PalettePixel> pal = sprite.getPalette().pixels;
-		BufferedImage img = null;
-		if (sprite.isTuile()){
-			img = new BufferedImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), BufferedImage.TYPE_INT_RGB);
-		}else{
-			img = new BufferedImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), BufferedImage.TYPE_INT_ARGB);
-		}			int y = 0, x = 0;
-		while (y<sprite.getHauteur().getValue()){
-			while (x<sprite.getLargeur().getValue()){
-				int c = 0;
-				try{
-					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,spriteTmp.get()});
-				}catch (BufferUnderflowException e){
-					e.printStackTrace();
-					System.exit(1);
-				}
-				PalettePixel px = null;
-				px = pal.get(c);
-				int red=0,green=0,blue=0,alpha=255;
-				if (c == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,(byte) sprite.getCouleurTrans().getValue()})){
-					red = px.getRed();
-					green = px.getGreen();
-					blue = px.getBlue();
-					int col = (0 << 24) | (red << 16) | (green << 8) | blue;
-					img.setRGB(x,y,col);
-				}else{
-					red = px.getRed();
-					green = px.getGreen();
-					blue = px.getBlue();
-					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
-					img.setRGB(x,y,col);
-				}
-				x++;
-				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
-			}
-			y++;
-			x = 0;
-		}
-		drawImage(img,sprite);
-	}
-
-	static void writeType1SpriteToDisk(Sprite sprite, ByteBuffer buf) {
-		ByteBuffer data = null;
-		File f = null;
-		if (sprite.isTuile()){
-			//TODO vérifier un jour à quoi sert cet offset sur le premier de la zone de tuiles
-			sprite.setOffsetX((short)0);
-			sprite.setOffsetY((short)0);
-			File dir = new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin());
-			dir.mkdirs();
-			f = new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin()+File.separator+sprite.getName()+".png");
-		}else{
-			File dir = new File(FilesPath.getSpriteDirectoryPath()+sprite.getChemin());
-			dir.mkdirs();
-			f = new File(FilesPath.getSpriteDirectoryPath()+sprite.getChemin()+File.separator+sprite.getName()+".png");
-		}
-		if (f.exists())return;
-		data = ByteBuffer.allocate((int) (sprite.getLargeur().getValue()*sprite.getHauteur().getValue()));
-		try{
-			buf.position(sprite.getBufPos());
-			buf.get(data.array());
-		}catch(BufferUnderflowException e){
-			e.printStackTrace();
-			logger.info("sprite : "+sprite.getName());
-			logger.info("chemin : "+sprite.getChemin());
-			logger.info("type : "+sprite.getType());
-			logger.info("ombre : "+sprite.getOmbre());
-			logger.info("hauteur : "+sprite.getHauteur());
-			logger.info("largeur : "+sprite.getLargeur());
-			logger.info("offsetY : "+sprite.getOffsetY());
-			logger.info("offsetX : "+sprite.getOffsetX());
-			logger.info("offsetY2 : "+sprite.getOffsetY2());
-			logger.info("offsetX2 : "+sprite.getOffsetX2());
-			logger.info("Inconnu : "+sprite.getInconnu9());
-			logger.info("Couleur trans : "+sprite.getCouleurTrans());
-			logger.info("taille_zip : "+sprite.getTaille_zip());
-			logger.info("taille_unzip : "+sprite.getTaille_unzip());
-			System.exit(1);
-		}
-		data.rewind();
-		ArrayList<PalettePixel> pal = sprite.getPalette().pixels;
-		BufferedImage img = null;
-		img = new BufferedImage((int)sprite.getLargeur().getValue(), (int)sprite.getHauteur().getValue(), BufferedImage.TYPE_INT_ARGB);
-		int y = 0, x = 0;
-		while (y<sprite.getHauteur().getValue()){
-			while (x<sprite.getLargeur().getValue()){
-				int b = 0;
-				try{
-					b = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,data.get()});
-				}catch (BufferUnderflowException e){
-					e.printStackTrace();
-					System.exit(1);
-				}
-				PalettePixel px = null;
-				px = pal.get(b);
-				int red=0,green=0,blue=0,alpha=255;
-				if (b == tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,(byte) sprite.getCouleurTrans().getValue()})){
-					img.setRGB(x, y, 0);
-				}else{
-					red = px.getRed();
-					green = px.getGreen();
-					blue = px.getBlue();
-					int col = (alpha << 24) | (red << 16) | (green << 8) | blue;
-					img.setRGB(x,y,col);
-				}
-				x++;
-				//logger.info("	- Pixel : "+x+","+y+" : ARGB"+tools.ByteArrayToHexString.print((byte)alpha)+","+px.red+","+px.green+","+px.blue+" index palette : "+b);
-			}
-			y++;
-			x = 0;
-		}
-		drawImage(img, sprite);
-	}
-
-	static void writeType3SpriteToDisk(Sprite didsprite) {
-		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : VIDE "+didsprite.getName());
-	}
-
-	static boolean doTheWriting(Sprite sprite, ByteBuffer buf){
+	static boolean doTheWriting(TilePixel pixel, ByteBuffer buf){
 		boolean writen = false;
-		switch(sprite.getType().getValue()){
-			case 1 : writeType1SpriteToDisk(sprite, buf); break;
-			case 2 : writeType2SpriteToDisk(sprite, buf); break;
-			case 3 : writeType3SpriteToDisk(sprite); writen = true; break;
-			case 9 : writeType9SpriteToDisk(sprite, buf); break;
+		switch(pixel.getType()){
+			case 1 : SpriteWriter.writeType1SpriteToDisk(pixel, buf); break;
+			case 2 : SpriteWriter.writeType2SpriteToDisk(pixel, buf); break;
+			case 3 : SpriteWriter.writeType3SpriteToDisk(pixel); writen = true; break;
+			case 9 : SpriteWriter.writeType9SpriteToDisk(pixel, buf); break;
 		}
-		File f;
-		if (sprite.isTuile()){
-			f = new File(FilesPath.getTuileDirectoryPath()+sprite.getChemin()+File.separator+sprite.getName()+".png");		
-		}else{
-			f = new File(FilesPath.getSpriteDirectoryPath()+sprite.getChemin()+File.separator+sprite.getName()+".png");
+		File f = new File(FilesPath.getTuileDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");		
+		if(f.exists())writen = true;
+		return writen;
+	}
+	
+	static boolean doTheWriting(SpritePixel pixel, ByteBuffer buf){
+		boolean writen = false;
+		switch(pixel.getType()){
+			case 1 : SpriteWriter.writeType1SpriteToDisk(pixel, buf); break;
+			case 2 : SpriteWriter.writeType2SpriteToDisk(pixel, buf); break;
+			case 3 : SpriteWriter.writeType3SpriteToDisk(pixel); writen = true; break;
+			case 9 : SpriteWriter.writeType9SpriteToDisk(pixel, buf); break;
 		}
+		File f = new File(FilesPath.getSpriteDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");
 		if(f.exists())writen = true;
 		return writen;
 	}
 
-	/**
-	 * @param sprite
-	 * @param buf
-	 */
-	private static void writeType9SpriteToDisk(Sprite sprite, ByteBuffer buf) {
-		if (sprite.getTaille_zip().getValue() == sprite.getTaille_unzip().getValue()){
-			unzipSprite(sprite, buf);
-		}else{
-			//sprite.printInfos();
-			unzipSpriteTwice(sprite, buf);
-		}		
-	}
-
-	/**
-	 * Extract a sprite from a .dda file
-	 * @param buf
-	 * @param sprite
-	 */
-	static void extractDDASprite(ByteBuffer buf, Sprite sprite) {
-		Palette p = extractPalette(sprite);
+	static boolean extractDDASprite(ByteBuffer buf, MapPixel pixel) {
+		Palette p = extractPalette(pixel);
 		if(p == null){
-			logger.fatal("On n'a pas trouvé une palette : "+sprite.getName());
+			logger.fatal("On n'a pas trouvé cette palette : "+pixel.getTex());
 			System.exit(1);
 		}
-		sprite.setPalette(p);
-		//logger.info("Palette : "+sprite.getName()+"<=>"+sprite.getPaletteName());
+		pixel.setPalette(p);
+		//logger.info("Palette : "+nom+"<=>"+sprite.getPaletteName());
 		ByteBuffer header_buf = extractHeaderBuffer(buf);
-		sprite.setOmbre(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setType(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setHauteur(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setLargeur(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setOffsetY(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
-		sprite.setOffsetX(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
-		sprite.setOffsetY2(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
-		sprite.setOffsetX2(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
-		sprite.setCouleurTrans(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setInconnu9(new UnsignedShort(extractShort(header_buf,true)));
-		sprite.setTaille_unzip(new UnsignedInt(extractInt(header_buf,true)));
-		sprite.setTaille_zip(new UnsignedInt(extractInt(header_buf,true)));		
-		sprite.setBufPos(buf.position());
-		sprite.setTuile(extractTuileInfo(sprite));
+		pixel.setOmbre(new UnsignedShort(extractShort(header_buf,true)));
+		pixel.setType(new UnsignedShort(extractShort(header_buf,true)));
+		pixel.setHauteur(new UnsignedShort(extractShort(header_buf,true)));
+		pixel.setLargeur(new UnsignedShort(extractShort(header_buf,true)));
+		pixel.setOffsetY(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
+		pixel.setOffsetX(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
+		pixel.setOffsetY2(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
+		pixel.setOffsetX2(ByteArrayToNumber.bytesToShort(extractShort(header_buf,true)));
+		pixel.setCouleurTrans(new UnsignedShort(extractShort(header_buf,true)));
+		pixel.setInconnu9(new UnsignedShort(extractShort(header_buf,true)));
+		pixel.setTaille_unzip(new UnsignedInt(extractInt(header_buf,true)));
+		pixel.setTaille_zip(new UnsignedInt(extractInt(header_buf,true)));		
+		pixel.setBufPos(buf.position());
+		if(extractTuileInfo(pixel)){
+			pixel = SpriteData.putTile(pixel);
+			return true;
+		}else{
+			pixel = SpriteData.putSprite(pixel);
+			return false;
+		}
 		//logger.info("Type : "+sprite.getType().getValue());
 	}
 
@@ -474,44 +106,44 @@ public class SpriteUtils {
 	 * @param sprite
 	 * @return
 	 */
-	private static boolean extractTuileInfo(Sprite sprite) {
+	private static boolean extractTuileInfo(MapPixel pixel) {
 		boolean result = false;
-		if ((sprite.getLargeur().getValue() == 32) && (sprite.getHauteur().getValue() == 16)) result = true;
-		if (sprite.getChemin().equals("All"))result = false;
-		if (sprite.getChemin().equals("BlackLeatherBoots"))result = false;
-		if (sprite.getChemin().equals("CemeteryGates"))result = false;
-		if (sprite.getChemin().equals("DarkSword"))result = false;
-		if (sprite.getChemin().equals("GoldenMorningStar"))result = false;
-		if (sprite.getChemin().equals("LeatherBoots"))result = false;
-		if (sprite.getChemin().equals("MorningStar"))result = false;
-		if (sprite.getChemin().equals("OgreClub"))result = false;
-		if (sprite.getChemin().equals("PlateBoots"))result = false;
-		if (sprite.getChemin().equals("SkavenClub"))result = false;
-		if (sprite.getChemin().equals("StoneShard"))result = false;
-		if (sprite.getChemin().equals("PlateLeftArm"))result = false;
-		if (sprite.getChemin().equals("Bow07"))result = false;
-		if (sprite.getChemin().equals("Dague05"))result = false;
-		if (sprite.getChemin().equals("Hache06"))result = false;
-		if (sprite.getChemin().equals("Hammer01"))result = false;
-		if (sprite.getChemin().equals("LevelUp"))result = false;
-		if (sprite.getChemin().equals("NMFire"))result = false;
-		if (sprite.getChemin().equals("NMLightning"))result = false;
-		if (sprite.getChemin().equals("NMPoison"))result = false;
-		if (sprite.getChemin().equals("NMSSupraHeal"))result = false;
-		if (sprite.getChemin().equals("OnGround"))result = false;
-		if (sprite.getChemin().equals("SP03"))result = false;
-		if (sprite.getChemin().equals("SP04"))result = false;
-		if (sprite.getChemin().equals("SP05"))result = false;
-		if (sprite.getChemin().equals("Sword01"))result = false;
-		if (sprite.getChemin().equals("V2Effect"))result = false;
-		if (sprite.getChemin().equals("Weather"))result = false;
-		if (sprite.getChemin().equals("GenericMerge3"))result = false;
-		if (sprite.getChemin().equals("Root"))result = false;
-		if (sprite.getChemin().equals("VSSmooth"))result = false;
-		if (sprite.getChemin().equals("GenericMerge1"))result = false;
-		if (sprite.getChemin().equals("GenericMerge2Wooden"))result = false;
-		if (sprite.getChemin().equals("WoodenSmooth"))result = false;
-		if (sprite.getChemin().equals("Black"))result = false;
+		if ((pixel.getLargeur() == 32) && (pixel.getHauteur() == 16)) result = true;
+		if (pixel.getAtlas().equals("All"))result = false;
+		if (pixel.getAtlas().equals("BlackLeatherBoots"))result = false;
+		if (pixel.getAtlas().equals("CemeteryGates"))result = false;
+		if (pixel.getAtlas().equals("DarkSword"))result = false;
+		if (pixel.getAtlas().equals("GoldenMorningStar"))result = false;
+		if (pixel.getAtlas().equals("LeatherBoots"))result = false;
+		if (pixel.getAtlas().equals("MorningStar"))result = false;
+		if (pixel.getAtlas().equals("OgreClub"))result = false;
+		if (pixel.getAtlas().equals("PlateBoots"))result = false;
+		if (pixel.getAtlas().equals("SkavenClub"))result = false;
+		if (pixel.getAtlas().equals("StoneShard"))result = false;
+		if (pixel.getAtlas().equals("PlateLeftArm"))result = false;
+		if (pixel.getAtlas().equals("Bow07"))result = false;
+		if (pixel.getAtlas().equals("Dague05"))result = false;
+		if (pixel.getAtlas().equals("Hache06"))result = false;
+		if (pixel.getAtlas().equals("Hammer01"))result = false;
+		if (pixel.getAtlas().equals("LevelUp"))result = false;
+		if (pixel.getAtlas().equals("NMFire"))result = false;
+		if (pixel.getAtlas().equals("NMLightning"))result = false;
+		if (pixel.getAtlas().equals("NMPoison"))result = false;
+		if (pixel.getAtlas().equals("NMSSupraHeal"))result = false;
+		if (pixel.getAtlas().equals("OnGround"))result = false;
+		if (pixel.getAtlas().equals("SP03"))result = false;
+		if (pixel.getAtlas().equals("SP04"))result = false;
+		if (pixel.getAtlas().equals("SP05"))result = false;
+		if (pixel.getAtlas().equals("Sword01"))result = false;
+		if (pixel.getAtlas().equals("V2Effect"))result = false;
+		if (pixel.getAtlas().equals("Weather"))result = false;
+		if (pixel.getAtlas().equals("GenericMerge3"))result = false;
+		if (pixel.getAtlas().equals("Root"))result = false;
+		if (pixel.getAtlas().equals("VSSmooth"))result = false;
+		if (pixel.getAtlas().equals("GenericMerge1"))result = false;
+		if (pixel.getAtlas().equals("GenericMerge2Wooden"))result = false;
+		if (pixel.getAtlas().equals("WoodenSmooth"))result = false;
+		if (pixel.getAtlas().equals("Black"))result = false;
 		
 		return result;
 	}
@@ -522,20 +154,20 @@ public class SpriteUtils {
 	 *	sinon, on attribue la palette Bright1
 	 * @return
 	 */
-	private static Palette extractPalette(Sprite sprite) {
+	private static Palette extractPalette(MapPixel pixel) {
 		Palette result = SpriteManager.palettes.get("Bright1");
 		if (result == null){
-			logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+sprite.getName()+" / "+SpriteManager.palettes.containsKey("Bright1"));
+			logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+pixel.getTex()+" / "+SpriteManager.palettes.containsKey("Bright1"));
 			System.exit(1);
 		}
 		Iterator<String> iter_pal = SpriteManager.palettes.keySet().iterator();
 		while (iter_pal.hasNext()){
 			String pal = iter_pal.next();
-			String nom = sprite.getName();
+			String nom = pixel.getTex();
 			if (nom.contains(pal)){
 				result = SpriteManager.palettes.get(pal);
 				if (result == null){
-					logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+sprite.getName()+" / "+SpriteManager.palettes.containsKey(pal));
+					logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+nom+" / "+SpriteManager.palettes.containsKey(pal));
 					System.exit(1);
 				}
 				break;
@@ -658,43 +290,63 @@ public class SpriteUtils {
 	 */
 	public static void decrypt_dda_file(File f, boolean doWrite) {
 		int numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
-		
-		Map<SpriteName,Sprite> sprites_in_dda = new HashMap<SpriteName,Sprite>();
-		Iterator<SpriteName> iteri = SpriteManager.getSprites().keySet().iterator();
+		List<MapPixel> sprites_in_dda = new ArrayList<MapPixel>();
+
+		Iterator<Integer> iteri = SpriteData.getPixels().keySet().iterator();
+
 		while(iteri.hasNext()){
-			SpriteName key = iteri.next();
-			Sprite sp = SpriteManager.getSprites().get(key);
-			if (sp.getNumDda() == numDDA){
-				sprites_in_dda.put(key, sp);
+			int key = iteri.next();
+			List<MapPixel> px_list = SpriteData.getPixels().get(key);
+			Iterator<MapPixel> iter_px = px_list.iterator();
+			while(iter_px.hasNext()){
+				MapPixel px = iter_px.next();
+				if (px.getNumDDA() == numDDA){
+					sprites_in_dda.add(px);
+				}
 			}
+
 		}
 		ByteBuffer buf = readDDA(f);
 		byte[] signature = new byte[4];
 		signature = extractBytes(buf,signature.length);
-		Iterator<SpriteName> iter = sprites_in_dda.keySet().iterator();
+		Iterator<MapPixel> iter = sprites_in_dda.iterator();
 		while(iter.hasNext()){
-			SpriteName key = iter.next();
-			Sprite sprite = sprites_in_dda.get(key);
-			int indexation = (int) (sprite.getIndexation().getValue()+4);
+			MapPixel pixel = iter.next();
+			int indexation = (pixel.getIndexation()+4);
 			try{
 				buf.position(indexation);
 			}catch(IllegalArgumentException e){
 				e.printStackTrace();
 				System.exit(1);
 			}
-			extractDDASprite(buf, sprite);//lit l'entête du sprite et ajoute  les infos de l'entête dans le Sprite
-			//sprite.printInfos();
+			boolean tuile = extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
 			loadingStatus.addOneSpriteFromDDA();
 			if(doWrite){
 				boolean writen = false;
-				writen = doTheWriting(sprite, buf);
+				if(tuile){
+					TilePixel pix = new TilePixel(pixel);
+					pix.setBufPos(pixel.getBufPos());
+					pix.setTaille_unzip(pixel.getTaille_unzip());
+					pix.setTaille_zip(pixel.getTaille_zip());
+					pix.setPal(pixel.getPal());
+
+					writen = doTheWriting(pix, buf);
+				}else{
+					SpritePixel pix = new SpritePixel(pixel);
+					pix.setBufPos(pixel.getBufPos());
+					pix.setTaille_unzip(pixel.getTaille_unzip());
+					pix.setTaille_zip(pixel.getTaille_zip());
+					pix.setPal(pixel.getPal());
+					
+					writen = doTheWriting(pix, buf);
+				}
 				if (!writen){
-					logger.fatal("Sprite non écrit => "+sprite.getName());
-					sprite.printInfos();
+					logger.fatal("Sprite non écrit => "+pixel.getTex());
 					System.exit(1);
 				}
 			}
-			if (sprite.getType().getValue() != 9) nb_extracted_sprites++;
+			nb_extracted_sprites++;
+			//SpriteData.removeFromPixels(pixel);
 			UpdateScreenManagerStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+DataChecker.nb_expected_sprites);
 		}
 	}
@@ -728,20 +380,159 @@ public class SpriteUtils {
 		byte[] bytes = new byte[64];
 		buf.get(bytes);
 		String nomExtrait = new String(bytes);
-		nomExtrait = nomExtrait.substring(0, nomExtrait.indexOf(0x00));
-		nomExtrait = nomExtrait.replace("_","");
-		if (nomExtrait.equals("Cemetery Gates /^"))nomExtrait = "Cemetery Gates1";
-		if (nomExtrait.equals("Cemetery Gates /"))nomExtrait = "Cemetery Gates2";
-		if (nomExtrait.equals("Cemetery Gates \\v"))nomExtrait = "Cemetery Gates3";
-		if (nomExtrait.equals("Cemetery Gates v"))nomExtrait = "Cemetery Gates4";
-		if (nomExtrait.equals("Cemetery Gates -"))nomExtrait = "Cemetery Gates5";
-		if (nomExtrait.equals("Cemetery Gates >"))nomExtrait = "Cemetery Gates6";
-		if (nomExtrait.equals("Cemetery Gates ^"))nomExtrait = "Cemetery Gates7";
-		if (nomExtrait.equals("Cemetery Gates X"))nomExtrait = "Cemetery Gates8";
-		if (nomExtrait.equals("Cemetery Gates .|"))nomExtrait = "Cemetery Gates9";
+		nomExtrait = manageNameSpecialCases(nomExtrait);
+		if (nomExtrait.equals("")){
+			logger.fatal("nom extrait null : ");
+			System.exit(1);
+		};
 		return new SpriteName(nomExtrait);
 	}
 
+	/**
+	 * Modifies names to fit our scheme
+	 * @param nom
+	 * @return
+	 */
+	private static String manageNameSpecialCases(String nom) {
+		nom = nom.substring(0, nom.indexOf(0x00));
+		nom = nom.replace("_","");
+		nom = nom.replace(":","");
+		String result = nom;
+		// Correction des noms pour les grilles
+		if (nom.equals("Cemetery Gates /^"))result = "Cemetery Gates1";
+		if (nom.equals("Cemetery Gates /"))result = "Cemetery Gates2";
+		if (nom.equals("Cemetery Gates \\v"))result = "Cemetery Gates3";
+		if (nom.equals("Cemetery Gates v"))result = "Cemetery Gates4";
+		if (nom.equals("Cemetery Gates -"))result = "Cemetery Gates5";
+		if (nom.equals("Cemetery Gates >"))result = "Cemetery Gates6";
+		if (nom.equals("Cemetery Gates ^"))result = "Cemetery Gates7";
+		if (nom.equals("Cemetery Gates X"))result = "Cemetery Gates8";
+		if (nom.equals("Cemetery Gates .|"))result = "Cemetery Gates9";
+		//les sprites Rockflor n'ont pas les coordonées dans leur nom, rendant impossible le calcul du modulo, je modifie les noms pour coller à mon standard de calcul de modulo.
+		if (nom.equals("Rockflor 1")) result = "RockFlor (1, 1)";
+		if (nom.equals("Rockflor 2")) result = "RockFlor (1, 2)";
+		if (nom.equals("Rockflor 3")) result = "RockFlor (1, 3)";
+		if (nom.equals("Rockflor 4")) result = "RockFlor (2, 1)";
+		if (nom.equals("Rockflor 5")) result = "RockFlor (2, 2)";
+		if (nom.equals("Rockflor 6")) result = "RockFlor (2, 3)";
+		if (nom.equals("Rockflor 7")) result = "RockFlor (3, 1)";
+		if (nom.equals("Rockflor 8")) result = "RockFlor (3, 2)";
+		if (nom.equals("Rockflor 9")) result = "RockFlor (3, 3)";
+		//idem
+		if (nom.equals("Lava 1")) result = "Lava (1, 1)";
+		if (nom.equals("Lava 2")) result = "Lava (1, 2)";
+		if (nom.equals("Lava 3")) result = "Lava (1, 3)";
+		if (nom.equals("Lava 4")) result = "Lava (1, 4)";
+		if (nom.equals("Lava 5")) result = "Lava (1, 5)";
+		if (nom.equals("Lava 6")) result = "Lava (2, 1)";
+		if (nom.equals("Lava 7")) result = "Lava (2, 2)";
+		if (nom.equals("Lava 8")) result = "Lava (2, 3)";
+		if (nom.equals("Lava 9")) result = "Lava (2, 4)";
+		if (nom.equals("Lava 10")) result = "Lava (2, 5)";
+		//idem
+		if (nom.equals("DungeonFloorTorch1 1"))result = "DungeonFloorTorch (1, 1)";
+		if (nom.equals("DungeonFloorTorch1 2"))result = "DungeonFloorTorch (1, 2)";
+		if (nom.equals("DungeonFloorTorch1 3"))result = "DungeonFloorTorch (1, 3)";
+		if (nom.equals("DungeonFloorTorch1 4"))result = "DungeonFloorTorch (1, 4)";
+		if (nom.equals("DungeonFloorTorch1 5"))result = "DungeonFloorTorch (1, 5)";
+		if (nom.equals("DungeonFloorTorch2 1"))result = "DungeonFloorTorch (2, 1)";
+		if (nom.equals("DungeonFloorTorch2 2"))result = "DungeonFloorTorch (2, 2)";
+		if (nom.equals("DungeonFloorTorch2 3"))result = "DungeonFloorTorch (2, 3)";
+		if (nom.equals("DungeonFloorTorch2 4"))result = "DungeonFloorTorch (2, 4)";
+		if (nom.equals("DungeonFloorTorch2 5"))result = "DungeonFloorTorch (2, 5)";
+		if (nom.equals("DungeonFloorTorch3 1"))result = "DungeonFloorTorch (3, 1)";
+		if (nom.equals("DungeonFloorTorch3 2"))result = "DungeonFloorTorch (3, 2)";
+		if (nom.equals("DungeonFloorTorch3 3"))result = "DungeonFloorTorch (3, 3)";
+		if (nom.equals("DungeonFloorTorch3 4"))result = "DungeonFloorTorch (3, 4)";
+		if (nom.equals("DungeonFloorTorch3 5"))result = "DungeonFloorTorch (3, 5)";
+		if (nom.equals("DungeonFloorTorch4 1"))result = "DungeonFloorTorch (4, 1)";
+		if (nom.equals("DungeonFloorTorch4 2"))result = "DungeonFloorTorch (4, 2)";
+		if (nom.equals("DungeonFloorTorch4 3"))result = "DungeonFloorTorch (4, 3)";
+		if (nom.equals("DungeonFloorTorch4 4"))result = "DungeonFloorTorch (4, 4)";
+		if (nom.equals("DungeonFloorTorch4 5"))result = "DungeonFloorTorch (4, 5)";
+		if (nom.equals("DungeonFloorTorch5 1"))result = "DungeonFloorTorch (5, 1)";
+		if (nom.equals("DungeonFloorTorch5 2"))result = "DungeonFloorTorch (5, 2)";
+		if (nom.equals("DungeonFloorTorch5 3"))result = "DungeonFloorTorch (5, 3)";
+		if (nom.equals("DungeonFloorTorch5 4"))result = "DungeonFloorTorch (5, 4)";
+		if (nom.equals("DungeonFloorTorch5 5"))result = "DungeonFloorTorch (5, 5)";
+		if (nom.equals("DungeonFloorTorch6 1"))result = "DungeonFloorTorch (6, 1)";
+		if (nom.equals("DungeonFloorTorch6 2"))result = "DungeonFloorTorch (6, 2)";
+		if (nom.equals("DungeonFloorTorch6 3"))result = "DungeonFloorTorch (6, 3)";
+		if (nom.equals("DungeonFloorTorch6 4"))result = "DungeonFloorTorch (6, 4)";
+		if (nom.equals("DungeonFloorTorch6 5"))result = "DungeonFloorTorch (6, 5)";
+		if (nom.equals("DungeonFloorTorch7 1"))result = "DungeonFloorTorch (7, 1)";
+		if (nom.equals("DungeonFloorTorch7 2"))result = "DungeonFloorTorch (7, 2)";
+		if (nom.equals("DungeonFloorTorch7 3"))result = "DungeonFloorTorch (7, 3)";
+		if (nom.equals("DungeonFloorTorch7 4"))result = "DungeonFloorTorch (7, 4)";
+		if (nom.equals("DungeonFloorTorch7 5"))result = "DungeonFloorTorch (7, 5)";
+		if (nom.equals("DungeonFloorTorch8 1"))result = "DungeonFloorTorch (8, 1)";
+		if (nom.equals("DungeonFloorTorch8 2"))result = "DungeonFloorTorch (8, 2)";
+		if (nom.equals("DungeonFloorTorch8 3"))result = "DungeonFloorTorch (8, 3)";
+		if (nom.equals("DungeonFloorTorch8 4"))result = "DungeonFloorTorch (8, 4)";
+		if (nom.equals("DungeonFloorTorch8 5"))result = "DungeonFloorTorch (8, 5)";
+		if (nom.equals("DungeonFloorTorch9 1"))result = "DungeonFloorTorch (9, 1)";
+		if (nom.equals("DungeonFloorTorch9 2"))result = "DungeonFloorTorch (9, 2)";
+		if (nom.equals("DungeonFloorTorch9 3"))result = "DungeonFloorTorch (9, 3)";
+		if (nom.equals("DungeonFloorTorch9 4"))result = "DungeonFloorTorch (9, 4)";
+		if (nom.equals("DungeonFloorTorch9 5"))result = "DungeonFloorTorch (9, 5)";
+		if (nom.equals("DungeonFloorTorch10 1"))result = "DungeonFloorTorch (10, 1)";
+		if (nom.equals("DungeonFloorTorch10 2"))result = "DungeonFloorTorch (10, 2)";
+		if (nom.equals("DungeonFloorTorch10 3"))result = "DungeonFloorTorch (10, 3)";
+		if (nom.equals("DungeonFloorTorch10 4"))result = "DungeonFloorTorch (10, 4)";
+		if (nom.equals("DungeonFloorTorch10 5"))result = "DungeonFloorTorch (10, 5)";
+		//idem
+		if (nom.equals("Dtm1 1"))result = "Dtm (1, 1)";
+		if (nom.equals("Dtm1 2"))result = "Dtm (1, 2)";
+		if (nom.equals("Dtm1 3"))result = "Dtm (1, 3)";
+		if (nom.equals("Dtm1 4"))result = "Dtm (1, 4)";
+		if (nom.equals("Dtm1 5"))result = "Dtm (1, 5)";
+		if (nom.equals("Dtm2 1"))result = "Dtm (2, 1)";
+		if (nom.equals("Dtm2 2"))result = "Dtm (2, 2)";
+		if (nom.equals("Dtm2 3"))result = "Dtm (2, 3)";
+		if (nom.equals("Dtm2 4"))result = "Dtm (2, 4)";
+		if (nom.equals("Dtm2 5"))result = "Dtm (2, 5)";
+		if (nom.equals("Dtm3 1"))result = "Dtm (3, 1)";
+		if (nom.equals("Dtm3 2"))result = "Dtm (3, 2)";
+		if (nom.equals("Dtm3 3"))result = "Dtm (3, 3)";
+		if (nom.equals("Dtm3 4"))result = "Dtm (3, 4)";
+		if (nom.equals("Dtm3 5"))result = "Dtm (3, 5)";
+		if (nom.equals("Dtm4 1"))result = "Dtm (4, 1)";
+		if (nom.equals("Dtm4 2"))result = "Dtm (4, 2)";
+		if (nom.equals("Dtm4 3"))result = "Dtm (4, 3)";
+		if (nom.equals("Dtm4 4"))result = "Dtm (4, 4)";
+		if (nom.equals("Dtm4 5"))result = "Dtm (4, 5)";
+		if (nom.equals("Dtm5 1"))result = "Dtm (5, 1)";
+		if (nom.equals("Dtm5 2"))result = "Dtm (5, 2)";
+		if (nom.equals("Dtm5 3"))result = "Dtm (5, 3)";
+		if (nom.equals("Dtm5 4"))result = "Dtm (5, 4)";
+		if (nom.equals("Dtm5 5"))result = "Dtm (5, 5)";
+		//idem
+		if (nom.equals("Floor Wooden 1"))result = "Floor Wooden (1, 1)";
+		if (nom.equals("Floor Wooden 2"))result = "Floor Wooden (1, 2)";
+		if (nom.equals("Floor Wooden 3"))result = "Floor Wooden (1, 3)";
+		if (nom.equals("Floor Wooden 4"))result = "Floor Wooden (2, 1)";
+		if (nom.equals("Floor Wooden 5"))result = "Floor Wooden (2, 2)";
+		if (nom.equals("Floor Wooden Separation"))result = "Floor Wooden (2, 3)";
+		//Il manque un espace après la virgule dans le nom des tuiles Lava(x,x) ça empêche le calcul du modulo...
+		if (nom.equals("Lava (1,1)"))result = "Lava (1, 1)";
+		if (nom.equals("Lava (1,2)"))result = "Lava (1, 2)";
+		if (nom.equals("Lava (1,3)"))result = "Lava (1, 3)";
+		if (nom.equals("Lava (1,4)"))result = "Lava (1, 4)";
+		if (nom.equals("Lava (2,1)"))result = "Lava (2, 1)";
+		if (nom.equals("Lava (2,2)"))result = "Lava (2, 2)";
+		if (nom.equals("Lava (2,3)"))result = "Lava (2, 3)";
+		if (nom.equals("Lava (2,4)"))result = "Lava (2, 4)";
+		if (nom.equals("Lava (3,1)"))result = "Lava (3, 1)";
+		if (nom.equals("Lava (3,2)"))result = "Lava (3, 2)";
+		if (nom.equals("Lava (3,3)"))result = "Lava (3, 3)";
+		if (nom.equals("Lava (3,4)"))result = "Lava (3, 4)";
+		if (nom.equals("Lava (4,1)"))result = "Lava (4, 1)";
+		if (nom.equals("Lava (4,2)"))result = "Lava (4, 2)";
+		if (nom.equals("Lava (4,3)"))result = "Lava (4, 3)";
+		if (nom.equals("Lava (4,4)"))result = "Lava (4, 4)";
+		return result;
+	}
+	
 	/**
 	 * Extracts a Sprite's path
 	 * @param buf
@@ -762,6 +553,37 @@ public class SpriteUtils {
 		return result;
 	}
 
+	static String extractChemin(ByteBuffer buf, SpriteName sn) {
+		byte[] bytes = new byte[256];
+		buf.get(bytes);
+		String result = new String(bytes);
+		result = result.substring(0, result.indexOf(0x00));
+		result = result.replace("_","");
+		result = result.replace(".","");
+		result = result.replace("\\", "/");
+		String[] split = result.split("\\/");
+		result = split[split.length-1];
+		result = manageAtlasSpecialCases(result, sn.getName());
+		return result;
+	}
+	
+	/**
+	 * Modifies original sprite data structure to reduce atlas size
+	 * @param atlas
+	 * @param nom
+	 * @return
+	 */
+	private static String manageAtlasSpecialCases(String atlas, String nom) {
+		String result = atlas;
+		if (atlas.equals("Miscs")){
+			result = "Miscs-"+nom.toUpperCase().toCharArray()[0];
+		}
+		if (atlas.equals("Montain")){
+			result = nom;
+		}
+		return result;
+	}
+	
 	/**
 	 * Gets IDs from id.txt file
 	 * puts info into a HashMap<Integer,SpriteName>
@@ -785,6 +607,38 @@ public class SpriteUtils {
 			System.exit(1);
 		}
 	}
+	
+	/**
+	 * writes ids into id.txt
+	 */
+	public static void writeIdsToFile(){
+		OutputStreamWriter dat_file = null;
+		try {
+			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getIdFilePath()));
+		} catch (FileNotFoundException e) {
+			logger.fatal(e);
+			System.exit(1);
+		}
+		Iterator<Integer> iter_sn = SpriteManager.ids.keySet().iterator();
+		while (iter_sn.hasNext()){
+			int id = iter_sn.next();
+			SpriteName sn = SpriteManager.ids.get(id);
+			try {
+				dat_file.write(id+" "+sn.getName()+System.lineSeparator());
+			} catch (IOException e) {
+				logger.fatal(e);
+				System.exit(1);
+			}	
+		}
+
+		try {
+			dat_file.close();
+		} catch (IOException e) {
+			logger.fatal(e);
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
 
 	/**
 	 * Reads a line from id.txt
@@ -794,8 +648,8 @@ public class SpriteUtils {
 		int key = 0;
 		String value = "";
 		key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
-		value = line.substring(line.indexOf("Name: ")+6);
-		value = value.replace("_","");
+		value = line.substring(line.indexOf(" ")+1);
+		//value = value.replace("_","");
 		SpriteName name = new SpriteName(value);
 		SpriteManager.ids.put(key,name);
 	}
@@ -836,32 +690,6 @@ public class SpriteUtils {
 	    decompresser.end();
 	    return result;
 	}
-
-	/**
-	 * 
-	 * @param header
-	 * @return a byte array with the second part of the md5 checksum
-	 */
-	/*static byte[] getHeaderHashMd52(ByteBuffer header) {
-		byte[] result = new byte[17];
-		for (int i=0 ; i<17 ; i++){
-			result[i] = header.get();
-		}
-		return result;
-	}*/
-
-	/**
-	 * 
-	 * @param buffer
-	 * @return a byte array with the second part of the md5 checksum
-	 */
-	/*static byte[] getHeaderHashMD5(ByteBuffer buffer) {
-		byte[] result = new byte[16];
-		for (int i=0 ; i<16 ; i++){
-			result[i] = buffer.get();
-		}
-		return result;
-	}*/
 
 	/**
 	 * 

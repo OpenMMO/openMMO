@@ -1,5 +1,6 @@
 package opent4c;
 
+import java.awt.Point;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -35,14 +36,14 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
 	private final int movedelay_ms = 16;//un tout petit peu plus rapide que 60Hz
-	private final float movespeed = 5f;
+	private final float movespeed = 1f;
 	private boolean control_right = false;
 	private boolean control_left = false;
 
 	
 	public InputManager(MapManager mapManager) {
 		manager = mapManager;
-		camera = manager.getCamera();
+		camera = MapManager.getCamera();
 	}
 
 	@Override
@@ -73,6 +74,9 @@ public class InputManager implements InputProcessor{
 			if(control_left || control_right){
 				manager.editNextUnmappedID();
 			}
+		}
+		if (keycode == Keys.ESCAPE){
+			Gdx.app.exit();
 		}
 		return true;
 	}
@@ -205,6 +209,11 @@ public class InputManager implements InputProcessor{
 		if (keycode == Keys.F12){
 			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("center")));
 		}
+		if (keycode == Keys.ENTER){
+			if(MapManager.isHighlighted()){
+				manager.editMapAtCoord(PointsManager.getPoint(MapManager.getHighlight_tile().getX()/32,MapManager.getHighlight_tile().getY()/16));
+			}
+		}
 		return true;
 	}
 
@@ -249,9 +258,15 @@ public class InputManager implements InputProcessor{
 			mouseLeft = true;
 			//if(manager.isMenuPoped())manager.clearMenu();
 			//if(!manager.isMenuPoped())manager.pop_menu(screenX, screenY);
-			manager.doActionMenuMark(PointsManager.getPoint(screenX, screenY));
+			if(!MapManager.isHighlighted()){
+				Point tuile_on_map = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
+				manager.highlight(tuile_on_map);
+			}
 		}
-		if (button == Buttons.RIGHT) mouseRight = true;
+		if (button == Buttons.RIGHT){
+			mouseRight = true;
+			if (MapManager.isHighlighted()) MapManager.unHighlight();
+		}
 		if (button == Buttons.MIDDLE) mouseMiddle = true;
 		return true;
 	}

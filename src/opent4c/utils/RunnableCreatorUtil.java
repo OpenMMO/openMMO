@@ -31,7 +31,7 @@ public class RunnableCreatorUtil {
 	{
 		Runnable r = new Runnable(){
 			public void run(){
-				TexturePacker.process(setting, file.getPath(), FilesPath.getAtlasTuileDirectoryPath(), file.getName());
+				TexturePacker.processIfModified(setting, file.getPath(), FilesPath.getAtlasTuileDirectoryPath(), file.getName());
 				loadingStatus.addTilesAtlasPackaged(file.getName());
 			}
 		};
@@ -87,7 +87,18 @@ public class RunnableCreatorUtil {
 					});
 				}
 			};
-		} else{
+		} else if(name.equals("Highlight")){
+			r = new Runnable(){
+				public void run(){
+					Gdx.app.postRunnable(new Runnable(){
+						public void run(){
+							TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasHighlightFilePath());
+							loadingStatus.addTextureAtlasSprite(name, atlas);
+						}
+					});
+				}
+			};
+		}else {
 			r = new Runnable(){
 				public void run(){
 					Gdx.app.postRunnable(new Runnable(){
@@ -147,14 +158,22 @@ public class RunnableCreatorUtil {
 		return r;
 	}
 
+
 	/**
-	 * @param doWrite
 	 * @return
 	 */
-	public static Runnable getSpriteExtractorRunnable(final boolean doWrite) {
+	public static Runnable getHighlighterRunnable() {
 		Runnable r = new Runnable(){
 			public void run(){
-				SpriteManager.decryptDDA(doWrite);
+				MapManager.tileFadeIn();
+				try {
+					Thread.sleep((long) (500*MapManager.blink_period));
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					logger.fatal(e);
+					System.exit(1);
+				}
+				MapManager.tileFadeOut();
 			}
 		};
 		return r;

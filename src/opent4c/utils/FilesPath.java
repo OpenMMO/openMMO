@@ -250,4 +250,42 @@ public class FilesPath {
 		
 		return sb.toString();
 	}
+
+	public static String getAtlasHighlightFilePath() {
+		StringBuilder sb = new StringBuilder(24 + 7);
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("Highlight.atlas");
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @return
+	 */
+	public static String getModuloFilePath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("sprites");		
+		sb.append(File.separator);
+		sb.append("modulo_data");
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @return
+	 */
+	public static String getTileDataFilePath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("sprites");		
+		sb.append(File.separator);
+		sb.append("tile_data");
+		
+		return sb.toString();
+	}
 }

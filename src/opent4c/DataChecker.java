@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import opent4c.utils.AssetsLoader;
+import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.MD5Checker;
@@ -15,7 +16,6 @@ import opent4c.utils.ThreadsUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.FileLister;
 import t4cPlugin.MAP;
 
 /**
@@ -33,8 +33,9 @@ public class DataChecker {
 	private static boolean sprites_are_ok = false;
 	public final static int nb_expected_sprites = 68450;
 	public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
-	public final static int nb_expected_atlas = 641;
+	public final static int nb_expected_atlas = 650;
 	//TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
+	//TODO vérifier le manque, j'en suis même pas certain
 	
 	/**
 	 * Checks source data, then atlases, and finally maps.
@@ -124,7 +125,7 @@ public class DataChecker {
 	 * sets booleans to know what has to be done and what has already be done. with that, we only do what's needed.
 	 */
 	private static void checkWhatNeedsToBeDone() {
-		checkSpriteDta();
+		checkSpriteData();
 		checkMaps();
 		checkAtlas();
 		checkSprites();
@@ -170,11 +171,18 @@ public class DataChecker {
 	/**
 	 * Tests presence sprite_data not empty
 	 */
-	private static void checkSpriteDta() {
-		//
+	private static void checkSpriteData() {
 		File sprite_data = new File(FilesPath.getSpriteDataFilePath());
 		if (sprite_data.exists() && sprite_data.length() != 0){
 			sprite_data_is_ok = true;
+		}
+		File modulo_data = new File(FilesPath.getModuloFilePath());
+		if (!modulo_data.exists()){
+			sprite_data_is_ok = false;
+		}
+		File tile_data = new File(FilesPath.getTileDataFilePath());
+		if (!tile_data.exists()){
+			sprite_data_is_ok = false;
 		}
 		logger.info("TEST présence sprite_data : "+sprite_data_is_ok);
 	}

@@ -10,7 +10,6 @@ import opent4c.UpdateScreenManagerStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.FileLister;
 import t4cPlugin.Params;
 
 import com.badlogic.gdx.Gdx;
@@ -56,7 +55,6 @@ public enum AssetsLoader {
 		while (iter_sprites.hasNext()){
 			final File f = iter_sprites.next();
 			final File at = new File(FilesPath.getAtlasSpritesFilePath(f.getName()));
-			Params.STATUS = "Pack Sprites : "+at.getName();
 			if (!f.getName().equals(last) & f.isDirectory() & !at.exists()){
 				loadingStatus.addSpritesAtlasToPackage(f.getName());
 				executeSpritePacking(f, settings);
@@ -96,7 +94,6 @@ public enum AssetsLoader {
 		while (iter_tuiles.hasNext()){
 			File f = iter_tuiles.next();
 			final File at = new File(FilesPath.getAtlasTilesFilePath(f.getName()));
-			Params.STATUS = "Pack Tuiles : "+at.getName();
 			if (!f.getName().equals(last) & f.isDirectory() & !at.exists()){
 				loadingStatus.addTilesAtlasToPackage(f.getName());
 				executeTuilesPacking(f, settings);
@@ -158,6 +155,7 @@ public enum AssetsLoader {
 		
 		tuilas.addAll(FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas"));
 		//Keep the number of tiles' atlas. Will be used to know if all atlas are processed.
+		//TODO in SpriteData.computeModulos(), we have 42 tile atlas, why 40 here?
 		//TODO use the same method than sprite
 		loadingStatus.setNbTilesAs(tuilas.size());
 		

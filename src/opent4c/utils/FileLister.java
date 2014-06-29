@@ -1,9 +1,8 @@
-package t4cPlugin;
+package opent4c.utils;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-@Deprecated
 public class FileLister {
 
 	/**

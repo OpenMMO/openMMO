@@ -43,6 +43,8 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.jar.Attributes;
 
+import opent4c.Main;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -128,7 +130,7 @@ class WebLoader extends URLClassLoader {
                InvocationTargetException
     {
         @SuppressWarnings("unchecked")
-		Class<GDXEditor> c = (Class<GDXEditor>) loadClass(name);
+		Class<Main> c = (Class<Main>) loadClass(name);
         Method m = c.getMethod("main", new Class[] { args.getClass() });
         m.setAccessible(true);
         int mods = m.getModifiers();

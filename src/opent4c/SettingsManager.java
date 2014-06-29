@@ -13,7 +13,8 @@ public class SettingsManager {
 	
 	private static LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 	private static Logger logger = LogManager.getLogger(SettingsManager.class.getSimpleName());
-
+	private static int nb_tile_dim = 40;
+	
 	//TODO Faire un truc plus complet.
 	/**
 	 * Creates settings to apply to a new LwjglApplication
@@ -23,12 +24,15 @@ public class SettingsManager {
 		cfg.useGL20 = true;
 		cfg.width = getWidth();
 		cfg.height = getHeight();
+		cfg.fullscreen = false;
+//		cfg.width = 1366;
+//		cfg.height = 768;
+//		cfg.fullscreen = true;
 		cfg.backgroundFPS = 24;
 		cfg.foregroundFPS = 60;
 		cfg.resizable = false;
 		cfg.vSyncEnabled = true;
 		cfg.allowSoftwareMode = true;
-		cfg.fullscreen = false;
 		cfg.x = -1;
 		cfg.y = -1;
 	}
@@ -57,7 +61,8 @@ public class SettingsManager {
 		}else{
 			result = result - (2*(result % 16));			
 		}
-		return result;
+		//return result;
+		return (nb_tile_dim*16);
 	}
 
 	/**
@@ -69,7 +74,8 @@ public class SettingsManager {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		result = getMultiple32Inferieur(screenSize.width);
 		logger.info("Width : "+result);
-		return result;
+		//return result;
+		return (nb_tile_dim*32);
 	}
 	
 	/**

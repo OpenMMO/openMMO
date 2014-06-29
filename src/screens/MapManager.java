@@ -2,26 +2,30 @@ package screens;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
 import opent4c.MapPixel;
-import opent4c.SpriteData;
+import opent4c.TilePixel;
 import opent4c.UpdateScreenManagerStatus;
+import opent4c.utils.ChunkMovement;
+import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
+import opent4c.utils.LoadingStatus;
 import opent4c.utils.PointsManager;
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.ThreadsUtil;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,25 +36,20 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
-import t4cPlugin.FileLister;
 import t4cPlugin.Places;
 import tools.DataInputManager;
 
 /**
- * This class manages the chunkMap., chunk are placed as follow :
- * 
- *    6 7 8
- *    5 0 1
- *    4 3 2
- * 
- * At creation, the camera is at the center of chunk 0.
+ * This class manages the chunkMap.
+ * On creation, the camera is at the center of chunk 0.
  * 
  * @author synoga
  *
@@ -59,12 +58,12 @@ public class MapManager implements Screen{
 
 	private static Logger logger = LogManager.getLogger(MapManager.class.getSimpleName());
 	private static Map<String,ByteBuffer> id_maps = new HashMap<String,ByteBuffer>(5);
-	private static Map<Integer,Chunk> worldmap = new ConcurrentHashMap<Integer,Chunk>(9);
+	private static Map<Integer,Chunk> worldmap = new ConcurrentHashMap<Integer,Chunk>(16);
 	private static MapManager m;
 	//private static final Dimension chunk_size = new Dimension(4,4);//pour tester les chunks
-	private static final Dimension chunk_size = new Dimension((Gdx.graphics.getWidth()/64)+3,(Gdx.graphics.getHeight()/32)+2);//On fait des chunks environ de la taille d' 1/4 de fenêtre, en nombre de tuiles, comme ça c'est transparent pour l'utilisateur sans charger trop de tuiles en mémoire.
+	//private static final Dimension chunk_size = new Dimension((Gdx.graphics.getWidth()/96),(Gdx.graphics.getHeight()/48));//On fait des chunks environ de la taille d' 1/9 de fenêtre, en nombre de tuiles, comme ça c'est transparent pour l'utilisateur sans charger trop de tuiles en mémoire.
+	private static final Dimension chunk_size = new Dimension(4*(Gdx.graphics.getWidth()/32)/5,4*(Gdx.graphics.getHeight()/16)/5);//de la taille d'2/3 d'écran, en nombre de tuiles
 	private InputManager controller = null;
-	
 	private TextButtonStyle style = new TextButtonStyle();
 	private TextButton load;
 	private static TextButton status;
@@ -80,6 +79,14 @@ public class MapManager implements Screen{
 	private IG_Menu pop_up;
 	private static boolean stage_ready = true;
 	private ScreenManager sm;
+	private static boolean highlighted = false;
+	private static ScheduledFuture<?> highlight;
+	private Point highlight_point;
+	private Acteur highlight_tile;
+	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	private Edit_menu edit_menu = null;
+	public static final float blink_period = 3;
+
 	
 	public MapManager(ScreenManager screenManager){
 		m = this;
@@ -107,8 +114,8 @@ public class MapManager implements Screen{
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		camera.translate(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2);
-		camera.translate(Places.getPlace("startpoint").getCoord().x*32,Places.getPlace("startpoint").getCoord().y*16);				
+		//camera.translate(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2);
+		//camera.translate(Places.getPlace("startpoint").getCoord().x*32,Places.getPlace("startpoint").getCoord().y*16);				
 		camera.update();
 		stage.setCamera(camera);
 		ui.addActor(menu);
@@ -163,7 +170,7 @@ public class MapManager implements Screen{
 	}
 
 	/**
-	 * Creates the chunkMap, a group of 9 Chunks
+	 * Creates the chunkMap, a group of 25 Chunks
 	 */
 	public void createChunkMap() {
 		teleport(Places.getPlace("startpoint"));
@@ -185,7 +192,7 @@ public class MapManager implements Screen{
 			int chunkId = iter_position.next();
 			//TODO attention plus tard en gérant plusieurs cartes.
 			UpdateScreenManagerStatus.setMapsStatus("Création du chunk :"+chunkId);
-			worldmap.put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
+			getWorldmap().put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
 		}
 		Chunk.startChunkMapWatcher();
 	}
@@ -193,7 +200,6 @@ public class MapManager implements Screen{
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		//TODO stage_ready reste false trop longtemps au changement de chunks, ça fait un flash noir...
 		render_camera();
 		if(stage_ready){
 			stage.act(delta);
@@ -208,6 +214,9 @@ public class MapManager implements Screen{
 				render_infos();
 				ui.draw();	
 			batch.end();
+		}
+		if(edit_menu != null){
+			edit_menu.draw(batch,1);
 		}
 	}
 
@@ -226,14 +235,14 @@ public class MapManager implements Screen{
 	/**
 	 * Renders chunks
 	 */
-	private static void renderChunks() {
+	public static void renderChunks() {
 		Group newChunksTiles = new Group(); 
 		Group newChunksSprites = new Group(); 
-		Iterator<Integer> iter_chunk = worldmap.keySet().iterator();
+		Iterator<Integer> iter_chunk = getWorldmap().keySet().iterator();
 		while (iter_chunk.hasNext()){
 			int key = iter_chunk.next();
-			newChunksTiles.addActor(renderChunkTiles(worldmap.get(key)));
-			newChunksSprites.addActor(renderChunkSprites(worldmap.get(key)));
+			newChunksTiles.addActor(renderChunkTiles(getWorldmap().get(key)));
+			if (key < 9)newChunksSprites.addActor(renderChunkSprites(getWorldmap().get(key)));
 		}
 		stage_ready = false;
 		stage.clear();
@@ -249,13 +258,10 @@ public class MapManager implements Screen{
 	 */
 	private static Group renderChunkTiles(Chunk chunk) {
 		Group result = new Group();
-		Map<Point, Sprite> tile_list = chunk.getTiles();
-		Iterator<Point> iter_tiles = tile_list.keySet().iterator();
+		Iterator<Acteur> iter_tiles = chunk.getTiles().iterator();
 		while(iter_tiles.hasNext()){
-			Point pt = iter_tiles.next();
-			Sprite sp = tile_list.get(pt);
-			sp.setPosition(pt.x*32, pt.y*16);
-			result.addActor(new Acteur(sp));
+			Acteur pt = iter_tiles.next();
+			result.addActor(pt);
 		}
 		return result;
 	}
@@ -267,16 +273,10 @@ public class MapManager implements Screen{
 	 */
 	private static Group renderChunkSprites(Chunk chunk) {
 		Group result = new Group();
-		Map<Point, Sprite> sprite_list = chunk.getSprites();
-		Iterator<Point> iter_sprite = sprite_list.keySet().iterator();
+		Iterator<Acteur> iter_sprite = chunk.getSprites().iterator();
 		while(iter_sprite.hasNext()){
-			Point pt = iter_sprite.next();
-			Sprite sp = sprite_list.get(pt);
-			Point offset = chunk.getOffsetFromPoint(pt);
-			float spx = (sp.getScaleX()*offset.x)+(pt.x*32);
-			float spy = (sp.getScaleY()*offset.y)+(pt.y*16);
-			sp.setPosition(spx, spy);
-			result.addActor(new Acteur(sp));
+			Acteur pt = iter_sprite.next();
+			result.addActor(pt);
 		}
 		return result;
 	}
@@ -287,73 +287,6 @@ public class MapManager implements Screen{
 	public void clearMenu(){
 		menu.clear();
 		menu_poped = false;
-	}
-	
-	/**
-	 * @param point
-	 * @param pixel
-	 * @return informations from a MapPixel and a point
-	 */
-	private String getInfoPixel(Point point, MapPixel pixel) {
-		return point.x +","+ point.y +" "+pixel.getAtlas()+" "+pixel.getTex()+" id : "+pixel.getId()+" Modulo : "+pixel.getModulo().x+","+pixel.getModulo().y+" Palette : "+pixel.getPalette();
-	}
-	
-	/**
-	 * Pops up a menu to display informations at given coordinates
-	 * @param screenX
-	 * @param screenY
-	 */
-	public void pop_menu(int screenX, int screenY) {
-		setMenu_poped(true);
-		Point p = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		if (worldmap.get(0).getPixelAtCoord("v2_worldmap", p) != null){
-			MapPixel px = worldmap.get(0).getPixelAtCoord("v2_worldmap", p);
-			String status = getInfoPixel(p, px);
-			logger.info(status);
-			if(px.isTuile()){
-
-				TextButton pixel_info0 = new TextButton(px.getAtlas()+" "+px.getTex(),style);
-				TextButton pixel_info1 = new TextButton("id : "+getIdAtCoordOnMap("v2_worldmap", PointsManager.getPoint(p.x, p.y))+" Modulo : "+px.getModulo().x+","+px.getModulo().y,style);
-				TextButton pixel_info2 = new TextButton("Palette : "+px.getPalette(),style);
-				TextButton pixel_info3 = new TextButton("Actions : (M)arquer",style);
-				pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
-				pixel_info1.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+25));
-				pixel_info2.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+45));
-				pixel_info3.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+65));
-
-				Sprite sp = worldmap.get(0).getTileAtCoord("v2_worldmap", p);
-				sp.setPosition(screenX-16+pixel_info1.getWidth()/2,(int)(camera.viewportHeight-screenY+85));
-				pop_up = new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),(5 + 16 + 65 + 10),p);
-				menu.addActor(pop_up);
-				menu.addActor(pixel_info0);
-				menu.addActor(pixel_info1);
-				menu.addActor(pixel_info2);
-				menu.addActor(pixel_info3);
-				menu.addActor(new Acteur(sp));
-				
-			}else{
-				if(px.getAtlas() != null){
-					
-					//TODO Attention lorsqu'on gèrera plusieurs cartes
-					Sprite sp = worldmap.get(0).getSpriteAtCoord("v2_worldmap", p);
-					sp.setPosition(screenX,(int)(camera.viewportHeight-screenY));
-					sp.flip(false, true);
-					//pop_up = new IG_Menu(screenX,(int) camera.viewportHeight-screenY,screen+20),(5 + 16 + 65 + 10),p);
-					///menu.addActor(pop_up);
-					menu.addActor(new Acteur(sp));
-					logger.info("Atlas : "+px.getAtlas()+" Tex : "+px.getTex()+" ID : "+px.getId()+" Modulo : "+px.getModulo()+" Offset : "+px.getOffset()+"Palette : "+px.getPalette());
-				}else{
-					TextButton pixel_info0 = new TextButton(p.x +","+ p.y+" : ID "+px.getId()+" inconnu",style);
-					pixel_info0.setPosition(screenX+10,(int)(camera.viewportHeight-screenY+5));
-					//pop_up = new IG_Menu(screenX,(int) camera.viewportHeight-screenY,(int) (pixel_info1.getWidth()+20),(5 + 16 + 65 + 10),p);
-					//menu.addActor(pop_up);
-					menu.addActor(pixel_info0);
-					
-				}
-			}
-		}
-
 	}
 	
 	/**
@@ -370,7 +303,7 @@ public class MapManager implements Screen{
 	@Override
 	public void show() {
 		if (m == null){
-			logger.warn("Attention on essaye de renre les  chunk d'un MapManager non-instancié.");
+			logger.warn("Attention on essaye de renre les chunks d'un MapManager non-instancié.");
 		}else{
 			MapManager.renderChunks();
 		}
@@ -464,168 +397,18 @@ public class MapManager implements Screen{
 	private static void moveChunksIfNeeded(int direction) {
 		switch(direction){
 			case 0 : /*logger.info("Pas besoin de déplacer les chunks");*/ break;
-			case 1 : moveChunksRight(); break;
-			case 2 : moveChunksDownRight(); break;
-			case 3 : moveChunksDown(); break;
-			case 4 : moveChunksDownLeft(); break;
-			case 5 : moveChunksLeft(); break;
-			case 6 : moveChunksUpLeft(); break;
-			case 7 : moveChunksUp(); break;
-			case 8 : moveChunksUpRight(); break;
+			case 1 : ChunkMovement.moveChunksRight(getWorldmap()); break;
+			case 2 : ChunkMovement.moveChunksDownRight(getWorldmap()); break;
+			case 3 : ChunkMovement.moveChunksDown(getWorldmap()); break;
+			case 4 : ChunkMovement.moveChunksDownLeft(getWorldmap()); break;
+			case 5 : ChunkMovement.moveChunksLeft(getWorldmap()); break;
+			case 6 : ChunkMovement.moveChunksUpLeft(getWorldmap()); break;
+			case 7 : ChunkMovement.moveChunksUp(getWorldmap()); break;
+			case 8 : ChunkMovement.moveChunksUpRight(getWorldmap()); break;
 		}
 	}
 
-	/**
-	 * Moves ChunkMap up and right
-	 */
-	private static void moveChunksUpRight() {
-		Point point = worldmap.get(8).getCenter();
-		worldmap.put(4, worldmap.get(0));
-		worldmap.put(5, worldmap.get(7));
-		worldmap.put(3, worldmap.get(1));
-		worldmap.put(0, worldmap.get(8));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
-		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
-		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
-		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		MapManager.renderChunks();
-	}
 
-	/**
-	 * Moves ChunkMap up
-	 */
-	private static void moveChunksUp() {
-		Point point = worldmap.get(7).getCenter();
-		worldmap.put(2, worldmap.get(1));
-		worldmap.put(3, worldmap.get(0));
-		worldmap.put(4, worldmap.get(5));
-		worldmap.put(5, worldmap.get(6));
-		worldmap.put(0, worldmap.get(7));
-		worldmap.put(1, worldmap.get(8));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
-		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
-		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap up and left
-	 */
-	private static void moveChunksUpLeft() {
-		Point point = worldmap.get(6).getCenter();
-		worldmap.put(2, worldmap.get(0));
-		worldmap.put(3, worldmap.get(5));
-		worldmap.put(1, worldmap.get(7));
-		worldmap.put(0, worldmap.get(6));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
-		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
-		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
-		worldmap.put(7,new Chunk("v2_worldmap",chunk_positions.get(7)));
-		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap left
-	 */
-	private static void moveChunksLeft() {
-		Point point = worldmap.get(5).getCenter();
-		worldmap.put(8, worldmap.get(7));
-		worldmap.put(1, worldmap.get(0));
-		worldmap.put(2, worldmap.get(3));
-		worldmap.put(7, worldmap.get(6));
-		worldmap.put(0, worldmap.get(5));
-		worldmap.put(3, worldmap.get(4));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
-		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
-		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap down and left
-	 */
-	private static void moveChunksDownLeft() {
-		Point point = worldmap.get(4).getCenter();
-		worldmap.put(8, worldmap.get(0));
-		worldmap.put(7, worldmap.get(5));
-		worldmap.put(1, worldmap.get(3));
-		worldmap.put(0, worldmap.get(4));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
-		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
-		worldmap.put(5,new Chunk("v2_worldmap",chunk_positions.get(5)));
-		worldmap.put(6,new Chunk("v2_worldmap",chunk_positions.get(6)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap down
-	 */
-	private static void moveChunksDown() {
-		Point point = worldmap.get(3).getCenter();
-		worldmap.put(6, worldmap.get(5));
-		worldmap.put(7, worldmap.get(0));
-		worldmap.put(8, worldmap.get(1));
-		worldmap.put(5, worldmap.get(4));
-		worldmap.put(0, worldmap.get(3));
-		worldmap.put(1, worldmap.get(2));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
-		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
-		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap down and right
-	 */
-	private static void moveChunksDownRight() {
-		Point point = worldmap.get(2).getCenter();
-		worldmap.put(6, worldmap.get(0));
-		worldmap.put(5, worldmap.get(3));
-		worldmap.put(7, worldmap.get(1));
-		worldmap.put(0, worldmap.get(2));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(4,new Chunk("v2_worldmap",chunk_positions.get(4)));
-		worldmap.put(3,new Chunk("v2_worldmap",chunk_positions.get(3)));
-		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
-		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap right
-	 */
-	private static void moveChunksRight() {
-		Point point = worldmap.get(1).getCenter();
-		worldmap.put(6, worldmap.get(7));
-		worldmap.put(5, worldmap.get(0));
-		worldmap.put(4, worldmap.get(3));
-		worldmap.put(7, worldmap.get(8));
-		worldmap.put(0, worldmap.get(1));
-		worldmap.put(3, worldmap.get(2));
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, chunk_size);
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		worldmap.put(8,new Chunk("v2_worldmap",chunk_positions.get(8)));
-		worldmap.put(1,new Chunk("v2_worldmap",chunk_positions.get(1)));
-		worldmap.put(2,new Chunk("v2_worldmap",chunk_positions.get(2)));
-		MapManager.renderChunks();
-	}
 
 	/**
 	 * Checks if ChunkMap needs to be moved. If the camera's position is farther from the center of the chunk map than chunk_size/2.
@@ -638,7 +421,7 @@ public class MapManager implements Screen{
 		boolean left = false;
 		boolean up = false;
 		boolean down = false;
-		Point chunkCenter = worldmap.get(0).getCenter();
+		Point chunkCenter = getWorldmap().get(0).getCenter();
 		//logger.info("ChunkWatcher : Player->"+playerPosition.x+";"+playerPosition.y + " Chunk->"+chunkCenter.x+";"+chunkCenter.y);
 		if(playerPosition.x > chunkCenter.x+(chunk_size.width/2)) right = true;
 		if(playerPosition.x < chunkCenter.x-(chunk_size.width/2)) left = true;
@@ -667,7 +450,7 @@ public class MapManager implements Screen{
 	 */
 	public void editNextUnmappedID() {
 		logger.info("Edition de la prochaine id non mappée.");
-		Iterator<Integer> iter_id = worldmap.get(0).getUnmappedIds().keySet().iterator();
+		Iterator<Integer> iter_id = getWorldmap().get(0).getUnmappedIds().keySet().iterator();
 		while(iter_id.hasNext()){
 			logger.info("ID non mappée : "+iter_id.next());
 		}
@@ -688,6 +471,7 @@ public class MapManager implements Screen{
 		renderChunks();
 		getCamera().position.x = place.getCoord().x * 32;
 		getCamera().position.y = place.getCoord().y * 16;
+		status.clearActions();
 		status.setText(place.getNom());
 		status.getColor().a = 1f;
 		status.addAction(Actions.alpha(0f, 2));
@@ -702,22 +486,94 @@ public class MapManager implements Screen{
 	}
 
 	/**
+	 * Pops up a menu to edit map at given coords 
+	 * @param point
+	 */
+	public void editMapAtCoord(Point point) {
+		unHighlight();
+		logger.info("Open menu @ "+point);
+		edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurAtCoord("v2_worldmap", point));
+		Gdx.input.setInputProcessor(edit_menu);
+	}
+
+	/**
+	 * Hihglight a tile n the map
+	 * @param point
+	 */
+	public void highlight(Point point) {
+		highlight_point = point;
+		
+		
+		TextureAtlas atlas = loadingStatus.getTextureAtlasSprite("Highlight");
+		TextureRegion tex = atlas.findRegion("Highlight Tile");
+		highlight_tile = new Acteur(tex,highlight_point, PointsManager.getPoint(0, 0));
+		highlight_tile.getColor().a = 0f;
+		stage.addActor(highlight_tile);
+		setHighlighted(true);
+		highlight = ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getHighlighterRunnable(), 0, (int)blink_period, TimeUnit.SECONDS);
+	}
+
+	/**
 	 * 
 	 */
-	public void doActionMenuMark(Point p) {
-		Point point = PointsManager.getPoint((int)((p.x+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((p.y+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
-		MapPixel px = SpriteData.getPixelFromId(getIdAtCoordOnMap("v2_worldmap", point));
-		PrintWriter error_log = null;
-		try {
-			error_log = new PrintWriter(new BufferedWriter(new FileWriter(FilesPath.getErrorLogFilePath(),true)));
-		} catch (IOException e) {
-			logger.fatal(e);
-			System.exit(1);
-		}
-		error_log.append("mauvaise tuile : "+getInfoPixel(point, px)+System.lineSeparator());
-		error_log.flush();
-		error_log.close();
-		logger.info("Tuile marquée comme mauvaise : "+getInfoPixel(point, px));
+	public static void tileFadeIn() {
+		Gdx.app.postRunnable(new Runnable(){
+			@Override
+			public void run() {
+				getHighlight_tile().addAction(Actions.alpha(0.3f, blink_period/2));
+			}
+		});
 	}
-	
+
+	/**
+	 * 
+	 */
+	public static void tileFadeOut() {
+		Gdx.app.postRunnable(new Runnable(){
+			@Override
+			public void run() {
+				getHighlight_tile().addAction(Actions.alpha(0f, blink_period/2));
+			}
+		});
+	}
+
+	public static Acteur getHighlight_tile() {
+		return m.highlight_tile;
+	}
+
+	public static void setHighlight_tile(Acteur highlight_tile) {
+		m.highlight_tile = highlight_tile;
+	}
+
+	public static boolean isHighlighted() {
+		return highlighted;
+	}
+
+	public static void setHighlighted(boolean highlighted) {
+		MapManager.highlighted = highlighted;
+	}
+
+	/**
+	 * 
+	 */
+	public static void unHighlight() {
+		highlight.cancel(false);
+		setHighlighted(false);
+	}
+
+	public static Map<Integer,Chunk> getWorldmap() {
+		return worldmap;
+	}
+
+	public static void setWorldmap(Map<Integer,Chunk> worldmap) {
+		MapManager.worldmap = worldmap;
+	}
+
+	/**
+	 * 
+	 */
+	public static void close_edit_menu() {
+		m.edit_menu = null;
+		Gdx.input.setInputProcessor(m.controller);
+	}
 }

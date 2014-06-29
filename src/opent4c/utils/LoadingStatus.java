@@ -17,8 +17,6 @@ import opent4c.UpdateScreenManagerStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.FileLister;
-
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public enum LoadingStatus {
