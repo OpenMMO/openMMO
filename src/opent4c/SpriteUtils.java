@@ -342,7 +342,7 @@ public class SpriteUtils {
 			}
 			if(pixel.getType() != 3) nb_extracted_sprites++;
 			//SpriteData.removeFromPixels(pixel);
-			UpdateScreenManagerStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+DataChecker.nb_expected_sprites);
+			UpdateDataCheckStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+DataChecker.nb_expected_sprites);
 		}
 	}
 
@@ -601,7 +601,7 @@ public class SpriteUtils {
 		Map<String,Palette> result = new HashMap<String,Palette>(nb_palettes);
 		for(int i=1 ; i<=nb_palettes ; i++){
 			Palette p = new Palette(bufUnZip);
-			UpdateScreenManagerStatus.setDpdStatus("Palettes extraites : "+i+"/"+nb_palettes);
+			UpdateDataCheckStatus.setDpdStatus("Palettes extraites : "+i+"/"+nb_palettes);
 			result.put(p.getNom(),p);
 		}
 		return result;

@@ -1,6 +1,6 @@
 package screens;
 
-import opent4c.UpdateScreenManagerStatus;
+import opent4c.UpdateDataCheckStatus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -72,13 +72,13 @@ public class DataCheckerScreen implements Screen{
 	 * 
 	 */
 	private void setButtonsText() {
-		sourcedataStatus.setText("État des données sources : "+UpdateScreenManagerStatus.getSourceDataStatus());
-		mapsStatus.setText("État des cartes : "+UpdateScreenManagerStatus.getMapsStatus());
-		dpdStatus.setText("État du fichier DPD : "+UpdateScreenManagerStatus.getDPDStatus());
-		didStatus.setText("État du fichier DID : "+UpdateScreenManagerStatus.getDIDStatus());
-		ddaStatus.setText("État des fichiers DDA : "+UpdateScreenManagerStatus.getDDAStatus());
-		spriteDataStatus.setText("État de sprite_data : "+UpdateScreenManagerStatus.getSpriteDataStatus());
-		atlasStatus.setText("État des atlas : "+UpdateScreenManagerStatus.getAtlasStatus());
+		sourcedataStatus.setText("État des données sources : "+UpdateDataCheckStatus.getSourceDataStatus());
+		mapsStatus.setText("État des cartes : "+UpdateDataCheckStatus.getMapsStatus());
+		dpdStatus.setText("État du fichier DPD : "+UpdateDataCheckStatus.getDPDStatus());
+		didStatus.setText("État du fichier DID : "+UpdateDataCheckStatus.getDIDStatus());
+		ddaStatus.setText("État des fichiers DDA : "+UpdateDataCheckStatus.getDDAStatus());
+		spriteDataStatus.setText("État de sprite_data : "+UpdateDataCheckStatus.getSpriteDataStatus());
+		atlasStatus.setText("État des atlas : "+UpdateDataCheckStatus.getAtlasStatus());
 	}
 
 	@Override

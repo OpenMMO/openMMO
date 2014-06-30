@@ -136,7 +136,7 @@ public class SpriteManager {
 	
 		for(int i=1 ; i<=nb_sprites_from_did ; i++){
 			addSprite(bufUnZip);
-			UpdateScreenManagerStatus.setDidStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
+			UpdateDataCheckStatus.setDidStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
 		}
 		setDid_done(true);
 	}

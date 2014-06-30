@@ -1,6 +1,5 @@
 package screens;
 
-import opent4c.UpdateScreenManagerStatus;
 import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
 
@@ -21,7 +20,6 @@ public class ScreenManager extends Game{
 	 * default map is v2_worldmap
 	 */
 	public ScreenManager(){
-		UpdateScreenManagerStatus.setScreenManager(this);
 	}
 	
 	@Override
@@ -56,8 +54,7 @@ public class ScreenManager extends Game{
 	
 	public void initMap(){
 		AssetsLoader.loadSols();
-		AssetsLoader.load("Unknown");
-		AssetsLoader.load("Highlight");
+		AssetsLoader.loadMappedSprites();
 		map = new MapManager(this);
 		loadingStatus.waitUntilSpritesPackaged();
 		loadingStatus.waitUntilTileAtlasAreLoaded();

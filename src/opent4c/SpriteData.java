@@ -51,7 +51,7 @@ public class SpriteData {
 	}
 
 	/**
-	 * 
+	 * Read tile_data file
 	 */
 	private static void loadTileData() {
 		BufferedReader buf = null;
@@ -63,7 +63,7 @@ public class SpriteData {
 		}
 		String line = "";
 		try {
-			while((line = buf.readLine()) != null){//On lit le fichier sprite_data
+			while((line = buf.readLine()) != null){
 				readTileDataLine(line);
 			}
 		} catch (NumberFormatException | IOException | ArrayIndexOutOfBoundsException e) {
@@ -81,7 +81,7 @@ public class SpriteData {
 	}
 
 	/**
-	 * 
+	 * reads sprite_data file
 	 */
 	private static void loadSpriteData() {
 		BufferedReader buf = null;
@@ -93,10 +93,9 @@ public class SpriteData {
 		}
 		String line = "";
 		try {
-			while((line = buf.readLine()) != null){//On lit le fichier sprite_data
+			while((line = buf.readLine()) != null){
 				readSpriteDataLine(line);
 			}
-			putSprite(new MapPixel());//On mappe l'id -1 sur la tuile inconnue
 		} catch (NumberFormatException | IOException | ArrayIndexOutOfBoundsException e) {
 			logger.fatal(line);
 			logger.fatal(e);
@@ -130,16 +129,8 @@ public class SpriteData {
 		int numDDA = Integer.parseInt(index[12]);
 		String palette = index[13];
 		TilePixel px = new TilePixel(id, atlas, tex, type, ombre, transColor, PointsManager.getPoint(offsetX, offsetY), PointsManager.getPoint(offsetX2, offsetY2), numDDA, palette, false);
-		UpdateScreenManagerStatus.setSpriteDataStatus("Tuile lue => "+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| ID : "+id+"| Palette : "+palette);
-		if(id == -1){
-			unknownTiles.add(px);
-		}else if (tiles.containsKey(id)){
-			tiles.get(id).add(px);
-		}else{
-			List<TilePixel> lst = new ArrayList<TilePixel>();
-			lst.add(px);
-			tiles.put(id, lst);
-		}
+		UpdateDataCheckStatus.setSpriteDataStatus("Tuile lue => "+tex);
+		putTile(px);
 	}
 	
 	/**
@@ -164,20 +155,12 @@ public class SpriteData {
 		String palette = index[13];
 		boolean perfectMatch = readMatch(index[14]);
 		SpritePixel px = new SpritePixel(id, atlas, tex, type, ombre, PointsManager.getPoint(largeur, hauteur), transColor, PointsManager.getPoint(offsetX, offsetY), PointsManager.getPoint(offsetX2, offsetY2), numDDA, palette, perfectMatch);
-		UpdateScreenManagerStatus.setSpriteDataStatus("Sprite lu => "+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| ID : "+id+"| Palette : "+palette);
-		if(id == -1){
-			unknownSprites.add(px);
-		}else if (sprites.containsKey(id)){
-			sprites.get(id).add(px);
-		}else{
-			List<SpritePixel> lst = new ArrayList<SpritePixel>();
-			lst.add(px);
-			sprites.put(id, lst);
-		}
+		UpdateDataCheckStatus.setSpriteDataStatus("Sprite lu => "+tex);
+		putSprite(px);
 	}
 
 	/**
-	 * 
+	 * Read modulo_data file
 	 */
 	private static void readModuloFile() {
 		BufferedReader buf = null;
@@ -189,7 +172,7 @@ public class SpriteData {
 		}
 		String line = "";
 		try {
-			while((line = buf.readLine()) != null){//On lit le fichier sprite_data
+			while((line = buf.readLine()) != null){
 				readModuloDataLine(line);
 			}
 		} catch (NumberFormatException | IOException | ArrayIndexOutOfBoundsException e) {
@@ -536,6 +519,10 @@ public class SpriteData {
 	 */
 	public static SpritePixel putSprite(MapPixel pixel) {
 		SpritePixel sprite = new SpritePixel(pixel);
+		if(sprite.getId() == -1){
+			unknownSprites.add(sprite);
+			return sprite;
+		}
 		if(sprites.containsKey(sprite.getId())){
 			sprites.get(sprite.getId()).add(sprite);
 		}else{
@@ -551,6 +538,11 @@ public class SpriteData {
 	 */
 	public static TilePixel putTile(MapPixel pixel) {
 		TilePixel tile = new TilePixel(pixel);
+		if(tile.getId() == -1){
+			unknownTiles.add(tile);
+			logger.warn("unknownTiles size should ideally be 0 (when all ids will be mapped");
+			return tile;
+		}
 		if(tiles.containsKey(tile.getId())){
 			tiles.get(tile.getId()).add(tile);
 		}else{

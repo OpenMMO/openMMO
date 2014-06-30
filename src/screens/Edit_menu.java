@@ -197,13 +197,13 @@ public class Edit_menu extends Group implements InputProcessor {
 	private void addAlternativeTileToMenu(int index){
 		alternative_group.clear();
 		alternative_button_group.clear();
-		logger.info("Try Alternative :"+index);
 		TilePixel pix = tilepixel_list.get(index);
 		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
 		addAlternativeButtonToMenu(alt);
 		TextureAtlas atlas = loadingStatus.getTextureAtlasTile(pix.getAtlas());
 		TextureRegion tex = atlas.findRegion(pix.getTex());
 		addAlternativeToMenu(tex);
+		logger.info("Try Alternative :"+index+" "+pix.getTex());
 	}
 	
 	/**
@@ -231,7 +231,6 @@ public class Edit_menu extends Group implements InputProcessor {
 	private void addAlternativeSpriteToMenu(int index){
 		alternative_group.clear();
 		alternative_button_group.clear();
-		logger.info("Try Alternative :"+index);
 		SpritePixel pix = spritepixel_list.get(index);
 		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
 		addAlternativeButtonToMenu(alt);
@@ -239,6 +238,7 @@ public class Edit_menu extends Group implements InputProcessor {
 		if(atlas == null) atlas = AssetsLoader.load(pix.getAtlas());
 		TextureRegion tex = atlas.findRegion(pix.getTex());
 		addAlternativeToMenu(tex);
+		logger.info("Try Alternative :"+index+" "+pix.getTex());
 	}
 	
 	@Override

@@ -175,7 +175,7 @@ public class DataChecker {
 	private static void checkTileData() {
 		File tile_data = new File(FilesPath.getTileDataFilePath());
 		if (tile_data.exists()){
-			tile_data_is_ok = false;
+			tile_data_is_ok = true;
 		}
 		logger.info("TEST présence tile_data : "+tile_data_is_ok);
 	}
@@ -236,7 +236,7 @@ public class DataChecker {
 		stopIfAbsentFiles(absentFiles);
 		List<File> badChecksumFiles = checkChecksumFiles();
 		stopIfBadChecksum(badChecksumFiles);
-		UpdateScreenManagerStatus.setSourceDataStatus("OK");
+		UpdateDataCheckStatus.setSourceDataStatus("OK");
 	}
 	
 	/**
@@ -247,7 +247,7 @@ public class DataChecker {
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
-			UpdateScreenManagerStatus.setSourceDataStatus("Vérification présence : "+f.getName());
+			UpdateDataCheckStatus.setSourceDataStatus("Vérification présence : "+f.getName());
 			if(!f.exists()){
 				result.add(f);
 			}
@@ -283,7 +283,7 @@ public class DataChecker {
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
-			UpdateScreenManagerStatus.setSourceDataStatus("Vérification MD5 : "+f.getName());
+			UpdateDataCheckStatus.setSourceDataStatus("Vérification MD5 : "+f.getName());
 			if(!MD5Checker.check(f,SourceDataManager.getData().get(f))){
 				result.add(f);
 			}

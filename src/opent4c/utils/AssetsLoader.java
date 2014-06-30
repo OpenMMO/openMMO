@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import opent4c.UpdateScreenManagerStatus;
+import opent4c.SpriteData;
+import opent4c.SpritePixel;
+import opent4c.UpdateDataCheckStatus;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -130,12 +132,9 @@ public enum AssetsLoader {
 	public static TextureAtlas load(final String name){
 		loadingStatus.addOneSpriteAtlas();
 		ThreadsUtil.queueSpriteLoad(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
-		//TODO j'en suis pas sur, mais je crois que cette fonction cause des freeze temporaires parce qu'elle monopolise le thread d'affichage...
-		//TODO je pense qu'il faut affiner l'organisation des atlas pour réduire les temps de chargement par atlas.
-		//TODO non c'est pas ça, les gros atlas sont à peu près tous séparés, mais on a des freeze quand même...
 		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
 		logger.info("Sprite Atlas : " +name+" loaded.");
-		UpdateScreenManagerStatus.setAtlasStatus("Sprite Atlas : " +name+" loaded.");
+		UpdateDataCheckStatus.setAtlasStatus("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}
 	
@@ -175,6 +174,30 @@ public enum AssetsLoader {
 		Iterator<TextureAtlas> iter_sprites = loadingStatus.getTexturesAtlasSprites().iterator();
 		while(iter_sprites.hasNext()){
 			iter_sprites.next().dispose();
+		}
+	}
+
+	/**
+	 * Loads sprites with ids
+	 */
+	public static void loadMappedSprites() {
+		logger.info("Chargement des sprites.");
+		loadingStatus.waitUntilSpritesPackaged();
+		List<String> sprite_atlas_to_load = new ArrayList<String>();
+		sprite_atlas_to_load.add("Unknown");
+		sprite_atlas_to_load.add("Highlight");
+		Iterator<Integer> iter_spriteload = SpriteData.getSprites().keySet().iterator();
+		while(iter_spriteload.hasNext()){
+			List<SpritePixel> sprite_list = SpriteData.getSprites().get(iter_spriteload.next());
+			Iterator<SpritePixel> iter_list = sprite_list.iterator();
+			while(iter_list.hasNext()){
+				SpritePixel pix = iter_list.next();
+				if(!sprite_atlas_to_load.contains(pix.getAtlas()))sprite_atlas_to_load.add(pix.getAtlas());
+			}
+		}
+		Iterator<String> iter_load = sprite_atlas_to_load.iterator();
+		while(iter_load.hasNext()){
+			load(iter_load.next());
 		}
 	}
 

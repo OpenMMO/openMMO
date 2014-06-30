@@ -1,14 +1,7 @@
 package opent4c;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import screens.ScreenManager;
-
-public class UpdateScreenManagerStatus {
+public class UpdateDataCheckStatus {
 	
-	private static Logger logger = LogManager.getLogger(UpdateScreenManagerStatus.class.getSimpleName());
-	private static ScreenManager sm = null;
 	private static String sourceDataStatus = "not set";
 	private static String mapsStatus = "not set";
 	private static String dpdStatus = "not set";
@@ -17,9 +10,6 @@ public class UpdateScreenManagerStatus {
 	private static String spriteDataStatus = "not set";
 	private static String atlasStatus = "not set";
 	
-	public static void setScreenManager(ScreenManager manager){
-		sm = manager;
-	}
 
 	/**
 	 * @return
@@ -71,11 +61,11 @@ public class UpdateScreenManagerStatus {
 	}
 
 	public static void setSourceDataStatus(String sourceDataStatus) {
-		UpdateScreenManagerStatus.sourceDataStatus = sourceDataStatus;
+		UpdateDataCheckStatus.sourceDataStatus = sourceDataStatus;
 	}
 
 	public static void setSpriteDataStatus(String spriteDataStatus) {
-		UpdateScreenManagerStatus.spriteDataStatus = spriteDataStatus;
+		UpdateDataCheckStatus.spriteDataStatus = spriteDataStatus;
 	}
 
 	public static String getDidStatus() {
@@ -83,7 +73,7 @@ public class UpdateScreenManagerStatus {
 	}
 
 	public static void setDidStatus(String didStatus) {
-		UpdateScreenManagerStatus.didStatus = didStatus;
+		UpdateDataCheckStatus.didStatus = didStatus;
 	}
 
 	public static String getDpdStatus() {
@@ -91,7 +81,7 @@ public class UpdateScreenManagerStatus {
 	}
 
 	public static void setDpdStatus(String dpdStatus) {
-		UpdateScreenManagerStatus.dpdStatus = dpdStatus;
+		UpdateDataCheckStatus.dpdStatus = dpdStatus;
 	}
 
 	public static String getDdaStatus() {
@@ -99,14 +89,14 @@ public class UpdateScreenManagerStatus {
 	}
 
 	public static void setDdaStatus(String ddaStatus) {
-		UpdateScreenManagerStatus.ddaStatus = ddaStatus;
+		UpdateDataCheckStatus.ddaStatus = ddaStatus;
 	}
 
 	public static void setMapsStatus(String mapsStatus) {
-		UpdateScreenManagerStatus.mapsStatus = mapsStatus;
+		UpdateDataCheckStatus.mapsStatus = mapsStatus;
 	}
 
 	public static void setAtlasStatus(String atlasStatus) {
-		UpdateScreenManagerStatus.atlasStatus = atlasStatus;
+		UpdateDataCheckStatus.atlasStatus = atlasStatus;
 	}
 }

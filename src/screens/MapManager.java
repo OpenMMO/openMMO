@@ -1,6 +1,5 @@
 package screens;
 
-import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,7 @@ import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
 import opent4c.SpriteData;
-import opent4c.UpdateScreenManagerStatus;
+import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.ChunkMovement;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
@@ -61,7 +60,7 @@ public class MapManager implements Screen{
 	private static MapManager m;
 	//private static final Dimension chunk_size = new Dimension(4,4);//pour tester les chunks
 	//private static final Dimension chunk_size = new Dimension((Gdx.graphics.getWidth()/96),(Gdx.graphics.getHeight()/48));//On fait des chunks environ de la taille d' 1/9 de fenêtre, en nombre de tuiles, comme ça c'est transparent pour l'utilisateur sans charger trop de tuiles en mémoire.
-	private static final Dimension chunk_size = new Dimension(4*(Gdx.graphics.getWidth()/32)/5,4*(Gdx.graphics.getHeight()/16)/5);//de la taille d'2/3 d'écran, en nombre de tuiles
+	private static final Point chunk_size = PointsManager.getPoint(4*(Gdx.graphics.getWidth()/32)/5,4*(Gdx.graphics.getHeight()/16)/5);//de la taille d'2/3 d'écran, en nombre de tuiles
 	private InputManager controller = null;
 	private TextButtonStyle style = new TextButtonStyle();
 	private TextButton load;
@@ -148,7 +147,7 @@ public class MapManager implements Screen{
 		Iterator<File> iter_decrypted_maps = decrypted_maps.iterator();
 		while(iter_decrypted_maps.hasNext()){
 			File f = iter_decrypted_maps.next();
-			UpdateScreenManagerStatus.setMapsStatus("Chargement carte : "+f.getName());
+			UpdateDataCheckStatus.setMapsStatus("Chargement carte : "+f.getName());
 			ByteBuffer buf = ByteBuffer.allocate((int)f.length());
 			try {
 				DataInputManager in = new DataInputManager (f);
@@ -187,7 +186,7 @@ public class MapManager implements Screen{
 		while(iter_position.hasNext()){
 			int chunkId = iter_position.next();
 			//TODO attention plus tard en gérant plusieurs cartes.
-			UpdateScreenManagerStatus.setMapsStatus("Création du chunk :"+chunkId);
+			UpdateDataCheckStatus.setMapsStatus("Création du chunk :"+chunkId);
 			getWorldmap().put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
 		}
 		Chunk.startChunkMapWatcher();
@@ -310,7 +309,7 @@ public class MapManager implements Screen{
 	/**
 	 * @return the chunk's size
 	 */
-	public static Dimension getChunkSize() {
+	public static Point getChunkSize() {
 		return chunk_size;
 	}
 
@@ -402,10 +401,10 @@ public class MapManager implements Screen{
 		boolean down = false;
 		Point chunkCenter = getWorldmap().get(0).getCenter();
 		//logger.info("ChunkWatcher : Player->"+playerPosition.x+";"+playerPosition.y + " Chunk->"+chunkCenter.x+";"+chunkCenter.y);
-		if(playerPosition.x > chunkCenter.x+(chunk_size.width/2)) right = true;
-		if(playerPosition.x < chunkCenter.x-(chunk_size.width/2)) left = true;
-		if(playerPosition.y < chunkCenter.y-(chunk_size.height/2)) up = true;
-		if(playerPosition.y > chunkCenter.y+(chunk_size.height/2)) down = true;
+		if(playerPosition.x > chunkCenter.x+(chunk_size.x/2)) right = true;
+		if(playerPosition.x < chunkCenter.x-(chunk_size.x/2)) left = true;
+		if(playerPosition.y < chunkCenter.y-(chunk_size.y/2)) up = true;
+		if(playerPosition.y > chunkCenter.y+(chunk_size.y/2)) down = true;
 		if (right && !left && !down && !up) result = 1;
 		if (right && !left && down && !up) result = 2;
 		if (!right && !left && down && !up) result = 3;

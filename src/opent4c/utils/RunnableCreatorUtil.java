@@ -5,7 +5,7 @@ import java.io.File;
 import opent4c.InputManager;
 import opent4c.SpriteData;
 import opent4c.SpriteUtils;
-import opent4c.UpdateScreenManagerStatus;
+import opent4c.UpdateDataCheckStatus;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -58,7 +58,7 @@ public class RunnableCreatorUtil {
 				String nom = name.substring(0, name.length()-6);
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
-				UpdateScreenManagerStatus.setSpriteDataStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
+				UpdateDataCheckStatus.setSpriteDataStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 				loadingStatus.addOneTileAtlasLoaded();
 			}
 		};
@@ -156,7 +156,7 @@ public class RunnableCreatorUtil {
 			public void run(){
 				SpriteData.computeModulo(tileDir);
 				loadingStatus.addOneComputedModulo();
-				UpdateScreenManagerStatus.setSpriteDataStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
+				UpdateDataCheckStatus.setSpriteDataStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
 			}
 		};
 		return r;

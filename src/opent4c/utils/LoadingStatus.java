@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import opent4c.DataChecker;
 import opent4c.SourceDataManager;
 import opent4c.SpriteManager;
-import opent4c.UpdateScreenManagerStatus;
+import opent4c.UpdateDataCheckStatus;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
@@ -47,7 +47,7 @@ public enum LoadingStatus {
 	
 	public void addTilesAtlasPackaged(String tileName) {
 		addElementToLoadedList(tileName, tilesAtlasPackaged, tilesAtlasToPackage);
-		UpdateScreenManagerStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
+		UpdateDataCheckStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
 	public boolean isTilesPackaged() {
@@ -70,7 +70,7 @@ public enum LoadingStatus {
 	
 	public void addSpritesAtlasPackaged(String spriteName) {
 		addElementToLoadedList(spriteName, spritesAtlasPackaged, spritesAtlasToPackage);
-		UpdateScreenManagerStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
+		UpdateDataCheckStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
 	public boolean isSpritesPackaged() {
