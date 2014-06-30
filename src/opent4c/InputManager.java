@@ -36,7 +36,7 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
 	private final int movedelay_ms = 16;//un tout petit peu plus rapide que 60Hz
-	private final float movespeed = 1f;
+	private static final float movespeed = 1f;
 	private boolean control_right = false;
 	private boolean control_left = false;
 
@@ -89,7 +89,8 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (moveleft){
-					if(camera.position.x > Gdx.graphics.getWidth()/2) camera.translate(-2*movespeed,0);					
+					int direction = 0;
+					if(camera.position.x > Gdx.graphics.getWidth()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
 				}else{
 					
 				}
@@ -106,7 +107,8 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (moveright){
-					if(camera.position.x < (3072 * 32)-Gdx.graphics.getWidth()/2) camera.translate(2*movespeed,0);					
+					int direction = 1;
+					if(camera.position.x < (3072 * 32)-Gdx.graphics.getWidth()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
 				}else{
 					
 				}
@@ -123,7 +125,8 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (moveup){
-					if(camera.position.y > Gdx.graphics.getHeight()/2) camera.translate(0,-movespeed);					
+					int direction = 2;
+					if(camera.position.y > Gdx.graphics.getHeight()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
 				}else{
 					
 				}
@@ -140,7 +143,8 @@ public class InputManager implements InputProcessor{
 			@Override
 			public void run() {
 				if (movedown){
-					if(camera.position.y < (3072 * 16)-1-Gdx.graphics.getHeight()/2) camera.translate(0,movespeed);					
+					int direction = 3;
+					if(camera.position.y < (3072 * 16)-1-Gdx.graphics.getHeight()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
 				}else{
 					
 				}
@@ -221,7 +225,7 @@ public class InputManager implements InputProcessor{
 	 * stops moving right
 	 */
 	private void stopMoveRight() {
-		movingright.cancel(true);
+		movingright.cancel(false);
 		
 	}
 
@@ -229,7 +233,7 @@ public class InputManager implements InputProcessor{
 	 * stops moving up
 	 */
 	private void stopMoveUp() {
-		movingup.cancel(true);
+		movingup.cancel(false);
 		
 	}
 
@@ -237,14 +241,14 @@ public class InputManager implements InputProcessor{
 	 * Stops moving down
 	 */
 	private void stopMoveDown() {
-		movingdown.cancel(true);
+		movingdown.cancel(false);
 	}
 
 	/**
 	 * Stops moving left
 	 */
 	private void stopMoveLeft() {
-		movingleft.cancel(true);
+		movingleft.cancel(false);
 	}
 
 	@Override
@@ -256,8 +260,6 @@ public class InputManager implements InputProcessor{
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (button == Buttons.LEFT){
 			mouseLeft = true;
-			//if(manager.isMenuPoped())manager.clearMenu();
-			//if(!manager.isMenuPoped())manager.pop_menu(screenX, screenY);
 			if(!MapManager.isHighlighted()){
 				Point tuile_on_map = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 				manager.highlight(tuile_on_map);
@@ -303,5 +305,9 @@ public class InputManager implements InputProcessor{
 	@Override
 	public boolean scrolled(int amount) {
 		return false;
+	}
+
+	public static float getMovespeed() {
+		return movespeed;
 	}
 }

@@ -17,6 +17,7 @@ import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
 import opent4c.MapPixel;
+import opent4c.SpriteData;
 import opent4c.TilePixel;
 import opent4c.UpdateScreenManagerStatus;
 import opent4c.utils.ChunkMovement;
@@ -73,10 +74,10 @@ public class MapManager implements Screen{
 	private SpriteBatch batch;
 	private static Stage stage;
 	private Stage ui;
+	private Stage highlight_stage;
 	private Group menu, infos;
 	private boolean render_infos = true;
 	private boolean menu_poped = false;
-	private IG_Menu pop_up;
 	private static boolean stage_ready = true;
 	private ScreenManager sm;
 	private static boolean highlighted = false;
@@ -107,17 +108,15 @@ public class MapManager implements Screen{
 		style.font = new BitmapFont();
 		stage = new Stage();
 		ui = new Stage();
+		highlight_stage = new Stage();
 		menu = new Group();
-		//sprites = new Group();
-		//tiles = new Group();
 		infos = new Group();
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		//camera.translate(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2);
-		//camera.translate(Places.getPlace("startpoint").getCoord().x*32,Places.getPlace("startpoint").getCoord().y*16);				
 		camera.update();
 		stage.setCamera(camera);
+		highlight_stage.setCamera(camera);
 		ui.addActor(menu);
 		ui.addActor(infos);	
 		setLoadInfos();
@@ -201,23 +200,18 @@ public class MapManager implements Screen{
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		render_camera();
-		if(stage_ready){
-			stage.act(delta);
-		}
+		stage.act(delta);
+		ui.act(delta);
+		highlight_stage.act(delta);
+		if(render_infos){
+			render_infos();
+		}		
 		batch.begin();
 			stage.draw();
+			ui.draw();	
+			highlight_stage.draw();
 		batch.end();
 
-		ui.act(delta);
-		if(render_infos){
-			batch.begin();
-				render_infos();
-				ui.draw();	
-			batch.end();
-		}
-		if(edit_menu != null){
-			edit_menu.draw(batch,1);
-		}
 	}
 
 	/**
@@ -229,7 +223,6 @@ public class MapManager implements Screen{
 		fps.setText(""+Gdx.graphics.getFramesPerSecond()+" fps");
 		info.setText("X: " + (((int)camera.position.x/32)) + " Y: " + (((int)camera.position.y/16)) + " Zoom : " + camera.zoom);
 		info.setPosition(info.getWidth()*4, info.getHeight());
-
 	}
 
 	/**
@@ -244,11 +237,7 @@ public class MapManager implements Screen{
 			newChunksTiles.addActor(renderChunkTiles(getWorldmap().get(key)));
 			if (key < 9)newChunksSprites.addActor(renderChunkSprites(getWorldmap().get(key)));
 		}
-		stage_ready = false;
-		stage.clear();
-		stage.addActor(newChunksTiles);
-		stage.addActor(newChunksSprites);
-		stage_ready = true;
+		Gdx.app.postRunnable(RunnableCreatorUtil.getChunkSwapperRunnable(stage, newChunksTiles, newChunksSprites));
 	}
 
 	/**
@@ -260,8 +249,8 @@ public class MapManager implements Screen{
 		Group result = new Group();
 		Iterator<Acteur> iter_tiles = chunk.getTiles().iterator();
 		while(iter_tiles.hasNext()){
-			Acteur pt = iter_tiles.next();
-			result.addActor(pt);
+			Acteur tile = iter_tiles.next();
+			result.addActor(tile);
 		}
 		return result;
 	}
@@ -279,14 +268,6 @@ public class MapManager implements Screen{
 			result.addActor(pt);
 		}
 		return result;
-	}
-
-	/**
-	 * Clears the on screen menu
-	 */
-	public void clearMenu(){
-		menu.clear();
-		menu_poped = false;
 	}
 	
 	/**
@@ -325,7 +306,8 @@ public class MapManager implements Screen{
 	public void dispose() {
 		batch.dispose();
 		stage.dispose();
-		ui.dispose();		
+		ui.dispose();
+		highlight_stage.dispose();
 	}
 
 	/**
@@ -460,7 +442,7 @@ public class MapManager implements Screen{
 	 * Translates camera to a given place and generates chunks.
 	 * @param place
 	 */
-	public static void teleport(Places place){
+	public static void teleport(final Places place){
 		if(place == null){
 			logger.warn("On tente de se téléporter dans un endroit null");
 			return;
@@ -469,20 +451,18 @@ public class MapManager implements Screen{
 		Chunk.stopChunkMapWatcher();
 		createChunks(place);
 		renderChunks();
-		getCamera().position.x = place.getCoord().x * 32;
-		getCamera().position.y = place.getCoord().y * 16;
-		status.clearActions();
-		status.setText(place.getNom());
-		status.getColor().a = 1f;
-		status.addAction(Actions.alpha(0f, 2));
-	}
+		Gdx.app.postRunnable(new Runnable(){
+			@Override
+			public void run() {
+				getCamera().position.x = place.getCoord().x * 32;
+				getCamera().position.y = place.getCoord().y * 16;
+				status.clearActions();
+				status.setText(place.getNom());
+				status.getColor().a = 1f;
+				status.addAction(Actions.alpha(0f, 2));				
+			}
+		});
 
-	public boolean isMenuPoped() {
-		return menu_poped;
-	}
-
-	public void setMenu_poped(boolean menu_poped) {
-		this.menu_poped = menu_poped;
 	}
 
 	/**
@@ -490,9 +470,14 @@ public class MapManager implements Screen{
 	 * @param point
 	 */
 	public void editMapAtCoord(Point point) {
-		unHighlight();
 		logger.info("Open menu @ "+point);
-		edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurAtCoord("v2_worldmap", point));
+		int id = getIdAtCoordOnMap("v2_worldmap", point);
+		if(SpriteData.isTileId(id)){
+			edit_menu  = new Edit_menu(point, worldmap.get(0).getTileOnMapFromId(id,point.x,point.y), highlight_stage, true);
+		}else{
+			edit_menu  = new Edit_menu(point, worldmap.get(0).getSpriteOnMapFromId(id,point.x,point.y), highlight_stage, false);
+		}
+		ui.addActor(edit_menu);
 		Gdx.input.setInputProcessor(edit_menu);
 	}
 
@@ -574,6 +559,7 @@ public class MapManager implements Screen{
 	 */
 	public static void close_edit_menu() {
 		m.edit_menu = null;
+		unHighlight();
 		Gdx.input.setInputProcessor(m.controller);
 	}
 }

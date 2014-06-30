@@ -60,6 +60,7 @@ public class ScreenManager extends Game{
 		AssetsLoader.load("Highlight");
 		map = new MapManager(this);
 		loadingStatus.waitUntilSpritesPackaged();
+		loadingStatus.waitUntilTileAtlasAreLoaded();
 		map.loadMaps();
 		map.createChunkMap();
 	}

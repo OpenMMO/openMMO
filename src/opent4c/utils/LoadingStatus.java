@@ -30,6 +30,7 @@ public enum LoadingStatus {
 	private int nb_computed_modulos = 0;
 	private int nb_modulos_to_compute = -1;
 	private int sprites_loaded_from_dda = 0;
+	private int tile_atlas_loaded = 0;
 	//TODO perfo Check performance of Collections.synchronizedList
 	private List<String> tilesAtlasToPackage = Collections.synchronizedList(new ArrayList<String>(tilesAtlasMax));
 	private List<String> tilesAtlasPackaged = Collections.synchronizedList(new ArrayList<String>(tilesAtlasMax));
@@ -59,6 +60,15 @@ public enum LoadingStatus {
 		return tilesAtlasToPackage.isEmpty();
 	}
 	
+	public synchronized void addOneTileAtlasLoaded(){
+		tile_atlas_loaded++;
+	}
+	
+	public synchronized boolean AreTileAtlasLoaded(){
+		if(tile_atlas_loaded < nbTilesAtlas) return false;
+		return true;
+	}
+	
 	public void addSpritesAtlasToPackage(String spriteName) {
 		spritesAtlasToPackage.add(spriteName);
 	}
@@ -78,6 +88,15 @@ public enum LoadingStatus {
 	 */
 	public void waitUntilTilesPackaged() {
 		while (!isTilesPackaged()) {
+			waitLoaded();
+		}
+	}
+	
+	/**
+	 * Wait until tile atlas are loaded. This will pause the thread.
+	 */
+	public void waitUntilTileAtlasAreLoaded(){
+		while(!AreTileAtlasLoaded()){
 			waitLoaded();
 		}
 	}

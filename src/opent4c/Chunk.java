@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
@@ -32,7 +31,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class Chunk{
 	private static Logger logger = LogManager.getLogger(Chunk.class.getSimpleName());
-	private static int watcher_delay_ms = 50;
+	private static int watcher_delay_ms = 100;
 	private static ScheduledFuture<?> watcher;
 	private Point center = null;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
@@ -58,78 +57,75 @@ public class Chunk{
 		int rightLimit = point.x+(MapManager.getChunkSize().width/2);
 		for(int y = upLimit ; y <= downLimit ; y++){
 			for(int x = leftLimit ; x <= rightLimit ; x++){
-				if(!isTileAtCoord(map,PointsManager.getPoint(x,y))){
-					chunk_sprites.add(getSpriteAtCoord(map, PointsManager.getPoint(x,y)));
+				int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x,y));
+				if(SpriteData.isTileId(id)){
+					chunk_tiles.add(getTileOnMapFromId(id,x,y));
 				}else{
-					chunk_tiles.add(getTileAtCoord(map, PointsManager.getPoint(x,y)));
+					chunk_sprites.add(getSpriteOnMapFromId(id,x,y));					
 				}
 			}	
 		}
 	}
 
-	public Acteur getActeurAtCoord(String map, Point point){
-		if(!isTileAtCoord(map,point)){
-			return getSpriteAtCoord(map, point);
-		}else{
-			return getTileAtCoord(map, point);
-		}
-	}
-	
 	/**
-	 * @param map
-	 * @param point
-	 * @return the tile at given coordinates on given map
+	 * @param id
+	 * @param x
+	 * @param y
+	 * @return
 	 */
-	public Acteur getTileAtCoord(String map, Point point) {
+	public Acteur getSpriteOnMapFromId(int id, int x, int y) {
 		Acteur result = null;
-		result = new Acteur(getTileTexRegionAtCoord(map, point),point,PointsManager.getPoint(0, 0));
-		//result.flip(false, true);
-		return result;
-	}
-
-	/**
-	 * @param map
-	 * @param point
-	 * @return the TextureRegion for a tile at given coordinates on given map.
-	 * If the ID isn't mapped or the atlas is missing or the textureRegion is missing,
-	 * returns the "unknown" tile.
-	 */
-	private TextureRegion getTileTexRegionAtCoord(String map, Point point) {
-		TextureRegion result = null;
-		String moduloTex = "";
+		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
-		TilePixel px = null;
-		px = (TilePixel) getPixelAtCoord(map, point);
-		if (px != null){
-			texAtlas = getTileTexAtlas(px);
-			moduloTex = setModuloFromPoint(px, point);
-			result = texAtlas.findRegion(moduloTex);
-			if (result == null){
-				result = getUnknownTile();
+		SpritePixel px = SpriteData.getSpriteFromId(id);
+		if (px == null){
+			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
+		}
+		texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());
+		if(texAtlas == null){
+			texAtlas = AssetsLoader.load(px.getAtlas());
+			if(texAtlas == null){
+			//logger.warn("Atlas de tile inexistant : "+px.getAtlas());
+			//TODO pas normal, surement un soucis dans l'empaquetage des atlas de tuiles
+			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
 			}
-		}else{
-			result = getUnknownTile();
 		}
-		if(result == null){
-			logger.fatal("Attention, on charge une texture null : "+result);
-			System.exit(1);
+		texRegion = texAtlas.findRegion(px.getTex());
+		if(texRegion == null){
+			logger.warn("On tente de charger une TextureRegion null");
+			texRegion = getUnknownTile();
 		}
+		result = new Acteur(texRegion,PointsManager.getPoint(x, y),px.getOffset());
 		return result;
 	}
 
 	/**
-	 * @param px
-	 * @return the TextureAtlas for a tile from a MapPixel
-	 * if the atlas is missing, returns the unknown atlas
+	 * @param id
+	 * @param y 
+	 * @param x 
+	 * @return
 	 */
-	private TextureAtlas getTileTexAtlas(MapPixel px) {
+	public Acteur getTileOnMapFromId(int id, int x, int y) {
+		Acteur result = null;
+		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
+		TilePixel px = SpriteData.getTileFromId(id);
+		if (px == null){
+			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
+		}
 		texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
 		if(texAtlas == null){
-			return getUnknownAtlas();
-		}else{
-			return texAtlas;
+			//logger.warn("Atlas de tile inexistant : "+px.getAtlas());
+			//TODO pas normal, surement un soucis dans l'empaquetage des atlas de tuiles
+			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
 		}
+		texRegion = texAtlas.findRegion(setModuloFromPoint(px, PointsManager.getPoint(x, y)));
+		if(texRegion == null){
+			logger.warn("On tente de charger une TextureRegion null");
+			texRegion = getUnknownTile();
+		}
+		result = new Acteur(texRegion,PointsManager.getPoint(x, y),px.getOffset());
+		return result;
 	}
 
 	/**
@@ -156,23 +152,6 @@ public class Chunk{
 		int moduloX = (point.x % tileModuloX)+1;
 		int moduloY = (point.y % tileModuloY)+1;
 		return tex.substring(0,tex.indexOf('(')+1)+moduloX+", "+moduloY+")";		
-	}
-
-	/**
-	 * Tells if the given coordinate on given map is a tile or a sprite
-	 * @param map
-	 * @param point
-	 * @return
-	 */
-	public boolean isTileAtCoord(String map, Point point) {
-		MapPixel px = null;
-		px = getPixelAtCoord(map, point);
-		if(px == null) return false;
-		if (px instanceof TilePixel){
-			return true;
-		}else{
-			return false;
-		}
 	}
 
 	/**
@@ -236,76 +215,12 @@ public class Chunk{
 		result.put(24, chunk24);
 		return result;
 	}
-	
-	/**
-	 * @param map
-	 * @param point
-	 * @return a sprite from a given point on a given map
-	 */
-	public Acteur getSpriteAtCoord(String map, Point point) {
-		Acteur result = null;
-		TextureRegion texRegion = null;
-		TextureAtlas texAtlas = null;
-		MapPixel px = null;
-		px = getPixelAtCoord(map, point);
-		if (px == null){
-			//logger.warn("On tente de charger un MapPixel null");
-			result = new Acteur(getUnknownTile(),point,PointsManager.getPoint(0, 0));
-			return result;
-		}
-		texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());
-		if (texAtlas == null){
-			texAtlas = AssetsLoader.load(px.getAtlas());
-		}
-		texRegion = texAtlas.findRegion(px.getTex());
-		if(texRegion == null){
-			logger.warn("On tente de charger une TextureRegion null");
-			texRegion = getUnknownTile();
-		}
-		result = new Acteur(texRegion,point,px.getOffset());
-		return result;
-	}
-
-	/**
-	 * @param map
-	 * @param point
-	 * @return a MapPixel from Point on a given map name
-	 */
-	public MapPixel getPixelAtCoord(String map, Point point) {
-		MapPixel result = null;
-		int id = MapManager.getIdAtCoordOnMap(map, point);
-		result = SpriteData.getPixelFromId(id);
-		if (result == null){
-			if (unmapped_ids.get(id)==null){
-				unmapped_ids.put(id,new ArrayList<Point>());
-				unmapped_ids.get(id).add(point);
-			}else{
-				unmapped_ids.get(id).add(point);
-			}
-			//logger.warn("ID "+id+" non mappée => "+point.x+";"+point.y+"@"+carte);
-		}
-		return result;
-	}
 
 	/**
 	 * @return the chunk's sprites
 	 */
 	public List<Acteur> getSprites() {
 		return chunk_sprites;
-	}
-
-	/**
-	 * @param map
-	 * @return the chunk's ids from a map
-	 */
-	public List<Integer> getIds(String map){
-		List<Integer> result = new ArrayList<Integer>();
-		Iterator<Acteur> iter_cells = chunk_sprites.iterator();
-		while (iter_cells.hasNext()){
-			Acteur pt = iter_cells.next();
-			result.add(MapManager.getIdAtCoordOnMap(map, PointsManager.getPoint(pt.getX(), pt.getY())));
-		}
-		return result;
 	}
 	
 	/**

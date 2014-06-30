@@ -2,6 +2,7 @@ package opent4c.utils;
 
 import java.io.File;
 
+import opent4c.InputManager;
 import opent4c.SpriteData;
 import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
@@ -14,7 +15,10 @@ import screens.MapManager;
 import t4cPlugin.Places;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 
@@ -56,6 +60,7 @@ public class RunnableCreatorUtil {
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
 				UpdateScreenManagerStatus.setSpriteDataStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
+				loadingStatus.addOneTileAtlasLoaded();
 			}
 		};
 		return r;
@@ -177,5 +182,43 @@ public class RunnableCreatorUtil {
 			}
 		};
 		return r;
+	}
+
+	/**
+	 * @param stage
+	 * @param newChunksSprites 
+	 * @param newChunksTiles 
+	 * @return
+	 */
+	public static Runnable getChunkSwapperRunnable(final Stage stage, final Group newChunksTiles, final Group newChunksSprites) {
+		Runnable r = new Runnable(){
+			public void run(){
+				stage.clear();
+				stage.addActor(newChunksTiles);
+				stage.addActor(newChunksSprites);
+			}
+		};
+		return r;
+
+	}
+
+	/**
+	 * @param camera
+	 * @param direction
+	 * @return
+	 */
+	public static Runnable getCameraMoverRunnable(final OrthographicCamera camera, final int direction) {
+	Runnable r = new Runnable(){
+		public void run(){
+			switch(direction){
+			case 0 : camera.translate(-2*InputManager.getMovespeed(),0); break;
+			case 1 : camera.translate(2*InputManager.getMovespeed(),0); break;
+			case 2 : camera.translate(0,-InputManager.getMovespeed()); break;
+			case 3 : camera.translate(0,InputManager.getMovespeed()); break;
+
+			}
+		}
+	};
+	return r;
 	}
 }

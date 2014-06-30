@@ -1709,7 +1709,7 @@
 3791 StuccoDarkSmallWallB
 3790 StuccoDarkSmallWallB
 3766 StuccoDarkSmallWallB
-3767 StuccoCorner
+3767 StuccoCorner2
 3764 StuccoDarkSmallWallB
 3765 StuccoCornerN
 3762 StuccoDarkSmallWallB

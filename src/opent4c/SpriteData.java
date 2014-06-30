@@ -496,12 +496,25 @@ public class SpriteData {
 	/**
 	 * 
 	 * @param id
-	 * @return a MapPixel list from an ID
+	 * @return a SpritePixel list from an ID
 	 */
-	public static List<SpritePixel> getAllPixelswithId(int id) {
-		return sprites.get(id);
+	public static List<SpritePixel> getAllSpriteswithId(int id) {
+		if (sprites.containsKey(id)){
+			return sprites.get(id);
+		}
+		return null;
 	}
-	
+	/**
+	 * 
+	 * @param id
+	 * @return a TilePixel list from an ID
+	 */
+	public static List<TilePixel> getAllTileswithId(int id) {
+		if (tiles.containsKey(id)){
+			return tiles.get(id);
+		}
+		return null;
+	}
 
 	/**
 	 * 
@@ -583,5 +596,32 @@ public class SpriteData {
 	 */
 	public static Map<Integer, List<MapPixel>> getPixels() {
 		return pixels;
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public static SpritePixel getSpriteFromId(int id) {
+		if (sprites.containsKey(id))return sprites.get(id).get(0);
+		return null;
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public static boolean isTileId(int id) {
+		if(tiles.containsKey(id))return true;
+		return false;
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public static TilePixel getTileFromId(int id) {
+		if(tiles.containsKey(id))return tiles.get(id).get(0);
+		return null;
 	}
 }
