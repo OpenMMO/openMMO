@@ -27,10 +27,10 @@ Grass 32;32
 EarthIce 16;16
 OldLava 2;5
 CastleFloor 9;9
-Water3 32;32
 DungeonRockFloor 7;6
-Water4 32;32
+Water3 32;32
 DeadForest 8;8
+Water4 32;32
 CavernGlace 16;16
 NewLava 32;32
 Rocktest2 32;32

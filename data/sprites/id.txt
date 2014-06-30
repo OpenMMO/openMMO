@@ -7,16 +7,16 @@
 7 DGrass
 8 Desert
 9 DungeonRockFloor
-10 Lava 1
+10 Lava
 11 EarthTile
 12 TownRoadDale
 13 RockFloor
-14 Floor Wooden 1
-15 Ice 1
+14 Floor Wooden
+15 Ice
 17 CavernFloor
-18 Dtm4 1
+18 Dtm
 20 Black Tile
-42 Dtm1 1
+42 Dtm1
 43 DungeonFloorOverHeadLight1
 41 DungeonFloorTorch1 1
 44 DungeonFloorOverHead2

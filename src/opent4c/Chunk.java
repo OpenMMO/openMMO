@@ -58,9 +58,9 @@ public class Chunk{
 			for(int x = leftLimit ; x <= rightLimit ; x++){
 				int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x,y));
 				if(SpriteData.isTileId(id)){
-					chunk_tiles.add(getTileOnMapFromId(id,x,y));
+					chunk_tiles.add(getActeurTileOnMapFromId(id,x,y));
 				}else{
-					chunk_sprites.add(getSpriteOnMapFromId(id,x,y));					
+					chunk_sprites.add(getActeurSpriteOnMapFromId(id,x,y));					
 				}
 			}	
 		}
@@ -72,7 +72,7 @@ public class Chunk{
 	 * @param y
 	 * @return
 	 */
-	public Acteur getSpriteOnMapFromId(int id, int x, int y) {
+	public Acteur getActeurSpriteOnMapFromId(int id, int x, int y) {
 		Acteur result = null;
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
@@ -104,7 +104,7 @@ public class Chunk{
 	 * @param x 
 	 * @return
 	 */
-	public Acteur getTileOnMapFromId(int id, int x, int y) {
+	public Acteur getActeurTileOnMapFromId(int id, int x, int y) {
 		Acteur result = null;
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;

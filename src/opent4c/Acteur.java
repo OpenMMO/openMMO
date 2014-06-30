@@ -5,7 +5,6 @@ import java.awt.Point;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
@@ -16,13 +15,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  *
  */
 public class Acteur extends Actor {
-    Sprite sprite;
     TextureRegion tex;
- 
-    @Deprecated
-    public Acteur (Sprite sp) {
-        sprite = sp;
-    }
 
     public Acteur (TextureRegion tex, Point coord, Point offset) {
         this.tex = tex;
@@ -43,6 +36,5 @@ public class Acteur extends Actor {
         Color color = getColor();
         batch.setColor(color.r, color.g, color.b, color.a * parentAlpha);
         batch.draw(tex, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
-        if(sprite != null ) sprite.draw(batch);//Deprecated
     }
 }

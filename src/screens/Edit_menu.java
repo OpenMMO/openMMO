@@ -40,7 +40,6 @@ public class Edit_menu extends Group implements InputProcessor {
 	private Stage stage;
 	private Acteur edited_tile;
 	private TextButtonStyle style = new TextButtonStyle();
-	private Point point;
 	private Group alternative_group = new Group();
 	private Group alternative_button_group = new Group();
 	private Group edited_group = new Group();
@@ -55,47 +54,29 @@ public class Edit_menu extends Group implements InputProcessor {
 	private TextButton alternative_button;
 	private TextButton tex_button;
 	private Actor choosen_alternative_button;
-	private boolean tuile;
 	private TextButton info_button;
 
 
 	/**
 	 * @param pt
 	 */
-	public Edit_menu(Point pt, Acteur edited, Stage stage, boolean isTuile) {
+	public Edit_menu(Point pt, Acteur edited, Stage stage, int id) {
 		this.stage = stage;
-		this.tuile = isTuile;
-		point = pt;
 		edited_tile = edited;
-		id = MapManager.getIdAtCoordOnMap("v2_worldmap", point);
+		this.id = id;
 		style.font = new BitmapFont();
-		if(checkIfEditedIsKnownTile()){
+		if(SpriteData.isTileId(id)){
 			tilepixel_list = SpriteData.getAllTileswithId(id);
 			editKnownTile(test_alternative);
 			return;
-		} if(checkIfEditedIsKnownSprite()){
+		}else if(SpriteData.isSpriteId(id)){
 			spritepixel_list = SpriteData.getAllSpriteswithId(id);
 			editKnownSprite(test_alternative);
 			return;
-		}
+		}else if(SpriteData.isUnknownId(id)){
 			editUnknown();
 			return;
-	}
-
-	/**
-	 * @return
-	 */
-	private boolean checkIfEditedIsKnownSprite() {
-		if(!SpriteData.ids.containsKey(id)) return false;
-		return !tuile;
-	}
-
-	/**
-	 * @return
-	 */
-	private boolean checkIfEditedIsKnownTile() {
-		if(!SpriteData.ids.containsKey(id)) return false;
-		return tuile;
+		}
 	}
 
 	/**
@@ -210,10 +191,8 @@ public class Edit_menu extends Group implements InputProcessor {
 	 * @param tex
 	 */
 	private void addAlternativeToMenu(TextureRegion tex) {
-		//Point coord = PointsManager.getPoint(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-		Acteur alt = new Acteur(tex,PointsManager.getPoint(edited_tile.getX(), edited_tile.getY()),PointsManager.getPoint(0, 0));
-		//Acteur alt = new Acteur(tex,PointsManager.getPoint(point.x*32, point.y*16),PointsManager.getPoint(0, 0));
-		//alt.setPosition(edited_tile.getX(), edited_tile.getY());
+		Acteur alt = new Acteur(tex,PointsManager.getPoint(0, 0),PointsManager.getPoint(0, 0));
+		alt.setPosition(edited_tile.getX(), edited_tile.getY());
 		alternative_group.addActor(alt);
 		stage.addActor(alternative_group);		
 	}
@@ -243,7 +222,6 @@ public class Edit_menu extends Group implements InputProcessor {
 	
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -255,38 +233,42 @@ public class Edit_menu extends Group implements InputProcessor {
 			return true;
 		}
 		if (keycode == Keys.ENTER){
-			if(!checkIfEditedIsKnownTile() & checkIfEditedIsKnownSprite()){
+			if(!SpriteData.isTileId(id) & (SpriteData.isSpriteId(id) | SpriteData.isUnknownId(id))){
 				validateAlternative(test_alternative);
 				return true;
 			}
+			dispose();
+			return true;
 		}
-		if (keycode == Keys.DOWN | keycode == Keys.LEFT){
-			if(checkIfEditedIsKnownTile()){
+		if (keycode == Keys.DOWN | keycode == Keys.RIGHT){
+			if(SpriteData.isTileId(id)){
 				if(test_alternative < nb_alternatives ) test_alternative++;
 				editKnownTile(test_alternative);
 				return true;
-			}
-			if(checkIfEditedIsKnownSprite()){
+			}else if(SpriteData.isSpriteId(id)){
 				if(test_alternative < nb_alternatives ) test_alternative++;
 				editKnownSprite(test_alternative);
 				return true;
+			}else if(SpriteData.isUnknownId(id)){
+				editUnknown();
+				return true;
 			}
-			editUnknown();
-			return true;
+			return false;
 		}
-		if (keycode == Keys.UP | keycode == Keys.RIGHT){
-			if(checkIfEditedIsKnownTile()){
+		if (keycode == Keys.UP | keycode == Keys.LEFT){
+			if(SpriteData.isTileId(id)){
 				if(test_alternative > 0 ) test_alternative--;
 				editKnownTile(test_alternative);
 				return true;
-			}
-			if(checkIfEditedIsKnownSprite()){
+			}else if(SpriteData.isSpriteId(id)){
 				if(test_alternative > 0 ) test_alternative--;
 				editKnownSprite(test_alternative);
 				return true;
+			}else if(SpriteData.isUnknownId(id)){
+				editUnknown();
+				return true;
 			}
-			editUnknown();
-			return true;
+			return false;
 		}		
 		return false;
 	}
@@ -308,47 +290,42 @@ public class Edit_menu extends Group implements InputProcessor {
 	 */
 	private void dispose() {
 		this.clear();
+		alternative_group.clear();
 		edited_group.clear();
 		MapManager.close_edit_menu();
 	}
 
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

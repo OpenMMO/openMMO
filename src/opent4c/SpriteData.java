@@ -671,4 +671,22 @@ public class SpriteData {
 			System.exit(1);
 		}
 	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public static boolean isSpriteId(int id) {
+		if(sprites.containsKey(id))return true;
+		return false;
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public static boolean isUnknownId(int id) {
+		if(!isTileId(id) & !isSpriteId(id)) return true;
+		return false;
+	}
 }

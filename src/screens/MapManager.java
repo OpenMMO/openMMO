@@ -466,15 +466,13 @@ public class MapManager implements Screen{
 	 * @param point
 	 */
 	public void editMapAtCoord(Point point) {
-		logger.info("Open menu @ "+point);
 		int id = getIdAtCoordOnMap("v2_worldmap", point);
-		if(SpriteData.isTileId(id)){
-			edit_menu  = new Edit_menu(point, worldmap.get(0).getTileOnMapFromId(id,point.x,point.y), highlight_stage, true);
-		}else{
-			edit_menu  = new Edit_menu(point, worldmap.get(0).getSpriteOnMapFromId(id,point.x,point.y), highlight_stage, false);
-		}
-		ui.addActor(edit_menu);
-		Gdx.input.setInputProcessor(edit_menu);
+		logger.info("Open menu ID "+id+"@ "+point);
+			if(SpriteData.isTileId(id))edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurTileOnMapFromId(id,point.x,point.y), highlight_stage, id);
+			if(SpriteData.isSpriteId(id))edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurSpriteOnMapFromId(id,point.x,point.y), highlight_stage, id);
+			if(SpriteData.isUnknownId(id))edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurTileOnMapFromId(id,point.x,point.y), highlight_stage, id);
+			ui.addActor(edit_menu);
+			Gdx.input.setInputProcessor(edit_menu);
 	}
 
 	/**
