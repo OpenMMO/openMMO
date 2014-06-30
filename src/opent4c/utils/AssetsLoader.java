@@ -10,8 +10,6 @@ import opent4c.UpdateScreenManagerStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.Params;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
@@ -90,15 +88,13 @@ public enum AssetsLoader {
 		List<File> tuiles = new ArrayList<File>();
 		tuiles.addAll(FileLister.listerDir(new File(FilesPath.getTuilePath())));
 		Iterator<File> iter_tuiles = tuiles.iterator();
-		String last ="";
 		while (iter_tuiles.hasNext()){
 			File f = iter_tuiles.next();
 			final File at = new File(FilesPath.getAtlasTilesFilePath(f.getName()));
-			if (!f.getName().equals(last) & f.isDirectory() & !at.exists()){
+			if (f.isDirectory() & !at.exists()){
 				loadingStatus.addTilesAtlasToPackage(f.getName());
 				executeTuilesPacking(f, settings);
 			}
-			last = f.getName();
 		}
 	}
 	

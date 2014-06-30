@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,6 +22,7 @@ import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.SpriteName;
 import opent4c.utils.ThreadsUtil;
 
 import org.apache.logging.log4j.LogManager;
@@ -30,10 +30,11 @@ import org.apache.logging.log4j.Logger;
 
 public class SpriteData {
 	private static Logger logger = LogManager.getLogger(SpriteData.class.getSimpleName());
-	//private static Map<Integer,MapPixel> sprite_data_perfect = new HashMap<Integer,MapPixel>();
-	//private static Map<Integer, List<MapPixel>> sprite_data_not_perfect = new HashMap<Integer,List<MapPixel>>();
+	public static Map<Integer,SpriteName> ids = null;
 	private static Map<String,Point> modulos;
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	private static List<SpritePixel> unknownSprites = new ArrayList<SpritePixel>();
+	private static List<TilePixel> unknownTiles = new ArrayList<TilePixel>();
 	private static Map<Integer, List<SpritePixel>> sprites = new HashMap<Integer,List<SpritePixel>>();
 	private static Map<Integer, List<TilePixel>> tiles = new HashMap<Integer, List<TilePixel>>();
 	private static Map<Integer, List<MapPixel>> pixels = new HashMap<Integer, List<MapPixel>>();
@@ -45,9 +46,8 @@ public class SpriteData {
 	public static void load(){
 		loadSpriteData();
 		loadTileData();
-
 		readModuloFile();
-		SpriteUtils.writeIdsToFile();
+		SpriteData.writeIdsToFile();
 	}
 
 	/**
@@ -118,22 +118,22 @@ public class SpriteData {
 	private static void readTileDataLine(String line) {
 		String[] index = line.split("\\;");//On lit chaque ligne du fichier, et pour chaque ligne :
 		int id = Integer.parseInt(index[0]);
-		boolean tuile = readTuile(index[1]);
-		String atlas = index[2];
-		String tex = index[3];
-		int type = Integer.parseInt(index[4]);
-		int ombre = Integer.parseInt(index[5]);
-		int transColor = Integer.parseInt(index[8]);
-		int offsetX = Integer.parseInt(index[9]);
-		int offsetY = Integer.parseInt(index[10]);
-		int offsetX2 = Integer.parseInt(index[11]);
-		int offsetY2 = Integer.parseInt(index[12]);
-		int numDDA = Integer.parseInt(index[13]);
-		String palette = index[14];
-		boolean perfectMatch = readMatch(index[15]);
-		TilePixel px = new TilePixel(id, atlas, tex, type, ombre, transColor, PointsManager.getPoint(offsetX, offsetY), PointsManager.getPoint(offsetX2, offsetY2), numDDA, palette, perfectMatch);
-		UpdateScreenManagerStatus.setSpriteDataStatus("Sprite lu => Tuile :"+tuile+"|"+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| ID : "+id+"| Palette : "+palette);
-		if (tiles.containsKey(id)){
+		String atlas = index[1];
+		String tex = index[2];
+		int type = Integer.parseInt(index[3]);
+		int ombre = Integer.parseInt(index[4]);
+		int transColor = Integer.parseInt(index[7]);
+		int offsetX = Integer.parseInt(index[8]);
+		int offsetY = Integer.parseInt(index[9]);
+		int offsetX2 = Integer.parseInt(index[10]);
+		int offsetY2 = Integer.parseInt(index[11]);
+		int numDDA = Integer.parseInt(index[12]);
+		String palette = index[13];
+		TilePixel px = new TilePixel(id, atlas, tex, type, ombre, transColor, PointsManager.getPoint(offsetX, offsetY), PointsManager.getPoint(offsetX2, offsetY2), numDDA, palette, false);
+		UpdateScreenManagerStatus.setSpriteDataStatus("Tuile lue => "+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| ID : "+id+"| Palette : "+palette);
+		if(id == -1){
+			unknownTiles.add(px);
+		}else if (tiles.containsKey(id)){
 			tiles.get(id).add(px);
 		}else{
 			List<TilePixel> lst = new ArrayList<TilePixel>();
@@ -149,24 +149,25 @@ public class SpriteData {
 	private static void readSpriteDataLine(String line) {
 		String[] index = line.split("\\;");//On lit chaque ligne du fichier, et pour chaque ligne :
 		int id = Integer.parseInt(index[0]);
-		boolean tuile = readTuile(index[1]);
-		String atlas = index[2];
-		String tex = index[3];
-		int type = Integer.parseInt(index[4]);
-		int ombre = Integer.parseInt(index[5]);
-		int largeur = Integer.parseInt(index[6]);
-		int hauteur = Integer.parseInt(index[7]);
-		int transColor = Integer.parseInt(index[8]);
-		int offsetX = Integer.parseInt(index[9]);
-		int offsetY = Integer.parseInt(index[10]);
-		int offsetX2 = Integer.parseInt(index[11]);
-		int offsetY2 = Integer.parseInt(index[12]);
-		int numDDA = Integer.parseInt(index[13]);
-		String palette = index[14];
-		boolean perfectMatch = readMatch(index[15]);
+		String atlas = index[1];
+		String tex = index[2];
+		int type = Integer.parseInt(index[3]);
+		int ombre = Integer.parseInt(index[4]);
+		int largeur = Integer.parseInt(index[5]);
+		int hauteur = Integer.parseInt(index[6]);
+		int transColor = Integer.parseInt(index[7]);
+		int offsetX = Integer.parseInt(index[8]);
+		int offsetY = Integer.parseInt(index[9]);
+		int offsetX2 = Integer.parseInt(index[10]);
+		int offsetY2 = Integer.parseInt(index[11]);
+		int numDDA = Integer.parseInt(index[12]);
+		String palette = index[13];
+		boolean perfectMatch = readMatch(index[14]);
 		SpritePixel px = new SpritePixel(id, atlas, tex, type, ombre, PointsManager.getPoint(largeur, hauteur), transColor, PointsManager.getPoint(offsetX, offsetY), PointsManager.getPoint(offsetX2, offsetY2), numDDA, palette, perfectMatch);
-		UpdateScreenManagerStatus.setSpriteDataStatus("Sprite lu => Tuile :"+tuile+"|"+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| ID : "+id+"| Palette : "+palette);
-		if (sprites.containsKey(id)){
+		UpdateScreenManagerStatus.setSpriteDataStatus("Sprite lu => "+tex+"@"+atlas+"| Offset : "+ offsetX+";"+offsetY+"| ID : "+id+"| Palette : "+palette);
+		if(id == -1){
+			unknownSprites.add(px);
+		}else if (sprites.containsKey(id)){
 			sprites.get(id).add(px);
 		}else{
 			List<SpritePixel> lst = new ArrayList<SpritePixel>();
@@ -234,37 +235,11 @@ public class SpriteData {
 		if (string.equals("0")) return false;
 		return true;
 	}
-
-	/**
-	 * @param string
-	 */
-	private static boolean readTuile(String string) {
-		if (string.equals("0")) return false;
-		return true;
-		
-	}
-
-	/**
-	 * creates a sprite_data file
-	 */
-	public static void create(){
-		UpdateScreenManagerStatus.setSpriteDataStatus("Création de sprite_data, tile_data et modulo_data");
-		if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
-		if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
-		if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
-		computeModulos();
-		//loadingStatus.waitUntilDdaFilesProcessed();
-		createSpriteData();
-		createTileData();
-		File modulo_file = new File(FilesPath.getModuloFilePath());
-		if(!modulo_file.exists()) writeModulos();
-		logger.info("sprite_data écrit.");
-	}
 	
 	/**
 	 * 
 	 */
-	private static void createTileData() {
+	public static void createTileData() {
 		OutputStreamWriter dat_file = null;
 		try {
 			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getTileDataFilePath()));
@@ -296,7 +271,7 @@ public class SpriteData {
 	 * @param dat_file
 	 */
 	private static void writeTileDataLine(TilePixel px, OutputStreamWriter dat_file) {
-		String line = buildLine(px);
+		String line = buildTileDataLine(px);
 		try {
 			dat_file.write(line);
 		} catch (IOException e) {
@@ -308,7 +283,7 @@ public class SpriteData {
 	/**
 	 * 
 	 */
-	private static void createSpriteData() {
+	public static void createSpriteData() {
 		OutputStreamWriter dat_file = null;
 		try {
 			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getSpriteDataFilePath()));
@@ -341,7 +316,7 @@ public class SpriteData {
 	 * @param dat_file
 	 */
 	private static void writeSpriteDataLine(SpritePixel px, OutputStreamWriter dat_file) {
-		String line = buildLine(px);
+		String line = buildSpriteDataLine(px);
 		try {
 			dat_file.write(line);
 		} catch (IOException e) {
@@ -354,15 +329,11 @@ public class SpriteData {
 	 * @param px
 	 * @return
 	 */
-	private static String buildLine(MapPixel px) {
-		int tuile = 0;
-		if (px instanceof TilePixel) tuile = 1;
+	private static String buildSpriteDataLine(SpritePixel px) {
 		int match = 0;
 		if (px.isPerfectMatch()) match = 1;
 		StringBuilder sb = new StringBuilder();
 		sb.append(px.getId());
-		sb.append(";");
-		sb.append(tuile);
 		sb.append(";");
 		sb.append(px.getAtlas());
 		sb.append(";");
@@ -396,6 +367,44 @@ public class SpriteData {
 		return sb.toString();
 	}
 
+	/**
+	 * @param px
+	 * @return
+	 */
+	private static String buildTileDataLine(TilePixel px) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(px.getId());
+		sb.append(";");
+		sb.append(px.getAtlas());
+		sb.append(";");
+		sb.append(px.getTex());
+		sb.append(";");
+		sb.append(px.getType());
+		sb.append(";");
+		sb.append(px.getOmbre());
+		sb.append(";");
+		sb.append(px.getLargeur());
+		sb.append(";");
+		sb.append(px.getHauteur());
+		sb.append(";");
+		sb.append(px.getCouleurTrans());
+		sb.append(";");
+		sb.append(px.getOffset().x);
+		sb.append(";");
+		sb.append(px.getOffset().y);
+		sb.append(";");
+		sb.append(px.getOffset2().x);
+		sb.append(";");
+		sb.append(px.getOffset2().y);
+		sb.append(";");
+		sb.append(px.getNumDDA());
+		sb.append(";");
+		sb.append(px.getPaletteName());
+		sb.append(System.lineSeparator());
+		
+		return sb.toString();
+	}
+	
 	/**
 	 * Computes all tiles modulo
 	 */
@@ -479,23 +488,6 @@ public class SpriteData {
 	/**
 	 * 
 	 * @param id
-	 * @return a MapPixel from an ID
-	 */
-	public static MapPixel getPixelFromId(int id) {
-		//TODO différencier tile et sprite
-		MapPixel result = null;
-		if(sprites.containsKey(id)){
-			result = sprites.get(id).get(0);
-		}else if(tiles.containsKey(id)){
-			result = tiles.get(id).get(0);
-		}
-		return result;
-	}
-	
-
-	/**
-	 * 
-	 * @param id
 	 * @return a SpritePixel list from an ID
 	 */
 	public static List<SpritePixel> getAllSpriteswithId(int id) {
@@ -519,7 +511,7 @@ public class SpriteData {
 	/**
 	 * 
 	 */
-	public static void deleteSpriteDataFile() {
+	public static void deleteSpriteDataFileOnExit() {
 		File f = new File(FilesPath.getSpriteDataFilePath());
 		f.deleteOnExit();
 	}
@@ -572,10 +564,9 @@ public class SpriteData {
 	/**
 	 * @param pixel
 	 */
-	public static void removeFromPixels(MapPixel pixel) {
-		if(pixels.containsKey(pixel.getId())){
-			pixels.remove(pixel.getId());
-		}
+	public static void removePixels() {
+		logger.info("Cleared pixel list");
+		pixels.clear();
 	}
 
 	/**
@@ -623,5 +614,69 @@ public class SpriteData {
 	public static TilePixel getTileFromId(int id) {
 		if(tiles.containsKey(id))return tiles.get(id).get(0);
 		return null;
+	}
+
+	/**
+	 * 
+	 */
+	public static void createModuloData() {
+		computeModulos();
+		writeModulos();
+	}
+
+	/**
+	 * Gets IDs from id.txt file
+	 * puts info into a HashMap<Integer,SpriteName>
+	 */
+	public static void loadIdsFromFile(){
+		ids = new HashMap<Integer,SpriteName>();
+		File id_file = new File(FilesPath.getIdFilePath());
+		SpriteUtils.logger.info("Lecture du fichier "+id_file.getName());
+		try{
+			BufferedReader buff = new BufferedReader(new FileReader(id_file.getPath()));			 
+			try {
+				String line;
+				while ((line = buff.readLine()) != null) {
+					SpriteUtils.readIdLine(line);
+				}
+			} finally {
+				buff.close();
+			}
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+			System.exit(1);
+		}
+	}
+
+	/**
+	 * writes ids into id.txt
+	 */
+	public static void writeIdsToFile(){
+		OutputStreamWriter dat_file = null;
+		try {
+			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getIdFilePath()));
+		} catch (FileNotFoundException e) {
+			SpriteUtils.logger.fatal(e);
+			System.exit(1);
+		}
+		Iterator<Integer> iter_sn = ids.keySet().iterator();
+		while (iter_sn.hasNext()){
+			int id = iter_sn.next();
+			SpriteName sn = ids.get(id);
+			try {
+				dat_file.write(id+" "+sn.getName()+System.lineSeparator());
+			} catch (IOException e) {
+				SpriteUtils.logger.fatal(e);
+				System.exit(1);
+			}	
+		}
+	
+		try {
+			dat_file.close();
+		} catch (IOException e) {
+			SpriteUtils.logger.fatal(e);
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 }

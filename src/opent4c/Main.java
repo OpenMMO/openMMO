@@ -1,8 +1,5 @@
 package opent4c;
 
-import opent4c.utils.RunnableCreatorUtil;
-import opent4c.utils.ThreadsUtil;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,6 +22,7 @@ public class Main {
 		OSValidator.detect();
 		afficher();
 		verifier();
+		charger();
 	}
 
 	/**
@@ -44,7 +42,6 @@ public class Main {
 	private static void verifier() {
 		logger.info("Vérification des données.");
 		DataChecker.runCheck();
-//		ThreadsUtil.executeInThread(RunnableCreatorUtil.getDataCheckerRunnable());
 	}
 
 	/**

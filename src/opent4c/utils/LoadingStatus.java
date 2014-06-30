@@ -11,18 +11,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import opent4c.DataChecker;
 import opent4c.SourceDataManager;
 import opent4c.SpriteManager;
-import opent4c.SpriteUtils;
 import opent4c.UpdateScreenManagerStatus;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public enum LoadingStatus {
 	INSTANCE; //Singleton
 	
-	private static Logger logger = LogManager.getLogger(LoadingStatus.class.getSimpleName());
 	//TODO perfo check number of tiles for accordingly sizing lists.
 	private final int tilesAtlasMax = 5000;
 	//TODO perfo check number of sprites for accordingly sizing lists.
@@ -309,6 +304,14 @@ public enum LoadingStatus {
 	private boolean isSpriteDataWritten() {
 		File sprite_data = new File(FilesPath.getSpriteDataFilePath());
 		if (!sprite_data.exists()){
+			return false;
+		}
+		File modulo_data = new File(FilesPath.getModuloFilePath());
+		if (!modulo_data.exists()){
+			return false;
+		}
+		File tile_data = new File(FilesPath.getTileDataFilePath());
+		if (!tile_data.exists()){
 			return false;
 		}
 		return true;

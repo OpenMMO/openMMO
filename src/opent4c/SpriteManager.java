@@ -7,10 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.SpriteName;
-import opent4c.utils.ThreadsUtil;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,7 +18,6 @@ import tools.UnsignedInt;
 public class SpriteManager {
 	
 	static Logger logger = LogManager.getLogger(SpriteManager.class.getSimpleName());
-	public static Map<Integer,SpriteName> ids = null;
 	static Map<String,Palette> palettes = null;
 	static int nb_palettes_from_dpd = -1;
 	static int nb_sprites_from_did = -1;
@@ -51,19 +47,19 @@ public class SpriteManager {
 
 	private static int matchIdWithPixel(MapPixel pixel) {
 		//TODO soucis de mapping d'id : 1256 par exemple TapisRouge 3
-		Iterator<Integer> iter = ids.keySet().iterator();
+		Iterator<Integer> iter = SpriteData.ids.keySet().iterator();
 		while (iter.hasNext()){
 			int key = iter.next();
-			SpriteName sn = ids.get(key);
+			SpriteName sn = SpriteData.ids.get(key);
 			if (pixel.getTex().equals(sn.getName())){//First, try a total match
 				pixel.setPerfectNameMatch(true);
 				return key;
 			}
 		}
-		iter = ids.keySet().iterator();
+		iter = SpriteData.ids.keySet().iterator();
 		while (iter.hasNext()){
 			int key = iter.next();
-			SpriteName sn = ids.get(key);
+			SpriteName sn = SpriteData.ids.get(key);
 			if (pixel.getTex().startsWith(sn.getName())){//if unsuccessful, try a startswith match
 				return key;
 			}
@@ -84,6 +80,8 @@ public class SpriteManager {
 			SpriteUtils.decrypt_dda_file(f,doWrite);
 			//ThreadsUtil.executeInThread(RunnableCreatorUtil.getDDAExtractorRunnable(f, doWrite));
 		}
+		setDda_done(true);
+		SpriteData.removePixels();
 	}
 
 	/**
@@ -216,24 +214,24 @@ public class SpriteManager {
 		return dpd_done;
 	}
 
-	public static void setDpd_done(boolean dpd_done) {
-		SpriteManager.dpd_done = dpd_done;
+	public static void setDpd_done(boolean done) {
+		dpd_done = done;
 	}
 
 	public static boolean isDid_done() {
 		return did_done;
 	}
 
-	public static void setDid_done(boolean did_done) {
-		SpriteManager.did_done = did_done;
+	public static void setDid_done(boolean done) {
+		did_done = done;
 	}
 
 	public static boolean isDda_done() {
 		return dda_done;
 	}
 
-	public static void setDda_done(boolean dda_done) {
-		SpriteManager.dda_done = dda_done;
+	public static void setDda_done(boolean done) {
+		dda_done = done;
 	}
 }
 

@@ -3,13 +3,8 @@
  */
 package opent4c;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -345,7 +340,7 @@ public class SpriteUtils {
 					System.exit(1);
 				}
 			}
-			nb_extracted_sprites++;
+			if(pixel.getType() != 3) nb_extracted_sprites++;
 			//SpriteData.removeFromPixels(pixel);
 			UpdateScreenManagerStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+DataChecker.nb_expected_sprites);
 		}
@@ -585,62 +580,6 @@ public class SpriteUtils {
 	}
 	
 	/**
-	 * Gets IDs from id.txt file
-	 * puts info into a HashMap<Integer,SpriteName>
-	 */
-	public static void loadIdsFromFile(){
-		SpriteManager.ids = new HashMap<Integer,SpriteName>();
-		File id_file = new File(FilesPath.getIdFilePath());
-		logger.info("Lecture du fichier "+id_file.getName());
-		try{
-			BufferedReader buff = new BufferedReader(new FileReader(id_file.getPath()));			 
-			try {
-				String line;
-				while ((line = buff.readLine()) != null) {
-					SpriteUtils.readIdLine(line);
-				}
-			} finally {
-				buff.close();
-			}
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-			System.exit(1);
-		}
-	}
-	
-	/**
-	 * writes ids into id.txt
-	 */
-	public static void writeIdsToFile(){
-		OutputStreamWriter dat_file = null;
-		try {
-			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getIdFilePath()));
-		} catch (FileNotFoundException e) {
-			logger.fatal(e);
-			System.exit(1);
-		}
-		Iterator<Integer> iter_sn = SpriteManager.ids.keySet().iterator();
-		while (iter_sn.hasNext()){
-			int id = iter_sn.next();
-			SpriteName sn = SpriteManager.ids.get(id);
-			try {
-				dat_file.write(id+" "+sn.getName()+System.lineSeparator());
-			} catch (IOException e) {
-				logger.fatal(e);
-				System.exit(1);
-			}	
-		}
-
-		try {
-			dat_file.close();
-		} catch (IOException e) {
-			logger.fatal(e);
-			e.printStackTrace();
-			System.exit(1);
-		}
-	}
-
-	/**
 	 * Reads a line from id.txt
 	 * @param line
 	 */
@@ -649,9 +588,8 @@ public class SpriteUtils {
 		String value = "";
 		key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
 		value = line.substring(line.indexOf(" ")+1);
-		//value = value.replace("_","");
 		SpriteName name = new SpriteName(value);
-		SpriteManager.ids.put(key,name);
+		SpriteData.ids.put(key,name);
 	}
 
 	/**

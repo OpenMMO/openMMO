@@ -12,24 +12,17 @@ import org.apache.logging.log4j.Logger;
 import opent4c.Acteur;
 import opent4c.MapPixel;
 import opent4c.SpriteData;
-import opent4c.SpriteManager;
 import opent4c.SpritePixel;
-import opent4c.SpriteUtils;
 import opent4c.TilePixel;
+import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.PointsManager;
-import opent4c.utils.SpriteName;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -47,11 +40,6 @@ public class Edit_menu extends Group implements InputProcessor {
 	private Stage stage;
 	private Acteur edited_tile;
 	private TextButtonStyle style = new TextButtonStyle();
-	/*private ShapeRenderer shapeRenderer = new ShapeRenderer();
-	private int x = 10;
-	private int y = 10;
-	private int w = Gdx.graphics.getWidth()-20;
-	private int h = Gdx.graphics.getHeight()-20;*/
 	private Point point;
 	private Group alternative_group = new Group();
 	private Group alternative_button_group = new Group();
@@ -68,6 +56,7 @@ public class Edit_menu extends Group implements InputProcessor {
 	private TextButton tex_button;
 	private Actor choosen_alternative_button;
 	private boolean tuile;
+	private TextButton info_button;
 
 
 	/**
@@ -82,27 +71,30 @@ public class Edit_menu extends Group implements InputProcessor {
 		style.font = new BitmapFont();
 		if(checkIfEditedIsKnownTile()){
 			tilepixel_list = SpriteData.getAllTileswithId(id);
-			editKnownTile(0);
-		}else if(checkIfEditedIsKnownSprite()){
+			editKnownTile(test_alternative);
+			return;
+		} if(checkIfEditedIsKnownSprite()){
 			spritepixel_list = SpriteData.getAllSpriteswithId(id);
-			editKnownSprite(0);
-		}else{
-			editUnknown();
+			editKnownSprite(test_alternative);
+			return;
 		}
+			editUnknown();
+			return;
 	}
 
 	/**
 	 * @return
 	 */
 	private boolean checkIfEditedIsKnownSprite() {
-		if(SpriteData.getAllSpriteswithId(id) != null) return true;
-		return false;
+		if(!SpriteData.ids.containsKey(id)) return false;
+		return !tuile;
 	}
 
 	/**
 	 * @return
 	 */
 	private boolean checkIfEditedIsKnownTile() {
+		if(!SpriteData.ids.containsKey(id)) return false;
 		return tuile;
 	}
 
@@ -111,8 +103,8 @@ public class Edit_menu extends Group implements InputProcessor {
 	 */
 	private void editUnknown() {
 		String tex = null;
-		if(SpriteManager.ids.containsKey(id)){
-			tex = SpriteManager.ids.get(id).getName();
+		if(SpriteData.ids.containsKey(id)){
+			tex = SpriteData.ids.get(id).getName();
 		}else{
 			tex = "Texture : ID non mappée";
 		}
@@ -150,6 +142,8 @@ public class Edit_menu extends Group implements InputProcessor {
 		palette_button.setPosition(40, Gdx.graphics.getHeight()-80);
 		id_button.setPosition(40, Gdx.graphics.getHeight()-100);
 		alternative_button.setPosition(40, Gdx.graphics.getHeight()-120);
+		info_button.setPosition(40, Gdx.graphics.getHeight()-140);
+
 	}
 
 	/**
@@ -161,19 +155,20 @@ public class Edit_menu extends Group implements InputProcessor {
 		palette_button = new TextButton(palette, style);
 		id_button = new TextButton(id,style);
 		alternative_button = new TextButton(alternative, style);
+		info_button = new TextButton("use Arrows/Enter/Escape. Changes will be seen on next launch.", style);
 	}
 
 	/**
 	 * Edits a sprite with a known ID
 	 */
 	private void editKnownSprite(int test_alternative) {
-		nb_alternatives = spritepixel_list.size();
+		nb_alternatives = spritepixel_list.size()-1;
 		SpritePixel px = spritepixel_list.get(test_alternative);
 		String tex_button = "Texture : "+px.getTex();
 		String atlas_button = "Atlas : "+px.getAtlas();
 		String palette_button = "Palette : "+px.getPaletteName();
 		String id_button = "ID on map : "+id;
-		String alternative = "Alternatives : "+nb_alternatives+"(choose with up & down arrows, validate with Enter, cancel with Escape. Changes will be seen on next launch)";
+		String alternative = "Alternatives : "+nb_alternatives;
 		clearMenu();
 		addAlternativeSpriteToMenu(test_alternative);
 		setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
@@ -185,13 +180,13 @@ public class Edit_menu extends Group implements InputProcessor {
 	 * Edits a tile with a known ID
 	 */
 	private void editKnownTile(int test_alternative) {
-		nb_alternatives = tilepixel_list.size();
+		nb_alternatives = tilepixel_list.size()-1;
 		TilePixel px = tilepixel_list.get(test_alternative);
 		String tex_button = "Texture : "+px.getTex();
 		String atlas_button = "Atlas : "+px.getAtlas();
 		String palette_button = "Palette : "+px.getPaletteName();
 		String id_button = "ID on map : "+id;
-		String alternative = "Alternatives : "+nb_alternatives+"(choose with up & down arrows, validate with Enter, cancel with Escape. Changes will be seen on next launch)";
+		String alternative = "Alternatives : "+nb_alternatives;
 		clearMenu();
 		setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
 		setButtonsPositions();
@@ -215,10 +210,10 @@ public class Edit_menu extends Group implements InputProcessor {
 	 * @param tex
 	 */
 	private void addAlternativeToMenu(TextureRegion tex) {
-		Point coord = PointsManager.getPoint(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-		Acteur alt = new Acteur(tex,coord,PointsManager.getPoint(0, 0));
+		//Point coord = PointsManager.getPoint(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		Acteur alt = new Acteur(tex,PointsManager.getPoint(edited_tile.getX(), edited_tile.getY()),PointsManager.getPoint(0, 0));
 		//Acteur alt = new Acteur(tex,PointsManager.getPoint(point.x*32, point.y*16),PointsManager.getPoint(0, 0));
-		//alt.setPosition(edited_tile.getX()+edited_tile.getWidth()+20+alt.getWidth(), edited_tile.getY());
+		//alt.setPosition(edited_tile.getX(), edited_tile.getY());
 		alternative_group.addActor(alt);
 		stage.addActor(alternative_group);		
 	}
@@ -228,7 +223,7 @@ public class Edit_menu extends Group implements InputProcessor {
 	 */
 	private void addAlternativeButtonToMenu(String alt) {
 		choosen_alternative_button = new TextButton(alt, style);
-		choosen_alternative_button.setPosition(40, Gdx.graphics.getHeight()-140);
+		choosen_alternative_button.setPosition(40, Gdx.graphics.getHeight()-160);
 		alternative_button_group.addActor(choosen_alternative_button);
 		this.addActor(alternative_button_group);
 	}
@@ -241,6 +236,7 @@ public class Edit_menu extends Group implements InputProcessor {
 		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
 		addAlternativeButtonToMenu(alt);
 		TextureAtlas atlas = loadingStatus.getTextureAtlasSprite(pix.getAtlas());
+		if(atlas == null) atlas = AssetsLoader.load(pix.getAtlas());
 		TextureRegion tex = atlas.findRegion(pix.getTex());
 		addAlternativeToMenu(tex);
 	}
@@ -256,14 +252,15 @@ public class Edit_menu extends Group implements InputProcessor {
 	public boolean keyUp(int keycode) {
 		if (keycode == Keys.ESCAPE){
 			dispose();
-			return  true;
-		}
-		if (keycode == Keys.ENTER){
-		}else if(spritepixel_list != null){
-			validateAlternative(test_alternative);
 			return true;
 		}
-		if (keycode == Keys.DOWN){
+		if (keycode == Keys.ENTER){
+			if(!checkIfEditedIsKnownTile() & checkIfEditedIsKnownSprite()){
+				validateAlternative(test_alternative);
+				return true;
+			}
+		}
+		if (keycode == Keys.DOWN | keycode == Keys.LEFT){
 			if(checkIfEditedIsKnownTile()){
 				if(test_alternative < nb_alternatives ) test_alternative++;
 				editKnownTile(test_alternative);
@@ -277,7 +274,7 @@ public class Edit_menu extends Group implements InputProcessor {
 			editUnknown();
 			return true;
 		}
-		if (keycode == Keys.UP){
+		if (keycode == Keys.UP | keycode == Keys.RIGHT){
 			if(checkIfEditedIsKnownTile()){
 				if(test_alternative > 0 ) test_alternative--;
 				editKnownTile(test_alternative);
@@ -300,9 +297,9 @@ public class Edit_menu extends Group implements InputProcessor {
 	 */
 	private void validateAlternative(int alternative) {
 			MapPixel pix = spritepixel_list.get(alternative);
-			SpriteManager.ids.get(id).setName(pix.getTex());
-			SpriteUtils.writeIdsToFile();
-			SpriteData.deleteSpriteDataFile();
+			SpriteData.ids.get(id).setName(pix.getTex());
+			SpriteData.writeIdsToFile();
+			SpriteData.deleteSpriteDataFileOnExit();
 			dispose();
 	}
 
@@ -312,8 +309,6 @@ public class Edit_menu extends Group implements InputProcessor {
 	private void dispose() {
 		this.clear();
 		edited_group.clear();
-		//stage.clear();
-		//ui.clear();
 		MapManager.close_edit_menu();
 	}
 

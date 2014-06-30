@@ -4,7 +4,6 @@ import java.io.File;
 
 import opent4c.InputManager;
 import opent4c.SpriteData;
-import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
 import opent4c.UpdateScreenManagerStatus;
 

@@ -9,14 +9,12 @@ import opent4c.utils.AssetsLoader;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
+import opent4c.utils.T4CMAP;
 import opent4c.utils.MD5Checker;
-import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import t4cPlugin.MAP;
 
 /**
  * Checks data and decodes what's missing.
@@ -28,6 +26,8 @@ public class DataChecker {
 	private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static boolean sprite_data_is_ok = false;
+	private static boolean tile_data_is_ok = false;
+	private static boolean modulo_data_is_ok = false;
 	private static boolean maps_are_ok = false;
 	private static boolean atlas_are_ok = false;
 	private static boolean sprites_are_ok = false;
@@ -46,12 +46,11 @@ public class DataChecker {
 		FilesPath.init();
 		checkSourceData();
 		logger.info("Vérification des données calculées.");
-		SpriteUtils.loadIdsFromFile();
+		SpriteData.loadIdsFromFile();
 		checkWhatNeedsToBeDone();
 		doWhatNeedsToBeDone();
 		makeSureEverythingIsOk();
 		logger.info("Vérification terminée.");
-		Main.charger();
 	}
 
 	/**
@@ -61,7 +60,35 @@ public class DataChecker {
 		doMaps();
 		doSprites();
 		doSpriteData();
+		doTileData();
+		doModuloData();
 		doAtlas();
+	}
+
+	/**
+	 * 
+	 */
+	private static void doTileData() {
+		if (!tile_data_is_ok){
+			if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
+			if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
+			if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
+		//loadingStatus.waitUntilDdaFilesProcessed();
+		SpriteData.createTileData();
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private static void doModuloData() {
+		if (!modulo_data_is_ok){
+			if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
+			if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
+			if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
+		//loadingStatus.waitUntilDdaFilesProcessed();
+		SpriteData.createModuloData();
+		}
 	}
 
 	/**
@@ -69,7 +96,7 @@ public class DataChecker {
 	 */
 	private static void doAtlas() {
 		if(!atlas_are_ok){
-			if (!sprites_are_ok) loadingStatus.waitUntilDdaFilesProcessed();
+			//if (!sprites_are_ok) loadingStatus.waitUntilDdaFilesProcessed();
 			AssetsLoader.pack_sprites();
 			AssetsLoader.pack_tuiles();
 		}
@@ -80,13 +107,11 @@ public class DataChecker {
 	 */
 	private static void doSpriteData() {
 		if (!sprite_data_is_ok){
-			if(sprites_are_ok){
-				SpriteManager.decryptDPD();
-				SpriteManager.decryptDID();
-				SpriteManager.decryptDDA(false);
-			}
-			loadingStatus.waitUntilDdaFilesProcessed();
-			SpriteData.create();
+				if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
+				if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
+				if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
+			//loadingStatus.waitUntilDdaFilesProcessed();
+			SpriteData.createSpriteData();
 		}
 	}
 
@@ -126,9 +151,33 @@ public class DataChecker {
 	 */
 	private static void checkWhatNeedsToBeDone() {
 		checkSpriteData();
+		checkTileData();
+		checkModuloData();
 		checkMaps();
 		checkAtlas();
 		checkSprites();
+	}
+
+	/**
+	 * 
+	 */
+	private static void checkModuloData() {
+		File modulo_data = new File(FilesPath.getModuloFilePath());
+		if (modulo_data.exists()){
+			modulo_data_is_ok = true;
+		}
+		logger.info("TEST présence modulo_data : "+modulo_data_is_ok);
+	}
+
+	/**
+	 * 
+	 */
+	private static void checkTileData() {
+		File tile_data = new File(FilesPath.getTileDataFilePath());
+		if (tile_data.exists()){
+			tile_data_is_ok = false;
+		}
+		logger.info("TEST présence tile_data : "+tile_data_is_ok);
 	}
 
 	/**
@@ -176,14 +225,6 @@ public class DataChecker {
 		if (sprite_data.exists() && sprite_data.length() != 0){
 			sprite_data_is_ok = true;
 		}
-		File modulo_data = new File(FilesPath.getModuloFilePath());
-		if (!modulo_data.exists()){
-			sprite_data_is_ok = false;
-		}
-		File tile_data = new File(FilesPath.getTileDataFilePath());
-		if (!tile_data.exists()){
-			sprite_data_is_ok = false;
-		}
 		logger.info("TEST présence sprite_data : "+sprite_data_is_ok);
 	}
 
@@ -195,6 +236,7 @@ public class DataChecker {
 		stopIfAbsentFiles(absentFiles);
 		List<File> badChecksumFiles = checkChecksumFiles();
 		stopIfBadChecksum(badChecksumFiles);
+		UpdateScreenManagerStatus.setSourceDataStatus("OK");
 	}
 	
 	/**
@@ -272,7 +314,7 @@ public class DataChecker {
 		while (iter_maps.hasNext()){
 			f = iter_maps.next();
 			if (!new File(FilesPath.getMapFilePath(f.getName())).exists()){
-				MAP mapFile = new MAP();
+				T4CMAP mapFile = new T4CMAP();
 				mapFile.Map_load_block(f, 0x00002000);
 			}
 		}

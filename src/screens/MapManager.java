@@ -16,9 +16,7 @@ import java.util.concurrent.TimeUnit;
 import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
-import opent4c.MapPixel;
 import opent4c.SpriteData;
-import opent4c.TilePixel;
 import opent4c.UpdateScreenManagerStatus;
 import opent4c.utils.ChunkMovement;
 import opent4c.utils.FileLister;
@@ -77,7 +75,6 @@ public class MapManager implements Screen{
 	private Stage highlight_stage;
 	private Group menu, infos;
 	private boolean render_infos = true;
-	private boolean menu_poped = false;
 	private static boolean stage_ready = true;
 	private ScreenManager sm;
 	private static boolean highlighted = false;

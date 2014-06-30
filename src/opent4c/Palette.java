@@ -4,10 +4,6 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.message.Message;
-
 public class Palette {
 	
 	private String nom = "";
@@ -15,8 +11,6 @@ public class Palette {
 	//TODO je ne sais pas à quoi servent le B et le P dans les noms de palettes donc je les dégage du nom et je les mets là pour le moment.
 	private boolean flagP = false;
 	private boolean flagB = false;
-	private boolean flag64k = false;
-	private static Logger logger = LogManager.getLogger(Palette.class.getSimpleName());
 
 	/**
 	 * Creates a palette from a ByteBuffer (.dpd file)
@@ -30,11 +24,11 @@ public class Palette {
 		nom = nom.replace("_","");
 		if(nom.endsWith("P")){
 			nom = nom.substring(0, nom.length()-1);
-			flagP = true;
+			setFlagP(true);
 		}
 		if(nom.endsWith("B")){
 			nom = nom.substring(0, nom.length()-1);
-			flagB = true;
+			setFlagB(true);
 		}
 /*		if(getNom().startsWith("64k")){
 			setNom(getNom().substring(3));
@@ -82,6 +76,22 @@ public class Palette {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public boolean isFlagB() {
+		return flagB;
+	}
+
+	public void setFlagB(boolean flagB) {
+		this.flagB = flagB;
+	}
+
+	public boolean isFlagP() {
+		return flagP;
+	}
+
+	public void setFlagP(boolean flagP) {
+		this.flagP = flagP;
 	}
 	
 }
