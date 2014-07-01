@@ -73,8 +73,8 @@ public class MapManager implements Screen{
 	private Stage highlight_stage;
 	private Group menu, infos;
 	private boolean render_infos = true;
-	private static boolean stage_ready = true;
-	private ScreenManager sm;
+	//private static boolean stage_ready = true;
+	//private ScreenManager sm;
 	private static boolean highlighted = false;
 	private static ScheduledFuture<?> highlight;
 	private Point highlight_point;
@@ -86,14 +86,7 @@ public class MapManager implements Screen{
 	
 	public MapManager(ScreenManager screenManager){
 		m = this;
-		sm = screenManager;
-		Gdx.app.postRunnable(new Runnable(){
-			public void run(){
-				init();
-				controller = new InputManager(m);
-				Gdx.input.setInputProcessor(controller);
-			}
-		});
+		//sm = screenManager;
 	}
 	
 	/**
@@ -115,6 +108,10 @@ public class MapManager implements Screen{
 		ui.addActor(menu);
 		ui.addActor(infos);	
 		setLoadInfos();
+		controller = new InputManager(m);
+		Gdx.input.setInputProcessor(controller);
+		loadMaps();
+		ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("startpoint")));
 	}
 	
 	/**
@@ -164,14 +161,6 @@ public class MapManager implements Screen{
 	}
 
 	/**
-	 * Creates the chunkMap, a group of 25 Chunks
-	 */
-	public void createChunkMap() {
-		teleport(Places.getPlace("startpoint"));
-		sm.switchGameScreen(m);
-	}
-
-	/**
 	 * Creates the 9 Chunks from a starting point
 	 * @param point
 	 */
@@ -185,7 +174,7 @@ public class MapManager implements Screen{
 		while(iter_position.hasNext()){
 			int chunkId = iter_position.next();
 			//TODO attention plus tard en gérant plusieurs cartes.
-			UpdateDataCheckStatus.setMapsStatus("Création du chunk :"+chunkId);
+			//UpdateDataCheckStatus.setMapsStatus("Création du chunk :"+chunkId);
 			getWorldmap().put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
 		}
 		Chunk.startChunkMapWatcher();
@@ -281,7 +270,7 @@ public class MapManager implements Screen{
 		if (m == null){
 			logger.warn("Attention on essaye de renre les chunks d'un MapManager non-instancié.");
 		}else{
-			MapManager.renderChunks();
+			init();
 		}
 	}
 
@@ -431,7 +420,7 @@ public class MapManager implements Screen{
 			logger.warn("On tente de se téléporter dans un endroit null");
 			return;
 		}
-		if(!stage_ready)return;
+		//if(!stage_ready)return;
 		Chunk.stopChunkMapWatcher();
 		createChunks(place);
 		renderChunks();

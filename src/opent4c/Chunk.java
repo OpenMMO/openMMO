@@ -90,7 +90,7 @@ public class Chunk{
 			texRegion = texAtlas.findRegion(px.getTex());
 		}
 		if(texRegion == null){
-			logger.warn("On tente de charger une TextureRegion null");
+			//logger.warn("On tente de charger une TextureRegion null");
 			texRegion = getUnknownTile();
 		}
 		if (px.isTuile()){

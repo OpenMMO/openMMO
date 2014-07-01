@@ -24,7 +24,7 @@ public class ScreenManager extends Game{
 	
 	@Override
 	public void create() {
-		checkScreen = new DataCheckerScreen(this);
+		checkScreen = new DataCheckerScreen();
 		switchCheckDataScreen();
 	}
 /*----------------------------SWITCHS D'ECRAN CLIENT---------------------*/
@@ -56,9 +56,7 @@ public class ScreenManager extends Game{
 		AssetsLoader.loadSols();
 		AssetsLoader.loadMappedSprites();
 		map = new MapManager(this);
-		loadingStatus.waitUntilSpritesPackaged();
 		loadingStatus.waitUntilTileAtlasAreLoaded();
-		map.loadMaps();
-		map.createChunkMap();
+		switchGameScreen(map);
 	}
 }

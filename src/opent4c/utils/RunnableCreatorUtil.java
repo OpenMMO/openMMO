@@ -113,7 +113,7 @@ public class RunnableCreatorUtil {
 							} else{
 								atlas = new TextureAtlas(FilesPath.getAtlasUnknownFilePath());
 								//TODO c'est de la bidouille pour que le programme de ne plante pas, mais il faudra dégager ça une fois les atlas correctement empaquetés
-								logger.warn("Il semblerait qu'un atlas un soit pas empaqueté : "+name+". On le remplace par Unknown pour le moment.");
+								//logger.warn("Il semblerait qu'un atlas un soit pas empaqueté : "+name+". On le remplace par Unknown pour le moment.");
 							}
 							loadingStatus.addTextureAtlasSprite(name, atlas);
 						}

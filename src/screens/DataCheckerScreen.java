@@ -35,14 +35,7 @@ public class DataCheckerScreen implements Screen{
 	private TextButton spriteDataStatus;
 	private TextButton atlasStatus;
 
-	public DataCheckerScreen(ScreenManager screenManager){
-		batch = new SpriteBatch();
-		font = new BitmapFont();
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		camera.update();
-		stage = new Stage();
-		stage.setCamera(camera);
+	public DataCheckerScreen(){
 	}
 	
 	/**
@@ -94,6 +87,13 @@ public class DataCheckerScreen implements Screen{
 	
 	@Override
 	public void show() {
+		batch = new SpriteBatch();
+		font = new BitmapFont();
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.update();
+		stage = new Stage();
+		stage.setCamera(camera);
 		style_normal.font = font;
 		createButtons();
 		alignButtons();
@@ -185,7 +185,8 @@ public class DataCheckerScreen implements Screen{
 
 	@Override
 	public void hide() {
-		fadeButtons(0,1);	
+		fadeButtons(0,1);
+		dispose();
 	}
 
 	@Override
