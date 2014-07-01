@@ -37,7 +37,7 @@ public class SpriteUtils {
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 
 	
-	static boolean doTheWriting(TilePixel pixel, ByteBuffer buf){
+	static boolean doTheWriting(MapPixel pixel, ByteBuffer buf){
 		boolean writen = false;
 		switch(pixel.getType()){
 			case 1 : SpriteWriter.writeType1SpriteToDisk(pixel, buf); break;
@@ -45,8 +45,13 @@ public class SpriteUtils {
 			case 3 : SpriteWriter.writeType3SpriteToDisk(pixel); writen = true; break;
 			case 9 : SpriteWriter.writeType9SpriteToDisk(pixel, buf); break;
 		}
-		File f = new File(FilesPath.getTuileDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");		
-		if(f.exists())writen = true;
+		if (pixel.isTuile()){
+			File f = new File(FilesPath.getTuileDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");		
+			if(f.exists())writen = true;			
+		}else{
+			File f = new File(FilesPath.getSpriteDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");
+			if(f.exists())writen = true;			
+		}
 		return writen;
 	}
 	
@@ -63,7 +68,7 @@ public class SpriteUtils {
 		return writen;
 	}
 
-	static boolean extractDDASprite(ByteBuffer buf, MapPixel pixel) {
+	static void extractDDASprite(ByteBuffer buf, MapPixel pixel) {
 		Palette p = extractPalette(pixel);
 		if(p == null){
 			logger.fatal("On n'a pas trouvé cette palette : "+pixel.getTex());
@@ -85,13 +90,7 @@ public class SpriteUtils {
 		pixel.setTaille_unzip(new UnsignedInt(extractInt(header_buf,true)));
 		pixel.setTaille_zip(new UnsignedInt(extractInt(header_buf,true)));		
 		pixel.setBufPos(buf.position());
-		if(extractTuileInfo(pixel)){
-			pixel = SpriteData.putTile(pixel);
-			return true;
-		}else{
-			pixel = SpriteData.putSprite(pixel);
-			return false;
-		}
+		extractTuileInfo(pixel);
 		//logger.info("Type : "+sprite.getType().getValue());
 	}
 
@@ -101,7 +100,7 @@ public class SpriteUtils {
 	 * @param sprite
 	 * @return
 	 */
-	private static boolean extractTuileInfo(MapPixel pixel) {
+	private static void extractTuileInfo(MapPixel pixel) {
 		boolean result = false;
 		if ((pixel.getLargeur() == 32) && (pixel.getHauteur() == 16)) result = true;
 		if (pixel.getAtlas().equals("All"))result = false;
@@ -140,7 +139,7 @@ public class SpriteUtils {
 		if (pixel.getAtlas().equals("WoodenSmooth"))result = false;
 		if (pixel.getAtlas().equals("Black"))result = false;
 		
-		return result;
+		pixel.setTuile(result);
 	}
 
 	/**
@@ -286,20 +285,23 @@ public class SpriteUtils {
 	public static void decrypt_dda_file(File f, boolean doWrite) {
 		int numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
 		List<MapPixel> sprites_in_dda = new ArrayList<MapPixel>();
-
-		Iterator<Integer> iteri = SpriteData.getPixels().keySet().iterator();
-
-		while(iteri.hasNext()){
-			int key = iteri.next();
-			List<MapPixel> px_list = SpriteData.getPixels().get(key);
-			Iterator<MapPixel> iter_px = px_list.iterator();
+		/*Iterator<MapPixel> iter_px = SpriteData.getPixels().iterator();
+		while(iter_px.hasNext()){
+			MapPixel px = iter_px.next();
+			if (px.getNumDDA() == numDDA){
+				sprites_in_dda.add(px);
+			}
+		}*/
+		Iterator<Integer> iter_id = SpriteData.getPixelIndex().keySet().iterator();
+		while(iter_id.hasNext()){
+			int id = iter_id.next();
+			Iterator<MapPixel> iter_px = SpriteData.getPixelIndex().get(id).iterator();
 			while(iter_px.hasNext()){
 				MapPixel px = iter_px.next();
-				if (px.getNumDDA() == numDDA){
+				if(px.getNumDDA() == numDDA){
 					sprites_in_dda.add(px);
 				}
 			}
-
 		}
 		ByteBuffer buf = readDDA(f);
 		byte[] signature = new byte[4];
@@ -314,11 +316,16 @@ public class SpriteUtils {
 				e.printStackTrace();
 				System.exit(1);
 			}
-			boolean tuile = extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
-			loadingStatus.addOneSpriteFromDDA();
+			extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
+			//loadingStatus.addOneSpriteFromDDA();
 			if(doWrite){
 				boolean writen = false;
-				if(tuile){
+				writen = doTheWriting(pixel, buf);
+				if (!writen){
+					logger.fatal("Sprite non écrit => "+pixel.getTex());
+					System.exit(1);
+				}
+				/*if(tuile){
 					TilePixel pix = new TilePixel(pixel);
 					pix.setBufPos(pixel.getBufPos());
 					pix.setTaille_unzip(pixel.getTaille_unzip());
@@ -338,7 +345,7 @@ public class SpriteUtils {
 				if (!writen){
 					logger.fatal("Sprite non écrit => "+pixel.getTex());
 					System.exit(1);
-				}
+				}*/
 			}
 			if(pixel.getType() != 3) nb_extracted_sprites++;
 			//SpriteData.removeFromPixels(pixel);
@@ -579,19 +586,6 @@ public class SpriteUtils {
 		return result;
 	}
 	
-	/**
-	 * Reads a line from id.txt
-	 * @param line
-	 */
-	static void readIdLine(String line){
-		int key = 0;
-		String value = "";
-		key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
-		value = line.substring(line.indexOf(" ")+1);
-		SpriteName name = new SpriteName(value);
-		SpriteData.ids.put(key,name);
-	}
-
 	/**
 	 * Extracts Palettes from dpd file
 	 * @param bufUnZip

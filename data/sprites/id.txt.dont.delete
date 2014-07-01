@@ -7,16 +7,16 @@
 7 DGrass
 8 Desert
 9 DungeonRockFloor
-10 Lava
+10 Lava 1
 11 EarthTile
 12 TownRoadDale
 13 RockFloor
-14 Floor Wooden
-15 Ice
+14 Floor Wooden 1
+15 Ice 1
 17 CavernFloor
-18 Dtm
+18 Dtm4 1
 20 Black Tile
-42 Dtm1
+42 Dtm1 1
 43 DungeonFloorOverHeadLight1
 41 DungeonFloorTorch1 1
 44 DungeonFloorOverHead2
@@ -980,20 +980,20 @@
 1208 tmpl1 1 T1 DGrass T2 Desert
 1209 tmpl1 1 T1 DGrass T2 Desert
 1212 Ice
-1405 Mount1
 10013 NMSPave02
-1404 Banquet
+1405 Mount1
 10012 NMSSnowRoad
+1404 Banquet
 1407 Mount1
-1406 Mount1
 10014 NMSRiverNO01
-1401 Grande Table Rectangle Bois
+1406 Mount1
 10009 NMSSand
+1401 Grande Table Rectangle Bois
 10008 NMSPave01
-1403 BarCounter
 10011 NMSSnow
-1402 ShopTable1
+1403 BarCounter
 10010 NMSSandRoad
+1402 ShopTable1
 10005 NMSOcean01
 10004 NMSGrass
 10007 NMSOcean03
@@ -1190,7 +1190,7 @@
 3048 Bed Simple
 3051 StuccoMainSmallWallB
 3050 Bed Double Type 2
-3053 StuccoDarkWindowA
+3053 StuccoMainSmallWallB
 3052 StuccoMainSmallWallB
 3055 StuccoMainSmallWallB
 3054 StuccoMainSmallWallB
@@ -1331,7 +1331,7 @@
 3252 Lights 5
 3253 Kitchen 1
 3256 Shito 6
-3257 BancTemple1
+3257 Shito 6
 3235 Border1
 3234 Border1
 3233 RuinedMirror1
@@ -1419,7 +1419,7 @@
 3084 DungeonMainArcEnd1
 3085 DungeonMainArcEnd1
 3086 Cemetery Gates
-3087 Cemetery Gates1
+3087 Cemetery Gates
 3072 StuccoMainSmallWallB
 3073 StuccoMainSmallWallB
 3074 StuccoMainSmallWallB
@@ -1685,7 +1685,7 @@
 3798 StuccoDarkSmallWallB
 3799 StuccoDarkSmallWallB
 3800 StuccoDarkSmallWallB
-3801 StuccoDarkWallDoor 2
+3801 StuccoDarkSmallWallB
 3802 StuccoDarkSmallWallB
 3803 StuccoDarkSmallWallB
 3804 BlackSmithForgery
@@ -1709,20 +1709,20 @@
 3791 StuccoDarkSmallWallB
 3790 StuccoDarkSmallWallB
 3766 StuccoDarkSmallWallB
-3767 StuccoCorner2
+3767 StuccoDarkSmallWallB
 3764 StuccoDarkSmallWallB
-3765 StuccoCornerN
+3765 StuccoDarkSmallWallB
 3762 StuccoDarkSmallWallB
 3763 StuccoDarkSmallWallB
 3760 StuccoDarkSmallWallB
-3761 StuccoMainSmallWallB
+3761 StuccoDarkSmallWallB
 3774 StuccoDarkSmallWallB
 3775 StuccoDarkSmallWallB
 3772 StuccoDarkSmallWallB
 3773 StuccoDarkSmallWallB
-3770 StuccoCornerN
-3771 StuccoCornerTSW
-3768 StuccoCornerV
+3770 StuccoDarkSmallWallB
+3771 StuccoDarkSmallWallB
+3768 StuccoDarkSmallWallB
 3769 StuccoDarkSmallWallB
 3751 CastleWall 1
 3750 CastleWall 1
@@ -1876,18 +1876,18 @@
 4093 GLargeC2
 4094 GLargeC3
 4095 3NBrickWallS3SE
-4035 NBrickWallSCoinE
+4035 NBrickWallSSE
 4034 NBrickWallSSE
 4033 NBrickWallSSE
-4032 NBrickWallSNEDoorT
+4032 NBrickWallSSE
 4039 NBrickWallSSE
 4038 NBrickWallSCoinS
-4037 NBrickWallSCoinW
-4036 NBrickWallSCoinN
+4037 NBrickWallSSE
+4036 NBrickWallSSE
 4043 NBrickWallSSE
 4042 NBrickWallSSE
 4041 NBrickWallSSE
-4040 NBrickWallSNEWindow
+4040 NBrickWallSSE
 4047 NBrickWallSSE
 4046 NBrickWallSSE
 4045 NBrickWallSSE
@@ -1929,7 +1929,7 @@
 4028 NBrickWallSNE
 4029 NBrickWallSSE
 4030 NBrickWallSNEWindow
-4031 NBrickWallSNEDoorB
+4031 NBrickWallSSE
 4024 NBrickWallSE
 4025 NBrickWallSE
 4026 NBrickWallSE
@@ -1951,21 +1951,21 @@
 3977 HorseWater
 3976 HorseWater
 3990 WoodWallSE
-3991 WoodWallCornerR
-3988 WoodWallNEDoorT
+3991 WoodWallSE
+3988 WoodWallSE
 3989 WoodWallSE
 3986 WoodWallSE
-3987 WoodWallNEDoorB
-3984 WoodWallNE
-3985 WoodWallSEWindow
+3987 WoodWallSE
+3984 WoodWallSE
+3985 WoodWallSE
 3998 WoodWallSE
 3999 WoodWallSE
 3996 WoodWallSE
 3997 WoodWallSE
 3994 WoodWallSE
 3995 WoodWallSE
-3992 WoodWallCornerT
-3993 WoodWallCornerL
+3992 WoodWallSE
+3993 WoodWallSE
 3944 HuteGob1
 3945 OrgueSmall
 3946 TableForge1
@@ -2141,7 +2141,7 @@
 4131 5NBrickWallS5SE
 4130 5NBrickWallS5SE
 4129 5NBrickWallS5SE
-4128 4NBrickWallS4TSW
+4128 4NBrickWallS4SE
 4135 5NBrickWallS5SE
 4134 5NBrickWallS5SE
 4133 5NBrickWallS5SE
@@ -2155,7 +2155,7 @@
 4141 5NBrickWallS5SE
 4140 5NBrickWallS5SE
 4146 6NBrickWallS6SE
-4147 6NBrickWallS6NE
+4147 6NBrickWallS6SE
 4144 5NBrickWallS5SE
 4145 5NBrickWallS5SE
 4150 6NBrickWallS6SE
@@ -2171,15 +2171,15 @@
 4156 6NBrickWallS6SE
 4157 6NBrickWallS6SE
 4097 3NBrickWallS3SE
-4096 3NBrickWallS3NE
+4096 3NBrickWallS3SE
 4099 3NBrickWallS3SE
-4098 3NBrickWallS3NEWindow
+4098 3NBrickWallS3SE
 4101 3NBrickWallS3SE
 4100 3NBrickWallS3SE
 4103 3NBrickWallS3SE
-4102 3NBrickWallS3SEDoorB
-4105 3NBrickWallS3CoinW
-4104 3NBrickWallS3CoinN
+4102 3NBrickWallS3SE
+4105 3NBrickWallS3SE
+4104 3NBrickWallS3SE
 4107 3NBrickWallS3SE
 4106 3NBrickWallS3SE
 4109 3NBrickWallS3SE
@@ -2187,21 +2187,21 @@
 4111 3NBrickWallS3SE
 4110 3NBrickWallS3SE
 4112 4NBrickWallS4SE
-4113 4NBrickWallS4NE
-4114 4NBrickWallS4SEWindow
-4115 4NBrickWallS4NEWindow
-4116 4NBrickWallS4NEDoorB
-4117 4NBrickWallS4NEDoorT
-4118 4NBrickWallS4SEDoorB
-4119 4NBrickWallS4SEDoorT
-4120 4NBrickWallS4CoinE
-4121 4NBrickWallS4CoinN
-4122 4NBrickWallS4CoinW
-4123 4NBrickWallS4CoinS
+4113 4NBrickWallS4SE
+4114 4NBrickWallS4SE
+4115 4NBrickWallS4SE
+4116 4NBrickWallS4SE
+4117 4NBrickWallS4SE
+4118 4NBrickWallS4SE
+4119 4NBrickWallS4SE
+4120 4NBrickWallS4SE
+4121 4NBrickWallS4SE
+4122 4NBrickWallS4SE
+4123 4NBrickWallS4SE
 4124 4NBrickWallS4SE
-4125 4NBrickWallS4TNE
-4126 4NBrickWallS4TNW
-4127 4NBrickWallS4TSE
+4125 4NBrickWallS4SE
+4126 4NBrickWallS4SE
+4127 4NBrickWallS4SE
 4199 CastleSE1
 4198 CastleSE1
 4197 CastleSE1

@@ -292,8 +292,8 @@ public enum LoadingStatus {
 	/**
 	 * 
 	 */
-	public void waitUntilSpriteDataIsWritten() {
-		while (!isSpriteDataWritten()) {
+	public void waitUntilPixelIndexIsWritten() {
+		while (!isPixelIndexWritten()) {
 			waitLoaded();
 		}		
 	}
@@ -301,17 +301,9 @@ public enum LoadingStatus {
 	/**
 	 * @return
 	 */
-	private boolean isSpriteDataWritten() {
-		File sprite_data = new File(FilesPath.getSpriteDataFilePath());
-		if (!sprite_data.exists()){
-			return false;
-		}
-		File modulo_data = new File(FilesPath.getModuloFilePath());
-		if (!modulo_data.exists()){
-			return false;
-		}
-		File tile_data = new File(FilesPath.getTileDataFilePath());
-		if (!tile_data.exists()){
+	private boolean isPixelIndexWritten() {
+		File pixel_index = new File(FilesPath.getPixelIndexFilePath());
+		if (!pixel_index.exists()){
 			return false;
 		}
 		return true;

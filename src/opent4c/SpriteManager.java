@@ -40,46 +40,8 @@ public class SpriteManager {
 		pixel.setAtlas(atlas);
 		pixel.setIndexation(indexation);
 		pixel.setNumDDA(numDDA);
-		int id = matchIdWithPixel(pixel);
-		pixel.setId(id);
+		pixel.setId(SpriteData.matchIdWithPixel(pixel));
 		SpriteData.putPixel(pixel);
-	}
-
-	private static int matchIdWithPixel(MapPixel pixel) {
-		Iterator<Integer> iter = SpriteData.ids.keySet().iterator();
-		while (iter.hasNext()){
-			int key = iter.next();
-			SpriteName sn = SpriteData.ids.get(key);
-			if (pixel.getTex().equals(sn.getName())){//First, try a total match
-				pixel.setPerfectNameMatch(true);
-				return key;
-			}
-		}
-		iter = SpriteData.ids.keySet().iterator();
-		while (iter.hasNext()){
-			int key = iter.next();
-			SpriteName sn = SpriteData.ids.get(key);
-			if (pixel.getTex().startsWith(sn.getName())){//if unsuccessful, try a startswith match
-				return key;
-			}
-		}
-		iter = SpriteData.ids.keySet().iterator();
-		while (iter.hasNext()){
-			int key = iter.next();
-			SpriteName sn = SpriteData.ids.get(key);
-			if (pixel.getTex().contains(sn.getName())){//if unsuccessful, try a contains match
-				return key;
-			}
-		}
-		iter = SpriteData.ids.keySet().iterator();
-		while (iter.hasNext()){
-			int key = iter.next();
-			SpriteName sn = SpriteData.ids.get(key);
-			if (pixel.getTex().toLowerCase().contains(sn.getName().toLowerCase())){//if unsuccessful, try a lowercased contains match
-				return key;
-			}
-		}
-		return -1;
 	}
 	
 	/**
@@ -96,7 +58,6 @@ public class SpriteManager {
 			//ThreadsUtil.executeInThread(RunnableCreatorUtil.getDDAExtractorRunnable(f, doWrite));
 		}
 		setDda_done(true);
-		SpriteData.removePixels();
 	}
 
 	/**
@@ -148,7 +109,7 @@ public class SpriteManager {
 			bufUnZip.array()[i] ^= clef;
 		}
 		nb_sprites_from_did = (header_taille_unZip/(64 + 256 + 4 + 8));
-	
+		
 		for(int i=1 ; i<=nb_sprites_from_did ; i++){
 			addSprite(bufUnZip);
 			UpdateDataCheckStatus.setDidStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);

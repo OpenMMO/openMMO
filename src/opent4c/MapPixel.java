@@ -1,6 +1,10 @@
 package opent4c;
 
 import java.awt.Point;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import opent4c.utils.PointsManager;
 import opent4c.utils.SpriteName;
 
@@ -10,8 +14,8 @@ import org.apache.logging.log4j.Logger;
 import tools.UnsignedInt;
 import tools.UnsignedShort;
 
-public class MapPixel{
-
+public class MapPixel implements Serializable{
+	private static final long serialVersionUID = 9062566898235672185L;
 	private static Logger logger = LogManager.getLogger(MapPixel.class);
 	
 	/**
@@ -22,7 +26,9 @@ public class MapPixel{
 	private Point offset;
 	private Point offset2;
 	private int id;
+	private List<Integer> ids;
 	private Point taille;
+	private Point modulo;
 	private int indexation;
 	private long numDDA;
 	private boolean perfectMatch;
@@ -34,8 +40,8 @@ public class MapPixel{
 	private int taille_unzip;
 	private int taille_zip;
 	private int bufPosition;
-
 	private String paletteName;
+	private boolean tuile = false;
 
 	/**
 	 * 
@@ -45,7 +51,8 @@ public class MapPixel{
 		name = new SpriteName("Unknown Tile");
 		offset = PointsManager.getPoint(0,0);
 		offset2 = PointsManager.getPoint(0,0);
-		setTaille(PointsManager.getPoint(1,1));
+		taille = PointsManager.getPoint(1,1);
+		modulo = PointsManager.getPoint(1,1);
 		id = -1;
 		indexation = -1;
 		numDDA = -1;
@@ -84,6 +91,8 @@ public class MapPixel{
 		this.offset = offset;
 		this.offset2 = offset2;
 		this.id = id;
+		this.ids = new ArrayList<Integer>();
+		ids.add(id);
 		this.indexation = -1;
 		this.numDDA = numDDA;
 		this.perfectMatch = perfectMatch;
@@ -98,6 +107,32 @@ public class MapPixel{
 		this.paletteName = palette;
 		this.taille = taille;
 		}
+
+	/**
+	 * @param key
+	 * @param name2
+	 */
+	public MapPixel(int key, SpriteName spriteName) {
+		this.name = spriteName;
+		id = key;
+		atlas = "Init";
+		offset = PointsManager.getPoint(0,0);
+		offset2 = PointsManager.getPoint(0,0);
+		taille = PointsManager.getPoint(1,1);
+		modulo = PointsManager.getPoint(1,1);
+		indexation = -1;
+		numDDA = -1;
+		perfectMatch = true;
+		pal = null;
+		ombre = -1;
+		type = -1;
+		transColor = -1;
+		inconnu9 = -1;
+		taille_unzip = -1;
+		taille_zip = -1;
+		bufPosition = -1;
+		paletteName = "init";
+	}
 
 	public String getTex() {
 		if (atlas == null){
@@ -176,6 +211,13 @@ public class MapPixel{
 		this.id = id;
 	}
 
+	public List<Integer> getIds(){
+		return this.ids;
+	}
+	
+	public void setIds(List<Integer> ids){
+		this.ids = ids;
+	}
 	public String getPaletteName() {
 		return paletteName;
 	}
@@ -416,5 +458,24 @@ public class MapPixel{
 	 */
 	public void setPal(Palette pal){
 		this.pal = pal;
+	}
+
+	/**
+	 * @param b
+	 */
+	public void setTuile(boolean b) {
+		tuile = b;
+	}
+
+	public Point getModulo() {
+		return modulo;
+	}
+
+	public void setModulo(Point modulo) {
+		this.modulo = modulo;
+	}
+
+	public boolean isTuile() {
+		return tuile;
 	}
 }

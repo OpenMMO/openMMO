@@ -36,7 +36,6 @@ public class Chunk{
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private List<Acteur> chunk_sprites = null;
 	private List<Acteur> chunk_tiles = null;
-	private Map<Integer,List<Point>> unmapped_ids = null;
 
 	
 	/**
@@ -48,7 +47,6 @@ public class Chunk{
 		setCenter(point);
 		chunk_sprites = new ArrayList<Acteur>(MapManager.getChunkSize().x*MapManager.getChunkSize().y);
 		chunk_tiles = new ArrayList<Acteur>(MapManager.getChunkSize().x*MapManager.getChunkSize().y);
-		unmapped_ids = new HashMap<Integer,List<Point>>();
 		loadingStatus.waitUntilTextureAtlasTilesCreated();
 		int upLimit = point.y-(MapManager.getChunkSize().y/2)-1;
 		int downLimit = point.y+(MapManager.getChunkSize().y/2);
@@ -57,74 +55,83 @@ public class Chunk{
 		for(int y = upLimit ; y <= downLimit ; y++){
 			for(int x = leftLimit ; x <= rightLimit ; x++){
 				int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x,y));
-				if(SpriteData.isTileId(id)){
-					chunk_tiles.add(getActeurTileOnMapFromId(id,x,y));
-				}else{
-					chunk_sprites.add(getActeurSpriteOnMapFromId(id,x,y));					
-				}
+				setActeurforId(id,PointsManager.getPoint(x, y));
 			}	
 		}
 	}
 
 	/**
 	 * @param id
-	 * @param x
-	 * @param y
-	 * @return
+	 * @param point
 	 */
-	public Acteur getActeurSpriteOnMapFromId(int id, int x, int y) {
-		Acteur result = null;
+	private void setActeurforId(int id, Point point) {
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
-		SpritePixel px = SpriteData.getSpriteFromId(id);
+		MapPixel px = SpriteData.getPixelFromId(id);
 		if (px == null){
-			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
+			chunk_tiles.add(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+			return;
 		}
-		texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());
+		if(px.isTuile()){
+			texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
+		}else{
+			texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());			
+		}
 		if(texAtlas == null){
 			texAtlas = AssetsLoader.load(px.getAtlas());
 			if(texAtlas == null){
-			//logger.warn("Atlas de tile inexistant : "+px.getAtlas());
-			//TODO pas normal, surement un soucis dans l'empaquetage des atlas de sprites
-			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
+				chunk_tiles.add(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+				return;
 			}
 		}
-		texRegion = texAtlas.findRegion(px.getTex());
+		if(px.isTuile()){
+			texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(px, point));
+		}else{
+			texRegion = texAtlas.findRegion(px.getTex());
+		}
 		if(texRegion == null){
 			logger.warn("On tente de charger une TextureRegion null");
 			texRegion = getUnknownTile();
 		}
-		result = new Acteur(texRegion,PointsManager.getPoint(x, y),px.getOffset());
-		return result;
+		if (px.isTuile()){
+			chunk_tiles.add(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
+		}else{
+			chunk_sprites.add(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
+		}
 	}
-
+	
 	/**
 	 * @param id
-	 * @param y 
-	 * @param x 
-	 * @return
+	 * @param point
 	 */
-	public Acteur getActeurTileOnMapFromId(int id, int x, int y) {
-		Acteur result = null;
+	public Acteur getActeurPixelOnMapFromId(int id, Point point) {
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
-		TilePixel px = SpriteData.getTileFromId(id);
+		MapPixel px = SpriteData.getPixelFromId(id);
 		if (px == null){
-			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
+			return new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
 		}
-		texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
+		if(px.isTuile()){
+			texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
+		}else{
+			texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());			
+		}
 		if(texAtlas == null){
-			//logger.warn("Atlas de tile inexistant : "+px.getAtlas());
-			//TODO pas normal, surement un soucis dans l'empaquetage des atlas de tuiles
-			return new Acteur(getUnknownTile(),PointsManager.getPoint(x, y),PointsManager.getPoint(0, 0));
+			texAtlas = AssetsLoader.load(px.getAtlas());
+			if(texAtlas == null){
+				return new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
+			}
 		}
-		texRegion = texAtlas.findRegion(setModuloFromPoint(px, PointsManager.getPoint(x, y)));
+		if(px.isTuile()){
+			texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(px, point));
+		}else{
+			texRegion = texAtlas.findRegion(px.getTex());
+		}
 		if(texRegion == null){
 			logger.warn("On tente de charger une TextureRegion null");
 			texRegion = getUnknownTile();
 		}
-		result = new Acteur(texRegion,PointsManager.getPoint(x, y),px.getOffset());
-		return result;
+		return new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset());
 	}
 
 	/**
@@ -144,7 +151,7 @@ public class Chunk{
 	 * @param point
 	 * @return a textureRegion name with zone effect
 	 */
-	private String setModuloFromPoint(TilePixel px, Point point) {
+	private String getModuledTexNameFromPoint(MapPixel px, Point point) {
 		String tex = px.getTex();
 		int tileModuloX = px.getModulo().x;
 		int tileModuloY = px.getModulo().y;
@@ -218,7 +225,7 @@ public class Chunk{
 	/**
 	 * @return the chunk's sprites
 	 */
-	public List<Acteur> getSprites() {
+	public List<Acteur> getSpriteActeur() {
 		return chunk_sprites;
 	}
 	
@@ -240,7 +247,7 @@ public class Chunk{
 	/**
 	 * @return the Chunk's tiles
 	 */
-	public List<Acteur> getTiles() {
+	public List<Acteur> getTileActeurs() {
 		return chunk_tiles;
 	}
 	
@@ -259,14 +266,9 @@ public class Chunk{
 		Runnable r = RunnableCreatorUtil.getChunkMapWatcherRunnable();
 		watcher = ThreadsUtil.executePeriodicallyInThread(r, watcher_delay_ms, watcher_delay_ms, TimeUnit.MILLISECONDS);
 	}
-
 	/**
-	 * @return a list of unmapped ids on the Chunk
+	 * Stops the clock checking if chunks need to be moved.
 	 */
-	public Map<Integer,List<Point>> getUnmappedIds(){
-		return unmapped_ids;
-	}
-
 	public static void stopChunkMapWatcher() {
 		if (watcher != null) watcher.cancel(true);
 	}

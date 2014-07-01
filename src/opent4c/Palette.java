@@ -1,11 +1,12 @@
 package opent4c;
 
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Palette {
-	
+public class Palette implements Serializable {
+	private static final long serialVersionUID = 1796133002829676923L;
 	private String nom = "";
 	ArrayList<PalettePixel> pixels = new ArrayList<PalettePixel>();
 	//TODO je ne sais pas à quoi servent le B et le P dans les noms de palettes donc je les dégage du nom et je les mets là pour le moment.

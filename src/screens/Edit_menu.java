@@ -44,10 +44,11 @@ public class Edit_menu extends Group implements InputProcessor {
 	private Group alternative_button_group = new Group();
 	private Group edited_group = new Group();
 	private int nb_alternatives = 0;
-	private int test_alternative = 0;
+	private int test_alternative = 1;
 	int id = -1;
-	private List<SpritePixel> spritepixel_list = null;
-	private List<TilePixel> tilepixel_list = null;
+	//private List<SpritePixel> spritepixel_list = null;
+	private List<MapPixel> pixel_list = null;
+	//private List<TilePixel> tilepixel_list = null;
 	private TextButton atlas_button;
 	private TextButton palette_button;
 	private TextButton id_button;
@@ -65,32 +66,41 @@ public class Edit_menu extends Group implements InputProcessor {
 		edited_tile = edited;
 		this.id = id;
 		style.font = new BitmapFont();
-		if(SpriteData.isTileId(id)){
-			tilepixel_list = SpriteData.getAllTileswithId(id);
-			editKnownTile(test_alternative);
+		if(SpriteData.isKnownId(id)){
+			pixel_list = SpriteData.getPixelsWithId(id);
+			editKnownPixel(test_alternative);
 			return;
-		}else if(SpriteData.isSpriteId(id)){
-			spritepixel_list = SpriteData.getAllSpriteswithId(id);
-			editKnownSprite(test_alternative);
-			return;
-		}else if(SpriteData.isUnknownId(id)){
-			editUnknown();
+		}else {
+			editUnknown(0);
 			return;
 		}
 	}
 
 	/**
+	 * @param alt 
 	 * @param pt
 	 */
-	private void editUnknown() {
-		String tex = null;
+	private void editUnknown(int test_alternative) {
+		String tex = "Texture : ID non mappée";
 		if(SpriteData.ids.containsKey(id)){
-			tex = SpriteData.ids.get(id).getName();
-		}else{
-			tex = "Texture : ID non mappée";
+			pixel_list = SpriteData.getPixelsWithId(id);
+			tex = pixel_list.get(0).getTex();
 		}
+		pixel_list.addAll(SpriteData.getUnknownPixels());
+		nb_alternatives = pixel_list.size()-1;
 		clearMenu();
-		setButtonsTexts(tex, "Atlas : Unknown", "Palette : Unknown", "ID on map : "+id, "Alternatives : None");
+		if(nb_alternatives > 0){
+			MapPixel px = pixel_list.get(test_alternative);
+			String tex_button = "Texture : "+px.getTex();
+			String atlas_button = "Atlas : "+px.getAtlas();
+			String palette_button = "Palette : "+px.getPaletteName();
+			String id_button = "ID on map : "+id;
+			String alternative = "Alternatives : "+nb_alternatives;
+			addAlternativePixelToMenu(test_alternative);
+			setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
+		}else{
+			setButtonsTexts("Texture : "+tex, ".", ".", ".", ".");
+		}
 		setButtonsPositions();
 		addButtonsToMenu();
 	}
@@ -142,9 +152,9 @@ public class Edit_menu extends Group implements InputProcessor {
 	/**
 	 * Edits a sprite with a known ID
 	 */
-	private void editKnownSprite(int test_alternative) {
+	/*private void editKnownSprite(int test_alternative) {
 		nb_alternatives = spritepixel_list.size()-1;
-		SpritePixel px = spritepixel_list.get(test_alternative);
+		MapPixel px = spritepixel_list.get(test_alternative);
 		String tex_button = "Texture : "+px.getTex();
 		String atlas_button = "Atlas : "+px.getAtlas();
 		String palette_button = "Palette : "+px.getPaletteName();
@@ -155,14 +165,14 @@ public class Edit_menu extends Group implements InputProcessor {
 		setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
 		setButtonsPositions();
 		addButtonsToMenu();
-	}
+	}*/
 
 	/**
 	 * Edits a tile with a known ID
 	 */
-	private void editKnownTile(int test_alternative) {
-		nb_alternatives = tilepixel_list.size()-1;
-		TilePixel px = tilepixel_list.get(test_alternative);
+	private void editKnownPixel(int test_alternative) {
+		nb_alternatives = pixel_list.size()-2;
+		MapPixel px = pixel_list.get(test_alternative);
 		String tex_button = "Texture : "+px.getTex();
 		String atlas_button = "Atlas : "+px.getAtlas();
 		String palette_button = "Palette : "+px.getPaletteName();
@@ -172,10 +182,10 @@ public class Edit_menu extends Group implements InputProcessor {
 		setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
 		setButtonsPositions();
 		addButtonsToMenu();
-		addAlternativeTileToMenu(test_alternative);
+		addAlternativePixelToMenu(test_alternative);
 	}
 
-	private void addAlternativeTileToMenu(int index){
+	/*private void addAlternativeTileToMenu(int index){
 		alternative_group.clear();
 		alternative_button_group.clear();
 		TilePixel pix = tilepixel_list.get(index);
@@ -185,8 +195,28 @@ public class Edit_menu extends Group implements InputProcessor {
 		TextureRegion tex = atlas.findRegion(pix.getTex());
 		addAlternativeToMenu(tex);
 		logger.info("Try Alternative :"+index+" "+pix.getTex());
-	}
+	}*/
 	
+	/**
+	 * @param test_alternative2
+	 */
+	private void addAlternativePixelToMenu(int index) {
+		alternative_group.clear();
+		alternative_button_group.clear();
+		MapPixel pix = pixel_list.get(index);
+		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
+		addAlternativeButtonToMenu(alt);
+		TextureAtlas atlas = null;
+		if(pix.isTuile()){
+			atlas = loadingStatus.getTextureAtlasTile(pix.getAtlas());
+		}else{
+			atlas = loadingStatus.getTextureAtlasSprite(pix.getAtlas());
+		}
+		TextureRegion tex = atlas.findRegion(pix.getTex());
+		addAlternativeToMenu(tex);
+		logger.info("Try Alternative :"+index+" "+pix.getTex());
+	}
+
 	/**
 	 * @param tex
 	 */
@@ -207,10 +237,10 @@ public class Edit_menu extends Group implements InputProcessor {
 		this.addActor(alternative_button_group);
 	}
 
-	private void addAlternativeSpriteToMenu(int index){
+	/*private void addAlternativeSpriteToMenu(int index){
 		alternative_group.clear();
 		alternative_button_group.clear();
-		SpritePixel pix = spritepixel_list.get(index);
+		MapPixel pix = spritepixel_list.get(index);
 		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
 		addAlternativeButtonToMenu(alt);
 		TextureAtlas atlas = loadingStatus.getTextureAtlasSprite(pix.getAtlas());
@@ -218,7 +248,7 @@ public class Edit_menu extends Group implements InputProcessor {
 		TextureRegion tex = atlas.findRegion(pix.getTex());
 		addAlternativeToMenu(tex);
 		logger.info("Try Alternative :"+index+" "+pix.getTex());
-	}
+	}*/
 	
 	@Override
 	public boolean keyDown(int keycode) {
@@ -233,42 +263,30 @@ public class Edit_menu extends Group implements InputProcessor {
 			return true;
 		}
 		if (keycode == Keys.ENTER){
-			if(!SpriteData.isTileId(id) & (SpriteData.isSpriteId(id) | SpriteData.isUnknownId(id))){
 				validateAlternative(test_alternative);
 				return true;
-			}
-			dispose();
-			return true;
 		}
 		if (keycode == Keys.DOWN | keycode == Keys.RIGHT){
-			if(SpriteData.isTileId(id)){
+			if(SpriteData.isKnownId(id)){
 				if(test_alternative < nb_alternatives ) test_alternative++;
-				editKnownTile(test_alternative);
+				editKnownPixel(test_alternative);
 				return true;
-			}else if(SpriteData.isSpriteId(id)){
+			}else {
 				if(test_alternative < nb_alternatives ) test_alternative++;
-				editKnownSprite(test_alternative);
-				return true;
-			}else if(SpriteData.isUnknownId(id)){
-				editUnknown();
+				editUnknown(test_alternative);
 				return true;
 			}
-			return false;
 		}
 		if (keycode == Keys.UP | keycode == Keys.LEFT){
-			if(SpriteData.isTileId(id)){
-				if(test_alternative > 0 ) test_alternative--;
-				editKnownTile(test_alternative);
+			if(SpriteData.isKnownId(id)){
+				if(test_alternative > 1 ) test_alternative--;
+				editKnownPixel(test_alternative);
 				return true;
-			}else if(SpriteData.isSpriteId(id)){
+			}else {
 				if(test_alternative > 0 ) test_alternative--;
-				editKnownSprite(test_alternative);
-				return true;
-			}else if(SpriteData.isUnknownId(id)){
-				editUnknown();
+				editUnknown(test_alternative);
 				return true;
 			}
-			return false;
 		}		
 		return false;
 	}
@@ -278,10 +296,9 @@ public class Edit_menu extends Group implements InputProcessor {
 	 * @param alternative
 	 */
 	private void validateAlternative(int alternative) {
-			MapPixel pix = spritepixel_list.get(alternative);
+			MapPixel pix = pixel_list.get(alternative);
 			SpriteData.ids.get(id).setName(pix.getTex());
 			SpriteData.writeIdsToFile();
-			SpriteData.deleteSpriteDataFileOnExit();
 			dispose();
 	}
 

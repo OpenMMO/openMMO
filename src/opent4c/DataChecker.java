@@ -11,8 +11,6 @@ import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.T4CMAP;
 import opent4c.utils.MD5Checker;
-import opent4c.utils.ThreadsUtil;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,17 +23,15 @@ public class DataChecker {
 
 	private static Logger logger = LogManager.getLogger(DataChecker.class.getSimpleName());
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
-	private static boolean sprite_data_is_ok = false;
-	private static boolean tile_data_is_ok = false;
-	private static boolean modulo_data_is_ok = false;
 	private static boolean maps_are_ok = false;
 	private static boolean atlas_are_ok = false;
 	private static boolean sprites_are_ok = false;
+	private static boolean pixel_index_is_ok = false;
 	public final static int nb_expected_sprites = 68450;
 	public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
 	public final static int nb_expected_atlas = 650;
 	//TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
-	//TODO vérifier le manque, j'en suis même pas certain
+	//TODO Je me dis que plusieurs sprites doivent porter le même nom...
 	
 	/**
 	 * Checks source data, then atlases, and finally maps.
@@ -59,35 +55,20 @@ public class DataChecker {
 	private static void doWhatNeedsToBeDone() {
 		doMaps();
 		doSprites();
-		doSpriteData();
-		doTileData();
-		doModuloData();
+		doPixelIndex();
 		doAtlas();
 	}
 
 	/**
 	 * 
 	 */
-	private static void doTileData() {
-		if (!tile_data_is_ok){
+	private static void doPixelIndex() {
+		if (!pixel_index_is_ok ){
 			if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
 			if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
 			if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
-		//loadingStatus.waitUntilDdaFilesProcessed();
-		SpriteData.createTileData();
-		}
-	}
-
-	/**
-	 * 
-	 */
-	private static void doModuloData() {
-		if (!modulo_data_is_ok){
-			if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
-			if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
-			if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
-		//loadingStatus.waitUntilDdaFilesProcessed();
-		SpriteData.createModuloData();
+			SpriteData.computeModulos();
+			SpriteData.createPixelIndex();
 		}
 	}
 
@@ -96,22 +77,8 @@ public class DataChecker {
 	 */
 	private static void doAtlas() {
 		if(!atlas_are_ok){
-			//if (!sprites_are_ok) loadingStatus.waitUntilDdaFilesProcessed();
 			AssetsLoader.pack_sprites();
 			AssetsLoader.pack_tuiles();
-		}
-	}
-
-	/**
-	 * Computes sprite_data from sprite files
-	 */
-	private static void doSpriteData() {
-		if (!sprite_data_is_ok){
-				if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
-				if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
-				if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
-			//loadingStatus.waitUntilDdaFilesProcessed();
-			SpriteData.createSpriteData();
 		}
 	}
 
@@ -139,20 +106,17 @@ public class DataChecker {
 	 * Wait until everything is done before loading game
 	 */
 	private static void makeSureEverythingIsOk() {
-		loadingStatus.waitUntilSpriteDataIsWritten();
+		loadingStatus.waitUntilPixelIndexIsWritten();
 		loadingStatus.waitUntilMapsAreDecrypted();
 		loadingStatus.waitUntilSpritesPackaged();
 		loadingStatus.waitUntilTilesPackaged();
-		ThreadsUtil.shutDownDdaExecutor();
 	}
 
 	/**
 	 * sets booleans to know what has to be done and what has already be done. with that, we only do what's needed.
 	 */
 	private static void checkWhatNeedsToBeDone() {
-		checkSpriteData();
-		checkTileData();
-		checkModuloData();
+		checkPixelIndex();
 		checkMaps();
 		checkAtlas();
 		checkSprites();
@@ -161,23 +125,12 @@ public class DataChecker {
 	/**
 	 * 
 	 */
-	private static void checkModuloData() {
-		File modulo_data = new File(FilesPath.getModuloFilePath());
-		if (modulo_data.exists()){
-			modulo_data_is_ok = true;
+	private static void checkPixelIndex() {
+		File pixel_index = new File(FilesPath.getPixelIndexFilePath());
+		if (pixel_index.exists()){
+			pixel_index_is_ok = true;
 		}
-		logger.info("TEST présence modulo_data : "+modulo_data_is_ok);
-	}
-
-	/**
-	 * 
-	 */
-	private static void checkTileData() {
-		File tile_data = new File(FilesPath.getTileDataFilePath());
-		if (tile_data.exists()){
-			tile_data_is_ok = true;
-		}
-		logger.info("TEST présence tile_data : "+tile_data_is_ok);
+		logger.info("TEST présence pixel_index : "+pixel_index_is_ok);		
 	}
 
 	/**
@@ -185,7 +138,7 @@ public class DataChecker {
 	 */
 	private static void checkSprites() {
 		// TODO Trouver mieux pour vérifier la présence des sprites.
-		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
+		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDataDirectoryPath()), ".png").size();
 		if(nb_sprites >= (nb_expected_sprites-delta_ok)){
 			sprites_are_ok = true;
 		}
@@ -215,17 +168,6 @@ public class DataChecker {
 			maps_are_ok  = true;
 		}
 		logger.info("TEST présence cartes : "+maps_are_ok);
-	}
-
-	/**
-	 * Tests presence sprite_data not empty
-	 */
-	private static void checkSpriteData() {
-		File sprite_data = new File(FilesPath.getSpriteDataFilePath());
-		if (sprite_data.exists() && sprite_data.length() != 0){
-			sprite_data_is_ok = true;
-		}
-		logger.info("TEST présence sprite_data : "+sprite_data_is_ok);
 	}
 
 	/**

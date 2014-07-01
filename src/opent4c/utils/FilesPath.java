@@ -288,4 +288,18 @@ public class FilesPath {
 		
 		return sb.toString();
 	}
+
+	/**
+	 * @return
+	 */
+	public static String getPixelIndexFilePath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("sprites");		
+		sb.append(File.separator);
+		sb.append("pixel_index");
+		
+		return sb.toString();
+	}
 }

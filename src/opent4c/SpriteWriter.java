@@ -39,7 +39,7 @@ public class SpriteWriter {
 	
 	static void drawImage(BufferedImage img, MapPixel pixel){
 		File f = null;
-		if (pixel instanceof TilePixel){
+		if (pixel.isTuile()){
 			File dir = new File(FilesPath.getTuileDirectoryPath()+pixel.getAtlas());
 			dir.mkdirs();
 			f = new File(FilesPath.getTuileDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");
@@ -119,7 +119,7 @@ public class SpriteWriter {
 		
 		ArrayList<PalettePixel> pal = pixel.getPal().pixels;
 		BufferedImage img = null;
-		if (pixel instanceof TilePixel){
+		if (pixel.isTuile()){
 			img = new BufferedImage(pixel.getLargeur(), pixel.getHauteur(), BufferedImage.TYPE_INT_RGB);
 		}else{
 			img = new BufferedImage(pixel.getLargeur(), pixel.getHauteur(), BufferedImage.TYPE_INT_ARGB);
@@ -180,7 +180,7 @@ public class SpriteWriter {
 	
 		ArrayList<PalettePixel> pal = pixel.getPal().pixels;
 		BufferedImage img = null;
-		if (pixel instanceof TilePixel){
+		if (pixel.isTuile()){
 			img = new BufferedImage(pixel.getLargeur(), pixel.getHauteur(), BufferedImage.TYPE_INT_RGB);
 		}else{
 			img = new BufferedImage(pixel.getLargeur(), pixel.getHauteur(), BufferedImage.TYPE_INT_ARGB);
@@ -277,7 +277,7 @@ public class SpriteWriter {
 		
 		ArrayList<PalettePixel> pal = pixel.getPal().pixels;
 		BufferedImage img = null;
-		if (pixel instanceof TilePixel){
+		if (pixel.isTuile()){
 			img = new BufferedImage(pixel.getLargeur(), pixel.getHauteur(), BufferedImage.TYPE_INT_RGB);
 		}else{
 			img = new BufferedImage(pixel.getLargeur(), pixel.getHauteur(), BufferedImage.TYPE_INT_ARGB);
@@ -320,7 +320,7 @@ public class SpriteWriter {
 	static void writeType1SpriteToDisk(MapPixel pixel, ByteBuffer buf) {
 		ByteBuffer data = null;
 		File f = null;
-		if (pixel instanceof TilePixel){
+		if (pixel.isTuile()){
 			//TODO vérifier un jour à quoi sert cet offset sur le premier de la zone de tuiles
 			pixel.setOffsetX((short)0);
 			pixel.setOffsetY((short)0);

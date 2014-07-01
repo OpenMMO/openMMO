@@ -70,11 +70,6 @@ public class InputManager implements InputProcessor{
 		if (keycode == Keys.CONTROL_RIGHT){
 			control_right = true;
 		}
-		if (keycode == Keys.A){
-			if(control_left || control_right){
-				manager.editNextUnmappedID();
-			}
-		}
 		if (keycode == Keys.ESCAPE){
 			Gdx.app.exit();
 		}

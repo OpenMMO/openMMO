@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import opent4c.MapPixel;
 import opent4c.SpriteData;
 import opent4c.SpritePixel;
 import opent4c.UpdateDataCheckStatus;
@@ -186,12 +187,12 @@ public enum AssetsLoader {
 		List<String> sprite_atlas_to_load = new ArrayList<String>();
 		sprite_atlas_to_load.add("Unknown");
 		sprite_atlas_to_load.add("Highlight");
-		Iterator<Integer> iter_spriteload = SpriteData.getSprites().keySet().iterator();
+		Iterator<Integer> iter_spriteload = SpriteData.getPixelIndex().keySet().iterator();
 		while(iter_spriteload.hasNext()){
-			List<SpritePixel> sprite_list = SpriteData.getSprites().get(iter_spriteload.next());
-			Iterator<SpritePixel> iter_list = sprite_list.iterator();
+			List<MapPixel> sprite_list = SpriteData.getPixelIndex().get(iter_spriteload.next());
+			Iterator<MapPixel> iter_list = sprite_list.iterator();
 			while(iter_list.hasNext()){
-				SpritePixel pix = iter_list.next();
+				MapPixel pix = iter_list.next();
 				if(!sprite_atlas_to_load.contains(pix.getAtlas()))sprite_atlas_to_load.add(pix.getAtlas());
 			}
 		}

@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
-import opent4c.SpriteData;
 import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.ChunkMovement;
 import opent4c.utils.FileLister;
@@ -82,7 +81,7 @@ public class MapManager implements Screen{
 	private Acteur highlight_tile;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private Edit_menu edit_menu = null;
-	public static final float blink_period = 3;
+	public static final float blink_period = 2;
 
 	
 	public MapManager(ScreenManager screenManager){
@@ -243,7 +242,7 @@ public class MapManager implements Screen{
 	 */
 	private static Group renderChunkTiles(Chunk chunk) {
 		Group result = new Group();
-		Iterator<Acteur> iter_tiles = chunk.getTiles().iterator();
+		Iterator<Acteur> iter_tiles = chunk.getTileActeurs().iterator();
 		while(iter_tiles.hasNext()){
 			Acteur tile = iter_tiles.next();
 			result.addActor(tile);
@@ -258,7 +257,7 @@ public class MapManager implements Screen{
 	 */
 	private static Group renderChunkSprites(Chunk chunk) {
 		Group result = new Group();
-		Iterator<Acteur> iter_sprite = chunk.getSprites().iterator();
+		Iterator<Acteur> iter_sprite = chunk.getSpriteActeur().iterator();
 		while(iter_sprite.hasNext()){
 			Acteur pt = iter_sprite.next();
 			result.addActor(pt);
@@ -424,17 +423,6 @@ public class MapManager implements Screen{
 	}
 
 	/**
-	 * Focuses on the unmapped ids to fix them
-	 */
-	public void editNextUnmappedID() {
-		logger.info("Edition de la prochaine id non mappée.");
-		Iterator<Integer> iter_id = getWorldmap().get(0).getUnmappedIds().keySet().iterator();
-		while(iter_id.hasNext()){
-			logger.info("ID non mappée : "+iter_id.next());
-		}
-	}
-
-	/**
 	 * Translates camera to a given place and generates chunks.
 	 * @param place
 	 */
@@ -468,11 +456,9 @@ public class MapManager implements Screen{
 	public void editMapAtCoord(Point point) {
 		int id = getIdAtCoordOnMap("v2_worldmap", point);
 		logger.info("Open menu ID "+id+"@ "+point);
-			if(SpriteData.isTileId(id))edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurTileOnMapFromId(id,point.x,point.y), highlight_stage, id);
-			if(SpriteData.isSpriteId(id))edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurSpriteOnMapFromId(id,point.x,point.y), highlight_stage, id);
-			if(SpriteData.isUnknownId(id))edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurTileOnMapFromId(id,point.x,point.y), highlight_stage, id);
-			ui.addActor(edit_menu);
-			Gdx.input.setInputProcessor(edit_menu);
+		edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurPixelOnMapFromId(id,point), highlight_stage, id);
+		ui.addActor(edit_menu);
+		Gdx.input.setInputProcessor(edit_menu);
 	}
 
 	/**

@@ -1,6 +1,9 @@
 package opent4c;
 
-public class PalettePixel{
+import java.io.Serializable;
+
+public class PalettePixel implements Serializable{
+	private static final long serialVersionUID = 6929155579441043593L;
 	short red;
 	short green;
 	short blue;
