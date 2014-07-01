@@ -12,8 +12,6 @@ import org.apache.logging.log4j.Logger;
 import opent4c.Acteur;
 import opent4c.MapPixel;
 import opent4c.SpriteData;
-import opent4c.SpritePixel;
-import opent4c.TilePixel;
 import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.PointsManager;

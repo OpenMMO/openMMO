@@ -40,7 +40,7 @@ public class SpriteManager {
 		pixel.setAtlas(atlas);
 		pixel.setIndexation(indexation);
 		pixel.setNumDDA(numDDA);
-		pixel.setId(SpriteData.matchIdWithPixel(pixel));
+		SpriteData.matchIdWithPixel(pixel);
 		SpriteData.putPixel(pixel);
 	}
 	

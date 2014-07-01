@@ -7,7 +7,6 @@ import java.util.List;
 
 import opent4c.MapPixel;
 import opent4c.SpriteData;
-import opent4c.SpritePixel;
 import opent4c.UpdateDataCheckStatus;
 
 import org.apache.logging.log4j.LogManager;

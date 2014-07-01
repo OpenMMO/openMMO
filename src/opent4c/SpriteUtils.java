@@ -15,7 +15,6 @@ import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
 import opent4c.utils.FilesPath;
-import opent4c.utils.LoadingStatus;
 import opent4c.utils.SpriteName;
 
 import org.apache.logging.log4j.LogManager;
@@ -34,7 +33,6 @@ public class SpriteUtils {
 
 	private static int nb_extracted_sprites = 0;
 	static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
-	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 
 	
 	static boolean doTheWriting(MapPixel pixel, ByteBuffer buf){
@@ -52,19 +50,6 @@ public class SpriteUtils {
 			File f = new File(FilesPath.getSpriteDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");
 			if(f.exists())writen = true;			
 		}
-		return writen;
-	}
-	
-	static boolean doTheWriting(SpritePixel pixel, ByteBuffer buf){
-		boolean writen = false;
-		switch(pixel.getType()){
-			case 1 : SpriteWriter.writeType1SpriteToDisk(pixel, buf); break;
-			case 2 : SpriteWriter.writeType2SpriteToDisk(pixel, buf); break;
-			case 3 : SpriteWriter.writeType3SpriteToDisk(pixel); writen = true; break;
-			case 9 : SpriteWriter.writeType9SpriteToDisk(pixel, buf); break;
-		}
-		File f = new File(FilesPath.getSpriteDirectoryPath()+pixel.getAtlas()+File.separator+pixel.getTex()+".png");
-		if(f.exists())writen = true;
 		return writen;
 	}
 

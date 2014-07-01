@@ -26,12 +26,10 @@ public class MapPixel implements Serializable{
 	private Point offset;
 	private Point offset2;
 	private int id;
-	private List<Integer> ids;
 	private Point taille;
 	private Point modulo;
 	private int indexation;
 	private long numDDA;
-	private boolean perfectMatch;
 	private Palette pal;
 	private int ombre;
 	private int type;
@@ -56,7 +54,6 @@ public class MapPixel implements Serializable{
 		id = -1;
 		indexation = -1;
 		numDDA = -1;
-		perfectMatch = false;
 		pal = null;
 		ombre = -1;
 		type = -1;
@@ -67,46 +64,6 @@ public class MapPixel implements Serializable{
 		bufPosition = -1;
 		paletteName = "not set";
 	}
-
-	/**
-	 * @param id
-	 * @param tuile
-	 * @param atlas
-	 * @param tex
-	 * @param type
-	 * @param ombre
-	 * @param taille
-	 * @param transColor
-	 * @param offset
-	 * @param offset2
-	 * @param numDDA
-	 * @param palette
-	 * @param perfectMatch
-	 */
-	public MapPixel(int id, String atlas, String tex,
-			int type, int ombre, Point taille, int transColor, Point offset,
-			Point offset2, int numDDA, String palette, boolean perfectMatch) {
-		this.atlas = atlas;
-		this.name = new SpriteName(tex);
-		this.offset = offset;
-		this.offset2 = offset2;
-		this.id = id;
-		this.ids = new ArrayList<Integer>();
-		ids.add(id);
-		this.indexation = -1;
-		this.numDDA = numDDA;
-		this.perfectMatch = perfectMatch;
-		this.pal = null;
-		this.ombre = ombre;
-		this.type = type;
-		this.transColor = transColor;
-		this.inconnu9 = -1;
-		this.taille_unzip = -1;
-		this.taille_zip = -1;
-		this.bufPosition = -1;
-		this.paletteName = palette;
-		this.taille = taille;
-		}
 
 	/**
 	 * @param key
@@ -122,7 +79,6 @@ public class MapPixel implements Serializable{
 		modulo = PointsManager.getPoint(1,1);
 		indexation = -1;
 		numDDA = -1;
-		perfectMatch = true;
 		pal = null;
 		ombre = -1;
 		type = -1;
@@ -210,23 +166,9 @@ public class MapPixel implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public List<Integer> getIds(){
-		return this.ids;
-	}
 	
-	public void setIds(List<Integer> ids){
-		this.ids = ids;
-	}
 	public String getPaletteName() {
 		return paletteName;
-	}
-
-	/**
-	 * @param b
-	 */
-	public void setPerfectNameMatch(boolean b) {
-		setPerfectMatch(b);
 	}
 
 	/**
@@ -248,14 +190,6 @@ public class MapPixel implements Serializable{
 	 */
 	public void setNumDDA(long numDDA) {
 		this.numDDA = numDDA;		
-	}
-
-	public boolean isPerfectMatch() {
-		return perfectMatch;
-	}
-
-	public void setPerfectMatch(boolean perfectMatch) {
-		this.perfectMatch = perfectMatch;
 	}
 
 	public int getNumDDA() {

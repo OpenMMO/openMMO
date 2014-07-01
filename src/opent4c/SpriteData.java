@@ -204,15 +204,14 @@ public class SpriteData {
 		}
 	}
 
-	public static int matchIdWithPixel(MapPixel pixel) {
-		List<Integer> ids = new ArrayList<Integer>();
+	public static void matchIdWithPixel(MapPixel pixel) {
 		Iterator<Integer> iter = SpriteData.ids.keySet().iterator();
 		while (iter.hasNext()){
 			int key = iter.next();
 			SpriteName sn = SpriteData.ids.get(key);
 			if (pixel.getTex().equals(sn.getName())){//First, try a total match
-				pixel.setPerfectNameMatch(true);
-				ids.add(key);
+				pixel.setId(key);
+				return;
 			}
 		}
 		iter = SpriteData.ids.keySet().iterator();
@@ -220,22 +219,18 @@ public class SpriteData {
 			int key = iter.next();
 			SpriteName sn = SpriteData.ids.get(key);
 			if (pixel.getTex().startsWith(sn.getName())){//if unsuccessful, try a startswith match
-				ids.add(key);
-			}
+				pixel.setId(key);
+				return;			}
 		}
 		iter = SpriteData.ids.keySet().iterator();
 		while (iter.hasNext()){
 			int key = iter.next();
 			SpriteName sn = SpriteData.ids.get(key);
 			if (pixel.getTex().toLowerCase().contains(sn.getName().toLowerCase())){//if unsuccessful, try a lowercased contains match
-				ids.add(key);
-			}
+				pixel.setId(key);
+				return;			}
 		}
-		if (ids.size() != 0 ){
-			pixel.setIds(ids);
-			return ids.get(0);
-		}
-		return -1;
+			pixel.setId(-1);
 	}
 
 	/**

@@ -10,7 +10,6 @@ public class ThreadsUtil {
 
 	private static ExecutorService exService = Executors.newFixedThreadPool(5);
 	private static ScheduledExecutorService timerExService = Executors.newScheduledThreadPool(5);
-	private static ExecutorService ddaExecutor = Executors.newFixedThreadPool(6);
 	private static ExecutorService spriteLoadExecutor = Executors.newSingleThreadScheduledExecutor();
 
 	
@@ -20,14 +19,6 @@ public class ThreadsUtil {
 	
 	public static void executeInThread(Runnable r) {
 		exService.execute(r);
-	}
-	
-	public static void executeInDdaThread(Runnable r) {
-		ddaExecutor.execute(r);
-	}
-	
-	public static void shutDownDdaExecutor(){
-		ddaExecutor.shutdown();
 	}
 	
 	public static void queueSpriteLoad(Runnable r){
