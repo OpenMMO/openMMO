@@ -72,7 +72,7 @@ public class MapPixel implements Serializable{
 	public MapPixel(int key, SpriteName spriteName) {
 		this.name = spriteName;
 		id = key;
-		atlas = "Init";
+		atlas = "Unknown";
 		offset = PointsManager.getPoint(0,0);
 		offset2 = PointsManager.getPoint(0,0);
 		taille = PointsManager.getPoint(1,1);

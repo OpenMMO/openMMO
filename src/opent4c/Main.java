@@ -49,7 +49,7 @@ public class Main {
 	 */
 	public static void charger() {
 		logger.info("Chargement des données");
-		SpriteData.load();
+		SpriteData.loadPixelIndex();
 		sm.initMap();
 	}
 }

@@ -4,6 +4,9 @@
 package screens;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,9 +15,12 @@ import org.apache.logging.log4j.Logger;
 import opent4c.Acteur;
 import opent4c.MapPixel;
 import opent4c.SpriteData;
-import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.PointsManager;
+import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.SpriteName;
+import opent4c.utils.ThreadsUtil;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
@@ -42,17 +48,14 @@ public class Edit_menu extends Group implements InputProcessor {
 	private Group alternative_button_group = new Group();
 	private Group edited_group = new Group();
 	private int nb_alternatives = 0;
-	private int test_alternative = 1;
+	private int test_alternative = 0;
 	int id = -1;
-	//private List<SpritePixel> spritepixel_list = null;
 	private List<MapPixel> pixel_list = null;
-	//private List<TilePixel> tilepixel_list = null;
 	private TextButton atlas_button;
 	private TextButton palette_button;
 	private TextButton id_button;
-	private TextButton alternative_button;
 	private TextButton tex_button;
-	private Actor choosen_alternative_button;
+	private TextButton choosen_alternative_button;
 	private TextButton info_button;
 
 
@@ -65,13 +68,24 @@ public class Edit_menu extends Group implements InputProcessor {
 		this.id = id;
 		style.font = new BitmapFont();
 		if(SpriteData.isKnownId(id)){
-			pixel_list = SpriteData.getPixelsWithId(id);
+			pixel_list = new ArrayList<MapPixel>();
+			pixel_list.addAll(getPixelsWithSimilarName(id));
 			editKnownPixel(test_alternative);
 			return;
 		}else {
-			editUnknown(0);
+			editUnknown(test_alternative);
 			return;
 		}
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	private List<MapPixel> getPixelsWithSimilarName(int id) {
+		List<MapPixel> lst = new ArrayList<MapPixel>();
+		lst.addAll(SpriteData.getPixelsWithSameAtlas(id));
+		return lst;
 	}
 
 	/**
@@ -79,28 +93,79 @@ public class Edit_menu extends Group implements InputProcessor {
 	 * @param pt
 	 */
 	private void editUnknown(int test_alternative) {
-		String tex = "Texture : ID non mappée";
-		if(SpriteData.ids.containsKey(id)){
-			pixel_list = SpriteData.getPixelsWithId(id);
-			tex = pixel_list.get(0).getTex();
+		String tex = "";
+		if (pixel_list == null){
+			if(SpriteData.ids.containsKey(id)){
+				tex = SpriteData.ids.get(id);
+				pixel_list = getUnknownAlternatives(tex);
+			}else{
+				tex = "non présente";
+				pixel_list = SpriteData.getUnknownPixels();
+			}	
 		}
-		pixel_list.addAll(SpriteData.getUnknownPixels());
 		nb_alternatives = pixel_list.size()-1;
 		clearMenu();
 		if(nb_alternatives > 0){
 			MapPixel px = pixel_list.get(test_alternative);
-			String tex_button = "Texture : "+px.getTex();
+			String tex_button = "Texture : "+tex;
 			String atlas_button = "Atlas : "+px.getAtlas();
 			String palette_button = "Palette : "+px.getPaletteName();
-			String id_button = "ID on map : "+id;
-			String alternative = "Alternatives : "+nb_alternatives;
-			addAlternativePixelToMenu(test_alternative);
-			setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
+			String id_button = "ID on map : "+id+" => "+tex;
+			alternative_group.clear();
+			alternative_button_group.clear();
+			MapPixel pix = pixel_list.get(test_alternative);
+			String alt = "Alternative choisie : "+test_alternative+"/"+nb_alternatives+" => "+pix.getTex();
+			addAlternativeButtonToMenu(alt);
+			TextureAtlas atlas = null;
+			if(pix.isTuile()){
+				atlas = loadingStatus.getTextureAtlasTile(pix.getAtlas());
+			}else{
+				atlas = loadingStatus.getTextureAtlasSprite(pix.getAtlas());
+			}
+			TextureRegion texture = atlas.findRegion(pix.getTex());
+			Acteur alter = new Acteur(texture,PointsManager.getPoint(0, 0),PointsManager.getPoint(0, 0));
+			alter.setPosition(edited_tile.getX(), edited_tile.getY()-alter.getHeight()+edited_tile.getHeight());
+			alternative_group.addActor(alter);
+			stage.addActor(alternative_group);
+			logger.info("Try Alternative :"+test_alternative+" "+pix.getTex());
+			setButtonsTexts(tex_button, atlas_button, palette_button, id_button);
 		}else{
-			setButtonsTexts("Texture : "+tex, ".", ".", ".", ".");
+			setButtonsTexts("Texture : "+tex, ".", ".", ".");
 		}
 		setButtonsPositions();
 		addButtonsToMenu();
+	}
+
+	/**
+	 * @param tex 
+	 * @return
+	 */
+	private List<MapPixel> getUnknownAlternatives(String tex) {
+		List<MapPixel> list = SpriteData.getUnknownPixels();
+		Iterator<Integer> iter_px = SpriteData.getPixelIndex().keySet().iterator();
+		while(iter_px.hasNext()){
+			List<MapPixel> tmp = SpriteData.getPixelIndex().get(iter_px.next());
+			list.addAll(tmp);
+		}
+		List<MapPixel> result = new ArrayList<MapPixel>();
+		Iterator<MapPixel> iter = list.iterator();
+		while(iter.hasNext()){
+			MapPixel px = iter.next();
+			if(isPixelSuitableAlternative(tex, px))result.add(px);
+		}
+		return result;
+	}
+
+	/**
+	 * @param tex
+	 * @param px
+	 * @return
+	 */
+	private boolean isPixelSuitableAlternative(String tex, MapPixel px) {
+		if ((px.getId() > id-10) & (px.getId() < id+10) & (px.getId() != -1)) return true;
+		if(px.getAtlas().contains(tex))return true;
+		if(px.getTex().contains(tex))return true;
+		return false;
 	}
 
 	/**
@@ -119,7 +184,6 @@ public class Edit_menu extends Group implements InputProcessor {
 		this.addActor(tex_button);
 		this.addActor(palette_button);
 		this.addActor(id_button);
-		this.addActor(alternative_button);		
 	}
 
 	/**
@@ -130,70 +194,37 @@ public class Edit_menu extends Group implements InputProcessor {
 		tex_button.setPosition(40, Gdx.graphics.getHeight()-60);
 		palette_button.setPosition(40, Gdx.graphics.getHeight()-80);
 		id_button.setPosition(40, Gdx.graphics.getHeight()-100);
-		alternative_button.setPosition(40, Gdx.graphics.getHeight()-120);
-		info_button.setPosition(40, Gdx.graphics.getHeight()-140);
+		info_button.setPosition(40, Gdx.graphics.getHeight()-120);
 
 	}
 
 	/**
 	 * 
 	 */
-	private void setButtonsTexts(String tex, String atlas, String palette, String id, String alternative) {
+	private void setButtonsTexts(String tex, String atlas, String palette, String id) {
 		tex_button = new TextButton(tex, style);
 		atlas_button = new TextButton(atlas, style);
 		palette_button = new TextButton(palette, style);
 		id_button = new TextButton(id,style);
-		alternative_button = new TextButton(alternative, style);
 		info_button = new TextButton("use Arrows/Enter/Escape. Changes will be seen on next launch.", style);
 	}
-
-	/**
-	 * Edits a sprite with a known ID
-	 */
-	/*private void editKnownSprite(int test_alternative) {
-		nb_alternatives = spritepixel_list.size()-1;
-		MapPixel px = spritepixel_list.get(test_alternative);
-		String tex_button = "Texture : "+px.getTex();
-		String atlas_button = "Atlas : "+px.getAtlas();
-		String palette_button = "Palette : "+px.getPaletteName();
-		String id_button = "ID on map : "+id;
-		String alternative = "Alternatives : "+nb_alternatives;
-		clearMenu();
-		addAlternativeSpriteToMenu(test_alternative);
-		setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
-		setButtonsPositions();
-		addButtonsToMenu();
-	}*/
 
 	/**
 	 * Edits a tile with a known ID
 	 */
 	private void editKnownPixel(int test_alternative) {
-		nb_alternatives = pixel_list.size()-2;
+		nb_alternatives = pixel_list.size()-1;
 		MapPixel px = pixel_list.get(test_alternative);
 		String tex_button = "Texture : "+px.getTex();
 		String atlas_button = "Atlas : "+px.getAtlas();
 		String palette_button = "Palette : "+px.getPaletteName();
 		String id_button = "ID on map : "+id;
-		String alternative = "Alternatives : "+nb_alternatives;
 		clearMenu();
-		setButtonsTexts(tex_button, atlas_button, palette_button, id_button, alternative);
+		setButtonsTexts(tex_button, atlas_button, palette_button, id_button);
 		setButtonsPositions();
 		addButtonsToMenu();
 		addAlternativePixelToMenu(test_alternative);
 	}
-
-	/*private void addAlternativeTileToMenu(int index){
-		alternative_group.clear();
-		alternative_button_group.clear();
-		TilePixel pix = tilepixel_list.get(index);
-		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
-		addAlternativeButtonToMenu(alt);
-		TextureAtlas atlas = loadingStatus.getTextureAtlasTile(pix.getAtlas());
-		TextureRegion tex = atlas.findRegion(pix.getTex());
-		addAlternativeToMenu(tex);
-		logger.info("Try Alternative :"+index+" "+pix.getTex());
-	}*/
 	
 	/**
 	 * @param test_alternative2
@@ -202,7 +233,7 @@ public class Edit_menu extends Group implements InputProcessor {
 		alternative_group.clear();
 		alternative_button_group.clear();
 		MapPixel pix = pixel_list.get(index);
-		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
+		String alt = "Alternative choisie : "+index+"/"+nb_alternatives+" => "+pix.getTex();
 		addAlternativeButtonToMenu(alt);
 		TextureAtlas atlas = null;
 		if(pix.isTuile()){
@@ -230,23 +261,10 @@ public class Edit_menu extends Group implements InputProcessor {
 	 */
 	private void addAlternativeButtonToMenu(String alt) {
 		choosen_alternative_button = new TextButton(alt, style);
-		choosen_alternative_button.setPosition(40, Gdx.graphics.getHeight()-160);
+		choosen_alternative_button.setPosition(40, Gdx.graphics.getHeight()-120);
 		alternative_button_group.addActor(choosen_alternative_button);
 		this.addActor(alternative_button_group);
 	}
-
-	/*private void addAlternativeSpriteToMenu(int index){
-		alternative_group.clear();
-		alternative_button_group.clear();
-		MapPixel pix = spritepixel_list.get(index);
-		String alt = "Alternative choisie : "+index+" => "+pix.getTex();
-		addAlternativeButtonToMenu(alt);
-		TextureAtlas atlas = loadingStatus.getTextureAtlasSprite(pix.getAtlas());
-		if(atlas == null) atlas = AssetsLoader.load(pix.getAtlas());
-		TextureRegion tex = atlas.findRegion(pix.getTex());
-		addAlternativeToMenu(tex);
-		logger.info("Try Alternative :"+index+" "+pix.getTex());
-	}*/
 	
 	@Override
 	public boolean keyDown(int keycode) {
@@ -281,7 +299,7 @@ public class Edit_menu extends Group implements InputProcessor {
 				editKnownPixel(test_alternative);
 				return true;
 			}else {
-				if(test_alternative > 0 ) test_alternative--;
+				if(test_alternative > 1 ) test_alternative--;
 				editUnknown(test_alternative);
 				return true;
 			}
@@ -295,8 +313,10 @@ public class Edit_menu extends Group implements InputProcessor {
 	 */
 	private void validateAlternative(int alternative) {
 			MapPixel pix = pixel_list.get(alternative);
-			SpriteData.ids.get(id).setName(pix.getTex());
-			SpriteData.writeIdsToFile();
+			SpriteData.ids.put(id, pix.getTex());
+			logger.info("Validation du mapping : "+id+"=>"+pix.getTex());
+			pixel_list = null;
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable());
 			dispose();
 	}
 

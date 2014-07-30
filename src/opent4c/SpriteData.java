@@ -1,5 +1,6 @@
 package opent4c;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,24 +31,19 @@ import org.apache.logging.log4j.Logger;
 
 public class SpriteData {
 	private static Logger logger = LogManager.getLogger(SpriteData.class.getSimpleName());
-	public static Map<Integer,SpriteName> ids = null;
+	public static Map<Integer,String> ids = null;
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static List<MapPixel> unknownPixels = new ArrayList<MapPixel>();
 	private static Map<Integer, List<MapPixel>> pixel_index = new HashMap<Integer, List<MapPixel>>();
-
-	
-	/**
-	 * Loads sprite data from file
-	 */
-	public static void load(){
-		loadPixelIndex();
-	}
+	private static Map<String, Point> modulos = new HashMap<String, Point>();
 
 	/**
 	 * 
 	 */
-	private static void loadPixelIndex() {
+	@SuppressWarnings("unchecked")
+	public static void loadPixelIndex() {
 		pixel_index.clear();
+		unknownPixels.clear();
 		
 		FileInputStream fin = null;
 		try {
@@ -63,24 +60,13 @@ public class SpriteData {
 			e2.printStackTrace();
 			logger.fatal(e2);
 			System.exit(1);
-		}
-		MapPixel px = null;
-		while(true){
-			try {
-				px = (MapPixel) ois.readObject();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				logger.fatal(e);
-				System.exit(1);
-			} catch (IOException e) {
-				logger.info("Lecture de pixel_index terminée");
-				break;
-			}
-			if(px.getId()!= -1){
-				putPixel(px);
-			}else{
-				unknownPixels.add(px);
-			}
+		}	
+		try {
+			pixel_index = (HashMap<Integer,List<MapPixel>>) ois.readObject();
+		} catch (ClassNotFoundException | IOException e1) {
+			e1.printStackTrace();
+			logger.fatal(e1);
+			System.exit(1);
 		}
 		try {
 			fin.close();
@@ -89,13 +75,15 @@ public class SpriteData {
 			logger.fatal(e);
 			System.exit(1);
 		}
+		unknownPixels = pixel_index.get(-1);
+		pixel_index.remove(-1);
 	}
 
 	/**
 	 * 
 	 */
 	public static void createPixelIndex() {
-		
+		logger.info("Création de pixel_index");
 		FileOutputStream fout = null;
 		try {
 			fout = new FileOutputStream(FilesPath.getPixelIndexFilePath());
@@ -112,29 +100,21 @@ public class SpriteData {
 			logger.fatal(e);
 			System.exit(1);
 		}
-		Iterator<Integer> iter_id = pixel_index.keySet().iterator();
-		while (iter_id.hasNext()){
-			int id = iter_id.next();
-			Iterator<MapPixel> iter_pixels = pixel_index.get(id).iterator();
-			while (iter_pixels.hasNext()){
-				MapPixel px = iter_pixels.next();
-				try {
-					oos.writeObject(px);
-				} catch (IOException e) {
-					e.printStackTrace();
-					logger.fatal(e);
-					System.exit(1);
-				}
-			}			
+		try {
+			oos.writeObject(pixel_index);
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
 		}
-		
 		try {
 			fout.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.fatal(e);
 			System.exit(1);
-		}			
+		}
+		logger.info("Pixel_index créé.");
 	}
 	
 	/**
@@ -150,6 +130,10 @@ public class SpriteData {
 			ThreadsUtil.executeInThread(RunnableCreatorUtil.getModuloComputerRunnable(iter_tiledirs.next()));
 		}
 		loadingStatus.waitUntilModulosAreComputed();
+		logger.info("Application des modulos aux tuiles.");
+		applyModulos();
+		logger.info("Modulos appliqués");
+
 	}
 
 	/**
@@ -177,60 +161,54 @@ public class SpriteData {
 				exc.printStackTrace();
 				System.exit(1);
 			}
-			Iterator<Integer> iter_id = pixel_index.keySet().iterator();
-			while(iter_id.hasNext()){
-				int key = iter_id.next();
-				Iterator<MapPixel> iter_px = pixel_index.get(key).iterator();
-				while(iter_px.hasNext()){
-					MapPixel px = iter_px.next();
-					if(px.getAtlas().equals(tileDir.getName())){
-						px.setModulo(PointsManager.getPoint(moduloX, moduloY));
-					}
+		}
+		logger.info("Computed modulo : "+tileDir.getName()+"=>"+PointsManager.getPoint(moduloX, moduloY));
+		modulos.put(tileDir.getName(), PointsManager.getPoint(moduloX, moduloY));
+	}
+
+	
+	public static void applyModulos(){
+		Iterator<Integer> iter_id = pixel_index.keySet().iterator();
+		while(iter_id.hasNext()){
+			int key = iter_id.next();
+			Iterator<MapPixel> iter_px = pixel_index.get(key).iterator();
+			while(iter_px.hasNext()){
+				MapPixel px = iter_px.next();
+				Point modulo = modulos.get(px.getAtlas());
+				if(modulo != null){
+					px.setModulo(modulo);
+					//logger.info("Set modulo : "+px.getAtlas()+"=>"+modulo);
 				}
 			}
 		}
 	}
-
+	
 	/**
 	 * @param pixel
 	 */
-	public static void putPixel(MapPixel pixel) {
-		if(pixel_index.containsKey(pixel.getId())){
-			pixel_index.get(pixel.getId()).add(pixel);
+	public static void putPixel(int id, MapPixel pixel) {
+		if(pixel_index.containsKey(id)){
+			pixel_index.get(id).add(pixel);
 		}else{
 			List<MapPixel> list = new ArrayList<MapPixel>();
 			list.add(pixel);
-			pixel_index.put(pixel.getId(), list);
+			pixel_index.put(id, list);
 		}
 	}
 
-	public static void matchIdWithPixel(MapPixel pixel) {
+	public static List<Integer> matchIdWithPixel(MapPixel pixel) {
+		List<Integer> result = new ArrayList<Integer>();
 		Iterator<Integer> iter = SpriteData.ids.keySet().iterator();
 		while (iter.hasNext()){
 			int key = iter.next();
-			SpriteName sn = SpriteData.ids.get(key);
-			if (pixel.getTex().equals(sn.getName())){//First, try a total match
-				pixel.setId(key);
-				return;
+			String sn = SpriteData.ids.get(key);
+			if (pixel.getTex().equals(sn)){
+				result.add(key);
+				//logger.info(key+"/"+ids.size()+" : "+sn.getName()+"<=>"+pixel.getTex());
 			}
 		}
-		iter = SpriteData.ids.keySet().iterator();
-		while (iter.hasNext()){
-			int key = iter.next();
-			SpriteName sn = SpriteData.ids.get(key);
-			if (pixel.getTex().startsWith(sn.getName())){//if unsuccessful, try a startswith match
-				pixel.setId(key);
-				return;			}
-		}
-		iter = SpriteData.ids.keySet().iterator();
-		while (iter.hasNext()){
-			int key = iter.next();
-			SpriteName sn = SpriteData.ids.get(key);
-			if (pixel.getTex().toLowerCase().contains(sn.getName().toLowerCase())){//if unsuccessful, try a lowercased contains match
-				pixel.setId(key);
-				return;			}
-		}
-			pixel.setId(-1);
+			if(result.size() == 0) result.add(-1);
+			return result;
 	}
 
 	/**
@@ -238,7 +216,7 @@ public class SpriteData {
 	 * puts info into a HashMap<Integer,SpriteName>
 	 */
 	public static void loadIdsFromFile(){
-		ids = new HashMap<Integer,SpriteName>();
+		ids = new HashMap<Integer,String>();
 		File id_file = new File(FilesPath.getIdFilePath());
 		SpriteUtils.logger.info("Lecture du fichier "+id_file.getName());
 		try{
@@ -271,15 +249,14 @@ public class SpriteData {
 		Iterator<Integer> iter_sn = ids.keySet().iterator();
 		while (iter_sn.hasNext()){
 			int id = iter_sn.next();
-			SpriteName sn = ids.get(id);
+			String sn = ids.get(id);
 			try {
-				dat_file.write(id+" "+sn.getName()+System.lineSeparator());
+				dat_file.write(id+" "+sn+System.lineSeparator());
 			} catch (IOException e) {
 				SpriteUtils.logger.fatal(e);
 				System.exit(1);
 			}	
 		}
-	
 		try {
 			dat_file.close();
 		} catch (IOException e) {
@@ -297,12 +274,8 @@ public class SpriteData {
 		int key = 0;
 		String value = "";
 		key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
-		value = line.substring(line.indexOf(" ")+1);
-		SpriteName name = new SpriteName(value);
-		List<MapPixel> list = new ArrayList<MapPixel>();
-		list.add(new MapPixel(key, name));
-		pixel_index.put(key, list);
-		ids.put(key,name);
+		value = line.substring(line.indexOf(' ')+1);
+		ids.put(key,value);
 	}
 
 	/**
@@ -318,9 +291,7 @@ public class SpriteData {
 	 */
 	public static MapPixel getPixelFromId(int id) {
 		if(pixel_index.containsKey(id)){
-			if(pixel_index.get(id).size()>1){
-				return pixel_index.get(id).get(1);
-			}
+			return pixel_index.get(id).get(0);
 		}
 		return null;
 	}
@@ -330,9 +301,7 @@ public class SpriteData {
 	 * @return
 	 */
 	public static boolean isKnownId(int id) {
-		if(pixel_index.containsKey(id)){
-			if(pixel_index.get(id).size() > 1)return true;
-		}
+		if(pixel_index.containsKey(id))return true;
 		return false;
 	}
 
@@ -349,5 +318,118 @@ public class SpriteData {
 	 */
 	public static List<MapPixel> getUnknownPixels() {
 		return unknownPixels;
+	}
+
+	/**
+	 * 
+	 */
+	public static void initPixelIndex() {
+		pixel_index = new HashMap<Integer, List<MapPixel>>();
+		unknownPixels = new ArrayList<MapPixel>();
+	}
+
+	/**
+	 * 
+	 */
+	public static void matchIdWithTiles() {
+		Iterator<MapPixel> iter = pixel_index.get(-1).iterator();
+		Map<Integer,List<MapPixel>> to_add = new HashMap<Integer,List<MapPixel>>();
+		List<Integer> to_remove = new ArrayList<Integer>();
+		int index = 0;
+		while(iter.hasNext()){
+			UpdateDataCheckStatus.setSpriteDataStatus("Match Id With Tiles : "+index+"/"+(pixel_index.get(-1).size()-1));
+			UpdateDataCheckStatus.setStatus("Match Id With Tiles : "+index+"/"+(pixel_index.get(-1).size()-1));
+			MapPixel px = iter.next();
+			Iterator<Integer> iter_id = ids.keySet().iterator();
+			while(iter_id.hasNext()){
+				int id = iter_id.next();
+				String sn = ids.get(id);
+				if((px.isTuile()) & (px.getAtlas().equals(sn))){
+					px.setId(id);
+					if(to_add.containsKey(id)){
+						to_add.get(id).add(px);
+					}else{
+						List<MapPixel> list = new ArrayList<MapPixel>();
+						list.add(px);
+						to_add.put(id, list);
+					}
+					if(!to_remove.contains(index))to_remove.add(index);
+				}else if(px.isTuile()){
+					if(px.getTex().substring(0, px.getTex().indexOf('(')-1).equals(sn)){
+						px.setId(id);
+						if(to_add.containsKey(id)){
+							to_add.get(id).add(px);
+						}else{
+							List<MapPixel> list = new ArrayList<MapPixel>();
+							list.add(px);
+							to_add.put(id, list);
+						}
+					}
+				}
+			}
+			index++;
+		}
+		Iterator<Integer> iter_to_remove = to_remove.iterator();
+		int i = 0;
+		while(iter_to_remove.hasNext()){
+			pixel_index.get(-1).remove(iter_to_remove.next());
+			UpdateDataCheckStatus.setStatus("Mise à jour de pixel_index (suppression des tuiles découvertes de la liste des inconnus) : "+i+"/"+to_remove.size());
+			i++;
+		}
+		i=0;
+		Iterator<Integer> iter_to_add = to_add.keySet().iterator();
+		while(iter_to_add.hasNext()){
+			UpdateDataCheckStatus.setStatus("Mise à jour de pixel_index (ajout des tuiles découvertes de les listes principales) : "+i+"/"+to_add.size());
+			int id = iter_to_add.next();
+			if(pixel_index.containsKey(id)){
+				pixel_index.get(id).addAll(to_add.get(id));
+			}else{
+				pixel_index.put(id, to_add.get(id));
+			}
+			i++;
+		}
+		to_add.clear();
+		to_remove.clear();
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public static List<MapPixel> getPixelsWithSameMapping(int id){
+		String mapping = ids.get(id);
+		List<MapPixel> list = new ArrayList<MapPixel>();
+		Iterator<Integer> iter = ids.keySet().iterator();
+		while(iter.hasNext()){
+			int i = iter.next();
+			String s = ids.get(i);
+			if(s.equals(mapping))list.addAll(pixel_index.get(i));
+		}
+		return list;
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	public static List<MapPixel> getPixelsWithSameAtlas(int id) {
+		String mapping = getPixelFromId(id).getAtlas();
+		List<MapPixel> list = new ArrayList<MapPixel>();
+		Iterator<MapPixel> iter_px = unknownPixels.iterator();
+		while(iter_px.hasNext()){
+			MapPixel px = iter_px.next();
+			if(mapping.equals(px.getAtlas()))list.add(px);
+		}
+		Iterator<Integer> iter = pixel_index.keySet().iterator();
+		while(iter.hasNext()){
+			int i = iter.next();
+			iter_px = pixel_index.get(i).iterator();
+			while(iter_px.hasNext()){
+				MapPixel px = iter_px.next();
+				if(mapping.equals(px.getAtlas()))list.add(px);
+			}
+		}
+
+		return list;
 	}
 }

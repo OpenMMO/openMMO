@@ -81,7 +81,7 @@ public class MapManager implements Screen{
 	private Acteur highlight_tile;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private Edit_menu edit_menu = null;
-	public static final float blink_period = 2;
+	public static final float blink_period = 1;
 
 	
 	public MapManager(ScreenManager screenManager){
@@ -144,6 +144,7 @@ public class MapManager implements Screen{
 		while(iter_decrypted_maps.hasNext()){
 			File f = iter_decrypted_maps.next();
 			UpdateDataCheckStatus.setMapsStatus("Chargement carte : "+f.getName());
+			UpdateDataCheckStatus.setStatus("Chargement carte : "+f.getName());
 			ByteBuffer buf = ByteBuffer.allocate((int)f.length());
 			try {
 				DataInputManager in = new DataInputManager (f);
@@ -230,13 +231,7 @@ public class MapManager implements Screen{
 	 * @return
 	 */
 	private static Group renderChunkTiles(Chunk chunk) {
-		Group result = new Group();
-		Iterator<Acteur> iter_tiles = chunk.getTileActeurs().iterator();
-		while(iter_tiles.hasNext()){
-			Acteur tile = iter_tiles.next();
-			result.addActor(tile);
-		}
-		return result;
+		return chunk.getTileActeurs();
 	}
 
 	/**
@@ -245,13 +240,7 @@ public class MapManager implements Screen{
 	 * @return
 	 */
 	private static Group renderChunkSprites(Chunk chunk) {
-		Group result = new Group();
-		Iterator<Acteur> iter_sprite = chunk.getSpriteActeur().iterator();
-		while(iter_sprite.hasNext()){
-			Acteur pt = iter_sprite.next();
-			result.addActor(pt);
-		}
-		return result;
+		return chunk.getSpriteActeur();
 	}
 	
 	/**

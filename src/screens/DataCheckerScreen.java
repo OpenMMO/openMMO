@@ -34,6 +34,7 @@ public class DataCheckerScreen implements Screen{
 	private TextButton ddaStatus;
 	private TextButton spriteDataStatus;
 	private TextButton atlasStatus;
+	private TextButton status;
 
 	public DataCheckerScreen(){
 	}
@@ -72,6 +73,7 @@ public class DataCheckerScreen implements Screen{
 		ddaStatus.setText("État des fichiers DDA : "+UpdateDataCheckStatus.getDDAStatus());
 		spriteDataStatus.setText("État de sprite_data : "+UpdateDataCheckStatus.getSpriteDataStatus());
 		atlasStatus.setText("État des atlas : "+UpdateDataCheckStatus.getAtlasStatus());
+		status.setText(UpdateDataCheckStatus.getStatus());
 	}
 
 	@Override
@@ -116,6 +118,7 @@ public class DataCheckerScreen implements Screen{
 		ddaStatus.addAction(Actions.alpha(alpha, time));
 		spriteDataStatus.addAction(Actions.alpha(alpha, time));
 		atlasStatus.addAction(Actions.alpha(alpha, time));		
+		status.addAction(Actions.alpha(alpha, time));		
 	}
 
 	/**
@@ -129,6 +132,7 @@ public class DataCheckerScreen implements Screen{
 		ddaStatus.getColor().a = f;
 		spriteDataStatus.getColor().a = f;
 		atlasStatus.getColor().a = f;		
+		status.getColor().a = f;		
 	}
 
 	/**
@@ -142,6 +146,7 @@ public class DataCheckerScreen implements Screen{
 		stage.addActor(ddaStatus);
 		stage.addActor(spriteDataStatus);
 		stage.addActor(atlasStatus);		
+		stage.addActor(status);		
 	}
 
 	/**
@@ -155,6 +160,7 @@ public class DataCheckerScreen implements Screen{
 		ddaStatus.setPosition(Gdx.graphics.getWidth()/2-ddaStatus.getWidth()/2, 3*(Gdx.graphics.getHeight()/8));
 		spriteDataStatus.setPosition(Gdx.graphics.getWidth()/2-spriteDataStatus.getWidth()/2, 2*(Gdx.graphics.getHeight()/8));
 		atlasStatus.setPosition(Gdx.graphics.getWidth()/2-atlasStatus.getWidth()/2, 1*(Gdx.graphics.getHeight()/8));		
+		status.setPosition(Gdx.graphics.getWidth()/2-atlasStatus.getWidth()/2, 20);		
 	}
 
 	/**
@@ -168,6 +174,7 @@ public class DataCheckerScreen implements Screen{
 		ddaStatus.align(Align.left);
 		spriteDataStatus.align(Align.left);
 		atlasStatus.align(Align.left);		
+		status.align(Align.left);		
 	}
 
 	/**
@@ -181,6 +188,7 @@ public class DataCheckerScreen implements Screen{
 		ddaStatus = new TextButton("DataCheckerScreen.show()", style_normal);
 		spriteDataStatus = new TextButton("DataCheckerScreen.show()", style_normal);
 		atlasStatus = new TextButton("DataCheckerScreen.show()", style_normal);		
+		status = new TextButton("DataCheckerScreen.show()", style_normal);		
 	}
 
 	@Override

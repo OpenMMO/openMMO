@@ -46,8 +46,9 @@ public enum AssetsLoader {
 		settings.flattenPaths = true;
 		settings.grid = true;
 		settings.limitMemory = true;
-
-		loadingStatus.waitUntilDdaFilesProcessed();
+		logger.info("Will wait for DDA to be processed.");
+		//loadingStatus.waitUntilDdaFilesProcessed();
+		logger.info("Empaquetage des Atlas de sprites");
 		List<File> sprites = new ArrayList<File>();
 		sprites.addAll(FileLister.listerDir(new File(FilesPath.getSpritePath())));
 		Iterator<File> iter_sprites = sprites.iterator();
@@ -86,7 +87,7 @@ public enum AssetsLoader {
 		settings.grid = true;
 		settings.limitMemory = true;
 
-		loadingStatus.waitUntilDdaFilesProcessed();
+
 		List<File> tuiles = new ArrayList<File>();
 		tuiles.addAll(FileLister.listerDir(new File(FilesPath.getTuilePath())));
 		Iterator<File> iter_tuiles = tuiles.iterator();
@@ -135,6 +136,7 @@ public enum AssetsLoader {
 		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
 		logger.info("Sprite Atlas : " +name+" loaded.");
 		UpdateDataCheckStatus.setAtlasStatus("Sprite Atlas : " +name+" loaded.");
+		UpdateDataCheckStatus.setStatus("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}
 	

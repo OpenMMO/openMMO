@@ -24,7 +24,6 @@ public enum LoadingStatus {
 	private final int spritesAtlasMax = 5000;
 	private int nb_computed_modulos = 0;
 	private int nb_modulos_to_compute = -1;
-	private int sprites_loaded_from_dda = 0;
 	private int tile_atlas_loaded = 0;
 	//TODO perfo Check performance of Collections.synchronizedList
 	private List<String> tilesAtlasToPackage = Collections.synchronizedList(new ArrayList<String>(tilesAtlasMax));
@@ -48,6 +47,7 @@ public enum LoadingStatus {
 	public void addTilesAtlasPackaged(String tileName) {
 		addElementToLoadedList(tileName, tilesAtlasPackaged, tilesAtlasToPackage);
 		UpdateDataCheckStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
+		UpdateDataCheckStatus.setStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
 	public boolean isTilesPackaged() {
@@ -71,6 +71,7 @@ public enum LoadingStatus {
 	public void addSpritesAtlasPackaged(String spriteName) {
 		addElementToLoadedList(spriteName, spritesAtlasPackaged, spritesAtlasToPackage);
 		UpdateDataCheckStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
+		UpdateDataCheckStatus.setStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
 	public boolean isSpritesPackaged() {
@@ -187,18 +188,6 @@ public enum LoadingStatus {
 		return tile_atlas.size() == nbTilesAtlas;
 	}
 
-	public boolean areDdaFilesProcessed() {
-		//TODO ça chie dans la colle au niveau de la création de sprite_data lorsque les sprites sont déjà extraits. il faut ajouter un truc pour attendre l'extraction des infos.
-		if(sprites_loaded_from_dda < (DataChecker.nb_expected_sprites-DataChecker.delta_ok)){
-			return false;
-		}
-		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDirectoryPath()), ".png").size()+FileLister.lister(new File(FilesPath.getTuileDirectoryPath()), ".png").size();
-		if(nb_sprites < (DataChecker.nb_expected_sprites-DataChecker.delta_ok)){
-			return false;
-		}
-		return true;
-	}
-	
 	public void addTextureAtlasSprite(String name, TextureAtlas atlas) {
 		sprite_atlas.put(name, atlas);
 	}
@@ -223,11 +212,7 @@ public enum LoadingStatus {
 		this.nbSpritesAtlas ++;
 	}
 	
-	public synchronized void addOneSpriteFromDDA(){
-		sprites_loaded_from_dda++;
-	}
-
-	public void addOneComputedModulo(){
+	public synchronized void addOneComputedModulo(){
 		nb_computed_modulos++;
 	}
 	
@@ -241,16 +226,6 @@ public enum LoadingStatus {
 		return sprite_atlas.values();
 	}
 	
-	/**
-	 * Wait until dda files are processed. This will pause the thread.
-	 */
-	public void waitUntilDdaFilesProcessed() {
-		while (!areDdaFilesProcessed()) {
-			waitLoaded();
-		}
-		SpriteManager.setDda_done(true);
-	}
-
 	/**
 	 * Wait until modulos are computed. This will pause the thread.
 	 */

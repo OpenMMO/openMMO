@@ -9,8 +9,17 @@ public class UpdateDataCheckStatus {
 	private static String ddaStatus = "not set";
 	private static String spriteDataStatus = "not set";
 	private static String atlasStatus = "not set";
+	private static String status = "not set (yet)";
 	
 
+	public static String getStatus(){
+		return status;
+	}
+	
+	public static synchronized void setStatus(String s){
+		status = s;
+	}
+	
 	/**
 	 * @return
 	 */

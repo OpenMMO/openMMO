@@ -31,8 +31,9 @@ import tools.UnsignedShort;
  */
 public class SpriteUtils {
 
-	private static int nb_extracted_sprites = 0;
 	static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
+	private static int nb_extracted_from_dda = 0;
+
 
 	
 	static boolean doTheWriting(MapPixel pixel, ByteBuffer buf){
@@ -76,7 +77,15 @@ public class SpriteUtils {
 		pixel.setTaille_zip(new UnsignedInt(extractInt(header_buf,true)));		
 		pixel.setBufPos(buf.position());
 		extractTuileInfo(pixel);
+		addOneExtractedFromDDA();
 		//logger.info("Type : "+sprite.getType().getValue());
+	}
+
+	/**
+	 * 
+	 */
+	private static void addOneExtractedFromDDA() {
+		nb_extracted_from_dda++;
 	}
 
 	/**
@@ -270,13 +279,6 @@ public class SpriteUtils {
 	public static void decrypt_dda_file(File f, boolean doWrite) {
 		int numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
 		List<MapPixel> sprites_in_dda = new ArrayList<MapPixel>();
-		/*Iterator<MapPixel> iter_px = SpriteData.getPixels().iterator();
-		while(iter_px.hasNext()){
-			MapPixel px = iter_px.next();
-			if (px.getNumDDA() == numDDA){
-				sprites_in_dda.add(px);
-			}
-		}*/
 		Iterator<Integer> iter_id = SpriteData.getPixelIndex().keySet().iterator();
 		while(iter_id.hasNext()){
 			int id = iter_id.next();
@@ -302,7 +304,6 @@ public class SpriteUtils {
 				System.exit(1);
 			}
 			extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
-			//loadingStatus.addOneSpriteFromDDA();
 			if(doWrite){
 				boolean writen = false;
 				writen = doTheWriting(pixel, buf);
@@ -310,31 +311,9 @@ public class SpriteUtils {
 					logger.fatal("Sprite non écrit => "+pixel.getTex());
 					System.exit(1);
 				}
-				/*if(tuile){
-					TilePixel pix = new TilePixel(pixel);
-					pix.setBufPos(pixel.getBufPos());
-					pix.setTaille_unzip(pixel.getTaille_unzip());
-					pix.setTaille_zip(pixel.getTaille_zip());
-					pix.setPal(pixel.getPal());
-
-					writen = doTheWriting(pix, buf);
-				}else{
-					SpritePixel pix = new SpritePixel(pixel);
-					pix.setBufPos(pixel.getBufPos());
-					pix.setTaille_unzip(pixel.getTaille_unzip());
-					pix.setTaille_zip(pixel.getTaille_zip());
-					pix.setPal(pixel.getPal());
-					
-					writen = doTheWriting(pix, buf);
-				}
-				if (!writen){
-					logger.fatal("Sprite non écrit => "+pixel.getTex());
-					System.exit(1);
-				}*/
 			}
-			if(pixel.getType() != 3) nb_extracted_sprites++;
-			//SpriteData.removeFromPixels(pixel);
-			UpdateDataCheckStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_sprites+"/"+DataChecker.nb_expected_sprites);
+			UpdateDataCheckStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_from_dda+"/"+DataChecker.nb_expected_sprites);
+			UpdateDataCheckStatus.setStatus("Sprites extraits des fichiers DDA: "+nb_extracted_from_dda+"/"+DataChecker.nb_expected_sprites);
 		}
 	}
 
@@ -581,6 +560,7 @@ public class SpriteUtils {
 		for(int i=1 ; i<=nb_palettes ; i++){
 			Palette p = new Palette(bufUnZip);
 			UpdateDataCheckStatus.setDpdStatus("Palettes extraites : "+i+"/"+nb_palettes);
+			UpdateDataCheckStatus.setStatus("Palettes extraites : "+i+"/"+nb_palettes);
 			result.put(p.getNom(),p);
 		}
 		return result;

@@ -106,6 +106,7 @@ public class DataChecker {
 	 * Wait until everything is done before loading game
 	 */
 	private static void makeSureEverythingIsOk() {
+		logger.info("Attente de la fin des tâches de vérification");
 		loadingStatus.waitUntilPixelIndexIsWritten();
 		loadingStatus.waitUntilMapsAreDecrypted();
 		loadingStatus.waitUntilSpritesPackaged();
@@ -179,6 +180,7 @@ public class DataChecker {
 		List<File> badChecksumFiles = checkChecksumFiles();
 		stopIfBadChecksum(badChecksumFiles);
 		UpdateDataCheckStatus.setSourceDataStatus("OK");
+		UpdateDataCheckStatus.setStatus("OK");
 	}
 	
 	/**
@@ -190,6 +192,7 @@ public class DataChecker {
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
 			UpdateDataCheckStatus.setSourceDataStatus("Vérification présence : "+f.getName());
+			UpdateDataCheckStatus.setStatus("Vérification présence : "+f.getName());
 			if(!f.exists()){
 				result.add(f);
 			}
@@ -226,6 +229,7 @@ public class DataChecker {
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
 			UpdateDataCheckStatus.setSourceDataStatus("Vérification MD5 : "+f.getName());
+			UpdateDataCheckStatus.setStatus("Vérification MD5 : "+f.getName());
 			if(!MD5Checker.check(f,SourceDataManager.getData().get(f))){
 				result.add(f);
 			}

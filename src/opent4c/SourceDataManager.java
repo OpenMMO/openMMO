@@ -22,6 +22,7 @@ public class SourceDataManager {
 	 */
 	public static void populate() {
 		UpdateDataCheckStatus.setSourceDataStatus("Peuplement données sources");
+		UpdateDataCheckStatus.setStatus("Peuplement données sources");
 		addSourceFile(FilesPath.getSourceDataDirectoryPath()+"v2_cavernmap.map","1f1848445f4cb1626f3ede0683388ff4");
 		addSourceFile(FilesPath.getSourceDataDirectoryPath()+"v2_dungeonmap.map","4df9dfc9466cca818ca2fd22ec560599");
 		addSourceFile(FilesPath.getSourceDataDirectoryPath()+"v2_leoworld.map","9aa2b7f484b47e3d3806e9b8a2590edc");

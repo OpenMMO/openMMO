@@ -1,9 +1,7 @@
 package opent4c;
 
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +19,7 @@ import screens.MapManager;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Group;
 
 
 /**
@@ -34,8 +33,8 @@ public class Chunk{
 	private static ScheduledFuture<?> watcher;
 	private Point center = null;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
-	private List<Acteur> chunk_sprites = null;
-	private List<Acteur> chunk_tiles = null;
+	private Group chunk_sprites = null;
+	private Group chunk_tiles = null;
 
 	
 	/**
@@ -45,8 +44,8 @@ public class Chunk{
 	 */
 	public Chunk(String map, Point point) {
 		setCenter(point);
-		chunk_sprites = new ArrayList<Acteur>(MapManager.getChunkSize().x*MapManager.getChunkSize().y);
-		chunk_tiles = new ArrayList<Acteur>(MapManager.getChunkSize().x*MapManager.getChunkSize().y);
+		chunk_sprites = new Group();
+		chunk_tiles = new Group();
 		loadingStatus.waitUntilTextureAtlasTilesCreated();
 		int upLimit = point.y-(MapManager.getChunkSize().y/2)-1;
 		int downLimit = point.y+(MapManager.getChunkSize().y/2);
@@ -69,7 +68,7 @@ public class Chunk{
 		TextureAtlas texAtlas = null;
 		MapPixel px = SpriteData.getPixelFromId(id);
 		if (px == null){
-			chunk_tiles.add(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+			chunk_tiles.addActor(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
 			return;
 		}
 		if(px.isTuile()){
@@ -80,7 +79,7 @@ public class Chunk{
 		if(texAtlas == null){
 			texAtlas = AssetsLoader.load(px.getAtlas());
 			if(texAtlas == null){
-				chunk_tiles.add(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+				chunk_tiles.addActor(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
 				return;
 			}
 		}
@@ -94,9 +93,9 @@ public class Chunk{
 			texRegion = getUnknownTile();
 		}
 		if (px.isTuile()){
-			chunk_tiles.add(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
+			chunk_tiles.addActor(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
 		}else{
-			chunk_sprites.add(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
+			chunk_sprites.addActor(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
 		}
 	}
 	
@@ -225,7 +224,7 @@ public class Chunk{
 	/**
 	 * @return the chunk's sprites
 	 */
-	public List<Acteur> getSpriteActeur() {
+	public Group getSpriteActeur() {
 		return chunk_sprites;
 	}
 	
@@ -247,7 +246,7 @@ public class Chunk{
 	/**
 	 * @return the Chunk's tiles
 	 */
-	public List<Acteur> getTileActeurs() {
+	public Group getTileActeurs() {
 		return chunk_tiles;
 	}
 	

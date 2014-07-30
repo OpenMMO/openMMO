@@ -3,11 +3,13 @@ package opent4c;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import opent4c.utils.SpriteName;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,23 +42,28 @@ public class SpriteManager {
 		pixel.setAtlas(atlas);
 		pixel.setIndexation(indexation);
 		pixel.setNumDDA(numDDA);
-		SpriteData.matchIdWithPixel(pixel);
-		SpriteData.putPixel(pixel);
+		List<Integer> ids = new ArrayList<Integer>();
+		ids = SpriteData.matchIdWithPixel(pixel);
+		pixel.setId(ids.get(0));
+		Iterator<Integer> iter = ids.iterator();
+		while(iter.hasNext()){
+			SpriteData.putPixel(iter.next(),pixel);
+		}
 	}
 	
 	/**
 	 * Extracts sprites from .dda files
 	 */
 	public static void decryptDDA(boolean doWrite){
-		logger.info("Décryptage des fichiers DDA : "+doWrite);
+		logger.info("Décryptage des fichiers DDA : ecriture = "+doWrite);
 		File f = null;
 		List<File> ddas = SourceDataManager.getDDA();
 		Iterator<File>iter_dda = ddas.iterator();
 		while (iter_dda.hasNext()){
 			f = iter_dda.next();
 			SpriteUtils.decrypt_dda_file(f,doWrite);
-			//ThreadsUtil.executeInThread(RunnableCreatorUtil.getDDAExtractorRunnable(f, doWrite));
 		}
+		SpriteData.matchIdWithTiles();
 		setDda_done(true);
 	}
 
@@ -113,6 +120,7 @@ public class SpriteManager {
 		for(int i=1 ; i<=nb_sprites_from_did ; i++){
 			addSprite(bufUnZip);
 			UpdateDataCheckStatus.setDidStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
+			UpdateDataCheckStatus.setStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
 		}
 		setDid_done(true);
 	}

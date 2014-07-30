@@ -4,6 +4,7 @@ import java.io.File;
 
 import opent4c.InputManager;
 import opent4c.SpriteData;
+import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
 import opent4c.UpdateDataCheckStatus;
 
@@ -34,6 +35,7 @@ public class RunnableCreatorUtil {
 	{
 		Runnable r = new Runnable(){
 			public void run(){
+				logger.info("Empaquetage de l'atlas : "+file.getName());
 				TexturePacker.processIfModified(setting, file.getPath(), FilesPath.getAtlasTuileDirectoryPath(), file.getName());
 				loadingStatus.addTilesAtlasPackaged(file.getName());
 			}
@@ -44,6 +46,7 @@ public class RunnableCreatorUtil {
 	public static Runnable getSpritePackerRunnable(final File file, final Settings setting) {
 		Runnable r = new Runnable() {
 			public void run() {
+				logger.info("Empaquetage de l'atlas : "+file.getName());
 				TexturePacker.processIfModified(setting, file.getPath(), FilesPath.getAtlasSpriteDirectoryPath(), file.getName());
 				loadingStatus.addSpritesAtlasPackaged(file.getName());
 			}
@@ -59,6 +62,7 @@ public class RunnableCreatorUtil {
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
 				UpdateDataCheckStatus.setSpriteDataStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
+				UpdateDataCheckStatus.setStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 				loadingStatus.addOneTileAtlasLoaded();
 			}
 		};
@@ -157,6 +161,7 @@ public class RunnableCreatorUtil {
 				SpriteData.computeModulo(tileDir);
 				loadingStatus.addOneComputedModulo();
 				UpdateDataCheckStatus.setSpriteDataStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
+				UpdateDataCheckStatus.setStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
 			}
 		};
 		return r;
@@ -198,7 +203,6 @@ public class RunnableCreatorUtil {
 			}
 		};
 		return r;
-
 	}
 
 	/**
@@ -219,5 +223,35 @@ public class RunnableCreatorUtil {
 		}
 	};
 	return r;
+	}
+
+	/**
+	 * @return
+	 */
+	public static Runnable getPixelIndexFileUpdaterRunnable() {
+		Runnable r = new Runnable(){
+
+			public void run(){
+				logger.info("mise à jour du fichier pixel_index en tâche de fond, l'affichage sera mis à jour lorsque ce sera terminé");
+				SpriteData.writeIdsToFile();
+				SpriteData.loadIdsFromFile();
+				SpriteData.initPixelIndex();
+				SpriteManager.decryptDPD();
+				SpriteManager.decryptDID();
+				SpriteManager.decryptDDA(false);
+				SpriteData.computeModulos();
+				SpriteData.createPixelIndex();
+				SpriteData.initPixelIndex();
+				SpriteData.loadPixelIndex();
+				Gdx.app.postRunnable(new Runnable(){
+					@Override
+					public void run(){
+						MapManager.renderChunks();
+					}
+				});
+				logger.info("mise à jour terminée");
+			}
+		};
+		return r;
 	}
 }
