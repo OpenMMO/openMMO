@@ -139,13 +139,13 @@ public class DataCheckerScreen implements Screen{
 	 * 
 	 */
 	private void addButtonsToStage() {
-		stage.addActor(sourcedataStatus);
+		/*stage.addActor(sourcedataStatus);
 		stage.addActor(mapsStatus);
 		stage.addActor(dpdStatus);
 		stage.addActor(didStatus);
 		stage.addActor(ddaStatus);
 		stage.addActor(spriteDataStatus);
-		stage.addActor(atlasStatus);		
+		stage.addActor(atlasStatus);	*/	
 		stage.addActor(status);		
 	}
 
@@ -160,7 +160,7 @@ public class DataCheckerScreen implements Screen{
 		ddaStatus.setPosition(Gdx.graphics.getWidth()/2-ddaStatus.getWidth()/2, 3*(Gdx.graphics.getHeight()/8));
 		spriteDataStatus.setPosition(Gdx.graphics.getWidth()/2-spriteDataStatus.getWidth()/2, 2*(Gdx.graphics.getHeight()/8));
 		atlasStatus.setPosition(Gdx.graphics.getWidth()/2-atlasStatus.getWidth()/2, 1*(Gdx.graphics.getHeight()/8));		
-		status.setPosition(Gdx.graphics.getWidth()/2-atlasStatus.getWidth()/2, 20);		
+		status.setPosition(Gdx.graphics.getWidth()/2-atlasStatus.getWidth()/2, Gdx.graphics.getHeight()/2);		
 	}
 
 	/**

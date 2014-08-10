@@ -81,6 +81,7 @@ public class MapManager implements Screen{
 	private Acteur highlight_tile;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private Edit_menu edit_menu = null;
+	private IdEditMenu editMenu;
 	public static final float blink_period = 1;
 
 	
@@ -434,9 +435,10 @@ public class MapManager implements Screen{
 	public void editMapAtCoord(Point point) {
 		int id = getIdAtCoordOnMap("v2_worldmap", point);
 		logger.info("Open menu ID "+id+"@ "+point);
-		edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurPixelOnMapFromId(id,point), highlight_stage, id);
-		ui.addActor(edit_menu);
-		Gdx.input.setInputProcessor(edit_menu);
+		//edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurPixelOnMapFromId(id,point), highlight_stage, id);
+		editMenu = new IdEditMenu(point, id);
+		//ui.addActor(edit_menu);
+		Gdx.input.setInputProcessor(editMenu);
 	}
 
 	/**
@@ -516,7 +518,7 @@ public class MapManager implements Screen{
 	 * 
 	 */
 	public static void close_edit_menu() {
-		m.edit_menu = null;
+		m.editMenu = null;
 		unHighlight();
 		Gdx.input.setInputProcessor(m.controller);
 	}

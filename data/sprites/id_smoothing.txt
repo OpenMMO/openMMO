@@ -10,8 +10,8 @@
 10 Lava 1
 11 EarthTile
 12 TownRoadDale
-13 Rock
-14 Wooden
+13 RockFloor
+14 Floor Wooden 1
 15 Ice 1
 17 CavernFloor
 18 Dtm4 1
@@ -24,9 +24,9 @@
 278 srf 1
 277 srf 1
 276 srf 1
-282 tmpl1 1 T1 NormalGrass T2 EarthTile
-281 tmpl1 1 T1 NormalGrass T2 EarthTile
-280 tmpl1 1 T1 NormalGrass T2 EarthTile
+282 Tmpl1 4
+281 Tmpl1 2
+280 Tmpl1 2
 287 tmpl1 1 T1 NormalGrass T2 EarthTile
 286 tmpl1 1 T1 NormalGrass T2 EarthTile
 285 tmpl1 1 T1 NormalGrass T2 EarthTile
@@ -132,7 +132,7 @@
 412 tmpl1 1 T1 NormalGrass T2 Grass
 413 tmpl1 1 T1 NormalGrass T2 Grass
 402 tmpl1 1 T1 NormalGrass T2 Grass
-403 tmpl1 1 T1 NormalGrass T2 Grass
+403 Tmpl1 3
 400 tmpl3 1 T1 Water3 T2 NormalGrass
 401 tmpl1 1 T1 NormalGrass T2 Grass
 406 tmpl1 1 T1 NormalGrass T2 Grass
@@ -909,13 +909,13 @@
 1269 Bridge1
 1266 Painting1
 1267 Bridge1
-1264 Manacle 2
+1264 Manacle 1
 1265 Painting1
 1278 HuteGobG1Ffoor
 1279 HuteGobG1Ffoor
 1276 Border2
 1277 LHBridge
-1274 MMMBorder1
+1274 Border1
 1275 Border2
 1272 Bridge3
 1273 Border1
@@ -1190,10 +1190,10 @@
 3048 Bed Simple
 3051 StuccoMainSmallWallB
 3050 Bed Double Type 2
-3053 StuccoDarkWindowB
+3053 StuccoMainSmallWallB
 3052 StuccoMainSmallWallB
 3055 StuccoMainSmallWallB
-3054 StuccoMainWindowC
+3054 StuccoMainSmallWallB
 3041 Table Carre Moyenne Bois
 3040 Petite Table Ronde Bois
 3043 SmallTreeInBowl
@@ -1326,7 +1326,7 @@
 3251 Lights 5
 3248 Lights 3
 3249 Lights 4
-3254 MMMChairs 1
+3254 Chairs 1
 3255 Chairs 1
 3252 Lights 5
 3253 Kitchen 1
@@ -1365,13 +1365,13 @@
 3155 DungeonMainWall 1
 3154 DungeonMainWall 1
 3148 StuccoMainSmallWallB
-3149 StuccoDarkWall 3
+3149 StuccoMainSmallWallB
 3150 StuccoMainSmallWallB
 3151 DungeonMainWall 1
 3144 Wood Sign 2
 3145 StuccoMainSmallWallB
-3146 StuccoMainSmallWallA
-3147 StuccoDarkWall 2
+3146 StuccoMainSmallWallB
+3147 StuccoMainSmallWallB
 3140 Small Gold Sign
 3141 Small Marble Sign
 3142 Wood Sign 1
@@ -1684,10 +1684,10 @@
 3797 StuccoDarkSmallWallB
 3798 StuccoDarkSmallWallB
 3799 StuccoDarkSmallWallB
-3800 StuccoMainWallDoor 2
-3801 StuccoDarkWallDoor 2
-3802 StuccoDarkWallDoor 1
-3803 StuccoMainWallDoor 1
+3800 StuccoDarkSmallWallB
+3801 StuccoDarkSmallWallB
+3802 StuccoDarkSmallWallB
+3803 StuccoDarkSmallWallB
 3804 BlackSmithForgery
 3805 ObjectLightHavenCrypt
 3806 ObjectLightHavenFountain
@@ -1708,22 +1708,22 @@
 3788 StuccoDarkSmallWallB
 3791 StuccoDarkSmallWallB
 3790 StuccoDarkSmallWallB
-3766 StuccoCorner2
-3767 StuccoCorner
+3766 StuccoDarkSmallWallB
+3767 StuccoDarkSmallWallB
 3764 StuccoDarkSmallWallB
-3765 StuccoCornerN
+3765 StuccoDarkSmallWallB
 3762 StuccoDarkSmallWallB
 3763 StuccoDarkSmallWallB
 3760 StuccoDarkSmallWallB
-3761 StuccoMainSmallWallB
+3761 StuccoDarkSmallWallB
 3774 StuccoDarkSmallWallB
 3775 StuccoDarkSmallWallB
-3772 StuccoCornerTNW
+3772 StuccoDarkSmallWallB
 3773 StuccoDarkSmallWallB
 3770 StuccoDarkSmallWallB
-3771 StuccoCornerTSW
-3768 StuccoCornerV
-3769 StuccoCornerTNE
+3771 StuccoDarkSmallWallB
+3768 StuccoDarkSmallWallB
+3769 StuccoDarkSmallWallB
 3751 CastleWall 1
 3750 CastleWall 1
 3749 CastleWall 1
@@ -1877,7 +1877,7 @@
 4094 GLargeC3
 4095 3NBrickWallS3SE
 4035 NBrickWallSCoinE
-4034 NBrickWallSSEDoorT
+4034 NBrickWallSSE
 4033 NBrickWallSSE
 4032 NBrickWallSNEDoorT
 4039 NBrickWallSSE
@@ -1887,7 +1887,7 @@
 4043 NBrickWallSSE
 4042 NBrickWallSSE
 4041 NBrickWallSSE
-4040 NBrickWallSTNE
+4040 NBrickWallSSE
 4047 NBrickWallSSE
 4046 NBrickWallSSE
 4045 NBrickWallSSE
@@ -1908,8 +1908,8 @@
 4063 NBrickWallS2SE
 4060 NBrickWallS2SE
 4061 NBrickWallS2SE
-4001 MidWoodWallSEWindow
-4000 MidWoodWallNEWindow
+4001 WoodWallSE
+4000 WoodWallSE
 4013 NBrickWallSE
 4012 NBrickWallSE
 4015 NBrickWallSE
@@ -1950,22 +1950,22 @@
 3978 BarBar
 3977 HorseWater
 3976 HorseWater
-3990 WoodWallSEDoorT
-3991 WoodWallCornerR
-3988 WoodWallNEDoorT
-3989 WoodWallSEDoorB
-3986 WoodWallNEWindow
-3987 WoodWallNEDoorB
-3984 WoodWallNE
-3985 WoodWallSEWindow
-3998 WoodWallTSE
-3999 WoodWallTSW
-3996 WoodWallTNE
-3997 WoodWallTNW
-3994 WoodWallCornerB
+3990 WoodWallSE
+3991 WoodWallSE
+3988 WoodWallSE
+3989 WoodWallSE
+3986 WoodWallSE
+3987 WoodWallSE
+3984 WoodWallSE
+3985 WoodWallSE
+3998 WoodWallSE
+3999 WoodWallSE
+3996 WoodWallSE
+3997 WoodWallSE
+3994 WoodWallSE
 3995 WoodWallSE
-3992 WoodWallCornerT
-3993 WoodWallCornerL
+3992 WoodWallSE
+3993 WoodWallSE
 3944 HuteGob1
 3945 OrgueSmall
 3946 TableForge1
@@ -2138,70 +2138,70 @@
 4426 CastleSE1
 4425 CastleSE1
 4424 CastleSE1
-4131 5NBrickWallS5SEWindow
-4130 5NBrickWallS5NE
+4131 5NBrickWallS5SE
+4130 5NBrickWallS5SE
 4129 5NBrickWallS5SE
-4128 4NBrickWallS4TSW
-4135 5NBrickWallS5SEDoorB
-4134 5NBrickWallS5NEDoorT
-4133 5NBrickWallS5NEDoorB
-4132 5NBrickWallS5NEWindow
-4139 5NBrickWallS5CoinW
-4138 5NBrickWallS5CoinN
-4137 5NBrickWallS5CoinE
-4136 5NBrickWallS5SEDoorT
-4143 5NBrickWallS5TNW
-4142 5NBrickWallS5TNE
+4128 4NBrickWallS4SE
+4135 5NBrickWallS5SE
+4134 5NBrickWallS5SE
+4133 5NBrickWallS5SE
+4132 5NBrickWallS5SE
+4139 5NBrickWallS5SE
+4138 5NBrickWallS5SE
+4137 5NBrickWallS5SE
+4136 5NBrickWallS5SE
+4143 5NBrickWallS5SE
+4142 5NBrickWallS5SE
 4141 5NBrickWallS5SE
-4140 5NBrickWallS5CoinS
+4140 5NBrickWallS5SE
 4146 6NBrickWallS6SE
-4147 6NBrickWallS6NE
-4144 5NBrickWallS5TSE
-4145 5NBrickWallS5TSW
-4150 6NBrickWallS6NEDoorB
-4151 6NBrickWallS6NEDoorT
-4148 6NBrickWallS6SEWindow
-4149 6NBrickWallS6NEWindow
-4154 6NBrickWallS6CoinE
-4155 6NBrickWallS6CoinN
-4152 6NBrickWallS6SEDoorB
-4153 6NBrickWallS6SEDoorT
+4147 6NBrickWallS6SE
+4144 5NBrickWallS5SE
+4145 5NBrickWallS5SE
+4150 6NBrickWallS6SE
+4151 6NBrickWallS6SE
+4148 6NBrickWallS6SE
+4149 6NBrickWallS6SE
+4154 6NBrickWallS6SE
+4155 6NBrickWallS6SE
+4152 6NBrickWallS6SE
+4153 6NBrickWallS6SE
 4158 6NBrickWallS6SE
-4159 6NBrickWallS6TNE
-4156 6NBrickWallS6CoinW
-4157 6NBrickWallS6CoinS
-4097 3NBrickWallS3SEWindow
-4096 3NBrickWallS3NE
-4099 3NBrickWallS3NEDoorB
-4098 3NBrickWallS3NEWindow
-4101 3NBrickWallS3SEDoorB
-4100 3NBrickWallS3NEDoorT
-4103 3NBrickWallS3CoinE
-4102 3NBrickWallS3SEDoorT
-4105 3NBrickWallS3CoinW
-4104 3NBrickWallS3CoinN
+4159 6NBrickWallS6SE
+4156 6NBrickWallS6SE
+4157 6NBrickWallS6SE
+4097 3NBrickWallS3SE
+4096 3NBrickWallS3SE
+4099 3NBrickWallS3SE
+4098 3NBrickWallS3SE
+4101 3NBrickWallS3SE
+4100 3NBrickWallS3SE
+4103 3NBrickWallS3SE
+4102 3NBrickWallS3SE
+4105 3NBrickWallS3SE
+4104 3NBrickWallS3SE
 4107 3NBrickWallS3SE
-4106 3NBrickWallS3CoinS
-4109 3NBrickWallS3TNW
-4108 3NBrickWallS3TNE
-4111 3NBrickWallS3TSW
-4110 3NBrickWallS3TSE
+4106 3NBrickWallS3SE
+4109 3NBrickWallS3SE
+4108 3NBrickWallS3SE
+4111 3NBrickWallS3SE
+4110 3NBrickWallS3SE
 4112 4NBrickWallS4SE
-4113 4NBrickWallS4NE
-4114 4NBrickWallS4SEWindow
-4115 4NBrickWallS4NEWindow
-4116 4NBrickWallS4NEDoorB
-4117 4NBrickWallS4NEDoorT
-4118 4NBrickWallS4SEDoorB
-4119 4NBrickWallS4SEDoorT
-4120 4NBrickWallS4CoinE
-4121 4NBrickWallS4CoinN
-4122 4NBrickWallS4CoinW
-4123 4NBrickWallS4CoinS
-4124 4NBrickWallS4CoinX
-4125 4NBrickWallS4TNE
-4126 4NBrickWallS4TNW
-4127 4NBrickWallS4TSE
+4113 4NBrickWallS4SE
+4114 4NBrickWallS4SE
+4115 4NBrickWallS4SE
+4116 4NBrickWallS4SE
+4117 4NBrickWallS4SE
+4118 4NBrickWallS4SE
+4119 4NBrickWallS4SE
+4120 4NBrickWallS4SE
+4121 4NBrickWallS4SE
+4122 4NBrickWallS4SE
+4123 4NBrickWallS4SE
+4124 4NBrickWallS4SE
+4125 4NBrickWallS4SE
+4126 4NBrickWallS4SE
+4127 4NBrickWallS4SE
 4199 CastleSE1
 4198 CastleSE1
 4197 CastleSE1
@@ -2238,10 +2238,10 @@
 4164 3RuinedCoinS
 4167 3RuinedCoinS
 4166 3RuinedCoinS
-4161 6NBrickWallS6TSE
-4160 6NBrickWallS6TNW
+4161 6NBrickWallS6SE
+4160 6NBrickWallS6SE
 4163 3RuinedCoinS
-4162 6NBrickWallS6TSW
+4162 6NBrickWallS6SE
 4173 5RuinedCoinS
 4172 4RuinedCoinS
 4175 5RuinedCoinS
@@ -2252,7 +2252,7 @@
 4170 4RuinedCoinS
 4180 6RuinedCoinS
 4181 6RuinedCoinS
-4182 6RuinedNEWall
+4182 6RuinedCoinS
 4183 Torture6
 4176 5RuinedCoinS
 4177 5RuinedCoinS
@@ -2487,18 +2487,18 @@
 5134 INArmorPoteau
 5136 INBowTraining
 5137 INBowTraining
-6008 RougeBeige
-6009 AnimWater01
+6008 STuileTmpl2
+6009 %02dAnimWater01
 6011 NewLava
 6013 Cendre
 6000 Snow
 6001 EarthI
 6002 CavernG
 6003 IceFloor
-6004 BlancNoirBig
+6004 TuileTmpl1
 6005 TuileTmpl2
 6006 Rock2Floor
-6007 BlancNoir
+6007 STuileTmpl1
 6568 tmpl1 1 T1 Snow T2 EarthI
 6569 tmpl1 1 T1 Snow T2 EarthI
 6570 tmpl1 1 T1 Snow T2 EarthI
@@ -2834,8 +2834,8 @@
 7159 tmpl3 1 T1 Grass T2 3Wooden
 7158 tmpl3 1 T1 Grass T2 3Wooden
 7003 tmpl3 1 T1 NormalGrass T2 2Wooden
-7000 Wooden2
-7001 Wooden3
+7000 2Wooden
+7001 3Wooden
 7006 tmpl3 1 T1 NormalGrass T2 2Wooden
 7007 tmpl3 1 T1 NormalGrass T2 2Wooden
 7004 tmpl3 1 T1 NormalGrass T2 2Wooden
@@ -3124,7 +3124,7 @@
 7491 RockFloor T1 NormalGrass T2 tmpl3 1
 7490 RockFloor T1 NormalGrass T2 tmpl3 1
 7489 RockFloor T1 NormalGrass T2 tmpl3 1
-7488 RockFloor T1 NormalGrass T2 tmpl3 1
+7488 Tmpl3 25
 7518 HardRock T1 Cendre T2 tmpl1 1
 7519 HardRock T1 Cendre T2 tmpl1 1
 7516 HardRock T1 Cendre T2 tmpl1 1
@@ -3162,9 +3162,9 @@
 7482 RockFloor T1 NormalGrass T2 tmpl3 1
 7483 RockFloor T1 NormalGrass T2 tmpl3 1
 7484 RockFloor T1 NormalGrass T2 tmpl3 1
-7485 RockFloor T1 NormalGrass T2 tmpl3 1
-7486 RockFloor T1 NormalGrass T2 tmpl3 1
-7487 RockFloor T1 NormalGrass T2 tmpl3 1
+7485 Tmpl3 27
+7486 Tmpl3 26
+7487 Tmpl3 28
 7472 RockFloor T1 NormalGrass T2 tmpl3 1
 7473 RockFloor T1 NormalGrass T2 tmpl3 1
 7474 RockFloor T1 NormalGrass T2 tmpl3 1

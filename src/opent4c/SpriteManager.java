@@ -42,13 +42,14 @@ public class SpriteManager {
 		pixel.setAtlas(atlas);
 		pixel.setIndexation(indexation);
 		pixel.setNumDDA(numDDA);
-		List<Integer> ids = new ArrayList<Integer>();
-		ids = SpriteData.matchIdWithPixel(pixel);
-		pixel.setId(ids.get(0));
-		Iterator<Integer> iter = ids.iterator();
-		while(iter.hasNext()){
-			SpriteData.putPixel(iter.next(),pixel);
-		}
+		//List<Integer> ids = new ArrayList<Integer>();
+		//ids = SpriteData.matchPixelWithId(pixel);
+		//pixel.setId(ids.get(0));
+		//Iterator<Integer> iter = ids.iterator();
+		///while(iter.hasNext()){
+		//	SpriteData.putPixel(iter.next(),pixel);
+		//}
+		SpriteData.putPixel(-1, pixel);
 	}
 	
 	/**
@@ -63,7 +64,7 @@ public class SpriteManager {
 			f = iter_dda.next();
 			SpriteUtils.decrypt_dda_file(f,doWrite);
 		}
-		SpriteData.matchIdWithTiles();
+		//SpriteData.matchIdWithTiles();
 		setDda_done(true);
 	}
 
@@ -122,6 +123,9 @@ public class SpriteManager {
 			UpdateDataCheckStatus.setDidStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
 			UpdateDataCheckStatus.setStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
 		}
+		SpriteData.matchIdWithTiles();
+		SpriteData.matchIdWithSprites();
+
 		setDid_done(true);
 	}
 

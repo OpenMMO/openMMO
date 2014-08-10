@@ -95,8 +95,8 @@ public class Edit_menu extends Group implements InputProcessor {
 	private void editUnknown(int test_alternative) {
 		String tex = "";
 		if (pixel_list == null){
-			if(SpriteData.ids.containsKey(id)){
-				tex = SpriteData.ids.get(id);
+			if(SpriteData.getIds().containsKey(id)){
+				tex = SpriteData.getIds().get(id);
 				pixel_list = getUnknownAlternatives(tex);
 			}else{
 				tex = "non présente";
@@ -313,7 +313,7 @@ public class Edit_menu extends Group implements InputProcessor {
 	 */
 	private void validateAlternative(int alternative) {
 			MapPixel pix = pixel_list.get(alternative);
-			SpriteData.ids.put(id, pix.getTex());
+			SpriteData.getIds().put(id, pix.getTex());
 			logger.info("Validation du mapping : "+id+"=>"+pix.getTex());
 			pixel_list = null;
 			ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable());

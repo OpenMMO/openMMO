@@ -29,13 +29,18 @@ import opent4c.utils.ThreadsUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
+
 public class SpriteData {
 	private static Logger logger = LogManager.getLogger(SpriteData.class.getSimpleName());
-	public static Map<Integer,String> ids = null;
+	private static Map<Integer,String> ids = null;
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static List<MapPixel> unknownPixels = new ArrayList<MapPixel>();
 	private static Map<Integer, List<MapPixel>> pixel_index = new HashMap<Integer, List<MapPixel>>();
 	private static Map<String, Point> modulos = new HashMap<String, Point>();
+	private static Map<Integer, List<MapPixel>> to_add;
+	private static List<Integer> to_remove;
+	private static int index;
 
 	/**
 	 * 
@@ -141,6 +146,10 @@ public class SpriteData {
 	 * @param tileDir
 	 */
 	public static void computeModulo(File tileDir) {
+		//escape smoothing tiles
+		if(tileDir.getName().equals("GenericMerge1")|tileDir.getName().equals("GenericMerge3")|tileDir.getName().equals("GenericMerge2Wooden")|tileDir.getName().equals("WoodenSmooth")){
+			return;
+		}
 		int moduloX=1, moduloY=1;
 		ArrayList<File> tiles = new ArrayList<File>();
 		tiles.addAll(FileLister.lister(tileDir.getAbsoluteFile(),".png"));
@@ -196,19 +205,20 @@ public class SpriteData {
 		}
 	}
 
-	public static List<Integer> matchIdWithPixel(MapPixel pixel) {
+	public static List<Integer> matchPixelWithId(MapPixel pixel) {
 		List<Integer> result = new ArrayList<Integer>();
-		Iterator<Integer> iter = SpriteData.ids.keySet().iterator();
+		//generic
+		Iterator<Integer> iter = SpriteData.getIds().keySet().iterator();
 		while (iter.hasNext()){
 			int key = iter.next();
-			String sn = SpriteData.ids.get(key);
-			if (pixel.getTex().equals(sn)){
+			String sn = SpriteData.getIds().get(key);
+			if (pixel.getTex().equals(sn) | pixel.getAtlas().equals(sn)){
 				result.add(key);
-				//logger.info(key+"/"+ids.size()+" : "+sn.getName()+"<=>"+pixel.getTex());
+				//logger.info(key+" : "+sn+"<=>"+pixel.getTex());
 			}
 		}
-			if(result.size() == 0) result.add(-1);
-			return result;
+		if(result.size() == 0) result.add(-1);
+		return result;
 	}
 
 	/**
@@ -216,7 +226,7 @@ public class SpriteData {
 	 * puts info into a HashMap<Integer,SpriteName>
 	 */
 	public static void loadIdsFromFile(){
-		ids = new HashMap<Integer,String>();
+		setIds(new HashMap<Integer,String>());
 		File id_file = new File(FilesPath.getIdFilePath());
 		SpriteUtils.logger.info("Lecture du fichier "+id_file.getName());
 		try{
@@ -246,10 +256,10 @@ public class SpriteData {
 			SpriteUtils.logger.fatal(e);
 			System.exit(1);
 		}
-		Iterator<Integer> iter_sn = ids.keySet().iterator();
+		Iterator<Integer> iter_sn = getIds().keySet().iterator();
 		while (iter_sn.hasNext()){
 			int id = iter_sn.next();
-			String sn = ids.get(id);
+			String sn = getIds().get(id);
 			try {
 				dat_file.write(id+" "+sn+System.lineSeparator());
 			} catch (IOException e) {
@@ -275,7 +285,7 @@ public class SpriteData {
 		String value = "";
 		key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
 		value = line.substring(line.indexOf(' ')+1);
-		ids.put(key,value);
+		getIds().put(key,value);
 	}
 
 	/**
@@ -333,53 +343,26 @@ public class SpriteData {
 	 */
 	public static void matchIdWithTiles() {
 		Iterator<MapPixel> iter = pixel_index.get(-1).iterator();
-		Map<Integer,List<MapPixel>> to_add = new HashMap<Integer,List<MapPixel>>();
-		List<Integer> to_remove = new ArrayList<Integer>();
-		int index = 0;
+		to_add = new HashMap<Integer,List<MapPixel>>();
+		to_remove = new ArrayList<Integer>();
+		index = 0;
 		while(iter.hasNext()){
-			UpdateDataCheckStatus.setSpriteDataStatus("Match Id With Tiles : "+index+"/"+(pixel_index.get(-1).size()-1));
+			matchUnknownTileWithId(iter.next());
 			UpdateDataCheckStatus.setStatus("Match Id With Tiles : "+index+"/"+(pixel_index.get(-1).size()-1));
-			MapPixel px = iter.next();
-			Iterator<Integer> iter_id = ids.keySet().iterator();
-			while(iter_id.hasNext()){
-				int id = iter_id.next();
-				String sn = ids.get(id);
-				if((px.isTuile()) & (px.getAtlas().equals(sn))){
-					px.setId(id);
-					if(to_add.containsKey(id)){
-						to_add.get(id).add(px);
-					}else{
-						List<MapPixel> list = new ArrayList<MapPixel>();
-						list.add(px);
-						to_add.put(id, list);
-					}
-					if(!to_remove.contains(index))to_remove.add(index);
-				}else if(px.isTuile()){
-					if(px.getTex().substring(0, px.getTex().indexOf('(')-1).equals(sn)){
-						px.setId(id);
-						if(to_add.containsKey(id)){
-							to_add.get(id).add(px);
-						}else{
-							List<MapPixel> list = new ArrayList<MapPixel>();
-							list.add(px);
-							to_add.put(id, list);
-						}
-					}
-				}
-			}
 			index++;
 		}
-		Iterator<Integer> iter_to_remove = to_remove.iterator();
-		int i = 0;
-		while(iter_to_remove.hasNext()){
-			pixel_index.get(-1).remove(iter_to_remove.next());
-			UpdateDataCheckStatus.setStatus("Mise à jour de pixel_index (suppression des tuiles découvertes de la liste des inconnus) : "+i+"/"+to_remove.size());
-			i++;
-		}
-		i=0;
+		removeDiscovered();
+		addDiscovered();
+	}
+
+	/**
+	 * 
+	 */
+	private static void addDiscovered() {
+		int i=0;
 		Iterator<Integer> iter_to_add = to_add.keySet().iterator();
 		while(iter_to_add.hasNext()){
-			UpdateDataCheckStatus.setStatus("Mise à jour de pixel_index (ajout des tuiles découvertes de les listes principales) : "+i+"/"+to_add.size());
+			UpdateDataCheckStatus.setStatus("Mise à jour de pixel_index (ajout des découvertes dans les listes principales) : "+i+"/"+to_add.size());
 			int id = iter_to_add.next();
 			if(pixel_index.containsKey(id)){
 				pixel_index.get(id).addAll(to_add.get(id));
@@ -389,7 +372,42 @@ public class SpriteData {
 			i++;
 		}
 		to_add.clear();
+	}
+
+	/**
+	 * 
+	 */
+	private static void removeDiscovered() {
+		Iterator<Integer> iter_to_remove = to_remove.iterator();
+		int i = 0;
+		while(iter_to_remove.hasNext()){
+			pixel_index.get(-1).remove(iter_to_remove.next());
+			UpdateDataCheckStatus.setStatus("Mise à jour de pixel_index (suppression des découvertes de la liste des inconnus) : "+i+"/"+to_remove.size());
+			i++;
+		}
 		to_remove.clear();
+	}
+
+	/**
+	 * @param next
+	 */
+	private static void matchUnknownTileWithId(MapPixel px) {
+		Iterator<Integer> iter_id = getIds().keySet().iterator();
+		while(iter_id.hasNext()){
+			int id = iter_id.next();
+			String sn = getIds().get(id);
+			if(px.getAtlas().equals(sn)){
+				px.setId(id);
+				if(to_add.containsKey(id)){
+					to_add.get(id).add(px);
+				}else{
+					List<MapPixel> list = new ArrayList<MapPixel>();
+					list.add(px);
+					to_add.put(id, list);
+				}
+				if(!to_remove.contains(index))to_remove.add(index);
+			}
+		}		
 	}
 
 	/**
@@ -397,12 +415,12 @@ public class SpriteData {
 	 * @return
 	 */
 	public static List<MapPixel> getPixelsWithSameMapping(int id){
-		String mapping = ids.get(id);
+		String mapping = getIds().get(id);
 		List<MapPixel> list = new ArrayList<MapPixel>();
-		Iterator<Integer> iter = ids.keySet().iterator();
+		Iterator<Integer> iter = getIds().keySet().iterator();
 		while(iter.hasNext()){
 			int i = iter.next();
-			String s = ids.get(i);
+			String s = getIds().get(i);
 			if(s.equals(mapping))list.addAll(pixel_index.get(i));
 		}
 		return list;
@@ -431,5 +449,53 @@ public class SpriteData {
 		}
 
 		return list;
+	}
+
+	/**
+	 * 
+	 */
+	public static void matchIdWithSprites() {
+		Iterator<MapPixel> iter = pixel_index.get(-1).iterator();
+		to_add = new HashMap<Integer,List<MapPixel>>();
+		to_remove = new ArrayList<Integer>();
+		index = 0;
+		while(iter.hasNext()){
+			matchUnknownSpriteWithId(iter.next());
+			UpdateDataCheckStatus.setStatus("Match Id With Sprites : "+index+"/"+(pixel_index.get(-1).size()-1));
+
+			index++;
+		}
+		removeDiscovered();
+		addDiscovered();	
+	}
+
+	/**
+	 * @param next
+	 */
+	private static void matchUnknownSpriteWithId(MapPixel px) {
+		Iterator<Integer> iter_id = getIds().keySet().iterator();
+		while(iter_id.hasNext()){
+			int id = iter_id.next();
+			String sn = getIds().get(id);
+			if((px.getTex().equals(sn))){
+				px.setId(id);
+				if(to_add.containsKey(id)){
+					to_add.get(id).add(px);
+				}else{
+					List<MapPixel> list = new ArrayList<MapPixel>();
+					list.add(px);
+					to_add.put(id, list);
+				}
+				if(!to_remove.contains(index))to_remove.add(index);
+			}
+		}		
+	}
+
+	public static Map<Integer,String> getIds() {
+		return ids;
+	}
+
+	public static void setIds(Map<Integer,String> ids) {
+		SpriteData.ids = ids;
 	}
 }

@@ -33,6 +33,7 @@ public class SpriteUtils {
 
 	static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
 	private static int nb_extracted_from_dda = 0;
+	private static int nb_writen = 0;
 
 
 	
@@ -77,7 +78,6 @@ public class SpriteUtils {
 		pixel.setTaille_zip(new UnsignedInt(extractInt(header_buf,true)));		
 		pixel.setBufPos(buf.position());
 		extractTuileInfo(pixel);
-		addOneExtractedFromDDA();
 		//logger.info("Type : "+sprite.getType().getValue());
 	}
 
@@ -125,14 +125,13 @@ public class SpriteUtils {
 		if (pixel.getAtlas().equals("Sword01"))result = false;
 		if (pixel.getAtlas().equals("V2Effect"))result = false;
 		if (pixel.getAtlas().equals("Weather"))result = false;
-		if (pixel.getAtlas().equals("GenericMerge3"))result = false;
+		//if (pixel.getAtlas().equals("GenericMerge3"))result = false;
 		if (pixel.getAtlas().equals("Root"))result = false;
 		if (pixel.getAtlas().equals("VSSmooth"))result = false;
-		if (pixel.getAtlas().equals("GenericMerge1"))result = false;
-		if (pixel.getAtlas().equals("GenericMerge2Wooden"))result = false;
-		if (pixel.getAtlas().equals("WoodenSmooth"))result = false;
+		//if (pixel.getAtlas().equals("GenericMerge1"))result = false;
+		//if (pixel.getAtlas().equals("GenericMerge2Wooden"))result = false;
+		//if (pixel.getAtlas().equals("WoodenSmooth"))result = false;
 		if (pixel.getAtlas().equals("Black"))result = false;
-		
 		pixel.setTuile(result);
 	}
 
@@ -304,6 +303,7 @@ public class SpriteUtils {
 				System.exit(1);
 			}
 			extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
+			if(!doWrite)addOneExtractedFromDDA();
 			if(doWrite){
 				boolean writen = false;
 				writen = doTheWriting(pixel, buf);
@@ -311,10 +311,18 @@ public class SpriteUtils {
 					logger.fatal("Sprite non écrit => "+pixel.getTex());
 					System.exit(1);
 				}
+				addOneWriten();
 			}
-			UpdateDataCheckStatus.setDdaStatus("Sprites extraits des fichiers DDA: "+nb_extracted_from_dda+"/"+DataChecker.nb_expected_sprites);
-			UpdateDataCheckStatus.setStatus("Sprites extraits des fichiers DDA: "+nb_extracted_from_dda+"/"+DataChecker.nb_expected_sprites);
+			if(!doWrite)UpdateDataCheckStatus.setStatus("Sprites extraits des fichiers DDA: "+nb_extracted_from_dda+"/"+DataChecker.nb_expected_sprites);
+			if(doWrite)UpdateDataCheckStatus.setStatus("Sprites écrits: "+nb_writen+"/"+DataChecker.nb_expected_sprites);
 		}
+	}
+
+	/**
+	 * 
+	 */
+	private static void addOneWriten() {
+		nb_writen++;
 	}
 
 	/**

@@ -91,6 +91,10 @@ public class Chunk{
 		if(texRegion == null){
 			//logger.warn("On tente de charger une TextureRegion null");
 			texRegion = getUnknownTile();
+			//smoothing
+			if(px.getAtlas().equals("GenericMerge1")|px.getAtlas().equals("GenericMerge3")|px.getAtlas().equals("GenericMerge2Wooden")|px.getAtlas().equals("WoodenSmooth")){
+				texRegion = texAtlas.findRegion(px.getTex());
+			}
 		}
 		if (px.isTuile()){
 			chunk_tiles.addActor(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
@@ -108,6 +112,7 @@ public class Chunk{
 		TextureAtlas texAtlas = null;
 		MapPixel px = SpriteData.getPixelFromId(id);
 		if (px == null){
+			logger.warn("ID non mappée : "+id);
 			return new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
 		}
 		if(px.isTuile()){
@@ -118,6 +123,8 @@ public class Chunk{
 		if(texAtlas == null){
 			texAtlas = AssetsLoader.load(px.getAtlas());
 			if(texAtlas == null){
+				logger.warn("Atlas null : "+id);
+
 				return new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
 			}
 		}
@@ -127,7 +134,7 @@ public class Chunk{
 			texRegion = texAtlas.findRegion(px.getTex());
 		}
 		if(texRegion == null){
-			logger.warn("On tente de charger une TextureRegion null");
+			logger.warn("TextureRegion null : "+id);
 			texRegion = getUnknownTile();
 		}
 		return new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset());
