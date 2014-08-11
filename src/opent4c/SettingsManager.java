@@ -14,6 +14,7 @@ public class SettingsManager {
 	private static LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 	private static Logger logger = LogManager.getLogger(SettingsManager.class.getSimpleName());
 	private static int nb_tile_dim = 40;
+	private static String CONSOLE_INPUT = "";
 	
 	//TODO Faire un truc plus complet.
 	/**
@@ -25,7 +26,7 @@ public class SettingsManager {
 		cfg.width = getWidth();
 		cfg.height = getHeight();
 		cfg.fullscreen = false;
-		cfg.width = 640;
+		cfg.width = 960;
 		cfg.height = 480;
 //		cfg.fullscreen = true;
 		cfg.backgroundFPS = 24;
@@ -110,5 +111,12 @@ public class SettingsManager {
 	 */
 	public static LwjglApplicationConfiguration getSettings() {
 		return cfg;
+	}
+
+	/**
+	 * @param result
+	 */
+	public static void setCONSOLE_INPUT(String input) {
+		CONSOLE_INPUT  = input;
 	}
 }

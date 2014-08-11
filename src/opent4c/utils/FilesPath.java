@@ -219,22 +219,9 @@ public class FilesPath {
 		return sb.toString();
 	}
 
-	public static String getSpriteDataFilePath() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("data");
-		sb.append(File.separator);
-		sb.append("sprites");		
-		sb.append(File.separator);
-		sb.append("sprite_data");
-		
-		return sb.toString();
-	}
-
 	public static String getIdFilePath() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("data");
-		sb.append(File.separator);
-		sb.append("sprites");		
+		sb.append("data");		
 		sb.append(File.separator);
 		sb.append("id.txt");		
 		
@@ -264,41 +251,35 @@ public class FilesPath {
 	/**
 	 * @return
 	 */
-	public static String getModuloFilePath() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("data");
-		sb.append(File.separator);
-		sb.append("sprites");		
-		sb.append(File.separator);
-		sb.append("modulo_data");
-		
-		return sb.toString();
-	}
-
-	/**
-	 * @return
-	 */
-	public static String getTileDataFilePath() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("data");
-		sb.append(File.separator);
-		sb.append("sprites");		
-		sb.append(File.separator);
-		sb.append("tile_data");
-		
-		return sb.toString();
-	}
-
-	/**
-	 * @return
-	 */
 	public static String getPixelIndexFilePath() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("data");
 		sb.append(File.separator);
-		sb.append("sprites");		
-		sb.append(File.separator);
 		sb.append("pixel_index");
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @return
+	 */
+	public static String getBadPaletteFilePath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("bad_palettes");
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @return
+	 */
+	public static String getMirrorFilePath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("mirrors");
 		
 		return sb.toString();
 	}

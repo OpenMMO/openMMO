@@ -1,8 +1,12 @@
 package opent4c.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import opent4c.InputManager;
+import opent4c.SettingsManager;
 import opent4c.SpriteData;
 import opent4c.SpriteManager;
 import opent4c.SpriteUtils;
@@ -11,6 +15,7 @@ import opent4c.UpdateDataCheckStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import screens.IdEditMenu;
 import screens.MapManager;
 import t4cPlugin.Places;
 
@@ -250,6 +255,22 @@ public class RunnableCreatorUtil {
 					}
 				});
 				logger.info("mise à jour terminée");
+			}
+		};
+		return r;
+	}
+
+	/**
+	 * @param atlas 
+	 * @param tex 
+	 * @param id 
+	 * @return
+	 */
+	public static Runnable getConsoleCommandInputRunnable() {
+		Runnable r = new Runnable(){
+
+			public void run(){
+				IdEditMenu.showConsoleAskCommand();
 			}
 		};
 		return r;

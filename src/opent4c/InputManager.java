@@ -213,6 +213,9 @@ public class InputManager implements InputProcessor{
 				manager.editMapAtCoord(PointsManager.getPoint(MapManager.getHighlight_tile().getX()/32,MapManager.getHighlight_tile().getY()/16));
 			}
 		}
+		if (keycode == Keys.SPACE){
+			MapManager.toggleRenderSprites();
+		}
 		return true;
 	}
 

@@ -14,327 +14,101 @@ import screens.MapManager;
  *
  */
 public class ChunkMovement {
+	
 	/**
-	 * Moves ChunkMap up
+	 * drection : numpad : 2 down 6 right 8 up 4 left
 	 */
-	public static void moveChunksUp(Map<Integer,Chunk> map) {
-		Point point = map.get(7).getCenter();
-		map.put(16, map.get(17));
-		map.put(15, map.get(4));
-		map.put(14, map.get(3));
-		map.put(13, map.get(2));
-		map.put(12, map.get(11));
+	public static void move(int direction, Map<Integer,Chunk> map){
+		if(direction == 0) return;
+		if(direction == 1){
+			move(2, map);
+			move(4, map);
+			return;
+		}
+		if(direction == 3){
+			move(2, map);
+			move(6, map);
+			return;			
+		}
+		if(direction == 7){
+			move(8, map);
+			move(4, map);
+			return;
+		}
+		if(direction == 9){
+			move(8, map);
+			move(6, map);
+			return;
+		}
+		int[] deleted = getDeleted(direction);
+		int[] moved = getMoved(direction);
+		int[] created = getCreated(direction);
+		Point point = getNewCenter(direction, map);
+		
+		map.put(deleted[0], map.get(moved[0]));
+		map.put(deleted[1], map.get(moved[1]));
+		map.put(deleted[2], map.get(moved[2]));
 
-		map.put(17, map.get(18));
-		map.put(4, map.get(5));
-		map.put(3, map.get(0));
-		map.put(2, map.get(1));
-		map.put(11, map.get(10));
-
-		map.put(18, map.get(19));
-		map.put(5, map.get(6));
-		map.put(0, map.get(7));
-		map.put(1, map.get(8));
-		map.put(10, map.get(9));
-
-		map.put(19, map.get(20));
-		map.put(6, map.get(21));
-		map.put(7, map.get(22));
-		map.put(8, map.get(23));
-		map.put(9, map.get(24));
-
+		map.put(moved[0], map.get(created[0]));
+		map.put(moved[1], map.get(created[1]));
+		map.put(moved[2], map.get(created[2]));
+		
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
 		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(20,new Chunk("v2_worldmap",chunk_positions.get(20)));
-		map.put(21,new Chunk("v2_worldmap",chunk_positions.get(21)));
-		map.put(22,new Chunk("v2_worldmap",chunk_positions.get(22)));
-		map.put(23,new Chunk("v2_worldmap",chunk_positions.get(23)));
-		map.put(24,new Chunk("v2_worldmap",chunk_positions.get(24)));
+		map.put(created[0],new Chunk("v2_worldmap",chunk_positions.get(created[0])));
+		map.put(created[1],new Chunk("v2_worldmap",chunk_positions.get(created[1])));
+		map.put(created[2],new Chunk("v2_worldmap",chunk_positions.get(created[2])));
 		MapManager.renderChunks();
+
 	}
 	
 	/**
-	 * Moves ChunkMap up and right
+	 * @param direction
+	 * @return
 	 */
-	public static void moveChunksUpRight(Map<Integer,Chunk> map) {
-		Point point = map.get(8).getCenter();
-		map.put(16, map.get(4));
-		
-		map.put(17, map.get(5));
-		map.put(15, map.get(3));
-		
-		map.put(18, map.get(6));
-		map.put(14, map.get(0));
-		map.put(4, map.get(2));
-		
-		map.put(19, map.get(21));
-		map.put(5, map.get(7));
-		map.put(3, map.get(1));
-		map.put(13, map.get(11));
-
-		map.put(6, map.get(22));
-		map.put(0, map.get(8));
-		map.put(2, map.get(10));
-		
-		map.put(7, map.get(23));
-		map.put(1, map.get(9));
-
-		map.put(8, map.get(24));
-		
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(24,new Chunk("v2_worldmap",chunk_positions.get(24)));
-		map.put(9,new Chunk("v2_worldmap",chunk_positions.get(9)));
-		map.put(10,new Chunk("v2_worldmap",chunk_positions.get(10)));
-		map.put(11,new Chunk("v2_worldmap",chunk_positions.get(11)));
-		map.put(12,new Chunk("v2_worldmap",chunk_positions.get(12)));
-		map.put(13,new Chunk("v2_worldmap",chunk_positions.get(13)));
-		map.put(14,new Chunk("v2_worldmap",chunk_positions.get(14)));
-		map.put(15,new Chunk("v2_worldmap",chunk_positions.get(15)));
-		map.put(16,new Chunk("v2_worldmap",chunk_positions.get(16)));
-		MapManager.renderChunks();
-	}
-	
-	/**
-	 * Moves ChunkMap up and left
-	 */
-	public static void moveChunksUpLeft(Map<Integer,Chunk> map) {
-		Point point = map.get(6).getCenter();
-		map.put(12, map.get(2));
-		
-		map.put(13, map.get(3));
-		map.put(11, map.get(1));
-		
-		map.put(14, map.get(4));
-		map.put(2, map.get(0));
-		map.put(10, map.get(8));
-		
-		map.put(15, map.get(17));
-		map.put(3, map.get(5));
-		map.put(1, map.get(7));
-		map.put(9, map.get(23));
-
-		map.put(4, map.get(18));
-		map.put(0, map.get(6));
-		map.put(8, map.get(22));
-		
-		map.put(5, map.get(19));
-		map.put(7, map.get(21));
-
-		map.put(6, map.get(20));
-		
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(24,new Chunk("v2_worldmap",chunk_positions.get(24)));
-		map.put(23,new Chunk("v2_worldmap",chunk_positions.get(23)));
-		map.put(22,new Chunk("v2_worldmap",chunk_positions.get(22)));
-		map.put(21,new Chunk("v2_worldmap",chunk_positions.get(21)));
-		map.put(20,new Chunk("v2_worldmap",chunk_positions.get(20)));
-		map.put(19,new Chunk("v2_worldmap",chunk_positions.get(19)));
-		map.put(18,new Chunk("v2_worldmap",chunk_positions.get(18)));
-		map.put(17,new Chunk("v2_worldmap",chunk_positions.get(17)));
-		map.put(16,new Chunk("v2_worldmap",chunk_positions.get(16)));
-		MapManager.renderChunks();
+	private static int[] getCreated(int direction) {
+		switch(direction){
+			case 2 : return new int[]{1,2,3};
+			case 4 : return new int[]{7,4,1};
+			case 6 : return new int[]{9,6,3};
+			case 8 : return new int[]{7,8,9};
+		}
+		return null;
 	}
 
 	/**
-	 * Moves ChunkMap left
+	 * @param direction
+	 * @return
 	 */
-	public static void moveChunksLeft(Map<Integer,Chunk> map) {
-		Point point = map.get(5).getCenter();
-		map.put(24, map.get(23));
-		map.put(9, map.get(8));
-		map.put(10, map.get(1));
-		map.put(11, map.get(2));
-		map.put(12, map.get(13));
-
-		map.put(23, map.get(22));
-		map.put(8, map.get(7));
-		map.put(1, map.get(0));
-		map.put(2, map.get(3));
-		map.put(13, map.get(14));
-
-		map.put(22, map.get(21));
-		map.put(7, map.get(6));
-		map.put(0, map.get(5));
-		map.put(3, map.get(4));
-		map.put(14, map.get(15));
-
-		map.put(21, map.get(20));
-		map.put(6, map.get(19));
-		map.put(5, map.get(18));
-		map.put(4, map.get(17));
-		map.put(15, map.get(16));
-
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(20,new Chunk("v2_worldmap",chunk_positions.get(20)));
-		map.put(19,new Chunk("v2_worldmap",chunk_positions.get(19)));
-		map.put(18,new Chunk("v2_worldmap",chunk_positions.get(18)));
-		map.put(17,new Chunk("v2_worldmap",chunk_positions.get(17)));
-		map.put(16,new Chunk("v2_worldmap",chunk_positions.get(16)));
-		MapManager.renderChunks();
+	private static int[] getMoved(int direction) {
+		switch(direction){
+		case 2 : return new int[]{4,5,6};
+		case 4 : return new int[]{8,5,2};
+		case 6 : return new int[]{8,5,2};
+		case 8 : return new int[]{4,5,6};
+	}
+		return null;
 	}
 
 	/**
-	 * Moves ChunkMap down and left
+	 * @param direction
+	 * @return
 	 */
-	public static void moveChunksDownLeft(Map<Integer,Chunk> map) {
-		Point point = map.get(4).getCenter();
-		map.put(24, map.get(8));
-		
-		map.put(23, map.get(7));
-		map.put(9, map.get(1));
-		
-		map.put(22, map.get(6));
-		map.put(8, map.get(0));
-		map.put(10, map.get(2));
-		
-		map.put(21, map.get(19));
-		map.put(7, map.get(5));
-		map.put(1, map.get(3));
-		map.put(11, map.get(13));
-
-		map.put(6, map.get(18));
-		map.put(0, map.get(4));
-		map.put(2, map.get(14));
-		
-		map.put(5, map.get(17));
-		map.put(3, map.get(15));
-
-		map.put(4, map.get(16));
-		
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(20,new Chunk("v2_worldmap",chunk_positions.get(20)));
-		map.put(19,new Chunk("v2_worldmap",chunk_positions.get(19)));
-		map.put(18,new Chunk("v2_worldmap",chunk_positions.get(18)));
-		map.put(17,new Chunk("v2_worldmap",chunk_positions.get(17)));
-		map.put(16,new Chunk("v2_worldmap",chunk_positions.get(16)));
-		map.put(15,new Chunk("v2_worldmap",chunk_positions.get(15)));
-		map.put(14,new Chunk("v2_worldmap",chunk_positions.get(14)));
-		map.put(13,new Chunk("v2_worldmap",chunk_positions.get(13)));
-		map.put(12,new Chunk("v2_worldmap",chunk_positions.get(12)));
-		MapManager.renderChunks();
+	private static int[] getDeleted(int direction) {
+		switch(direction){
+		case 8 : return new int[]{1,2,3};
+		case 6 : return new int[]{7,4,1};
+		case 4 : return new int[]{9,6,3};
+		case 2 : return new int[]{7,8,9};
+	}		return null;
 	}
 
 	/**
-	 * Moves ChunkMap down
+	 * @param direction
+	 * @param map 
+	 * @return
 	 */
-	public static void moveChunksDown(Map<Integer,Chunk> map) {
-		Point point = map.get(3).getCenter();
-		map.put(20, map.get(19));
-		map.put(21, map.get(6));
-		map.put(22, map.get(7));
-		map.put(23, map.get(8));
-		map.put(24, map.get(9));
-
-		map.put(19, map.get(18));
-		map.put(6, map.get(5));
-		map.put(7, map.get(0));
-		map.put(8, map.get(1));
-		map.put(9, map.get(10));
-
-		map.put(18, map.get(17));
-		map.put(5, map.get(4));
-		map.put(0, map.get(3));
-		map.put(1, map.get(2));
-		map.put(10, map.get(11));
-
-		map.put(17, map.get(16));
-		map.put(4, map.get(15));
-		map.put(3, map.get(14));
-		map.put(2, map.get(13));
-		map.put(11, map.get(12));
-
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(16,new Chunk("v2_worldmap",chunk_positions.get(16)));
-		map.put(15,new Chunk("v2_worldmap",chunk_positions.get(15)));
-		map.put(14,new Chunk("v2_worldmap",chunk_positions.get(14)));
-		map.put(13,new Chunk("v2_worldmap",chunk_positions.get(13)));
-		map.put(12,new Chunk("v2_worldmap",chunk_positions.get(12)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap down and right
-	 */
-	public static void moveChunksDownRight(Map<Integer,Chunk> map) {
-		Point point = map.get(2).getCenter();
-		map.put(20, map.get(6));
-		
-		map.put(19, map.get(5));
-		map.put(21, map.get(7));
-		
-		map.put(18, map.get(4));
-		map.put(6, map.get(0));
-		map.put(22, map.get(8));
-		
-		map.put(17, map.get(15));
-		map.put(5, map.get(3));
-		map.put(7, map.get(1));
-		map.put(23, map.get(9));
-
-		map.put(4, map.get(14));
-		map.put(0, map.get(2));
-		map.put(8, map.get(10));
-		
-		map.put(3, map.get(13));
-		map.put(1, map.get(11));
-
-		map.put(2, map.get(12));
-		
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(24,new Chunk("v2_worldmap",chunk_positions.get(24)));
-		map.put(9,new Chunk("v2_worldmap",chunk_positions.get(9)));
-		map.put(10,new Chunk("v2_worldmap",chunk_positions.get(10)));
-		map.put(11,new Chunk("v2_worldmap",chunk_positions.get(11)));
-		map.put(12,new Chunk("v2_worldmap",chunk_positions.get(12)));
-		map.put(13,new Chunk("v2_worldmap",chunk_positions.get(13)));
-		map.put(14,new Chunk("v2_worldmap",chunk_positions.get(14)));
-		map.put(15,new Chunk("v2_worldmap",chunk_positions.get(15)));
-		map.put(16,new Chunk("v2_worldmap",chunk_positions.get(16)));
-		MapManager.renderChunks();
-	}
-
-	/**
-	 * Moves ChunkMap right
-	 */
-	public static void moveChunksRight(Map<Integer,Chunk> map) {
-		Point point = map.get(1).getCenter();
-		map.put(16, map.get(17));
-		map.put(15, map.get(4));
-		map.put(14, map.get(3));
-		map.put(13, map.get(2));
-		map.put(12, map.get(11));
-
-		map.put(17, map.get(18));
-		map.put(4, map.get(5));
-		map.put(3, map.get(0));
-		map.put(2, map.get(1));
-		map.put(11, map.get(10));
-
-		map.put(18, map.get(19));
-		map.put(5, map.get(6));
-		map.put(0, map.get(7));
-		map.put(1, map.get(8));
-		map.put(10, map.get(9));
-
-		map.put(19, map.get(20));
-		map.put(6, map.get(21));
-		map.put(7, map.get(22));
-		map.put(8, map.get(23));
-		map.put(9, map.get(24));
-
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
-		//TODO Attention lorsqu'on gèrera plusieurs cartes
-		map.put(20,new Chunk("v2_worldmap",chunk_positions.get(20)));
-		map.put(21,new Chunk("v2_worldmap",chunk_positions.get(21)));
-		map.put(22,new Chunk("v2_worldmap",chunk_positions.get(22)));
-		map.put(23,new Chunk("v2_worldmap",chunk_positions.get(23)));
-		map.put(24,new Chunk("v2_worldmap",chunk_positions.get(24)));
-		MapManager.renderChunks();
+	private static Point getNewCenter(int direction, Map<Integer, Chunk> map) {
+		return map.get(direction).getCenter();
 	}
 }
