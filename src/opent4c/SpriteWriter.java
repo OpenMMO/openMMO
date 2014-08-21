@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 import java.io.File;
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
@@ -50,7 +51,7 @@ public class SpriteWriter {
 		}
 		if (f.exists())return;
 		GraphicsConfiguration gc = img.createGraphics().getDeviceConfiguration();
-		BufferedImage out =	gc.createCompatibleImage(pixel.getLargeur(), pixel.getHauteur(), Transparency.BITMASK);
+		BufferedImage out =	gc.createCompatibleImage(pixel.getLargeur()+Math.abs(pixel.getOffset().x), pixel.getHauteur()+Math.abs(pixel.getOffset().y), Transparency.BITMASK);
 		Graphics2D g2d = out.createGraphics();
 		g2d.setComposite(AlphaComposite.Src);
 		g2d.drawImage(img, 0, 0, null);
@@ -72,7 +73,6 @@ public class SpriteWriter {
 		}
 		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : "+didsprite.type+" "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.getNom());
 	}
-
 	static void unzipSpriteTwice(MapPixel pixel, ByteBuffer buf) {
 		byte b1,b2,b3,b4;
 		Inflater unzip = new Inflater();

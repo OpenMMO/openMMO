@@ -20,6 +20,7 @@ import opent4c.utils.ChunkMovement;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
+import opent4c.utils.Places;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
@@ -41,7 +42,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
-import t4cPlugin.Places;
 import tools.DataInputManager;
 
 /**
@@ -78,7 +78,6 @@ public class MapManager implements Screen{
 	private Point highlight_point;
 	private Acteur highlight_tile;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
-	private Edit_menu edit_menu = null;
 	private IdEditMenu editMenu;
 	public static final float blink_period = 1;
 
@@ -184,7 +183,7 @@ public class MapManager implements Screen{
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		render_camera();
-		//stage.act(delta);
+		stage.act(delta);
 		ui.act(delta);
 		highlight_stage.act(delta);
 		if(render_infos){
@@ -436,8 +435,6 @@ public class MapManager implements Screen{
 	 */
 	public void highlight(Point point) {
 		highlight_point = point;
-		
-		
 		TextureAtlas atlas = loadingStatus.getTextureAtlasSprite("Highlight");
 		TextureRegion tex = atlas.findRegion("Highlight Tile");
 		highlight_tile = new Acteur(tex,highlight_point, PointsManager.getPoint(0, 0));

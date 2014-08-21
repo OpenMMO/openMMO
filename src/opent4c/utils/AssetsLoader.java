@@ -46,7 +46,9 @@ public enum AssetsLoader {
 		settings.flattenPaths = true;
 		settings.grid = true;
 		settings.limitMemory = true;
-		logger.info("Will wait for DDA to be processed.");
+		settings.stripWhitespaceX = true;
+		settings.stripWhitespaceY = true;
+		//logger.info("Will wait for DDA to be processed.");
 		//loadingStatus.waitUntilDdaFilesProcessed();
 		logger.info("Empaquetage des Atlas de sprites");
 		List<File> sprites = new ArrayList<File>();
@@ -182,20 +184,18 @@ public enum AssetsLoader {
 	/**
 	 * Loads sprites with ids
 	 */
+	@Deprecated
 	public static void loadMappedSprites() {
 		logger.info("Chargement des sprites.");
 		loadingStatus.waitUntilSpritesPackaged();
 		List<String> sprite_atlas_to_load = new ArrayList<String>();
 		sprite_atlas_to_load.add("Unknown");
 		sprite_atlas_to_load.add("Highlight");
-		Iterator<Integer> iter_spriteload = SpriteData.getPixelIndex().keySet().iterator();
+		Iterator<String> iter_spriteload = SpriteData.getPixelIndex().keySet().iterator();
 		while(iter_spriteload.hasNext()){
-			List<MapPixel> sprite_list = SpriteData.getPixelIndex().get(iter_spriteload.next());
-			Iterator<MapPixel> iter_list = sprite_list.iterator();
-			while(iter_list.hasNext()){
-				MapPixel pix = iter_list.next();
-				if(!sprite_atlas_to_load.contains(pix.getAtlas()))sprite_atlas_to_load.add(pix.getAtlas());
-			}
+			String key = iter_spriteload.next();
+			MapPixel pix = SpriteData.getPixelIndex().get(key);
+			if(!sprite_atlas_to_load.contains(pix.getAtlas()))sprite_atlas_to_load.add(pix.getAtlas());
 		}
 		Iterator<String> iter_load = sprite_atlas_to_load.iterator();
 		while(iter_load.hasNext()){

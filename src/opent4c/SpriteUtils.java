@@ -32,10 +32,6 @@ import tools.UnsignedShort;
 public class SpriteUtils {
 
 	static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
-	private static int nb_extracted_from_dda = 0;
-	private static int nb_writen = 0;
-
-
 	
 	static boolean doTheWriting(MapPixel pixel, ByteBuffer buf){
 		boolean writen = false;
@@ -78,14 +74,8 @@ public class SpriteUtils {
 		pixel.setTaille_zip(new UnsignedInt(extractInt(header_buf,true)));		
 		pixel.setBufPos(buf.position());
 		extractTuileInfo(pixel);
+		SpriteData.putPixel(pixel);
 		//logger.info("Type : "+sprite.getType().getValue());
-	}
-
-	/**
-	 * 
-	 */
-	private static void addOneExtractedFromDDA() {
-		nb_extracted_from_dda++;
 	}
 
 	/**
@@ -125,13 +115,13 @@ public class SpriteUtils {
 		if (pixel.getAtlas().equals("Sword01"))result = false;
 		if (pixel.getAtlas().equals("V2Effect"))result = false;
 		if (pixel.getAtlas().equals("Weather"))result = false;
-		//if (pixel.getAtlas().equals("GenericMerge3"))result = false;
 		if (pixel.getAtlas().equals("Root"))result = false;
 		if (pixel.getAtlas().equals("VSSmooth"))result = false;
+		if (pixel.getAtlas().equals("Black"))result = false;
 		//if (pixel.getAtlas().equals("GenericMerge1"))result = false;
 		//if (pixel.getAtlas().equals("GenericMerge2Wooden"))result = false;
+		//if (pixel.getAtlas().equals("GenericMerge3"))result = false;
 		//if (pixel.getAtlas().equals("WoodenSmooth"))result = false;
-		if (pixel.getAtlas().equals("Black"))result = false;
 		pixel.setTuile(result);
 	}
 
@@ -151,6 +141,7 @@ public class SpriteUtils {
 		while (iter_pal.hasNext()){
 			String pal = iter_pal.next();
 			String nom = pixel.getTex();
+			nom = managePaletteSpecialCases(nom);
 			if (nom.contains(pal)){
 				result = SpriteManager.palettes.get(pal);
 				if (result == null){
@@ -163,6 +154,8 @@ public class SpriteUtils {
 
 		return result;
 	}
+
+
 
 	/**
 	 * @return
@@ -271,65 +264,10 @@ public class SpriteUtils {
 	}
 
 	/**
-	 * Decrypts a dda file
-	 * @param f
-	 * @param doWrite
-	 */
-	public static void decrypt_dda_file(File f, boolean doWrite) {
-		int numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
-		List<MapPixel> sprites_in_dda = new ArrayList<MapPixel>();
-		Iterator<Integer> iter_id = SpriteData.getPixelIndex().keySet().iterator();
-		while(iter_id.hasNext()){
-			int id = iter_id.next();
-			Iterator<MapPixel> iter_px = SpriteData.getPixelIndex().get(id).iterator();
-			while(iter_px.hasNext()){
-				MapPixel px = iter_px.next();
-				if(px.getNumDDA() == numDDA){
-					sprites_in_dda.add(px);
-				}
-			}
-		}
-		ByteBuffer buf = readDDA(f);
-		byte[] signature = new byte[4];
-		signature = extractBytes(buf,signature.length);
-		Iterator<MapPixel> iter = sprites_in_dda.iterator();
-		while(iter.hasNext()){
-			MapPixel pixel = iter.next();
-			int indexation = (pixel.getIndexation()+4);
-			try{
-				buf.position(indexation);
-			}catch(IllegalArgumentException e){
-				e.printStackTrace();
-				System.exit(1);
-			}
-			extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
-			if(!doWrite)addOneExtractedFromDDA();
-			if(doWrite){
-				boolean writen = false;
-				writen = doTheWriting(pixel, buf);
-				if (!writen){
-					logger.fatal("Sprite non écrit => "+pixel.getTex());
-					System.exit(1);
-				}
-				addOneWriten();
-			}
-			if(!doWrite)UpdateDataCheckStatus.setStatus("Sprites extraits des fichiers DDA: "+nb_extracted_from_dda+"/"+DataChecker.nb_expected_sprites);
-			if(doWrite)UpdateDataCheckStatus.setStatus("Sprites écrits: "+nb_writen+"/"+DataChecker.nb_expected_sprites);
-		}
-	}
-
-	/**
-	 * 
-	 */
-	private static void addOneWriten() {
-		nb_writen++;
-	}
-
-	/**
 	 * @param f
 	 * @return
 	 */
-	private static ByteBuffer readDDA(File f) {
+	public static ByteBuffer readDDA(File f) {
 		ByteBuffer result = ByteBuffer.allocate((int)f.length());
 		try {
 			DataInputManager in = new DataInputManager (f);
@@ -362,6 +300,16 @@ public class SpriteUtils {
 		return new SpriteName(nomExtrait);
 	}
 
+	private static String managePaletteSpecialCases(String nom) {
+		if(nom.contains("BlancNoir ")) nom = "STuileTmpl1";
+		if(nom.contains("RougeBeige ")) nom = "STuileTmpl2";
+		if(nom.contains("Wooden ")) nom = "Floor Wooden";
+		if(nom.contains("Rock ")) nom = "RockFloor";
+		if(nom.contains("Wooden2 ")) nom = "2Wooden";
+		if(nom.contains("Wooden3 ")) nom = "3Wooden";		
+		return nom;
+	}
+	
 	/**
 	 * Modifies names to fit our scheme
 	 * @param nom
@@ -481,12 +429,12 @@ public class SpriteUtils {
 		if (nom.equals("Dtm5 4"))result = "Dtm (5, 4)";
 		if (nom.equals("Dtm5 5"))result = "Dtm (5, 5)";
 		//idem
-		if (nom.equals("Floor Wooden 1"))result = "Floor Wooden (1, 1)";
-		if (nom.equals("Floor Wooden 2"))result = "Floor Wooden (1, 2)";
-		if (nom.equals("Floor Wooden 3"))result = "Floor Wooden (1, 3)";
-		if (nom.equals("Floor Wooden 4"))result = "Floor Wooden (2, 1)";
-		if (nom.equals("Floor Wooden 5"))result = "Floor Wooden (2, 2)";
-		if (nom.equals("Floor Wooden Separation"))result = "Floor Wooden (2, 3)";
+		if (nom.equals("Floor Wooden 1"))result = "Wooden (1, 1)";
+		if (nom.equals("Floor Wooden 2"))result = "Wooden (1, 2)";
+		if (nom.equals("Floor Wooden 3"))result = "Wooden (1, 3)";
+		if (nom.equals("Floor Wooden 4"))result = "Wooden (2, 1)";
+		if (nom.equals("Floor Wooden 5"))result = "Wooden (2, 2)";
+		if (nom.equals("Floor Wooden Separation"))result = "Wooden (2, 3)";
 		//Il manque un espace après la virgule dans le nom des tuiles Lava(x,x) ça empêche le calcul du modulo...
 		if (nom.equals("Lava (1,1)"))result = "Lava (1, 1)";
 		if (nom.equals("Lava (1,2)"))result = "Lava (1, 2)";
@@ -504,6 +452,13 @@ public class SpriteUtils {
 		if (nom.equals("Lava (4,2)"))result = "Lava (4, 2)";
 		if (nom.equals("Lava (4,3)"))result = "Lava (4, 3)";
 		if (nom.equals("Lava (4,4)"))result = "Lava (4, 4)";
+		//Pour faire coller les noms de tuiles à leur nom d'atlas
+		if(nom.contains("STuileTmpl1"))result = nom.replace("STuileTmpl1", "BlancNoir");
+		if(nom.contains("STuileTmpl2"))result = nom.replace("STuileTmpl2", "RougeBeige");
+		if(nom.contains("2Wooden"))result = nom.replace("2Wooden", "Wooden2");
+		if(nom.contains("RockFloor"))result = nom.replace("RockFloor", "Rock");
+		if(nom.contains("3Wooden"))result = nom.replace("3Wooden", "Wooden3");
+
 		return result;
 	}
 	

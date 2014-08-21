@@ -1,0 +1,3692 @@
+1:NormalGrass:modulos(32,32)
+2:EarthTile:modulos(32,32)
+3:Water3:modulos(32,32)
+4:Water4:modulos(32,32)
+5:Grass:modulos(32,32)
+6:HardRock:modulos(32,32)
+7:DGrass:modulos(32,32)
+8:Desert:modulos(32,32)
+9:DungeonRockFloor:modulos(7,6)
+10:NA:Lava 1
+11:EarthTile:modulos(32,32)
+12:TownRoadDale:modulos(4,4)
+13:Rock:modulos(16,16)
+14:Wooden:modulos(2,3)
+15:NA:Ice 1
+17:CavernFloor:modulos(14,14)
+18:NA:Dtm4 1
+20:Black:Black Tile
+42:NA:Dtm1 1
+43:DungeonOverhead1:modulos(10,10)
+41:DungeonFloorTorch:modulos(5,5)
+44:DungeonFloorOverHead2:modulos(15,15)
+279:NA:srf 1
+278:NA:srf 1
+277:NA:srf 1
+276:NA:srf 1
+282:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+281:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+280:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+287:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+286:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+285:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+260:NormalGrass:modulos(32,32)
+261:NormalGrass:modulos(32,32)
+305:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+304:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+307:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+306:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+309:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+308:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+311:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+310:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+313:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+312:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+315:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+314:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+317:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+316:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+319:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+318:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+288:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+289:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+290:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+291:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+292:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+293:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+294:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+295:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+296:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+297:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+298:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+299:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+300:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+301:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+302:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+303:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+343:NA:tmpl3 1 T1 Water3 T2 Desert
+342:NA:tmpl3 1 T1 Water3 T2 Desert
+341:NA:tmpl3 1 T1 Water3 T2 Desert
+340:NA:tmpl3 1 T1 Water3 T2 Desert
+339:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+338:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+337:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+336:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+351:NA:tmpl3 1 T1 Water3 T2 Desert
+350:NA:tmpl3 1 T1 Water3 T2 Desert
+349:NA:tmpl3 1 T1 Water3 T2 Desert
+348:NA:tmpl3 1 T1 Water3 T2 Desert
+347:NA:tmpl3 1 T1 Water3 T2 Desert
+346:NA:tmpl3 1 T1 Water3 T2 Desert
+345:NA:tmpl3 1 T1 Water3 T2 Desert
+344:NA:tmpl3 1 T1 Water3 T2 Desert
+326:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+327:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+324:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+325:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+322:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+323:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+320:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+321:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+334:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+335:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+332:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+333:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+330:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+331:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+328:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+329:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+373:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+375:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+374:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+381:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+380:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+383:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+382:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+377:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+376:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+379:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+378:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+356:NA:tmpl3 1 T1 Water3 T2 Desert
+357:NA:tmpl3 1 T1 Water3 T2 Desert
+358:NA:tmpl3 1 T1 Water3 T2 Desert
+359:NA:tmpl3 1 T1 Water3 T2 Desert
+352:NA:tmpl3 1 T1 Water3 T2 Desert
+353:NA:tmpl3 1 T1 Water3 T2 Desert
+354:NA:tmpl3 1 T1 Water3 T2 Desert
+355:NA:tmpl3 1 T1 Water3 T2 Desert
+364:NA:tmpl3 1 T1 Water3 T2 Desert
+365:NA:tmpl3 1 T1 Water3 T2 Desert
+366:NA:tmpl3 1 T1 Water3 T2 Desert
+367:NA:tmpl3 1 T1 Water3 T2 Desert
+360:NA:tmpl3 1 T1 Water3 T2 Desert
+361:NA:tmpl3 1 T1 Water3 T2 Desert
+362:NA:tmpl3 1 T1 Water3 T2 Desert
+363:NA:tmpl3 1 T1 Water3 T2 Desert
+410:NA:tmpl1 1 T1 NormalGrass T2 Grass
+411:NA:tmpl1 1 T1 NormalGrass T2 Grass
+408:NA:tmpl1 1 T1 NormalGrass T2 Grass
+409:NA:tmpl1 1 T1 NormalGrass T2 Grass
+414:NA:tmpl1 1 T1 NormalGrass T2 Grass
+415:NA:tmpl1 1 T1 NormalGrass T2 Grass
+412:NA:tmpl1 1 T1 NormalGrass T2 Grass
+413:NA:tmpl1 1 T1 NormalGrass T2 Grass
+402:NA:tmpl1 1 T1 NormalGrass T2 Grass
+403:NA:tmpl1 1 T1 NormalGrass T2 Grass
+400:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+401:NA:tmpl1 1 T1 NormalGrass T2 Grass
+406:NA:tmpl1 1 T1 NormalGrass T2 Grass
+407:NA:tmpl1 1 T1 NormalGrass T2 Grass
+404:NA:tmpl1 1 T1 NormalGrass T2 Grass
+405:NA:tmpl1 1 T1 NormalGrass T2 Grass
+395:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+394:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+393:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+392:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+399:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+398:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+397:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+396:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+387:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+386:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+385:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+384:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+391:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+390:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+389:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+388:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+440:NA:tmpl3 1 T1 Water3 T2 Grass
+441:NA:tmpl3 1 T1 Water3 T2 Grass
+442:NA:tmpl3 1 T1 Water3 T2 Grass
+443:NA:tmpl3 1 T1 Water3 T2 Grass
+444:NA:tmpl3 1 T1 Water3 T2 Grass
+445:NA:tmpl3 1 T1 Water3 T2 Grass
+446:NA:tmpl3 1 T1 Water3 T2 Grass
+447:NA:tmpl3 1 T1 Water3 T2 Grass
+432:NA:tmpl3 1 T1 Water3 T2 Grass
+433:NA:tmpl3 1 T1 Water3 T2 Grass
+434:NA:tmpl3 1 T1 Water3 T2 Grass
+435:NA:tmpl3 1 T1 Water3 T2 Grass
+436:NA:tmpl3 1 T1 Water3 T2 Grass
+437:NA:tmpl3 1 T1 Water3 T2 Grass
+438:NA:tmpl3 1 T1 Water3 T2 Grass
+439:NA:tmpl3 1 T1 Water3 T2 Grass
+425:NA:tmpl1 1 T1 NormalGrass T2 Grass
+424:NA:tmpl1 1 T1 NormalGrass T2 Grass
+427:NA:tmpl1 1 T1 NormalGrass T2 Grass
+426:NA:tmpl1 1 T1 NormalGrass T2 Grass
+429:NA:tmpl3 1 T1 Water3 T2 Grass
+428:NA:tmpl1 1 T1 NormalGrass T2 Grass
+431:NA:tmpl3 1 T1 Water3 T2 Grass
+430:NA:tmpl3 1 T1 Water3 T2 Grass
+417:NA:tmpl1 1 T1 NormalGrass T2 Grass
+416:NA:tmpl1 1 T1 NormalGrass T2 Grass
+419:NA:tmpl1 1 T1 NormalGrass T2 Grass
+418:NA:tmpl1 1 T1 NormalGrass T2 Grass
+421:NA:tmpl1 1 T1 NormalGrass T2 Grass
+420:NA:tmpl1 1 T1 NormalGrass T2 Grass
+423:NA:tmpl1 1 T1 NormalGrass T2 Grass
+422:NA:tmpl1 1 T1 NormalGrass T2 Grass
+478:NA:tmpl1 1 T1 Grass T2 EarthTile
+479:NA:tmpl1 1 T1 Grass T2 EarthTile
+476:NA:tmpl1 1 T1 Grass T2 EarthTile
+477:NA:tmpl1 1 T1 Grass T2 EarthTile
+474:NA:tmpl1 1 T1 Grass T2 EarthTile
+475:NA:tmpl1 1 T1 Grass T2 EarthTile
+472:NA:tmpl1 1 T1 Grass T2 EarthTile
+473:NA:tmpl1 1 T1 Grass T2 EarthTile
+470:NA:tmpl1 1 T1 Grass T2 EarthTile
+471:NA:tmpl1 1 T1 Grass T2 EarthTile
+468:NA:tmpl1 1 T1 Grass T2 EarthTile
+469:NA:tmpl1 1 T1 Grass T2 EarthTile
+466:NA:tmpl1 1 T1 Grass T2 EarthTile
+467:NA:tmpl1 1 T1 Grass T2 EarthTile
+464:NA:tmpl1 1 T1 Grass T2 EarthTile
+465:NA:tmpl1 1 T1 Grass T2 EarthTile
+463:NA:tmpl1 1 T1 Grass T2 EarthTile
+462:NA:tmpl1 1 T1 Grass T2 EarthTile
+461:NA:tmpl1 1 T1 Grass T2 EarthTile
+460:NA:tmpl1 1 T1 Grass T2 EarthTile
+459:NA:tmpl1 1 T1 Grass T2 EarthTile
+458:NA:tmpl1 1 T1 Grass T2 EarthTile
+457:NA:tmpl1 1 T1 Grass T2 EarthTile
+456:NA:tmpl3 1 T1 Water3 T2 Grass
+455:NA:tmpl3 1 T1 Water3 T2 Grass
+454:NA:tmpl3 1 T1 Water3 T2 Grass
+453:NA:tmpl3 1 T1 Water3 T2 Grass
+452:NA:tmpl3 1 T1 Water3 T2 Grass
+451:NA:tmpl3 1 T1 Water3 T2 Grass
+450:NA:tmpl3 1 T1 Water3 T2 Grass
+449:NA:tmpl3 1 T1 Water3 T2 Grass
+448:NA:tmpl3 1 T1 Water3 T2 Grass
+508:NA:tmpl1 1 T1 NormalGrass T2 Grass
+509:NA:tmpl3 1 T1 Water3 T2 Grass
+510:NA:tmpl3 1 T1 Water3 T2 Grass
+511:NA:tmpl3 1 T1 Water3 T2 Grass
+504:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+505:NA:tmpl1 1 T1 NormalGrass T2 Grass
+506:NA:tmpl1 1 T1 NormalGrass T2 Grass
+507:NA:tmpl1 1 T1 NormalGrass T2 Grass
+500:NA:tmpl3 1 T1 Water3 T2 Desert
+501:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+502:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+503:NA:tmpl3 1 T1 Water3 T2 NormalGrass
+496:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+497:NA:tmpl3 1 T1 Water3 T2 Desert
+498:NA:tmpl3 1 T1 Water3 T2 Desert
+499:NA:tmpl3 1 T1 Water3 T2 Desert
+493:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+492:NA:T1 NormalGrass T2
+495:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+494:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+489:NA:T1 NormalGrass T2
+488:NA:T1 NormalGrass T2
+491:NA:T1 NormalGrass T2
+490:NA:T1 NormalGrass T2
+485:NA:T1 NormalGrass T2
+484:NA:tmpl1 1 T1 Grass T2 EarthTile
+487:NA:T1 NormalGrass T2
+486:NA:T1 NormalGrass T2
+481:NA:tmpl1 1 T1 Grass T2 EarthTile
+480:NA:tmpl1 1 T1 Grass T2 EarthTile
+483:NA:tmpl1 1 T1 Grass T2 EarthTile
+482:NA:tmpl1 1 T1 Grass T2 EarthTile
+550:NA:tmpl3 1 T1 EarthTile T2 Desert
+551:NA:tmpl3 1 T1 EarthTile T2 Desert
+548:NA:tmpl3 1 T1 NormalGrass T2 Desert
+549:NA:tmpl3 1 T1 EarthTile T2 Desert
+546:NA:tmpl3 1 T1 NormalGrass T2 Desert
+547:NA:tmpl3 1 T1 NormalGrass T2 Desert
+544:NA:tmpl3 1 T1 NormalGrass T2 Desert
+545:NA:tmpl3 1 T1 NormalGrass T2 Desert
+558:NA:tmpl3 1 T1 EarthTile T2 Desert
+559:NA:tmpl3 1 T1 EarthTile T2 Desert
+556:NA:tmpl3 1 T1 EarthTile T2 Desert
+557:NA:tmpl3 1 T1 EarthTile T2 Desert
+554:NA:tmpl3 1 T1 EarthTile T2 Desert
+555:NA:tmpl3 1 T1 EarthTile T2 Desert
+552:NA:tmpl3 1 T1 EarthTile T2 Desert
+553:NA:tmpl3 1 T1 EarthTile T2 Desert
+567:NA:tmpl3 1 T1 EarthTile T2 Desert
+566:NA:tmpl3 1 T1 EarthTile T2 Desert
+565:NA:tmpl3 1 T1 EarthTile T2 Desert
+564:NA:tmpl3 1 T1 EarthTile T2 Desert
+563:NA:tmpl3 1 T1 EarthTile T2 Desert
+562:NA:tmpl3 1 T1 EarthTile T2 Desert
+561:NA:tmpl3 1 T1 EarthTile T2 Desert
+560:NA:tmpl3 1 T1 EarthTile T2 Desert
+574:NA:tmpl3 1 T1 EarthTile T2 Desert
+573:NA:tmpl3 1 T1 EarthTile T2 Desert
+572:NA:tmpl3 1 T1 EarthTile T2 Desert
+571:NA:tmpl3 1 T1 EarthTile T2 Desert
+570:NA:tmpl3 1 T1 EarthTile T2 Desert
+569:NA:tmpl3 1 T1 EarthTile T2 Desert
+568:NA:tmpl3 1 T1 EarthTile T2 Desert
+516:NA:tmpl1 1 T1 Grass T2 EarthTile
+517:NA:tmpl3 1 T1 NormalGrass T2 Desert
+518:NA:tmpl3 1 T1 NormalGrass T2 Desert
+519:NA:tmpl3 1 T1 NormalGrass T2 Desert
+512:NA:tmpl3 1 T1 Water3 T2 Grass
+513:NA:tmpl1 1 T1 Grass T2 EarthTile
+514:NA:tmpl1 1 T1 Grass T2 EarthTile
+515:NA:tmpl1 1 T1 Grass T2 EarthTile
+524:NA:tmpl3 1 T1 NormalGrass T2 Desert
+525:NA:tmpl3 1 T1 NormalGrass T2 Desert
+526:NA:tmpl3 1 T1 NormalGrass T2 Desert
+527:NA:tmpl3 1 T1 NormalGrass T2 Desert
+520:NA:tmpl3 1 T1 NormalGrass T2 Desert
+521:NA:tmpl3 1 T1 NormalGrass T2 Desert
+522:NA:tmpl3 1 T1 NormalGrass T2 Desert
+523:NA:tmpl3 1 T1 NormalGrass T2 Desert
+533:NA:tmpl3 1 T1 NormalGrass T2 Desert
+532:NA:tmpl3 1 T1 NormalGrass T2 Desert
+535:NA:tmpl3 1 T1 NormalGrass T2 Desert
+534:NA:tmpl3 1 T1 NormalGrass T2 Desert
+529:NA:tmpl3 1 T1 NormalGrass T2 Desert
+528:NA:tmpl3 1 T1 NormalGrass T2 Desert
+531:NA:tmpl3 1 T1 NormalGrass T2 Desert
+530:NA:tmpl3 1 T1 NormalGrass T2 Desert
+541:NA:tmpl3 1 T1 NormalGrass T2 Desert
+540:NA:tmpl3 1 T1 NormalGrass T2 Desert
+543:NA:tmpl3 1 T1 NormalGrass T2 Desert
+542:NA:tmpl3 1 T1 NormalGrass T2 Desert
+537:NA:tmpl3 1 T1 NormalGrass T2 Desert
+536:NA:tmpl3 1 T1 NormalGrass T2 Desert
+539:NA:tmpl3 1 T1 NormalGrass T2 Desert
+538:NA:tmpl3 1 T1 NormalGrass T2 Desert
+610:NA:tmpl3 1 T1 Grass T2 Desert
+611:NA:tmpl3 1 T1 Grass T2 Desert
+608:NA:tmpl3 1 T1 Grass T2 Desert
+609:NA:tmpl3 1 T1 Grass T2 Desert
+614:NA:ShaWat 1
+615:NA:ShaWat 1
+612:NA:tmpl3 1 T1 Grass T2 Desert
+613:NA:ShaWat 1
+618:NA:ShaWat 1
+619:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+616:NA:ShaWat 1
+617:NA:ShaWat 1
+622:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+623:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+620:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+621:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+627:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+626:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+625:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+624:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+631:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+630:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+629:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+628:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+635:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+634:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+633:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+632:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+639:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+638:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+637:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+636:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+576:NA:tmpl3 1 T1 EarthTile T2 Desert
+577:NA:tmpl3 1 T1 EarthTile T2 Desert
+578:NA:tmpl3 1 T1 EarthTile T2 Desert
+579:NA:tmpl3 1 T1 EarthTile T2 Desert
+580:NA:tmpl3 1 T1 EarthTile T2 Desert
+581:NA:tmpl3 1 T1 Grass T2 Desert
+582:NA:tmpl3 1 T1 Grass T2 Desert
+583:NA:tmpl3 1 T1 Grass T2 Desert
+584:NA:tmpl3 1 T1 Grass T2 Desert
+585:NA:tmpl3 1 T1 Grass T2 Desert
+586:NA:tmpl3 1 T1 Grass T2 Desert
+587:NA:tmpl3 1 T1 Grass T2 Desert
+588:NA:tmpl3 1 T1 Grass T2 Desert
+589:NA:tmpl3 1 T1 Grass T2 Desert
+590:NA:tmpl3 1 T1 Grass T2 Desert
+591:NA:tmpl3 1 T1 Grass T2 Desert
+593:NA:tmpl3 1 T1 Grass T2 Desert
+592:NA:tmpl3 1 T1 Grass T2 Desert
+595:NA:tmpl3 1 T1 Grass T2 Desert
+594:NA:tmpl3 1 T1 Grass T2 Desert
+597:NA:tmpl3 1 T1 Grass T2 Desert
+596:NA:tmpl3 1 T1 Grass T2 Desert
+599:NA:tmpl3 1 T1 Grass T2 Desert
+598:NA:tmpl3 1 T1 Grass T2 Desert
+601:NA:tmpl3 1 T1 Grass T2 Desert
+600:NA:tmpl3 1 T1 Grass T2 Desert
+603:NA:tmpl3 1 T1 Grass T2 Desert
+602:NA:tmpl3 1 T1 Grass T2 Desert
+605:NA:tmpl3 1 T1 Grass T2 Desert
+604:NA:tmpl3 1 T1 Grass T2 Desert
+607:NA:tmpl3 1 T1 Grass T2 Desert
+606:NA:tmpl3 1 T1 Grass T2 Desert
+687:NA:tmpl1 1 T1 HardRock T2 EarthTile
+686:NA:tmpl1 1 T1 HardRock T2 EarthTile
+685:NA:tmpl1 1 T1 HardRock T2 EarthTile
+684:NA:tmpl1 1 T1 HardRock T2 EarthTile
+683:NA:tmpl1 1 T1 HardRock T2 EarthTile
+682:NA:tmpl1 1 T1 HardRock T2 Grass
+681:NA:tmpl1 1 T1 HardRock T2 Grass
+680:NA:tmpl1 1 T1 HardRock T2 Grass
+679:NA:tmpl1 1 T1 HardRock T2 Grass
+678:NA:tmpl1 1 T1 HardRock T2 Grass
+677:NA:tmpl1 1 T1 HardRock T2 Grass
+676:NA:tmpl1 1 T1 HardRock T2 Grass
+675:NA:tmpl1 1 T1 HardRock T2 Grass
+674:NA:tmpl1 1 T1 HardRock T2 Grass
+673:NA:tmpl1 1 T1 HardRock T2 Grass
+672:NA:tmpl1 1 T1 HardRock T2 Grass
+702:NA:tmpl1 1 T1 HardRock T2 EarthTile
+703:NA:tmpl1 1 T1 HardRock T2 EarthTile
+700:NA:tmpl1 1 T1 HardRock T2 EarthTile
+701:NA:tmpl1 1 T1 HardRock T2 EarthTile
+698:NA:tmpl1 1 T1 HardRock T2 EarthTile
+699:NA:tmpl1 1 T1 HardRock T2 EarthTile
+696:NA:tmpl1 1 T1 HardRock T2 EarthTile
+697:NA:tmpl1 1 T1 HardRock T2 EarthTile
+694:NA:tmpl1 1 T1 HardRock T2 EarthTile
+695:NA:tmpl1 1 T1 HardRock T2 EarthTile
+692:NA:tmpl1 1 T1 HardRock T2 EarthTile
+693:NA:tmpl1 1 T1 HardRock T2 EarthTile
+690:NA:tmpl1 1 T1 HardRock T2 EarthTile
+691:NA:tmpl1 1 T1 HardRock T2 EarthTile
+688:NA:tmpl1 1 T1 HardRock T2 EarthTile
+689:NA:tmpl1 1 T1 HardRock T2 EarthTile
+653:NA:tmpl1 1 T1 HardRock T2 Grass
+652:NA:tmpl1 1 T1 HardRock T2 Grass
+655:NA:tmpl1 1 T1 HardRock T2 Grass
+654:NA:tmpl1 1 T1 HardRock T2 Grass
+649:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+648:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+651:NA:tmpl1 1 T1 HardRock T2 Grass
+650:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+645:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+644:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+647:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+646:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+641:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+640:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+643:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+642:NA:tmpl3 1 T1 Water3 T2 CavernFloor
+668:NA:tmpl1 1 T1 HardRock T2 Grass
+669:NA:tmpl1 1 T1 HardRock T2 Grass
+670:NA:tmpl1 1 T1 HardRock T2 Grass
+671:NA:tmpl1 1 T1 HardRock T2 Grass
+664:NA:tmpl1 1 T1 HardRock T2 Grass
+665:NA:tmpl1 1 T1 HardRock T2 Grass
+666:NA:tmpl1 1 T1 HardRock T2 Grass
+667:NA:tmpl1 1 T1 HardRock T2 Grass
+660:NA:tmpl1 1 T1 HardRock T2 Grass
+661:NA:tmpl1 1 T1 HardRock T2 Grass
+662:NA:tmpl1 1 T1 HardRock T2 Grass
+663:NA:tmpl1 1 T1 HardRock T2 Grass
+656:NA:tmpl1 1 T1 HardRock T2 Grass
+657:NA:tmpl1 1 T1 HardRock T2 Grass
+658:NA:tmpl1 1 T1 HardRock T2 Grass
+659:NA:tmpl1 1 T1 HardRock T2 Grass
+747:NA:tmpl3 1 T1 Water3 T2 EarthTile
+746:NA:tmpl3 1 T1 Water3 T2 EarthTile
+745:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+744:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+751:NA:tmpl3 1 T1 Water3 T2 EarthTile
+750:NA:tmpl3 1 T1 Water3 T2 EarthTile
+749:NA:tmpl3 1 T1 Water3 T2 EarthTile
+748:NA:tmpl3 1 T1 Water3 T2 EarthTile
+739:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+738:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+737:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+736:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+743:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+742:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+741:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+740:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+762:NA:tmpl3 1 T1 Water3 T2 EarthTile
+763:NA:tmpl3 1 T1 Water3 T2 EarthTile
+760:NA:tmpl3 1 T1 Water3 T2 EarthTile
+761:NA:tmpl3 1 T1 Water3 T2 EarthTile
+766:NA:tmpl3 1 T1 Water3 T2 EarthTile
+767:NA:tmpl3 1 T1 Water3 T2 EarthTile
+764:NA:tmpl3 1 T1 Water3 T2 EarthTile
+765:NA:tmpl3 1 T1 Water3 T2 EarthTile
+754:NA:tmpl3 1 T1 Water3 T2 EarthTile
+755:NA:tmpl3 1 T1 Water3 T2 EarthTile
+752:NA:tmpl3 1 T1 Water3 T2 EarthTile
+753:NA:tmpl3 1 T1 Water3 T2 EarthTile
+758:NA:tmpl3 1 T1 Water3 T2 EarthTile
+759:NA:tmpl3 1 T1 Water3 T2 EarthTile
+756:NA:tmpl3 1 T1 Water3 T2 EarthTile
+757:NA:tmpl3 1 T1 Water3 T2 EarthTile
+713:NA:tmpl1 1 T1 HardRock T2 EarthTile
+712:NA:tmpl1 1 T1 HardRock T2 EarthTile
+715:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+714:NA:tmpl1 1 T1 HardRock T2 EarthTile
+717:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+716:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+719:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+718:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+705:NA:tmpl1 1 T1 HardRock T2 EarthTile
+704:NA:tmpl1 1 T1 HardRock T2 EarthTile
+707:NA:tmpl1 1 T1 HardRock T2 EarthTile
+706:NA:tmpl1 1 T1 HardRock T2 EarthTile
+709:NA:tmpl1 1 T1 HardRock T2 EarthTile
+708:NA:tmpl1 1 T1 HardRock T2 EarthTile
+711:NA:tmpl1 1 T1 HardRock T2 EarthTile
+710:NA:tmpl1 1 T1 HardRock T2 EarthTile
+728:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+729:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+730:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+731:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+732:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+733:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+734:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+735:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+720:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+721:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+722:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+723:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+724:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+725:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+726:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+727:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+821:NA:tmpl1 1 T1 HardRock T2 Desert
+820:NA:tmpl1 1 T1 HardRock T2 Desert
+823:NA:tmpl1 1 T1 HardRock T2 Desert
+822:NA:tmpl1 1 T1 HardRock T2 Desert
+817:NA:tmpl1 1 T1 HardRock T2 Desert
+816:NA:tmpl1 1 T1 HardRock T2 Desert
+819:NA:tmpl1 1 T1 HardRock T2 Desert
+818:NA:tmpl1 1 T1 HardRock T2 Desert
+829:NA:tmpl1 1 T1 HardRock T2 Desert
+828:NA:tmpl1 1 T1 HardRock T2 Desert
+831:NA:tmpl1 1 T1 HardRock T2 Desert
+830:NA:tmpl1 1 T1 HardRock T2 Desert
+825:NA:tmpl1 1 T1 HardRock T2 Desert
+824:NA:tmpl1 1 T1 HardRock T2 Desert
+827:NA:tmpl1 1 T1 HardRock T2 Desert
+826:NA:tmpl1 1 T1 HardRock T2 Desert
+804:NA:tmpl3 1 T1 Water3 T2 HardRock
+805:NA:tmpl3 1 T1 Water3 T2 HardRock
+806:NA:tmpl3 1 T1 Water3 T2 HardRock
+807:NA:tmpl3 1 T1 Water3 T2 HardRock
+800:NA:tmpl3 1 T1 Water3 T2 HardRock
+801:NA:tmpl3 1 T1 Water3 T2 HardRock
+802:NA:tmpl3 1 T1 Water3 T2 HardRock
+803:NA:tmpl3 1 T1 Water3 T2 HardRock
+812:NA:tmpl1 1 T1 HardRock T2 Desert
+813:NA:tmpl1 1 T1 HardRock T2 Desert
+814:NA:tmpl1 1 T1 HardRock T2 Desert
+815:NA:tmpl1 1 T1 HardRock T2 Desert
+808:NA:tmpl3 1 T1 Water3 T2 HardRock
+809:NA:tmpl1 1 T1 HardRock T2 Desert
+810:NA:tmpl1 1 T1 HardRock T2 Desert
+811:NA:tmpl1 1 T1 HardRock T2 Desert
+791:NA:tmpl3 1 T1 Water3 T2 HardRock
+790:NA:tmpl3 1 T1 Water3 T2 HardRock
+789:NA:tmpl3 1 T1 Water3 T2 HardRock
+788:NA:tmpl3 1 T1 Water3 T2 HardRock
+787:NA:tmpl3 1 T1 Water3 T2 HardRock
+786:NA:tmpl3 1 T1 Water3 T2 HardRock
+785:NA:tmpl3 1 T1 Water3 T2 HardRock
+784:NA:tmpl3 1 T1 Water3 T2 HardRock
+799:NA:tmpl3 1 T1 Water3 T2 HardRock
+798:NA:tmpl3 1 T1 Water3 T2 HardRock
+797:NA:tmpl3 1 T1 Water3 T2 HardRock
+796:NA:tmpl3 1 T1 Water3 T2 HardRock
+795:NA:tmpl3 1 T1 Water3 T2 HardRock
+794:NA:tmpl3 1 T1 Water3 T2 HardRock
+793:NA:tmpl3 1 T1 Water3 T2 HardRock
+792:NA:tmpl3 1 T1 Water3 T2 HardRock
+774:NA:tmpl3 1 T1 Water3 T2 EarthTile
+775:NA:tmpl3 1 T1 Water3 T2 EarthTile
+772:NA:tmpl3 1 T1 Water3 T2 EarthTile
+773:NA:tmpl3 1 T1 Water3 T2 EarthTile
+770:NA:tmpl3 1 T1 Water3 T2 EarthTile
+771:NA:tmpl3 1 T1 Water3 T2 EarthTile
+768:NA:tmpl3 1 T1 Water3 T2 EarthTile
+769:NA:tmpl3 1 T1 Water3 T2 EarthTile
+782:NA:tmpl3 1 T1 Water3 T2 HardRock
+783:NA:tmpl3 1 T1 Water3 T2 HardRock
+780:NA:tmpl3 1 T1 Water3 T2 HardRock
+781:NA:tmpl3 1 T1 Water3 T2 HardRock
+778:NA:tmpl3 1 T1 Water3 T2 HardRock
+779:NA:tmpl3 1 T1 Water3 T2 HardRock
+776:NA:tmpl3 1 T1 Water3 T2 EarthTile
+777:NA:tmpl3 1 T1 Water3 T2 EarthTile
+881:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+880:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+883:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+882:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+885:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+884:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+887:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+886:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+889:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+888:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+891:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+890:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+893:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+892:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+895:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+894:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+864:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+865:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+866:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+867:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+868:NA:chepas
+869:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+870:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+871:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+872:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+873:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+874:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+875:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+876:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+877:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+878:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+879:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+851:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+850:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+849:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+848:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+855:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+854:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+853:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+852:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+859:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+858:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+857:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+856:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+863:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+862:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+861:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+860:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+834:NA:tmpl1 1 T1 HardRock T2 Desert
+835:NA:tmpl1 1 T1 HardRock T2 Desert
+832:NA:tmpl1 1 T1 HardRock T2 Desert
+833:NA:tmpl1 1 T1 HardRock T2 Desert
+838:NA:tmpl1 1 T1 HardRock T2 Desert
+839:NA:tmpl1 1 T1 HardRock T2 Desert
+836:NA:tmpl1 1 T1 HardRock T2 Desert
+837:NA:tmpl1 1 T1 HardRock T2 Desert
+842:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+843:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+840:NA:tmpl1 1 T1 HardRock T2 Desert
+841:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+846:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+847:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+844:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+845:NA:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+956:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+957:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+958:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+959:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+952:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+953:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+954:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+955:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+948:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+949:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+950:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+951:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+944:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+945:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+946:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+947:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+941:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+940:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+943:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+942:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+937:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+936:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+939:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+938:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+933:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+932:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+935:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+934:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+929:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+928:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+931:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+930:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+926:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+927:NA:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+924:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+925:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+922:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+923:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+920:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+921:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+918:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+919:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+916:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+917:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+914:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+915:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+912:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+913:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+911:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+910:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+909:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+908:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+907:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+906:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+905:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+904:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+903:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+902:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+901:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+900:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+899:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+898:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+897:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+896:NA:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+1016:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1017:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1018:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1019:NA:tmpl3 1 T1 DGrass T2 Water3
+1020:NA:tmpl3 1 T1 DGrass T2 Water3
+1021:NA:tmpl3 1 T1 DGrass T2 Water3
+1022:NA:tmpl3 1 T1 DGrass T2 Water3
+1023:NA:tmpl3 1 T1 DGrass T2 Water3
+1008:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1009:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1010:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1011:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1012:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1013:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1014:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1015:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1001:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1000:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1003:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1002:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1005:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1004:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1007:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1006:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+993:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+992:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+995:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+994:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+997:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+996:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+999:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+998:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+986:NA:RockFloor T1 NormalGrass T2 tmpl4 2
+987:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+984:NA:RockFloor T1 NormalGrass T2 tmpl4 2
+985:NA:RockFloor T1 NormalGrass T2 tmpl4 2
+990:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+991:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+988:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+989:NA:tmpl1 1 T1 NormalGrass T2 CavernFloor
+978:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+979:NA:TownRoadDale T1 HardRock T2 tmpl4 2
+976:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+977:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+982:NA:TownRoadDale T1 HardRock T2 tmpl4 2
+983:NA:RockFloor T1 NormalGrass T2 tmpl4 2
+980:NA:TownRoadDale T1 HardRock T2 tmpl4 2
+981:NA:TownRoadDale T1 HardRock T2 tmpl4 2
+971:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+970:NA:tmpl3 1 T1 Water3 T2 HardRock
+969:NA:tmpl1 1 T1 HardRock T2 NormalGrass
+968:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+975:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+974:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+973:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+972:NA:TownRoadDale T1 NormalGrass T2 tmpl4 2
+963:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+962:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+961:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+960:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+967:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+966:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+965:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+964:NA:tmpl3 1 T1 Grass T2 Floor Wooden 1
+1100:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1101:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1102:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1103:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1096:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1097:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1098:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1099:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1092:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1093:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1094:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1095:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1088:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1089:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1090:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1091:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1117:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1116:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1119:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1118:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1113:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1112:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1115:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1114:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1109:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1108:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1111:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1110:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1105:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1104:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1107:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1106:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1134:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1135:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1132:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1133:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1130:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1131:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1128:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1129:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1126:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1127:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1124:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1125:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1122:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1123:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1120:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1121:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1151:NA:tmpl1 1 T1 DGrass T2 Grass
+1150:NA:tmpl1 1 T1 DGrass T2 Grass
+1149:NA:tmpl1 1 T1 DGrass T2 Grass
+1148:NA:tmpl1 1 T1 DGrass T2 Grass
+1147:NA:tmpl1 1 T1 DGrass T2 Grass
+1146:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1145:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1144:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1143:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1142:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1141:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1140:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1139:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1138:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1137:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1136:NA:tmpl1 1 T1 DGrass T2 NormalGrass
+1032:NA:tmpl3 1 T1 DGrass T2 Water3
+1033:NA:tmpl3 1 T1 DGrass T2 Water3
+1034:NA:tmpl3 1 T1 DGrass T2 Water3
+1035:NA:tmpl3 1 T1 DGrass T2 Water3
+1036:NA:tmpl3 1 T1 DGrass T2 Water3
+1037:NA:tmpl3 1 T1 DGrass T2 Water3
+1038:NA:tmpl3 1 T1 DGrass T2 Water3
+1039:NA:tmpl3 1 T1 DGrass T2 Water3
+1024:NA:tmpl3 1 T1 DGrass T2 Water3
+1025:NA:tmpl3 1 T1 DGrass T2 Water3
+1026:NA:tmpl3 1 T1 DGrass T2 Water3
+1027:NA:tmpl3 1 T1 DGrass T2 Water3
+1028:NA:tmpl3 1 T1 DGrass T2 Water3
+1029:NA:tmpl3 1 T1 DGrass T2 Water3
+1030:NA:tmpl3 1 T1 DGrass T2 Water3
+1031:NA:tmpl3 1 T1 DGrass T2 Water3
+1049:NA:tmpl3 1 T1 DGrass T2 Water3
+1048:NA:tmpl3 1 T1 DGrass T2 Water3
+1051:NA:tmpl1 1 T1 DGrass T2 HardRock
+1050:NA:tmpl3 1 T1 DGrass T2 Water3
+1053:NA:tmpl1 1 T1 DGrass T2 HardRock
+1052:NA:tmpl1 1 T1 DGrass T2 HardRock
+1055:NA:tmpl1 1 T1 DGrass T2 HardRock
+1054:NA:tmpl1 1 T1 DGrass T2 HardRock
+1041:NA:tmpl3 1 T1 DGrass T2 Water3
+1040:NA:tmpl3 1 T1 DGrass T2 Water3
+1043:NA:tmpl3 1 T1 DGrass T2 Water3
+1042:NA:tmpl3 1 T1 DGrass T2 Water3
+1045:NA:tmpl3 1 T1 DGrass T2 Water3
+1044:NA:tmpl3 1 T1 DGrass T2 Water3
+1047:NA:tmpl3 1 T1 DGrass T2 Water3
+1046:NA:tmpl3 1 T1 DGrass T2 Water3
+1066:NA:tmpl1 1 T1 DGrass T2 HardRock
+1067:NA:tmpl1 1 T1 DGrass T2 HardRock
+1064:NA:tmpl1 1 T1 DGrass T2 HardRock
+1065:NA:tmpl1 1 T1 DGrass T2 HardRock
+1070:NA:tmpl1 1 T1 DGrass T2 HardRock
+1071:NA:tmpl1 1 T1 DGrass T2 HardRock
+1068:NA:tmpl1 1 T1 DGrass T2 HardRock
+1069:NA:tmpl1 1 T1 DGrass T2 HardRock
+1058:NA:tmpl1 1 T1 DGrass T2 HardRock
+1059:NA:tmpl1 1 T1 DGrass T2 HardRock
+1056:NA:tmpl1 1 T1 DGrass T2 HardRock
+1057:NA:tmpl1 1 T1 DGrass T2 HardRock
+1062:NA:tmpl1 1 T1 DGrass T2 HardRock
+1063:NA:tmpl1 1 T1 DGrass T2 HardRock
+1060:NA:tmpl1 1 T1 DGrass T2 HardRock
+1061:NA:tmpl1 1 T1 DGrass T2 HardRock
+1083:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1082:NA:tmpl1 1 T1 DGrass T2 HardRock
+1081:NA:tmpl1 1 T1 DGrass T2 HardRock
+1080:NA:tmpl1 1 T1 DGrass T2 HardRock
+1087:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1086:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1085:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1084:NA:tmpl1 1 T1 DGrass T2 EarthTile
+1075:NA:tmpl1 1 T1 DGrass T2 HardRock
+1074:NA:tmpl1 1 T1 DGrass T2 HardRock
+1073:NA:tmpl1 1 T1 DGrass T2 HardRock
+1072:NA:tmpl1 1 T1 DGrass T2 HardRock
+1079:NA:tmpl1 1 T1 DGrass T2 HardRock
+1078:NA:tmpl1 1 T1 DGrass T2 HardRock
+1077:NA:tmpl1 1 T1 DGrass T2 HardRock
+1076:NA:tmpl1 1 T1 DGrass T2 HardRock
+1255:Root:TapisRouge 1
+1254:Root:TapisRouge 2
+1253:Root:Tapisall 2
+1252:Root:Tapisall 1
+1251:Root:Tapisall 1
+1263:Miscs-M:Manacle 1
+1262:Miscs-H:Heads
+1261:Miscs-S:SkeletonCorpse2
+1260:Miscs-B:Blood2
+1259:Root:TapisRouge 3
+1258:Root:TapisRouge 1
+1257:Root:TapisRouge 2
+1256:Root:TapisRouge 3
+1270:Miscs-B:Bridge2
+1271:Miscs-B:Bridge3
+1268:Miscs-B:Bridge2
+1269:Miscs-B:Bridge1
+1266:Root:Painting1
+1267:Miscs-B:Bridge1
+1264:Miscs-M:Manacle 2
+1265:Root:Painting1
+1278:GlaceEtNeige:HuteGobG1Ffoor
+1279:GlaceEtNeige:HuteGobG1Ffoor
+1276:NA:Border2
+1277:Miscs-L:LHBridge
+1274:Miscs-B:Border1
+1275:NA:Border2
+1272:Miscs-B:Bridge3
+1273:Miscs-B:Border1
+1153:NA:tmpl1 1 T1 DGrass T2 Grass
+1152:NA:tmpl1 1 T1 DGrass T2 Grass
+1155:NA:tmpl1 1 T1 DGrass T2 Grass
+1154:NA:tmpl1 1 T1 DGrass T2 Grass
+1157:NA:tmpl1 1 T1 DGrass T2 Grass
+1156:NA:tmpl1 1 T1 DGrass T2 Grass
+1159:NA:tmpl1 1 T1 DGrass T2 Grass
+1158:NA:tmpl1 1 T1 DGrass T2 Grass
+1161:NA:tmpl1 1 T1 DGrass T2 Grass
+1160:NA:tmpl1 1 T1 DGrass T2 Grass
+1163:NA:tmpl1 1 T1 DGrass T2 Grass
+1162:NA:tmpl1 1 T1 DGrass T2 Grass
+1165:NA:tmpl1 1 T1 DGrass T2 Grass
+1164:NA:tmpl1 1 T1 DGrass T2 Grass
+1167:NA:tmpl1 1 T1 DGrass T2 Grass
+1166:NA:tmpl1 1 T1 DGrass T2 Grass
+1168:NA:tmpl1 1 T1 DGrass T2 Grass
+1169:NA:tmpl1 1 T1 DGrass T2 Grass
+1170:NA:tmpl1 1 T1 DGrass T2 Grass
+1171:NA:tmpl1 1 T1 DGrass T2 Grass
+1172:NA:tmpl1 1 T1 DGrass T2 Grass
+1173:NA:tmpl1 1 T1 DGrass T2 Grass
+1174:NA:tmpl1 1 T1 DGrass T2 Grass
+1175:NA:tmpl1 1 T1 DGrass T2 Grass
+1176:NA:tmpl1 1 T1 DGrass T2 Grass
+1177:NA:tmpl1 1 T1 DGrass T2 Grass
+1178:NA:tmpl1 1 T1 DGrass T2 Grass
+1179:NA:tmpl1 1 T1 DGrass T2 Desert
+1180:NA:tmpl1 1 T1 DGrass T2 Desert
+1181:NA:tmpl1 1 T1 DGrass T2 Desert
+1182:NA:tmpl1 1 T1 DGrass T2 Desert
+1183:NA:tmpl1 1 T1 DGrass T2 Desert
+1187:NA:tmpl1 1 T1 DGrass T2 Desert
+1186:NA:tmpl1 1 T1 DGrass T2 Desert
+1185:NA:tmpl1 1 T1 DGrass T2 Desert
+1184:NA:tmpl1 1 T1 DGrass T2 Desert
+1191:NA:tmpl1 1 T1 DGrass T2 Desert
+1190:NA:tmpl1 1 T1 DGrass T2 Desert
+1189:NA:tmpl1 1 T1 DGrass T2 Desert
+1188:NA:tmpl1 1 T1 DGrass T2 Desert
+1195:NA:tmpl1 1 T1 DGrass T2 Desert
+1194:NA:tmpl1 1 T1 DGrass T2 Desert
+1193:NA:tmpl1 1 T1 DGrass T2 Desert
+1192:NA:tmpl1 1 T1 DGrass T2 Desert
+1199:NA:tmpl1 1 T1 DGrass T2 Desert
+1198:NA:tmpl1 1 T1 DGrass T2 Desert
+1197:NA:tmpl1 1 T1 DGrass T2 Desert
+1196:NA:tmpl1 1 T1 DGrass T2 Desert
+1202:NA:tmpl1 1 T1 DGrass T2 Desert
+1203:NA:tmpl1 1 T1 DGrass T2 Desert
+1200:NA:tmpl1 1 T1 DGrass T2 Desert
+1201:NA:tmpl1 1 T1 DGrass T2 Desert
+1206:NA:tmpl1 1 T1 DGrass T2 Desert
+1207:NA:tmpl1 1 T1 DGrass T2 Desert
+1204:NA:tmpl1 1 T1 DGrass T2 Desert
+1205:NA:tmpl1 1 T1 DGrass T2 Desert
+1210:NA:tmpl1 1 T1 DGrass T2 Desert
+1211:Lava:modulos(4,4)
+1208:NA:tmpl1 1 T1 DGrass T2 Desert
+1209:NA:tmpl1 1 T1 DGrass T2 Desert
+1212:Ice:modulos(16,16)
+1405:Mount1:Mount1
+10013:NA:NMSPave02
+1404:Miscs-B:Banquet
+10012:NA:NMSSnowRoad
+1407:Mount1:Mount1
+1406:Mount1:Mount1
+10014:NA:NMSRiverNO01
+1401:Root:Grande Table Rectangle Bois
+10009:NA:NMSSand
+10008:NA:NMSPave01
+1403:Miscs-B:BarCounter
+10011:NA:NMSSnow
+1402:Root:ShopTable1
+10010:NA:NMSSandRoad
+10005:NA:NMSOcean01
+10004:NA:NMSGrass
+10007:NA:NMSOcean03
+10006:NA:NMSOcean02
+10001:NA:NMSDesert
+10000:NA:NMSCendre
+10003:NA:NMSEarthForest
+10002:NA:NMSEarth
+1307:Mount1:Mount1
+1306:Mount1:Mount1
+1305:Mount1:Mount1
+1304:Miscs-B:Banquet
+1311:Miscs-G:Golden Mirror
+1310:Root:WeaponRacks 1
+1309:Root:WeaponRacks 2
+1308:Mount1:Mount1
+1297:Pentacles:OldPentacle
+1296:Pentacles:DarkPentacle
+1303:Root:ShopTable1
+1302:Root:Grande Table Rectangle Bois
+1301:Miscs-B:BarCounter
+1290:Miscs-T:TiPontLH
+1291:Static:Drake Skeleton01
+1288:Escalier:EscEscalier
+1289:Miscs-T:TiPontLH
+1294:Static:Drake Skeleton04
+1295:Pentacles:CleanPentacle
+1292:Static:Drake Skeleton02
+1293:Static:Drake Skeleton03
+1282:Escalier:EscEscalier
+1283:Escalier:EscEscalier
+1280:Miscs-F:FBridgeCastleTop
+1281:Miscs-F:FBridgeCastleTop
+1286:Escalier:EscEscalier
+1287:Escalier:EscEscalier
+1284:Escalier:EscEscalier
+1285:Escalier:EscEscalier
+1312:Miscs-D:Display2
+1313:Miscs-D:Display3
+1314:NA:T1 CavernFloor T2
+1315:Miscs-S:Stone3
+1411:Miscs-G:Golden Mirror
+1410:Root:WeaponRacks 1
+1409:Root:WeaponRacks 2
+1408:Mount1:Mount1
+1415:Miscs-S:Stone1H
+1414:NA:T1 CavernFloor T2
+1413:Miscs-D:Display3
+1412:Miscs-D:Display2
+2511:OldDungeonArcatureCorrection:DungeonMainArc 1
+2510:OldDungeonArcatureCorrection:DungeonMainArc 1
+2509:OldDungeonArcatureCorrection:DungeonMainArc 1
+2508:OldDungeonArcatureCorrection:DungeonMainArc 1
+2507:OldDungeonArcatureCorrection:DungeonMainArc 1
+2506:OldDungeonArcatureCorrection:DungeonMainArc 1
+2502:OldDungeonArcatureCorrection:DungeonMainArc 1
+2501:OldDungeonArcatureCorrection:DungeonMainArc 1
+2526:OldDungeonArcatureCorrection:DungeonMainArc 1
+2525:OldDungeonArcatureCorrection:DungeonMainArc 1
+2514:OldDungeonArcatureCorrection:DungeonMainArc 1
+2512:OldDungeonArcatureCorrection:DungeonMainArc 1
+2513:OldDungeonArcatureCorrection:DungeonMainArc 1
+2541:OldDungeonArcatureCorrection:DungeonMainArc 1
+2540:OldDungeonArcatureCorrection:DungeonMainArc 1
+2543:OldDungeonArcatureCorrection:DungeonMainArc 1
+2542:OldDungeonArcatureCorrection:DungeonMainArc 1
+2537:OldDungeonArcatureCorrection:DungeonMainArc 1
+2536:OldDungeonArcatureCorrection:DungeonMainArc 1
+2539:OldDungeonArcatureCorrection:DungeonMainArc 1
+2538:OldDungeonArcatureCorrection:DungeonMainArc 1
+2533:OldDungeonArcatureCorrection:DungeonMainArc 1
+2532:OldDungeonArcatureCorrection:DungeonMainArc 1
+2535:OldDungeonArcatureCorrection:DungeonMainArc 1
+2534:OldDungeonArcatureCorrection:DungeonMainArc 1
+2531:OldDungeonArcatureCorrection:DungeonMainArc 1
+2530:OldDungeonArcatureCorrection:DungeonMainArc 1
+2556:OldDungeonArcatureCorrection:DungeonMainArc 1
+2557:OldDungeonArcatureCorrection:DungeonMainArc 1
+2558:OldDungeonArcatureCorrection:DungeonMainArc 1
+2559:OldDungeonArcatureCorrection:DungeonMainArc 1
+2552:OldDungeonArcatureCorrection:DungeonMainArc 1
+2553:OldDungeonArcatureCorrection:DungeonMainArc 1
+2554:OldDungeonArcatureCorrection:DungeonMainArc 1
+2555:OldDungeonArcatureCorrection:DungeonMainArc 1
+2548:OldDungeonArcatureCorrection:DungeonMainArc 1
+2549:OldDungeonArcatureCorrection:DungeonMainArc 1
+2550:OldDungeonArcatureCorrection:DungeonMainArc 1
+2551:OldDungeonArcatureCorrection:DungeonMainArc 1
+2544:OldDungeonArcatureCorrection:DungeonMainArc 1
+2545:OldDungeonArcatureCorrection:DungeonMainArc 1
+2546:OldDungeonArcatureCorrection:DungeonMainArc 1
+2547:OldDungeonArcatureCorrection:DungeonMainArc 1
+2615:OldDungeonArcatureCorrection:DungeonMainArc 1
+2614:OldDungeonArcatureCorrection:DungeonMainArc 1
+2613:OldDungeonArcatureCorrection:DungeonMainArc 1
+2612:OldDungeonArcatureCorrection:DungeonMainArc 1
+2611:OldDungeonArcatureCorrection:DungeonMainArc 1
+2610:OldDungeonArcatureCorrection:DungeonMainArc 1
+2623:OldDungeonArcatureCorrection:DungeonMainArc 1
+2622:OldDungeonArcatureCorrection:DungeonMainArc 1
+2621:OldDungeonArcatureCorrection:DungeonMainArc 1
+2620:OldDungeonArcatureCorrection:DungeonMainArc 1
+2619:OldDungeonArcatureCorrection:DungeonMainArc 1
+2618:OldDungeonArcatureCorrection:DungeonMainArc 1
+2617:OldDungeonArcatureCorrection:DungeonMainArc 1
+2616:OldDungeonArcatureCorrection:DungeonMainArc 1
+2594:OldDungeonArcatureCorrection:DungeonMainArc 1
+2592:OldDungeonArcatureCorrection:DungeonMainArc 1
+2593:OldDungeonArcatureCorrection:DungeonMainArc 1
+2606:OldDungeonArcatureCorrection:DungeonMainArc 1
+2605:OldDungeonArcatureCorrection:DungeonMainArc 1
+2581:OldDungeonArcatureCorrection:DungeonMainArc 1
+2580:OldDungeonArcatureCorrection:DungeonMainArc 1
+2582:OldDungeonArcatureCorrection:DungeonMainArc 1
+2577:OldDungeonArcatureCorrection:DungeonMainArc 1
+2576:OldDungeonArcatureCorrection:DungeonMainArc 1
+2579:OldDungeonArcatureCorrection:DungeonMainArc 1
+2578:OldDungeonArcatureCorrection:DungeonMainArc 1
+2589:OldDungeonArcatureCorrection:DungeonMainArc 1
+2588:OldDungeonArcatureCorrection:DungeonMainArc 1
+2591:OldDungeonArcatureCorrection:DungeonMainArc 1
+2590:OldDungeonArcatureCorrection:DungeonMainArc 1
+2587:OldDungeonArcatureCorrection:DungeonMainArc 1
+2586:OldDungeonArcatureCorrection:DungeonMainArc 1
+2564:OldDungeonArcatureCorrection:DungeonMainArc 1
+2565:OldDungeonArcatureCorrection:DungeonMainArc 1
+2566:OldDungeonArcatureCorrection:DungeonMainArc 1
+2567:OldDungeonArcatureCorrection:DungeonMainArc 1
+2560:OldDungeonArcatureCorrection:DungeonMainArc 1
+2561:OldDungeonArcatureCorrection:DungeonMainArc 1
+2562:OldDungeonArcatureCorrection:DungeonMainArc 1
+2563:OldDungeonArcatureCorrection:DungeonMainArc 1
+2572:OldDungeonArcatureCorrection:DungeonMainArc 1
+2573:OldDungeonArcatureCorrection:DungeonMainArc 1
+2574:OldDungeonArcatureCorrection:DungeonMainArc 1
+2575:OldDungeonArcatureCorrection:DungeonMainArc 1
+2568:OldDungeonArcatureCorrection:DungeonMainArc 1
+2569:OldDungeonArcatureCorrection:DungeonMainArc 1
+2570:OldDungeonArcatureCorrection:DungeonMainArc 1
+2571:OldDungeonArcatureCorrection:DungeonMainArc 1
+2658:OldDungeonArcatureCorrection:DungeonMainArc 1
+2659:OldDungeonArcatureCorrection:DungeonMainArc 1
+2656:OldDungeonArcatureCorrection:DungeonMainArc 1
+2657:OldDungeonArcatureCorrection:DungeonMainArc 1
+2662:Miscs-6:64kTrollBed
+2663:Miscs-6:64kTrollBed
+2660:OldDungeonArcatureCorrection:DungeonMainArc 1
+2666:Miscs-6:64kTrollBed
+2667:Miscs-6:64kTrollBed
+2664:Miscs-6:64kTrollBed
+2665:Miscs-6:64kTrollBed
+2668:Miscs-6:64kTrollBed
+2669:Miscs-6:64kTrollBed
+2641:OldDungeonArcatureCorrection:DungeonMainArc 1
+2640:OldDungeonArcatureCorrection:DungeonMainArc 1
+2643:OldDungeonArcatureCorrection:DungeonMainArc 1
+2642:OldDungeonArcatureCorrection:DungeonMainArc 1
+2645:OldDungeonArcatureCorrection:DungeonMainArc 1
+2644:OldDungeonArcatureCorrection:DungeonMainArc 1
+2647:OldDungeonArcatureCorrection:DungeonMainArc 1
+2646:OldDungeonArcatureCorrection:DungeonMainArc 1
+2649:OldDungeonArcatureCorrection:DungeonMainArc 1
+2648:OldDungeonArcatureCorrection:DungeonMainArc 1
+2651:OldDungeonArcatureCorrection:DungeonMainArc 1
+2650:OldDungeonArcatureCorrection:DungeonMainArc 1
+2653:OldDungeonArcatureCorrection:DungeonMainArc 1
+2652:OldDungeonArcatureCorrection:DungeonMainArc 1
+2655:OldDungeonArcatureCorrection:DungeonMainArc 1
+2654:OldDungeonArcatureCorrection:DungeonMainArc 1
+2624:OldDungeonArcatureCorrection:DungeonMainArc 1
+2625:OldDungeonArcatureCorrection:DungeonMainArc 1
+2626:OldDungeonArcatureCorrection:DungeonMainArc 1
+2627:OldDungeonArcatureCorrection:DungeonMainArc 1
+2628:OldDungeonArcatureCorrection:DungeonMainArc 1
+2629:OldDungeonArcatureCorrection:DungeonMainArc 1
+2630:OldDungeonArcatureCorrection:DungeonMainArc 1
+2631:OldDungeonArcatureCorrection:DungeonMainArc 1
+2632:OldDungeonArcatureCorrection:DungeonMainArc 1
+2633:OldDungeonArcatureCorrection:DungeonMainArc 1
+2634:OldDungeonArcatureCorrection:DungeonMainArc 1
+2635:OldDungeonArcatureCorrection:DungeonMainArc 1
+2636:OldDungeonArcatureCorrection:DungeonMainArc 1
+2637:OldDungeonArcatureCorrection:DungeonMainArc 1
+2638:OldDungeonArcatureCorrection:DungeonMainArc 1
+2639:OldDungeonArcatureCorrection:DungeonMainArc 1
+3004:Root:Wooden Armoir SW
+3005:Root:Red-Wooden Armoir SW
+3006:Root:Red-Wooden Armoir SW
+3007:Root:Red-Wooden Armoir SW
+3001:Root:Wooden Armoir SW
+3002:Root:Wooden Armoir SW
+3003:Root:Wooden Armoir SW
+3049:Miscs-B:Bed Double Type 1
+3048:Miscs-B:Bed Simple
+3051:White Wall:StuccoMainSmallWallB
+3050:Miscs-B:Bed Double Type 2
+3053:White Wall:StuccoDarkWindowB
+3052:White Wall:StuccoMainSmallWallB
+3055:White Wall:StuccoMainSmallWallB
+3054:White Wall:StuccoMainWindowC
+3041:Root:Table Carre Moyenne Bois
+3040:Root:Petite Table Ronde Bois
+3043:Miscs-S:SmallTreeInBowl
+3042:Miscs-O:Obelisk 1
+3045:Miscs-B:Bed Simple
+3044:Miscs-S:Stone2h
+3047:Miscs-B:Bed Double Type 2
+3046:Miscs-B:Bed Double Type 1
+3064:White Wall:StuccoMainSmallWallB
+3065:White Wall:StuccoMainSmallWallB
+3066:White Wall:StuccoMainSmallWallB
+3067:White Wall:StuccoMainSmallWallB
+3068:White Wall:StuccoMainSmallWallB
+3069:White Wall:StuccoMainSmallWallB
+3070:White Wall:StuccoMainSmallWallB
+3071:White Wall:StuccoMainSmallWallB
+3056:White Wall:StuccoMainSmallWallB
+3057:White Wall:StuccoMainSmallWallB
+3058:White Wall:StuccoMainSmallWallB
+3059:White Wall:StuccoMainSmallWallB
+3060:White Wall:StuccoMainSmallWallB
+3061:White Wall:StuccoMainSmallWallB
+3062:White Wall:StuccoMainSmallWallB
+3063:White Wall:StuccoMainSmallWallB
+3019:Miscs-C:Colonne Carrer Bas-Haut
+3018:Miscs-C:Colonne Cercle Bas-Haut
+3017:Miscs-C:Colonne Cercle Bas
+3016:Miscs-B:Bureau SW
+3023:Miscs-K:Knight
+3022:Root:Tomb Hemisphere
+3021:Root:Tomb Carrer
+3020:Miscs-C:Colonne Greque
+3011:Miscs-E:Etagere SW
+3010:Miscs-E:Etagere SW
+3009:Miscs-E:Etagere SW
+3008:Root:Red-Wooden Armoir SW
+3015:Miscs-B:Bureau SW
+3014:Miscs-B:Bureau SW
+3013:Miscs-B:Bureau SW
+3012:Miscs-E:Etagere SW
+3034:Miscs-R:Roche 1
+3035:Miscs-M:Menhir de Roche
+3032:Root:Horloge Grand Pere
+3033:White Wall:StuccoMainSmallWallB
+3038:Root:Petite Table Bois Rectangle
+3039:Root:Petite Table Bois Rectangle
+3036:Miscs-M:Menhir Noir
+3037:Root:Moyenne Table Ronde Bois
+3026:NA:T1 CavernFloor T2
+3027:NA:T1 CavernFloor T2
+3024:Miscs-D:Display
+3025:NA:T1 CavernFloor T2
+3030:Root:Horloge Grand Pere
+3031:Root:Horloge Grand Pere
+3028:NA:T1 CavernFloor T2
+3029:Root:Horloge Grand Pere
+3284:Root:Ble
+3285:Fountain02:Fountaine20000
+3287:Mount1:Mount1
+3280:Root:Well
+3281:Root:TownBoard 1
+3292:OldBrickWall:BrickDarkWall 1
+3293:OldBrickWall:BrickDarkWall 1
+3294:OldBrickWall:BrickDarkWall 1
+3295:OldBrickWall:BrickDarkWall 1
+3288:Mount1:Mount1
+3289:Miscs-C:Cerebus
+3290:NA:MonkStudy
+3269:Miscs-D:Desk
+3268:Miscs-D:Desk2
+3271:Miscs-C:Cerebus
+3270:Miscs-D:Desk
+3265:Miscs-S:Shito 2
+3264:Miscs-S:Shito 2
+3267:Miscs-S:Shito 1
+3266:Miscs-S:Shito 1
+3277:Root:Signs2 1
+3276:Root:Signs2 1
+3279:Miscs-A:Autel
+3278:Miscs-A:Autel
+3318:OldBrickWall:BrickDarkWall 1
+3319:OldBrickWall:BrickDarkWall 1
+3316:OldBrickWall:BrickDarkWall 1
+3317:OldBrickWall:BrickDarkWall 1
+3314:OldBrickWall:BrickDarkWall 1
+3315:OldBrickWall:BrickDarkWall 1
+3312:OldBrickWall:BrickDarkWall 1
+3313:OldBrickWall:BrickDarkWall 1
+3326:OldBrickWall:BrickDarkWall 1
+3327:OldBrickWall:BrickDarkWall 1
+3324:OldBrickWall:BrickDarkWall 1
+3325:OldBrickWall:BrickDarkWall 1
+3322:OldBrickWall:BrickDarkWall 1
+3323:OldBrickWall:BrickDarkWall 1
+3320:OldBrickWall:BrickDarkWall 1
+3321:OldBrickWall:BrickDarkWall 1
+3303:OldBrickWall:BrickDarkWall 1
+3302:OldBrickWall:BrickDarkWall 1
+3301:OldBrickWall:BrickDarkWall 1
+3300:OldBrickWall:BrickDarkWall 1
+3299:OldBrickWall:BrickDarkWall 1
+3298:OldBrickWall:BrickDarkWall 1
+3297:OldBrickWall:BrickDarkWall 1
+3296:OldBrickWall:BrickDarkWall 1
+3311:OldBrickWall:BrickDarkWall 1
+3310:OldBrickWall:BrickDarkWall 1
+3309:OldBrickWall:BrickDarkWall 1
+3308:OldBrickWall:BrickDarkWall 1
+3307:OldBrickWall:BrickDarkWall 1
+3306:OldBrickWall:BrickDarkWall 1
+3305:OldBrickWall:BrickDarkWall 1
+3304:OldBrickWall:BrickDarkWall 1
+3216:NA:T1 CavernFloor T2
+3217:NA:T1 CavernFloor T2
+3218:NA:T1 CavernFloor T2
+3219:NA:T1 CavernFloor T2
+3220:Miscs-A:Archer
+3221:Miscs-A:ArmorOnARack
+3222:Miscs-D:Dummy
+3223:Root:RuinedTable1
+3224:Root:RuinedMirror1
+3225:Root:RuinedBed1
+3226:Root:RuinedBed1
+3227:Miscs-A:Anvil
+3228:Root:Sword
+3229:Root:Sword
+3230:Miscs-A:Archer
+3231:Miscs-A:ArmorOnARack
+3250:Root:Lights 4
+3251:Root:Lights 5
+3248:Miscs-L:Lights 3
+3249:Root:Lights 4
+3254:Miscs-C:Chairs 1
+3255:Miscs-C:Chairs 1
+3252:Root:Lights 5
+3253:Root:Kitchen 1
+3256:Root:Shito 6
+3257:Root:Shito 6
+3235:Miscs-B:Border1
+3234:Miscs-B:Border1
+3233:Root:RuinedMirror1
+3232:Miscs-D:Dummy
+3239:White Wall:StuccoMainSmallWallB
+3238:White Wall:StuccoMainSmallWallB
+3237:NA:Border2
+3236:NA:Border2
+3243:Root:Misc 7 - All 8
+3242:Root:Misc 7 - All 8
+3241:Miscs-M:Misc 4 - Part 2 2
+3240:Miscs-D:Desk2
+3247:Root:Misc 8 - All 4
+3246:Root:Misc 8 - All 4
+3245:Root:Misc 8 - All 3
+3244:Root:Misc 8 - All 3
+3165:Miscs-B:Boulder
+3164:Miscs-B:Boulder
+3167:Miscs-P:PrisonBed
+3166:Miscs-P:PrisonBed
+3161:DungeonMain:DungeonMainWall 1
+3160:DungeonMain:DungeonMainWall 1
+3163:DungeonMain:DungeonMainWall 1
+3162:DungeonMain:DungeonMainWall 1
+3157:DungeonMain:DungeonMainWall 1
+3156:DungeonMain:DungeonMainWall 1
+3159:DungeonMain:DungeonMainWall 1
+3158:DungeonMain:DungeonMainWall 1
+3153:DungeonMain:DungeonMainWall 1
+3152:DungeonMain:DungeonMainWall 1
+3155:DungeonMain:DungeonMainWall 1
+3154:DungeonMain:DungeonMainWall 1
+3148:White Wall:StuccoMainSmallWallB
+3149:White Wall:StuccoDarkWall 3
+3150:White Wall:StuccoMainSmallWallB
+3151:DungeonMain:DungeonMainWall 1
+3144:Root:Wood Sign 2
+3145:White Wall:StuccoMainSmallWallB
+3146:White Wall:StuccoMainSmallWallA
+3147:White Wall:StuccoDarkWall 2
+3140:Root:Small Gold Sign
+3141:Root:Small Marble Sign
+3142:Root:Wood Sign 1
+3143:Root:Wood Sign 2
+3136:Root:Shop Sign
+3137:Root:Plaque Wood
+3138:Root:Plaque Marble
+3139:Root:Small Wood Sign
+3189:ClotureBois:Fence 3
+3188:ClotureBois:FenceDark 1
+3187:ClotureBois:FenceCornerV
+3186:ClotureBois:FenceCorner2
+3185:ClotureBois:FenceCorner
+3184:ClotureBois:FenceCornerN
+3182:Miscs-H:HighTree1
+3183:Miscs-D:DarkTree1
+3180:Miscs-F:Fougere2
+3181:Miscs-C:Cactus1
+3178:Miscs-P:PinkTree1
+3179:Miscs-B:Bush2
+3176:Miscs-A:AppleTree1
+3177:Miscs-D:DeadTree1
+3174:Miscs-H:HighPine1
+3175:Miscs-C:CityTree1
+3172:Miscs-M:MultiTrunkTree2
+3173:Miscs-P:PalmTree2
+3170:Miscs-L:LeafLessTree2
+3171:Miscs-L:LargeBasedLowLeafedTree1
+3168:Miscs-S:SmallTree1
+3169:Miscs-H:HighTree2
+3097:CemeteryGates:Cemetery Gates1
+3096:NA:Cemetery Gates
+3099:NA:Cemetery Gates
+3098:NA:Cemetery Gates
+3101:NA:Cemetery Gates
+3100:NA:Cemetery Gates
+3103:NA:Cemetery Gates
+3102:NA:Cemetery Gates
+3089:CemeteryGates:Gate
+3088:NA:Cemetery Gates
+3091:NA:Cemetery Gates
+3090:NA:Cemetery Gates
+3093:CemeteryGates:Cemetery Gates6
+3092:CemeteryGates:Cemetery Gates6
+3095:CemeteryGates:Cemetery Gates3
+3094:CemeteryGates:Cemetery Gates4
+3080:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3081:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3082:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3083:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3084:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3085:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3086:CemeteryGates:Cemetery Gates2
+3087:CemeteryGates:Cemetery Gates2
+3072:White Wall:StuccoMainSmallWallB
+3073:White Wall:StuccoMainSmallWallB
+3074:White Wall:StuccoMainSmallWallB
+3075:White Wall:StuccoMainSmallWallB
+3076:White Wall:StuccoMainSmallWallB
+3077:White Wall:StuccoMainSmallWallB
+3078:White Wall:StuccoMainSmallWallB
+3079:White Wall:StuccoMainSmallWallB
+3131:Root:Plaque Wood
+3130:Root:Shop Sign
+3129:Miscs-6:64kDeadForestTree1
+3128:Miscs-6:64kDeadForestTree1
+3135:Root:Small Marble Sign
+3134:Root:Small Gold Sign
+3133:Root:Small Wood Sign
+3132:Root:Plaque Marble
+3123:NA:WoodPile
+3122:Miscs-F:Fontaine
+3121:Root:TortureChair
+3127:White Wall:StuccoMainSmallWallB
+3126:Miscs-M:Medium Rock
+3125:Root:Small Rock
+3124:Root:Motte Terre
+3114:NA:Cemetery Gates
+3112:NA:Cemetery Gates
+3113:NA:Cemetery Gates
+3106:NA:Cemetery Gates
+3107:NA:Cemetery Gates
+3104:NA:Cemetery Gates
+3105:NA:Cemetery Gates
+3110:NA:Cemetery Gates
+3111:NA:Cemetery Gates
+3108:NA:Cemetery Gates
+3109:NA:Cemetery Gates
+3527:Miscs-W:Web10
+3526:Miscs-W:Web10
+3525:Miscs-W:Web9
+3524:Miscs-W:Web9
+3523:Miscs-W:Web8
+3522:Miscs-W:Web8
+3521:Miscs-W:Web7
+3520:Miscs-W:Web7
+3535:NA:T1 CavernFloor T2
+3534:NA:T1 CavernFloor T2
+3530:NA:T1 CavernFloor T2
+3529:NA:T1 CavernFloor T2
+3542:NA:T1 CavernFloor T2
+3543:NA:T1 CavernFloor T2
+3540:NA:T1 CavernFloor T2
+3541:NA:T1 CavernFloor T2
+3538:NA:T1 CavernFloor T2
+3539:NA:T1 CavernFloor T2
+3536:NA:T1 CavernFloor T2
+3537:NA:T1 CavernFloor T2
+3559:NA:T1 CavernFloor T2
+3558:NA:T1 CavernFloor T2
+3553:NA:T1 CavernFloor T2
+3554:NA:T1 CavernFloor T2
+3565:NA:T1 CavernFloor T2
+3564:NA:T1 CavernFloor T2
+3567:NA:T1 CavernFloor T2
+3566:NA:T1 CavernFloor T2
+3561:NA:T1 CavernFloor T2
+3560:NA:T1 CavernFloor T2
+3563:NA:T1 CavernFloor T2
+3562:NA:T1 CavernFloor T2
+3572:NA:T1 CavernFloor T2
+3573:NA:T1 CavernFloor T2
+3574:NA:T1 CavernFloor T2
+3575:NA:T1 CavernFloor T2
+3568:NA:T1 CavernFloor T2
+3569:NA:T1 CavernFloor T2
+3570:NA:T1 CavernFloor T2
+3571:NA:T1 CavernFloor T2
+3580:Miscs-S:Stal5
+3581:Miscs-S:Stal6
+3582:Miscs-S:Stal7
+3583:NA:LargeC1
+3576:Miscs-S:Stal1
+3577:Miscs-S:Stal2
+3578:Miscs-S:Stal3
+3579:Miscs-S:Stal4
+3459:OldBrickWall:BrickDarkWall 1
+3458:OldBrickWall:BrickDarkWall 1
+3457:OldBrickWall:BrickDarkWall 1
+3456:OldBrickWall:BrickDarkWall 1
+3463:OldBrickWall:BrickDarkWall 1
+3462:OldBrickWall:BrickDarkWall 1
+3461:OldBrickWall:BrickDarkWall 1
+3460:OldBrickWall:BrickDarkWall 1
+3467:OldBrickWall:BrickDarkWall 1
+3466:OldBrickWall:BrickDarkWall 1
+3465:OldBrickWall:BrickDarkWall 1
+3464:OldBrickWall:BrickDarkWall 1
+3471:OldBrickWall:BrickDarkWall 1
+3470:OldBrickWall:BrickDarkWall 1
+3469:OldBrickWall:BrickDarkWall 1
+3468:OldBrickWall:BrickDarkWall 1
+3474:OldBrickWall:BrickDarkWall 1
+3475:OldBrickWall:BrickDarkWall 1
+3472:OldBrickWall:BrickDarkWall 1
+3473:OldBrickWall:BrickDarkWall 1
+3478:OldBrickWall:BrickDarkWall 1
+3476:OldBrickWall:BrickDarkWall 1
+3477:OldBrickWall:BrickDarkWall 1
+3482:OldBrickWall:BrickDarkWall 1
+3483:OldBrickWall:BrickDarkWall 1
+3481:OldBrickWall:BrickDarkWall 1
+3486:Miscs-A:Anvil
+3487:Miscs-D:DebrisPile2
+3484:OldBrickWall:BrickDarkWall 1
+3485:NA:HeadPile
+3489:Miscs-D:DebrisPile3
+3488:Miscs-D:DebrisPile2
+3491:Miscs-D:DebrisPile4
+3490:Miscs-D:DebrisPile3
+3493:Miscs-D:DebrisPile5
+3492:Miscs-D:DebrisPile4
+3495:Miscs-R:Rock1
+3494:Miscs-D:DebrisPile5
+3497:Miscs-R:Rock3
+3496:Miscs-R:Rock2
+3499:Miscs-S:Stairs
+3498:Miscs-R:Rock4
+3501:Miscs-S:Stair2
+3500:Miscs-S:Stairs
+3503:NA:StairUp
+3502:Miscs-S:Stair2
+3504:Miscs-S:Stairup
+3505:NA:Stair2Up
+3506:NA:Stair2Up
+3507:Miscs-T:Trunk1
+3508:Miscs-W:Web1
+3509:Miscs-W:Web1
+3510:Miscs-W:Web2
+3511:Miscs-W:Web2
+3512:Miscs-W:Web3
+3513:Miscs-W:Web3
+3514:Miscs-W:Web4
+3515:Miscs-W:Web4
+3516:Miscs-W:Web5
+3517:Miscs-W:Web5
+3518:Miscs-W:Web6
+3519:Miscs-W:Web6
+3402:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3401:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3422:Root:Crypt
+3421:Miscs-D:DungeonWell
+3420:Miscs-B:BigVase
+3419:Miscs-G:GiantWell
+3418:Miscs-D:DebrisPile1
+3417:Miscs-D:DebrisPile1
+3414:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3413:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3412:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3411:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3436:White Wall:StuccoMainSmallWallB
+3437:White Wall:StuccoMainSmallWallB
+3438:White Wall:StuccoMainSmallWallB
+3439:Root:Shelf
+3433:Miscs-D:DungeonTomb1
+3434:Root:Crypt
+3435:White Wall:StuccoMainSmallWallB
+3428:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3429:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3430:Miscs-D:DungeonTomb1
+3431:NA:HeadPile
+3424:White Wall:StuccoMainSmallWallB
+3425:White Wall:StuccoMainSmallWallB
+3426:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3427:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3453:OldBrickWall:BrickDarkWall 1
+3452:OldBrickWall:BrickDarkWall 1
+3455:OldBrickWall:BrickDarkWall 1
+3454:OldBrickWall:BrickDarkWall 1
+3449:OldBrickWall:BrickDarkWall 1
+3448:OldBrickWall:BrickDarkWall 1
+3451:OldBrickWall:BrickDarkWall 1
+3450:OldBrickWall:BrickDarkWall 1
+3445:OldBrickWall:BrickDarkWall 1
+3444:OldBrickWall:BrickDarkWall 1
+3447:OldBrickWall:BrickDarkWall 1
+3446:OldBrickWall:BrickDarkWall 1
+3441:OldBrickWall:BrickDarkWall 1
+3440:OldBrickWall:BrickDarkWall 1
+3443:OldBrickWall:BrickDarkWall 1
+3442:OldBrickWall:BrickDarkWall 1
+3338:Root:Lutrin
+3339:Root:Lutrin
+3336:OldBrickWall:BrickDarkWall 1
+3337:NA:MonkStudy
+3342:Mount1:Mount1
+3343:Mount1:Mount1
+3340:Root:Throne
+3341:Root:Throne
+3330:OldBrickWall:BrickDarkWall 1
+3331:OldBrickWall:BrickDarkWall 1
+3328:OldBrickWall:BrickDarkWall 1
+3329:OldBrickWall:BrickDarkWall 1
+3334:OldBrickWall:BrickDarkWall 1
+3335:OldBrickWall:BrickDarkWall 1
+3332:OldBrickWall:BrickDarkWall 1
+3333:OldBrickWall:BrickDarkWall 1
+3355:Rampart Wall:Rampart 2
+3354:Mount1:Mount1
+3353:Mount1:Mount1
+3352:Mount1:Mount1
+3359:Rampart Wall:Rampart 2
+3358:Rampart Wall:Rampart 2
+3357:Rampart Wall:Rampart 2
+3356:Rampart Wall:Rampart 2
+3347:Mount1:Mount1
+3346:Mount1:Mount1
+3345:Mount1:Mount1
+3344:Mount1:Mount1
+3351:Mount1:Mount1
+3350:Mount1:Mount1
+3349:Mount1:Mount1
+3348:Mount1:Mount1
+3370:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3371:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3372:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3373:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3374:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3375:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3360:Rampart Wall:Rampart 2
+3361:Miscs-F:FirePlace1
+3362:Miscs-F:FirePlace1
+3363:Miscs-O:Oven
+3364:Miscs-O:Oven
+3365:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3366:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3389:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3390:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3377:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3376:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3378:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3826:NA:SapinNoelBased
+3824:MoulinD:MoulinD-0024
+3825:MoulinG:MoulinG-0024
+3811:Objects:DungeonBrownColumn
+3810:Objects:DungeonBlueColumn
+3809:Miscs-D:DungeonGreenColumn
+3808:Miscs-O:ObjectCatapultBoulder02
+3815:Miscs-T:Trebuchet
+3814:Miscs-C:Catapult
+3813:NA:BalistaF
+3812:Miscs-B:Balista
+3819:Miscs-B:Balista
+3818:Miscs-O:ObjectLightHavenFountain
+3817:Miscs-O:ObjectLightHavenCrypt
+3816:Miscs-T:Trebuchet2
+3823:Miscs-T:Trebuchet2
+3822:Miscs-T:Trebuchet
+3821:Miscs-C:Catapult
+3820:NA:BalistaF
+3792:White Wall:StuccoDarkSmallWallB
+3793:White Wall:StuccoDarkSmallWallB
+3794:White Wall:StuccoDarkSmallWallB
+3795:White Wall:StuccoDarkSmallWallB
+3796:White Wall:StuccoDarkSmallWallB
+3797:White Wall:StuccoDarkSmallWallB
+3798:White Wall:StuccoDarkSmallWallB
+3799:White Wall:StuccoDarkSmallWallB
+3800:White Wall:StuccoMainWallDoor 2
+3801:White Wall:StuccoDarkWallDoor 2
+3802:White Wall:StuccoDarkWallDoor 1
+3803:White Wall:StuccoMainWallDoor 1
+3804:Miscs-B:BlackSmithForgery
+3805:Miscs-O:ObjectLightHavenCrypt
+3806:Miscs-O:ObjectLightHavenFountain
+3807:Miscs-O:ObjectCatapultBoulder01
+3777:White Wall:StuccoDarkSmallWallB
+3776:White Wall:StuccoDarkSmallWallB
+3779:White Wall:StuccoDarkSmallWallB
+3778:White Wall:StuccoDarkSmallWallB
+3781:White Wall:StuccoDarkSmallWallB
+3780:White Wall:StuccoDarkSmallWallB
+3783:White Wall:StuccoDarkSmallWallB
+3782:White Wall:StuccoDarkSmallWallB
+3785:White Wall:StuccoDarkSmallWallB
+3784:White Wall:StuccoDarkSmallWallB
+3787:White Wall:StuccoMainSmallWallB
+3786:White Wall:StuccoDarkSmallWallB
+3789:White Wall:StuccoDarkSmallWallB
+3788:White Wall:StuccoDarkSmallWallB
+3791:White Wall:StuccoDarkSmallWallB
+3790:White Wall:StuccoDarkSmallWallB
+3766:White Wall:StuccoCorner2
+3767:White Wall:StuccoCorner
+3764:White Wall:StuccoDarkSmallWallB
+3765:White Wall:StuccoCornerN
+3762:White Wall:StuccoDarkSmallWallB
+3763:White Wall:StuccoDarkSmallWallB
+3760:White Wall:StuccoDarkSmallWallB
+3761:White Wall:StuccoMainSmallWallB
+3774:White Wall:StuccoDarkSmallWallB
+3775:White Wall:StuccoDarkSmallWallB
+3772:White Wall:StuccoCornerTNW
+3773:White Wall:StuccoDarkSmallWallB
+3770:White Wall:StuccoDarkSmallWallB
+3771:White Wall:StuccoCornerTSW
+3768:White Wall:StuccoCornerV
+3769:White Wall:StuccoCornerTNE
+3751:CastleWall:CastleWall 1
+3750:CastleWall:CastleWall 1
+3749:CastleWall:CastleWall 1
+3748:CastleWall:CastleWall 1
+3747:CastleWall:CastleWall 1
+3746:CastleWall:CastleWall 1
+3745:CastleWall:CastleWall 1
+3744:CastleWall:CastleWall 1
+3759:White Wall:StuccoDarkSmallWallB
+3758:Miscs-B:Bonfire
+3755:Miscs-B:Bonfire
+3754:Root:Shelf
+3753:CastleWall:CastleWall 1
+3752:CastleWall:CastleWall 1
+3732:CastleWall:CastleWall 1
+3733:CastleWall:CastleWall 1
+3734:CastleWall:CastleWall 1
+3735:CastleWall:CastleWall 1
+3728:CastleWall:CastleWall 1
+3729:CastleWall:CastleWall 1
+3730:CastleWall:CastleWall 1
+3731:CastleWall:CastleWall 1
+3740:CastleWall:CastleWall 1
+3741:CastleWall:CastleWall 1
+3742:CastleWall:CastleWall 1
+3743:CastleWall:CastleWall 1
+3736:CastleWall:CastleWall 1
+3737:CastleWall:CastleWall 1
+3738:CastleWall:CastleWall 1
+3739:CastleWall:CastleWall 1
+3717:CastleWall:CastleWall 1
+3716:CastleWall:CastleWall 1
+3719:CastleWall:CastleWall 1
+3718:CastleWall:CastleWall 1
+3713:CastleWall:CastleWall 1
+3712:CastleWall:CastleWall 1
+3715:CastleWall:CastleWall 1
+3714:CastleWall:CastleWall 1
+3725:CastleWall:CastleWall 1
+3724:CastleWall:CastleWall 1
+3727:CastleWall:CastleWall 1
+3726:CastleWallBorder:CastleEnd3
+3721:CastleWall:CastleWall 1
+3720:CastleWall:CastleWall 1
+3723:CastleWall:CastleWall 1
+3722:CastleWall:CastleWall 1
+3707:CastleWall:CastleWall 1
+3706:CastleWall:CastleWall 1
+3705:CastleWall:CastleWall 1
+3704:CastleWall:CastleWall 1
+3711:CastleWall:CastleWall 1
+3710:CastleWall:CastleWall 1
+3709:CastleWall:CastleWall 1
+3708:CastleWall:CastleWall 1
+3699:CastleWall:CastleWall 1
+3698:CastleWall:CastleWall 1
+3697:CastleWall:CastleWall 1
+3696:CastleWall:CastleWall 1
+3703:CastleWall:CastleWall 1
+3702:CastleWall:CastleWall 1
+3701:CastleWall:CastleWall 1
+3700:CastleWall:CastleWall 1
+3690:CastleWall:CastleWall 1
+3691:CastleWall:CastleWall 1
+3688:CastleWall:CastleWall 1
+3689:CastleWall:CastleWall 1
+3694:CastleWall:CastleWall 1
+3695:CastleWall:CastleWall 1
+3692:CastleWall:CastleWall 1
+3693:CastleWall:CastleWall 1
+3682:CastleWall:CastleWallCornerv
+3683:CastleWall:CastleWall 1
+3680:CastleWall:CastleWallCorner2
+3681:CastleWall:CastleWall 1
+3686:CastleWall:CastleWall 1
+3687:CastleWall:CastleWall 1
+3684:CastleWall:CastleWall 1
+3685:CastleWall:CastleWall 1
+3675:CastleWall:CastleDarkWall 1
+3674:CastleWall:CastleWall 1
+3677:CastleWall:CastleWall 1
+3676:CastleWall:CastleWall 1
+3679:CastleWall:CastleWall 1
+3678:CastleWall:CastleWall 1
+3648:OldDungeonArcatureCorrection:DungeonMainArc 1
+3649:OldDungeonArcatureCorrection:DungeonMainArc 1
+3650:OldDungeonArcatureCorrection:DungeonMainArc 1
+3651:OldDungeonArcatureCorrection:DungeonMainArc 1
+3652:OldDungeonArcatureCorrection:DungeonMainArc 1
+3653:OldDungeonArcatureCorrection:DungeonMainArc 1
+3647:OldDungeonArcatureCorrection:DungeonMainArc 1
+3646:OldDungeonArcatureCorrection:DungeonMainArc 1
+3643:OldDungeonArcatureCorrection:DungeonMainArc 1
+3642:OldDungeonArcatureCorrection:DungeonMainArc 1
+3641:OldDungeonArcatureCorrection:DungeonMainArc 1
+3640:OldDungeonArcatureCorrection:DungeonMainArc 1
+3630:OldDungeonArcatureCorrection:DungeonMainArc 1
+3631:OldDungeonArcatureCorrection:DungeonMainArc 1
+3618:OldDungeonArcatureCorrection:DungeonMainArc 1
+3619:OldDungeonArcatureCorrection:DungeonMainArc 1
+3605:OldDungeonArcatureCorrection:DungeonMainArc 1
+3604:OldDungeonArcatureCorrection:DungeonMainArc 1
+3607:OldDungeonArcatureCorrection:DungeonMainArc 1
+3606:OldDungeonArcatureCorrection:DungeonMainArc 1
+3601:OldDungeonArcatureCorrection:DungeonMainArc 1
+3603:OldDungeonArcatureCorrection:DungeonMainArc 1
+3602:OldDungeonArcatureCorrection:DungeonMainArc 1
+3598:OldDungeonArcatureCorrection:DungeonMainArc 1
+3599:OldDungeonArcatureCorrection:DungeonMainArc 1
+3592:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3593:OldDungeonArcatureCorrection:DungeonMainArc 1
+3594:OldDungeonArcatureCorrection:DungeonMainArc 1
+3588:Mount1:Mount1
+3589:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3590:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3591:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3584:NA:LargeC2
+3585:NA:LargeC3
+3586:Mount1:Mount1
+3587:Mount1:Mount1
+4065:NA:T1 CavernG T2
+4064:Small2C:NBrickWallS2SE
+4067:NA:T1 CavernG T2
+4066:NA:T1 CavernG T2
+4069:NA:T1 CavernG T2
+4068:NA:T1 CavernG T2
+4071:NA:T1 CavernG T2
+4070:NA:T1 CavernG T2
+4073:NA:T1 CavernG T2
+4072:NA:T1 CavernG T2
+4075:NA:T1 CavernG T2
+4074:NA:T1 CavernG T2
+4077:NA:T1 CavernG T2
+4076:NA:T1 CavernG T2
+4079:NA:T1 CavernG T2
+4078:NA:T1 CavernG T2
+4080:NA:T1 CavernG T2
+4081:NA:T1 CavernG T2
+4082:NA:T1 CavernG T2
+4083:NA:T1 CavernG T2
+4084:NA:T1 CavernG T2
+4085:GlaceEtNeige:GStal1
+4086:GlaceEtNeige:GStal2
+4087:GlaceEtNeige:GStal3
+4088:GlaceEtNeige:GStal4
+4089:GlaceEtNeige:GStal5
+4090:GlaceEtNeige:GStal6
+4091:GlaceEtNeige:GStal7
+4092:NA:GLargeC1
+4093:NA:GLargeC2
+4094:NA:GLargeC3
+4095:03BrunFonce:3NBrickWallS3SE
+4035:Small:NBrickWallSCoinE
+4034:Small:NBrickWallSSEDoorT
+4033:Small:NBrickWallSSE
+4032:Small:NBrickWallSNEDoorT
+4039:Small:NBrickWallSSE
+4038:Small:NBrickWallSCoinS
+4037:Small:NBrickWallSCoinW
+4036:Small:NBrickWallSCoinN
+4043:Small:NBrickWallSSE
+4042:Small:NBrickWallSSE
+4041:Small:NBrickWallSSE
+4040:Small:NBrickWallSTNE
+4047:NewBrickWall:NBrickWallNEDoorB
+4046:Small:NBrickWallSSE
+4045:Small:NBrickWallSSE
+4044:Small:NBrickWallSSE
+4050:Small2C:NBrickWallS2SE
+4051:Small2C:NBrickWallS2NEWindow
+4048:Small2C:NBrickWallS2SE
+4049:Small2C:NBrickWallS2NE
+4054:Small2C:NBrickWallS2SEDoorB
+4055:Small2C:NBrickWallS2SEDoorT
+4052:Small2C:NBrickWallS2NEDoorB
+4053:Small2C:NBrickWallS2NEDoorT
+4058:Small2C:NBrickWallS2CoinW
+4059:Small2C:NBrickWallS2CoinS
+4056:Small2C:NBrickWallS2CoinE
+4057:Small2C:NBrickWallS2CoinN
+4062:Small2C:NBrickWallS2TNW
+4063:Small2C:NBrickWallS2TSE
+4060:Small2C:NBrickWallS2SE
+4061:Small2C:NBrickWallS2SE
+4001:WoodWall:MidWoodWallSEWindow
+4000:WoodWall:MidWoodWallNEWindow
+4013:NewBrickWall:NBrickWallNEWindow
+4012:NewBrickWall:NBrickWallSEWindow
+4015:NewBrickWall:NBrickWallSE
+4014:NewBrickWall:NBrickWallSE
+4009:Miscs-F:FBridgeCastleTop
+4008:Miscs-B:BridgeCastleTop1
+4011:NewBrickWall:NBrickWallNE
+4010:NewBrickWall:NBrickWallSE
+4020:NewBrickWall:NBrickWallCoinW
+4021:NewBrickWall:NBrickWallCoinS
+4022:NewBrickWall:NBrickWallSE
+4023:NewBrickWall:NBrickWallSE
+4016:NewBrickWall:NBrickWallSE
+4017:NewBrickWall:NBrickWallSE
+4018:NewBrickWall:NBrickWallCoinE
+4019:NewBrickWall:NBrickWallCoinN
+4028:Small:NBrickWallSNE
+4029:Small:NBrickWallSSE
+4030:Small:NBrickWallSNEWindow
+4031:Small:NBrickWallSNEDoorB
+4024:NewBrickWall:NBrickWallSE
+4025:NewBrickWall:NBrickWallSE
+4026:NewBrickWall:NBrickWallSE
+4027:Small:NBrickWallSSE
+3975:Miscs-T:TableTemple1
+3974:GlaceEtNeige:Mont2G
+3973:GlaceEtNeige:Mont2G
+3972:GlaceEtNeige:MontG
+3971:GlaceEtNeige:MontG
+3970:GlaceEtNeige:EntreeMontG
+3969:GlaceEtNeige:EntreeMontG
+3968:GlaceEtNeige:FontaineNeige1
+3983:WoodWall:WoodWallSE
+3982:Miscs-T:Torture1
+3981:Miscs-T:TableForge1
+3980:Miscs-O:OrgueSmall
+3979:Miscs-B:BarBar
+3978:Miscs-B:BarBar
+3977:Miscs-H:HorseWater
+3976:Miscs-H:HorseWater
+3990:WoodWall:WoodWallSEDoorT
+3991:WoodWall:WoodWallCornerR
+3988:WoodWall:WoodWallNEDoorT
+3989:WoodWall:WoodWallSEDoorB
+3986:WoodWall:WoodWallNEWindow
+3987:WoodWall:WoodWallNEDoorB
+3984:WoodWall:WoodWallNE
+3985:WoodWall:WoodWallSEWindow
+3998:WoodWall:WoodWallTSE
+3999:WoodWall:WoodWallTSW
+3996:WoodWall:WoodWallTNE
+3997:WoodWall:WoodWallTNW
+3994:WoodWall:WoodWallCornerB
+3995:WoodWall:WoodWallSE
+3992:WoodWall:WoodWallCornerT
+3993:WoodWall:WoodWallCornerL
+3944:Miscs-H:HuteGob1
+3945:Miscs-O:OrgueSmall
+3946:Miscs-T:TableForge1
+3947:Miscs-T:TableTemple1
+3948:Miscs-T:Torture1
+3949:Miscs-T:Torture2
+3950:Miscs-T:Torture3
+3951:Miscs-T:Torture4
+3938:Miscs-T:TombOfDarkness
+3939:Root:Shito 6
+3940:NA:Crypt2
+3941:Miscs-F:Forge1
+3942:Miscs-F:Forge1
+3943:Miscs-H:HuteGob1
+3961:Decors:Tente2
+3960:Decors:Tente1
+3963:Miscs-L:LanterneSimple
+3962:Decors:Tente3
+3965:GlaceEtNeige:HuteGobGlace1
+3964:Miscs-L:LHBridgeB
+3967:GlaceEtNeige:FontaineNeige1
+3966:GlaceEtNeige:HuteGobGlace1
+3953:Miscs-T:Torture6
+3952:Miscs-T:Torture5
+3955:Miscs-T:Trone2King
+3954:Miscs-T:Trone1King
+3957:Decors:Entreemine
+3956:Decors:Blockfleches
+3959:Decors:Pontdepierretop
+3958:Decors:Pontdepierre
+3914:OldDungeonArcatureCorrection:DungeonMainArc 1
+3915:OldDungeonArcatureCorrection:DungeonMainArc 1
+3912:OldDungeonArcatureCorrection:DungeonMainArc 1
+3913:OldDungeonArcatureCorrection:DungeonMainArc 1
+3918:OldDungeonArcatureCorrection:DungeonMainArc 1
+3919:OldDungeonArcatureCorrection:DungeonMainArc 1
+3916:OldDungeonArcatureCorrection:DungeonMainArc 1
+3917:OldDungeonArcatureCorrection:DungeonMainArc 1
+3906:OldDungeonArcatureCorrection:DungeonMainArc 1
+3907:OldDungeonArcatureCorrection:DungeonMainArc 1
+3904:OldDungeonArcatureCorrection:DungeonMainArc 1
+3905:OldDungeonArcatureCorrection:DungeonMainArc 1
+3910:OldDungeonArcatureCorrection:DungeonMainArc 1
+3911:OldDungeonArcatureCorrection:DungeonMainArc 1
+3908:OldDungeonArcatureCorrection:DungeonMainArc 1
+3909:OldDungeonArcatureCorrection:DungeonMainArc 1
+3931:OldDungeonArcatureCorrection:DungeonMainArc 1
+3930:OldDungeonArcatureCorrection:DungeonMainArc 1
+3929:OldDungeonArcatureCorrection:DungeonMainArc 1
+3928:OldDungeonArcatureCorrection:DungeonMainArc 1
+3934:WoodPrison:WoodPrison
+3933:OldDungeonArcatureCorrection:DungeonMainArc 1
+3932:OldDungeonArcatureCorrection:DungeonMainArc 1
+3923:OldDungeonArcatureCorrection:DungeonMainArc 1
+3922:OldDungeonArcatureCorrection:DungeonMainArc 1
+3921:OldDungeonArcatureCorrection:DungeonMainArc 1
+3920:OldDungeonArcatureCorrection:DungeonMainArc 1
+3927:OldDungeonArcatureCorrection:DungeonMainArc 1
+3926:OldDungeonArcatureCorrection:DungeonMainArc 1
+3925:OldDungeonArcatureCorrection:DungeonMainArc 1
+3924:OldDungeonArcatureCorrection:DungeonMainArc 1
+3884:OldDungeonArcatureCorrection:DungeonMainArc 1
+3885:OldDungeonArcatureCorrection:DungeonMainArc 1
+3886:OldDungeonArcatureCorrection:DungeonMainArc 1
+3887:OldDungeonArcatureCorrection:DungeonMainArc 1
+3883:OldDungeonArcatureCorrection:DungeonMainArc 1
+3878:OldDungeonArcatureCorrection:DungeonMainArc 1
+3879:OldDungeonArcatureCorrection:DungeonMainArc 1
+3901:OldDungeonArcatureCorrection:DungeonMainArc 1
+3900:OldDungeonArcatureCorrection:DungeonMainArc 1
+3903:OldDungeonArcatureCorrection:DungeonMainArc 1
+3902:OldDungeonArcatureCorrection:DungeonMainArc 1
+3897:OldDungeonArcatureCorrection:DungeonMainArc 1
+3896:OldDungeonArcatureCorrection:DungeonMainArc 1
+3899:OldDungeonArcatureCorrection:DungeonMainArc 1
+3898:OldDungeonArcatureCorrection:DungeonMainArc 1
+3893:OldDungeonArcatureCorrection:DungeonMainArc 1
+3892:OldDungeonArcatureCorrection:DungeonMainArc 1
+3895:OldDungeonArcatureCorrection:DungeonMainArc 1
+3894:OldDungeonArcatureCorrection:DungeonMainArc 1
+3889:OldDungeonArcatureCorrection:DungeonMainArc 1
+3888:OldDungeonArcatureCorrection:DungeonMainArc 1
+3891:OldDungeonArcatureCorrection:DungeonMainArc 1
+3890:OldDungeonArcatureCorrection:DungeonMainArc 1
+3854:OldDungeonArcatureCorrection:DungeonMainArc 1
+3855:OldDungeonArcatureCorrection:DungeonMainArc 1
+3870:OldDungeonArcatureCorrection:DungeonMainArc 1
+3867:OldDungeonArcatureCorrection:DungeonMainArc 1
+3866:OldDungeonArcatureCorrection:DungeonMainArc 1
+3865:OldDungeonArcatureCorrection:DungeonMainArc 1
+3864:OldDungeonArcatureCorrection:DungeonMainArc 1
+3863:OldDungeonArcatureCorrection:DungeonMainArc 1
+3862:OldDungeonArcatureCorrection:DungeonMainArc 1
+3861:OldDungeonArcatureCorrection:DungeonMainArc 1
+3859:OldDungeonArcatureCorrection:DungeonMainArc 1
+4400:NA:NMSBrWallCoinIE
+4401:NA:NMSBrWallCoinIE
+4402:NA:NMSBrWallCoinIE
+4403:NA:NMSBrWallCoinIE
+4404:NA:NMSBrWallCoinIE
+4405:NA:NMSBrWallCoinIE
+4406:NA:NMSBrWallCoinIE
+4407:NA:NMSBrWallCoinIE
+4408:NA:NMSBrWallCoinIE
+4409:NA:NMSBrWallCoinIE
+4410:NA:NMSBrWallCoinIE
+4411:NA:NMSBrWallCoinIE
+4412:NA:NMSBrWallCoinIE
+4413:NA:NMSBrWallCoinIE
+4414:NA:NMSBrWallCoinIE
+4415:NA:NMSBrWallCoinIE
+4385:NA:NMSBrWallCoinIE
+4384:NA:NMSBrWallCoinIE
+4387:NA:NMSBrWallCoinIE
+4386:NA:NMSBrWallCoinIE
+4389:NA:NMSBrWallCoinIE
+4388:NA:NMSBrWallCoinIE
+4391:NA:NMSBrWallCoinIE
+4390:NA:NMSBrWallCoinIE
+4393:NA:NMSBrWallCoinIE
+4392:NA:NMSBrWallCoinIE
+4395:NA:NMSBrWallCoinIE
+4394:NA:NMSBrWallCoinIE
+4397:NA:NMSBrWallCoinIE
+4396:NA:NMSBrWallCoinIE
+4399:NA:NMSBrWallCoinIE
+4398:NA:NMSBrWallCoinIE
+4371:NA:NMSBrWallCoinIE
+4374:NA:NMSBrWallCoinIE
+4375:NA:NMSBrWallCoinIE
+4372:NA:NMSBrWallCoinIE
+4373:NA:NMSBrWallCoinIE
+4378:NA:NMSBrWallCoinIE
+4379:NA:NMSBrWallCoinIE
+4376:NA:NMSBrWallCoinIE
+4377:NA:NMSBrWallCoinIE
+4382:NA:NMSBrWallCoinIE
+4383:NA:NMSBrWallCoinIE
+4380:NA:NMSBrWallCoinIE
+4381:NA:NMSBrWallCoinIE
+4352:NA:NMSBuisson01
+4359:NA:ClotureLR
+4358:NA:ClotureLR
+4361:NA:ClotureLR
+4360:NA:ClotureLR
+4438:CastleWall:CastleSE1
+4439:CastleWall:CastleSE1
+4436:CastleWall:CastleSE1
+4437:CastleWall:CastleSE1
+4434:CastleWall:CastleSE1
+4435:CastleWall:CastleSE1
+4432:CastleWall:CastleSE1
+4433:CastleWall:CastleSE1
+4442:CastleWall:CastleSE1
+4440:CastleWall:CastleSE1
+4441:CastleWall:CastleSE1
+4423:CastleWall:CastleSE1
+4422:CastleWall:CastleSE1
+4421:CastleWall:CastleSE1
+4420:CastleWall:CastleSE1
+4419:CastleWall:CastleSE1
+4418:NA:NMSBrWallCoinIE
+4417:NA:NMSBrWallCoinIE
+4416:NA:NMSBrWallCoinIE
+4431:CastleWall:CastleSE1
+4430:CastleWall:CastleSE1
+4429:CastleWall:CastleSE1
+4428:CastleWall:CastleSE1
+4427:CastleWall:CastleSE1
+4426:CastleWall:CastleSE1
+4425:CastleWall:CastleSE1
+4424:CastleWall:CastleSE1
+4131:05GrisFonce:5NBrickWallS5SEWindow
+4130:05GrisFonce:5NBrickWallS5NE
+4129:05GrisFonce:5NBrickWallS5SE
+4128:04BrunPale:4NBrickWallS4TSW
+4135:05GrisFonce:5NBrickWallS5SEDoorB
+4134:05GrisFonce:5NBrickWallS5NEDoorT
+4133:05GrisFonce:5NBrickWallS5NEDoorB
+4132:05GrisFonce:5NBrickWallS5NEWindow
+4139:05GrisFonce:5NBrickWallS5CoinW
+4138:05GrisFonce:5NBrickWallS5CoinN
+4137:05GrisFonce:5NBrickWallS5CoinE
+4136:05GrisFonce:5NBrickWallS5SEDoorT
+4143:05GrisFonce:5NBrickWallS5TNW
+4142:05GrisFonce:5NBrickWallS5TNE
+4141:05GrisFonce:5NBrickWallS5SE
+4140:05GrisFonce:5NBrickWallS5CoinS
+4146:06GrisPale:6NBrickWallS6SE
+4147:06GrisPale:6NBrickWallS6NE
+4144:05GrisFonce:5NBrickWallS5TSE
+4145:05GrisFonce:5NBrickWallS5TSW
+4150:06GrisPale:6NBrickWallS6NEDoorB
+4151:06GrisPale:6NBrickWallS6NEDoorT
+4148:06GrisPale:6NBrickWallS6SEWindow
+4149:06GrisPale:6NBrickWallS6NEWindow
+4154:06GrisPale:6NBrickWallS6CoinE
+4155:06GrisPale:6NBrickWallS6CoinN
+4152:06GrisPale:6NBrickWallS6SEDoorB
+4153:06GrisPale:6NBrickWallS6SEDoorT
+4158:06GrisPale:6NBrickWallS6SE
+4159:06GrisPale:6NBrickWallS6TNE
+4156:06GrisPale:6NBrickWallS6CoinW
+4157:06GrisPale:6NBrickWallS6CoinS
+4097:03BrunFonce:3NBrickWallS3SEWindow
+4096:03BrunFonce:3NBrickWallS3NE
+4099:03BrunFonce:3NBrickWallS3NEDoorB
+4098:03BrunFonce:3NBrickWallS3NEWindow
+4101:03BrunFonce:3NBrickWallS3SEDoorB
+4100:03BrunFonce:3NBrickWallS3NEDoorT
+4103:03BrunFonce:3NBrickWallS3CoinE
+4102:03BrunFonce:3NBrickWallS3SEDoorT
+4105:03BrunFonce:3NBrickWallS3CoinW
+4104:03BrunFonce:3NBrickWallS3CoinN
+4107:03BrunFonce:3NBrickWallS3CoinX
+4106:03BrunFonce:3NBrickWallS3CoinS
+4109:03BrunFonce:3NBrickWallS3TNW
+4108:03BrunFonce:3NBrickWallS3TNE
+4111:03BrunFonce:3NBrickWallS3TSW
+4110:03BrunFonce:3NBrickWallS3TSE
+4112:04BrunPale:4NBrickWallS4SE
+4113:04BrunPale:4NBrickWallS4NE
+4114:04BrunPale:4NBrickWallS4SEWindow
+4115:04BrunPale:4NBrickWallS4NEWindow
+4116:04BrunPale:4NBrickWallS4NEDoorB
+4117:04BrunPale:4NBrickWallS4NEDoorT
+4118:04BrunPale:4NBrickWallS4SEDoorB
+4119:04BrunPale:4NBrickWallS4SEDoorT
+4120:04BrunPale:4NBrickWallS4CoinE
+4121:04BrunPale:4NBrickWallS4CoinN
+4122:04BrunPale:4NBrickWallS4CoinW
+4123:04BrunPale:4NBrickWallS4CoinS
+4124:04BrunPale:4NBrickWallS4CoinX
+4125:04BrunPale:4NBrickWallS4TNE
+4126:04BrunPale:4NBrickWallS4TNW
+4127:04BrunPale:4NBrickWallS4TSE
+4199:CastleWall:CastleNEDoorB
+4198:CastleWall:CastleNE1
+4197:CastleWall:CastleSE1
+4196:!Flower:V2Flower07
+4195:!Flower:V2Flower06
+4194:!Flower:V2Flower05
+4193:!Flower:V2Flower04
+4192:!Flower:V2Flower03
+4207:CastleWall:CastleSE1
+4206:CastleWall:CastleCornerB
+4205:CastleWall:CastleCornerL
+4204:CastleWall:CastleCornerT
+4203:CastleWall:CastleCornerR
+4202:CastleWall:CastleSEDoorT
+4201:CastleWall:CastleSEDoorB
+4200:CastleWall:CastleNEDoorT
+4214:CastleRampart:V2RampartNE
+4215:CastleRampart:V2RampartSE
+4212:CastleWall:CaltlePoutre
+4213:CastleRampart:V2RampartSE
+4210:CastleWall:CastleTSE
+4211:CastleWall:CastleTSW
+4208:CastleWall:CastleTNE
+4209:CastleWall:CastleTNW
+4222:CastleRampart:V2RampartF
+4223:CastleWall:CastleCollonne
+4220:CastleRampart:V2RampartCoinB
+4221:CastleRampart:V2RampartD
+4218:CastleRampart:V2RampartCoinT
+4219:CastleRampart:V2RampartCoinR
+4216:CastleRampart:V2RampartNETour
+4217:CastleRampart:V2RampartCoinL
+4165:03BrunFonce:3RuinedCoinS
+4164:03BrunFonce:3RuinedCoinS
+4167:03BrunFonce:3RuinedCoinS
+4166:03BrunFonce:3RuinedCoinS
+4161:06GrisPale:6NBrickWallS6TSE
+4160:06GrisPale:6NBrickWallS6TNW
+4163:03BrunFonce:3RuinedCoinS
+4162:06GrisPale:6NBrickWallS6TSW
+4173:05GrisFonce:5RuinedCoinS
+4172:04BrunPale:4RuinedCoinS
+4175:05GrisFonce:5RuinedCoinS
+4174:05GrisFonce:5RuinedCoinS
+4169:04BrunPale:4RuinedCoinS
+4168:04BrunPale:4RuinedCoinS
+4171:04BrunPale:4RuinedCoinS
+4170:04BrunPale:4RuinedCoinS
+4180:06GrisPale:6RuinedCoinS
+4181:06GrisPale:6RuinedSEWindow
+4182:06GrisPale:6RuinedNEWindow
+4183:Miscs-T:Torture6
+4176:05GrisFonce:5RuinedCoinS
+4177:05GrisFonce:5RuinedCoinS
+4178:06GrisPale:6RuinedCoinS
+4179:06GrisPale:6RuinedSEWall
+4188:Miscs-B:BTourBack
+4189:Miscs-B:BTourBack
+4190:!Flower:V2Flower01
+4191:!Flower:V2Flower02
+4184:Miscs-B:BarilPied
+4185:Miscs-B:BarilPied
+4186:Miscs-F:FTourFront
+4187:Miscs-F:FTourFront
+4266:Miscs-S:StatueModel12
+4267:Miscs-S:StatueModel13
+4264:Miscs-S:StatueModel11
+4265:Miscs-S:StatueModel11
+4270:NewStuco:StucoNewSE1
+4271:NewStuco:StucoNewSE1
+4268:Miscs-S:StatueModel11
+4269:NewStuco:StucoNewSE1
+4258:Miscs-S:SquareTower1
+4259:Miscs-S:SquareTower1
+4256:Miscs-M:MummyBox1
+4257:Miscs-S:SquareTower1
+4262:Miscs-S:StatueModel11
+4263:Miscs-S:StatueModel11
+4260:Miscs-S:SquareTower1
+4261:Miscs-S:StatueModel11
+4283:NewStuco:StucoNewSE1
+4282:NewStuco:StucoNewSE1
+4281:NewStuco:StucoNewSE1
+4280:NewStuco:StucoNewSE1
+4287:NewStuco:StucoNewSE1
+4286:NewStuco:StucoNewSE1
+4285:NewStuco:StucoNewSE1
+4284:NewStuco:StucoNewSE1
+4275:NewStuco:StucoNewSE1
+4274:NewStuco:StucoNewSE1
+4273:NewStuco:StucoNewSE1
+4272:NewStuco:StucoNewSE1
+4279:NewStuco:StucoNewSE1
+4278:NewStuco:StucoNewSE1
+4277:NewStuco:StucoNewSE1
+4276:NewStuco:StucoNewSE1
+4232:CastleWallS:SCastleSE1
+4233:CastleWallS:SCastleSE1
+4234:CastleWallS:SCastleSE1
+4235:CastleWallS:SCastleSE1
+4236:CastleWallS:SCastleSE1
+4237:CastleWallS:SCastleSE1
+4238:CastleWallS:SCastleSE1
+4239:CastleWallS:SCastleSE1
+4224:NA:CedreNain
+4225:CastleWallS:SCastleSE1
+4226:CastleWallS:SCastleSE1
+4227:CastleWallS:SCastleSE1
+4228:CastleWallS:SCastleSE1
+4229:CastleWallS:SCastleSE1
+4230:CastleWallS:SCastleSE1
+4231:CastleWallS:SCastleSE1
+4249:Miscs-L:Lights 3
+4248:Miscs-F:FBridgeCastleTop
+4251:Miscs-B:BancTempleNoir
+4250:Miscs-L:Lights 3
+4253:Miscs-M:MummyBox1
+4252:Miscs-B:BancTempleNoir
+4255:Miscs-M:MummyBox1
+4254:Miscs-M:MummyBox1
+4241:CastleWall:CaltlePoutre
+4240:CastleWall:CaltlePoutre
+4243:CastleWall:CastleNEDDoorB
+4242:CastleWall:CaltlePoutre
+4245:CastleWall:CastleSE1
+4244:CastleWall:CastleNEDDoorT
+4247:Miscs-B:BridgeCastleTop2
+4246:CastleWall:CastleSE1
+4328:NA:NMSArbreO01
+4326:NA:NMSArbreO01
+4327:NA:NMSArbreO01
+4324:NA:NMSArbreO01
+4325:NA:NMSArbreO01
+4322:NA:NMSArbreO01
+4323:NA:NMSArbreO01
+4320:NA:NMSArbreO01
+4321:NA:NMSArbreO01
+4351:NA:NMSBuisson01
+4350:NA:NMSBuisson01
+4349:NA:NMSBuisson01
+4348:NA:NMSBuisson01
+4347:NA:NMSBuisson01
+4346:NA:NMSBuisson01
+4345:NA:NMSBuisson01
+4344:NA:NMSBuisson01
+4343:NA:NMSBuisson01
+4342:NA:NMSBuisson01
+4341:NA:NMSBuisson01
+4300:GardeTour:TourGardeHG
+4301:NA:NMSArbreO01
+4302:NA:NMSArbreO01
+4303:NA:NMSArbreO01
+4297:GardeTour:TourGardeHG
+4298:GardeTour:TourGardeHG
+4299:GardeTour:TourGardeHG
+4288:NewStuco:StucoNewSE1
+4289:NewStuco:StucoNewSE1
+4290:Poutre:Poutre01
+4317:NA:NMSArbreO01
+4316:NA:NMSArbreO01
+4319:NA:NMSArbreO01
+4318:NA:NMSArbreO01
+4313:NA:NMSArbreO01
+4312:NA:NMSArbreO01
+4315:NA:NMSArbreO01
+4314:NA:NMSArbreO01
+4309:NA:NMSArbreO01
+4308:NA:NMSArbreO01
+4311:NA:NMSArbreO01
+4310:NA:NMSArbreO01
+4305:NA:NMSArbreO01
+4304:NA:NMSArbreO01
+4307:NA:NMSArbreO01
+4306:NA:NMSArbreO01
+4916:NA:Bibliotheque01OK
+4917:NA:Bibliotheque01OK
+4918:NA:Bibliotheque01OK
+4919:NA:Bibliotheque01OK
+4912:NA:HotelAxeBlood
+4913:NA:Bibliotheque01OK
+4914:NA:Bibliotheque01OK
+4915:NA:Bibliotheque01OK
+4920:NA:Bibliotheque01OK
+4901:NA:Colonne01
+4900:NA:Colonne01
+4903:NA:Colonne01
+4902:NA:Colonne01
+4909:NA:DechuStatus01
+4908:NA:Colonne01
+4911:NA:HotelAxeBlood
+4910:NA:DechuStatus01
+4905:NA:Colonne01
+4904:NA:Colonne01
+4907:NA:Colonne01
+4906:NA:Colonne01
+5021:NA:NMSRoche01
+5020:NA:NMSRoche01
+5019:NA:NMSRoche01
+5018:NA:NMSRoche01
+5017:NA:NMSRoche01
+5016:NA:NMSRoche01
+5015:NA:NMSRoche01
+5014:NA:NMSRoche01
+5013:NA:NMSRoche01
+5012:NA:NMSRoche01
+5011:NA:NMSPotage01
+5010:NA:NMSPotage01
+5009:NA:NMSRoulotteRobe
+5008:NA:NMSRoulotteRobe
+5006:NA:BoatBack00
+5007:NA:BoatBack00
+5004:NA:BoatBack00
+5005:NA:BoatBack00
+5002:NA:BoatBack00
+5003:NA:BoatBack00
+5000:NA:BoatBack00
+5001:NA:BoatBack00
+5083:NA:LongBridge02B
+5082:NA:LongBridge02B
+5087:NA:LongBridge02B
+5086:NA:LongBridge02B
+5085:NA:LongBridge02B
+5084:NA:LongBridge02B
+5113:NA:NMSMontagne01
+5112:NA:NMSMontagne01
+5115:NA:NMSMontagne01
+5114:NA:NMSMontagne01
+5117:NA:NMSMontagne01
+5116:NA:NMSMontagne01
+5119:NA:NMSMontagne01
+5118:NA:NMSMontagne01
+5105:NA:NMSMontagne01
+5104:NA:NMSMontagne01
+5107:NA:NMSMontagne01
+5106:NA:NMSMontagne01
+5109:NA:NMSMontagne01
+5108:NA:NMSMontagne01
+5111:NA:NMSMontagne01
+5110:NA:NMSMontagne01
+5096:NA:LongBridge01B
+5097:NA:LongBridge01B
+5098:NA:LongBridge01B
+5099:NA:LongBridge01B
+5100:NA:NMSPont01
+5101:NA:NMSPont01
+5102:NA:NMSMontagne01
+5103:NA:NMSMontagne01
+5088:NA:DeadBridgeB
+5089:NA:DeadBridgeB
+5090:NA:DeadBridgeB
+5091:NA:DeadBridgeB
+5092:NA:DeadBridgeB
+5093:NA:DeadBridgeB
+5094:NA:LongBridge01B
+5095:NA:LongBridge01B
+5500:NA:BoatBack00
+5501:NA:BoatBack00
+5502:NA:BoatBack00
+5503:NA:BoatBack00
+5521:NA:BoatBack00
+5520:NA:BoatBack00
+5506:NA:BoatBack00
+5507:NA:BoatBack00
+5504:NA:BoatBack00
+5505:NA:BoatBack00
+5510:NA:BoatBack00
+5511:NA:BoatBack00
+5508:NA:BoatBack00
+5509:NA:BoatBack00
+5514:NA:BoatBack00
+5515:NA:BoatBack00
+5512:NA:BoatBack00
+5513:NA:BoatBack00
+5518:NA:NMSEtang01
+5519:NA:NMSEtang01
+5516:NA:BoatBack00
+5517:NA:BoatBack00
+5131:NA:NMSPuit01
+5130:NA:NMSPuit01
+5133:NA:INAnvil
+5132:NA:INAnvil
+5135:NA:INArmorPoteau
+5134:NA:INArmorPoteau
+5136:NA:INBowTraining
+5137:NA:INBowTraining
+6008:RougeBeige:modulos(8,8)
+6009:AnimWater01:modulos(16,16)
+6011:NewLava:modulos(32,32)
+6013:Cendre:modulos(32,32)
+6000:Snow:modulos(16,16)
+6001:NA:EarthI
+6002:NA:CavernG
+6003:NA:IceFloor
+6004:BlancNoirBig:modulos(16,16)
+6005:NA:TuileTmpl2
+6006:Miscs-R:Rock2
+6007:BlancNoir:modulos(8,8)
+6568:NA:tmpl1 1 T1 Snow T2 EarthI
+6569:NA:tmpl1 1 T1 Snow T2 EarthI
+6570:NA:tmpl1 1 T1 Snow T2 EarthI
+6571:NA:tmpl1 1 T1 Snow T2 EarthI
+6572:NA:tmpl1 1 T1 Snow T2 EarthI
+6573:NA:tmpl1 1 T1 Snow T2 EarthI
+6574:NA:tmpl1 1 T1 Snow T2 EarthI
+6575:NA:tmpl1 1 T1 Snow T2 EarthI
+6560:NA:tmpl1 1 T1 EarthTile T2 Snow
+6561:NA:tmpl1 1 T1 EarthTile T2 Snow
+6562:NA:tmpl1 1 T1 EarthTile T2 Snow
+6563:NA:tmpl1 1 T1 EarthTile T2 Snow
+6564:NA:tmpl1 1 T1 Snow T2 EarthI
+6565:NA:tmpl1 1 T1 Snow T2 EarthI
+6566:NA:tmpl1 1 T1 Snow T2 EarthI
+6567:NA:tmpl1 1 T1 Snow T2 EarthI
+6585:NA:tmpl1 1 T1 Snow T2 EarthI
+6584:NA:tmpl1 1 T1 Snow T2 EarthI
+6587:NA:tmpl1 1 T1 Snow T2 EarthI
+6586:NA:tmpl1 1 T1 Snow T2 EarthI
+6589:NA:tmpl1 1 T1 Snow T2 EarthI
+6588:NA:tmpl1 1 T1 Snow T2 EarthI
+6591:NA:tmpl1 1 T1 Snow T2 EarthI
+6590:NA:tmpl1 1 T1 Snow T2 EarthI
+6577:NA:tmpl1 1 T1 Snow T2 EarthI
+6576:NA:tmpl1 1 T1 Snow T2 EarthI
+6579:NA:tmpl1 1 T1 Snow T2 EarthI
+6578:NA:tmpl1 1 T1 Snow T2 EarthI
+6581:NA:tmpl1 1 T1 Snow T2 EarthI
+6580:NA:tmpl1 1 T1 Snow T2 EarthI
+6583:NA:tmpl1 1 T1 Snow T2 EarthI
+6582:NA:tmpl1 1 T1 Snow T2 EarthI
+6538:NA:tmpl1 1 T1 EarthTile T2 Snow
+6539:NA:tmpl1 1 T1 EarthTile T2 Snow
+6536:NA:tmpl1 1 T1 EarthTile T2 Snow
+6537:NA:tmpl1 1 T1 EarthTile T2 Snow
+6542:NA:tmpl1 1 T1 EarthTile T2 Snow
+6543:NA:tmpl1 1 T1 EarthTile T2 Snow
+6540:NA:tmpl1 1 T1 EarthTile T2 Snow
+6541:NA:tmpl1 1 T1 EarthTile T2 Snow
+6530:NA:tmpl1 1 T1 Grass T2 Snow
+6531:NA:tmpl1 1 T1 Grass T2 Snow
+6528:NA:tmpl1 1 T1 Grass T2 Snow
+6529:NA:tmpl1 1 T1 Grass T2 Snow
+6534:NA:tmpl1 1 T1 EarthTile T2 Snow
+6535:NA:tmpl1 1 T1 EarthTile T2 Snow
+6532:NA:tmpl1 1 T1 EarthTile T2 Snow
+6533:NA:tmpl1 1 T1 EarthTile T2 Snow
+6555:NA:tmpl1 1 T1 EarthTile T2 Snow
+6554:NA:tmpl1 1 T1 EarthTile T2 Snow
+6553:NA:tmpl1 1 T1 EarthTile T2 Snow
+6552:NA:tmpl1 1 T1 EarthTile T2 Snow
+6559:NA:tmpl1 1 T1 EarthTile T2 Snow
+6558:NA:tmpl1 1 T1 EarthTile T2 Snow
+6557:NA:tmpl1 1 T1 EarthTile T2 Snow
+6556:NA:tmpl1 1 T1 EarthTile T2 Snow
+6547:NA:tmpl1 1 T1 EarthTile T2 Snow
+6546:NA:tmpl1 1 T1 EarthTile T2 Snow
+6545:NA:tmpl1 1 T1 EarthTile T2 Snow
+6544:NA:tmpl1 1 T1 EarthTile T2 Snow
+6551:NA:tmpl1 1 T1 EarthTile T2 Snow
+6550:NA:tmpl1 1 T1 EarthTile T2 Snow
+6549:NA:tmpl1 1 T1 EarthTile T2 Snow
+6548:NA:tmpl1 1 T1 EarthTile T2 Snow
+6636:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6637:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6638:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6639:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6632:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6633:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6634:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6635:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6628:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6629:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6630:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6631:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6624:NA:tmpl1 1 T1 Grass T2 EarthI
+6625:NA:tmpl1 1 T1 Grass T2 EarthI
+6626:NA:tmpl1 1 T1 Grass T2 EarthI
+6627:NA:tmpl1 1 T1 Grass T2 EarthI
+6653:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6652:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6655:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6654:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6649:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6648:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6651:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6650:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6645:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6644:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6647:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6646:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6641:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6640:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6643:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6642:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6606:NA:tmpl1 1 T1 Grass T2 EarthI
+6607:NA:tmpl1 1 T1 Grass T2 EarthI
+6604:NA:tmpl1 1 T1 Grass T2 EarthI
+6605:NA:tmpl1 1 T1 Grass T2 EarthI
+6602:NA:tmpl1 1 T1 Grass T2 EarthI
+6603:NA:tmpl1 1 T1 Grass T2 EarthI
+6600:NA:tmpl1 1 T1 Grass T2 EarthI
+6601:NA:tmpl1 1 T1 Grass T2 EarthI
+6598:NA:tmpl1 1 T1 Grass T2 EarthI
+6599:NA:tmpl1 1 T1 Grass T2 EarthI
+6596:NA:tmpl1 1 T1 Grass T2 EarthI
+6597:NA:tmpl1 1 T1 Grass T2 EarthI
+6594:NA:tmpl1 1 T1 Snow T2 EarthI
+6595:NA:tmpl1 1 T1 Snow T2 EarthI
+6592:NA:tmpl1 1 T1 Snow T2 EarthI
+6593:NA:tmpl1 1 T1 Snow T2 EarthI
+6623:NA:tmpl1 1 T1 Grass T2 EarthI
+6622:NA:tmpl1 1 T1 Grass T2 EarthI
+6621:NA:tmpl1 1 T1 Grass T2 EarthI
+6620:NA:tmpl1 1 T1 Grass T2 EarthI
+6619:NA:tmpl1 1 T1 Grass T2 EarthI
+6618:NA:tmpl1 1 T1 Grass T2 EarthI
+6617:NA:tmpl1 1 T1 Grass T2 EarthI
+6616:NA:tmpl1 1 T1 Grass T2 EarthI
+6615:NA:tmpl1 1 T1 Grass T2 EarthI
+6614:NA:tmpl1 1 T1 Grass T2 EarthI
+6613:NA:tmpl1 1 T1 Grass T2 EarthI
+6612:NA:tmpl1 1 T1 Grass T2 EarthI
+6611:NA:tmpl1 1 T1 Grass T2 EarthI
+6610:NA:tmpl1 1 T1 Grass T2 EarthI
+6609:NA:tmpl1 1 T1 Grass T2 EarthI
+6608:NA:tmpl1 1 T1 Grass T2 EarthI
+6501:NA:tmpl1 1 T1 Grass T2 Snow
+6500:NA:tmpl1 1 T1 Grass T2 Snow
+6503:NA:tmpl1 1 T1 Grass T2 Snow
+6502:NA:tmpl1 1 T1 Grass T2 Snow
+6509:NA:tmpl1 1 T1 Grass T2 Snow
+6508:NA:tmpl1 1 T1 Grass T2 Snow
+6511:NA:tmpl1 1 T1 Grass T2 Snow
+6510:NA:tmpl1 1 T1 Grass T2 Snow
+6505:NA:tmpl1 1 T1 Grass T2 Snow
+6504:NA:tmpl1 1 T1 Grass T2 Snow
+6507:NA:tmpl1 1 T1 Grass T2 Snow
+6506:NA:tmpl1 1 T1 Grass T2 Snow
+6516:NA:tmpl1 1 T1 Grass T2 Snow
+6517:NA:tmpl1 1 T1 Grass T2 Snow
+6518:NA:tmpl1 1 T1 Grass T2 Snow
+6519:NA:tmpl1 1 T1 Grass T2 Snow
+6512:NA:tmpl1 1 T1 Grass T2 Snow
+6513:NA:tmpl1 1 T1 Grass T2 Snow
+6514:NA:tmpl1 1 T1 Grass T2 Snow
+6515:NA:tmpl1 1 T1 Grass T2 Snow
+6524:NA:tmpl1 1 T1 Grass T2 Snow
+6525:NA:tmpl1 1 T1 Grass T2 Snow
+6526:NA:tmpl1 1 T1 Grass T2 Snow
+6527:NA:tmpl1 1 T1 Grass T2 Snow
+6520:NA:tmpl1 1 T1 Grass T2 Snow
+6521:NA:tmpl1 1 T1 Grass T2 Snow
+6522:NA:tmpl1 1 T1 Grass T2 Snow
+6523:NA:tmpl1 1 T1 Grass T2 Snow
+15066:NA:LongBridge02B
+15065:NA:LongBridge02B
+15064:NA:WoodBridgeB
+15059:NA:LongBridge01B
+15058:NA:NMSPont01
+15057:NA:NMSPont01
+15056:NA:Falaise02Bottom
+15063:NA:WoodBridgeB
+15062:NA:DeadBridgeB
+15061:NA:DeadBridgeB
+15060:NA:LongBridge01B
+15050:NA:Falaise02Bottom
+15051:NA:Falaise02Bottom
+15048:NA:Falaise02Bottom
+15049:NA:Falaise02Bottom
+15054:NA:Falaise02Bottom
+15055:NA:Falaise02Bottom
+15052:NA:Falaise02Bottom
+15053:NA:Falaise02Bottom
+15042:NA:Falaise02Bottom
+15043:NA:Falaise02Bottom
+15040:NA:Falaise02Bottom
+15041:NA:Falaise02Bottom
+15046:NA:Falaise02Bottom
+15047:NA:Falaise02Bottom
+15044:NA:Falaise02Bottom
+15045:NA:Falaise02Bottom
+15007:NA:Falaise01L
+15006:NA:Falaise01L
+15005:NA:Falaise01L
+15004:NA:Falaise01L
+15003:NA:Falaise01L
+15002:NA:Falaise01L
+15001:NA:Falaise01L
+15037:NA:Falaise02Bottom
+15036:NA:Falaise02Bottom
+15039:NA:Falaise02Bottom
+15038:NA:Falaise02Bottom
+15033:NA:Falaise02Bottom
+15032:NA:Falaise02Bottom
+15035:NA:Falaise02Bottom
+15034:NA:Falaise02Bottom
+15031:NA:Falaise02Bottom
+15030:NA:Falaise02Bottom
+15012:NA:Falaise01L
+15013:NA:Falaise01L
+15014:NA:Falaise01L
+15008:NA:Falaise01L
+15009:NA:Falaise01L
+15010:NA:Falaise01L
+15011:NA:Falaise01L
+7054:NA:tmpl3 1 T1 Grass T2 2Wooden
+7055:NA:tmpl3 1 T1 Grass T2 2Wooden
+7052:NA:tmpl3 1 T1 Grass T2 2Wooden
+7053:NA:tmpl3 1 T1 Grass T2 2Wooden
+7050:NA:tmpl3 1 T1 Grass T2 2Wooden
+7051:NA:tmpl3 1 T1 Grass T2 2Wooden
+7048:NA:tmpl3 1 T1 Grass T2 2Wooden
+7049:NA:tmpl3 1 T1 Grass T2 2Wooden
+7046:NA:tmpl3 1 T1 Grass T2 2Wooden
+7047:NA:tmpl3 1 T1 Grass T2 2Wooden
+7044:NA:tmpl3 1 T1 Grass T2 2Wooden
+7045:NA:tmpl3 1 T1 Grass T2 2Wooden
+7042:NA:tmpl3 1 T1 Grass T2 2Wooden
+7043:NA:tmpl3 1 T1 Grass T2 2Wooden
+7040:NA:tmpl3 1 T1 Grass T2 2Wooden
+7041:NA:tmpl3 1 T1 Grass T2 2Wooden
+7071:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7070:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7069:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7068:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7067:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7066:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7065:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7064:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7063:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7062:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7061:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7060:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7059:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7058:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7057:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7056:NA:tmpl3 1 T1 Grass T2 2Wooden
+7084:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7085:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7086:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7087:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7080:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7081:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7082:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7083:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7076:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7077:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7078:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7079:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7072:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7073:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7074:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7075:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7101:NA:tmpl3 1 T1 Desert T2 2Wooden
+7100:NA:tmpl3 1 T1 Desert T2 2Wooden
+7103:NA:tmpl3 1 T1 Desert T2 2Wooden
+7097:NA:tmpl3 1 T1 Desert T2 2Wooden
+7096:NA:tmpl3 1 T1 Desert T2 2Wooden
+7099:NA:tmpl3 1 T1 Desert T2 2Wooden
+7098:NA:tmpl3 1 T1 Desert T2 2Wooden
+7093:NA:tmpl3 1 T1 Desert T2 2Wooden
+7092:NA:tmpl3 1 T1 Desert T2 2Wooden
+7095:NA:tmpl3 1 T1 Desert T2 2Wooden
+7094:NA:tmpl3 1 T1 Desert T2 2Wooden
+7089:NA:tmpl3 1 T1 Desert T2 2Wooden
+7088:NA:tmpl3 1 T1 EarthTile T2 2Wooden
+7091:NA:tmpl3 1 T1 Desert T2 2Wooden
+7090:NA:tmpl3 1 T1 Desert T2 2Wooden
+7114:NA:tmpl3 1 T1 Desert T2 2Wooden
+7115:NA:tmpl3 1 T1 Desert T2 2Wooden
+7112:NA:tmpl3 1 T1 Desert T2 2Wooden
+7113:NA:tmpl3 1 T1 Desert T2 2Wooden
+7118:NA:tmpl3 1 T1 Desert T2 2Wooden
+7119:NA:tmpl3 1 T1 Desert T2 2Wooden
+7116:NA:tmpl3 1 T1 Desert T2 2Wooden
+7117:NA:tmpl3 1 T1 Desert T2 2Wooden
+7106:NA:tmpl3 1 T1 Desert T2 2Wooden
+7107:NA:tmpl3 1 T1 Desert T2 2Wooden
+7104:NA:tmpl3 1 T1 Desert T2 2Wooden
+7105:NA:tmpl3 1 T1 Desert T2 2Wooden
+7110:NA:tmpl3 1 T1 Desert T2 2Wooden
+7111:NA:tmpl3 1 T1 Desert T2 2Wooden
+7108:NA:tmpl3 1 T1 Desert T2 2Wooden
+7109:NA:tmpl3 1 T1 Desert T2 2Wooden
+7131:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7130:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7129:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7128:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7135:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7134:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7133:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7132:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7123:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7122:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7121:NA:tmpl3 1 T1 Desert T2 2Wooden
+7120:NA:tmpl3 1 T1 Desert T2 2Wooden
+7127:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7126:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7125:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7124:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7144:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7145:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7146:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7147:WoodenDoor:RockDoor1
+7148:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7149:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7150:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7151:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7136:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7137:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7138:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7139:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7140:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7141:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7142:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7143:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7161:NA:tmpl3 1 T1 Grass T2 3Wooden
+7160:NA:tmpl3 1 T1 Grass T2 3Wooden
+7163:NA:tmpl3 1 T1 Grass T2 3Wooden
+7162:NA:tmpl3 1 T1 Grass T2 3Wooden
+7165:NA:tmpl3 1 T1 Grass T2 3Wooden
+7164:NA:tmpl3 1 T1 Grass T2 3Wooden
+7167:NA:tmpl3 1 T1 Grass T2 3Wooden
+7166:NA:tmpl3 1 T1 Grass T2 3Wooden
+7153:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7152:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7155:NA:tmpl3 1 T1 Grass T2 3Wooden
+7154:NA:tmpl3 1 T1 Grass T2 3Wooden
+7157:NA:tmpl3 1 T1 Grass T2 3Wooden
+7156:NA:tmpl3 1 T1 Grass T2 3Wooden
+7159:NA:tmpl3 1 T1 Grass T2 3Wooden
+7158:NA:tmpl3 1 T1 Grass T2 3Wooden
+7003:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7000:Wooden2:modulos(8,8)
+7001:Wooden3:modulos(8,8)
+7006:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7007:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7004:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7005:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7009:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7008:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7011:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7010:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7013:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7012:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7015:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7014:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7017:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7016:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7019:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7018:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7021:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7020:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7023:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7022:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7024:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7025:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7026:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7027:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7028:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7029:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7030:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7031:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7032:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7033:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7034:NA:tmpl3 1 T1 NormalGrass T2 2Wooden
+7035:NA:tmpl3 1 T1 Grass T2 2Wooden
+7036:NA:tmpl3 1 T1 Grass T2 2Wooden
+7037:NA:tmpl3 1 T1 Grass T2 2Wooden
+7038:NA:tmpl3 1 T1 Grass T2 2Wooden
+7039:NA:tmpl3 1 T1 Grass T2 2Wooden
+6813:NA:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6812:NA:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6815:NA:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6814:NA:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6809:NA:TuileTmpl2 T1 TownRoadDale T2 tmpl4 2
+6808:NA:TuileTmpl2 T1 TownRoadDale T2 tmpl4 2
+6811:NA:TuileTmpl2 T1 TownRoadDale T2 tmpl4 2
+6810:NA:TuileTmpl2 T1 TownRoadDale T2 tmpl4 2
+6805:NA:TuileTmpl2 T1 2Wooden T2 tmpl4 2
+6804:NA:TuileTmpl2 T1 2Wooden T2 tmpl4 2
+6807:NA:TuileTmpl2 T1 2Wooden T2 tmpl4 2
+6806:NA:TuileTmpl2 T1 2Wooden T2 tmpl4 2
+6801:NA:TuileTmpl2 T1 RockFloor T2 tmpl4 2
+6800:NA:TuileTmpl2 T1 RockFloor T2 tmpl4 2
+6803:NA:TuileTmpl2 T1 RockFloor T2 tmpl4 2
+6802:NA:TuileTmpl2 T1 RockFloor T2 tmpl4 2
+6796:NA:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6797:NA:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6798:NA:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6799:NA:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6792:NA:TuileTmpl1 T1 RockFloor T2 tmpl4 2
+6793:NA:TuileTmpl1 T1 RockFloor T2 tmpl4 2
+6794:NA:TuileTmpl1 T1 RockFloor T2 tmpl4 2
+6795:NA:TuileTmpl1 T1 RockFloor T2 tmpl4 2
+6788:NA:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6789:NA:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6790:NA:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6791:NA:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6784:NA:tmpl1 1 T1 IceFloor T2 Snow
+6785:NA:tmpl1 1 T1 IceFloor T2 Snow
+6786:NA:tmpl1 1 T1 IceFloor T2 Snow
+6787:NA:tmpl1 1 T1 IceFloor T2 Snow
+6822:NA:TuileTmpl2 T1 Snow T2 tmpl4 2
+6823:NA:TuileTmpl2 T1 Snow T2 tmpl4 2
+6820:NA:TuileTmpl2 T1 Snow T2 tmpl4 2
+6821:NA:TuileTmpl2 T1 Snow T2 tmpl4 2
+6818:NA:TuileTmpl1 T1 Snow T2 tmpl4 2
+6819:NA:TuileTmpl1 T1 Snow T2 tmpl4 2
+6816:NA:TuileTmpl1 T1 Snow T2 tmpl4 2
+6817:NA:TuileTmpl1 T1 Snow T2 tmpl4 2
+6676:NA:tmpl1 1 T1 Snow T2 CavernG
+6677:NA:tmpl1 1 T1 Snow T2 CavernG
+6678:NA:tmpl1 1 T1 Snow T2 CavernG
+6679:NA:tmpl1 1 T1 Snow T2 CavernG
+6672:NA:tmpl1 1 T1 Snow T2 CavernG
+6673:NA:tmpl1 1 T1 Snow T2 CavernG
+6674:NA:tmpl1 1 T1 Snow T2 CavernG
+6675:NA:tmpl1 1 T1 Snow T2 CavernG
+6684:NA:tmpl1 1 T1 Snow T2 CavernG
+6685:NA:tmpl1 1 T1 Snow T2 CavernG
+6686:NA:tmpl1 1 T1 Snow T2 CavernG
+6687:NA:tmpl1 1 T1 Snow T2 CavernG
+6680:NA:tmpl1 1 T1 Snow T2 CavernG
+6681:NA:tmpl1 1 T1 Snow T2 CavernG
+6682:NA:tmpl1 1 T1 Snow T2 CavernG
+6683:NA:tmpl1 1 T1 Snow T2 CavernG
+6661:NA:tmpl1 1 T1 Snow T2 CavernG
+6660:NA:tmpl1 1 T1 Snow T2 CavernG
+6663:NA:tmpl1 1 T1 Snow T2 CavernG
+6662:NA:tmpl1 1 T1 Snow T2 CavernG
+6657:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6656:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6659:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6658:NA:tmpl1 1 T1 EarthTile T2 EarthI
+6669:NA:tmpl1 1 T1 Snow T2 CavernG
+6668:NA:tmpl1 1 T1 Snow T2 CavernG
+6671:NA:tmpl1 1 T1 Snow T2 CavernG
+6670:NA:tmpl1 1 T1 Snow T2 CavernG
+6665:NA:tmpl1 1 T1 Snow T2 CavernG
+6664:NA:tmpl1 1 T1 Snow T2 CavernG
+6667:NA:tmpl1 1 T1 Snow T2 CavernG
+6666:NA:tmpl1 1 T1 Snow T2 CavernG
+6710:NA:tmpl1 1 T1 EarthI T2 CavernG
+6711:NA:tmpl1 1 T1 EarthI T2 CavernG
+6708:NA:tmpl1 1 T1 EarthI T2 CavernG
+6709:NA:tmpl1 1 T1 EarthI T2 CavernG
+6706:NA:tmpl1 1 T1 EarthI T2 CavernG
+6707:NA:tmpl1 1 T1 EarthI T2 CavernG
+6704:NA:tmpl1 1 T1 EarthI T2 CavernG
+6705:NA:tmpl1 1 T1 EarthI T2 CavernG
+6718:NA:tmpl1 1 T1 EarthI T2 CavernG
+6719:NA:tmpl1 1 T1 EarthI T2 CavernG
+6716:NA:tmpl1 1 T1 EarthI T2 CavernG
+6717:NA:tmpl1 1 T1 EarthI T2 CavernG
+6714:NA:tmpl1 1 T1 EarthI T2 CavernG
+6715:NA:tmpl1 1 T1 EarthI T2 CavernG
+6712:NA:tmpl1 1 T1 EarthI T2 CavernG
+6713:NA:tmpl1 1 T1 EarthI T2 CavernG
+6695:NA:tmpl1 1 T1 EarthI T2 CavernG
+6694:NA:tmpl1 1 T1 EarthI T2 CavernG
+6693:NA:tmpl1 1 T1 EarthI T2 CavernG
+6692:NA:tmpl1 1 T1 EarthI T2 CavernG
+6691:NA:tmpl1 1 T1 Snow T2 CavernG
+6690:NA:tmpl1 1 T1 Snow T2 CavernG
+6689:NA:tmpl1 1 T1 Snow T2 CavernG
+6688:NA:tmpl1 1 T1 Snow T2 CavernG
+6703:NA:tmpl1 1 T1 EarthI T2 CavernG
+6702:NA:tmpl1 1 T1 EarthI T2 CavernG
+6701:NA:tmpl1 1 T1 EarthI T2 CavernG
+6700:NA:tmpl1 1 T1 EarthI T2 CavernG
+6699:NA:tmpl1 1 T1 EarthI T2 CavernG
+6698:NA:tmpl1 1 T1 EarthI T2 CavernG
+6697:NA:tmpl1 1 T1 EarthI T2 CavernG
+6696:NA:tmpl1 1 T1 EarthI T2 CavernG
+6736:NA:tmpl1 1 T1 IceFloor T2 Water3
+6737:NA:tmpl1 1 T1 IceFloor T2 Water3
+6738:NA:tmpl1 1 T1 IceFloor T2 Water3
+6739:NA:tmpl1 1 T1 IceFloor T2 Water3
+6740:NA:tmpl1 1 T1 IceFloor T2 Water3
+6741:NA:tmpl1 1 T1 IceFloor T2 Water3
+6742:NA:tmpl1 1 T1 IceFloor T2 Water3
+6743:NA:tmpl1 1 T1 IceFloor T2 Water3
+6744:NA:tmpl1 1 T1 IceFloor T2 Water3
+6745:NA:tmpl1 1 T1 IceFloor T2 Water3
+6746:NA:tmpl1 1 T1 IceFloor T2 Water3
+6747:NA:tmpl1 1 T1 IceFloor T2 Water3
+6748:NA:tmpl1 1 T1 IceFloor T2 Water3
+6749:NA:tmpl1 1 T1 IceFloor T2 Water3
+6750:NA:tmpl1 1 T1 IceFloor T2 Water3
+6751:NA:tmpl1 1 T1 IceFloor T2 Water3
+6721:NA:tmpl1 1 T1 EarthI T2 CavernG
+6720:NA:tmpl1 1 T1 EarthI T2 CavernG
+6723:NA:tmpl1 1 T1 EarthI T2 CavernG
+6722:NA:tmpl1 1 T1 EarthI T2 CavernG
+6725:NA:tmpl1 1 T1 IceFloor T2 Water3
+6724:NA:tmpl1 1 T1 IceFloor T2 Water3
+6727:NA:tmpl1 1 T1 IceFloor T2 Water3
+6726:NA:tmpl1 1 T1 IceFloor T2 Water3
+6729:NA:tmpl1 1 T1 IceFloor T2 Water3
+6728:NA:tmpl1 1 T1 IceFloor T2 Water3
+6731:NA:tmpl1 1 T1 IceFloor T2 Water3
+6730:NA:tmpl1 1 T1 IceFloor T2 Water3
+6733:NA:tmpl1 1 T1 IceFloor T2 Water3
+6732:NA:tmpl1 1 T1 IceFloor T2 Water3
+6735:NA:tmpl1 1 T1 IceFloor T2 Water3
+6734:NA:tmpl1 1 T1 IceFloor T2 Water3
+6770:NA:tmpl1 1 T1 IceFloor T2 Snow
+6771:NA:tmpl1 1 T1 IceFloor T2 Snow
+6768:NA:tmpl1 1 T1 IceFloor T2 Snow
+6769:NA:tmpl1 1 T1 IceFloor T2 Snow
+6774:NA:tmpl1 1 T1 IceFloor T2 Snow
+6775:NA:tmpl1 1 T1 IceFloor T2 Snow
+6772:NA:tmpl1 1 T1 IceFloor T2 Snow
+6773:NA:tmpl1 1 T1 IceFloor T2 Snow
+6778:NA:tmpl1 1 T1 IceFloor T2 Snow
+6779:NA:tmpl1 1 T1 IceFloor T2 Snow
+6776:NA:tmpl1 1 T1 IceFloor T2 Snow
+6777:NA:tmpl1 1 T1 IceFloor T2 Snow
+6782:NA:tmpl1 1 T1 IceFloor T2 Snow
+6783:NA:tmpl1 1 T1 IceFloor T2 Snow
+6780:NA:tmpl1 1 T1 IceFloor T2 Snow
+6781:NA:tmpl1 1 T1 IceFloor T2 Snow
+6755:NA:tmpl1 1 T1 IceFloor T2 Water3
+6754:NA:tmpl1 1 T1 IceFloor T2 Water3
+6753:NA:tmpl1 1 T1 IceFloor T2 Water3
+6752:NA:tmpl1 1 T1 IceFloor T2 Water3
+6759:NA:tmpl1 1 T1 IceFloor T2 Snow
+6758:NA:tmpl1 1 T1 IceFloor T2 Snow
+6757:NA:tmpl1 1 T1 IceFloor T2 Snow
+6756:NA:tmpl1 1 T1 IceFloor T2 Snow
+6763:NA:tmpl1 1 T1 IceFloor T2 Snow
+6762:NA:tmpl1 1 T1 IceFloor T2 Snow
+6761:NA:tmpl1 1 T1 IceFloor T2 Snow
+6760:NA:tmpl1 1 T1 IceFloor T2 Snow
+6767:NA:tmpl1 1 T1 IceFloor T2 Snow
+6766:NA:tmpl1 1 T1 IceFloor T2 Snow
+6765:NA:tmpl1 1 T1 IceFloor T2 Snow
+6764:NA:tmpl1 1 T1 IceFloor T2 Snow
+7584:NA:Water3 T1 Cendre T2 tmpl3 1
+7585:NA:Water3 T1 Cendre T2 tmpl3 1
+7586:NA:Water3 T1 Cendre T2 tmpl3 1
+7587:NA:Water3 T1 Cendre T2 tmpl3 1
+7588:NA:Water3 T1 Cendre T2 tmpl3 1
+7554:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7555:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7552:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7553:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7558:NA:Water3 T1 Cendre T2 tmpl3 1
+7559:NA:Water3 T1 Cendre T2 tmpl3 1
+7556:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7557:NA:Water3 T1 Cendre T2 tmpl3 1
+7562:NA:Water3 T1 Cendre T2 tmpl3 1
+7563:NA:Water3 T1 Cendre T2 tmpl3 1
+7560:NA:Water3 T1 Cendre T2 tmpl3 1
+7561:NA:Water3 T1 Cendre T2 tmpl3 1
+7566:NA:Water3 T1 Cendre T2 tmpl3 1
+7567:NA:Water3 T1 Cendre T2 tmpl3 1
+7564:NA:Water3 T1 Cendre T2 tmpl3 1
+7565:NA:Water3 T1 Cendre T2 tmpl3 1
+7571:NA:Water3 T1 Cendre T2 tmpl3 1
+7570:NA:Water3 T1 Cendre T2 tmpl3 1
+7569:NA:Water3 T1 Cendre T2 tmpl3 1
+7568:NA:Water3 T1 Cendre T2 tmpl3 1
+7575:NA:Water3 T1 Cendre T2 tmpl3 1
+7574:NA:Water3 T1 Cendre T2 tmpl3 1
+7573:NA:Water3 T1 Cendre T2 tmpl3 1
+7572:NA:Water3 T1 Cendre T2 tmpl3 1
+7579:NA:Water3 T1 Cendre T2 tmpl3 1
+7578:NA:Water3 T1 Cendre T2 tmpl3 1
+7577:NA:Water3 T1 Cendre T2 tmpl3 1
+7576:NA:Water3 T1 Cendre T2 tmpl3 1
+7583:NA:Water3 T1 Cendre T2 tmpl3 1
+7582:NA:Water3 T1 Cendre T2 tmpl3 1
+7581:NA:Water3 T1 Cendre T2 tmpl3 1
+7580:NA:Water3 T1 Cendre T2 tmpl3 1
+7533:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7532:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7535:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7534:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7529:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7528:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7531:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7530:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7525:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7524:NA:HardRock T1 Cendre T2 tmpl1 1
+7527:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7526:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7521:NA:HardRock T1 Cendre T2 tmpl1 1
+7520:NA:HardRock T1 Cendre T2 tmpl1 1
+7523:NA:HardRock T1 Cendre T2 tmpl1 1
+7522:NA:HardRock T1 Cendre T2 tmpl1 1
+7548:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7549:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7550:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7551:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7544:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7545:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7546:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7547:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7540:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7541:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7542:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7543:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7536:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7537:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7538:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7539:NA:CavernFloor T1 Cendre T2 tmpl1 1
+7503:NA:HardRock T1 Cendre T2 tmpl1 1
+7502:NA:HardRock T1 Cendre T2 tmpl1 1
+7501:NA:HardRock T1 Cendre T2 tmpl1 1
+7500:NA:HardRock T1 Cendre T2 tmpl1 1
+7499:NA:HardRock T1 Cendre T2 tmpl1 1
+7498:NA:HardRock T1 Cendre T2 tmpl1 1
+7497:NA:HardRock T1 Cendre T2 tmpl1 1
+7496:NA:HardRock T1 Cendre T2 tmpl1 1
+7495:NA:HardRock T1 Cendre T2 tmpl1 1
+7494:NA:HardRock T1 Cendre T2 tmpl1 1
+7493:NA:HardRock T1 Cendre T2 tmpl1 1
+7492:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7491:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7490:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7489:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7488:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7518:NA:HardRock T1 Cendre T2 tmpl1 1
+7519:NA:HardRock T1 Cendre T2 tmpl1 1
+7516:NA:HardRock T1 Cendre T2 tmpl1 1
+7517:NA:HardRock T1 Cendre T2 tmpl1 1
+7514:NA:HardRock T1 Cendre T2 tmpl1 1
+7515:NA:HardRock T1 Cendre T2 tmpl1 1
+7512:NA:HardRock T1 Cendre T2 tmpl1 1
+7513:NA:HardRock T1 Cendre T2 tmpl1 1
+7510:NA:HardRock T1 Cendre T2 tmpl1 1
+7511:NA:HardRock T1 Cendre T2 tmpl1 1
+7508:NA:HardRock T1 Cendre T2 tmpl1 1
+7509:NA:HardRock T1 Cendre T2 tmpl1 1
+7506:NA:HardRock T1 Cendre T2 tmpl1 1
+7507:NA:HardRock T1 Cendre T2 tmpl1 1
+7504:NA:HardRock T1 Cendre T2 tmpl1 1
+7505:NA:HardRock T1 Cendre T2 tmpl1 1
+7465:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7464:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7467:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7466:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7469:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7468:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7471:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7470:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7457:NA:T1 tmpl3 1 T2 Water3
+7456:NA:T1 tmpl3 1 T2 Water3
+7459:NA:T1 tmpl3 1 T2 Water3
+7458:NA:T1 tmpl3 1 T2 Water3
+7461:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7460:NA:T1 tmpl3 1 T2 Water3
+7463:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7462:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7480:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7481:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7482:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7483:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7484:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7485:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7486:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7487:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7472:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7473:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7474:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7475:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7476:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7477:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7478:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7479:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7435:NA:T1 tmpl3 1 T2 Water3
+7434:NA:T1 tmpl3 1 T2 Water3
+7433:NA:T1 tmpl3 1 T2 Water3
+7432:NA:T1 tmpl3 1 T2 Water3
+7439:NA:T1 tmpl3 1 T2 Water3
+7438:NA:T1 tmpl3 1 T2 Water3
+7437:NA:T1 tmpl3 1 T2 Water3
+7436:NA:T1 tmpl3 1 T2 Water3
+7427:NA:Water3 T1 RockFloor T2 tmpl3 1
+7426:NA:Water3 T1 RockFloor T2 tmpl3 1
+7425:NA:Water3 T1 RockFloor T2 tmpl3 1
+7424:NA:Water3 T1 RockFloor T2 tmpl3 1
+7431:NA:T1 tmpl3 1 T2 Water3
+7430:NA:T1 tmpl3 1 T2 Water3
+7429:NA:T1 tmpl3 1 T2 Water3
+7428:NA:Water3 T1 RockFloor T2 tmpl3 1
+7450:NA:T1 tmpl3 1 T2 Water3
+7451:NA:T1 tmpl3 1 T2 Water3
+7448:NA:T1 tmpl3 1 T2 Water3
+7449:NA:T1 tmpl3 1 T2 Water3
+7454:NA:T1 tmpl3 1 T2 Water3
+7455:NA:T1 tmpl3 1 T2 Water3
+7452:NA:T1 tmpl3 1 T2 Water3
+7453:NA:T1 tmpl3 1 T2 Water3
+7442:NA:T1 tmpl3 1 T2 Water3
+7443:NA:T1 tmpl3 1 T2 Water3
+7440:NA:T1 tmpl3 1 T2 Water3
+7441:NA:T1 tmpl3 1 T2 Water3
+7446:NA:T1 tmpl3 1 T2 Water3
+7447:NA:T1 tmpl3 1 T2 Water3
+7444:NA:T1 tmpl3 1 T2 Water3
+7445:NA:T1 tmpl3 1 T2 Water3
+7415:NA:Water3 T1 RockFloor T2 tmpl3 1
+7414:NA:Water3 T1 RockFloor T2 tmpl3 1
+7413:NA:Water3 T1 RockFloor T2 tmpl3 1
+7412:NA:Water3 T1 RockFloor T2 tmpl3 1
+7411:NA:Water3 T1 RockFloor T2 tmpl3 1
+7410:NA:Water3 T1 RockFloor T2 tmpl3 1
+7409:NA:Water3 T1 RockFloor T2 tmpl3 1
+7408:NA:Water3 T1 RockFloor T2 tmpl3 1
+7423:NA:Water3 T1 RockFloor T2 tmpl3 1
+7422:NA:Water3 T1 RockFloor T2 tmpl3 1
+7421:NA:Water3 T1 RockFloor T2 tmpl3 1
+7420:NA:Water3 T1 RockFloor T2 tmpl3 1
+7419:NA:Water3 T1 RockFloor T2 tmpl3 1
+7418:NA:Water3 T1 RockFloor T2 tmpl3 1
+7417:NA:Water3 T1 RockFloor T2 tmpl3 1
+7416:NA:Water3 T1 RockFloor T2 tmpl3 1
+7398:NA:Water3 T1 RockFloor T2 tmpl3 1
+7399:NA:Water3 T1 RockFloor T2 tmpl3 1
+7396:NA:STuileTmpl2 T1 TuileTmpl2 T2 tmpl4 2
+7397:NA:Water3 T1 RockFloor T2 tmpl3 1
+7394:NA:STuileTmpl2 T1 TuileTmpl2 T2 tmpl4 2
+7395:NA:STuileTmpl2 T1 TuileTmpl2 T2 tmpl4 2
+7392:NA:STuileTmpl1 T1 TuileTmpl1 T2 tmpl4 2
+7393:NA:STuileTmpl2 T1 TuileTmpl2 T2 tmpl4 2
+7406:NA:Water3 T1 RockFloor T2 tmpl3 1
+7407:NA:Water3 T1 RockFloor T2 tmpl3 1
+7404:NA:Water3 T1 RockFloor T2 tmpl3 1
+7405:NA:Water3 T1 RockFloor T2 tmpl3 1
+7402:NA:Water3 T1 RockFloor T2 tmpl3 1
+7403:NA:Water3 T1 RockFloor T2 tmpl3 1
+7400:NA:Water3 T1 RockFloor T2 tmpl3 1
+7401:NA:Water3 T1 RockFloor T2 tmpl3 1
+7381:NA:STuileTmpl1 T1 3Wooden T2 tmpl4 2
+7380:NA:STuileTmpl2 T1 2Wooden T2 tmpl4 2
+7383:NA:STuileTmpl1 T1 3Wooden T2 tmpl4 2
+7382:NA:STuileTmpl1 T1 3Wooden T2 tmpl4 2
+7377:NA:STuileTmpl2 T1 2Wooden T2 tmpl4 2
+7376:NA:STuileTmpl1 T1 2Wooden T2 tmpl4 2
+7379:NA:STuileTmpl2 T1 2Wooden T2 tmpl4 2
+7378:NA:STuileTmpl2 T1 2Wooden T2 tmpl4 2
+7389:NA:STuileTmpl1 T1 TuileTmpl1 T2 tmpl4 2
+7388:NA:STuileTmpl2 T1 3Wooden T2 tmpl4 2
+7391:NA:STuileTmpl1 T1 TuileTmpl1 T2 tmpl4 2
+7390:NA:STuileTmpl1 T1 TuileTmpl1 T2 tmpl4 2
+7385:NA:STuileTmpl2 T1 3Wooden T2 tmpl4 2
+7384:NA:STuileTmpl1 T1 3Wooden T2 tmpl4 2
+7387:NA:STuileTmpl2 T1 3Wooden T2 tmpl4 2
+7386:NA:STuileTmpl2 T1 3Wooden T2 tmpl4 2
+7364:NA:STuileTmpl2 T1 STuileTmpl1 T2 tmpl4 2
+7365:NA:STuileTmpl1 T1 Floor Wooden 1 T2 tmpl4 2
+7366:NA:STuileTmpl1 T1 Floor Wooden 1 T2 tmpl4 2
+7367:NA:STuileTmpl1 T1 Floor Wooden 1 T2 tmpl4 2
+7360:NA:STuileTmpl2 T1 Snow T2 tmpl4 2
+7361:NA:STuileTmpl2 T1 STuileTmpl1 T2 tmpl4 2
+7362:NA:STuileTmpl2 T1 STuileTmpl1 T2 tmpl4 2
+7363:NA:STuileTmpl2 T1 STuileTmpl1 T2 tmpl4 2
+7372:NA:STuileTmpl2 T1 Floor Wooden 1 T2 tmpl4 2
+7373:NA:STuileTmpl1 T1 2Wooden T2 tmpl4 2
+7374:NA:STuileTmpl1 T1 2Wooden T2 tmpl4 2
+7375:NA:STuileTmpl1 T1 2Wooden T2 tmpl4 2
+7368:NA:STuileTmpl1 T1 Floor Wooden 1 T2 tmpl4 2
+7369:NA:STuileTmpl2 T1 Floor Wooden 1 T2 tmpl4 2
+7370:NA:STuileTmpl2 T1 Floor Wooden 1 T2 tmpl4 2
+7371:NA:STuileTmpl2 T1 Floor Wooden 1 T2 tmpl4 2
+7347:NA:STuileTmpl1 T1 RockFloor T2 tmpl4 2
+7346:NA:STuileTmpl1 T1 RockFloor T2 tmpl4 2
+7345:NA:STuileTmpl1 T1 RockFloor T2 tmpl4 2
+7344:NA:STuileTmpl2 T1 NormalGrass T2 tmpl4 2
+7351:NA:STuileTmpl2 T1 RockFloor T2 tmpl4 2
+7350:NA:STuileTmpl2 T1 RockFloor T2 tmpl4 2
+7349:NA:STuileTmpl2 T1 RockFloor T2 tmpl4 2
+7348:NA:STuileTmpl1 T1 RockFloor T2 tmpl4 2
+7355:NA:STuileTmpl1 T1 Snow T2 tmpl4 2
+7354:NA:STuileTmpl1 T1 Snow T2 tmpl4 2
+7353:NA:STuileTmpl1 T1 Snow T2 tmpl4 2
+7352:NA:STuileTmpl2 T1 RockFloor T2 tmpl4 2
+7359:NA:STuileTmpl2 T1 Snow T2 tmpl4 2
+7358:NA:STuileTmpl2 T1 Snow T2 tmpl4 2
+7357:NA:STuileTmpl2 T1 Snow T2 tmpl4 2
+7356:NA:STuileTmpl1 T1 Snow T2 tmpl4 2
+7330:NA:STuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7331:NA:STuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7328:NA:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7329:NA:STuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7334:NA:STuileTmpl2 T1 Rock2Floor T2 tmpl4 2
+7335:NA:STuileTmpl2 T1 Rock2Floor T2 tmpl4 2
+7332:NA:STuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7333:NA:STuileTmpl2 T1 Rock2Floor T2 tmpl4 2
+7338:NA:STuileTmpl1 T1 NormalGrass T2 tmpl4 2
+7339:NA:STuileTmpl1 T1 NormalGrass T2 tmpl4 2
+7336:NA:STuileTmpl2 T1 Rock2Floor T2 tmpl4 2
+7337:NA:STuileTmpl1 T1 NormalGrass T2 tmpl4 2
+7342:NA:STuileTmpl2 T1 NormalGrass T2 tmpl4 2
+7343:NA:STuileTmpl2 T1 NormalGrass T2 tmpl4 2
+7340:NA:STuileTmpl1 T1 NormalGrass T2 tmpl4 2
+7341:NA:STuileTmpl2 T1 NormalGrass T2 tmpl4 2
+7313:NA:Snow T1 Floor Wooden 1 T2 tmpl4 2
+7312:NA:Snow T1 RockFloor T2 tmpl3 1
+7315:NA:Snow T1 Floor Wooden 1 T2 tmpl4 2
+7314:NA:Snow T1 Floor Wooden 1 T2 tmpl4 2
+7317:NA:Snow T1 2Wooden T2 tmpl4 2
+7316:NA:Snow T1 Floor Wooden 1 T2 tmpl4 2
+7319:NA:Snow T1 2Wooden T2 tmpl4 2
+7318:NA:Snow T1 2Wooden T2 tmpl4 2
+7321:NA:Snow T1 3Wooden T2 tmpl4 2
+7320:NA:Snow T1 2Wooden T2 tmpl4 2
+7323:NA:Snow T1 3Wooden T2 tmpl4 2
+7322:NA:Snow T1 3Wooden T2 tmpl4 2
+7325:NA:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7324:NA:Snow T1 3Wooden T2 tmpl4 2
+7327:NA:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7326:NA:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7296:NA:Snow T1 RockFloor T2 tmpl3 1
+7297:NA:Snow T1 RockFloor T2 tmpl3 1
+7298:NA:Snow T1 RockFloor T2 tmpl3 1
+7299:NA:Snow T1 RockFloor T2 tmpl3 1
+7300:NA:Snow T1 RockFloor T2 tmpl3 1
+7301:NA:Snow T1 RockFloor T2 tmpl3 1
+7302:NA:Snow T1 RockFloor T2 tmpl3 1
+7303:NA:Snow T1 RockFloor T2 tmpl3 1
+7304:NA:Snow T1 RockFloor T2 tmpl3 1
+7305:NA:Snow T1 RockFloor T2 tmpl3 1
+7306:NA:Snow T1 RockFloor T2 tmpl3 1
+7307:NA:Snow T1 RockFloor T2 tmpl3 1
+7308:NA:Snow T1 RockFloor T2 tmpl3 1
+7309:NA:Snow T1 RockFloor T2 tmpl3 1
+7310:NA:Snow T1 RockFloor T2 tmpl3 1
+7311:NA:Snow T1 RockFloor T2 tmpl3 1
+7294:NA:Snow T1 RockFloor T2 tmpl3 1
+7295:NA:Snow T1 RockFloor T2 tmpl3 1
+7292:NA:Snow T1 RockFloor T2 tmpl3 1
+7293:NA:Snow T1 RockFloor T2 tmpl3 1
+7290:NA:Snow T1 RockFloor T2 tmpl3 1
+7291:NA:Snow T1 RockFloor T2 tmpl3 1
+7288:NA:Snow T1 RockFloor T2 tmpl3 1
+7289:NA:Snow T1 RockFloor T2 tmpl3 1
+7286:NA:Snow T1 RockFloor T2 tmpl3 1
+7287:NA:Snow T1 RockFloor T2 tmpl3 1
+7284:NA:Snow T1 RockFloor T2 tmpl3 1
+7285:NA:Snow T1 RockFloor T2 tmpl3 1
+7282:NA:Snow T1 RockFloor T2 tmpl3 1
+7283:NA:Snow T1 RockFloor T2 tmpl3 1
+7280:NA:6srf1
+7281:NA:Snow T1 RockFloor T2 tmpl3 1
+7279:NA:6srf1
+7278:NA:6srf1
+7277:NA:6srf1
+7276:NA:5srf1
+7275:NA:5srf1
+7274:NA:5srf1
+7273:NA:5srf1
+7272:NA:4srf1
+7271:NA:4srf1
+7270:NA:4srf1
+7269:NA:4srf1
+7268:NA:3srf1
+7267:NA:3srf1
+7266:NA:3srf1
+7265:NA:3srf1
+7264:NA:2srf1
+7260:NA:tmpl3 1 T1 Grass T2 3Wooden
+7261:NA:2srf1
+7262:WoodenDoor:RockDoor1
+7263:WoodenDoor:RockDoor1
+7256:NA:tmpl3 1 T1 Grass T2 3Wooden
+7257:NA:tmpl3 1 T1 Grass T2 3Wooden
+7258:NA:tmpl3 1 T1 Grass T2 3Wooden
+7259:NA:tmpl3 1 T1 Grass T2 3Wooden
+7252:NA:tmpl3 1 T1 Grass T2 3Wooden
+7253:NA:tmpl3 1 T1 Grass T2 3Wooden
+7254:NA:tmpl3 1 T1 Grass T2 3Wooden
+7255:NA:tmpl3 1 T1 Grass T2 3Wooden
+7248:NA:tmpl3 1 T1 Grass T2 2Wooden
+7249:NA:tmpl3 1 T1 Grass T2 2Wooden
+7250:NA:tmpl3 1 T1 Grass T2 2Wooden
+7251:NA:tmpl3 1 T1 Grass T2 3Wooden
+7245:NA:tmpl3 1 T1 Grass T2 2Wooden
+7244:NA:tmpl3 1 T1 Grass T2 2Wooden
+7247:NA:tmpl3 1 T1 Grass T2 2Wooden
+7246:NA:tmpl3 1 T1 Grass T2 2Wooden
+7241:NA:tmpl3 1 T1 Grass T2 2Wooden
+7240:NA:tmpl3 1 T1 Desert T2 3Wooden
+7243:NA:tmpl3 1 T1 Grass T2 2Wooden
+7242:NA:tmpl3 1 T1 Grass T2 2Wooden
+7237:NA:tmpl3 1 T1 Desert T2 3Wooden
+7236:NA:tmpl3 1 T1 Desert T2 3Wooden
+7239:NA:tmpl3 1 T1 Desert T2 3Wooden
+7238:NA:tmpl3 1 T1 Desert T2 3Wooden
+7233:NA:tmpl3 1 T1 Desert T2 3Wooden
+7232:NA:tmpl3 1 T1 Desert T2 3Wooden
+7235:NA:tmpl3 1 T1 Desert T2 3Wooden
+7234:NA:tmpl3 1 T1 Desert T2 3Wooden
+7226:NA:tmpl3 1 T1 Desert T2 3Wooden
+7227:NA:tmpl3 1 T1 Desert T2 3Wooden
+7224:NA:tmpl3 1 T1 Desert T2 3Wooden
+7225:NA:tmpl3 1 T1 Desert T2 3Wooden
+7230:NA:tmpl3 1 T1 Desert T2 3Wooden
+7231:NA:tmpl3 1 T1 Desert T2 3Wooden
+7228:NA:tmpl3 1 T1 Desert T2 3Wooden
+7229:NA:tmpl3 1 T1 Desert T2 3Wooden
+7218:NA:tmpl3 1 T1 Desert T2 3Wooden
+7219:NA:tmpl3 1 T1 Desert T2 3Wooden
+7216:NA:tmpl3 1 T1 Desert T2 3Wooden
+7217:NA:tmpl3 1 T1 Desert T2 3Wooden
+7222:NA:tmpl3 1 T1 Desert T2 3Wooden
+7223:NA:tmpl3 1 T1 Desert T2 3Wooden
+7220:NA:tmpl3 1 T1 Desert T2 3Wooden
+7221:NA:tmpl3 1 T1 Desert T2 3Wooden
+7211:NA:tmpl3 1 T1 Desert T2 3Wooden
+7210:NA:tmpl3 1 T1 Desert T2 3Wooden
+7209:NA:tmpl3 1 T1 Desert T2 3Wooden
+7208:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7215:NA:tmpl3 1 T1 Desert T2 3Wooden
+7214:NA:tmpl3 1 T1 Desert T2 3Wooden
+7213:NA:tmpl3 1 T1 Desert T2 3Wooden
+7212:NA:tmpl3 1 T1 Desert T2 3Wooden
+7203:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7201:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7200:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7207:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7206:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7205:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7204:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7192:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7193:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7194:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7195:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7196:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7197:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7198:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7199:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7184:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7185:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7186:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7187:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7188:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7189:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7190:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7191:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7177:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7176:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7179:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7178:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7181:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7180:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7183:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7182:NA:tmpl3 1 T1 EarthTile T2 3Wooden
+7169:NA:tmpl3 1 T1 Grass T2 3Wooden
+7168:NA:tmpl3 1 T1 Grass T2 3Wooden
+7171:NA:tmpl3 1 T1 Grass T2 3Wooden
+7170:NA:tmpl3 1 T1 Grass T2 3Wooden
+7173:NA:tmpl3 1 T1 Grass T2 3Wooden
+7172:NA:tmpl3 1 T1 Grass T2 3Wooden
+7175:NA:tmpl3 1 T1 Grass T2 3Wooden
+7174:NA:tmpl3 1 T1 Grass T2 3Wooden
+8070:NA:tmpl3 1 T1 NewLava T2 Cendre
+8071:NA:tmpl3 1 T1 NewLava T2 Cendre
+8068:NA:tmpl3 1 T1 NewLava T2 Cendre
+8069:NA:tmpl3 1 T1 NewLava T2 Cendre
+8066:NA:tmpl3 1 T1 NewLava T2 Cendre
+8067:NA:tmpl3 1 T1 NewLava T2 Cendre
+8064:NA:tmpl3 1 T1 NewLava T2 Cendre
+8065:NA:tmpl3 1 T1 NewLava T2 Cendre
+8072:NA:tmpl3 1 T1 NewLava T2 Cendre
+8073:NA:tmpl3 1 T1 NewLava T2 Cendre
+8011:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8010:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8009:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8008:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8015:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8014:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8013:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8012:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8003:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8002:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8001:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8000:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8007:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8006:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8005:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8004:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8026:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8027:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8024:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8025:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8030:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8031:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8028:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8029:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8018:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8019:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8016:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8017:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8022:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8023:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8020:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8021:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8041:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8040:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8043:NA:tmpl3 1 T1 NewLava T2 Cendre
+8042:NA:tmpl3 1 T1 NewLava T2 Cendre
+8045:NA:tmpl3 1 T1 NewLava T2 Cendre
+8044:NA:tmpl3 1 T1 NewLava T2 Cendre
+8047:NA:tmpl3 1 T1 NewLava T2 Cendre
+8046:NA:tmpl3 1 T1 NewLava T2 Cendre
+8033:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8032:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8035:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8034:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8037:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8036:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8039:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8038:NA:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8056:NA:tmpl3 1 T1 NewLava T2 Cendre
+8057:NA:tmpl3 1 T1 NewLava T2 Cendre
+8058:NA:tmpl3 1 T1 NewLava T2 Cendre
+8059:NA:tmpl3 1 T1 NewLava T2 Cendre
+8060:NA:tmpl3 1 T1 NewLava T2 Cendre
+8061:NA:tmpl3 1 T1 NewLava T2 Cendre
+8062:NA:tmpl3 1 T1 NewLava T2 Cendre
+8063:NA:tmpl3 1 T1 NewLava T2 Cendre
+8048:NA:tmpl3 1 T1 NewLava T2 Cendre
+8049:NA:tmpl3 1 T1 NewLava T2 Cendre
+8050:NA:tmpl3 1 T1 NewLava T2 Cendre
+8051:NA:tmpl3 1 T1 NewLava T2 Cendre
+8052:NA:tmpl3 1 T1 NewLava T2 Cendre
+8053:NA:tmpl3 1 T1 NewLava T2 Cendre
+8054:NA:tmpl3 1 T1 NewLava T2 Cendre
+8055:NA:tmpl3 1 T1 NewLava T2 Cendre
+7951:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7950:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7949:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7948:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7947:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7946:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7945:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7944:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7943:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7942:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7941:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7940:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7939:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7938:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7937:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7936:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7966:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7967:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7964:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7965:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7962:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7963:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7960:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7961:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7958:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7959:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7956:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7957:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7954:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7955:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7952:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7953:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7981:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7980:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7983:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7982:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7977:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7976:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7979:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7978:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7973:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7972:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7975:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7974:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7969:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7968:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7971:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7970:NA:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7996:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7997:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7998:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7999:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7992:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7993:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7994:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7995:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7988:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7989:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7990:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7991:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7984:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7985:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7986:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7987:NA:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7889:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7888:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7891:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7890:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7893:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7892:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7895:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7894:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7897:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7896:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7899:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7898:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7901:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7900:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7903:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7902:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7872:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7873:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7874:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7875:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7876:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7877:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7878:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7879:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7880:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7881:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7882:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7883:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7884:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7885:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7886:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7887:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7923:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7922:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7921:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7920:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7927:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7926:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7925:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7924:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7931:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7930:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7929:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7928:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7935:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7934:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7933:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7932:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7906:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7907:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7904:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7905:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7910:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7911:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7908:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7909:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7914:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7915:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7912:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7913:NA:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7918:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7919:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7916:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7917:NA:tmpl3 1 T1 %02dAnimWater01 T2 RockFloor
+7863:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7862:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7861:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7860:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7859:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7858:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7857:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7856:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7871:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7870:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7869:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7868:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7867:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7866:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7865:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7864:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7854:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7855:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7852:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7853:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7850:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7851:NA:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile

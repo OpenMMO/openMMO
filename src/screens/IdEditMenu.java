@@ -22,6 +22,7 @@ import opent4c.SpriteData;
 import opent4c.SpriteUtils;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
+import opent4c.utils.Places;
 import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
 
@@ -39,6 +40,7 @@ public class IdEditMenu{
 	private static Logger logger = LogManager.getLogger(IdEditMenu.class.getSimpleName());
 	private static int id;
 	private TextButtonStyle style = new TextButtonStyle();
+	private static Point point;
 	private static String tex;
 	private static String atlas;
 	private static List<String> badPalettes = new ArrayList<String>();
@@ -49,22 +51,18 @@ public class IdEditMenu{
 	 * @param id
 	 */
 	public IdEditMenu(Point point, int id) {
+		IdEditMenu.point = point;
 		loadMirrors();
 		loadBadPalettes();
-		this.id = id;
+		IdEditMenu.id = id;
 		tex = "";
 		style.font = new BitmapFont();
-		if(SpriteData.getIds().containsKey(id)){
-			tex = SpriteData.getIds().get(id);
+		if(SpriteData.getIdfull().containsKey(id)){
+			tex = SpriteData.getTexFromId(id);
+			atlas = SpriteData.getAtlasFromId(id);
 		}else{
 			tex = "non mappée";
-		}
-		MapPixel px = SpriteData.getPixelFromId(id);
-		atlas = "";
-		if (px == null){
-			atlas = "Dossier non mappé";
-		}else{
-			atlas = px.getAtlas();
+			atlas = "non mappé";	
 		}
 		ThreadsUtil.executeInThread(RunnableCreatorUtil.getConsoleCommandInputRunnable());
 	}
@@ -115,41 +113,53 @@ public class IdEditMenu{
 
 	public static void editID(){
 		System.out.println("##########################################################");
-		System.out.println("Entrez un nouveau nom :");
-		String input = "null";
+		System.out.println("Entrez un nouveau nom d'atlas :");
+		String input_atlas = "null";
 	    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 	    try {
-			input = bufferRead.readLine();
+			input_atlas = bufferRead.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.fatal(e);
 			System.exit(1);
 		}
-		if(input.equals("")){
+		if(input_atlas.equals("")){
+			input_atlas = SpriteData.getAtlasFromId(id);
+		}
+		System.out.println("##########################################################");
+		System.out.println("Entrez un nouveau nom de texture :");
+		String input_tex = "null";
+	    bufferRead = new BufferedReader(new InputStreamReader(System.in));
+	    try {
+	    	input_tex = bufferRead.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
+		}
+		if(input_tex.equals("")){
+			input_tex = SpriteData.getTexFromId(id);
+		}
+		String input = input_atlas+":"+input_tex;
+		System.out.println("##########################################################");
+		System.out.println("Informations d'origine - ID : "+id+" Dossier : "+atlas+" Mappage : "+tex);
+		System.out.println("Modifier en - ID : "+id+" Dossier : "+input_atlas+" Mappage : "+input_tex);
+		System.out.println("Confirmer? (o/n)");
+	    String confirm = "";
+		try {
+			confirm = bufferRead.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
+		}
+		if(!confirm.equals("o")){
 			cancel();
 			return;
 		}else{
-			System.out.println("##########################################################");
-			System.out.println("Informations d'origine - ID : "+id+" Dossier : "+atlas+" Mappage : "+tex);
-			System.out.println("Modifier en - ID : "+id+" Dossier : "+atlas+" Mappage : "+input);
-			System.out.println("Confirmer? (o/n)");
-		    String confirm = "";
-			try {
-				confirm = bufferRead.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-				logger.fatal(e);
-				System.exit(1);
-			}
-			if(!confirm.equals("o")){
-				cancel();
-				return;
-			}else{
-				System.out.println("Mise à jour de id.txt");
-				IdEditMenu.updateIdFile(input);
-				System.out.println("##########################################################");
-				exit();	
-			}
+			System.out.println("Mise à jour de id.txt");
+			IdEditMenu.updateIdFile(input);
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(point));
 		}
 	}
 
@@ -165,7 +175,7 @@ public class IdEditMenu{
 	/**
 	 * Exits edit menu
 	 */
-	private static void exit() {
+	public static void exit() {
 		System.out.println("##########################################################");
 		MapManager.close_edit_menu();
 	}
@@ -266,9 +276,8 @@ public class IdEditMenu{
 	 * @param input
 	 */
 	public static void updateIdFile(String input) {
-		SpriteData.getIds().put(id, input);
-		SpriteData.writeIdsToFile();
-		new File(FilesPath.getPixelIndexFilePath()).deleteOnExit();
+		SpriteData.getIdfull().put(id, input);
+		SpriteData.writeIdFullToFile();
 	}
 
 	/**

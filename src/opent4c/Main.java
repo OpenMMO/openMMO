@@ -50,6 +50,8 @@ public class Main {
 	public static void charger() {
 		logger.info("Chargement des données");
 		SpriteData.loadPixelIndex();
+		//SpriteData.convertIdtoIDFull();
+		//System.exit(0);
 		sm.initMap();
 	}
 }

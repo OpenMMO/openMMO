@@ -26,108 +26,13 @@ public class SpriteManager {
 	private static boolean dpd_done = false;
 	private static boolean did_done = false;
 	private static boolean dda_done = false;
+	private static int nb_writen;
+	private static int nb_extracted_from_dda;
 
 
-	/**
-	 * Adds a new sprite
-	 * @param buf
-	 */
-	public static void addSprite(ByteBuffer buf) {
-		MapPixel pixel = new MapPixel();
-		SpriteName sn = SpriteUtils.extractName(buf);
-		String atlas = SpriteUtils.extractChemin(buf, sn);
-		UnsignedInt indexation = new UnsignedInt(SpriteUtils.extractInt(buf,false));
-		long numDDA = SpriteUtils.extractLong(buf,false);
-		pixel.setName(sn);
-		pixel.setAtlas(atlas);
-		pixel.setIndexation(indexation);
-		pixel.setNumDDA(numDDA);
-		//List<Integer> ids = new ArrayList<Integer>();
-		//ids = SpriteData.matchPixelWithId(pixel);
-		//pixel.setId(ids.get(0));
-		//Iterator<Integer> iter = ids.iterator();
-		///while(iter.hasNext()){
-		//	SpriteData.putPixel(iter.next(),pixel);
-		//}
-		SpriteData.putPixel(-1, pixel);
-	}
-	
-	/**
-	 * Extracts sprites from .dda files
-	 */
-	public static void decryptDDA(boolean doWrite){
-		logger.info("Décryptage des fichiers DDA : ecriture = "+doWrite);
-		File f = null;
-		List<File> ddas = SourceDataManager.getDDA();
-		Iterator<File>iter_dda = ddas.iterator();
-		while (iter_dda.hasNext()){
-			f = iter_dda.next();
-			SpriteUtils.decrypt_dda_file(f,doWrite);
-		}
-		//SpriteData.matchIdWithTiles();
-		setDda_done(true);
-	}
-
-	/**
-	 * Extracts sprite infos from .did file
-	 */
-	public static void decryptDID(){
-		File f = SourceDataManager.getDID();
-		logger.info("Décryptage du fichier DID.");
-		ByteBuffer buf = null;
-		ByteBuffer header;
-		ByteBuffer bufUnZip;
-		
-		byte clef = (byte) 0x99;
-		
-		byte[] header_hashMd5 = new byte[16];
-		byte[] header_hashMd52 = new byte[17];
-		
-		int header_taille_unZip = 0;
-		int header_taille_zip;
-				
-		header = ByteBuffer.allocate(41);
-		try {
-			DataInputManager in = new DataInputManager(f);
-			while (header.position()<header.capacity()){
-				header.put(in.readByte());
-			}
-			header.rewind();
-			
-			header_hashMd5 = SpriteUtils.extractBytes(header, header_hashMd5.length);
-			header_taille_unZip = ByteArrayToNumber.bytesToInt(SpriteUtils.extractInt(header,false));
-			header_taille_zip = ByteArrayToNumber.bytesToInt(SpriteUtils.extractInt(header,false));
-			header_hashMd52 = SpriteUtils.extractBytes(header, header_hashMd52.length);
-
-	
-			buf = ByteBuffer.allocate(header_taille_zip);
-			while(buf.position() < buf.capacity()){
-				buf.put(in.readByte());
-			}
-			in.close();
-		}catch(IOException exc){
-			logger.fatal("Erreur d'ouverture");
-			exc.printStackTrace();
-			System.exit(1);
-		}
-		
-		buf.rewind();
-		bufUnZip = SpriteUtils.unzip(buf, header_taille_unZip);
-		for (int i=0; i<bufUnZip.capacity(); i++){
-			bufUnZip.array()[i] ^= clef;
-		}
-		nb_sprites_from_did = (header_taille_unZip/(64 + 256 + 4 + 8));
-		
-		for(int i=1 ; i<=nb_sprites_from_did ; i++){
-			addSprite(bufUnZip);
-			UpdateDataCheckStatus.setDidStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
-			UpdateDataCheckStatus.setStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
-		}
-		SpriteData.matchIdWithTiles();
-		SpriteData.matchIdWithSprites();
-
-		setDid_done(true);
-	}
+	///////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////     DPD        /////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Decrypts dpd file
@@ -205,7 +110,87 @@ public class SpriteManager {
 	public static void setDpd_done(boolean done) {
 		dpd_done = done;
 	}
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////     DID        /////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * Extracts sprite infos from .did file
+	 */
+	public static void decryptDID(){
+		File f = SourceDataManager.getDID();
+		logger.info("Décryptage du fichier DID.");
+		ByteBuffer buf = null;
+		ByteBuffer header;
+		ByteBuffer bufUnZip;
+		
+		byte clef = (byte) 0x99;
+		
+		byte[] header_hashMd5 = new byte[16];
+		byte[] header_hashMd52 = new byte[17];
+		
+		int header_taille_unZip = 0;
+		int header_taille_zip;
+				
+		header = ByteBuffer.allocate(41);
+		try {
+			DataInputManager in = new DataInputManager(f);
+			while (header.position()<header.capacity()){
+				header.put(in.readByte());
+			}
+			header.rewind();
+			
+			header_hashMd5 = SpriteUtils.extractBytes(header, header_hashMd5.length);
+			header_taille_unZip = ByteArrayToNumber.bytesToInt(SpriteUtils.extractInt(header,false));
+			header_taille_zip = ByteArrayToNumber.bytesToInt(SpriteUtils.extractInt(header,false));
+			header_hashMd52 = SpriteUtils.extractBytes(header, header_hashMd52.length);
 
+	
+			buf = ByteBuffer.allocate(header_taille_zip);
+			while(buf.position() < buf.capacity()){
+				buf.put(in.readByte());
+			}
+			in.close();
+		}catch(IOException exc){
+			logger.fatal("Erreur d'ouverture");
+			exc.printStackTrace();
+			System.exit(1);
+		}
+		
+		buf.rewind();
+		bufUnZip = SpriteUtils.unzip(buf, header_taille_unZip);
+		for (int i=0; i<bufUnZip.capacity(); i++){
+			bufUnZip.array()[i] ^= clef;
+		}
+		nb_sprites_from_did = (header_taille_unZip/(64 + 256 + 4 + 8));
+		
+		for(int i=1 ; i<=nb_sprites_from_did ; i++){
+			addSprite(bufUnZip);
+			UpdateDataCheckStatus.setStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
+		}
+		setDid_done(true);
+	}
+	
+	/**
+	 * Adds a new sprite
+	 * @param buf
+	 */
+	public static void addSprite(ByteBuffer buf) {
+		MapPixel pixel = new MapPixel();
+		SpriteName sn = SpriteUtils.extractName(buf);
+		String atlas = SpriteUtils.extractChemin(buf, sn);
+		UnsignedInt indexation = new UnsignedInt(SpriteUtils.extractInt(buf,false));
+		long numDDA = SpriteUtils.extractLong(buf,false);
+		pixel.setName(sn);
+		pixel.setAtlas(atlas);
+		pixel.setIndexation(indexation);
+		pixel.setNumDDA(numDDA);
+		SpriteData.matchIdWithPixel(pixel);
+		SpriteData.putOriginPixel(pixel);
+	}
+	
 	public static boolean isDid_done() {
 		return did_done;
 	}
@@ -213,7 +198,89 @@ public class SpriteManager {
 	public static void setDid_done(boolean done) {
 		did_done = done;
 	}
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////     DDA        /////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * Extracts sprites from .dda files
+	 */
+	public static void decryptDDA(boolean doWrite){
+		logger.info("Décryptage des fichiers DDA : ecriture = "+doWrite);
+		File f = null;
+		List<File> ddas = SourceDataManager.getDDA();
+		Iterator<File>iter_dda = ddas.iterator();
+		while (iter_dda.hasNext()){
+			f = iter_dda.next();
+			decrypt_dda_file(f,doWrite);
+		}
+		setDda_done(true);
+	}
 
+	/**
+	 * Decrypts a dda file
+	 * @param f
+	 * @param doWrite
+	 */
+	public static void decrypt_dda_file(File f, boolean doWrite) {
+		int numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
+		//List<MapPixel> sprites_in_dda = new ArrayList<MapPixel>();
+		//Iterator<Integer> iter_id = SpriteData.getPixelIndex().keySet().iterator();
+		/*while(iter_id.hasNext()){
+			int id = iter_id.next();
+			MapPixel px = SpriteData.getPixelIndex().get(id);
+			if(px.getNumDDA() == numDDA){
+				sprites_in_dda.add(px);
+			}
+		}*/
+		ByteBuffer buf = SpriteUtils.readDDA(f);
+		byte[] signature = new byte[4];
+		signature = SpriteUtils.extractBytes(buf,signature.length);
+		Iterator<MapPixel> iter = SpriteData.getOrigin().iterator();
+		while(iter.hasNext()){
+			MapPixel pixel = iter.next();
+			int indexation = (pixel.getIndexation()+4);
+			if (pixel.getNumDDA() == numDDA){
+				try{
+					buf.position(indexation);
+				}catch(IllegalArgumentException e){
+					e.printStackTrace();
+					System.exit(1);
+				}
+				SpriteUtils.extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
+				if(!doWrite){
+					addOneExtractedFromDDA();
+				}else{
+					boolean writen = false;
+					writen = SpriteUtils.doTheWriting(pixel, buf);
+					if (!writen){
+						logger.fatal("Sprite non écrit => "+pixel.getTex());
+						System.exit(1);
+					}
+					addOneWriten();
+				}
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public static void addOneExtractedFromDDA() {
+		nb_extracted_from_dda++;
+		UpdateDataCheckStatus.setStatus("Sprites extraits des fichiers DDA: "+nb_extracted_from_dda+"/"+DataChecker.nb_expected_sprites);
+	}
+	
+	/**
+	 * 
+	 */
+	public static void addOneWriten() {
+		nb_writen++;
+		UpdateDataCheckStatus.setStatus("Sprites écrits: "+nb_writen+"/"+DataChecker.nb_expected_sprites);
+	}
+	
 	public static boolean isDda_done() {
 		return dda_done;
 	}

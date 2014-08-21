@@ -1,10 +1,12 @@
 package opent4c.utils;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import opent4c.DataChecker;
 import opent4c.InputManager;
 import opent4c.SettingsManager;
 import opent4c.SpriteData;
@@ -17,7 +19,6 @@ import org.apache.logging.log4j.Logger;
 
 import screens.IdEditMenu;
 import screens.MapManager;
-import t4cPlugin.Places;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -151,15 +152,6 @@ public class RunnableCreatorUtil {
 		return r;
 	}
 	
-	public static Runnable getDDAExtractorRunnable(final File f, final boolean doWrite){
-		Runnable r = new Runnable(){
-			public void run(){
-				SpriteUtils.decrypt_dda_file(f,doWrite);
-			}
-		};
-		return r;
-	}
-	
 	public static Runnable getModuloComputerRunnable(final File tileDir){
 		Runnable r = new Runnable(){
 			public void run(){
@@ -231,30 +223,26 @@ public class RunnableCreatorUtil {
 	}
 
 	/**
+	 * @param point 
 	 * @return
 	 */
-	public static Runnable getPixelIndexFileUpdaterRunnable() {
+	public static Runnable getPixelIndexFileUpdaterRunnable(final Point point) {
 		Runnable r = new Runnable(){
 
 			public void run(){
 				logger.info("mise à jour du fichier pixel_index en tâche de fond, l'affichage sera mis à jour lorsque ce sera terminé");
-				SpriteData.writeIdsToFile();
-				SpriteData.loadIdsFromFile();
-				SpriteData.initPixelIndex();
-				SpriteManager.decryptDPD();
-				SpriteManager.decryptDID();
-				SpriteManager.decryptDDA(false);
-				SpriteData.computeModulos();
+				SpriteData.loadIdFullFromFile();
 				SpriteData.createPixelIndex();
 				SpriteData.initPixelIndex();
 				SpriteData.loadPixelIndex();
 				Gdx.app.postRunnable(new Runnable(){
 					@Override
 					public void run(){
-						MapManager.renderChunks();
+						MapManager.teleport(new Places("update ok", "v2_worldmap", point));
+						logger.info("mise à jour terminée");
 					}
 				});
-				logger.info("mise à jour terminée");
+				IdEditMenu.exit();
 			}
 		};
 		return r;

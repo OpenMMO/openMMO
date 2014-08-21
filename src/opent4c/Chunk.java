@@ -58,7 +58,7 @@ public class Chunk{
 		for(int y = upLimit ; y <= downLimit ; y++){
 			for(int x = leftLimit ; x <= rightLimit ; x++){
 				int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x,y));
-				setActeurforId(id,PointsManager.getPoint(x, y));
+				addActeurforId(id,PointsManager.getPoint(x, y));
 			}	
 		}
 	}
@@ -67,54 +67,95 @@ public class Chunk{
 	 * @param id
 	 * @param point
 	 */
-	private void setActeurforId(int id, Point point) {
+	private void addActeurforId(int id, Point point) {
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
-		MapPixel px = SpriteData.getPixelFromId(id);
-		if (px == null){
-			chunk_tiles.addActor(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+		String atlas = SpriteData.getAtlasFromId(id);
+		String tex = SpriteData.getTexFromId(id);
+		boolean isTuile = false;
+		int moduloX = 1;
+		int moduloY = 1;
+		if(tex.contains("modulos(")){
+			isTuile = true;
+			moduloX = Integer.parseInt(tex.substring(tex.indexOf('(')+1,tex.indexOf(',')));
+			moduloY = Integer.parseInt(tex.substring(tex.indexOf(',')+1,tex.indexOf(')')));
+		}
+		if (atlas.equals("Atlas non mappé") | tex.equals("Texture non mappée") | atlas.equals("NA")){
+			logger.warn(id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+			addUnknownTile(point);
 			return;
 		}
-		if(px.isTuile()){
-			texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
-		}else{
-			texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());			
-		}
-		if(texAtlas == null){
-			texAtlas = AssetsLoader.load(px.getAtlas());
-			if(texAtlas == null){
-				chunk_tiles.addActor(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+		/*
+		MapPixel px = SpriteData.getSpriteFromId(id);
+		if (px == null){
+			px = SpriteData.getTileFromId(id);
+			if (px == null){
+				logger.warn("Not Present in pixel_index : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+				addUnknownTile(point);
 				return;
 			}
 		}
-		if(px.isTuile()){
-			texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(px, point));
+		*/
+		//TODO pour les tuiles, mettre le nom d'atlas et le modulo dans tex dans idfull.txt
+		//reprendre ici
+		if(isTuile){
+			texAtlas = loadingStatus.getTextureAtlasTile(atlas);
 		}else{
-			texRegion = texAtlas.findRegion(px.getTex());
+			texAtlas = loadingStatus.getTextureAtlasSprite(atlas);			
 		}
-		if(texRegion == null){
-			//logger.warn("On tente de charger une TextureRegion null");
-			texRegion = getUnknownTile();
-			//smoothing
-			if(px.getAtlas().equals("GenericMerge1")|px.getAtlas().equals("GenericMerge3")|px.getAtlas().equals("GenericMerge2Wooden")|px.getAtlas().equals("WoodenSmooth")){
-				texRegion = texAtlas.findRegion(px.getTex());
+		
+		if(texAtlas == null){
+			texAtlas = AssetsLoader.load(atlas);
+			if(texAtlas == null){
+				addUnknownTile(point);
+				logger.warn("Atlas missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+				return;
 			}
 		}
-		if (px.isTuile()){
-			chunk_tiles.addActor(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
+		
+		if(isTuile){
+			texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(atlas, moduloX, moduloY, point));
 		}else{
-			chunk_sprites.addActor(new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset()));
+			texRegion = texAtlas.findRegion(tex);
+		}
+		if(texRegion == null){
+			logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+			addUnknownTile(point);
+			return;
+			//smoothing
+			/*if(px.getAtlas().equals("GenericMerge1")|px.getAtlas().equals("GenericMerge3")|px.getAtlas().equals("GenericMerge2Wooden")|px.getAtlas().equals("WoodenSmooth")){
+				texRegion = texAtlas.findRegion(px.getTex());
+			}*/
+		}
+		
+		if (isTuile){
+			chunk_tiles.addActor(new Acteur(texRegion,point,PointsManager.getPoint(0, 0)));
+		}else{
+			//System.err.println(id+" => "+atlas+" : "+tex+" "+px.getOffset());
+			//TODO extraire les sprites avec leur offset pour que l'offset soit directement intégré dans les atlas, comme ça on pourra supprimer px.
+			MapPixel px = SpriteData.getSpriteFromId(id);
+			if (px == null){
+				logger.warn("Not Present in pixel_index : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+				addUnknownTile(point);
+				return;
+			}
+			chunk_sprites.addActor(new Acteur(texRegion,point,px.getOffset()));
+			//chunk_sprites.addActor(new Acteur(texRegion,point,PointsManager.getPoint(offsetX, offsetY)));
 		}
 	}
 	
+	private void addUnknownTile(Point point) {
+		chunk_tiles.addActor(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+	}
+
 	/**
 	 * @param id
 	 * @param point
 	 */
-	public Acteur getActeurPixelOnMapFromId(int id, Point point) {
+	/*public Acteur getActeurPixelOnMapFromId(int id, Point point) {
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
-		MapPixel px = SpriteData.getPixelFromId(id);
+		MapPixel px = SpriteData.getSpriteFromId(id);
 		if (px == null){
 			logger.warn("ID non mappée : "+id);
 			return new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
@@ -142,7 +183,7 @@ public class Chunk{
 			texRegion = getUnknownTile();
 		}
 		return new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset());
-	}
+	}*/
 
 	/**
 	 * @return the unknown atlas
@@ -157,17 +198,14 @@ public class Chunk{
 	}
 
 	/**
+	 * @param moduloY2 
+	 * @param moduloX 
 	 * @param px
 	 * @param point
 	 * @return a textureRegion name with zone effect
 	 */
-	private String getModuledTexNameFromPoint(MapPixel px, Point point) {
-		String tex = px.getTex();
-		int tileModuloX = px.getModulo().x;
-		int tileModuloY = px.getModulo().y;
-		int moduloX = (point.x % tileModuloX)+1;
-		int moduloY = (point.y % tileModuloY)+1;
-		return tex.substring(0,tex.indexOf('(')+1)+moduloX+", "+moduloY+")";		
+	private String getModuledTexNameFromPoint(String atlas, int moduloX, int moduloY, Point point) {
+		return atlas+" ("+((point.x % moduloX)+1)+", "+((point.y % moduloY)+1)+")";	
 	}
 
 	/**

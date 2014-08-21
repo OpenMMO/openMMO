@@ -27,9 +27,9 @@ public class DataChecker {
 	private static boolean atlas_are_ok = false;
 	private static boolean sprites_are_ok = false;
 	private static boolean pixel_index_is_ok = false;
-	public final static int nb_expected_sprites = 68450;
+	public final static int nb_expected_sprites = 68435;
 	public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
-	public final static int nb_expected_atlas = 650;
+	public final static int nb_expected_atlas = 649;
 	//TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
 	//TODO Je me dis que plusieurs sprites doivent porter le même nom...
 	
@@ -42,7 +42,8 @@ public class DataChecker {
 		FilesPath.init();
 		checkSourceData();
 		logger.info("Vérification des données calculées.");
-		SpriteData.loadIdsFromFile();
+		//SpriteData.loadIdsFromFile();
+		SpriteData.loadIdFullFromFile();
 		checkWhatNeedsToBeDone();
 		doWhatNeedsToBeDone();
 		makeSureEverythingIsOk();
@@ -78,7 +79,9 @@ public class DataChecker {
 	private static void doAtlas() {
 		if(!atlas_are_ok){
 			AssetsLoader.pack_sprites();
+			loadingStatus.waitUntilTextureAtlasSpritesCreated();
 			AssetsLoader.pack_tuiles();
+			loadingStatus.waitUntilTextureAtlasTilesCreated();
 		}
 	}
 
@@ -140,10 +143,10 @@ public class DataChecker {
 	private static void checkSprites() {
 		// TODO Trouver mieux pour vérifier la présence des sprites.
 		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDataDirectoryPath()), ".png").size();
-		if(nb_sprites >= (nb_expected_sprites-delta_ok)){
+		if(nb_sprites >= (nb_expected_sprites)){
 			sprites_are_ok = true;
 		}
-		logger.info("TEST présence sprites : "+sprites_are_ok);
+		logger.info("TEST présence sprites : "+sprites_are_ok+"=>"+nb_sprites+"/"+(nb_expected_sprites));
 	}
 
 	/**
@@ -154,7 +157,7 @@ public class DataChecker {
 		if (nb_atlas >= nb_expected_atlas){
 			atlas_are_ok  = true;
 		}
-		logger.info("TEST présence atlas : "+atlas_are_ok);
+		logger.info("TEST présence atlas : "+atlas_are_ok+"=>"+nb_atlas+"/"+nb_expected_atlas);
 	}
 
 	/**

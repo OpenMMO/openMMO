@@ -53,8 +53,8 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
+		AssetsLoader.load("Highlight");
 		AssetsLoader.loadSols();
-		AssetsLoader.loadMappedSprites();
 		map = new MapManager(this);
 		loadingStatus.waitUntilTileAtlasAreLoaded();
 		switchGameScreen(map);

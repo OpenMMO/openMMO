@@ -219,15 +219,6 @@ public class FilesPath {
 		return sb.toString();
 	}
 
-	public static String getIdFilePath() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("data");		
-		sb.append(File.separator);
-		sb.append("id.txt");		
-		
-		return sb.toString();		
-	}
-
 	public static String getAtlasUnknownFilePath() {
 		StringBuilder sb = new StringBuilder(24 + 7);
 		
@@ -280,6 +271,15 @@ public class FilesPath {
 		sb.append("data");
 		sb.append(File.separator);
 		sb.append("mirrors");
+		
+		return sb.toString();
+	}
+
+	public static String getIdFullFilePath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");		
+		sb.append(File.separator);
+		sb.append("idfull.txt");		
 		
 		return sb.toString();
 	}

@@ -4,11 +4,11 @@ import java.awt.Point;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import opent4c.utils.Places;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
 import screens.MapManager;
-import t4cPlugin.Places;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -36,7 +36,7 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
 	private final int movedelay_ms = 16;//un tout petit peu plus rapide que 60Hz
-	private static final float movespeed = 1f;
+	private static final float movespeed = 1.3f;
 	private boolean control_right = false;
 	private boolean control_left = false;
 
@@ -69,9 +69,6 @@ public class InputManager implements InputProcessor{
 		}
 		if (keycode == Keys.CONTROL_RIGHT){
 			control_right = true;
-		}
-		if (keycode == Keys.ESCAPE){
-			Gdx.app.exit();
 		}
 		return true;
 	}
@@ -213,6 +210,9 @@ public class InputManager implements InputProcessor{
 				manager.editMapAtCoord(PointsManager.getPoint(MapManager.getHighlight_tile().getX()/32,MapManager.getHighlight_tile().getY()/16));
 			}
 		}
+		if (keycode == Keys.ESCAPE){
+			Gdx.app.exit();
+		}
 		if (keycode == Keys.SPACE){
 			MapManager.toggleRenderSprites();
 		}
@@ -261,20 +261,18 @@ public class InputManager implements InputProcessor{
 			if(!MapManager.isHighlighted()){
 				Point tuile_on_map = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
 				manager.highlight(tuile_on_map);
+			}else{
+				MapManager.unHighlight();
 			}
 		}
 		if (button == Buttons.RIGHT){
 			mouseRight = true;
-			if (MapManager.isHighlighted()) MapManager.unHighlight();
 		}
-		if (button == Buttons.MIDDLE) mouseMiddle = true;
 		return true;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		if (mouseLeft & button == Buttons.LEFT){
-		}
 		if (button == Buttons.LEFT){
 			mouseLeft = false;
 		}
@@ -284,14 +282,12 @@ public class InputManager implements InputProcessor{
 		if (button == Buttons.MIDDLE){
 			mouseMiddle = false;
 		}
-		if (mouseMiddle & button == Buttons.MIDDLE){
-		}
 		return true;
 	}
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		if (mouseRight)camera.translate(-Gdx.input.getDeltaX()*camera.zoom,-Gdx.input.getDeltaY()*camera.zoom);
+		//if (mouseRight)camera.translate(-Gdx.input.getDeltaX()*camera.zoom,-Gdx.input.getDeltaY()*camera.zoom);
 		return true;
 	}
 

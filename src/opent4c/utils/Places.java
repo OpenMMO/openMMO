@@ -1,10 +1,8 @@
-package t4cPlugin;
+package opent4c.utils;
 
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
-
-import opent4c.utils.PointsManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
