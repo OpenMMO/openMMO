@@ -45,11 +45,9 @@ public enum AssetsLoader {
 		settings.edgePadding = false;
 		settings.flattenPaths = true;
 		settings.grid = true;
-		settings.limitMemory = true;
-		settings.stripWhitespaceX = true;
-		settings.stripWhitespaceY = true;
-		//logger.info("Will wait for DDA to be processed.");
-		//loadingStatus.waitUntilDdaFilesProcessed();
+		settings.limitMemory = false;
+		settings.stripWhitespaceX = false;
+		settings.stripWhitespaceY = false;
 		logger.info("Empaquetage des Atlas de sprites");
 		List<File> sprites = new ArrayList<File>();
 		sprites.addAll(FileLister.listerDir(new File(FilesPath.getSpritePath())));
@@ -87,7 +85,7 @@ public enum AssetsLoader {
 		settings.edgePadding = false;
 		settings.flattenPaths = true;
 		settings.grid = true;
-		settings.limitMemory = true;
+		settings.limitMemory = false;
 
 
 		List<File> tuiles = new ArrayList<File>();

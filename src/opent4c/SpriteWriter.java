@@ -51,7 +51,7 @@ public class SpriteWriter {
 		}
 		if (f.exists())return;
 		GraphicsConfiguration gc = img.createGraphics().getDeviceConfiguration();
-		BufferedImage out =	gc.createCompatibleImage(pixel.getLargeur()+Math.abs(pixel.getOffset().x), pixel.getHauteur()+Math.abs(pixel.getOffset().y), Transparency.BITMASK);
+		BufferedImage out =	gc.createCompatibleImage(pixel.getLargeur(), pixel.getHauteur(), Transparency.BITMASK);
 		Graphics2D g2d = out.createGraphics();
 		g2d.setComposite(AlphaComposite.Src);
 		g2d.drawImage(img, 0, 0, null);

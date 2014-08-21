@@ -19,6 +19,7 @@ import screens.MapManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
@@ -68,42 +69,58 @@ public class Chunk{
 	 * @param point
 	 */
 	private void addActeurforId(int id, Point point) {
-		TextureRegion texRegion = null;
-		TextureAtlas texAtlas = null;
+		if (isTuileId(id)){
+			addTileAtCoord(id, point);
+		}else if(isSmoothingId(id)){
+			addSmoothingAtCoord(id, point);
+		}else{
+			addSpriteAtCoord(id, point);
+		}
+	}
+	
+	private void addSmoothingAtCoord(int id, Point point) {
+		String smooth_info = SpriteData.getTexFromId(id);
+		String tmpl = smooth_info.substring(0, smooth_info.indexOf(" T1"));
+		String t1 = smooth_info.substring(smooth_info.indexOf("T1")+3, smooth_info.indexOf("T2"));
+		String t2 = smooth_info.substring(smooth_info.indexOf("T2")+3);
+		//logger.info("ID : "+id+" => smooth template : "+tmpl+" ; T1 : "+t1+" ; T2 : "+t2);
+		if(tmpl.startsWith("Tmpl")) chunk_tiles.addActor(new Acteur(createSmoothing(tmpl,t1,t2,point),point,PointsManager.getPoint(0, 0)));
+
+	}
+
+	private TextureRegion createSmoothing(String tmpl, String t1, String t2, Point point) {
+		TextureRegion result = null;
+		TextureRegion template = null;
+		TextureAtlas atlas = null;
+		if(tmpl.startsWith("Tmpl3")){
+			atlas = loadingStatus.getTextureAtlasTile("GenericMerge3");
+		}
+		if(tmpl.startsWith("Tmpl1")){
+			atlas = loadingStatus.getTextureAtlasTile("GenericMerge1");
+		}
+		if(atlas == null) logger.info("template nul!!!!!!!!");
+		template = atlas.findRegion(tmpl);
+		if(template == null){
+			logger.warn("smooth nul : "+tmpl);
+			return getUnknownTile();
+		}
+		return template;
+	}
+
+	/**
+	 * Adds a Sprite on a chunkMap
+	 * @param id
+	 * @param point
+	 */
+	private void addSpriteAtCoord(int id, Point point) {
 		String atlas = SpriteData.getAtlasFromId(id);
 		String tex = SpriteData.getTexFromId(id);
-		boolean isTuile = false;
-		int moduloX = 1;
-		int moduloY = 1;
-		if(tex.contains("modulos(")){
-			isTuile = true;
-			moduloX = Integer.parseInt(tex.substring(tex.indexOf('(')+1,tex.indexOf(',')));
-			moduloY = Integer.parseInt(tex.substring(tex.indexOf(',')+1,tex.indexOf(')')));
-		}
 		if (atlas.equals("Atlas non mappé") | tex.equals("Texture non mappée") | atlas.equals("NA")){
 			logger.warn(id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
 			addUnknownTile(point);
 			return;
 		}
-		/*
-		MapPixel px = SpriteData.getSpriteFromId(id);
-		if (px == null){
-			px = SpriteData.getTileFromId(id);
-			if (px == null){
-				logger.warn("Not Present in pixel_index : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
-				addUnknownTile(point);
-				return;
-			}
-		}
-		*/
-		//TODO pour les tuiles, mettre le nom d'atlas et le modulo dans tex dans idfull.txt
-		//reprendre ici
-		if(isTuile){
-			texAtlas = loadingStatus.getTextureAtlasTile(atlas);
-		}else{
-			texAtlas = loadingStatus.getTextureAtlasSprite(atlas);			
-		}
-		
+		TextureAtlas texAtlas = loadingStatus.getTextureAtlasSprite(atlas);			
 		if(texAtlas == null){
 			texAtlas = AssetsLoader.load(atlas);
 			if(texAtlas == null){
@@ -112,78 +129,74 @@ public class Chunk{
 				return;
 			}
 		}
-		
-		if(isTuile){
-			texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(atlas, moduloX, moduloY, point));
-		}else{
-			texRegion = texAtlas.findRegion(tex);
-		}
+		TextureRegion texRegion = texAtlas.findRegion(tex);
 		if(texRegion == null){
 			logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
 			addUnknownTile(point);
 			return;
-			//smoothing
-			/*if(px.getAtlas().equals("GenericMerge1")|px.getAtlas().equals("GenericMerge3")|px.getAtlas().equals("GenericMerge2Wooden")|px.getAtlas().equals("WoodenSmooth")){
-				texRegion = texAtlas.findRegion(px.getTex());
-			}*/
 		}
 		
-		if (isTuile){
-			chunk_tiles.addActor(new Acteur(texRegion,point,PointsManager.getPoint(0, 0)));
-		}else{
-			//System.err.println(id+" => "+atlas+" : "+tex+" "+px.getOffset());
-			//TODO extraire les sprites avec leur offset pour que l'offset soit directement intégré dans les atlas, comme ça on pourra supprimer px.
-			MapPixel px = SpriteData.getSpriteFromId(id);
-			if (px == null){
-				logger.warn("Not Present in pixel_index : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
-				addUnknownTile(point);
-				return;
-			}
-			chunk_sprites.addActor(new Acteur(texRegion,point,px.getOffset()));
-			//chunk_sprites.addActor(new Acteur(texRegion,point,PointsManager.getPoint(offsetX, offsetY)));
+		MapPixel px = SpriteData.getSpriteFromId(id);
+		if (px == null){
+			logger.warn("Not Present in pixel_index : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+			addUnknownTile(point);
+			return;
 		}
-	}
-	
-	private void addUnknownTile(Point point) {
-		chunk_tiles.addActor(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+		chunk_sprites.addActor(new Acteur(texRegion,point,px.getOffset()));
+		int id2 = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(point.x, point.y+1));
+		if (isTuileId(id2)) addTileAtCoord(id2, point);		
 	}
 
 	/**
+	 * Adds a tile on a chunkMap
 	 * @param id
 	 * @param point
 	 */
-	/*public Acteur getActeurPixelOnMapFromId(int id, Point point) {
+	private void addTileAtCoord(int id, Point point) {
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
-		MapPixel px = SpriteData.getSpriteFromId(id);
-		if (px == null){
-			logger.warn("ID non mappée : "+id);
-			return new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
+		String atlas = SpriteData.getAtlasFromId(id);
+		String tex = SpriteData.getTexFromId(id);
+		int moduloX = Integer.parseInt(tex.substring(tex.indexOf('(')+1,tex.indexOf(',')));
+		int moduloY = Integer.parseInt(tex.substring(tex.indexOf(',')+1,tex.indexOf(')')));
+		if (atlas.equals("Atlas non mappé") | tex.equals("Texture non mappée") | atlas.equals("NA")){
+			logger.warn(id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+			addUnknownTile(point);
+			return;
 		}
-		if(px.isTuile()){
-			texAtlas = loadingStatus.getTextureAtlasTile(px.getAtlas());
-		}else{
-			texAtlas = loadingStatus.getTextureAtlasSprite(px.getAtlas());			
-		}
+		texAtlas = loadingStatus.getTextureAtlasTile(atlas);
 		if(texAtlas == null){
-			texAtlas = AssetsLoader.load(px.getAtlas());
+			texAtlas = AssetsLoader.load(atlas);
 			if(texAtlas == null){
-				logger.warn("Atlas null : "+id);
-
-				return new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
+				addUnknownTile(point);
+				logger.warn("Atlas missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+				return;
 			}
 		}
-		if(px.isTuile()){
-			texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(px, point));
-		}else{
-			texRegion = texAtlas.findRegion(px.getTex());
-		}
+		texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(atlas, moduloX, moduloY, point));
 		if(texRegion == null){
-			logger.warn("TextureRegion null : "+id);
-			texRegion = getUnknownTile();
+			logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+			addUnknownTile(point);
+			return;
 		}
-		return new Acteur(texRegion,PointsManager.getPoint(point.x, point.y),px.getOffset());
-	}*/
+		chunk_tiles.addActor(new Acteur(texRegion,point,PointsManager.getPoint(0, 0)));
+	}
+
+	private boolean isSmoothingId(int id) {
+		String tex = SpriteData.getTexFromId(id);
+		if(tex.contains("Tmpl") && tex.contains("T1") && tex.contains("T2"))return true;
+		return false;
+	}
+
+	private boolean isTuileId(int id) {
+		String tex = SpriteData.getTexFromId(id);
+		if(tex.startsWith("modulos(")) return true;
+		return false;
+	}
+
+	private void addUnknownTile(Point point) {
+		chunk_tiles.addActor(new Acteur(getUnknownTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0)));
+	}
 
 	/**
 	 * @return the unknown atlas

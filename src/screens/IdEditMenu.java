@@ -295,6 +295,7 @@ public class IdEditMenu{
 		System.out.println("2 - Marquer l'ID en mirroir");
 		System.out.println("3 - Marquer un problème de palette");
 		System.out.println("4 - Rechercher un fichier");
+		System.out.println("5 - Editer un smoothing");
 		String input = "null";
 	    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 	    try {
@@ -320,6 +321,73 @@ public class IdEditMenu{
 		if (cmd == 2)markMirror();
 		if (cmd == 3)markWrongPalette();
 		if (cmd == 4)search();
+		if (cmd == 5)editSmoothing();
+	}
+
+	private static void editSmoothing() {
+		System.out.println("##########################################################");
+		System.out.println("Entrez un nouveau nom de template :");
+		String input_template = "null";
+	    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+	    try {
+			input_template = bufferRead.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
+		}
+		if(input_template.equals("")){
+			cancel();
+		}
+		System.out.println("##########################################################");
+		System.out.println("Entrez un ID pour T1 :");
+		String input_tex1 = "null";
+	    bufferRead = new BufferedReader(new InputStreamReader(System.in));
+	    try {
+	    	input_tex1 = bufferRead.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
+		}
+		if(input_tex1.equals("")){
+			cancel();
+		}
+		System.out.println("##########################################################");
+		System.out.println("Entrez un ID pour T2 :");
+		String input_tex2 = "null";
+	    bufferRead = new BufferedReader(new InputStreamReader(System.in));
+	    try {
+	    	input_tex2 = bufferRead.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
+		}
+		if(input_tex2.equals("")){
+			cancel();
+		}
+		String input = SpriteData.getAtlasFromId(id)+":"+input_template+" T1 "+input_tex1+" T2 "+input_tex2;
+		System.out.println("##########################################################");
+		System.out.println("Informations d'origine - ID : "+id+" Smoothing : "+tex);
+		System.out.println("Modifier en : "+input);
+		System.out.println("Confirmer? (o/n)");
+	    String confirm = "";
+		try {
+			confirm = bufferRead.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
+		}
+		if(!confirm.equals("o")){
+			cancel();
+			return;
+		}else{
+			System.out.println("Mise à jour de id.txt");
+			IdEditMenu.updateIdFile(input);
+			ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(point));
+		}		
 	}
 
 	/**

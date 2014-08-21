@@ -890,8 +890,8 @@
 1078:NA:tmpl1 1 T1 DGrass T2 HardRock
 1077:NA:tmpl1 1 T1 DGrass T2 HardRock
 1076:NA:tmpl1 1 T1 DGrass T2 HardRock
-1255:Root:TapisRouge 1
-1254:Root:TapisRouge 2
+1255:TapisRouge:TapisRouge 1
+1254:TapisRouge:TapisRouge 2
 1253:Root:Tapisall 2
 1252:Root:Tapisall 1
 1251:Root:Tapisall 1
@@ -899,10 +899,10 @@
 1262:Miscs-H:Heads
 1261:Miscs-S:SkeletonCorpse2
 1260:Miscs-B:Blood2
-1259:Root:TapisRouge 3
-1258:Root:TapisRouge 1
-1257:Root:TapisRouge 2
-1256:Root:TapisRouge 3
+1259:TapisRouge:TapisRouge 3
+1258:TapisRouge:TapisRouge 1
+1257:TapisRouge:TapisRouge 2
+1256:TapisRouge:TapisRouge 3
 1270:Miscs-B:Bridge2
 1271:Miscs-B:Bridge3
 1268:Miscs-B:Bridge2
@@ -980,20 +980,20 @@
 1208:NA:tmpl1 1 T1 DGrass T2 Desert
 1209:NA:tmpl1 1 T1 DGrass T2 Desert
 1212:Ice:modulos(16,16)
-1405:Mount1:Mount1
 10013:NA:NMSPave02
-1404:Miscs-B:Banquet
+1405:Mount1:Mount1
 10012:NA:NMSSnowRoad
+1404:Miscs-B:Banquet
 1407:Mount1:Mount1
-1406:Mount1:Mount1
 10014:NA:NMSRiverNO01
-1401:Root:Grande Table Rectangle Bois
+1406:Mount1:Mount1
 10009:NA:NMSSand
+1401:Root:Grande Table Rectangle Bois
 10008:NA:NMSPave01
-1403:Miscs-B:BarCounter
 10011:NA:NMSSnow
-1402:Root:ShopTable1
+1403:Miscs-B:BarCounter
 10010:NA:NMSSandRoad
+1402:Root:ShopTable1
 10005:NA:NMSOcean01
 10004:NA:NMSGrass
 10007:NA:NMSOcean03
@@ -1188,12 +1188,12 @@
 3003:Root:Wooden Armoir SW
 3049:Miscs-B:Bed Double Type 1
 3048:Miscs-B:Bed Simple
-3051:White Wall:StuccoMainSmallWallB
+3051:StuccoWallV2:StuccoDarkSmallWallB
 3050:Miscs-B:Bed Double Type 2
-3053:White Wall:StuccoDarkWindowB
-3052:White Wall:StuccoMainSmallWallB
-3055:White Wall:StuccoMainSmallWallB
-3054:White Wall:StuccoMainWindowC
+3053:StuccoWallV2:StuccoDarkWindowB
+3052:StuccoWallV2:StuccoMainSmallWallB
+3055:StuccoWallV2:StuccoMainSmallWallB
+3054:StuccoWallV2:StuccoMainWindowC
 3041:Root:Table Carre Moyenne Bois
 3040:Root:Petite Table Ronde Bois
 3043:Miscs-S:SmallTreeInBowl
@@ -1202,22 +1202,22 @@
 3044:Miscs-S:Stone2h
 3047:Miscs-B:Bed Double Type 2
 3046:Miscs-B:Bed Double Type 1
-3064:White Wall:StuccoMainSmallWallB
-3065:White Wall:StuccoMainSmallWallB
-3066:White Wall:StuccoMainSmallWallB
-3067:White Wall:StuccoMainSmallWallB
-3068:White Wall:StuccoMainSmallWallB
-3069:White Wall:StuccoMainSmallWallB
-3070:White Wall:StuccoMainSmallWallB
-3071:White Wall:StuccoMainSmallWallB
-3056:White Wall:StuccoMainSmallWallB
-3057:White Wall:StuccoMainSmallWallB
-3058:White Wall:StuccoMainSmallWallB
-3059:White Wall:StuccoMainSmallWallB
-3060:White Wall:StuccoMainSmallWallB
-3061:White Wall:StuccoMainSmallWallB
-3062:White Wall:StuccoMainSmallWallB
-3063:White Wall:StuccoMainSmallWallB
+3064:StuccoWallV2:StuccoMainSmallWallB
+3065:StuccoWallV2:StuccoMainSmallWallB
+3066:StuccoWallV2:StuccoMainSmallWallB
+3067:StuccoWallV2:StuccoMainSmallWallB
+3068:StuccoWallV2:StuccoMainSmallWallB
+3069:StuccoWallV2:StuccoMainSmallWallB
+3070:StuccoWallV2:StuccoMainSmallWallB
+3071:StuccoWallV2:StuccoMainSmallWallB
+3056:StuccoWallV2:StuccoCornerN
+3057:StuccoWallV2:StuccoCorner2
+3058:StuccoWallV2:StuccoCorner
+3059:StuccoWallV2:StuccoCornerV
+3060:StuccoWallV2:StuccoCornerTNE
+3061:StuccoWallV2:StuccoCornerTSE
+3062:StuccoWallV2:StuccoCornerTSW
+3063:StuccoWallV2:StuccoCornerTNW
 3019:Miscs-C:Colonne Carrer Bas-Haut
 3018:Miscs-C:Colonne Cercle Bas-Haut
 3017:Miscs-C:Colonne Cercle Bas
@@ -1237,7 +1237,7 @@
 3034:Miscs-R:Roche 1
 3035:Miscs-M:Menhir de Roche
 3032:Root:Horloge Grand Pere
-3033:White Wall:StuccoMainSmallWallB
+3033:StuccoWallV2:StuccoMainSmallWallB
 3038:Root:Petite Table Bois Rectangle
 3039:Root:Petite Table Bois Rectangle
 3036:Miscs-M:Menhir Noir
@@ -1331,13 +1331,13 @@
 3252:Root:Lights 5
 3253:Root:Kitchen 1
 3256:Root:Shito 6
-3257:Root:Shito 6
+3257:Miscs-B:BancTemple1
 3235:Miscs-B:Border1
 3234:Miscs-B:Border1
 3233:Root:RuinedMirror1
 3232:Miscs-D:Dummy
-3239:White Wall:StuccoMainSmallWallB
-3238:White Wall:StuccoMainSmallWallB
+3239:StuccoWallV2:StuccoMainSmallWallB
+3238:StuccoWallV2:StuccoMainSmallWallB
 3237:NA:Border2
 3236:NA:Border2
 3243:Root:Misc 7 - All 8
@@ -1364,14 +1364,14 @@
 3152:DungeonMain:DungeonMainWall 1
 3155:DungeonMain:DungeonMainWall 1
 3154:DungeonMain:DungeonMainWall 1
-3148:White Wall:StuccoMainSmallWallB
-3149:White Wall:StuccoDarkWall 3
-3150:White Wall:StuccoMainSmallWallB
+3148:StuccoWallV2:StuccoMainSmallWallB
+3149:StuccoWallV2:StuccoDarkWall 3
+3150:StuccoWallV2:StuccoMainSmallWallB
 3151:DungeonMain:DungeonMainWall 1
 3144:Root:Wood Sign 2
-3145:White Wall:StuccoMainSmallWallB
-3146:White Wall:StuccoMainSmallWallA
-3147:White Wall:StuccoDarkWall 2
+3145:StuccoWallV2:StuccoDarkWindowA
+3146:StuccoWallV2:StuccoMainSmallWallA
+3147:StuccoWallV2:StuccoDarkWall 2
 3140:Root:Small Gold Sign
 3141:Root:Small Marble Sign
 3142:Root:Wood Sign 1
@@ -1426,14 +1426,14 @@
 3085:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3086:CemeteryGates:Cemetery Gates2
 3087:CemeteryGates:Cemetery Gates2
-3072:White Wall:StuccoMainSmallWallB
-3073:White Wall:StuccoMainSmallWallB
-3074:White Wall:StuccoMainSmallWallB
-3075:White Wall:StuccoMainSmallWallB
-3076:White Wall:StuccoMainSmallWallB
-3077:White Wall:StuccoMainSmallWallB
-3078:White Wall:StuccoMainSmallWallB
-3079:White Wall:StuccoMainSmallWallB
+3072:StuccoWallV2:StuccoMainSmallWallB
+3073:StuccoWallV2:StuccoMainSmallWallB
+3074:StuccoWallV2:StuccoMainSmallWallB
+3075:StuccoWallV2:StuccoMainSmallWallB
+3076:StuccoWallV2:StuccoMainSmallWallB
+3077:StuccoWallV2:StuccoMainSmallWallB
+3078:StuccoWallV2:StuccoMainSmallWallB
+3079:StuccoWallV2:StuccoMainSmallWallB
 3131:Root:Plaque Wood
 3130:Root:Shop Sign
 3129:Miscs-6:64kDeadForestTree1
@@ -1445,7 +1445,7 @@
 3123:NA:WoodPile
 3122:Miscs-F:Fontaine
 3121:Root:TortureChair
-3127:White Wall:StuccoMainSmallWallB
+3127:StuccoWallV2:StuccoMainSmallWallB
 3126:Miscs-M:Medium Rock
 3125:Root:Small Rock
 3124:Root:Motte Terre
@@ -1582,19 +1582,19 @@
 3413:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3412:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3411:OldDungeonArcatureCorrection:DungeonMainArcEnd1
-3436:White Wall:StuccoMainSmallWallB
-3437:White Wall:StuccoMainSmallWallB
-3438:White Wall:StuccoMainSmallWallB
+3436:StuccoWallV2:StuccoDarkWallDoor 2
+3437:StuccoWallV2:StuccoDarkWallDoor 1
+3438:StuccoWallV2:StuccoMainWallDoor 1
 3439:Root:Shelf
 3433:Miscs-D:DungeonTomb1
 3434:Root:Crypt
-3435:White Wall:StuccoMainSmallWallB
+3435:StuccoWallV2:StuccoMainWallDoor 2
 3428:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3429:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3430:Miscs-D:DungeonTomb1
 3431:NA:HeadPile
-3424:White Wall:StuccoMainSmallWallB
-3425:White Wall:StuccoMainSmallWallB
+3424:StuccoWallV2:StuccoDarkSmallWallC
+3425:StuccoWallV2:StuccoMainSmallWallB
 3426:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3427:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3453:OldBrickWall:BrickDarkWall 1
@@ -1633,10 +1633,10 @@
 3354:Mount1:Mount1
 3353:Mount1:Mount1
 3352:Mount1:Mount1
-3359:Rampart Wall:Rampart 2
+3359:Rampart:Rampart 3
 3358:Rampart Wall:Rampart 2
 3357:Rampart Wall:Rampart 2
-3356:Rampart Wall:Rampart 2
+3356:Rampart:Rampart 2
 3347:Mount1:Mount1
 3346:Mount1:Mount1
 3345:Mount1:Mount1
@@ -1651,7 +1651,7 @@
 3373:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3374:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3375:OldDungeonArcatureCorrection:DungeonMainArcEnd1
-3360:Rampart Wall:Rampart 2
+3360:Rampart:Tour
 3361:Miscs-F:FirePlace1
 3362:Miscs-F:FirePlace1
 3363:Miscs-O:Oven
@@ -1682,54 +1682,54 @@
 3822:Miscs-T:Trebuchet
 3821:Miscs-C:Catapult
 3820:NA:BalistaF
-3792:White Wall:StuccoDarkSmallWallB
-3793:White Wall:StuccoDarkSmallWallB
-3794:White Wall:StuccoDarkSmallWallB
-3795:White Wall:StuccoDarkSmallWallB
-3796:White Wall:StuccoDarkSmallWallB
-3797:White Wall:StuccoDarkSmallWallB
-3798:White Wall:StuccoDarkSmallWallB
-3799:White Wall:StuccoDarkSmallWallB
-3800:White Wall:StuccoMainWallDoor 2
-3801:White Wall:StuccoDarkWallDoor 2
-3802:White Wall:StuccoDarkWallDoor 1
-3803:White Wall:StuccoMainWallDoor 1
+3792:StuccoWallV2:StuccoDarkSmallWallB
+3793:StuccoWallV2:StuccoDarkSmallWallB
+3794:StuccoWallV2:StuccoDarkSmallWallB
+3795:StuccoWallV2:StuccoDarkSmallWallB
+3796:StuccoWallV2:StuccoDarkSmallWallB
+3797:StuccoWallV2:StuccoDarkSmallWallB
+3798:StuccoWallV2:StuccoDarkSmallWallB
+3799:StuccoWallV2:StuccoDarkSmallWallB
+3800:StuccoWallV2:StuccoMainWallDoor 2
+3801:StuccoWallV2:StuccoDarkWallDoor 2
+3802:StuccoWallV2:StuccoDarkWallDoor 1
+3803:StuccoWallV2:StuccoMainWallDoor 1
 3804:Miscs-B:BlackSmithForgery
 3805:Miscs-O:ObjectLightHavenCrypt
 3806:Miscs-O:ObjectLightHavenFountain
 3807:Miscs-O:ObjectCatapultBoulder01
-3777:White Wall:StuccoDarkSmallWallB
-3776:White Wall:StuccoDarkSmallWallB
-3779:White Wall:StuccoDarkSmallWallB
-3778:White Wall:StuccoDarkSmallWallB
-3781:White Wall:StuccoDarkSmallWallB
-3780:White Wall:StuccoDarkSmallWallB
-3783:White Wall:StuccoDarkSmallWallB
-3782:White Wall:StuccoDarkSmallWallB
-3785:White Wall:StuccoDarkSmallWallB
-3784:White Wall:StuccoDarkSmallWallB
-3787:White Wall:StuccoMainSmallWallB
-3786:White Wall:StuccoDarkSmallWallB
-3789:White Wall:StuccoDarkSmallWallB
-3788:White Wall:StuccoDarkSmallWallB
-3791:White Wall:StuccoDarkSmallWallB
-3790:White Wall:StuccoDarkSmallWallB
-3766:White Wall:StuccoCorner2
-3767:White Wall:StuccoCorner
-3764:White Wall:StuccoDarkSmallWallB
-3765:White Wall:StuccoCornerN
-3762:White Wall:StuccoDarkSmallWallB
-3763:White Wall:StuccoDarkSmallWallB
-3760:White Wall:StuccoDarkSmallWallB
-3761:White Wall:StuccoMainSmallWallB
-3774:White Wall:StuccoDarkSmallWallB
-3775:White Wall:StuccoDarkSmallWallB
-3772:White Wall:StuccoCornerTNW
-3773:White Wall:StuccoDarkSmallWallB
-3770:White Wall:StuccoDarkSmallWallB
-3771:White Wall:StuccoCornerTSW
-3768:White Wall:StuccoCornerV
-3769:White Wall:StuccoCornerTNE
+3777:StuccoWallV2:StuccoDarkSmallWallB
+3776:StuccoWallV2:StuccoDarkSmallWallB
+3779:StuccoWallV2:StuccoDarkSmallWallB
+3778:StuccoWallV2:StuccoDarkSmallWallB
+3781:StuccoWallV2:StuccoDarkSmallWallB
+3780:StuccoWallV2:StuccoDarkSmallWallB
+3783:StuccoWallV2:StuccoDarkSmallWallB
+3782:StuccoWallV2:StuccoDarkSmallWallB
+3785:StuccoWallV2:StuccoDarkSmallWallB
+3784:StuccoWallV2:StuccoDarkSmallWallB
+3787:StuccoWallV2:StuccoMainSmallWallB
+3786:StuccoWallV2:StuccoDarkSmallWallB
+3789:StuccoWallV2:StuccoDarkSmallWallB
+3788:StuccoWallV2:StuccoDarkSmallWallB
+3791:StuccoWallV2:StuccoDarkSmallWallB
+3790:StuccoWallV2:StuccoDarkSmallWallB
+3766:StuccoWallV2:StuccoCorner2
+3767:StuccoWallV2:StuccoCorner
+3764:StuccoWallV2:StuccoDarkSmallWallB
+3765:StuccoWallV2:StuccoCornerN
+3762:StuccoWallV2:StuccoDarkSmallWallB
+3763:StuccoWallV2:StuccoDarkSmallWallB
+3760:StuccoWallV2:StuccoDarkSmallWallB
+3761:StuccoWallV2:StuccoMainSmallWallB
+3774:StuccoWallV2:StuccoDarkSmallWallB
+3775:StuccoWallV2:StuccoDarkSmallWallB
+3772:StuccoWallV2:StuccoCornerTNW
+3773:StuccoWallV2:StuccoDarkSmallWallB
+3770:StuccoWallV2:StuccoCornerTSE
+3771:StuccoWallV2:StuccoCornerTSW
+3768:StuccoWallV2:StuccoCornerV
+3769:StuccoWallV2:StuccoCornerTNE
 3751:CastleWall:CastleWall 1
 3750:CastleWall:CastleWall 1
 3749:CastleWall:CastleWall 1
@@ -1738,7 +1738,7 @@
 3746:CastleWall:CastleWall 1
 3745:CastleWall:CastleWall 1
 3744:CastleWall:CastleWall 1
-3759:White Wall:StuccoDarkSmallWallB
+3759:StuccoWallV2:StuccoDarkSmallWallB
 3758:Miscs-B:Bonfire
 3755:Miscs-B:Bonfire
 3754:Root:Shelf
@@ -1916,8 +1916,8 @@
 4061:Small2C:NBrickWallS2SE
 4001:WoodWall:MidWoodWallSEWindow
 4000:WoodWall:MidWoodWallNEWindow
-4013:NewBrickWall:NBrickWallNEWindow
-4012:NewBrickWall:NBrickWallSEWindow
+4013:BrickCorrection:NBrickWallNEWindow
+4012:BrickCorrection:NBrickWallSEWindow
 4015:NewBrickWall:NBrickWallSE
 4014:NewBrickWall:NBrickWallSE
 4009:Miscs-F:FBridgeCastleTop
@@ -3130,7 +3130,7 @@
 7491:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7490:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7489:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7488:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7488:NA:Tmpl3 27 T1 1 T2 13
 7518:NA:HardRock T1 Cendre T2 tmpl1 1
 7519:NA:HardRock T1 Cendre T2 tmpl1 1
 7516:NA:HardRock T1 Cendre T2 tmpl1 1
@@ -3159,18 +3159,18 @@
 7456:NA:T1 tmpl3 1 T2 Water3
 7459:NA:T1 tmpl3 1 T2 Water3
 7458:NA:T1 tmpl3 1 T2 Water3
-7461:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7461:NA:Tmpl3 16 T1 1 T2 13
 7460:NA:T1 tmpl3 1 T2 Water3
 7463:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7462:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7462:NA:Tmpl3 13 T1 1 T2 13
 7480:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7481:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7482:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7483:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7484:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7485:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7486:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7487:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7485:NA:Tmpl3 25 T1 1 T2 13
+7486:NA:Tmpl3 28 T1 1 T2 13
+7487:NA:Tmpl3 26 T1 1 T2 13 
 7472:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7473:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7474:NA:RockFloor T1 NormalGrass T2 tmpl3 1
@@ -3367,12 +3367,12 @@
 7270:NA:4srf1
 7269:NA:4srf1
 7268:NA:3srf1
-7267:NA:3srf1
+7267:WoodenDoor:RockDoor1
 7266:NA:3srf1
 7265:NA:3srf1
 7264:NA:2srf1
 7260:NA:tmpl3 1 T1 Grass T2 3Wooden
-7261:NA:2srf1
+7261:WoodenDoor:RockDoor1
 7262:WoodenDoor:RockDoor1
 7263:WoodenDoor:RockDoor1
 7256:NA:tmpl3 1 T1 Grass T2 3Wooden
