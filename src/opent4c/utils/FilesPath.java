@@ -57,6 +57,19 @@ public class FilesPath {
 		return sb.toString();
 	}
 	
+	public static String getSmoothingDirectoryPath()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("sprites");		
+		sb.append(File.separator);
+		sb.append("smoothing");
+		sb.append(File.separator);
+		
+		return sb.toString();
+	}
+	
 	public static String getSpriteDirectoryPath()
 	{
 		StringBuilder sb = new StringBuilder();

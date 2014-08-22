@@ -226,15 +226,6 @@ public class SpriteManager {
 	 */
 	public static void decrypt_dda_file(File f, boolean doWrite) {
 		int numDDA = Integer.parseInt(f.getName().substring(f.getName().length()-6, f.getName().length()-4),10);
-		//List<MapPixel> sprites_in_dda = new ArrayList<MapPixel>();
-		//Iterator<Integer> iter_id = SpriteData.getPixelIndex().keySet().iterator();
-		/*while(iter_id.hasNext()){
-			int id = iter_id.next();
-			MapPixel px = SpriteData.getPixelIndex().get(id);
-			if(px.getNumDDA() == numDDA){
-				sprites_in_dda.add(px);
-			}
-		}*/
 		ByteBuffer buf = SpriteUtils.readDDA(f);
 		byte[] signature = new byte[4];
 		signature = SpriteUtils.extractBytes(buf,signature.length);

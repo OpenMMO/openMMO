@@ -44,7 +44,6 @@ public class IdEditMenu{
 	private static String tex;
 	private static String atlas;
 	private static List<String> badPalettes = new ArrayList<String>();
-	private static List<String> mirrors = new ArrayList<String>();
 
 	/**
 	 * @param point
@@ -52,7 +51,6 @@ public class IdEditMenu{
 	 */
 	public IdEditMenu(Point point, int id) {
 		IdEditMenu.point = point;
-		loadMirrors();
 		loadBadPalettes();
 		IdEditMenu.id = id;
 		tex = "";
@@ -65,28 +63,6 @@ public class IdEditMenu{
 			atlas = "non mappé";	
 		}
 		ThreadsUtil.executeInThread(RunnableCreatorUtil.getConsoleCommandInputRunnable());
-	}
-
-	/**
-	 * 
-	 */
-	private void loadMirrors() {
-		File mirror_file = new File(FilesPath.getMirrorFilePath());
-		if(!mirror_file.exists())return;
-		try{
-			BufferedReader buff = new BufferedReader(new FileReader(mirror_file.getPath()));			 
-			try {
-				String line;
-				while ((line = buff.readLine()) != null) {
-					mirrors.add(line);
-				}
-			} finally {
-				buff.close();
-			}
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-			System.exit(1);
-		}		
 	}
 
 	/**
@@ -183,52 +159,6 @@ public class IdEditMenu{
 	/**
 	 * 
 	 */
-	private static void saveMirrors() {
-		File mirrorFile = new File(FilesPath.getMirrorFilePath());
-		if(!mirrorFile.exists()){
-			try {
-				mirrorFile.createNewFile();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				System.exit(1);
-			}
-		}else{
-			mirrorFile.delete();
-			try {
-				mirrorFile.createNewFile();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				System.exit(1);
-			}
-		}
-		OutputStreamWriter dat_file = null;
-		try {
-			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getMirrorFilePath()));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
-		Iterator<String> iter = mirrors.iterator();
-		while (iter.hasNext()){
-			String mirror = iter.next();
-			try {
-				dat_file.write(mirror+System.lineSeparator());
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.exit(1);
-			}	
-		}
-		try {
-			dat_file.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}		
-	}
-
-	/**
-	 * 
-	 */
 	private static void saveBadPalettes() {
 		File badPalettesFile = new File(FilesPath.getBadPaletteFilePath());
 		if (!badPalettesFile.exists()){
@@ -292,7 +222,7 @@ public class IdEditMenu{
 		System.out.println("Choisir une commande :");
 		System.out.println("0 - Annuler");
 		System.out.println("1 - Éditer le mappage de l'ID");
-		System.out.println("2 - Marquer l'ID en mirroir");
+		System.out.println("2 - Éditer un mirroir");
 		System.out.println("3 - Marquer un problème de palette");
 		System.out.println("4 - Rechercher un fichier");
 		System.out.println("5 - Editer un smoothing");
@@ -318,7 +248,7 @@ public class IdEditMenu{
 			return;
 		}
 		if (cmd == 1)editID();
-		if (cmd == 2)markMirror();
+		if (cmd == 2)editMirror();
 		if (cmd == 3)markWrongPalette();
 		if (cmd == 4)search();
 		if (cmd == 5)editSmoothing();
@@ -421,28 +351,56 @@ public class IdEditMenu{
 	/**
 	 * 
 	 */
-	private static void markMirror() {
+	private static void editMirror() {
 		System.out.println("##########################################################");
-		System.out.println("Informations d'origine - ID : "+id+" Dossier : "+atlas+" Mappage : "+tex);
-		System.out.println("Marquer l'ID comme le mirroir de la texture.");
-		System.out.println("Confirmer? (o/n)");
+		System.out.println(id+" => Dossier : "+atlas+" Mappage : "+tex);
+		System.out.println("Marquer cet ID comme étant un mirroir.");
+		System.out.println("Entrer l'ID d'origine.");
 	    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-	    String confirm = "";
+	    String input_id = "";
 		try {
-			confirm = bufferRead.readLine();
+			input_id = bufferRead.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.fatal(e);
 			System.exit(1);
 		}
-		if(!confirm.equals("o")){
+		if(input_id.equals("")){
 			cancel();
 			return;
 		}else{
-			mirrors.add(id+" : "+tex);
-			saveMirrors();
-			System.out.println("Miroir marqué");
-			exit();
+			int id2 = -1;
+			try{
+				id2 = Integer.parseInt(input_id);
+			}catch(NumberFormatException e){
+				System.err.println("Entrer un entier positif");
+				cancel();
+			}
+			if(id2 == -1){
+				System.err.println("Entrer un entier positif");
+				cancel();	
+			}else{
+				System.out.println("##########################################################");
+				System.out.println("Informations d'origine - ID : "+id+" Dossier : "+atlas+" Mappage : "+tex);
+				System.out.println("Modifier en - ID : "+id+" Dossier : MIRROR Mappage : "+id2);
+				System.out.println("Confirmer? (o/n)");
+			    String confirm = "";
+				try {
+					confirm = bufferRead.readLine();
+				} catch (IOException e) {
+					e.printStackTrace();
+					logger.fatal(e);
+					System.exit(1);
+				}
+				if(!confirm.equals("o")){
+					cancel();
+					return;
+				}else{
+					System.out.println("Mise à jour de id.txt");
+					IdEditMenu.updateIdFile("MIRROR:"+id2);
+					ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(point));
+				}
+			}
 		}		
 	}
 

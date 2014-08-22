@@ -24,18 +24,20 @@
 278:NA:srf 1
 277:NA:srf 1
 276:NA:srf 1
-282:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-281:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-280:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-287:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-286:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-285:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+283:Atlas non mappé:Tmpl1 3 T1 1 T2 11
+282:NA:Tmpl1 4 T1 1 T2 11
+281:NA:Tmpl1 1 T1 1 T2 11
+280:NA:Tmpl1 2 T1 1 T2 11
+287:NA:Tmpl1 6 T1 1 T2 11
+286:NA:Tmpl1 21 T1 1 T2 11
+285:NA:Tmpl1 8 T1 1 T2 11
+284:Atlas non mappé:Tmpl1 23 T1 1 T2 11
 260:NormalGrass:modulos(32,32)
 261:NormalGrass:modulos(32,32)
-305:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-304:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-307:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-306:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+305:NA:Tmpl1 28 T1 1 T2 11
+304:NA:Tmpl1 25 T1 1 T2 11
+307:NA:Tmpl1 27 T1 1 T2 11
+306:NA:Tmpl1 26 T1 1 T2 11
 309:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 308:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 311:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
@@ -48,38 +50,38 @@
 316:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 319:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 318:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
-288:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-289:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-290:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-291:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-292:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-293:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-294:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-295:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-296:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-297:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-298:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-299:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-300:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-301:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-302:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-303:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-343:NA:tmpl3 1 T1 Water3 T2 Desert
-342:NA:tmpl3 1 T1 Water3 T2 Desert
-341:NA:tmpl3 1 T1 Water3 T2 Desert
-340:NA:tmpl3 1 T1 Water3 T2 Desert
+288:NA:Tmpl1 11 T1 1 T2 11
+289:NA:Tmpl1 12 T1 1 T2 11
+290:NA:Tmpl1 9 T1 1 T2 11
+291:NA:Tmpl1 10 T1 1 T2 11
+292:NA:Tmpl1 15 T1 1 T2 11
+293:NA:Tmpl1 16 T1 1 T2 11
+294:NA:Tmpl1 13 T1 1 T2 11
+295:NA:Tmpl1 14 T1 1 T2 11
+296:NA:Tmpl1 19 T1 1 T2 11
+297:NA:Tmpl1 20 T1 1 T2 11
+298:NA:Tmpl1 17 T1 1 T2 11
+299:NA:Tmpl1 18 T1 1 T2 11
+300:NA:Tmpl1 23 T1 1 T2 11
+301:NA:Tmpl1 24 T1 1 T2 11
+302:NA:Tmpl1 21 T1 1 T2 11
+303:NA:Tmpl1 22 T1 1 T2 11
+343:NA:Tmpl3 3 T1 3 T2 8
+342:NA:Tmpl3 4 T1 3 T2 8
+341:NA:Tmpl3 1 T1 3 T2 8
+340:NA:Tmpl3 2 T1 3 T2 8
 339:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 338:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 337:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 336:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
-351:NA:tmpl3 1 T1 Water3 T2 Desert
-350:NA:tmpl3 1 T1 Water3 T2 Desert
-349:NA:tmpl3 1 T1 Water3 T2 Desert
-348:NA:tmpl3 1 T1 Water3 T2 Desert
-347:NA:tmpl3 1 T1 Water3 T2 Desert
-346:NA:tmpl3 1 T1 Water3 T2 Desert
-345:NA:tmpl3 1 T1 Water3 T2 Desert
-344:NA:tmpl3 1 T1 Water3 T2 Desert
+351:NA:Tmpl3 10 T1 3 T2 8
+350:NA:Tmpl3 9 T1 3 T2 8
+349:NA:Tmpl3 12 T1 3 T2 8
+348:NA:Tmpl3 11 T1 3 T2 8
+347:NA:Tmpl3 6 T1 3 T2 8
+346:NA:Tmpl3 5 T1 3 T2 8
+345:NA:Tmpl3 8 T1 3 T2 8
+344:NA:Tmpl3 7 T1 3 T2 8
 326:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 327:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 324:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
@@ -107,22 +109,22 @@
 376:NA:tmpl3 1 T1 Water3 T2 NormalGrass
 379:NA:tmpl3 1 T1 Water3 T2 NormalGrass
 378:NA:tmpl3 1 T1 Water3 T2 NormalGrass
-356:NA:tmpl3 1 T1 Water3 T2 Desert
-357:NA:tmpl3 1 T1 Water3 T2 Desert
-358:NA:tmpl3 1 T1 Water3 T2 Desert
-359:NA:tmpl3 1 T1 Water3 T2 Desert
-352:NA:tmpl3 1 T1 Water3 T2 Desert
-353:NA:tmpl3 1 T1 Water3 T2 Desert
-354:NA:tmpl3 1 T1 Water3 T2 Desert
-355:NA:tmpl3 1 T1 Water3 T2 Desert
-364:NA:tmpl3 1 T1 Water3 T2 Desert
-365:NA:tmpl3 1 T1 Water3 T2 Desert
-366:NA:tmpl3 1 T1 Water3 T2 Desert
-367:NA:tmpl3 1 T1 Water3 T2 Desert
-360:NA:tmpl3 1 T1 Water3 T2 Desert
-361:NA:tmpl3 1 T1 Water3 T2 Desert
-362:NA:tmpl3 1 T1 Water3 T2 Desert
-363:NA:tmpl3 1 T1 Water3 T2 Desert
+356:NA:Tmpl3 19 T1 3 T2 8
+357:NA:Tmpl3 20 T1 3 T2 8
+358:NA:Tmpl3 17 T1 3 T2 8
+359:NA:Tmpl3 18 T1 3 T2 8
+352:NA:Tmpl3 15 T1 3 T2 8
+353:NA:Tmpl3 16 T1 3 T2 8
+354:NA:Tmpl3 13 T1 3 T2 8
+355:NA:Tmpl3 14 T1 3 T2 8
+364:NA:Tmpl3 25 T1 3 T2 8
+365:NA:Tmpl3 28 T1 3 T2 8
+366:NA:Tmpl3 26 T1 3 T2 8
+367:NA:Tmpl3 27 T1 3 T2 8
+360:NA:Tmpl3 23 T1 3 T2 8
+361:NA:Tmpl3 24 T1 3 T2 8
+362:NA:Tmpl3 21 T1 3 T2 8
+363:NA:Tmpl3 22 T1 3 T2 8
 410:NA:tmpl1 1 T1 NormalGrass T2 Grass
 411:NA:tmpl1 1 T1 NormalGrass T2 Grass
 408:NA:tmpl1 1 T1 NormalGrass T2 Grass
@@ -227,18 +229,18 @@
 505:NA:tmpl1 1 T1 NormalGrass T2 Grass
 506:NA:tmpl1 1 T1 NormalGrass T2 Grass
 507:NA:tmpl1 1 T1 NormalGrass T2 Grass
-500:NA:tmpl3 1 T1 Water3 T2 Desert
+500:NA:Tmpl3 32 T1 3 T2 8
 501:NA:tmpl3 1 T1 Water3 T2 NormalGrass
 502:NA:tmpl3 1 T1 Water3 T2 NormalGrass
 503:NA:tmpl3 1 T1 Water3 T2 NormalGrass
-496:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-497:NA:tmpl3 1 T1 Water3 T2 Desert
-498:NA:tmpl3 1 T1 Water3 T2 Desert
-499:NA:tmpl3 1 T1 Water3 T2 Desert
-493:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+496:NA:Tmpl1 9 T1 1 T2 11
+497:NA:Tmpl3 29 T1 3 T2 8
+498:NA:Tmpl3 30 T1 3 T2 8
+499:NA:Tmpl3 31 T1 3 T2 8
+493:NA:Tmpl1 12 T1 1 T2 11
 492:NA:T1 NormalGrass T2
-495:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
-494:NA:tmpl1 1 T1 NormalGrass T2 EarthTile
+495:NA:Tmpl1 31 T1 1 T2 11
+494:NA:Tmpl1 11 T1 1 T2 11
 489:NA:T1 NormalGrass T2
 488:NA:T1 NormalGrass T2
 491:NA:T1 NormalGrass T2
@@ -1266,7 +1268,7 @@
 3268:Miscs-D:Desk2
 3271:Miscs-C:Cerebus
 3270:Miscs-D:Desk
-3265:Miscs-S:Shito 2
+3265:MIRROR:3264
 3264:Miscs-S:Shito 2
 3267:Miscs-S:Shito 1
 3266:Miscs-S:Shito 1
@@ -1424,7 +1426,7 @@
 3083:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3084:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3085:OldDungeonArcatureCorrection:DungeonMainArcEnd1
-3086:CemeteryGates:Cemetery Gates2
+3086:MIRROR:3087
 3087:CemeteryGates:Cemetery Gates2
 3072:StuccoWallV2:StuccoMainSmallWallB
 3073:StuccoWallV2:StuccoMainSmallWallB
@@ -2804,7 +2806,7 @@
 7121:NA:tmpl3 1 T1 Desert T2 2Wooden
 7120:NA:tmpl3 1 T1 Desert T2 2Wooden
 7127:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
-7126:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
+7126:NA:Tmpl3 7 T1 1 T2 7001
 7125:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
 7124:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
 7144:NA:tmpl3 1 T1 NormalGrass T2 3Wooden
@@ -3150,11 +3152,11 @@
 7465:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7464:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7467:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7466:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7469:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7466:NA:Tmpl3 8 T1 1 T2 13
+7469:NA:Tmpl3 11 T1 1 T2 13
 7468:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7471:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7470:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7471:1:Tmpl3 9 T1 1 T2 13
+7470:NA:Tmpl3 12 T1 1 T2 13
 7457:NA:T1 tmpl3 1 T2 Water3
 7456:NA:T1 tmpl3 1 T2 Water3
 7459:NA:T1 tmpl3 1 T2 Water3
@@ -3163,29 +3165,29 @@
 7460:NA:T1 tmpl3 1 T2 Water3
 7463:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7462:NA:Tmpl3 13 T1 1 T2 13
-7480:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7481:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7480:NA:Tmpl3 18 T1 1 T2 13
+7481:NA:Tmpl3 23 T1 1 T2 13
 7482:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7483:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7483:NA:Tmpl3 21 T1 1 T2 13
 7484:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7485:NA:Tmpl3 25 T1 1 T2 13
 7486:NA:Tmpl3 28 T1 1 T2 13
 7487:NA:Tmpl3 26 T1 1 T2 13 
-7472:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7472:NA:Tmpl3 10 T1 1 T2 13
 7473:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7474:NA:RockFloor T1 NormalGrass T2 tmpl3 1
 7475:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7476:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7477:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7478:NA:RockFloor T1 NormalGrass T2 tmpl3 1
-7479:NA:RockFloor T1 NormalGrass T2 tmpl3 1
+7476:NA:Tmpl3 14 T1 1 T2 13
+7477:NA:Tmpl3 28 T1 1 T2 13
+7478:NA:Tmpl3 20 T1 1 T2 13
+7479:NA:Tmpl3 25 T1 1 T2 13
 7435:NA:T1 tmpl3 1 T2 Water3
 7434:NA:T1 tmpl3 1 T2 Water3
 7433:NA:T1 tmpl3 1 T2 Water3
 7432:NA:T1 tmpl3 1 T2 Water3
 7439:NA:T1 tmpl3 1 T2 Water3
-7438:NA:T1 tmpl3 1 T2 Water3
-7437:NA:T1 tmpl3 1 T2 Water3
+7438:NA:Tmpl3 13 T1 4 T2 3
+7437:NA:Tmpl3 14 T1 4 T2 3
 7436:NA:T1 tmpl3 1 T2 Water3
 7427:NA:Water3 T1 RockFloor T2 tmpl3 1
 7426:NA:Water3 T1 RockFloor T2 tmpl3 1
@@ -3193,7 +3195,7 @@
 7424:NA:Water3 T1 RockFloor T2 tmpl3 1
 7431:NA:T1 tmpl3 1 T2 Water3
 7430:NA:T1 tmpl3 1 T2 Water3
-7429:NA:T1 tmpl3 1 T2 Water3
+7429:NA:Tmpl3 1 T1 4 T2 3
 7428:NA:Water3 T1 RockFloor T2 tmpl3 1
 7450:NA:T1 tmpl3 1 T2 Water3
 7451:NA:T1 tmpl3 1 T2 Water3
@@ -3203,7 +3205,7 @@
 7455:NA:T1 tmpl3 1 T2 Water3
 7452:NA:T1 tmpl3 1 T2 Water3
 7453:NA:T1 tmpl3 1 T2 Water3
-7442:NA:T1 tmpl3 1 T2 Water3
+7442:NA:Tmpl3 9 T1 4 T2 3
 7443:NA:T1 tmpl3 1 T2 Water3
 7440:NA:T1 tmpl3 1 T2 Water3
 7441:NA:T1 tmpl3 1 T2 Water3

@@ -31,10 +31,6 @@ public class Palette implements Serializable {
 			nom = nom.substring(0, nom.length()-1);
 			setFlagB(true);
 		}
-/*		if(getNom().startsWith("64k")){
-			setNom(getNom().substring(3));
-			flag64k = true;
-		}*/
 		setNom(nom);
 		//logger.info("Nouvelle Palette : "+getNom());
 		for (int i=0 ; i<256 ; i++){

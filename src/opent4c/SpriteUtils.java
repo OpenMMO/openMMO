@@ -302,11 +302,18 @@ public class SpriteUtils {
 
 	private static String managePaletteSpecialCases(String nom) {
 		if(nom.contains("BlancNoir ")) nom = "STuileTmpl1";
+		if(nom.contains("BlancNoirBig ")) nom = "TuileTmpl1";
 		if(nom.contains("RougeBeige ")) nom = "STuileTmpl2";
 		if(nom.contains("Wooden ")) nom = "Floor Wooden";
 		if(nom.contains("Rock ")) nom = "RockFloor";
 		if(nom.contains("Wooden2 ")) nom = "2Wooden";
-		if(nom.contains("Wooden3 ")) nom = "3Wooden";		
+		if(nom.contains("Wooden3 ")) nom = "3Wooden";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_05")) nom = "05AnimWater01P";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_04")) nom = "04AnimWater01P";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_03")) nom = "03AnimWater01P";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_02")) nom = "02AnimWater01P";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_01")) nom = "01AnimWater01P";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_00")) nom = "00AnimWater01P";
 		return nom;
 	}
 	
@@ -454,10 +461,14 @@ public class SpriteUtils {
 		if (nom.equals("Lava (4,4)"))result = "Lava (4, 4)";
 		//Pour faire coller les noms de tuiles à leur nom d'atlas
 		if(nom.contains("STuileTmpl1"))result = nom.replace("STuileTmpl1", "BlancNoir");
+		if(nom.contains("TuileTmpl1"))result = nom.replace("TuileTmpl1", "BlancNoirBig");
 		if(nom.contains("STuileTmpl2"))result = nom.replace("STuileTmpl2", "RougeBeige");
 		if(nom.contains("2Wooden"))result = nom.replace("2Wooden", "Wooden2");
 		if(nom.contains("RockFloor"))result = nom.replace("RockFloor", "Rock");
 		if(nom.contains("3Wooden"))result = nom.replace("3Wooden", "Wooden3");
+		//Pour les animations
+		if(nom.contains("AnimWater01"))result = "AnimWater01"+nom.substring(13)+"_"+nom.substring(0, 2);
+
 
 		return result;
 	}
@@ -522,7 +533,6 @@ public class SpriteUtils {
 		Map<String,Palette> result = new HashMap<String,Palette>(nb_palettes);
 		for(int i=1 ; i<=nb_palettes ; i++){
 			Palette p = new Palette(bufUnZip);
-			UpdateDataCheckStatus.setDpdStatus("Palettes extraites : "+i+"/"+nb_palettes);
 			UpdateDataCheckStatus.setStatus("Palettes extraites : "+i+"/"+nb_palettes);
 			result.put(p.getNom(),p);
 		}
