@@ -89,7 +89,7 @@ public class DataCheckerScreen implements Screen{
 		addButtonsToStage();
 		setButtonsAlpha(0f);
 		fadeButtons(1f,3);
-		Gdx.input.setInputProcessor(stage);
+		//Gdx.input.setInputProcessor(stage);
 	}
 
 	/**

@@ -1,12 +1,9 @@
 package screens;
 
 import java.awt.Point;
-import java.io.File;
-import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
@@ -16,9 +13,6 @@ import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
 import opent4c.UpdateDataCheckStatus;
-import opent4c.utils.ChunkMovement;
-import opent4c.utils.FileLister;
-import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.Places;
 import opent4c.utils.PointsManager;
@@ -41,9 +35,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.utils.async.ThreadUtils;
-
-import tools.DataInputManager;
 
 /**
  * This class manages the chunkMap.
@@ -58,27 +49,26 @@ public class MapManager implements Screen{
 	private static Map<String,ByteBuffer> id_maps = new HashMap<String,ByteBuffer>(5);
 	private static Map<Integer,Chunk> worldmap = new ConcurrentHashMap<Integer,Chunk>(9);
 	private static MapManager m;
-	private InputManager controller = null;
-	private TextButtonStyle style = new TextButtonStyle();
-	private TextButton load;
+	private static InputManager controller = null;
+	private static TextButtonStyle style = new TextButtonStyle();
 	private static TextButton status;
-	private TextButton fps;
-	private TextButton info;
-	private OrthographicCamera camera;
-	private SpriteBatch batch;
+	private static TextButton info;
+	private static OrthographicCamera camera;
+	private static SpriteBatch batch;
 	private static Stage stage;
-	private Stage ui;
-	private Stage highlight_stage;
-	private Group menu, infos;
-	private boolean render_infos = true;
+	private static Stage ui;
+	private static Stage highlight_stage;
+	private static Group infos;
+	private static boolean render_infos = true;
 	private static boolean highlighted = false;
 	private static ScheduledFuture<?> highlight;
 	private static boolean renderSprites = true;
-	private Point highlight_point;
-	private Acteur highlight_tile;
-	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
+	private static Point highlight_point;
+	private static Acteur highlight_tile;
+	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static Map<Integer, Point> idEditList;
 	private static boolean idListCreated = false;
+	private static Point playerPosition;
 	
 	public static Map<Integer, Point> getIdEditList() {
 		return idEditList;
@@ -92,22 +82,21 @@ public class MapManager implements Screen{
 
 	
 	public MapManager(ScreenManager screenManager){
-		m = this;
+		setM(this);
 	}
 	
-	private void createIdEditMap() {
+	public static void createIdEditMap() {
 		ThreadsUtil.executeInThread(RunnableCreatorUtil.getIdEditListCreatorRunnable());
 	}
 
 	/**
 	 * Initializes the MapManager and binds the inputManager
 	 */
-	private void init() {
+	public static void init() {
 		style.font = new BitmapFont();
 		stage = new Stage();
 		ui = new Stage();
 		highlight_stage = new Stage();
-		menu = new Group();
 		infos = new Group();
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera();
@@ -115,31 +104,19 @@ public class MapManager implements Screen{
 		camera.update();
 		stage.setCamera(camera);
 		highlight_stage.setCamera(camera);
-		ui.addActor(menu);
 		ui.addActor(infos);	
 		setLoadInfos();
-		controller = new InputManager(m);
-		Gdx.input.setInputProcessor(controller);
-		loadMaps();
-		createIdEditMap();
-		loadingStatus.waitIdEditListCreated();
-		teleport(Places.getPlace("startpoint"));
+		controller = new InputManager(getM());
 	}
 	
 	/**
 	 * Sets the on screen texts
 	 */
-	private void setLoadInfos(){
-		load = new TextButton("load", style);
-		load.setPosition(Gdx.graphics.getWidth()-200, 15);
+	private static void setLoadInfos(){
 		status = new TextButton("status", style);
 		status.setPosition(Gdx.graphics.getWidth()/2 + status.getWidth()/2, Gdx.graphics.getHeight()/2 - status.getHeight()/2);
 		status.getColor().a = 0f;
 		info = new TextButton("info", style);
-		fps = new TextButton("fps", style);
-		fps.setPosition(Gdx.graphics.getWidth()-50, Gdx.graphics.getHeight()-30);
-		infos.addActor(fps);
-		infos.addActor(load);
 		infos.addActor(status);
 		infos.addActor(info);
 	}
@@ -147,7 +124,7 @@ public class MapManager implements Screen{
 	/**
 	 * Loads maps from .decrypt files
 	 */
-	public void loadMaps() {
+	public static void loadMaps() {
 		logger.info("Chargement des cartes");
 		UpdateDataCheckStatus.setStatus("Chargement des cartes");
 		Places.createDefault();
@@ -161,27 +138,31 @@ public class MapManager implements Screen{
 	 * Creates the 9 Chunks from a starting point
 	 * @param point
 	 */
-	private static void createChunks(Places point) {
+	public static void createChunks(Places point) {
 		if(point == null){
 			logger.warn("On essayer de créer des chunks d'un endroit null");
 			return;
 		}
+		Chunk.stopChunkMapWatcher();
+		resetWorldMap();
 		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord());
 		Iterator<Integer> iter_position = chunk_positions.keySet().iterator();
 		while(iter_position.hasNext()){
 			int chunkId = iter_position.next();
 			//TODO attention plus tard en gérant plusieurs cartes.
 			//UpdateDataCheckStatus.setMapsStatus("Création du chunk :"+chunkId);
-			getWorldmap().put(chunkId,new Chunk(point.getMap(),chunk_positions.get(chunkId)));
+			Chunk chunk = new Chunk(point.getMap(),chunk_positions.get(chunkId));
+			getWorldmap().put(chunkId, chunk);
+			logger.info("Chunk : "+chunkId+" créé.");
 		}
-		Chunk.startChunkMapWatcher();
+		Chunk.swapChunkCache();
 	}
 
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		render_camera();
-		stage.act(delta);
+		//stage.act(delta);
 		ui.act(delta);
 		highlight_stage.act(delta);
 		if(render_infos){
@@ -200,8 +181,6 @@ public class MapManager implements Screen{
 	 */
 	private void render_infos() {
 		Gdx.app.getGraphics().setTitle("OpenT4C v0 FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + ((Runtime.getRuntime().totalMemory())/1024/1024) + " Mo");
-		load.setText("foo");
-		fps.setText(""+Gdx.graphics.getFramesPerSecond()+" fps");
 		info.setText("X: " + (((int)camera.position.x/32)) + " Y: " + (((int)camera.position.y/16)) + " Zoom : " + camera.zoom);
 		info.setPosition(info.getWidth()*4, info.getHeight());
 	}
@@ -210,74 +189,25 @@ public class MapManager implements Screen{
 	 * Renders chunks
 	 */
 	public static void renderChunks() {
-		Group newChunksTiles = new Group(); 
-		Group newChunksSprites = new Group(); 
-		Iterator<Integer> iter_chunk = getWorldmap().keySet().iterator();
-		while (iter_chunk.hasNext()){
-			int key = iter_chunk.next();
-			newChunksTiles.addActor(renderChunkTiles(getWorldmap().get(key)));
-			if (renderSprites)newChunksSprites.addActor(renderChunkSprites(getWorldmap().get(key)));
-		}
-		Gdx.app.postRunnable(RunnableCreatorUtil.getChunkSwapperRunnable(stage, newChunksTiles, newChunksSprites));
+		Group newChunksSprites = null;
+		Group newChunksTiles = Chunk.getChunkTiles();
+		if(renderSprites)newChunksSprites = Chunk.getChunkSprites();
+		stage.clear();
+		if(newChunksTiles != null)stage.addActor(newChunksTiles);
+		if(newChunksSprites != null)stage.addActor(newChunksSprites);
+		Chunk.startChunkMapWatcher();
 	}
 
-	/**
-	 * renders a given Chunk
-	 * @param chunk
-	 * @return
-	 */
-	private static Group renderChunkTiles(Chunk chunk) {
-		return chunk.getTileActeurs();
-	}
 
-	/**
-	 * renders a given Chunk
-	 * @param chunk
-	 * @return
-	 */
-	private static Group renderChunkSprites(Chunk chunk) {
-		return chunk.getSpriteActeur();
-	}
-	
-	/**
-	 * Updates the camera
-	 */
-	private void render_camera() {
-		camera.update();		
-	}
-
-	@Override
-	public void resize(int width, int height) {
-	}
 
 	@Override
 	public void show() {
-		if (m == null){
-			logger.warn("Attention on essaye de renre les chunks d'un MapManager non-instancié.");
-		}else{
-			init();
-		}
+		Places origin = Places.getPlace("startpoint");
+		teleport(origin);
+		Gdx.input.setInputProcessor(controller);
 	}
 
-	@Override
-	public void hide() {
-	}
 
-	@Override
-	public void pause() {
-	}
-
-	@Override
-	public void resume() {
-	}
-
-	@Override
-	public void dispose() {
-		batch.dispose();
-		stage.dispose();
-		ui.dispose();
-		highlight_stage.dispose();
-	}
 
 	/**
 	 * @param carte
@@ -297,7 +227,9 @@ public class MapManager implements Screen{
 	 */
 	private static int getIdAtCoord(ByteBuffer buf, Point point) {
 		int result = -1;
-		if(point.x < 0 || point.x > 3071 || point.y < 0 || point.y > 3071) return -1;
+		if(point.x < 0 || point.x > 3071 || point.y < 0 || point.y > 3071){
+			return result;
+		}
 		byte b1=0,b2=0;
 		if(buf != null){
 			try{
@@ -318,67 +250,13 @@ public class MapManager implements Screen{
 		return result;
 	}
 
-	/**
-	 * @return the Screen
-	 */
-	public static MapManager getScreen() {
-		return m;
-	}
-
-	/**
-	 * Updates Chunks positions
-	 */
-	public static void updateChunkPositions() {
-		Point playerPosition = PointsManager.getPoint(m.camera.position.x/32, m.camera.position.y/16);
-		int direction = checkIfChunksNeedsToBeMoved(playerPosition);
-		moveChunksIfNeeded(direction);
-		//logger.info(direction);
-	}
-
-	/**
-	 * Moves ChunkMap in a given direction
-	 * @param direction
-	 */
-	private static void moveChunksIfNeeded(int direction) {
-		ChunkMovement.move(direction, getWorldmap());
-	}
 
 
 
-	/**
-	 * Checks if ChunkMap needs to be moved. If the camera's position is farther from the center of the chunk map than chunk_size/2.
-	 * @param playerPosition
-	 * @return direction to move to : 0 not to move, 1 to move right, 2 to move down right, 3 to move down, 4 to move down left, 5 to move left, 6 to move up left, 7 to move up, 8 to move up right.
-	 */
-	private static int checkIfChunksNeedsToBeMoved(Point playerPosition) {
-		int result = 0;
-		boolean right = false;
-		boolean left = false;
-		boolean up = false;
-		boolean down = false;
-		Point chunkCenter = getWorldmap().get(5).getCenter();
-		//logger.info("ChunkWatcher : Player->"+playerPosition.x+";"+playerPosition.y + " Chunk->"+chunkCenter.x+";"+chunkCenter.y);
-		if(playerPosition.x > chunkCenter.x+(Chunk.chunk_size.x/2)) right = true;
-		if(playerPosition.x < chunkCenter.x-(Chunk.chunk_size.x/2)) left = true;
-		if(playerPosition.y < chunkCenter.y-(Chunk.chunk_size.y/2)) up = true;
-		if(playerPosition.y > chunkCenter.y+(Chunk.chunk_size.y/2)) down = true;
-		if (right && !left && !down && !up) result = 6;
-		if (right && !left && down && !up) result = 3;
-		if (!right && !left && down && !up) result = 2;
-		if (!right && left && down && !up) result = 1;
-		if (!right && left && !down && !up) result = 4;
-		if (!right && left && !down && up) result = 7;
-		if (!right && !left && !down && up) result = 8;
-		if (right && !left && !down && up) result = 9;
-		return result;
-	}
 
-	/**
-	 * @return the camera
-	 */
-	public static OrthographicCamera getCamera() {
-		return m.camera;
-	}
+
+
+
 
 	/**
 	 * Translates camera to a given place and generates chunks.
@@ -389,21 +267,15 @@ public class MapManager implements Screen{
 			logger.warn("On tente de se téléporter dans un endroit null");
 			return;
 		}
-		Chunk.stopChunkMapWatcher();
 		createChunks(place);
 		renderChunks();
-		Gdx.app.postRunnable(new Runnable(){
-			@Override
-			public void run() {
-				getCamera().position.x = place.getCoord().x * 32;
-				getCamera().position.y = place.getCoord().y * 16;
-				status.clearActions();
-				status.setText(place.getNom());
-				status.getColor().a = 1f;
-				status.addAction(Actions.alpha(0f, 2));				
-			}
-		});
-
+		//Gdx.app.postRunnable(RunnableCreatorUtil.getChunkRendererRunnable());
+		getCamera().position.x = place.getCoord().x * 32;
+		getCamera().position.y = place.getCoord().y * 16;
+		status.clearActions();
+		status.setText(place.getNom());
+		status.getColor().a = 1f;
+		status.addAction(Actions.alpha(0f, 2));	
 	}
 
 	/**
@@ -417,11 +289,80 @@ public class MapManager implements Screen{
 		Gdx.input.setInputProcessor(null);
 	}
 
+
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////UTILS/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * @return the Screen
+	 */
+	public static MapManager getScreen() {
+		return getM();
+	}
+	
+	/**
+	 * Checks if ChunkMap needs to be moved. If the camera's position is farther from the center of the chunk map than chunk_size/2.
+	 * @param playerPosition
+	 * @return direction to move to : 0 not to move, 1 to move right, 2 to move down right, 3 to move down, 4 to move down left, 5 to move left, 6 to move up left, 7 to move up, 8 to move up right.
+	 */
+	private static Point checkIfChunksNeedsToBeMoved(Point playerPosition) {
+		boolean right = false;
+		boolean left = false;
+		boolean up = false;
+		boolean down = false;
+		Point chunkCenter = getWorldmap().get(5).getCenter();
+		//logger.info("ChunkWatcher : Player->"+playerPosition.x+";"+playerPosition.y + " Chunk->"+chunkCenter.x+";"+chunkCenter.y);
+		if(playerPosition.x > chunkCenter.x*32+(Gdx.graphics.getWidth()/2)) right = true;
+		if(playerPosition.x < chunkCenter.x*32-(Gdx.graphics.getWidth()/2)) left = true;
+		if(playerPosition.y < chunkCenter.y*16-(Gdx.graphics.getHeight()/2)) up = true;
+		if(playerPosition.y > chunkCenter.y*16+(Gdx.graphics.getHeight()/2)) down = true;
+		if (right && !left && !down && !up) return playerPosition;
+		if (right && !left && down && !up) return playerPosition;
+		if (!right && !left && down && !up) return playerPosition;
+		if (!right && left && down && !up) return playerPosition;
+		if (!right && left && !down && !up) return playerPosition;
+		if (!right && left && !down && up) return playerPosition;
+		if (!right && !left && !down && up) return playerPosition;
+		if (right && !left && !down && up) return playerPosition;
+		return null;
+	}
+	
+	/**
+	 * Updates Chunks positions
+	 */
+	public static void updateChunkPositions() {
+		playerPosition = PointsManager.getPoint(getCamera().position.x, getCamera().position.y);
+		Point newCoord = checkIfChunksNeedsToBeMoved(playerPosition);
+		if (newCoord != null){
+			logger.info("Camera Move");
+			moveChunksIfNeeded(newCoord);
+		}
+		//logger.info("Not moving");
+	}
+
+	/**
+	 * Moves ChunkMap in a given direction
+	 * @param direction
+	 */
+	private static void moveChunksIfNeeded(Point coord) {
+		Chunk.move(coord);
+	}
+	
+	/**
+	 * @return the camera
+	 */
+	public static OrthographicCamera getCamera() {
+		return getM().camera;
+	}
+	
 	/**
 	 * Hihglight a tile n the map
 	 * @param point
 	 */
-	public void highlight(Point point) {
+	public static void highlight(Point point) {
+		//logger.info("HIGHLIGHT");
 		highlight_point = point;
 		TextureAtlas atlas = loadingStatus.getTextureAtlasSprite("Highlight");
 		TextureRegion tex = atlas.findRegion("Highlight Tile");
@@ -436,32 +377,34 @@ public class MapManager implements Screen{
 	 * 
 	 */
 	public static void tileFadeIn() {
-		Gdx.app.postRunnable(new Runnable(){
+		getHighlight_tile().getColor().a = 0.5f;
+		/*Gdx.app.postRunnable(new Runnable(){
 			@Override
 			public void run() {
 				getHighlight_tile().addAction(Actions.alpha(0.3f, blink_period/2));
 			}
-		});
+		});*/
 	}
 
 	/**
 	 * 
 	 */
 	public static void tileFadeOut() {
-		Gdx.app.postRunnable(new Runnable(){
+		getHighlight_tile().getColor().a = 0f;
+		/*Gdx.app.postRunnable(new Runnable(){
 			@Override
 			public void run() {
 				getHighlight_tile().addAction(Actions.alpha(0f, blink_period/2));
 			}
-		});
+		})*/;
 	}
 
 	public static Acteur getHighlight_tile() {
-		return m.highlight_tile;
+		return highlight_tile;
 	}
 
-	public static void setHighlight_tile(Acteur highlight_tile) {
-		m.highlight_tile = highlight_tile;
+	public static void setHighlight_tile(Acteur highlight) {
+		highlight_tile = highlight;
 	}
 
 	public static boolean isHighlighted() {
@@ -488,11 +431,15 @@ public class MapManager implements Screen{
 		MapManager.worldmap = worldmap;
 	}
 
+	public static void resetWorldMap(){
+		MapManager.worldmap = new ConcurrentHashMap<Integer,Chunk>();
+	}
+	
 	/**
 	 * 
 	 */
 	public static void close_edit_menu() {
-		Gdx.input.setInputProcessor(m.controller);
+		Gdx.input.setInputProcessor(controller);
 		unHighlight();
 	}
 
@@ -502,10 +449,14 @@ public class MapManager implements Screen{
 	public static void toggleRenderSprites() {
 		if(renderSprites){
 			renderSprites = false;
+			Point point = PointsManager.getPoint((int)camera.position.x/32,(int)camera.position.y/16);
+			createChunks(new Places("ToggleRenderSprites", "v2_worldmap", point));
 			renderChunks();
 			return;
 		}else{
 			renderSprites  = true;
+			Point point = PointsManager.getPoint((int)camera.position.x/32,(int)camera.position.y/16);
+			createChunks(new Places("ToggleRenderSprites", "v2_worldmap", point));
 			renderChunks();
 		}
 	}
@@ -528,5 +479,44 @@ public class MapManager implements Screen{
 
 	public static void setIdEditListCreated(boolean b) {
 		idListCreated = b;
+	}
+	
+	@Override
+	public void hide() {
+	}
+
+	@Override
+	public void pause() {
+	}
+
+	@Override
+	public void resume() {
+	}
+
+	@Override
+	public void dispose() {
+		batch.dispose();
+		stage.dispose();
+		ui.dispose();
+		highlight_stage.dispose();
+	}
+	
+	/**
+	 * Updates the camera
+	 */
+	private void render_camera() {
+		camera.update();		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+	}
+
+	public static MapManager getM() {
+		return m;
+	}
+
+	public static void setM(MapManager m) {
+		MapManager.m = m;
 	}
 }

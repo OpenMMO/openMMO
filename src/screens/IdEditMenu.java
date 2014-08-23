@@ -452,7 +452,7 @@ public class IdEditMenu{
 			break;
 		default : 
 			print("Te revoilà!");
-			print("C'est un plaisir d'exécuter ton ordre "+historique);
+			print("C'est un plaisir d'exécuter ton "+historique+"ème ordre.");
 			break;
 		}
 		printSepLine();

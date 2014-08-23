@@ -275,11 +275,8 @@ public class SpriteData {
 	 */
 	private static MapPixel getTileFromIdAndPoint(int id, Point coord) {
 		if (idFull.containsKey(id)){
-			String tex = getTexFromId(id);
 			String atlas = getAtlasFromId(id);
-			int moduloX = Integer.parseInt(tex.substring(tex.indexOf('(')+1,tex.indexOf(',')));
-			int moduloY = Integer.parseInt(tex.substring(tex.indexOf(',')+1,tex.indexOf(')')));
-			String moduledTex = Chunk.getModuledTexNameFromPoint(atlas, moduloX, moduloY, coord);
+			String moduledTex = Chunk.getModuledTexNameFromPoint(atlas, id, coord);
 			String key = atlas+":"+moduledTex;
 			if(pixel_index.containsKey(key)){
 				return pixel_index.get(key);

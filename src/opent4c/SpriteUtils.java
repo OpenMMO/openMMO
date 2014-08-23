@@ -308,12 +308,14 @@ public class SpriteUtils {
 		if(nom.contains("Rock ")) nom = "RockFloor";
 		if(nom.contains("Wooden2 ")) nom = "2Wooden";
 		if(nom.contains("Wooden3 ")) nom = "3Wooden";
-		if(nom.startsWith("AnimWater01") && nom.endsWith("_05")) nom = "05AnimWater01P";
-		if(nom.startsWith("AnimWater01") && nom.endsWith("_04")) nom = "04AnimWater01P";
-		if(nom.startsWith("AnimWater01") && nom.endsWith("_03")) nom = "03AnimWater01P";
-		if(nom.startsWith("AnimWater01") && nom.endsWith("_02")) nom = "02AnimWater01P";
-		if(nom.startsWith("AnimWater01") && nom.endsWith("_01")) nom = "01AnimWater01P";
-		if(nom.startsWith("AnimWater01") && nom.endsWith("_00")) nom = "00AnimWater01P";
+		if(nom.contains("DGrass")) nom = "Dgrass";
+		if(nom.contains("Stone3")) nom = "stone3";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_05")) nom = "05AnimWater01";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_04")) nom = "04AnimWater01";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_03")) nom = "03AnimWater01";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_02")) nom = "02AnimWater01";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_01")) nom = "01AnimWater01";
+		if(nom.startsWith("AnimWater01") && nom.endsWith("_00")) nom = "00AnimWater01";
 		return nom;
 	}
 	
@@ -459,6 +461,8 @@ public class SpriteUtils {
 		if (nom.equals("Lava (4,2)"))result = "Lava (4, 2)";
 		if (nom.equals("Lava (4,3)"))result = "Lava (4, 3)";
 		if (nom.equals("Lava (4,4)"))result = "Lava (4, 4)";
+		//Exceptions
+		if (nom.equals("stone3"))result = "Stone3";
 		//coordonnées de tuiles à 2 digits
 		/*if (nom.contains(" (") && nom.contains(", ") && nom.contains(")")){
 			String radix = nom.substring(0, nom.indexOf('('));
@@ -472,6 +476,7 @@ public class SpriteUtils {
 		if(nom.startsWith("2Wooden"))result = nom.replace("2Wooden", "Wooden2");
 		if(nom.startsWith("RockFloor"))result = nom.replace("RockFloor", "Rock");
 		if(nom.startsWith("3Wooden"))result = nom.replace("3Wooden", "Wooden3");
+		if(nom.startsWith("Dgrass"))result = nom.replace("Dgrass", "DGrass");
 		//Pour les animations
 		if(nom.contains("AnimWater01"))result = "AnimWater01"+nom.substring(13)+"_"+nom.substring(0, 2);
 

@@ -39,7 +39,7 @@ public enum AssetsLoader {
 		Settings settings = new Settings();
 		settings.pot = false;
 		settings.maxWidth = 1284;
-		settings.maxHeight = 772;
+		settings.maxHeight = 832;
 		settings.rotation = false;
 		settings.ignoreBlankImages = false;
 		settings.paddingX = 0;
@@ -58,15 +58,16 @@ public enum AssetsLoader {
 		while (iter_sprites.hasNext()){
 			final File f = iter_sprites.next();
 			final File at = new File(FilesPath.getAtlasSpritesFilePath(f.getName()));
-			if (!f.getName().equals(last) && f.isDirectory() && !at.exists() && !f.getName().equals("V2Effect.atlas")){
+			if (!f.getName().equals(last) && f.isDirectory() && !at.exists()/* && !f.getName().equals("V2Effect.atlas")*/){
 				loadingStatus.addSpritesAtlasToPackage(f.getName());
 				executeSpritePacking(f, settings);
 				last = f.getName();
 			}
 		}
-		packExceptions();
+		//packExceptions();
 	}
 	
+	@Deprecated
 	private static void packExceptions() {
 		Settings settings = new Settings();
 		settings.pot = false;
@@ -79,7 +80,7 @@ public enum AssetsLoader {
 		settings.edgePadding = false;
 		settings.flattenPaths = true;
 		settings.grid = true;
-		settings.limitMemory = false;
+		settings.limitMemory = true;
 		settings.stripWhitespaceX = false;
 		settings.stripWhitespaceY = false;
 		loadingStatus.addSpritesAtlasToPackage(FilesPath.getAtlasSpritesFilePath("V2Effect"));
@@ -202,12 +203,6 @@ public enum AssetsLoader {
 				if(!sprite_atlas_to_load.contains(atl))sprite_atlas_to_load.add(atl);
 			}
 		}
-		/*Iterator<String> iter_spriteload = SpriteData.getPixelIndex().keySet().iterator();
-		while(iter_spriteload.hasNext()){
-			String key = iter_spriteload.next();
-			String atl = key.substring(0,key.indexOf(':'));
-			if(!sprite_atlas_to_load.contains(atl))sprite_atlas_to_load.add(atl);
-		}*/
 		Iterator<String> iter_load = sprite_atlas_to_load.iterator();
 		while(iter_load.hasNext()){
 			load(iter_load.next());

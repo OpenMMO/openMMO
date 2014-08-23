@@ -7,7 +7,9 @@ import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import opent4c.Chunk;
 import opent4c.InputManager;
 import opent4c.SpriteData;
 import opent4c.UpdateDataCheckStatus;
@@ -22,6 +24,7 @@ import tools.DataInputManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
@@ -66,7 +69,7 @@ public class RunnableCreatorUtil {
 				String nom = name.substring(0, name.length()-6);
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
-				UpdateDataCheckStatus.setStatus("Tuiles "+atlas+"charhée : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
+				UpdateDataCheckStatus.setStatus("Tuiles "+nom+" chargée : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 				loadingStatus.addOneTileAtlasLoaded();
 			}
 		};
@@ -128,14 +131,14 @@ public class RunnableCreatorUtil {
 		return r;
 	}
 
-	public static Runnable getChunkCreatorRunnable(final Places place) {
+	/*public static Runnable getChunkCreatorRunnable(final Places place) {
 		Runnable r = new Runnable(){
 			public void run() {
 				MapManager.teleport(place);
 			}
 		};
 		return r;
-	}
+	}*/
 	
 	public static Runnable getModuloComputerRunnable(final File tileDir){
 		Runnable r = new Runnable(){
@@ -164,23 +167,6 @@ public class RunnableCreatorUtil {
 					Gdx.app.exit();
 				}
 				MapManager.tileFadeOut();
-			}
-		};
-		return r;
-	}
-
-	/**
-	 * @param stage
-	 * @param newChunksSprites 
-	 * @param newChunksTiles 
-	 * @return
-	 */
-	public static Runnable getChunkSwapperRunnable(final Stage stage, final Group newChunksTiles, final Group newChunksSprites) {
-		Runnable r = new Runnable(){
-			public void run(){
-				stage.clear();
-				stage.addActor(newChunksTiles);
-				stage.addActor(newChunksSprites);
 			}
 		};
 		return r;
@@ -305,5 +291,25 @@ public class RunnableCreatorUtil {
 		};
 		return r;
 
+	}
+	
+	public static Runnable getMapInitializerRunnable() {
+		Runnable r = new Runnable(){
+
+			public void run(){
+				MapManager.init();
+			}
+		};
+		return r;
+	}
+
+	public static Runnable getChunkRendererRunnable() {
+		Runnable r = new Runnable(){
+
+			public void run(){
+				MapManager.renderChunks();
+			}
+		};
+		return r;
 	}
 }

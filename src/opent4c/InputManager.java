@@ -170,40 +170,40 @@ public class InputManager implements InputProcessor{
 			control_right = false;
 		}
 		if (keycode == Keys.F1){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("lh_temple")));
+			MapManager.teleport(Places.getPlace("lh_temple"));
 		}
 		if (keycode == Keys.F2){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("wh_temple")));
+			MapManager.teleport(Places.getPlace("wh_temple"));
 		}
 		if (keycode == Keys.F3){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("ss_temple")));
+			MapManager.teleport(Places.getPlace("ss_temple"));
 		}
 		if (keycode == Keys.F4){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("sc_temple")));
+			MapManager.teleport(Places.getPlace("sc_temple"));
 		}
 		if (keycode == Keys.F5){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("ar_rst")));
+			MapManager.teleport(Places.getPlace("ar_rst"));
 		}
 		if (keycode == Keys.F6){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("rd_rst")));
+			MapManager.teleport(Places.getPlace("rd_rst"));
 		}
 		if (keycode == Keys.F7){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("sh_rst")));
+			MapManager.teleport(Places.getPlace("sh_rst"));
 		}
 		if (keycode == Keys.F8){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("ar_druides")));
+			MapManager.teleport(Places.getPlace("ar_druides"));
 		}
 		if (keycode == Keys.F9){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("rd_druides")));
+			MapManager.teleport(Places.getPlace("rd_druides"));
 		}
 		if (keycode == Keys.F10){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("sh_zo")));
+			MapManager.teleport(Places.getPlace("sh_zo"));
 		}
 		if (keycode == Keys.F11){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("origin")));
+			MapManager.teleport(Places.getPlace("origin"));
 		}
 		if (keycode == Keys.F12){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("center")));
+			MapManager.teleport(Places.getPlace("center"));
 		}
 		if (keycode == Keys.ENTER){
 			if(MapManager.isHighlighted()){
@@ -258,12 +258,7 @@ public class InputManager implements InputProcessor{
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (button == Buttons.LEFT){
 			mouseLeft = true;
-			if(!MapManager.isHighlighted()){
-				Point tuile_on_map = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
-				manager.highlight(tuile_on_map);
-			}else{
-				MapManager.unHighlight();
-			}
+
 		}
 		if (button == Buttons.RIGHT){
 			mouseRight = true;
@@ -274,6 +269,12 @@ public class InputManager implements InputProcessor{
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		if (button == Buttons.LEFT){
+			if(!MapManager.isHighlighted()){
+				Point tuile_on_map = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
+				MapManager.highlight(tuile_on_map);
+			}else{
+				MapManager.unHighlight();
+			}
 			mouseLeft = false;
 		}
 		if (button == Buttons.RIGHT) {

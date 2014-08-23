@@ -1,8 +1,10 @@
 package screens;
 
+import opent4c.Chunk;
 import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
+import opent4c.utils.RunnableCreatorUtil;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -55,11 +57,15 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
-		AssetsLoader.loadSols();
 		AssetsLoader.loadMappedSprites();
+		AssetsLoader.loadSols();
 		map = new MapManager(this);
 		loadingStatus.waitUntilTileAtlasAreLoaded();
+		Gdx.app.postRunnable(RunnableCreatorUtil.getMapInitializerRunnable());
+		MapManager.loadMaps();
+		MapManager.createIdEditMap();
+		loadingStatus.waitIdEditListCreated();
+		Chunk.cacheSmoothingTemplatePixmaps();
 		switchGameScreen(map);
-
 	}
 }
