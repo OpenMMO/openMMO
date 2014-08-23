@@ -45,7 +45,7 @@
 313:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 312:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 315:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
-314:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
+314:NA:Tmpl3 25 T1 7000 T2 8
 317:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 316:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
 319:NA:tmpl3 1 T1 Desert T2 Floor Wooden 1
@@ -259,7 +259,7 @@
 549:NA:tmpl3 1 T1 EarthTile T2 Desert
 546:NA:tmpl3 1 T1 NormalGrass T2 Desert
 547:NA:tmpl3 1 T1 NormalGrass T2 Desert
-544:NA:tmpl3 1 T1 NormalGrass T2 Desert
+544:NA:Tmpl3 25 T1 8 T2 1
 545:NA:tmpl3 1 T1 NormalGrass T2 Desert
 558:NA:tmpl3 1 T1 EarthTile T2 Desert
 559:NA:tmpl3 1 T1 EarthTile T2 Desert
@@ -285,37 +285,37 @@
 569:NA:tmpl3 1 T1 EarthTile T2 Desert
 568:NA:tmpl3 1 T1 EarthTile T2 Desert
 516:NA:tmpl1 1 T1 Grass T2 EarthTile
-517:NA:tmpl3 1 T1 NormalGrass T2 Desert
-518:NA:tmpl3 1 T1 NormalGrass T2 Desert
-519:NA:tmpl3 1 T1 NormalGrass T2 Desert
+517:NA:Tmpl3 1 T1 8 T2 1
+518:NA:Tmpl3 2 T1 8 T2 1
+519:NA:Tmpl3 3 T1 8 T2 1
 512:NA:tmpl3 1 T1 Water3 T2 Grass
 513:NA:tmpl1 1 T1 Grass T2 EarthTile
 514:NA:tmpl1 1 T1 Grass T2 EarthTile
 515:NA:tmpl1 1 T1 Grass T2 EarthTile
-524:NA:tmpl3 1 T1 NormalGrass T2 Desert
-525:NA:tmpl3 1 T1 NormalGrass T2 Desert
-526:NA:tmpl3 1 T1 NormalGrass T2 Desert
-527:NA:tmpl3 1 T1 NormalGrass T2 Desert
-520:NA:tmpl3 1 T1 NormalGrass T2 Desert
+524:NA:Tmpl3 28 T1 7000 T2 8
+525:NA:Tmpl3 14 T1 8 T2 1
+526:NA:Tmpl3 13 T1 8 T2 1
+527:NA:Tmpl3 16 T1 8 T2 1
+520:NA:Tmpl3 4 T1 8 T2 1
 521:NA:tmpl3 1 T1 NormalGrass T2 Desert
 522:NA:tmpl3 1 T1 NormalGrass T2 Desert
-523:NA:tmpl3 1 T1 NormalGrass T2 Desert
-533:NA:tmpl3 1 T1 NormalGrass T2 Desert
-532:NA:tmpl3 1 T1 NormalGrass T2 Desert
-535:NA:tmpl3 1 T1 NormalGrass T2 Desert
-534:NA:tmpl3 1 T1 NormalGrass T2 Desert
-529:NA:tmpl3 1 T1 NormalGrass T2 Desert
-528:NA:tmpl3 1 T1 NormalGrass T2 Desert
-531:NA:tmpl3 1 T1 NormalGrass T2 Desert
-530:NA:tmpl3 1 T1 NormalGrass T2 Desert
-541:NA:tmpl3 1 T1 NormalGrass T2 Desert
-540:NA:tmpl3 1 T1 NormalGrass T2 Desert
-543:NA:tmpl3 1 T1 NormalGrass T2 Desert
-542:NA:tmpl3 1 T1 NormalGrass T2 Desert
-537:NA:tmpl3 1 T1 NormalGrass T2 Desert
-536:NA:tmpl3 1 T1 NormalGrass T2 Desert
-539:NA:tmpl3 1 T1 NormalGrass T2 Desert
-538:NA:tmpl3 1 T1 NormalGrass T2 Desert
+523:NA:Tmpl3 27 T1 7000 T2 8
+533:NA:Tmpl3 22 T1 8 T2 1
+532:NA:Tmpl3 11 T1 8 T2 1
+535:NA:Tmpl3 24 T1 8 T2 1
+534:NA:Tmpl3 21 T1 8 T2 1
+529:NA:Tmpl3 10 T1 8 T2 1
+528:NA:Tmpl3 15 T1 8 T2 1
+531:NA:Tmpl3 12 T1 8 T2 1
+530:NA:Tmpl3 9 T1 8 T2 1
+541:NA:Tmpl3 27 T1 8 T2 1
+540:NA:Tmpl3 19 T1 8 T2 1
+543:NA:Tmpl3 28 T1 8 T2 1
+542:NA:Tmpl3 26 T1 8 T2 1
+537:NA:Tmpl3 18 T1 8 T2 1
+536:NA:Tmpl3 23 T1 8 T2 1
+539:NA:Tmpl3 20 T1 8 T2 1
+538:NA:Tmpl3 17 T1 8 T2 1
 610:NA:tmpl3 1 T1 Grass T2 Desert
 611:NA:tmpl3 1 T1 Grass T2 Desert
 608:NA:tmpl3 1 T1 Grass T2 Desert
@@ -899,8 +899,8 @@
 1251:Root:Tapisall 1
 1263:Miscs-M:Manacle 1
 1262:Miscs-H:Heads
-1261:Miscs-S:SkeletonCorpse2
-1260:Miscs-B:Blood2
+1261:Miscs-S:SkeletonCorpsePile1
+1260:Miscs-B:Blood1
 1259:TapisRouge:TapisRouge 3
 1258:TapisRouge:TapisRouge 1
 1257:TapisRouge:TapisRouge 2
@@ -917,7 +917,7 @@
 1279:GlaceEtNeige:HuteGobG1Ffoor
 1276:NA:Border2
 1277:Miscs-L:LHBridge
-1274:Miscs-B:Border1
+1274:MIRROR:1273
 1275:NA:Border2
 1272:Miscs-B:Bridge3
 1273:Miscs-B:Border1
@@ -990,7 +990,7 @@
 10014:NA:NMSRiverNO01
 1406:Mount1:Mount1
 10009:NA:NMSSand
-1401:Root:Grande Table Rectangle Bois
+1401:MIRROR:1302
 10008:NA:NMSPave01
 10011:NA:NMSSnow
 1403:Miscs-B:BarCounter
@@ -1015,7 +1015,7 @@
 1297:Pentacles:OldPentacle
 1296:Pentacles:DarkPentacle
 1303:Root:ShopTable1
-1302:Root:Grande Table Rectangle Bois
+1302:Root:Table2
 1301:Miscs-B:BarCounter
 1290:Miscs-T:TiPontLH
 1291:Static:Drake Skeleton01
@@ -1038,8 +1038,8 @@
 1314:NA:T1 CavernFloor T2
 1315:Miscs-S:Stone3
 1411:Miscs-G:Golden Mirror
-1410:Root:WeaponRacks 1
-1409:Root:WeaponRacks 2
+1410:MIRROR:1310
+1409:MIRROR:1309
 1408:Mount1:Mount1
 1415:Miscs-S:Stone1H
 1414:NA:T1 CavernFloor T2
@@ -1188,8 +1188,8 @@
 3001:Root:Wooden Armoir SW
 3002:Root:Wooden Armoir SW
 3003:Root:Wooden Armoir SW
-3049:Miscs-B:Bed Double Type 1
-3048:Miscs-B:Bed Simple
+3049:MIRROR:3046
+3048:MIRROR:3045
 3051:StuccoWallV2:StuccoDarkSmallWallB
 3050:Miscs-B:Bed Double Type 2
 3053:StuccoWallV2:StuccoDarkWindowB
@@ -1312,8 +1312,8 @@
 3217:NA:T1 CavernFloor T2
 3218:NA:T1 CavernFloor T2
 3219:NA:T1 CavernFloor T2
-3220:Miscs-A:Archer
-3221:Miscs-A:ArmorOnARack
+3220:MIRROR:3230
+3221:MIRROR:3231
 3222:Miscs-D:Dummy
 3223:Root:RuinedTable1
 3224:Root:RuinedMirror1
@@ -1321,29 +1321,29 @@
 3226:Root:RuinedBed1
 3227:Miscs-A:Anvil
 3228:Root:Sword
-3229:Root:Sword
+3229:MIRROR:3228
 3230:Miscs-A:Archer
 3231:Miscs-A:ArmorOnARack
 3250:Root:Lights 4
 3251:Root:Lights 5
 3248:Miscs-L:Lights 3
 3249:Root:Lights 4
-3254:Miscs-C:Chairs 1
+3254:MIRROR:3255
 3255:Miscs-C:Chairs 1
-3252:Root:Lights 5
+3252:MIRROR:3251
 3253:Root:Kitchen 1
-3256:Root:Shito 6
-3257:Miscs-B:BancTemple1
+3256:Miscs-S:Shito 6
+3257:Miscs-S:Shito 6
 3235:Miscs-B:Border1
 3234:Miscs-B:Border1
 3233:Root:RuinedMirror1
-3232:Miscs-D:Dummy
+3232:Miscs-D:Dummy2
 3239:StuccoWallV2:StuccoMainSmallWallB
 3238:StuccoWallV2:StuccoMainSmallWallB
 3237:NA:Border2
 3236:NA:Border2
 3243:Root:Misc 7 - All 8
-3242:Root:Misc 7 - All 8
+3242:MIRROR:3243
 3241:Miscs-M:Misc 4 - Part 2 2
 3240:Miscs-D:Desk2
 3247:Root:Misc 8 - All 4
@@ -1417,7 +1417,7 @@
 3091:NA:Cemetery Gates
 3090:NA:Cemetery Gates
 3093:CemeteryGates:Cemetery Gates6
-3092:CemeteryGates:Cemetery Gates6
+3092:MIRROR:3093
 3095:CemeteryGates:Cemetery Gates3
 3094:CemeteryGates:Cemetery Gates4
 3080:OldDungeonArcatureCorrection:DungeonMainArcEnd1
@@ -1550,7 +1550,7 @@
 3494:Miscs-D:DebrisPile5
 3497:Miscs-R:Rock3
 3496:Miscs-R:Rock2
-3499:Miscs-S:Stairs
+3499:MIRROR:3500
 3498:Miscs-R:Rock4
 3501:Miscs-S:Stair2
 3500:Miscs-S:Stairs
@@ -1655,9 +1655,9 @@
 3375:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3360:Rampart:Tour
 3361:Miscs-F:FirePlace1
-3362:Miscs-F:FirePlace1
+3362:MIRROR:3361
 3363:Miscs-O:Oven
-3364:Miscs-O:Oven
+3364:MIRROR:3363
 3365:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3366:OldDungeonArcatureCorrection:DungeonMainArcEnd1
 3389:OldDungeonArcatureCorrection:DungeonMainArcEnd1
@@ -1678,7 +1678,7 @@
 3812:Miscs-B:Balista
 3819:Miscs-B:Balista
 3818:Miscs-O:ObjectLightHavenFountain
-3817:Miscs-O:ObjectLightHavenCrypt
+3817:MIRROR:3805
 3816:Miscs-T:Trebuchet2
 3823:Miscs-T:Trebuchet2
 3822:Miscs-T:Trebuchet
@@ -1942,7 +1942,7 @@
 4025:NewBrickWall:NBrickWallSE
 4026:NewBrickWall:NBrickWallSE
 4027:Small:NBrickWallSSE
-3975:Miscs-T:TableTemple1
+3975:MIRROR:3947
 3974:GlaceEtNeige:Mont2G
 3973:GlaceEtNeige:Mont2G
 3972:GlaceEtNeige:MontG
@@ -1954,7 +1954,7 @@
 3982:Miscs-T:Torture1
 3981:Miscs-T:TableForge1
 3980:Miscs-O:OrgueSmall
-3979:Miscs-B:BarBar
+3979:MIRROR:3978
 3978:Miscs-B:BarBar
 3977:Miscs-H:HorseWater
 3976:Miscs-H:HorseWater
@@ -2327,7 +2327,7 @@
 4251:Miscs-B:BancTempleNoir
 4250:Miscs-L:Lights 3
 4253:Miscs-M:MummyBox1
-4252:Miscs-B:BancTempleNoir
+4252:MIRROR:4251
 4255:Miscs-M:MummyBox1
 4254:Miscs-M:MummyBox1
 4241:CastleWall:CaltlePoutre
@@ -3158,7 +3158,7 @@
 7471:1:Tmpl3 9 T1 1 T2 13
 7470:NA:Tmpl3 12 T1 1 T2 13
 7457:NA:T1 tmpl3 1 T2 Water3
-7456:NA:T1 tmpl3 1 T2 Water3
+7456:NA:Tmpl3 25 T1 4 T2 3
 7459:NA:T1 tmpl3 1 T2 Water3
 7458:NA:T1 tmpl3 1 T2 Water3
 7461:NA:Tmpl3 16 T1 1 T2 13
@@ -3181,38 +3181,38 @@
 7477:NA:Tmpl3 28 T1 1 T2 13
 7478:NA:Tmpl3 20 T1 1 T2 13
 7479:NA:Tmpl3 25 T1 1 T2 13
-7435:NA:T1 tmpl3 1 T2 Water3
-7434:NA:T1 tmpl3 1 T2 Water3
-7433:NA:T1 tmpl3 1 T2 Water3
-7432:NA:T1 tmpl3 1 T2 Water3
-7439:NA:T1 tmpl3 1 T2 Water3
+7435:NA:Tmpl3 29 T1 4 T2 3
+7434:NA:Tmpl3 32 T1 4 T2 3
+7433:NA:Tmpl3 31 T1 4 T2 3
+7432:NA:Tmpl3 4 T1 4 T2 3
+7439:NA:Tmpl3 16 T1 4 T2 3
 7438:NA:Tmpl3 13 T1 4 T2 3
 7437:NA:Tmpl3 14 T1 4 T2 3
-7436:NA:T1 tmpl3 1 T2 Water3
+7436:NA:Tmpl3 30 T1 4 T2 3
 7427:NA:Water3 T1 RockFloor T2 tmpl3 1
 7426:NA:Water3 T1 RockFloor T2 tmpl3 1
 7425:NA:Water3 T1 RockFloor T2 tmpl3 1
 7424:NA:Water3 T1 RockFloor T2 tmpl3 1
-7431:NA:T1 tmpl3 1 T2 Water3
-7430:NA:T1 tmpl3 1 T2 Water3
+7431:NA:Tmpl3 3 T1 4 T2 3
+7430:NA:Tmpl3 2 T1 4 T2 3
 7429:NA:Tmpl3 1 T1 4 T2 3
 7428:NA:Water3 T1 RockFloor T2 tmpl3 1
-7450:NA:T1 tmpl3 1 T2 Water3
-7451:NA:T1 tmpl3 1 T2 Water3
-7448:NA:T1 tmpl3 1 T2 Water3
-7449:NA:T1 tmpl3 1 T2 Water3
-7454:NA:T1 tmpl3 1 T2 Water3
-7455:NA:T1 tmpl3 1 T2 Water3
-7452:NA:T1 tmpl3 1 T2 Water3
-7453:NA:T1 tmpl3 1 T2 Water3
+7450:NA:Tmpl3 17 T1 4 T2 3
+7451:NA:Tmpl3 20 T1 4 T2 3
+7448:NA:Tmpl3 23 T1 4 T2 3
+7449:NA:Tmpl3 18 T1 4 T2 3
+7454:NA:Tmpl3 26 T1 4 T2 3
+7455:NA:Tmpl3 28 T1 4 T2 3
+7452:NA:Tmpl3 6 T1 4 T2 3
+7453:NA:Tmpl3 27 T1 4 T2 3
 7442:NA:Tmpl3 9 T1 4 T2 3
-7443:NA:T1 tmpl3 1 T2 Water3
-7440:NA:T1 tmpl3 1 T2 Water3
-7441:NA:T1 tmpl3 1 T2 Water3
-7446:NA:T1 tmpl3 1 T2 Water3
-7447:NA:T1 tmpl3 1 T2 Water3
-7444:NA:T1 tmpl3 1 T2 Water3
-7445:NA:T1 tmpl3 1 T2 Water3
+7443:NA:Tmpl3 12 T1 4 T2 3
+7440:NA:Tmpl3 15 T1 4 T2 3
+7441:NA:Tmpl3 10 T1 4 T2 3
+7446:NA:Tmpl3 21 T1 4 T2 3
+7447:NA:Tmpl3 24 T1 4 T2 3
+7444:NA:Tmpl3 11 T1 4 T2 3
+7445:NA:Tmpl3 22 T1 4 T2 3
 7415:NA:Water3 T1 RockFloor T2 tmpl3 1
 7414:NA:Water3 T1 RockFloor T2 tmpl3 1
 7413:NA:Water3 T1 RockFloor T2 tmpl3 1
@@ -3375,7 +3375,7 @@
 7264:NA:2srf1
 7260:NA:tmpl3 1 T1 Grass T2 3Wooden
 7261:WoodenDoor:RockDoor1
-7262:WoodenDoor:RockDoor1
+7262:MIRROR:7263
 7263:WoodenDoor:RockDoor1
 7256:NA:tmpl3 1 T1 Grass T2 3Wooden
 7257:NA:tmpl3 1 T1 Grass T2 3Wooden

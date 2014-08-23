@@ -8,7 +8,6 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 import java.io.File;
 import java.io.IOException;
 import java.nio.BufferUnderflowException;
@@ -26,6 +25,8 @@ import javax.imageio.stream.FileImageOutputStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.badlogic.gdx.Gdx;
 
 import opent4c.utils.FilesPath;
 
@@ -69,7 +70,7 @@ public class SpriteWriter {
 			output.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		//logger.info(++Params.nb_sprite+"/"+Params.total_sprites +" TYPE : "+didsprite.type+" "+Params.t4cOUT+"SPRITES/"+didsprite.chemin+File.separator+f.getName()+" | Palette : "+didsprite.palette.getNom());
 	}
@@ -82,7 +83,7 @@ public class SpriteWriter {
 			data = new byte[pixel.getTaille_zip()];
 		}catch(NegativeArraySizeException e){
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		buf.position(pixel.getBufPos());
 		buf.get(data);
@@ -93,7 +94,7 @@ public class SpriteWriter {
 			resultLength = unzip.inflate(unzip_data1.array());
 		} catch (DataFormatException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		unzip.end();
 		unzip_data1.rewind();
@@ -113,7 +114,7 @@ public class SpriteWriter {
 			unzip2.inflate(unzip_data2.array());
 		} catch (DataFormatException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		unzip2.end();
 		
@@ -132,7 +133,7 @@ public class SpriteWriter {
 					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,unzip_data2.get()});
 				}catch (BufferUnderflowException e){
 					e.printStackTrace();
-					System.exit(1);
+					Gdx.app.exit();
 				}
 				PalettePixel px = null;
 				px = pal.get(c);
@@ -173,7 +174,7 @@ public class SpriteWriter {
 			unzip.inflate(unzip_data1.array());
 		} catch (DataFormatException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		unzip.end();
 		unzip_data1.rewind();
@@ -192,7 +193,7 @@ public class SpriteWriter {
 					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,unzip_data1.get()});
 				}catch (BufferUnderflowException e){
 					e.printStackTrace();
-					System.exit(1);
+					Gdx.app.exit();
 				}
 				PalettePixel px = null;
 				px = pal.get(c);
@@ -234,7 +235,7 @@ public class SpriteWriter {
 			} catch (DataFormatException e) {
 				e.printStackTrace();
 				logger.fatal(e);
-				System.exit(1);
+				Gdx.app.exit();
 			}
 			unzip.end();
 		}else{
@@ -290,7 +291,7 @@ public class SpriteWriter {
 					c = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,spriteTmp.get()});
 				}catch (BufferUnderflowException e){
 					e.printStackTrace();
-					System.exit(1);
+					Gdx.app.exit();
 				}
 				PalettePixel px = null;
 				px = pal.get(c);
@@ -353,7 +354,7 @@ public class SpriteWriter {
 			SpriteUtils.logger.info("Couleur trans : "+pixel.getCouleurTrans());
 			SpriteUtils.logger.info("taille_zip : "+pixel.getTaille_zip());
 			SpriteUtils.logger.info("taille_unzip : "+pixel.getTaille_unzip());
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		data.rewind();
 		ArrayList<PalettePixel> pal = pixel.getPal().pixels;
@@ -367,7 +368,7 @@ public class SpriteWriter {
 					b = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,0,data.get()});
 				}catch (BufferUnderflowException e){
 					e.printStackTrace();
-					System.exit(1);
+					Gdx.app.exit();
 				}
 				PalettePixel px = null;
 				px = pal.get(b);

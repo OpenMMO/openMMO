@@ -41,6 +41,7 @@ public class Main {
 	 */
 	private static void verifier() {
 		logger.info("Vérification des données.");
+		UpdateDataCheckStatus.setStatus("Vérification des données.");
 		DataChecker.runCheck();
 	}
 
@@ -48,10 +49,9 @@ public class Main {
 	 * Loads Data
 	 */
 	public static void charger() {
-		logger.info("Chargement des données");
+		logger.info("Chargement des données.");
+		UpdateDataCheckStatus.setStatus("Chargement des données.");
 		SpriteData.loadPixelIndex();
-		//SpriteData.convertIdtoIDFull();
-		//System.exit(0);
 		sm.initMap();
 	}
 }

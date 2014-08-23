@@ -1,17 +1,15 @@
 package opent4c.utils;
 
 import java.awt.Point;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-import opent4c.DataChecker;
 import opent4c.InputManager;
-import opent4c.SettingsManager;
 import opent4c.SpriteData;
-import opent4c.SpriteManager;
-import opent4c.SpriteUtils;
 import opent4c.UpdateDataCheckStatus;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import screens.IdEditMenu;
 import screens.MapManager;
+import tools.DataInputManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -67,22 +66,8 @@ public class RunnableCreatorUtil {
 				String nom = name.substring(0, name.length()-6);
 				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasTilesFilePath(nom));
 				loadingStatus.addTextureAtlasTile(nom , atlas);
-				UpdateDataCheckStatus.setSpriteDataStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
-				UpdateDataCheckStatus.setStatus("Tuiles chargées : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
+				UpdateDataCheckStatus.setStatus("Tuiles "+atlas+"charhée : "+loadingStatus.getNbTextureAtlasTile()+"/"+loadingStatus.getNbTilesAtlas());
 				loadingStatus.addOneTileAtlasLoaded();
-			}
-		};
-		return r;
-	}
-	
-	@Deprecated
-	public static Runnable getTextureAtlasSpriteCreatorRunnable(final String name) {
-		Runnable r = new Runnable(){
-			public void run(){
-				String nom = name.substring(0, name.length()-6);
-				TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasSpritesFilePath(nom));
-				loadingStatus.addTextureAtlasSprite(nom, atlas);
-				logger.info("Sprites chargés : "+loadingStatus.getNbTextureAtlasSprite()+"/"+loadingStatus.getNbSpritesAtlas());
 			}
 		};
 		return r;
@@ -101,7 +86,7 @@ public class RunnableCreatorUtil {
 					});
 				}
 			};
-		} else if(name.equals("Highlight")){
+		}else if(name.equals("Highlight")){
 			r = new Runnable(){
 				public void run(){
 					Gdx.app.postRunnable(new Runnable(){
@@ -157,7 +142,6 @@ public class RunnableCreatorUtil {
 			public void run(){
 				SpriteData.computeModulo(tileDir);
 				loadingStatus.addOneComputedModulo();
-				UpdateDataCheckStatus.setSpriteDataStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
 				UpdateDataCheckStatus.setStatus("Modulos calculés : "+loadingStatus.getNbComputedModulos()+"/"+loadingStatus.getNbModulosToBeComputed());
 			}
 		};
@@ -177,7 +161,7 @@ public class RunnableCreatorUtil {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 					logger.fatal(e);
-					System.exit(1);
+					Gdx.app.exit();
 				}
 				MapManager.tileFadeOut();
 			}
@@ -242,7 +226,6 @@ public class RunnableCreatorUtil {
 						logger.info("mise à jour terminée");
 					}
 				});
-				IdEditMenu.exit();
 			}
 		};
 		return r;
@@ -254,13 +237,73 @@ public class RunnableCreatorUtil {
 	 * @param id 
 	 * @return
 	 */
-	public static Runnable getConsoleCommandInputRunnable() {
+	public static Runnable getConsoleRunnable() {
 		Runnable r = new Runnable(){
 
 			public void run(){
-				IdEditMenu.showConsoleAskCommand();
+				IdEditMenu.command();
 			}
 		};
 		return r;
+	}
+
+	public static Runnable getIdEditListCreatorRunnable() {
+		Runnable r = new Runnable(){
+
+			public void run(){
+				logger.info("Création de la liste d'ID pour édition.");
+				UpdateDataCheckStatus.setStatus("Création de la liste d'ID pour édition.");
+				MapManager.setIdEditList(new HashMap<Integer, Point>());
+				int last = -1;
+				ByteBuffer map = MapManager.getId_maps().get("v2_worldmap");
+				map.rewind();
+				while(map.position()<map.capacity()){
+					byte b1=0,b2=0;
+					b1 = map.get();
+					b2 = map.get();
+					int id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
+					if(id != last){
+						if(!MapManager.getIdEditList().containsKey(id)){
+							MapManager.getIdEditList().put(id, PointsManager.getPoint((map.position()/2)%3072, (map.position()/6144)));
+						}
+						last = id;
+					}
+				}
+				MapManager.setIdEditListCreated(true);
+				logger.info("Création de la liste d'ID pour édition terminée.");
+				UpdateDataCheckStatus.setStatus("Création de la liste d'ID pour édition terminée.");
+			}
+		};
+		return r;
+	}
+
+	public static Runnable getMapLoaderRunnable() {
+		Runnable r = new Runnable(){
+
+			public void run(){
+				List<File> decrypted_maps = FileLister.lister(new File(FilesPath.getDataDirectoryPath()), ".decrypt");
+				Iterator<File> iter_decrypted_maps = decrypted_maps.iterator();
+				while(iter_decrypted_maps.hasNext()){
+					File f = iter_decrypted_maps.next();
+					UpdateDataCheckStatus.setStatus("Chargement carte : "+f.getName());
+					logger.info("Chargement carte : "+f.getName());
+					ByteBuffer buf = ByteBuffer.allocate((int)f.length());
+					try {
+						DataInputManager in = new DataInputManager (f);
+						while (buf.position() < buf.capacity()){
+							buf.put(in.readByte());
+						}
+						in.close();
+					}catch(IOException exc){
+						exc.printStackTrace();
+						Gdx.app.exit();
+					}
+					buf.rewind();
+					MapManager.getId_maps().put(f.getName().substring(0, f.getName().indexOf('.')),buf);
+				}
+			}
+		};
+		return r;
+
 	}
 }

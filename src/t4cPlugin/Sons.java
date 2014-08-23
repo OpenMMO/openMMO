@@ -1,8 +1,6 @@
 package t4cPlugin;
 
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -51,7 +49,7 @@ public class Sons {
 		b3 = buf_snmci.get();
 		b4 = buf_snmci.get();
 		nbsound = ByteArrayToNumber.bytesToInt(new byte[]{b4,b3,b2,b1});
-		Params.total_sons = nbsound;
+		//Params.total_sons = nbsound;
 		//logger.info("		- Nombre de sons : "+nbsound);
 		
 		for (int i=0 ; i < nbsound; i++){
@@ -128,7 +126,7 @@ public class Sons {
 				for (int k=0 ; k<soundList.get(i).size ; k++){
 					soundList.get(i).sound.put(buf_snmcd.get());
 				}
-				try {
+				/*try {
 					DataOutputStream out = new DataOutputStream(new FileOutputStream(Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3"));
 					out.write(son.sound.array());
 					out.close();
@@ -136,9 +134,9 @@ public class Sons {
 				catch(IOException exc){
 					System.err.println("Erreur I/O");
 					exc.printStackTrace();
-				}
-				logger.info("	- MP3 écrit : "+Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3");
-				Params.nb_sons++;
+				}*/
+				//logger.info("	- MP3 écrit : "+Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3");
+				//Params.nb_sons++;
 			}	
 		}
 	}
@@ -194,7 +192,7 @@ public class Sons {
 				ByteBuffer buf = ByteBuffer.allocate(header_data.length+son.sound.array().length);
 				buf.put(header_data);
 				buf.put(son.sound.array());
-				try {
+				/*try {
 					DataOutputStream out = new DataOutputStream(new FileOutputStream(Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav"));
 					out.write(buf.array());
 					out.close();
@@ -204,7 +202,7 @@ public class Sons {
 					exc.printStackTrace();
 				}
 				logger.info("	- WAVE écrit : "+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
-				Params.nb_sons++;
+				Params.nb_sons++;*/
 			}
 		}
 	}
@@ -336,7 +334,7 @@ public class Sons {
 			String nom_fichier = new String(son.name);
 			if(son.format == 0){
 				//logger.info("	- Son "+i+" :"+Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3");
-				try {
+				/*try {
 					DataOutputStream out = new DataOutputStream(new FileOutputStream(Params.t4cOUT+"SONS/MP3/"+nom_fichier+".mp3"));
 					out.write(son.sound.array());
 					out.close();
@@ -344,7 +342,7 @@ public class Sons {
 				catch(IOException exc){
 					System.err.println("Erreur I/O");
 					exc.printStackTrace();
-				}
+				}*/
 			}else{
 				//logger.info("	- Son "+i+" :"+Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav");
 				SoundHeader header = new SoundHeader();
@@ -364,7 +362,7 @@ public class Sons {
 				ByteBuffer buf = ByteBuffer.allocate(header_data.length+son.sound.array().length);
 				buf.put(header_data);
 				buf.put(son.sound.array());
-				try {
+				/*try {
 					DataOutputStream out = new DataOutputStream(new FileOutputStream(Params.t4cOUT+"SONS/WAVE/"+nom_fichier+".wav"));
 					out.write(buf.array());
 					out.close();
@@ -372,7 +370,7 @@ public class Sons {
 				catch(IOException exc){
 					System.err.println("Erreur I/O");
 					exc.printStackTrace();
-				}
+				}*/
 			}
 		}
 	}

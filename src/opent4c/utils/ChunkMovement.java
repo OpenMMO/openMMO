@@ -53,7 +53,7 @@ public class ChunkMovement {
 		map.put(moved[1], map.get(created[1]));
 		map.put(moved[2], map.get(created[2]));
 		
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point, MapManager.getChunkSize());
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point);
 		//TODO Attention lorsqu'on gèrera plusieurs cartes
 		map.put(created[0],new Chunk("v2_worldmap",chunk_positions.get(created[0])));
 		map.put(created[1],new Chunk("v2_worldmap",chunk_positions.get(created[1])));

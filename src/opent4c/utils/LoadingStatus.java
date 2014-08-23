@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import opent4c.DataChecker;
 import opent4c.SourceDataManager;
-import opent4c.SpriteManager;
 import opent4c.UpdateDataCheckStatus;
+import screens.MapManager;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public enum LoadingStatus {
@@ -46,7 +46,6 @@ public enum LoadingStatus {
 	
 	public void addTilesAtlasPackaged(String tileName) {
 		addElementToLoadedList(tileName, tilesAtlasPackaged, tilesAtlasToPackage);
-		UpdateDataCheckStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 		UpdateDataCheckStatus.setStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
@@ -70,7 +69,6 @@ public enum LoadingStatus {
 	
 	public void addSpritesAtlasPackaged(String spriteName) {
 		addElementToLoadedList(spriteName, spritesAtlasPackaged, spritesAtlasToPackage);
-		UpdateDataCheckStatus.setAtlasStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 		UpdateDataCheckStatus.setStatus("Atlas empaquetés : "+(tilesAtlasPackaged.size()+spritesAtlasPackaged.size())+"/"+(tilesAtlasToPackage.size()+spritesAtlasToPackage.size()+tilesAtlasPackaged.size()+spritesAtlasPackaged.size()));
 	}
 	
@@ -148,7 +146,7 @@ public enum LoadingStatus {
 			Thread.sleep(waitLoadingTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 	}
 	
@@ -304,5 +302,27 @@ public enum LoadingStatus {
 			return false;
 		}
 		return true;
+	}
+
+	public void waitForAllMapsLoaded() {
+		while (!areMapsLoaded()) {
+			waitLoaded();
+		}			
+	}
+
+	private boolean areMapsLoaded() {
+		if(MapManager.getId_maps().containsKey("v2_worldmap"))return true;
+		return false;
+	}
+
+	public void waitIdEditListCreated() {
+		while (!isIdEditListCreate()) {
+			waitLoaded();
+		}			
+	}
+
+	private boolean isIdEditListCreate() {
+		if (MapManager.isIdEditListCreated())return true;
+		return false;
 	}
 }

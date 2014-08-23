@@ -1,5 +1,6 @@
 package screens;
 
+import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
 
@@ -34,6 +35,7 @@ public class ScreenManager extends Game{
 	}
 
 	public void switchGameScreen(final MapManager screen) {
+		UpdateDataCheckStatus.setStatus("Initialisation.");
 		Gdx.app.postRunnable(new Runnable(){
 
 			@Override
@@ -53,10 +55,11 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
-		AssetsLoader.load("Highlight");
 		AssetsLoader.loadSols();
+		AssetsLoader.loadMappedSprites();
 		map = new MapManager(this);
 		loadingStatus.waitUntilTileAtlasAreLoaded();
 		switchGameScreen(map);
+
 	}
 }

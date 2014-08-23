@@ -5,6 +5,7 @@ import java.awt.Point;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
@@ -16,6 +17,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class Acteur extends Actor {
     TextureRegion tex;
+	private Sprite sp;
 
     public Acteur (TextureRegion tex, Point coord, Point offset) {
         this.tex = tex;
@@ -27,7 +29,16 @@ public class Acteur extends Actor {
         setHeight(tex.getRegionHeight());
     }
     
-    public void flip(boolean flipX, boolean flipY){
+    public Acteur(Sprite sp, Point coord, Point offset) {
+        this.sp = sp;
+        if (!sp.isFlipY()) sp.flip(false, true);
+        setScale(1);
+        setX(32*coord.x+offset.x);
+        setY(16*coord.y+offset.y);
+        setWidth(sp.getRegionWidth());
+        setHeight(sp.getRegionHeight());	}
+
+	public void flip(boolean flipX, boolean flipY){
     	this.tex.flip(flipX, flipY);
     }
     
@@ -35,6 +46,7 @@ public class Acteur extends Actor {
     public void draw (Batch batch, float parentAlpha) {
         Color color = getColor();
         batch.setColor(color.r, color.g, color.b, color.a * parentAlpha);
-        batch.draw(tex, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+        if(tex != null)batch.draw(tex, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+        if(sp != null)batch.draw(sp, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
     }
 }

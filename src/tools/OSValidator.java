@@ -3,6 +3,8 @@ package tools;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
+
 public class OSValidator {
 	
 	private static Logger logger = LogManager.getLogger(OSValidator.class.getSimpleName());
@@ -13,16 +15,16 @@ public class OSValidator {
 		logger.info("Détection de l'OS :");
  
 		if (isWindows()) {
-			logger.info("	- OS : Windows");
+			logger.info("Windows");
 		} else if (isMac()) {
-			logger.info("	- OS : Mac");
+			logger.info("Mac");
 		} else if (isUnix()) {
-			logger.info("	- OS : Unix/Linux");
+			logger.info("Unix/Linux");
 		} else if (isSolaris()) {
-			logger.info("	- OS : Solaris");
+			logger.info("Solaris");
 		} else {
-			logger.fatal("	- OS : Inconnu");
-			System.exit(1);
+			logger.fatal("Inconnu");
+			Gdx.app.exit();
 		}
 	}
  

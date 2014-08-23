@@ -48,6 +48,8 @@ import opent4c.Main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Gdx;
+
 /**
  * A class loader for loading jar files, both local and remote.
  */
@@ -64,7 +66,7 @@ class WebLoader extends URLClassLoader {
 				u = new URL("https://dl.dropboxusercontent.com/u/48438289/t4cEditorfull.jar");
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
-				System.exit(1);
+				Gdx.app.exit();
 			}
 			logger.info("Chargement t4cEditorfull.jar");
 		}else{
@@ -72,7 +74,7 @@ class WebLoader extends URLClassLoader {
 				u = new URL("https://dl.dropboxusercontent.com/u/48438289/t4cEditor.jar");
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
-				System.exit(1);
+				Gdx.app.exit();
 			}
 			logger.info("Chargement t4cEditor.jar");
 		}
@@ -81,7 +83,7 @@ class WebLoader extends URLClassLoader {
 			loader.invokeClass("t4cPlugin.GDXEditor", new String[]{});
 		} catch (ClassNotFoundException | NoSuchMethodException	| InvocationTargetException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		logger.info("Chargement OK");
 	}

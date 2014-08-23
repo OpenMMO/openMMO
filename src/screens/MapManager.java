@@ -41,6 +41,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.utils.async.ThreadUtils;
 
 import tools.DataInputManager;
 
@@ -55,7 +56,7 @@ public class MapManager implements Screen{
 
 	private static Logger logger = LogManager.getLogger(MapManager.class.getSimpleName());
 	private static Map<String,ByteBuffer> id_maps = new HashMap<String,ByteBuffer>(5);
-	private static Map<Integer,Chunk> worldmap = new ConcurrentHashMap<Integer,Chunk>(16);
+	private static Map<Integer,Chunk> worldmap = new ConcurrentHashMap<Integer,Chunk>(9);
 	private static MapManager m;
 	private InputManager controller = null;
 	private TextButtonStyle style = new TextButtonStyle();
@@ -70,23 +71,34 @@ public class MapManager implements Screen{
 	private Stage highlight_stage;
 	private Group menu, infos;
 	private boolean render_infos = true;
-	//private static boolean stage_ready = true;
-	//private ScreenManager sm;
 	private static boolean highlighted = false;
 	private static ScheduledFuture<?> highlight;
 	private static boolean renderSprites = true;
 	private Point highlight_point;
 	private Acteur highlight_tile;
 	private LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
-	private IdEditMenu editMenu;
+	private static Map<Integer, Point> idEditList;
+	private static boolean idListCreated = false;
+	
+	public static Map<Integer, Point> getIdEditList() {
+		return idEditList;
+	}
+
+	public static void setIdEditList(Map<Integer, Point> idEditList) {
+		MapManager.idEditList = idEditList;
+	}
+
 	public static final float blink_period = 1;
 
 	
 	public MapManager(ScreenManager screenManager){
 		m = this;
-		//sm = screenManager;
 	}
 	
+	private void createIdEditMap() {
+		ThreadsUtil.executeInThread(RunnableCreatorUtil.getIdEditListCreatorRunnable());
+	}
+
 	/**
 	 * Initializes the MapManager and binds the inputManager
 	 */
@@ -109,7 +121,9 @@ public class MapManager implements Screen{
 		controller = new InputManager(m);
 		Gdx.input.setInputProcessor(controller);
 		loadMaps();
-		ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(Places.getPlace("startpoint")));
+		createIdEditMap();
+		loadingStatus.waitIdEditListCreated();
+		teleport(Places.getPlace("startpoint"));
 	}
 	
 	/**
@@ -135,28 +149,12 @@ public class MapManager implements Screen{
 	 */
 	public void loadMaps() {
 		logger.info("Chargement des cartes");
+		UpdateDataCheckStatus.setStatus("Chargement des cartes");
 		Places.createDefault();
-
-		List<File> decrypted_maps = FileLister.lister(new File(FilesPath.getDataDirectoryPath()), ".decrypt");
-		Iterator<File> iter_decrypted_maps = decrypted_maps.iterator();
-		while(iter_decrypted_maps.hasNext()){
-			File f = iter_decrypted_maps.next();
-			UpdateDataCheckStatus.setMapsStatus("Chargement carte : "+f.getName());
-			UpdateDataCheckStatus.setStatus("Chargement carte : "+f.getName());
-			ByteBuffer buf = ByteBuffer.allocate((int)f.length());
-			try {
-				DataInputManager in = new DataInputManager (f);
-				while (buf.position() < buf.capacity()){
-					buf.put(in.readByte());
-				}
-				in.close();
-			}catch(IOException exc){
-				exc.printStackTrace();
-				System.exit(1);
-			}
-			buf.rewind();
-			id_maps.put(f.getName().substring(0, f.getName().indexOf('.')),buf);
-		}
+		ThreadsUtil.executeInThread(RunnableCreatorUtil.getMapLoaderRunnable());
+		loadingStatus.waitForAllMapsLoaded();
+		logger.info("Cartes chargées");
+		UpdateDataCheckStatus.setStatus("Cartes chargées");
 	}
 
 	/**
@@ -168,7 +166,7 @@ public class MapManager implements Screen{
 			logger.warn("On essayer de créer des chunks d'un endroit null");
 			return;
 		}
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord(),Chunk.chunk_size);
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord());
 		Iterator<Integer> iter_position = chunk_positions.keySet().iterator();
 		while(iter_position.hasNext()){
 			int chunkId = iter_position.next();
@@ -282,20 +280,13 @@ public class MapManager implements Screen{
 	}
 
 	/**
-	 * @return the chunk's size
-	 */
-	public static Point getChunkSize() {
-		return Chunk.chunk_size;
-	}
-
-	/**
 	 * @param carte
 	 * @param point
 	 * @return the id at given coordinates on a given map name
 	 */
 	public static int getIdAtCoordOnMap(String carte, Point point) {
 		int result = -1;
-		result = getIdAtCoord(id_maps.get(carte), point);
+		result = getIdAtCoord(getId_maps().get(carte), point);
 		return result;
 	}
 
@@ -315,13 +306,13 @@ public class MapManager implements Screen{
 				logger.fatal(e);
 				logger.fatal(point);
 				e.printStackTrace();
-				System.exit(1);
+				Gdx.app.exit();
 			}
 			b1 = buf.get();
 			b2 = buf.get();
 		}else{
 			logger.fatal("Buffer de carte nul");
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		result = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
 		return result;
@@ -398,7 +389,6 @@ public class MapManager implements Screen{
 			logger.warn("On tente de se téléporter dans un endroit null");
 			return;
 		}
-		//if(!stage_ready)return;
 		Chunk.stopChunkMapWatcher();
 		createChunks(place);
 		renderChunks();
@@ -423,9 +413,7 @@ public class MapManager implements Screen{
 	public void editMapAtCoord(Point point) {
 		int id = getIdAtCoordOnMap("v2_worldmap", point);
 		logger.info("Open menu ID "+id+"@ "+point);
-		//edit_menu  = new Edit_menu(point, worldmap.get(0).getActeurPixelOnMapFromId(id,point), highlight_stage, id);
-		editMenu = new IdEditMenu(point, id);
-		//ui.addActor(edit_menu);
+		new IdEditMenu(point);
 		Gdx.input.setInputProcessor(null);
 	}
 
@@ -505,7 +493,6 @@ public class MapManager implements Screen{
 	 */
 	public static void close_edit_menu() {
 		Gdx.input.setInputProcessor(m.controller);
-		m.editMenu = null;
 		unHighlight();
 	}
 
@@ -521,5 +508,25 @@ public class MapManager implements Screen{
 			renderSprites  = true;
 			renderChunks();
 		}
+	}
+
+	public static boolean doesRenderSprites() {
+		return renderSprites;
+	}
+
+	public static Map<String,ByteBuffer> getId_maps() {
+		return id_maps;
+	}
+
+	public static void setId_maps(Map<String,ByteBuffer> id_maps) {
+		MapManager.id_maps = id_maps;
+	}
+
+	public static boolean isIdEditListCreated() {
+		return idListCreated ;
+	}
+
+	public static void setIdEditListCreated(boolean b) {
+		idListCreated = b;
 	}
 }

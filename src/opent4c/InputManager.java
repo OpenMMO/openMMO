@@ -36,7 +36,7 @@ public class InputManager implements InputProcessor{
 	private ScheduledFuture<?> movingdown;
 	private OrthographicCamera camera = null;
 	private final int movedelay_ms = 16;//un tout petit peu plus rapide que 60Hz
-	private static final float movespeed = 1.3f;
+	private static final float movespeed = 2f;
 	private boolean control_right = false;
 	private boolean control_left = false;
 

@@ -42,9 +42,11 @@ public enum AssetsLoader {
 		settings.maxHeight = 772;
 		settings.rotation = false;
 		settings.ignoreBlankImages = false;
+		settings.paddingX = 0;
+		settings.paddingY = 0;
 		settings.edgePadding = false;
 		settings.flattenPaths = true;
-		settings.grid = true;
+		settings.grid = false;
 		settings.limitMemory = false;
 		settings.stripWhitespaceX = false;
 		settings.stripWhitespaceY = false;
@@ -56,14 +58,34 @@ public enum AssetsLoader {
 		while (iter_sprites.hasNext()){
 			final File f = iter_sprites.next();
 			final File at = new File(FilesPath.getAtlasSpritesFilePath(f.getName()));
-			if (!f.getName().equals(last) & f.isDirectory() & !at.exists()){
+			if (!f.getName().equals(last) && f.isDirectory() && !at.exists() && !f.getName().equals("V2Effect.atlas")){
 				loadingStatus.addSpritesAtlasToPackage(f.getName());
 				executeSpritePacking(f, settings);
 				last = f.getName();
 			}
 		}
+		packExceptions();
 	}
 	
+	private static void packExceptions() {
+		Settings settings = new Settings();
+		settings.pot = false;
+		settings.maxWidth = 1284;
+		settings.maxHeight = 772;
+		settings.rotation = false;
+		settings.ignoreBlankImages = false;
+		settings.paddingX = 0;
+		settings.paddingY = 0;
+		settings.edgePadding = false;
+		settings.flattenPaths = true;
+		settings.grid = true;
+		settings.limitMemory = false;
+		settings.stripWhitespaceX = false;
+		settings.stripWhitespaceY = false;
+		loadingStatus.addSpritesAtlasToPackage(FilesPath.getAtlasSpritesFilePath("V2Effect"));
+		executeSpritePacking(new File(FilesPath.getAtlasSpritesFilePath("V2Effect")), settings);
+	}
+
 	private static void executeSpritePacking(File f, Settings s) {
 		Runnable r = RunnableCreatorUtil.getSpritePackerRunnable(f, s);
 		ThreadsUtil.executeInThread(r);
@@ -82,10 +104,13 @@ public enum AssetsLoader {
 		settings.maxHeight = 640;
 		settings.rotation = false;
 		settings.ignoreBlankImages = false;
+		settings.paddingX = 0;
+		settings.paddingY = 0;
 		settings.edgePadding = false;
 		settings.flattenPaths = true;
 		settings.grid = true;
 		settings.limitMemory = false;
+		settings.alias = false;
 
 
 		List<File> tuiles = new ArrayList<File>();
@@ -107,25 +132,6 @@ public enum AssetsLoader {
 	}
 	
 	/**
-	 * On fait une liste de nos atlas de sprites, et on les charge tous.
-	 */
-	@Deprecated
-	public static void loadSprites(){
-		logger.info("Chargement des sprites.");
-		
-		loadingStatus.waitUntilSpritesPackaged();
-		
-		List<File> spritlas = new ArrayList<File>();
-		spritlas.addAll(FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas"));
-		Iterator<File> iter_spritlas = spritlas.iterator();
-		while(iter_spritlas.hasNext()){
-			loadingStatus.addOneSpriteAtlas();
-			final String name = iter_spritlas.next().getName();
-			Gdx.app.postRunnable(RunnableCreatorUtil.getTextureAtlasSpriteCreatorRunnable(name));		
-		}
-	}
-	
-	/**
 	 * On cherche un atlas de sprites en particulier, puis on le charge
 	 * @param name : nom de l'atlas recherché.
 	 * @return : l'atlas chargé.
@@ -135,7 +141,6 @@ public enum AssetsLoader {
 		ThreadsUtil.queueSpriteLoad(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
 		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
 		logger.info("Sprite Atlas : " +name+" loaded.");
-		UpdateDataCheckStatus.setAtlasStatus("Sprite Atlas : " +name+" loaded.");
 		UpdateDataCheckStatus.setStatus("Sprite Atlas : " +name+" loaded.");
 		return ta;
 	}
@@ -145,6 +150,7 @@ public enum AssetsLoader {
 	 */
 	public static void loadSols() {
 		logger.info("Chargement des tuiles.");
+		UpdateDataCheckStatus.setStatus("Chargement des tuiles.");
 		//Ensure tiles are packaged before try to use them
 		loadingStatus.waitUntilTilesPackaged();
 		
@@ -182,19 +188,26 @@ public enum AssetsLoader {
 	/**
 	 * Loads sprites with ids
 	 */
-	@Deprecated
 	public static void loadMappedSprites() {
 		logger.info("Chargement des sprites.");
 		loadingStatus.waitUntilSpritesPackaged();
 		List<String> sprite_atlas_to_load = new ArrayList<String>();
 		sprite_atlas_to_load.add("Unknown");
 		sprite_atlas_to_load.add("Highlight");
-		Iterator<String> iter_spriteload = SpriteData.getPixelIndex().keySet().iterator();
+		Iterator<Integer> iter = SpriteData.getIdfull().keySet().iterator();
+		while(iter.hasNext()){
+			int id = iter.next();
+			if(!SpriteData.isTuileId(id)){
+				String atl = SpriteData.getAtlasFromId(id);
+				if(!sprite_atlas_to_load.contains(atl))sprite_atlas_to_load.add(atl);
+			}
+		}
+		/*Iterator<String> iter_spriteload = SpriteData.getPixelIndex().keySet().iterator();
 		while(iter_spriteload.hasNext()){
 			String key = iter_spriteload.next();
-			MapPixel pix = SpriteData.getPixelIndex().get(key);
-			if(!sprite_atlas_to_load.contains(pix.getAtlas()))sprite_atlas_to_load.add(pix.getAtlas());
-		}
+			String atl = key.substring(0,key.indexOf(':'));
+			if(!sprite_atlas_to_load.contains(atl))sprite_atlas_to_load.add(atl);
+		}*/
 		Iterator<String> iter_load = sprite_atlas_to_load.iterator();
 		while(iter_load.hasNext()){
 			load(iter_load.next());

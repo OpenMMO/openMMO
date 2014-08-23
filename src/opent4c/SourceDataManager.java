@@ -21,7 +21,6 @@ public class SourceDataManager {
 	 * Create a HashMap binding T4C files with their MD5 Checksum, to be able to check their integrity later.
 	 */
 	public static void populate() {
-		UpdateDataCheckStatus.setSourceDataStatus("Peuplement données sources");
 		UpdateDataCheckStatus.setStatus("Peuplement données sources");
 		addSourceFile(FilesPath.getSourceDataDirectoryPath()+"v2_cavernmap.map","1f1848445f4cb1626f3ede0683388ff4");
 		addSourceFile(FilesPath.getSourceDataDirectoryPath()+"v2_dungeonmap.map","4df9dfc9466cca818ca2fd22ec560599");

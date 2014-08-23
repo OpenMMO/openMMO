@@ -26,8 +26,8 @@ public class SettingsManager {
 		cfg.width = getWidth();
 		cfg.height = getHeight();
 		cfg.fullscreen = false;
-		cfg.width = 960;
-		cfg.height = 480;
+		cfg.width = 1200;
+		cfg.height = 500;
 //		cfg.fullscreen = true;
 		cfg.backgroundFPS = 24;
 		cfg.foregroundFPS = 60;

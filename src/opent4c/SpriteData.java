@@ -17,8 +17,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
@@ -28,6 +26,8 @@ import opent4c.utils.ThreadsUtil;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.badlogic.gdx.Gdx;
 
 
 public class SpriteData {
@@ -48,6 +48,8 @@ public class SpriteData {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void loadPixelIndex() {
+		logger.info("Chargement de pixel_index.");
+		UpdateDataCheckStatus.setStatus("Chargement de pixel_index.");
 		pixel_index.clear();
 		
 		FileInputStream fin = null;
@@ -56,7 +58,7 @@ public class SpriteData {
 		} catch (FileNotFoundException e2) {
 			e2.printStackTrace();
 			logger.fatal(e2);
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		ObjectInputStream ois = null;
 		try {
@@ -64,23 +66,25 @@ public class SpriteData {
 		} catch (IOException e2) {
 			e2.printStackTrace();
 			logger.fatal(e2);
-			System.exit(1);
+			Gdx.app.exit();
 		}	
 		try {
 			pixel_index = (HashMap<String,MapPixel>) ois.readObject();
 		} catch (ClassNotFoundException | IOException e1) {
 			e1.printStackTrace();
 			logger.fatal(e1);
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		try {
 			fin.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.fatal(e);
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		pixel_index.remove(-1);
+		logger.info("Pixel_index chargé.");
+		UpdateDataCheckStatus.setStatus("Pixel_index chargé.");
 	}
 
 	/**
@@ -88,35 +92,21 @@ public class SpriteData {
 	 */
 	public static void createPixelIndex() {
 		logger.info("Création de pixel_index");
+		UpdateDataCheckStatus.setStatus("Création de pixel_index");
 		FileOutputStream fout = null;
 		try {
 			fout = new FileOutputStream(FilesPath.getPixelIndexFilePath());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			logger.fatal(e);
-			System.exit(1);
-		}
+
 		ObjectOutputStream oos = null;
-		try {
+
 			oos = new ObjectOutputStream(fout);
-		} catch (IOException e) {
-			e.printStackTrace();
-			logger.fatal(e);
-			System.exit(1);
-		}
-		try {
+
 			oos.writeObject(pixel_index);
-		} catch (IOException e) {
-			e.printStackTrace();
-			logger.fatal(e);
-			System.exit(1);
-		}
-		try {
 			fout.close();
-		} catch (IOException e) {
+		}catch(Exception e){
 			e.printStackTrace();
 			logger.fatal(e);
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		logger.info("Pixel_index créé.");
 	}
@@ -167,7 +157,7 @@ public class SpriteData {
 			}catch(StringIndexOutOfBoundsException exc){
 				logger.fatal("Erreur dans le calcul du modulo : "+tile.getName());
 				exc.printStackTrace();
-				System.exit(1);
+				Gdx.app.exit();
 			}
 		}
 		//logger.info("Computed modulo : "+tileDir.getName()+"=>"+PointsManager.getPoint(moduloX, moduloY));
@@ -193,7 +183,7 @@ public class SpriteData {
 	 */
 	public static void putPixel(MapPixel pixel) {
 		String key = pixel.getAtlas()+":"+pixel.getTex();
-		if(pixel_index.containsKey(key)){
+		if(pixel_index.containsKey(key) && pixel.getId() != -1){
 			logger.warn("Doublon : "+key+" => "+pixel.getId()+" : "+pixel.getAtlas()+" : "+pixel.getTex());
 		}else{
 			pixel_index.put(key, pixel);
@@ -220,7 +210,7 @@ public class SpriteData {
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 	}
 	
@@ -229,7 +219,6 @@ public class SpriteData {
 	}
 
 
-	//TODO ici on différencie les tuiles des sprites
 	private static void readIdFullLine(String line) {
 		int key = 0;
 		String atlas = "";
@@ -250,37 +239,6 @@ public class SpriteData {
 
 
 	/**
-	 * Gets mirrors from mirrors file
-	 * puts info into a HashMap<Integer,SpriteName>
-	 */
-	public static void loadMirrorsFromFile(){
-		File mirror_file = new File(FilesPath.getMirrorFilePath());
-		SpriteUtils.logger.info("Lecture du fichier "+mirror_file.getName());
-		try{
-			BufferedReader buff = new BufferedReader(new FileReader(mirror_file.getPath()));			 
-			try {
-				String line;
-				while ((line = buff.readLine()) != null) {
-					readMirrorLine(line);
-				}
-			} finally {
-				buff.close();
-			}
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-			System.exit(1);
-		}
-	}
-	
-	private static void readMirrorLine(String line) {
-		int key = 0;
-		String value = "";
-		key = Integer.parseInt(line.substring(0, line.indexOf(' ')));
-		value = line.substring(line.indexOf(' ')+3);
-		getMirrors().put(key,value);		
-	}
-
-	/**
 	 * @return
 	 */
 	public static Map<String, MapPixel> getPixelIndex() {
@@ -288,32 +246,85 @@ public class SpriteData {
 	}
 
 	/**
+	 * Get a Sprite MapPixel from an ID
+	 */
+	public static MapPixel getPixelFromId(int id){
+		if(isTuileId(id)){
+			return null;
+		}else{
+			return getSpriteFromId(id);
+		}
+	}
+	
+	/**
+	 * Get a MapPixel from an ID and Point
+	 */
+	public static MapPixel getPixelFromIdAndPoint(int id, Point coord){
+		if(isTuileId(id)){
+			return getTileFromIdAndPoint(id, coord);
+		}else{
+			return getSpriteFromId(id);
+		}
+	}
+	
+	/**
+	 * Get a Tile MapPixel from an ID and a Point.
 	 * @param id
+	 * @param coord
 	 * @return
 	 */
-	public static MapPixel getSpriteFromId(int id) {
+	private static MapPixel getTileFromIdAndPoint(int id, Point coord) {
 		if (idFull.containsKey(id)){
-			String key = idFull.get(id);
-			return pixel_index.get(key);
+			String tex = getTexFromId(id);
+			String atlas = getAtlasFromId(id);
+			int moduloX = Integer.parseInt(tex.substring(tex.indexOf('(')+1,tex.indexOf(',')));
+			int moduloY = Integer.parseInt(tex.substring(tex.indexOf(',')+1,tex.indexOf(')')));
+			String moduledTex = Chunk.getModuledTexNameFromPoint(atlas, moduloX, moduloY, coord);
+			String key = atlas+":"+moduledTex;
+			if(pixel_index.containsKey(key)){
+				return pixel_index.get(key);
+			}else{
+				logger.warn("Clé non mappée : "+key);
+				return null;
+			}
 		}else{
 			logger.warn("ID non mappée : "+id);
 			return null;
 		}
 	}
-	
+
+	/**
+	 * Is there a tile with this id?
+	 * @param id
+	 * @return
+	 */
+	public static boolean isTuileId(int id) {
+		if (idFull.containsKey(id)){
+			if(getTexFromId(id).startsWith("modulos(")){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * @param id
 	 * @return
 	 */
-	/*public static MapPixel getTileFromId(int id) {
+	private static MapPixel getSpriteFromId(int id) {
 		if (idFull.containsKey(id)){
 			String key = idFull.get(id);
-			return pixel_index.get(key);
+			if(pixel_index.containsKey(key)){
+				return pixel_index.get(key);
+			}else{
+				logger.warn("Clé non mappée : "+key);
+				return null;
+			}
 		}else{
 			logger.warn("ID non mappée : "+id);
 			return null;
 		}
-	}*/
+	}
 
 	/**
 	 * 
@@ -379,7 +390,7 @@ public class SpriteData {
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 			logger.fatal(e);
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		Iterator<Integer> iter = getIdfull().keySet().iterator();
 		while(iter.hasNext()){
@@ -401,9 +412,9 @@ public class SpriteData {
 		Iterator<Integer> iter_id = getIdfull().keySet().iterator();
 		while(iter_id.hasNext()){
 			int id = iter_id.next();
-			if((px.getAtlas().equals(getAtlasFromId(id)) & (px.getTex().equals(getTexFromId(id))))){
+			if((px.getAtlas().equals(getAtlasFromId(id)) && (px.getTex().equals(getTexFromId(id))))){
 				px.setId(id);
-			}else if(px.getTex().equals(getAtlasFromId(id))){
+			}else if(px.getTex().equals(getAtlasFromId(id)) && getTexFromId(id).startsWith("modulos(")){
 				px.setId(id);
 			}
 		}	

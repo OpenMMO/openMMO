@@ -6,10 +6,8 @@ package opent4c;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
@@ -19,6 +17,8 @@ import opent4c.utils.SpriteName;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.badlogic.gdx.Gdx;
 
 import tools.ByteArrayToNumber;
 import tools.UnsignedInt;
@@ -55,7 +55,7 @@ public class SpriteUtils {
 		Palette p = extractPalette(pixel);
 		if(p == null){
 			logger.fatal("On n'a pas trouvé cette palette : "+pixel.getTex());
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		pixel.setPalette(p);
 		//logger.info("Palette : "+nom+"<=>"+sprite.getPaletteName());
@@ -135,7 +135,7 @@ public class SpriteUtils {
 		Palette result = SpriteManager.palettes.get("Bright1");
 		if (result == null){
 			logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+pixel.getTex()+" / "+SpriteManager.palettes.containsKey("Bright1"));
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		Iterator<String> iter_pal = SpriteManager.palettes.keySet().iterator();
 		while (iter_pal.hasNext()){
@@ -146,7 +146,7 @@ public class SpriteUtils {
 				result = SpriteManager.palettes.get(pal);
 				if (result == null){
 					logger.fatal("On n'est pas parvenu à prendre une palette dans la liste : "+nom+" / "+SpriteManager.palettes.containsKey(pal));
-					System.exit(1);
+					Gdx.app.exit();
 				}
 				break;
 			}
@@ -277,7 +277,7 @@ public class SpriteUtils {
 			in.close();
 		}catch(IOException exc){
 			exc.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		result.rewind();
 		return result;
@@ -295,7 +295,7 @@ public class SpriteUtils {
 		nomExtrait = manageNameSpecialCases(nomExtrait);
 		if (nomExtrait.equals("")){
 			logger.fatal("nom extrait null : ");
-			System.exit(1);
+			Gdx.app.exit();
 		};
 		return new SpriteName(nomExtrait);
 	}
@@ -459,13 +459,19 @@ public class SpriteUtils {
 		if (nom.equals("Lava (4,2)"))result = "Lava (4, 2)";
 		if (nom.equals("Lava (4,3)"))result = "Lava (4, 3)";
 		if (nom.equals("Lava (4,4)"))result = "Lava (4, 4)";
+		//coordonnées de tuiles à 2 digits
+		/*if (nom.contains(" (") && nom.contains(", ") && nom.contains(")")){
+			String radix = nom.substring(0, nom.indexOf('('));
+			int x = Integer.parseInt(nom.substring(nom.indexOf('(')+1, nom.indexOf(", ")));
+			int y = Integer.parseInt(nom.substring(nom.indexOf(str), endIndex))
+		}*/
 		//Pour faire coller les noms de tuiles à leur nom d'atlas
-		if(nom.contains("STuileTmpl1"))result = nom.replace("STuileTmpl1", "BlancNoir");
-		if(nom.contains("TuileTmpl1"))result = nom.replace("TuileTmpl1", "BlancNoirBig");
-		if(nom.contains("STuileTmpl2"))result = nom.replace("STuileTmpl2", "RougeBeige");
-		if(nom.contains("2Wooden"))result = nom.replace("2Wooden", "Wooden2");
-		if(nom.contains("RockFloor"))result = nom.replace("RockFloor", "Rock");
-		if(nom.contains("3Wooden"))result = nom.replace("3Wooden", "Wooden3");
+		if(nom.startsWith("STuileTmpl1"))result = nom.replace("STuileTmpl1", "BlancNoir");
+		if(nom.startsWith("TuileTmpl1"))result = nom.replace("TuileTmpl1", "BlancNoirBig");
+		if(nom.startsWith("STuileTmpl2"))result = nom.replace("STuileTmpl2", "RougeBeige");
+		if(nom.startsWith("2Wooden"))result = nom.replace("2Wooden", "Wooden2");
+		if(nom.startsWith("RockFloor"))result = nom.replace("RockFloor", "Rock");
+		if(nom.startsWith("3Wooden"))result = nom.replace("3Wooden", "Wooden3");
 		//Pour les animations
 		if(nom.contains("AnimWater01"))result = "AnimWater01"+nom.substring(13)+"_"+nom.substring(0, 2);
 
@@ -555,7 +561,7 @@ public class SpriteUtils {
 		} catch (DataFormatException e) {
 			e.printStackTrace();
 			logger.fatal("Décompression échouée");
-			System.exit(1);
+			Gdx.app.exit();
 		}
 	    decompresser.end();
 	    return result;

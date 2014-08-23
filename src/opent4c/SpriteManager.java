@@ -3,7 +3,6 @@ package opent4c;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +11,8 @@ import opent4c.utils.SpriteName;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.badlogic.gdx.Gdx;
 
 import tools.ByteArrayToNumber;
 import tools.DataInputManager;
@@ -56,7 +57,7 @@ public class SpriteManager {
 		
 		File f = SourceDataManager.getDPD();
 		logger.info("Décryptage du fichier DPD.");
-		
+		UpdateDataCheckStatus.setStatus("Décryptage du fichier DPD.");
 		header = ByteBuffer.allocate(41);
 		
 		try {
@@ -84,8 +85,9 @@ public class SpriteManager {
 			}
 			in.close();
 		}catch(IOException exc){
-			System.err.println("Erreur d'ouverture");
+			logger.fatal("Erreur d'ouverture");
 			exc.printStackTrace();
+			Gdx.app.exit();
 		}
 		buf.rewind();
 		
@@ -122,6 +124,7 @@ public class SpriteManager {
 	public static void decryptDID(){
 		File f = SourceDataManager.getDID();
 		logger.info("Décryptage du fichier DID.");
+		UpdateDataCheckStatus.setStatus("Décryptage du fichier DID.");
 		ByteBuffer buf = null;
 		ByteBuffer header;
 		ByteBuffer bufUnZip;
@@ -156,7 +159,7 @@ public class SpriteManager {
 		}catch(IOException exc){
 			logger.fatal("Erreur d'ouverture");
 			exc.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 		
 		buf.rewind();
@@ -209,6 +212,7 @@ public class SpriteManager {
 	 */
 	public static void decryptDDA(boolean doWrite){
 		logger.info("Décryptage des fichiers DDA : ecriture = "+doWrite);
+		UpdateDataCheckStatus.setStatus("Décryptage des fichiers DDA : ecriture = "+doWrite);
 		File f = null;
 		List<File> ddas = SourceDataManager.getDDA();
 		Iterator<File>iter_dda = ddas.iterator();
@@ -238,7 +242,7 @@ public class SpriteManager {
 					buf.position(indexation);
 				}catch(IllegalArgumentException e){
 					e.printStackTrace();
-					System.exit(1);
+					Gdx.app.exit();
 				}
 				SpriteUtils.extractDDASprite(buf, pixel);//lit l'entête du sprite et ajoute les infos de l'entête dans le Sprite
 				if(!doWrite){
@@ -248,7 +252,7 @@ public class SpriteManager {
 					writen = SpriteUtils.doTheWriting(pixel, buf);
 					if (!writen){
 						logger.fatal("Sprite non écrit => "+pixel.getTex());
-						System.exit(1);
+						Gdx.app.exit();
 					}
 					addOneWriten();
 				}
@@ -278,6 +282,7 @@ public class SpriteManager {
 
 	public static void setDda_done(boolean done) {
 		dda_done = done;
+		SpriteData.getOrigin().clear();
 	}
 }
 

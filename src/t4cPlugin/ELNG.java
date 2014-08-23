@@ -1,13 +1,8 @@
 package t4cPlugin;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.util.Iterator;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,7 +35,7 @@ public class ELNG {
 			System.err.println("Erreur d'ouverture");
 			exc.printStackTrace();
 		}
-		try {
+		/*try {
 			OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"ELNG/"+f.getName()+".txt"),Params.CHARSET);
 			pw.write(buf.array());
 			pw.close();
@@ -55,6 +50,6 @@ public class ELNG {
 		}
 		logger.info("	- Fichier "+Params.t4cOUT+"ELNG/"+f.getName()+" écrit.");
 		Params.nb_elng++;
-		//logger.info("");
+		logger.info("");*/
 	}
 }

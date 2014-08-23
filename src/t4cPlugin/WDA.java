@@ -6,21 +6,16 @@ import java.awt.image.IndexColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import javax.imageio.ImageIO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import t4cPlugin.SPELL.spell_effect;
-import t4cPlugin.SPELL.spell_effect.param_effet;
+import com.badlogic.gdx.Gdx;
+
 import tools.BitBuffer;
 import tools.DataInputManager;
 
@@ -129,7 +124,7 @@ class COLMAP {
 		byte[] blue =  new byte[]{(byte) 0x00, (byte) 0x00, (byte) 0xFF, (byte) 0x00, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0xA0, (byte) 0x00, (byte) 0xA0, (byte) 0xA0, (byte) 0xA0, (byte) 0x7F};
 		IndexColorModel model = new IndexColorModel(8,16,red,green,blue);
 		colMapImg = new BufferedImage(model, colRaster, false, null);
-		File f = new File(Params.t4cOUT+"COLMAPS"+File.separator+wda_name+"_"+nom+".png");
+		/*File f = new File(Params.t4cOUT+"COLMAPS"+File.separator+wda_name+"_"+nom+".png");
 		try {
 			ImageIO.write(colMapImg, "png", f);
 		} catch (IOException e) {
@@ -137,7 +132,7 @@ class COLMAP {
 			e.printStackTrace();
 		}
 		logger.info("	- Carte de collision écrite : "+Params.t4cOUT+"COLMAPS/"+nom+".png");
-		Params.nb_colmap++;
+		Params.nb_colmap++;*/
 	}
 
 }
@@ -411,7 +406,7 @@ class COLMAP {
 			//logger.info("		- taille_nom : "+taille_nom);
 			for (int i=0 ; i<taille_nom ; i++){
 				b1 = buf.get();
-				if (b1 == 47 && !Params.OS.equals("Windows")) b1 = 92;
+				//if (b1 == 47 && !Params.OS.equals("Windows")) b1 = 92;
 				String s = new String(new byte[]{b1});
 				nom += s;
 			}
@@ -468,7 +463,7 @@ public class WDA {
 		if (marqueur != 68775){
 			if (marqueur != 1){
 				//logger.info("	- Marqueur érroné : "+marqueur);
-				System.exit(1);
+				Gdx.app.exit();
 			}else {
 				//logger.info("	- Marqueur correct : "+marqueur+" : fichier PNJ");
 				//extractPNJ(buf);
@@ -478,7 +473,7 @@ public class WDA {
 			extract(buf, wda);
 		}
 		
-		Params.total_sorts = sorts.size();
+		/*Params.total_sorts = sorts.size();
 		Params.total_colmaps = colmaps.size();
 		Params.total_items = items.size();
 		Params.total_item_pos = item_pos.size();
@@ -493,7 +488,7 @@ public class WDA {
 		Params.total_lieux = lieux.size();
 		Params.total_icones = icones.size();
 		Params.total_fx_sorts = fx_sorts.size();
-		Params.total_pnjs = pnjs.size();
+		Params.total_pnjs = pnjs.size();*/
 		
 	}
 
@@ -534,13 +529,13 @@ public class WDA {
 		Iterator<Fx_spell> iter_fx_sorts = fx_sorts.iterator();
 		while(iter_fx_sorts.hasNext()){
 			Fx_spell fx = iter_fx_sorts.next();
-			File f = new File (Params.t4cOUT+"SPELLFX/"+wda.getName()+"_"+fx.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"SPELLFX/"+wda.getName()+"_"+fx.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
 				System.err.println(Params.t4cOUT+"SPELLFX/"+wda.getName()+"_"+fx.nom+".txt");
 				e.printStackTrace();
-				System.exit(1);
+				Gdx.app.exit();
 			}
 			try {
 				OutputStreamWriter pw = new OutputStreamWriter(new FileOutputStream(Params.t4cOUT+"SPELLFX/"+f.getName()),Params.CHARSET);
@@ -557,7 +552,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- EFFET_SORT écrit : "+Params.t4cOUT+"SPELLFX/"+wda.getName()+"_"+fx.nom+".txt");
-			Params.nb_effets_sorts++;
+			Params.nb_effets_sorts++;*/
 		}		
 	}
 	
@@ -578,7 +573,7 @@ public class WDA {
 		Iterator<Icone> iter_icones = icones.iterator();
 		while(iter_icones.hasNext()){
 			Icone ic = iter_icones.next();
-			File f = new File (Params.t4cOUT+"ICONES/"+wda.getName()+"_"+ic.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"ICONES/"+wda.getName()+"_"+ic.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -600,7 +595,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- ICONE écrite : "+Params.t4cOUT+"ICONES/"+wda.getName()+"_"+ic.nom+".txt");
-			Params.nb_icones++;
+			Params.nb_icones++;*/
 		}		
 	}
 	
@@ -621,7 +616,7 @@ public class WDA {
 		Iterator<Lieu> iter_lieux = lieux.iterator();
 		while(iter_lieux.hasNext()){
 			Lieu l = iter_lieux.next();
-			File f = new File (Params.t4cOUT+"LIEUX/"+wda.getName()+"_"+l.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"LIEUX/"+wda.getName()+"_"+l.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -642,7 +637,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- LIEU écrit : "+Params.t4cOUT+"LIEUX/"+wda.getName()+"_"+l.nom+".txt");
-			Params.nb_lieux++;
+			Params.nb_lieux++;*/
 		}		
 	}
 	
@@ -663,7 +658,7 @@ public class WDA {
 		Iterator<Gfx_creatures> iter_gfx_creatures = gfx_creatures.iterator();
 		while(iter_gfx_creatures.hasNext()){
 			Gfx_creatures ct = iter_gfx_creatures.next();
-			File f = new File (Params.t4cOUT+"MONSTRES/"+wda.getName()+"_GFX_"+ct.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"MONSTRES/"+wda.getName()+"_GFX_"+ct.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -686,7 +681,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- GFX CREATURE écrit : "+Params.t4cOUT+"MONSTRES/"+wda.getName()+"_GFX_"+ct.nom+".txt");
-			Params.nb_gfx_creatures++;
+			Params.nb_gfx_creatures++;*/
 		}		
 	}
 	
@@ -707,7 +702,7 @@ public class WDA {
 		Iterator<Gfx_item> iter_gfx_items = gfx_items.iterator();
 		while(iter_gfx_items.hasNext()){
 			Gfx_item it = iter_gfx_items.next();
-			File f = new File (Params.t4cOUT+"ITEMS/"+wda.getName()+"_GFX_"+it.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"ITEMS/"+wda.getName()+"_GFX_"+it.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -729,7 +724,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- GFX ITEM écrit : "+Params.t4cOUT+"ITEMS/"+wda.getName()+"_GFX_"+it.nom+".txt");
-			Params.nb_gfx_items++;
+			Params.nb_gfx_items++;*/
 		}		
 	}
 
@@ -751,7 +746,7 @@ public class WDA {
 		Iterator<Flag> iter_flags = flags.iterator();
 		while(iter_flags.hasNext()){
 			Flag fl = iter_flags.next();
-			File f = new File (Params.t4cOUT+"FLAGS/"+wda.getName()+"_"+fl.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"FLAGS/"+wda.getName()+"_"+fl.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -773,7 +768,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- FLAG écrit : "+Params.t4cOUT+"FLAGS/"+wda.getName()+"_"+fl.nom+".txt");
-			Params.nb_flags++;
+			Params.nb_flags++;*/
 		}		
 	}
 
@@ -795,7 +790,7 @@ public class WDA {
 		Iterator<Clan> iter_clans = clans.iterator();
 		while(iter_clans.hasNext()){
 			Clan cl = iter_clans.next();
-			File f = new File (Params.t4cOUT+"CLANS/"+wda.getName()+"_"+cl.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"CLANS/"+wda.getName()+"_"+cl.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -817,7 +812,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- CLAN écrit : "+Params.t4cOUT+"CLANS/"+wda.getName()+"_"+cl.nom+".txt");
-			Params.nb_clans++;
+			Params.nb_clans++;*/
 		}		
 	}
 
@@ -846,7 +841,7 @@ public class WDA {
 		Iterator<Clan_relation> iter_clan_relations = clan_relations.iterator();
 		while(iter_clan_relations.hasNext()){
 			Clan_relation clr = iter_clan_relations.next();
-			File f = new File (Params.t4cOUT+"CLANS/"+wda.getName()+"_REL_"+Params.nb_clan_relations+".txt");
+			/*File f = new File (Params.t4cOUT+"CLANS/"+wda.getName()+"_REL_"+Params.nb_clan_relations+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -870,7 +865,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- RELATION INTERCLAN écrite : "+Params.t4cOUT+"CLANS/"+wda.getName()+"_REL_"+Params.nb_clan_relations+".txt");
-			Params.nb_clan_relations++;
+			Params.nb_clan_relations++;*/
 		}		
 	}
 
@@ -892,7 +887,7 @@ public class WDA {
 		Iterator<Teleportation> iter_teleportations = teleportations.iterator();
 		while(iter_teleportations.hasNext()){
 			Teleportation t = iter_teleportations.next();
-			File f = new File (Params.t4cOUT+"LIEUX/"+wda.getName()+"_TEL_"+Params.nb_teleportations+".txt");
+			/*File f = new File (Params.t4cOUT+"LIEUX/"+wda.getName()+"_TEL_"+Params.nb_teleportations+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -919,7 +914,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- TELEPORTATION écrite : "+Params.t4cOUT+"LIEUX/"+wda.getName()+"_TEL_"+Params.nb_teleportations+".txt");
-			Params.nb_teleportations++;
+			Params.nb_teleportations++;*/
 		}		
 	}
 
@@ -940,7 +935,7 @@ public class WDA {
 		Iterator<CREATUREBLOC> iter_creature_bloc = blocs_creatures.iterator();
 		while(iter_creature_bloc.hasNext()){
 			CREATUREBLOC sp = iter_creature_bloc.next();
-			File f = new File (Params.t4cOUT+"SPAWN/"+wda.getName()+"_"+sp.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"SPAWN/"+wda.getName()+"_"+sp.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -975,7 +970,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- SPAWN écrit : "+Params.t4cOUT+"SPAWN/"+wda.getName()+"_"+sp.nom+".txt");
-			Params.nb_spawns++;
+			Params.nb_spawns++;*/
 		}
 	}
 
@@ -996,7 +991,7 @@ public class WDA {
 		Iterator<CREATURE> iter_creatures = creatures.iterator();
 		while(iter_creatures.hasNext()){
 			CREATURE c = iter_creatures.next();
-			File f = new File (Params.t4cOUT+"MONSTRES/"+wda.getName()+"_"+c.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"MONSTRES/"+wda.getName()+"_"+c.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -1083,7 +1078,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- MONSTRE écrit : "+Params.t4cOUT+"MONSTRES/"+wda.getName()+"_"+c.nom+".txt");
-			Params.nb_creatures++;
+			Params.nb_creatures++;*/
 		}
 	}
 
@@ -1120,7 +1115,7 @@ public class WDA {
 		Iterator<SPELL> iter_spells = sorts.iterator();
 		while(iter_spells.hasNext()){
 			SPELL s = iter_spells.next();
-			File f = new File (Params.t4cOUT+"SPELLS/"+wda.getName()+"_"+s.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"SPELLS/"+wda.getName()+"_"+s.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -1200,7 +1195,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- SORT écrit : "+Params.t4cOUT+"SPELLS/"+wda.getName()+"_"+s.nom+".txt");
-			Params.nb_sorts++;
+			Params.nb_sorts++;*/
 		}
 	}
 
@@ -1226,7 +1221,7 @@ public class WDA {
 		Iterator<ITEM> iter_items = items.iterator();
 		while(iter_items.hasNext()){
 			ITEM o = iter_items.next();
-			File f = new File (Params.t4cOUT+"ITEMS/"+wda.getName()+"_"+o.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"ITEMS/"+wda.getName()+"_"+o.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -1314,7 +1309,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- ITEM écrite : "+Params.t4cOUT+"ITEMS/"+wda.getName()+"_"+o.nom+".txt");
-			Params.nb_item++;	
+			Params.nb_item++;	*/
 		}
 		
 		
@@ -1333,7 +1328,7 @@ public class WDA {
 		Iterator<ITEMPOS> iter_item_pos = item_pos.iterator();
 		while(iter_item_pos.hasNext()){
 			ITEMPOS p = iter_item_pos.next();
-			File f = new File (Params.t4cOUT+"ITEM_POS/"+p.nom+".txt");
+			/*File f = new File (Params.t4cOUT+"ITEM_POS/"+p.nom+".txt");
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -1357,7 +1352,7 @@ public class WDA {
 				}
 			}
 			logger.info("	- ITEM_POS écrite : "+Params.t4cOUT+"ITEM_POS/"+p.nom+".txt");
-			Params.nb_item_pos++;
+			Params.nb_item_pos++;*/
 		}
 	}
 	

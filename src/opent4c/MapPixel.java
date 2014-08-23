@@ -2,9 +2,6 @@ package opent4c;
 
 import java.awt.Point;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import opent4c.utils.PointsManager;
 import opent4c.utils.SpriteName;
 
@@ -129,6 +126,14 @@ public class MapPixel implements Serializable{
 
 	public void setOffset(Point offset) {
 		this.offset = offset;
+	}
+
+	public int getOffsetX() {
+		return offset.x;
+	}
+	
+	public int getOffsetY() {
+		return offset.y;
 	}
 	
 	/**
@@ -411,5 +416,13 @@ public class MapPixel implements Serializable{
 
 	public boolean isTuile() {
 		return tuile;
+	}
+
+	public int getOffsetX2() {
+		return offset2.x;
+	}
+	
+	public int getOffsetY2() {
+		return offset2.y;
 	}
 }

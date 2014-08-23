@@ -9,6 +9,8 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import com.badlogic.gdx.Gdx;
+
 public class MD5Checker {
 	/**
 	 * Vérifie le MD5 du fichier f
@@ -21,14 +23,14 @@ public class MD5Checker {
 			md5 = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		} 
         FileInputStream fis = null;
 		try {
 			fis = new FileInputStream(f);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
         BufferedInputStream bis = new BufferedInputStream(fis);
         DigestInputStream   dis = new DigestInputStream(bis, md5);
@@ -37,14 +39,14 @@ public class MD5Checker {
 			while (dis.read() != -1);
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
 
         try {
 			dis.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.exit(1);
+			Gdx.app.exit();
 		}
         
         String hash = tools.ByteArrayToHexString.print(md5.digest());

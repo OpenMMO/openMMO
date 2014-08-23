@@ -11,8 +11,11 @@ import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.T4CMAP;
 import opent4c.utils.MD5Checker;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.badlogic.gdx.Gdx;
 
 /**
  * Checks data and decodes what's missing.
@@ -28,30 +31,102 @@ public class DataChecker {
 	private static boolean sprites_are_ok = false;
 	private static boolean pixel_index_is_ok = false;
 	public final static int nb_expected_sprites = 68435;
-	public final static int delta_ok = 11; //erreur autorisée pour la validation de l'extraction des sprites : 11/68450 = 0,01%
 	public final static int nb_expected_atlas = 649;
-	//TODO trouver pourquoi il nous manque 11 sprites sur le disque alors que l'écriture est validée par un booléen...
-	//TODO Je me dis que plusieurs sprites doivent porter le même nom...
 	
 	/**
-	 * Checks source data, then atlases, and finally maps.
+	 * Checks everything is ok to be loaded.
 	 */
 	public static void runCheck() {
 		logger.info("Vérification des données source.");
+		UpdateDataCheckStatus.setStatus("Vérification des données source.");
 		SourceDataManager.populate();
 		FilesPath.init();
-		checkSourceData();
-		logger.info("Vérification des données calculées.");
-		//SpriteData.loadIdsFromFile();
 		SpriteData.loadIdFullFromFile();
 		checkWhatNeedsToBeDone();
 		doWhatNeedsToBeDone();
 		makeSureEverythingIsOk();
 		logger.info("Vérification terminée.");
+		UpdateDataCheckStatus.setStatus("Vérification terminée.");
+	}
+	
+	/**
+	 * Sets booleans to know what has to be done and what has already be done. With that, we only do what's needed.
+	 */
+	private static void checkWhatNeedsToBeDone() {
+		checkSourceData();
+		checkPixelIndex();
+		checkMaps();
+		checkAtlas();
+		checkSprites();
+	}
+	
+	/**
+	 * Checks the source data (presence and integrity).
+	 */
+	private static void checkSourceData() {
+		List<File> absentFiles = checkAbsentFiles();
+		stopIfAbsentFiles(absentFiles);
+		List<File> badChecksumFiles = checkChecksumFiles();
+		stopIfBadChecksum(badChecksumFiles);
+		UpdateDataCheckStatus.setStatus("TEST présence fichiers sources : true");
+		UpdateDataCheckStatus.setStatus("TEST présence fichiers sources : true");
 	}
 
 	/**
-	 * computes absent data
+	 * Tests pixel_index presence.
+	 */
+	private static void checkPixelIndex() {
+		File pixel_index = new File(FilesPath.getPixelIndexFilePath());
+		if (pixel_index.exists()){
+			pixel_index_is_ok = true;
+		}
+		logger.info("TEST présence pixel_index : "+pixel_index_is_ok);
+		UpdateDataCheckStatus.setStatus("TEST présence pixel_index : "+pixel_index_is_ok);
+	}
+
+	/**
+	 * Tests sprite presence.
+	 */
+	private static void checkSprites() {
+		// TODO Trouver mieux pour vérifier la présence des sprites.
+		UpdateDataCheckStatus.setStatus("TEST présence sprites.");
+		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDataDirectoryPath()), ".png").size();
+		if(nb_sprites >= (nb_expected_sprites)){
+			sprites_are_ok = true;
+		}
+		logger.info("TEST présence sprites : "+sprites_are_ok+"=>"+nb_sprites+"/"+(nb_expected_sprites));
+		UpdateDataCheckStatus.setStatus("TEST présence sprites : "+sprites_are_ok+"=>"+nb_sprites+"/"+(nb_expected_sprites));
+	}
+
+	/**
+	 * Tests presence atlas.
+	 */
+	private static void checkAtlas() {
+		int nb_atlas = FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas").size()+FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas").size();
+		if (nb_atlas >= nb_expected_atlas){
+			atlas_are_ok  = true;
+		}
+		logger.info("TEST présence atlas : "+atlas_are_ok+"=>"+nb_atlas+"/"+nb_expected_atlas);
+		UpdateDataCheckStatus.setStatus("TEST présence atlas : "+atlas_are_ok+"=>"+nb_atlas+"/"+nb_expected_atlas);
+	}
+
+	/**
+	 * Test presence decrypted maps.
+	 */
+	private static void checkMaps() {
+		List<File> mapFiles = SourceDataManager.getMaps();
+		List<File> decryptedMaps = new ArrayList<File>();
+		decryptedMaps = FileLister.lister(new File(FilesPath.getMapDataDirectoryPath()), ".map.decrypt");
+		//TODO trouver mieux que ça. md5 peut-être?
+		if (mapFiles.size() == decryptedMaps.size()){
+			maps_are_ok  = true;
+		}
+		logger.info("TEST présence cartes : "+maps_are_ok);
+		UpdateDataCheckStatus.setStatus("TEST présence cartes : "+maps_are_ok);
+	}
+
+	/**
+	 * Sets up data.
 	 */
 	private static void doWhatNeedsToBeDone() {
 		doMaps();
@@ -61,32 +136,17 @@ public class DataChecker {
 	}
 
 	/**
-	 * 
+	 * Decrypts maps if needed.
 	 */
-	private static void doPixelIndex() {
-		if (!pixel_index_is_ok ){
-			if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
-			if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
-			if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
-			SpriteData.computeModulos();
-			SpriteData.createPixelIndex();
-		}
+	private static void doMaps() {
+		if (!maps_are_ok){
+			decryptMaps();
+		}		
 	}
+	
 
 	/**
-	 * Packs atlas if needed
-	 */
-	private static void doAtlas() {
-		if(!atlas_are_ok){
-			AssetsLoader.pack_sprites();
-			loadingStatus.waitUntilTextureAtlasSpritesCreated();
-			AssetsLoader.pack_tuiles();
-			loadingStatus.waitUntilTextureAtlasTilesCreated();
-		}
-	}
-
-	/**
-	 * Decrypts sprites if needed
+	 * Decrypts sprites if needed.
 	 */
 	private static void doSprites() {
 		if (!sprites_are_ok){
@@ -95,14 +155,30 @@ public class DataChecker {
 			SpriteManager.decryptDDA(true);
 		}		
 	}
+	
+	/**
+	 * Creates pixel_index if needed.
+	 */
+	private static void doPixelIndex() {
+		if (!pixel_index_is_ok ){
+			if(!SpriteManager.isDpd_done())SpriteManager.decryptDPD();
+			if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
+			if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
+			//SpriteData.computeModulos();
+			SpriteData.createPixelIndex();
+		}
+	}
 
 	/**
-	 * Decrypts maps if needed
+	 * Packs atlas if needed.
 	 */
-	private static void doMaps() {
-		if (!maps_are_ok){
-			decryptMaps();
-		}		
+	private static void doAtlas() {
+		if(!atlas_are_ok){
+			AssetsLoader.pack_sprites();
+			loadingStatus.waitUntilTextureAtlasSpritesCreated();
+			AssetsLoader.pack_tuiles();
+			loadingStatus.waitUntilTextureAtlasTilesCreated();
+		}
 	}
 
 	/**
@@ -116,77 +192,7 @@ public class DataChecker {
 		loadingStatus.waitUntilTilesPackaged();
 	}
 
-	/**
-	 * sets booleans to know what has to be done and what has already be done. with that, we only do what's needed.
-	 */
-	private static void checkWhatNeedsToBeDone() {
-		checkPixelIndex();
-		checkMaps();
-		checkAtlas();
-		checkSprites();
-	}
 
-
-	/**
-	 * 
-	 */
-	private static void checkPixelIndex() {
-		File pixel_index = new File(FilesPath.getPixelIndexFilePath());
-		if (pixel_index.exists()){
-			pixel_index_is_ok = true;
-		}
-		logger.info("TEST présence pixel_index : "+pixel_index_is_ok);		
-	}
-
-	/**
-	 * Tests sprite presence
-	 */
-	private static void checkSprites() {
-		// TODO Trouver mieux pour vérifier la présence des sprites.
-		int nb_sprites = FileLister.lister(new File(FilesPath.getSpriteDataDirectoryPath()), ".png").size();
-		if(nb_sprites >= (nb_expected_sprites)){
-			sprites_are_ok = true;
-		}
-		logger.info("TEST présence sprites : "+sprites_are_ok+"=>"+nb_sprites+"/"+(nb_expected_sprites));
-	}
-
-	/**
-	 * Tests presence atlas
-	 */
-	private static void checkAtlas() {
-		int nb_atlas = FileLister.lister(new File(FilesPath.getAtlasSpritePath()), ".atlas").size()+FileLister.lister(new File(FilesPath.getAtlasTuilePath()), ".atlas").size();
-		if (nb_atlas >= nb_expected_atlas){
-			atlas_are_ok  = true;
-		}
-		logger.info("TEST présence atlas : "+atlas_are_ok+"=>"+nb_atlas+"/"+nb_expected_atlas);
-	}
-
-	/**
-	 * Test presence decrypted maps
-	 */
-	private static void checkMaps() {
-		List<File> mapFiles = SourceDataManager.getMaps();
-		List<File> decryptedMaps = new ArrayList<File>();
-		decryptedMaps = FileLister.lister(new File(FilesPath.getMapDataDirectoryPath()), ".map.decrypt");
-		//TODO trouver mieux que ça. md5 peut-être?
-		if (mapFiles.size() == decryptedMaps.size()){
-			maps_are_ok  = true;
-		}
-		logger.info("TEST présence cartes : "+maps_are_ok);
-	}
-
-	/**
-	 * Checks the source data (presence and integrity)
-	 */
-	private static void checkSourceData() {
-		List<File> absentFiles = checkAbsentFiles();
-		stopIfAbsentFiles(absentFiles);
-		List<File> badChecksumFiles = checkChecksumFiles();
-		stopIfBadChecksum(badChecksumFiles);
-		UpdateDataCheckStatus.setSourceDataStatus("OK");
-		UpdateDataCheckStatus.setStatus("OK");
-	}
-	
 	/**
 	 * Checks if source files are absent
 	 */
@@ -195,7 +201,6 @@ public class DataChecker {
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
-			UpdateDataCheckStatus.setSourceDataStatus("Vérification présence : "+f.getName());
 			UpdateDataCheckStatus.setStatus("Vérification présence : "+f.getName());
 			if(!f.exists()){
 				result.add(f);
@@ -211,8 +216,9 @@ public class DataChecker {
 	private static void stopIfAbsentFiles(List<File> absentFiles) {
 		if (!absentFiles.isEmpty()){
 			logger.fatal("Fichier(s) manquant(s) : "+absentFiles);
+			UpdateDataCheckStatus.setStatus("Fichier(s) manquant(s) : "+absentFiles);
 			downloadGameFiles(absentFiles);
-			System.exit(1);
+			Gdx.app.exit();
 		}
 	}
 
@@ -232,7 +238,6 @@ public class DataChecker {
 		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
 		while (iter_source.hasNext()){
 			File f = iter_source.next();
-			UpdateDataCheckStatus.setSourceDataStatus("Vérification MD5 : "+f.getName());
 			UpdateDataCheckStatus.setStatus("Vérification MD5 : "+f.getName());
 			if(!MD5Checker.check(f,SourceDataManager.getData().get(f))){
 				result.add(f);
@@ -248,8 +253,9 @@ public class DataChecker {
 	private static void stopIfBadChecksum(List<File> badChecksumFiles) {
 		if (!badChecksumFiles.isEmpty()){
 			logger.fatal("Fichier(s) corrompu(s) : "+badChecksumFiles);
+			UpdateDataCheckStatus.setStatus("Fichier(s) corrompu(s) : "+badChecksumFiles);
 			downloadGameFiles(badChecksumFiles);
-			System.exit(1);
+			Gdx.app.exit();
 		}		
 	}
 
@@ -263,11 +269,14 @@ public class DataChecker {
 		Iterator<File> iter_maps = mapFiles.iterator();
 		while (iter_maps.hasNext()){
 			f = iter_maps.next();
+			logger.info("Décryptage : "+f.getName());
+			UpdateDataCheckStatus.setStatus("Décryptage : "+f.getName());
 			if (!new File(FilesPath.getMapFilePath(f.getName())).exists()){
 				T4CMAP mapFile = new T4CMAP();
 				mapFile.Map_load_block(f, 0x00002000);
 			}
 		}
 		logger.info("Cartes Décryptées");
+		UpdateDataCheckStatus.setStatus("Cartes Décryptées");
 	}		
 }
