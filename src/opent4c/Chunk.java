@@ -8,6 +8,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import opent4c.utils.AssetsLoader;
+import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.Places;
 import opent4c.utils.PointsManager;
@@ -42,7 +43,7 @@ public class Chunk{
 	private static Logger logger = LogManager.getLogger(Chunk.class.getSimpleName());
 	private static int watcher_delay_ms = 32;
 	private static ScheduledFuture<?> watcher;
-	private Point center = null;
+	private static Point center = null;
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static Map<String, Pixmap> cached_pixmaps = new HashMap<String, Pixmap>();
 	private static Group chunk_sprites = new Group();
@@ -61,7 +62,6 @@ public class Chunk{
 	 * @param point
 	 */
 	public Chunk(String map, Point point) {
-		setCenter(point);
 		loadingStatus.waitUntilTextureAtlasTilesCreated();
 		int upLimit = point.y-(chunk_size.y/2)-1;
 		int downLimit = point.y+(chunk_size.y/2);
@@ -86,7 +86,7 @@ public class Chunk{
 			addTileAtCoord(id, point);
 			return;
 		}else if(isSmoothingId(id)){
-			//addSmoothingAtCoord(id, point);
+			addSmoothingAtCoord(id, point);
 			return;
 		}else if(atlas.equals("MIRROR")){
 			addMirrorSpriteAtCoord(Integer.parseInt(tex), point);
@@ -121,11 +121,20 @@ public class Chunk{
 
 	private void addSmoothingTile2(int id, Point point, Pixmap template, int color) {
 		Pixmap smoothed = getSmoothedTile(template, id, point, color);
-		TextureRegion smooth_tex = new TextureRegion(new Texture(smoothed));
-		Acteur act = new Acteur(smooth_tex, point, PointsManager.getPoint(0, 0));
-		act.setZIndex(1);
-		addSpriteToChunkCache(act);
+		addTemplateTile(template, point);
+		//TextureRegion smooth_tex = new TextureRegion(new Texture(smoothed));
+		//Acteur act = new Acteur(smooth_tex, point, PointsManager.getPoint(0, 0));
+		//act.setZIndex(1);
+		//addSpriteToChunkCache(act);
 		}
+
+	private void addTemplateTile(Pixmap template, Point point) {
+		TextureRegion tmplTex = new TextureRegion(new Texture(template));
+		Acteur act = new Acteur(tmplTex, point, PointsManager.getPoint(0, 0));
+		act.setZIndex(1);
+		act.getColor().a = 0.3f;
+		addSpriteToChunkCache(act);		
+	}
 
 	private void addSmoothTile1(int id1, Point point) {
 		String atl1 = SpriteData.getAtlasFromId(id1);
@@ -157,13 +166,13 @@ public class Chunk{
 		int x=0, y=0;
 		Texture tileTex = tile.getTexture();
 		TextureData txData = tileTex.getTextureData();
-		txData.prepare();
-		Pixmap px = txData.consumePixmap();
+		/*txData.prepare();
+		Pixmap px = txData.consumePixmap();*/
 		Pixmap result = new Pixmap(32, 16, Format.RGBA8888);
 		while (y < 16){
 			while(x < 32){
 				int pixel = template.getPixel(x, y);
-				if(pixel < color-SMOOTHING_DELTA || pixel > color+SMOOTHING_DELTA)result.drawPixel(x, y, px.getPixel(x+regionX, y+regionY));
+				if(pixel < color-SMOOTHING_DELTA || pixel > color+SMOOTHING_DELTA)result.drawPixel(x, y, 0/*px.getPixel(x+regionX, y+regionY)*/);
 				x++;
 			}
 			y++;
@@ -227,7 +236,7 @@ public class Chunk{
 	 * @return
 	 */
 	private Pixmap getCachedPixmap(String tmpl) {
-		return cached_pixmaps .get(tmpl);
+		return cached_pixmaps.get(tmpl);
 	}
 
 	/**
@@ -267,20 +276,14 @@ public class Chunk{
 		}
 		Acteur act = new Acteur(texRegion,point,px.getOffset());
 		if((point.y*16)+px.getOffsetY() > 0){
-			act.setZIndex((point.y*16)+px.getOffsetY());
+			act.setZIndex((point.y*16));
 		}else{
 			act.setZIndex(0);
 		}
 		addSpriteToChunkCache(act);
 		int id2 = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(point.x, point.y+1));
 		//if (isTuileId(id2)) addTileAtCoord(id2, point);		
-		if (isTuileId(id2)) {
-			if(!MapManager.doesRenderSprites()){
-				addTileAtCoord(id2, point);
-			}else{
-				addUnknownTile(point);			
-			}
-		}
+		if (isTuileId(id2)) addAnchorTile(point);
 	}
 
 	/**
@@ -299,6 +302,7 @@ public class Chunk{
 			addUnknownTile(point);
 			return;
 		}
+		
 		TextureAtlas texAtlas = loadingStatus.getTextureAtlasSprite(atlas);			
 		if(texAtlas == null){
 			texAtlas = AssetsLoader.load(atlas);
@@ -308,6 +312,7 @@ public class Chunk{
 				return;
 			}
 		}
+		
 		TextureRegion texRegion = texAtlas.findRegion(tex);
 		if(texRegion == null){
 			logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
@@ -332,13 +337,7 @@ public class Chunk{
 		addSpriteToChunkCache(mir);
 		int id2 = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(point.x, point.y+1));
 		//if (isTuileId(id2)) addTileAtCoord(id2, point);		
-		if (isTuileId(id2)) {
-			if(!MapManager.doesRenderSprites()){
-				addTileAtCoord(id2, point);
-			}else{
-				addUnknownTile(point);			
-			}
-		}
+		if (isTuileId(id2)) addAnchorTile(point);
 	}
 
 
@@ -392,16 +391,16 @@ public class Chunk{
 		addTileToChunkCache(act);
 	}
 	
+	private void addAnchorTile(Point point) {
+		Acteur act = new Acteur(getAnchorTile(),PointsManager.getPoint(point.x, point.y),PointsManager.getPoint(0, 0));
+		addTileToChunkCache(act);
+	}
+	
 	/**
 	 * @return the unknown atlas
 	 */
-	private TextureAtlas getUnknownAtlas() {
-		TextureAtlas texAtlas = null;
-		texAtlas = loadingStatus.getTextureAtlasSprite("Unknown");
-		if (texAtlas == null){
-			texAtlas = AssetsLoader.load("Unknown");
-		}
-		return texAtlas;
+	public static TextureAtlas getUtilsAtlas() {
+		return loadingStatus.getTextureAtlasSprite("Utils");
 	}
 
 	/**
@@ -428,6 +427,7 @@ public class Chunk{
 		Map<Integer,Point> result = new HashMap<Integer,Point>(9);
 		Point chunk1, chunk2, chunk3, chunk4, chunk5, chunk6, chunk7, chunk8, chunk9;
 		chunk5 = startpoint;
+		setCenter(startpoint);
 		result.put(5, chunk5);
 		chunk6 = PointsManager.getPoint(chunk5.x+chunk_size.x, chunk5.y);
 		result.put(6, chunk6);
@@ -451,7 +451,7 @@ public class Chunk{
 	/**
 	 * @return the chunk's center Point
 	 */
-	public Point getCenter() {
+	public static Point getCenter() {
 		return center;
 	}
 
@@ -459,8 +459,8 @@ public class Chunk{
 	 * Sets the Chunk's center Point
 	 * @param center
 	 */
-	public void setCenter(Point center) {
-		this.center = center;
+	public static void setCenter(Point point) {
+		center = point;
 	}
 
 	/**
@@ -474,9 +474,18 @@ public class Chunk{
 	 * @return the "Unknown" tile
 	 */
 	private TextureRegion getUnknownTile(){
-		TextureAtlas texAtlas = getUnknownAtlas();
-		return texAtlas.findRegion("Unknown Tile");
+		TextureAtlas texAtlas = getUtilsAtlas();
+		return texAtlas.findRegion("Unknown");
 	}
+	
+	/**
+	 * @return the "Anchor" tile
+	 */
+	private TextureRegion getAnchorTile(){
+		TextureAtlas texAtlas = getUtilsAtlas();
+		return texAtlas.findRegion("Anchor");
+	}
+	
 	/**
 	 * Starts a clock which will check the camera's position on chunk so that it can
 	 * move the chunkMap if needed.
@@ -524,7 +533,8 @@ public class Chunk{
 	 * Moves chunks to new coord
 	 */
 	public static void move(Point coord){
-		Places place = new Places("ChunkMove", "v2_worldmap", PointsManager.getPoint(coord.x/32, coord.y/16));
+		logger.info("Camera Moving to : "+coord.x+";"+coord.y);
+		Places place = new Places("ChunkMove", "v2_worldmap", PointsManager.getPoint(coord.x, coord.y));
 		MapManager.createChunks(place);
 		logger.info("Création des chunks terminée.");
 		MapManager.renderChunks();

@@ -35,7 +35,7 @@ public class Places {
 		return this.nom;
 	}
 
-	public String getMap() {
+	public String getMapName() {
 		return this.carte;
 	}
 	

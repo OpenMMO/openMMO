@@ -893,23 +893,23 @@
 1077:NA:tmpl1 1 T1 DGrass T2 HardRock
 1076:NA:tmpl1 1 T1 DGrass T2 HardRock
 1255:TapisRouge:TapisRouge 1
-1254:TapisRouge:TapisRouge 2
+1254:MIRROR:1257
 1253:Root:Tapisall 2
-1252:Root:Tapisall 1
+1252:MIRROR:1251
 1251:Root:Tapisall 1
 1263:Miscs-M:Manacle 1
 1262:Miscs-H:Heads
 1261:Miscs-S:SkeletonCorpsePile1
 1260:Miscs-B:Blood1
-1259:TapisRouge:TapisRouge 3
-1258:TapisRouge:TapisRouge 1
+1259:MIRROR:1256
+1258:MIRROR:1255
 1257:TapisRouge:TapisRouge 2
 1256:TapisRouge:TapisRouge 3
-1270:Miscs-B:Bridge2
+1270:MIRROR:1268
 1271:Miscs-B:Bridge3
 1268:Miscs-B:Bridge2
 1269:Miscs-B:Bridge1
-1266:Root:Painting1
+1266:MIRROR:1265
 1267:Miscs-B:Bridge1
 1264:Miscs-M:Manacle 2
 1265:Root:Painting1
@@ -1007,14 +1007,14 @@
 1307:Mount1:Mount1
 1306:Mount1:Mount1
 1305:Mount1:Mount1
-1304:Miscs-B:Banquet
+1304:MIRROR:1404
 1311:Miscs-G:Golden Mirror
 1310:Root:WeaponRacks 1
 1309:Root:WeaponRacks 2
 1308:Mount1:Mount1
 1297:Pentacles:OldPentacle
 1296:Pentacles:DarkPentacle
-1303:Root:ShopTable1
+1303:MIRROR:1402
 1302:Root:Table2
 1301:Miscs-B:BarCounter
 1290:Miscs-T:TiPontLH
@@ -1034,13 +1034,13 @@
 1284:Escalier:EscEscalier
 1285:Escalier:EscEscalier
 1312:Miscs-D:Display2
-1313:Miscs-D:Display3
+1313:MIRROR:1413
 1314:NA:T1 CavernFloor T2
 1315:Miscs-S:Stone3
 1411:Miscs-G:Golden Mirror
 1410:MIRROR:1310
 1409:MIRROR:1309
-1408:Mount1:Mount1
+1408:Mount2:Mount2
 1415:Miscs-S:Stone1H
 1414:NA:T1 CavernFloor T2
 1413:Miscs-D:Display3
@@ -1186,12 +1186,12 @@
 3006:Root:Red-Wooden Armoir SW
 3007:Root:Red-Wooden Armoir SW
 3001:Root:Wooden Armoir SW
-3002:Root:Wooden Armoir SW
+3002:MIRROR:3004
 3003:Root:Wooden Armoir SW
 3049:MIRROR:3046
 3048:MIRROR:3045
 3051:StuccoWallV2:StuccoDarkSmallWallB
-3050:Miscs-B:Bed Double Type 2
+3050:MIRROR:3047
 3053:StuccoWallV2:StuccoDarkWindowB
 3052:StuccoWallV2:StuccoMainSmallWallB
 3055:StuccoWallV2:StuccoMainSmallWallB
@@ -1232,7 +1232,7 @@
 3010:Miscs-E:Etagere SW
 3009:Miscs-E:Etagere SW
 3008:Root:Red-Wooden Armoir SW
-3015:Miscs-B:Bureau SW
+3015:MIRROR:3016
 3014:Miscs-B:Bureau SW
 3013:Miscs-B:Bureau SW
 3012:Miscs-E:Etagere SW
@@ -1249,7 +1249,7 @@
 3024:Miscs-D:Display
 3025:NA:T1 CavernFloor T2
 3030:Root:Horloge Grand Pere
-3031:Root:Horloge Grand Pere
+3031:MIRROR:3032
 3028:NA:T1 CavernFloor T2
 3029:Root:Horloge Grand Pere
 3284:Root:Ble
@@ -1263,8 +1263,8 @@
 3295:OldBrickWall:BrickDarkWall 1
 3288:Mount1:Mount1
 3289:Miscs-C:Cerebus
-3290:NA:MonkStudy
-3269:Miscs-D:Desk
+3290:Root:Monkstudy
+3269:MIRROR:3270
 3268:Miscs-D:Desk2
 3271:Miscs-C:Cerebus
 3270:Miscs-D:Desk
@@ -1314,7 +1314,7 @@
 3219:NA:T1 CavernFloor T2
 3220:MIRROR:3230
 3221:MIRROR:3231
-3222:Miscs-D:Dummy
+3222:MIRROR:3232
 3223:Root:RuinedTable1
 3224:Root:RuinedMirror1
 3225:Root:RuinedBed1
@@ -1345,7 +1345,7 @@
 3243:Root:Misc 7 - All 8
 3242:MIRROR:3243
 3241:Miscs-M:Misc 4 - Part 2 2
-3240:Miscs-D:Desk2
+3240:MIRROR:3268
 3247:Root:Misc 8 - All 4
 3246:Root:Misc 8 - All 4
 3245:Root:Misc 8 - All 3
@@ -1366,9 +1366,9 @@
 3152:DungeonMain:DungeonMainWall 1
 3155:DungeonMain:DungeonMainWall 1
 3154:DungeonMain:DungeonMainWall 1
-3148:StuccoWallV2:StuccoMainSmallWallB
+3148:StuccoWallV2:StuccoMainWall 2
 3149:StuccoWallV2:StuccoDarkWall 3
-3150:StuccoWallV2:StuccoMainSmallWallB
+3150:StuccoWallV2:StuccoMainWall 1
 3151:DungeonMain:DungeonMainWall 1
 3144:Root:Wood Sign 2
 3145:StuccoWallV2:StuccoDarkWindowA
@@ -1558,7 +1558,7 @@
 3502:Miscs-S:Stair2
 3504:Miscs-S:Stairup
 3505:NA:Stair2Up
-3506:NA:Stair2Up
+3506:Miscs-S:Stair2up
 3507:Miscs-T:Trunk1
 3508:Miscs-W:Web1
 3509:Miscs-W:Web1
@@ -1743,7 +1743,7 @@
 3759:StuccoWallV2:StuccoDarkSmallWallB
 3758:Miscs-B:Bonfire
 3755:Miscs-B:Bonfire
-3754:Root:Shelf
+3754:MIRROR:3439
 3753:CastleWall:CastleWall 1
 3752:CastleWall:CastleWall 1
 3732:CastleWall:CastleWall 1
@@ -1886,19 +1886,19 @@
 4095:03BrunFonce:3NBrickWallS3SE
 4035:Small:NBrickWallSCoinE
 4034:Small:NBrickWallSSEDoorT
-4033:Small:NBrickWallSSE
+4033:Small:NBrickWallSSEDoorB
 4032:Small:NBrickWallSNEDoorT
 4039:Small:NBrickWallSSE
 4038:Small:NBrickWallSCoinS
 4037:Small:NBrickWallSCoinW
 4036:Small:NBrickWallSCoinN
-4043:Small:NBrickWallSSE
-4042:Small:NBrickWallSSE
-4041:Small:NBrickWallSSE
+4043:Small:NBrickWallSTSW
+4042:Small:NBrickWallSTSE
+4041:Small:NBrickWallSTNW
 4040:Small:NBrickWallSTNE
-4047:NewBrickWall:NBrickWallNEDoorB
-4046:Small:NBrickWallSSE
-4045:Small:NBrickWallSSE
+4047:Small:NBrickWallSNEE
+4046:Small:NBrickWallSNES
+4045:Small:NBrickWallSSEE
 4044:Small:NBrickWallSSE
 4050:Small2C:NBrickWallS2SE
 4051:Small2C:NBrickWallS2NEWindow
@@ -3366,8 +3366,8 @@
 7273:NA:5srf1
 7272:NA:4srf1
 7271:NA:4srf1
-7270:NA:4srf1
-7269:NA:4srf1
+7270:WoodenSmooth:4Srf1
+7269:WoodenSmooth:4srf1
 7268:NA:3srf1
 7267:WoodenDoor:RockDoor1
 7266:NA:3srf1

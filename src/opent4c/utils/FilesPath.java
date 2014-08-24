@@ -1,6 +1,8 @@
 package opent4c.utils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FilesPath {
 	
@@ -232,26 +234,6 @@ public class FilesPath {
 		return sb.toString();
 	}
 
-	public static String getAtlasUnknownFilePath() {
-		StringBuilder sb = new StringBuilder(24 + 7);
-		
-		sb.append("data");
-		sb.append(File.separator);
-		sb.append("Unknown.atlas");
-		
-		return sb.toString();
-	}
-
-	public static String getAtlasHighlightFilePath() {
-		StringBuilder sb = new StringBuilder(24 + 7);
-		
-		sb.append("data");
-		sb.append(File.separator);
-		sb.append("Highlight.atlas");
-		
-		return sb.toString();
-	}
-
 	/**
 	 * @return
 	 */
@@ -293,6 +275,36 @@ public class FilesPath {
 		sb.append("data");		
 		sb.append(File.separator);
 		sb.append("idfull.txt");		
+		
+		return sb.toString();
+	}
+
+	public static List<File> getMapFilePathsPaths() {
+		List<File> result = new ArrayList<File>(5);
+		result.add(new File(getMapDirectoryPath()+"v2_cavernmap.map.decrypt"));
+		result.add(new File(getMapDirectoryPath()+"v2_dungeonmap.map.decrypt"));
+		result.add(new File(getMapDirectoryPath()+"v2_leoworld.map.decrypt"));
+		result.add(new File(getMapDirectoryPath()+"v2_underworld.map.decrypt"));
+		result.add(new File(getMapDirectoryPath()+"v2_worldmap.map.decrypt"));
+		return result;
+	}
+
+	private static String getMapDirectoryPath() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("maps");
+		sb.append(File.separator);
+		
+		return sb.toString();
+	}
+
+	public static String getAtlasUtilsFilePath() {
+		StringBuilder sb = new StringBuilder(24 + 7);
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("Utils.atlas");
 		
 		return sb.toString();
 	}

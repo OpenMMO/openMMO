@@ -193,8 +193,7 @@ public enum AssetsLoader {
 		logger.info("Chargement des sprites.");
 		loadingStatus.waitUntilSpritesPackaged();
 		List<String> sprite_atlas_to_load = new ArrayList<String>();
-		sprite_atlas_to_load.add("Unknown");
-		sprite_atlas_to_load.add("Highlight");
+		sprite_atlas_to_load.add("Utils");
 		Iterator<Integer> iter = SpriteData.getIdfull().keySet().iterator();
 		while(iter.hasNext()){
 			int id = iter.next();

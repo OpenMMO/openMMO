@@ -4,6 +4,7 @@ import opent4c.Chunk;
 import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
+import opent4c.utils.Places;
 import opent4c.utils.RunnableCreatorUtil;
 
 import com.badlogic.gdx.Game;
@@ -57,6 +58,7 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
+		Places.createDefault();
 		AssetsLoader.loadMappedSprites();
 		AssetsLoader.loadSols();
 		map = new MapManager(this);

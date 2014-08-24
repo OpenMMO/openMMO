@@ -38,7 +38,7 @@ public enum LoadingStatus {
 	private int nbSpritesAtlas = 0;
 	private Map<String, TextureAtlas> sprite_atlas = new ConcurrentHashMap<String, TextureAtlas>(spritesAtlasMax);
 	
-	private final int waitLoadingTime = 100;
+	private final int waitLoadingTime = 10;
 	
 	public void addTilesAtlasToPackage(String tileName) {
 		tilesAtlasToPackage.add(tileName);
@@ -311,7 +311,7 @@ public enum LoadingStatus {
 	}
 
 	private boolean areMapsLoaded() {
-		if(MapManager.getId_maps().containsKey("v2_worldmap"))return true;
+		if(MapManager.getIdMaps().containsKey("v2_worldmap"))return true;
 		return false;
 	}
 

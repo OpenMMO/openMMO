@@ -78,23 +78,12 @@ public class RunnableCreatorUtil {
 	
 	public static Runnable getForceTextureAtlasSpriteCreatorRunnable(final String name) {
 		Runnable r = null;
-		if(name.equals("Unknown")){
+		if(name.equals("Utils")){
 			r = new Runnable(){
 				public void run(){
 					Gdx.app.postRunnable(new Runnable(){
 						public void run(){
-							TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasUnknownFilePath());
-							loadingStatus.addTextureAtlasSprite(name, atlas);
-						}
-					});
-				}
-			};
-		}else if(name.equals("Highlight")){
-			r = new Runnable(){
-				public void run(){
-					Gdx.app.postRunnable(new Runnable(){
-						public void run(){
-							TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasHighlightFilePath());
+							TextureAtlas atlas = new TextureAtlas(FilesPath.getAtlasUtilsFilePath());
 							loadingStatus.addTextureAtlasSprite(name, atlas);
 						}
 					});
@@ -109,7 +98,7 @@ public class RunnableCreatorUtil {
 							if(new File(FilesPath.getAtlasSpritesFilePath(name)).exists()){
 								atlas = new TextureAtlas(FilesPath.getAtlasSpritesFilePath(name));
 							} else{
-								atlas = new TextureAtlas(FilesPath.getAtlasUnknownFilePath());
+								atlas = new TextureAtlas(FilesPath.getAtlasUtilsFilePath());
 								//TODO c'est de la bidouille pour que le programme de ne plante pas, mais il faudra dégager ça une fois les atlas correctement empaquetés
 								//logger.warn("Il semblerait qu'un atlas un soit pas empaqueté : "+name+". On le remplace par Unknown pour le moment.");
 							}
@@ -241,7 +230,7 @@ public class RunnableCreatorUtil {
 				UpdateDataCheckStatus.setStatus("Création de la liste d'ID pour édition.");
 				MapManager.setIdEditList(new HashMap<Integer, Point>());
 				int last = -1;
-				ByteBuffer map = MapManager.getId_maps().get("v2_worldmap");
+				ByteBuffer map = MapManager.getIdMaps().get("v2_worldmap");
 				map.rewind();
 				while(map.position()<map.capacity()){
 					byte b1=0,b2=0;
@@ -263,14 +252,10 @@ public class RunnableCreatorUtil {
 		return r;
 	}
 
-	public static Runnable getMapLoaderRunnable() {
+	public static Runnable getMapLoaderRunnable(final File f) {
 		Runnable r = new Runnable(){
 
 			public void run(){
-				List<File> decrypted_maps = FileLister.lister(new File(FilesPath.getDataDirectoryPath()), ".decrypt");
-				Iterator<File> iter_decrypted_maps = decrypted_maps.iterator();
-				while(iter_decrypted_maps.hasNext()){
-					File f = iter_decrypted_maps.next();
 					UpdateDataCheckStatus.setStatus("Chargement carte : "+f.getName());
 					logger.info("Chargement carte : "+f.getName());
 					ByteBuffer buf = ByteBuffer.allocate((int)f.length());
@@ -285,8 +270,7 @@ public class RunnableCreatorUtil {
 						Gdx.app.exit();
 					}
 					buf.rewind();
-					MapManager.getId_maps().put(f.getName().substring(0, f.getName().indexOf('.')),buf);
-				}
+					MapManager.getIdMaps().put(f.getName().substring(0, f.getName().indexOf('.')),buf);
 			}
 		};
 		return r;
