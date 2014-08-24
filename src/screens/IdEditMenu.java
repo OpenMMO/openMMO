@@ -21,6 +21,7 @@ import opent4c.SpriteData;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
 import opent4c.utils.Places;
+import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
 
@@ -147,7 +148,7 @@ public class IdEditMenu{
 		if(!askYesNo()){
 			cancel();
 		}else{
-			IdEditMenu.updateIdFile(input);
+			updateIdFile(input);
 			updatePixelIndex();
 		}
 	}
@@ -541,7 +542,7 @@ public class IdEditMenu{
 	 */
 	private static void updatePixelIndex() {
 		print("Mise à jour de l'index");
-		ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(point));
+		ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(PointsManager.getPoint(point.x*32, point.y*16)));
 	}
 	
 	/**

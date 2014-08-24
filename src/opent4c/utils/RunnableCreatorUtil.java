@@ -194,13 +194,8 @@ public class RunnableCreatorUtil {
 				SpriteData.createPixelIndex();
 				SpriteData.initPixelIndex();
 				SpriteData.loadPixelIndex();
-				Gdx.app.postRunnable(new Runnable(){
-					@Override
-					public void run(){
-						MapManager.teleport(new Places("update ok", "v2_worldmap", point));
-						logger.info("mise à jour terminée");
-					}
-				});
+				MapManager.teleport(new Places("update ok", "v2_worldmap", point));
+				logger.info("mise à jour terminée");
 			}
 		};
 		return r;
