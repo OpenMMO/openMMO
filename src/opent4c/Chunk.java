@@ -119,19 +119,25 @@ public class Chunk{
 
 
 
-	private void addSmoothingTile2(int id, Point point, Pixmap template, int color) {
-		Pixmap smoothed = getSmoothedTile(template, id, point, color);
-		addTemplateTile(template, point);
+	private void addSmoothingTile2(int id, final Point point, final Pixmap template, int color) {
+		Gdx.app.postRunnable(new Runnable(){
+
+			@Override
+			public void run() {
+				addTemplateTile(template, point);				
+			}
+		});
+		//Pixmap smoothed = getSmoothedTile(template, id, point, color);
 		//TextureRegion smooth_tex = new TextureRegion(new Texture(smoothed));
 		//Acteur act = new Acteur(smooth_tex, point, PointsManager.getPoint(0, 0));
 		//act.setZIndex(1);
 		//addSpriteToChunkCache(act);
-		}
+	}
 
 	private void addTemplateTile(Pixmap template, Point point) {
 		TextureRegion tmplTex = new TextureRegion(new Texture(template));
 		Acteur act = new Acteur(tmplTex, point, PointsManager.getPoint(0, 0));
-		act.setZIndex(1);
+		act.setZIndex(2);
 		act.getColor().a = 0.3f;
 		addSpriteToChunkCache(act);		
 	}
@@ -257,20 +263,20 @@ public class Chunk{
 			texAtlas = AssetsLoader.load(atlas);
 			if(texAtlas == null){
 				addUnknownTile(point);
-				logger.warn("Atlas missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+				//logger.warn("Atlas missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
 				return;
 			}
 		}
 		TextureRegion texRegion = texAtlas.findRegion(tex);
 		if(texRegion == null){
-			logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+			//logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
 			addUnknownTile(point);
 			return;
 		}
 		
 		MapPixel px = SpriteData.getPixelFromId(id);
 		if (px == null){
-			logger.warn("Not Present in pixel_index : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
+			//logger.warn("Not Present in pixel_index : "+id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
 			addUnknownTile(point);
 			return;
 		}
@@ -532,11 +538,9 @@ public class Chunk{
 	/**
 	 * Moves chunks to new coord
 	 */
-	public static void move(Point coord){
-		logger.info("Camera Moving to : "+coord.x+";"+coord.y);
-		Places place = new Places("ChunkMove", "v2_worldmap", PointsManager.getPoint(coord.x, coord.y));
-		MapManager.createChunks(place);
-		logger.info("Création des chunks terminée.");
-		MapManager.renderChunks();
+	public static void move(final Point coord){
+		//logger.info("Camera Moving to : "+coord.x+";"+coord.y);
+		final Places place = new Places("Camera("+coord.x/32+";"+coord.y/16+")", "v2_worldmap", PointsManager.getPoint(coord.x, coord.y));
+		MapManager.teleport(place);
 	}
 }

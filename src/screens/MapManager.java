@@ -65,6 +65,7 @@ public class MapManager implements Screen{
 	private static Acteur highlight_tile;
 	private static Map<Integer, Point> idEditList;
 	private static Point playerPosition;
+	private static Point cameraPosition;
 	public static final float blink_period = 1;
 
 	/**
@@ -127,14 +128,14 @@ public class MapManager implements Screen{
 		}
 		Chunk.stopChunkMapWatcher();
 		resetWorldMap();
-		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getCoord());
+		Map<Integer,Point> chunk_positions = Chunk.computeChunkPositions(point.getMapCoord());
 		Iterator<Integer> iter_position = chunk_positions.keySet().iterator();
 		while(iter_position.hasNext()){
 			int chunkId = iter_position.next();
 			//TODO attention plus tard en gérant plusieurs cartes.
 			Chunk chunk = new Chunk(point.getMapName(),chunk_positions.get(chunkId));
 			getWorldmap().put(chunkId, chunk);
-			logger.info("Chunk : "+chunkId+" créé.");
+			//logger.info("Chunk : "+chunkId+" créé.");
 		}
 		Chunk.swapChunkCache();
 		resetWorldMap();
@@ -233,14 +234,15 @@ public class MapManager implements Screen{
 			logger.warn("On tente de se téléporter dans un endroit null");
 			return;
 		}
+		//logger.info("Téléportation : Camera("+place.getCoord().x+";"+place.getCoord().y+") Player("+place.getMapCoord().x+";"+place.getMapCoord().y+")");
 		createChunks(place);
 		renderChunks();
-		getCamera().position.x = place.getCoord().x * 32;
-		getCamera().position.y = place.getCoord().y * 16;
+		getCamera().position.x = place.getCoord().x;
+		getCamera().position.y = place.getCoord().y;
 		OnScreenInfos.clearActions();
 		OnScreenInfos.setText(place.getNom());
 		OnScreenInfos.getColor().a = 1f;
-		OnScreenInfos.addAction(Actions.alpha(0f, 2));	
+		OnScreenInfos.addAction(Actions.alpha(0f, 1));	
 	}
 
 	/**
@@ -292,10 +294,10 @@ public class MapManager implements Screen{
 	 */
 	private static Point checkIfChunksNeedsToBeMoved() {
 		Point chunkCenter = Chunk.getCenter();
-		if((playerPosition.x*32 > chunkCenter.x*32+(Gdx.graphics.getWidth()/2)) ||
-		(playerPosition.x*32 < chunkCenter.x*32-(Gdx.graphics.getWidth()/2)) ||
-		(playerPosition.y*16 < chunkCenter.y*16-(Gdx.graphics.getHeight()/2)) ||
-		(playerPosition.y*16 > chunkCenter.y*16+(Gdx.graphics.getHeight()/2))) return playerPosition;
+		if((getCamera().position.x > chunkCenter.x*32+(Gdx.graphics.getWidth()/2)) ||
+		(getCamera().position.x < chunkCenter.x*32-(Gdx.graphics.getWidth()/2)) ||
+		(getCamera().position.y < chunkCenter.y*16-(Gdx.graphics.getHeight()/2)) ||
+		(getCamera().position.y > chunkCenter.y*16+(Gdx.graphics.getHeight()/2))) return PointsManager.getPoint(getCamera().position.x, getCamera().position.y);
 		return null;
 	}
 
@@ -303,13 +305,14 @@ public class MapManager implements Screen{
 	 * Updates last known player position
 	 */
 	public static void updatePlayerPosition(){
-		playerPosition = PointsManager.getPoint(getCamera().position.x/32, getCamera().position.y/16);
+		playerPosition = PointsManager.getPoint(cameraPosition.x/32, cameraPosition.y/16);
 	}
 	
 	/**
 	 * Updates Chunks positions
 	 */
 	public static void updateChunkPositions() {
+		updateCameraPosition();
 		updatePlayerPosition();
 		Point newCoord = checkIfChunksNeedsToBeMoved();
 		if (newCoord != null){
@@ -317,6 +320,10 @@ public class MapManager implements Screen{
 		}
 	}
 	
+	private static void updateCameraPosition() {
+		cameraPosition = PointsManager.getPoint(getCamera().position.x, getCamera().position.y);
+	}
+
 	/**
 	 * @return the camera
 	 */
@@ -424,7 +431,7 @@ public class MapManager implements Screen{
 	 */
 	public static void toggleRenderSprites() {
 		render_sprites = toggle(render_sprites);
-		Places place = new Places("Toggle Render Sprites : "+render_sprites, "v2_worldmap", playerPosition);
+		Places place = new Places("Toggle Render Sprites : "+render_sprites, "v2_worldmap", cameraPosition);
 		teleport(place);
 	}
 
@@ -433,7 +440,7 @@ public class MapManager implements Screen{
 	 */
 	public static void toggleRenderTiles() {
 		render_tiles = toggle(render_tiles);
-		Places place = new Places("Toggle Render Tiles : "+render_tiles, "v2_worldmap", playerPosition);
+		Places place = new Places("Toggle Render Tiles : "+render_tiles, "v2_worldmap", cameraPosition);
 		teleport(place);
 	}
 	
@@ -442,7 +449,7 @@ public class MapManager implements Screen{
 	 */
 	public static void toggleRenderUI() {
 		render_ui = toggle(render_ui);
-		Places place = new Places("Toggle Render UI : "+render_ui, "v2_worldmap", playerPosition);
+		Places place = new Places("Toggle Render UI : "+render_ui, "v2_worldmap", cameraPosition);
 		teleport(place);
 	}
 	
@@ -451,7 +458,7 @@ public class MapManager implements Screen{
 	 */
 	public static void toggleRenderSfx() {
 		render_sfx = toggle(render_sfx);
-		Places place = new Places("Toggle Render  SFX : "+render_sfx, "v2_worldmap", playerPosition);
+		Places place = new Places("Toggle Render  SFX : "+render_sfx, "v2_worldmap", cameraPosition);
 		teleport(place);
 	}
 	
