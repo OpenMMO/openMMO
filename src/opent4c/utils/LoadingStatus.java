@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import opent4c.Chunk;
 import opent4c.SourceDataManager;
 import opent4c.UpdateDataCheckStatus;
 import screens.MapManager;
@@ -325,4 +326,15 @@ public enum LoadingStatus {
 		if (MapManager.isIdEditListCreated())return true;
 		return false;
 	}
+
+	/*public void waitForSmoothCacheReady(Chunk chunk) {
+		while (!isChunkSmoothCacheReady(chunk)) {
+			waitLoaded();
+		}
+	}*/
+
+	/*private boolean isChunkSmoothCacheReady(Chunk chunk) {
+		if (chunk.isCacheReady())return true;
+		return false;
+	}*/
 }

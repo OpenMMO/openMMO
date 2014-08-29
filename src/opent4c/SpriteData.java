@@ -110,74 +110,7 @@ public class SpriteData {
 		}
 		logger.info("Pixel_index créé.");
 	}
-	
-	/**
-	 * Computes all tiles modulo
-	 */
-	public static void computeModulos(){
-		ArrayList<File> tileDirs = new ArrayList<File>();
-		tileDirs.addAll(FileLister.listerDir(new File(FilesPath.getTuileDirectoryPath())));
-		logger.info("Nombre de modulos à calculer : "+tileDirs.size());
-		loadingStatus.setNbModulosToBeComputed(tileDirs.size());
-		Iterator<File> iter_tiledirs = tileDirs.iterator();
-		while (iter_tiledirs.hasNext()){
-			ThreadsUtil.executeInThread(RunnableCreatorUtil.getModuloComputerRunnable(iter_tiledirs.next()));
-		}
-		loadingStatus.waitUntilModulosAreComputed();
-		logger.info("Application des modulos aux tuiles.");
-		applyModulos();
-		logger.info("Modulos appliqués");
 
-	}
-
-	/**
-	 * Computes one tile directory modulos
-	 * @param tileDir
-	 */
-	public static void computeModulo(File tileDir) {
-		//escape smoothing tiles
-		if(tileDir.getName().equals("GenericMerge1")|tileDir.getName().equals("GenericMerge3")|tileDir.getName().equals("GenericMerge2Wooden")|tileDir.getName().equals("WoodenSmooth")){
-			return;
-		}
-		int moduloX=1, moduloY=1;
-		ArrayList<File> tiles = new ArrayList<File>();
-		tiles.addAll(FileLister.lister(tileDir.getAbsoluteFile(),".png"));
-		Iterator<File> iter_tiles = tiles.iterator();
-		while(iter_tiles.hasNext()){
-			File tile = iter_tiles.next();
-			try{
-				int tmpX=1,tmpY=1;
-				String firstPart, secondPart;
-				firstPart = tile.getName().substring(tile.getName().indexOf('(')+1, tile.getName().indexOf(','));
-				secondPart = tile.getName().substring(tile.getName().indexOf(',')+2, tile.getName().indexOf(')'));
-				tmpX = Integer.parseInt(firstPart);
-				tmpY = Integer.parseInt(secondPart);
-				if (tmpX>moduloX)moduloX = tmpX;
-				if (tmpY>moduloY)moduloY = tmpY;
-			}catch(StringIndexOutOfBoundsException exc){
-				logger.fatal("Erreur dans le calcul du modulo : "+tile.getName());
-				exc.printStackTrace();
-				Gdx.app.exit();
-			}
-		}
-		//logger.info("Computed modulo : "+tileDir.getName()+"=>"+PointsManager.getPoint(moduloX, moduloY));
-		modulos.put(tileDir.getName(), PointsManager.getPoint(moduloX, moduloY));
-	}
-
-	
-	public static void applyModulos(){
-		Iterator<String> iter_id = pixel_index.keySet().iterator();
-		while(iter_id.hasNext()){
-			String key = iter_id.next();
-			MapPixel px = pixel_index.get(key);
-			Point modulo = modulos.get(px.getAtlas());
-			if(modulo != null){
-				px.setModulo(modulo);
-				//logger.info("Set modulo : "+px.getAtlas()+"=>"+modulo);
-			}
-		}
-	}
-	
 	/**
 	 * @param pixel
 	 */
@@ -314,11 +247,11 @@ public class SpriteData {
 			if(pixel_index.containsKey(key)){
 				return pixel_index.get(key);
 			}else{
-				logger.warn("Clé non mappée : "+key);
+				//logger.warn("Clé non mappée : "+key);
 				return null;
 			}
 		}else{
-			logger.warn("ID non mappée : "+id);
+			//logger.warn("ID non mappée : "+id);
 			return null;
 		}
 	}

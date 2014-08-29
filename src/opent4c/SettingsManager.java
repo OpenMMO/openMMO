@@ -23,12 +23,12 @@ public class SettingsManager {
 	public static void create(){
 		cfg.title = "OpenT4C v0.0";
 		cfg.useGL20 = true;
-		cfg.width = getWidth();
-		cfg.height = getHeight();
+		//cfg.width = getWidth();
+		//cfg.height = getHeight();
 		cfg.fullscreen = false;
 		cfg.width = 1200;
-		cfg.height = 500;
-//		cfg.fullscreen = true;
+		cfg.height = 600;
+		//cfg.fullscreen = true;
 		cfg.backgroundFPS = 24;
 		cfg.foregroundFPS = 60;
 		cfg.resizable = false;

@@ -20,7 +20,7 @@ import opent4c.MapPixel;
 import opent4c.SpriteData;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
-import opent4c.utils.Places;
+import opent4c.utils.Place;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
@@ -340,12 +340,7 @@ public class IdEditMenu{
 		}else{
 			point = MapManager.getIdEditList().get(editId);
 			id = editId;
-			Gdx.app.postRunnable(new Runnable(){
-				@Override
-				public void run(){
-					MapManager.teleport(new Places("editId", "v2_worldmap", point));
-				}
-			});
+			ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(new Place("editId", "v2_worldmap", point)));
 			editID(editId);
 		}
 	}
@@ -368,12 +363,7 @@ public class IdEditMenu{
 			id = iter_ids.next();
 			point = MapManager.getIdEditList().get(id);
 			getEditInfos(point);
-			Gdx.app.postRunnable(new Runnable(){
-				@Override
-				public void run(){
-					MapManager.teleport(new Places("editId", "v2_worldmap", point));
-				}
-			});
+			ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(new Place("editId", "v2_worldmap", point)));
 			printIdEditCommands();
 			printSepLine();
 			printIdInfos();
@@ -542,7 +532,8 @@ public class IdEditMenu{
 	 */
 	private static void updatePixelIndex() {
 		print("Mise à jour de l'index");
-		ThreadsUtil.executeInThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(PointsManager.getPoint(point.x*32, point.y*16)));
+		ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(PointsManager.getPoint(point.x*32, point.y*16)));
+		ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(new Place("editId", "v2_worldmap", point)));
 	}
 	
 	/**

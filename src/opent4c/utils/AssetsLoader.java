@@ -139,7 +139,7 @@ public enum AssetsLoader {
 	 */
 	public static TextureAtlas load(final String name){
 		loadingStatus.addOneSpriteAtlas();
-		ThreadsUtil.queueSpriteLoad(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
+		ThreadsUtil.executeInGraphicalThread(RunnableCreatorUtil.getForceTextureAtlasSpriteCreatorRunnable(name));		
 		TextureAtlas ta = loadingStatus.waitForTextureAtlasSprite(name);
 		logger.info("Sprite Atlas : " +name+" loaded.");
 		UpdateDataCheckStatus.setStatus("Sprite Atlas : " +name+" loaded.");
@@ -166,7 +166,7 @@ public enum AssetsLoader {
 		Iterator<File> iter_tuilas = tuilas.iterator();
 		while(iter_tuilas.hasNext()){
 			final String name = iter_tuilas.next().getName();
-			Gdx.app.postRunnable(RunnableCreatorUtil.getTextureAtlasTileCreatorRunnable(name));
+			ThreadsUtil.executeInGraphicalThread(RunnableCreatorUtil.getTextureAtlasTileCreatorRunnable(name));
 		}
 	}
 	

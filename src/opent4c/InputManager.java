@@ -4,7 +4,10 @@ import java.awt.Point;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import opent4c.utils.Places;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import opent4c.utils.Place;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
@@ -22,6 +25,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
  *
  */
 public class InputManager implements InputProcessor{
+	private static Logger logger = LogManager.getLogger(InputManager.class.getSimpleName());
+
 	private MapManager manager = null;
 	private boolean mouseLeft = false;
 	private boolean mouseRight = false;
@@ -69,6 +74,87 @@ public class InputManager implements InputProcessor{
 		}
 		if (keycode == Keys.CONTROL_RIGHT){
 			control_right = true;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean keyUp(int keycode) {
+		if (keycode == Keys.LEFT){
+			moveleft = false;
+			stopMoveLeft();
+		}
+		if (keycode == Keys.RIGHT){
+			moveright = false;
+			stopMoveRight();
+		}
+		if (keycode == Keys.UP){
+			moveup = false;
+			stopMoveUp();
+		}
+		if (keycode == Keys.DOWN){
+			movedown = false;
+			stopMoveDown();
+		}
+		if (keycode == Keys.CONTROL_LEFT){
+			control_left = false;
+		}
+		if (keycode == Keys.CONTROL_RIGHT){
+			control_right = false;
+		}
+		if (keycode == Keys.F1){
+			teleport(Place.getPlace("lh_temple"));
+		}
+		if (keycode == Keys.F2){
+			teleport(Place.getPlace("wh_temple"));
+		}
+		if (keycode == Keys.F3){
+			teleport(Place.getPlace("ss_temple"));
+		}
+		if (keycode == Keys.F4){
+			teleport(Place.getPlace("sc_temple"));
+		}
+		if (keycode == Keys.F5){
+			teleport(Place.getPlace("ar_rst"));
+		}
+		if (keycode == Keys.F6){
+			teleport(Place.getPlace("rd_rst"));
+		}
+		if (keycode == Keys.F7){
+			teleport(Place.getPlace("sh_rst"));
+		}
+		if (keycode == Keys.F8){
+			teleport(Place.getPlace("ar_druides"));
+		}
+		if (keycode == Keys.F9){
+			teleport(Place.getPlace("rd_druides"));
+		}
+		if (keycode == Keys.F10){
+			teleport(Place.getPlace("sh_zo"));
+		}
+		if (keycode == Keys.F11){
+			teleport(Place.getPlace("origin"));
+		}
+		if (keycode == Keys.F12){
+			teleport(Place.getPlace("center"));
+		}
+		if (keycode == Keys.ENTER){
+			if(MapManager.isHighlighted()){
+				manager.editMapAtCoord(PointsManager.getPoint(MapManager.getHighlight_tile().getX()/32,MapManager.getHighlight_tile().getY()/16));
+			}
+		}
+		if (keycode == Keys.ESCAPE){
+			Gdx.app.exit();
+		}
+		if (keycode == Keys.SPACE){
+			if(!(control_left||control_right)){
+				MapManager.toggleRenderSprites();
+				MapManager.toggleRenderDebug();
+				MapManager.toggleRenderSmootinhg();
+			}else{
+				MapManager.toggleRenderDebug();
+			}
+			
 		}
 		return true;
 	}
@@ -145,78 +231,12 @@ public class InputManager implements InputProcessor{
 		movingdown = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
 	}
 	
-	@Override
-	public boolean keyUp(int keycode) {
-		if (keycode == Keys.LEFT){
-			moveleft = false;
-			stopMoveLeft();
-		}
-		if (keycode == Keys.RIGHT){
-			moveright = false;
-			stopMoveRight();
-		}
-		if (keycode == Keys.UP){
-			moveup = false;
-			stopMoveUp();
-		}
-		if (keycode == Keys.DOWN){
-			movedown = false;
-			stopMoveDown();
-		}
-		if (keycode == Keys.CONTROL_LEFT){
-			control_left = false;
-		}
-		if (keycode == Keys.CONTROL_RIGHT){
-			control_right = false;
-		}
-		if (keycode == Keys.F1){
-			MapManager.teleport(Places.getPlace("lh_temple"));
-		}
-		if (keycode == Keys.F2){
-			MapManager.teleport(Places.getPlace("wh_temple"));
-		}
-		if (keycode == Keys.F3){
-			MapManager.teleport(Places.getPlace("ss_temple"));
-		}
-		if (keycode == Keys.F4){
-			MapManager.teleport(Places.getPlace("sc_temple"));
-		}
-		if (keycode == Keys.F5){
-			MapManager.teleport(Places.getPlace("ar_rst"));
-		}
-		if (keycode == Keys.F6){
-			MapManager.teleport(Places.getPlace("rd_rst"));
-		}
-		if (keycode == Keys.F7){
-			MapManager.teleport(Places.getPlace("sh_rst"));
-		}
-		if (keycode == Keys.F8){
-			MapManager.teleport(Places.getPlace("ar_druides"));
-		}
-		if (keycode == Keys.F9){
-			MapManager.teleport(Places.getPlace("rd_druides"));
-		}
-		if (keycode == Keys.F10){
-			MapManager.teleport(Places.getPlace("sh_zo"));
-		}
-		if (keycode == Keys.F11){
-			MapManager.teleport(Places.getPlace("origin"));
-		}
-		if (keycode == Keys.F12){
-			MapManager.teleport(Places.getPlace("center"));
-		}
-		if (keycode == Keys.ENTER){
-			if(MapManager.isHighlighted()){
-				manager.editMapAtCoord(PointsManager.getPoint(MapManager.getHighlight_tile().getX()/32,MapManager.getHighlight_tile().getY()/16));
-			}
-		}
-		if (keycode == Keys.ESCAPE){
-			Gdx.app.exit();
-		}
-		if (keycode == Keys.SPACE){
-			MapManager.toggleRenderSprites();
-		}
-		return true;
+	/**
+	 * teleports player in a new Place (and a nexwThread)
+	 * @param place
+	 */
+	private void teleport(Place place) {
+		ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(place));		
 	}
 
 	/**
