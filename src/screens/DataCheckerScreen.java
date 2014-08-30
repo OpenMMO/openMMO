@@ -1,10 +1,12 @@
 package screens;
 
+import org.lwjgl.opengl.GL30;
+
 import opent4c.UpdateDataCheckStatus;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 /**
  * This is the screen seen while checking and loading data
@@ -37,7 +40,7 @@ public class DataCheckerScreen implements Screen{
 	 */
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		updateInfos();
 		camera.update();
 		stage.act(delta);
@@ -81,7 +84,7 @@ public class DataCheckerScreen implements Screen{
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();
 		stage = new Stage();
-		stage.setCamera(camera);
+		stage.setViewport(new ScreenViewport(camera));
 		style_normal.font = font;
 		createButtons();
 		alignButtons();

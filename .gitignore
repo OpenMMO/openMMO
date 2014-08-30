@@ -3,6 +3,4 @@
 /data/game_files
 /data/sprites
 /data/maps
-/OUT
 *.log
-*.html

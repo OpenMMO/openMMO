@@ -5,7 +5,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="lib/gdx/gdx.jar" sourcepath="lib/gdx/sources/gdx-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="file:/home/synoga/workspace/OpenMMO/lib/gdx/docs/api/"/>
+			<attribute name="javadoc_location" value="jar:platform:/resource/OpenMMO/lib/gdx/docs/api/javadoc.zip!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/gdx/gdx-natives.jar"/>

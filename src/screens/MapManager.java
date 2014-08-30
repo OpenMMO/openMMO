@@ -27,7 +27,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -38,6 +38,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 /**
  * This class manages the gamescreen.
@@ -75,6 +76,7 @@ public class MapManager implements Screen{
 	public static final float blink_period = 1;
 	private static Player player;
 	private static IdEditMenu editor;
+	private static ScreenViewport viewport;
 
 	/**
 	 * Initializes the MapManager and binds the inputManager
@@ -90,10 +92,11 @@ public class MapManager implements Screen{
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();
-		tileStage.setCamera(camera);
-		spriteStage.setCamera(camera);
-		debugStage.setCamera(camera);
-		smoothStage.setCamera(camera);
+		viewport = new ScreenViewport(camera);
+		tileStage.setViewport(viewport);
+		spriteStage.setViewport(viewport);
+		debugStage.setViewport(viewport);
+		smoothStage.setViewport(viewport);
 		initInfos();
 		controller = new InputManager(getManager());
 	}
@@ -129,7 +132,7 @@ public class MapManager implements Screen{
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		render_camera();
 		tileStage.act(delta);
 		smoothStage.act(delta);

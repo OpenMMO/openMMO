@@ -14,7 +14,6 @@ public class SettingsManager {
 	private static LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 	private static Logger logger = LogManager.getLogger(SettingsManager.class.getSimpleName());
 	private static int nb_tile_dim = 40;
-	private static String CONSOLE_INPUT = "";
 	
 	//TODO Faire un truc plus complet.
 	/**
@@ -22,16 +21,16 @@ public class SettingsManager {
 	 */
 	public static void create(){
 		cfg.title = "OpenT4C v0.0";
-		cfg.useGL20 = true;
+		cfg.useGL30 = false;
 		//cfg.width = getWidth();
 		//cfg.height = getHeight();
 		cfg.fullscreen = false;
-		cfg.width = 1200;
-		cfg.height = 600;
+		cfg.width = 32 * 32;
+		cfg.height = 48 * 16;
 		//cfg.fullscreen = true;
 		cfg.backgroundFPS = 24;
 		cfg.foregroundFPS = 60;
-		cfg.resizable = false;
+		cfg.resizable = true;
 		cfg.vSyncEnabled = true;
 		cfg.allowSoftwareMode = true;
 		cfg.x = -1;
@@ -101,8 +100,7 @@ public class SettingsManager {
 		for(int i = 0 ; i < Gdx.graphics.getDisplayModes().length ; i++){
 			logger.info("Display Mode : "+Gdx.graphics.getDisplayModes()[i].width+"x"+Gdx.graphics.getDisplayModes()[i].height);
 		}
-		logger.info("GL1.1 : "+Gdx.graphics.isGL11Available());
-		logger.info("GL2.0 : "+Gdx.graphics.isGL20Available());
+		logger.info("GL30 : "+Gdx.graphics.isGL30Available());
 	}
 
 	/**
@@ -111,12 +109,5 @@ public class SettingsManager {
 	 */
 	public static LwjglApplicationConfiguration getSettings() {
 		return cfg;
-	}
-
-	/**
-	 * @param result
-	 */
-	public static void setCONSOLE_INPUT(String input) {
-		CONSOLE_INPUT  = input;
 	}
 }
