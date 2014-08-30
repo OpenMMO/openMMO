@@ -13,13 +13,13 @@ import java.util.concurrent.TimeUnit;
 import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
+import opent4c.Player;
 import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.Place;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
-import opent4c.utils.Smooth;
 import opent4c.utils.ThreadsUtil;
 
 import org.apache.logging.log4j.LogManager;
@@ -40,8 +40,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 
 /**
- * This class manages the chunkMap.
- * On creation, the camera is at the center of chunk 5.
+ * This class manages the gamescreen.
  * 
  * @author synoga
  *
@@ -58,6 +57,7 @@ public class MapManager implements Screen{
 	private static TextButton OnScreenInfos, playerLocationInfo;
 	private static OrthographicCamera camera;
 	private static SpriteBatch batch;
+	private static ScreenManager screenManager;
 	private static Stage tileStage, spriteStage, uiStage, debugStage, smoothStage;
 	private static boolean render_ui = true;
 	private static boolean render_smoothing = true;
@@ -73,6 +73,8 @@ public class MapManager implements Screen{
 	private static Point playerPosition;
 	private static Point cameraPosition;
 	public static final float blink_period = 1;
+	private static Player player;
+	private static IdEditMenu editor;
 
 	/**
 	 * Initializes the MapManager and binds the inputManager
@@ -124,7 +126,7 @@ public class MapManager implements Screen{
 		logger.info("Cartes chargées");
 		UpdateDataCheckStatus.setStatus("Cartes chargées");
 	}
-	
+
 	@Override
 	public void render(float delta) {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
@@ -160,8 +162,11 @@ public class MapManager implements Screen{
 
 	@Override
 	public void show() {
-		Place origin = Place.getPlace("lh_temple");
-		ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(origin));
+		tileStage.addAction(Actions.alpha(1f, 2f));
+		spriteStage.addAction(Actions.alpha(1f, 2f));
+		debugStage.addAction(Actions.alpha(1f, 2f));
+		smoothStage.addAction(Actions.alpha(1f, 2f));
+		uiStage.addAction(Actions.alpha(1f, 2f));
 		Gdx.input.setInputProcessor(controller);
 	}
 
@@ -246,9 +251,10 @@ public class MapManager implements Screen{
 	 */
 	public void editMapAtCoord(Point point) {
 		int id = getIdAtCoordOnMap("v2_worldmap", point);
-		logger.info("Open menu ID "+id+"@ "+point);
-		new IdEditMenu(point);
-		Gdx.input.setInputProcessor(null);
+		logger.info("Open menu ID "+id+"@ "+point.x+";"+point.y);
+		editor = new IdEditMenu(point);
+		Gdx.input.setInputProcessor(editor);
+		screenManager.setScreen(editor);
 	}
 
 
@@ -265,7 +271,8 @@ public class MapManager implements Screen{
 		MapManager.idEditList = idEditList;
 	}
 	
-	public MapManager(ScreenManager screenManager){
+	public MapManager(ScreenManager sm){
+		screenManager = sm;
 		setManager(this);
 	}
 	
@@ -409,8 +416,10 @@ public class MapManager implements Screen{
 	 * Closes edit menu and gives back control.
 	 */
 	public static void close_edit_menu() {
+		screenManager.setScreen(m);
 		Gdx.input.setInputProcessor(controller);
 		unHighlight();
+		editor.dispose();
 	}
 
 	/**
@@ -467,6 +476,11 @@ public class MapManager implements Screen{
 	
 	@Override
 	public void hide() {
+		tileStage.addAction(Actions.alpha(0f, 1f));
+		spriteStage.addAction(Actions.alpha(0f, 1f));
+		debugStage.addAction(Actions.alpha(0f, 1f));
+		smoothStage.addAction(Actions.alpha(0f, 1f));
+		uiStage.addAction(Actions.alpha(0f, 1f));
 	}
 
 	@Override

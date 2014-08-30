@@ -37,7 +37,7 @@ import com.badlogic.gdx.utils.Array;
 
 
 /**
- * This is a chunk, part of a 9 chunks chunkmap.
+ * This is the map on the screen.
  * @author synoga
  *
  */
@@ -48,11 +48,12 @@ public class Chunk{
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static Map<String, Pixmap> cached_pixmaps = new HashMap<String, Pixmap>();
 	public static final Point chunk_size = PointsManager.getPoint(3+Gdx.graphics.getWidth()/16,3+Gdx.graphics.getHeight()/8);
+	//public static final Point chunk_size = PointsManager.getPoint(Gdx.graphics.getWidth()/64,3);
 	private static final int SMOOTHING_DELTA = 50000;
-	private static final int tileEngineFrequency_µs = 500; // objectif 100 sans perdre de fps
-	private static final int spriteEngineFrequency_µs = 500; // objectif 500 sans perdre de fps
-	private static final int debugEngineFrequency_ms = 1; // objectif 1 sans perdre de fps
-	private static final int smoothEngineFrequency_ms = 50; // objectif 50 sans perdre de fps
+	private static final int tileEnginePeriod_µs = 500; // objectif 100 sans perdre de fps
+	private static final int spriteEnginePeriod_ms = 10; // objectif 1 sans perdre de fps
+	private static final int debugEnginePeriod_ms = 10; // objectif 1 sans perdre de fps
+	private static final int smoothEnginePeriod_ms = 100; // objectif 50 sans perdre de fps
 	private static final int TILE = 1;
 	private static final int SPRITE = 2;
 	private static final int DEBUG = 3;
@@ -83,6 +84,7 @@ public class Chunk{
 	public static void newChunk(String map, Point point) {
 		loadingStatus.waitUntilTextureAtlasTilesCreated();
 		stopChunkMapWatcher();
+		clearQueues();
 		setLimits(point);
 		for(int y = getUpLimit() ; y <= getDownLimit() ; y++){
 			for(int x = getLeftLimit() ; x <= getRightLimit() ; x++){
@@ -91,6 +93,14 @@ public class Chunk{
 			}	
 		}
 		startChunkMapWatcher();
+	}
+
+	private static void clearQueues() {
+		engineTileQueue.clear();
+		engineSpriteQueue.clear();
+		engineDebugQueue.clear();
+		engineSmoothQueue.clear();
+		smoothQueue.clear();
 	}
 
 	private static void setLimits(Point point) {
@@ -349,7 +359,7 @@ public class Chunk{
 		}
 		TextureRegion texRegion = getSpriteTextureRegionFromIdAndPoint(id, point);
 		Acteur act = new Acteur(texRegion, point, px.getOffset());
-		act.setZIndex((point.y));
+		act.setZIndex((int) act.getTop());
 		addActorToChunkEngine(act, SPRITE);
 		int id2 = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(point.x, point.y+1));
 		if (isTileId(id2)) {
@@ -374,7 +384,7 @@ public class Chunk{
 		Sprite sp = new Sprite(texRegion);
 		sp.flip(true, false);
 		Acteur mir = new Acteur(sp, point, px.getOffset2());
-		mir.setZIndex((point.y));
+		mir.setZIndex((int) mir.getTop());
 		addActorToChunkEngine(mir, SPRITE);
 		int id2 = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(point.x, point.y+1));
 		if (isTileId(id2)) {
@@ -392,11 +402,11 @@ public class Chunk{
 	 */
 	public static void startChunkEngine(){
 		logger.info("Démarrage de la chunkEngine");
-		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapTileEngineRunnable(), 0, tileEngineFrequency_µs, TimeUnit.MICROSECONDS);
-		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSpriteEngineRunnable(), 0, spriteEngineFrequency_µs, TimeUnit.MICROSECONDS);
-		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapDebugEngineRunnable(), 0, debugEngineFrequency_ms, TimeUnit.MILLISECONDS);
-		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothEngineRunnable(), 0, smoothEngineFrequency_ms, TimeUnit.MILLISECONDS);
-		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothQueueRunnable(), 0, smoothEngineFrequency_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapTileEngineRunnable(), 0, tileEnginePeriod_µs, TimeUnit.MICROSECONDS);
+		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSpriteEngineRunnable(), 0, spriteEnginePeriod_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapDebugEngineRunnable(), 0, debugEnginePeriod_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothEngineRunnable(), 0, smoothEnginePeriod_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothQueueRunnable(), 0, smoothEnginePeriod_ms, TimeUnit.MILLISECONDS);
 		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapCleanEngineRunnable(), 0, 1, TimeUnit.SECONDS);
 	}
 	
@@ -630,7 +640,7 @@ public class Chunk{
 		Point newCenter = PointsManager.getPoint(getCenter().x+1,getCenter().y);
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int y = getUpLimit() ; y <= getDownLimit() ; y++){
+		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
 			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(getRightLimit(), y));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(getRightLimit(), y));
 		}
@@ -640,7 +650,7 @@ public class Chunk{
 		Point newCenter = PointsManager.getPoint(getCenter().x-1,getCenter().y);
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int y = getUpLimit() ; y <= getDownLimit() ; y++){
+		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
 			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(getLeftLimit(), y));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
 		}
@@ -650,7 +660,7 @@ public class Chunk{
 		Point newCenter = PointsManager.getPoint(getCenter().x,getCenter().y-1);
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x <= getRightLimit() ; x++){
+		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
 			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x, getUpLimit()));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getUpLimit()));
 		}
@@ -660,7 +670,7 @@ public class Chunk{
 		Point newCenter = PointsManager.getPoint(getCenter().x,getCenter().y+1);
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x <= getRightLimit() ; x++){
+		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
 			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x, getDownLimit()));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
 		}

@@ -982,20 +982,20 @@
 1208:NA:tmpl1 1 T1 DGrass T2 Desert
 1209:NA:tmpl1 1 T1 DGrass T2 Desert
 1212:Ice:modulos(16,16)
-1405:Mount1:Mount1
 10013:NA:NMSPave02
-1404:Miscs-B:Banquet
+1405:Mount1:Mount1
 10012:NA:NMSSnowRoad
+1404:Miscs-B:Banquet
 1407:Mount1:Mount1
-1406:Mount1:Mount1
 10014:NA:NMSRiverNO01
-1401:MIRROR:1302
+1406:Mount1:Mount1
 10009:NA:NMSSand
+1401:MIRROR:1302
 10008:NA:NMSPave01
-1403:Miscs-B:BarCounter
 10011:NA:NMSSnow
-1402:Root:ShopTable1
+1403:Miscs-B:BarCounter
 10010:NA:NMSSandRoad
+1402:Root:ShopTable1
 10005:NA:NMSOcean01
 10004:NA:NMSGrass
 10007:NA:NMSOcean03

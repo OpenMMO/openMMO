@@ -6,6 +6,7 @@ import opent4c.utils.AssetsLoader;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.Place;
 import opent4c.utils.RunnableCreatorUtil;
+import opent4c.utils.ThreadsUtil;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -34,7 +35,7 @@ public class ScreenManager extends Game{
 /*----------------------------SWITCHS D'ECRAN CLIENT---------------------*/
 	
 	public void switchCheckDataScreen() {
-		this.setScreen(checkScreen);
+		setScreen(checkScreen);
 	}
 
 	public void switchGameScreen(final MapManager screen) {
@@ -43,6 +44,7 @@ public class ScreenManager extends Game{
 
 			@Override
 			public void run() {
+				ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(Place.getPlace("lh_temple")));
 				setScreen(screen);				
 			}
 		});

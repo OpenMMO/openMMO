@@ -442,4 +442,29 @@ public class RunnableCreatorUtil {
 		};
 		return r;
 	}
+
+	public static Runnable getExecCommandRunnable(final int nb) {
+		Runnable r = new Thread("Exec Command"){
+
+			@Override
+			public void run() {
+				IdEditMenu.execNormalCommand(nb);
+				IdEditMenu.exit();
+			}
+		};
+		return r;
+	}
+
+	public static Runnable getPrintLineRunnable(final String line) {
+		Runnable r = new Thread("Print"){
+
+			@Override
+			public void run() {
+				IdEditMenu.shiftConsoleTexts();
+				IdEditMenu.getConsoleTexts().get(0).setText(line);
+			}
+		};
+		return r;
+
+	}
 }

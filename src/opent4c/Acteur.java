@@ -36,7 +36,8 @@ public class Acteur extends Actor {
         setX(32*coord.x+offset.x);
         setY(16*coord.y+offset.y);
         setWidth(sp.getRegionWidth());
-        setHeight(sp.getRegionHeight());	}
+        setHeight(sp.getRegionHeight());
+    }
 
 	public void flip(boolean flipX, boolean flipY){
     	this.tex.flip(flipX, flipY);
