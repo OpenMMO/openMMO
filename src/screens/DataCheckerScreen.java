@@ -1,8 +1,7 @@
 package screens;
 
-import org.lwjgl.opengl.GL30;
-
 import opent4c.UpdateDataCheckStatus;
+import opent4c.utils.FilesPath;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -79,7 +78,7 @@ public class DataCheckerScreen implements Screen{
 	@Override
 	public void show() {
 		batch = new SpriteBatch();
-		font = new BitmapFont();
+		font = new BitmapFont(Gdx.files.internal((FilesPath.getFontFilePath())));
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();

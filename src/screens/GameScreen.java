@@ -46,13 +46,14 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  * @author synoga
  *
  */
-public class MapManager implements Screen{
+public class GameScreen implements Screen{
 
-	private static Logger logger = LogManager.getLogger(MapManager.class.getSimpleName());
+	private static Logger logger = LogManager.getLogger(GameScreen.class.getSimpleName());
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 
 	private static Map<String,ByteBuffer> id_maps = new HashMap<String,ByteBuffer>(5);
-	private static MapManager m;
+	private static String currentMap = "v2_worldmap";
+	private static GameScreen m;
 	private static InputManager controller = null;
 	private static TextButtonStyle style = new TextButtonStyle();
 	private static TextButton OnScreenInfos, playerLocationInfo;
@@ -82,7 +83,7 @@ public class MapManager implements Screen{
 	 * Initializes the MapManager and binds the inputManager
 	 */
 	public static void init() {
-		style.font = new BitmapFont();
+		style.font = new BitmapFont(Gdx.files.internal((FilesPath.getFontFilePath())));
 		tileStage = new Stage();
 		spriteStage = new Stage();
 		debugStage = new Stage();
@@ -155,7 +156,7 @@ public class MapManager implements Screen{
 	 */
 	private void updateInfos() {
 		Gdx.app.getGraphics().setTitle("OpenT4C v0 FPS: " + Gdx.graphics.getFramesPerSecond() + " RAM : " + ((Runtime.getRuntime().totalMemory())/1024/1024) + " Mo" + Chunk.getEngineInfos()+" Actors in stages : "+getActorsInMemory());
-		playerLocationInfo.setText("X: " + (((int)camera.position.x/32)) + " Y: " + (((int)camera.position.y/16)) + " Zoom : " + camera.zoom);
+		playerLocationInfo.setText("X: " + (((int)camera.position.x/32)) + " Y: " + (((int)camera.position.y/16)));
 		playerLocationInfo.setPosition(playerLocationInfo.getWidth()*4, playerLocationInfo.getHeight());
 	}
 
@@ -244,6 +245,7 @@ public class MapManager implements Screen{
 	 * @param place
 	 */
 	public static void createChunk(Place place) {
+		setCurrentMap(place.getMapName());
 		Chunk.newChunk(place.getMapName(),place.getMapCoord());
 		Gdx.input.setInputProcessor(controller);
 	}
@@ -253,7 +255,7 @@ public class MapManager implements Screen{
 	 * @param point
 	 */
 	public void editMapAtCoord(Point point) {
-		int id = getIdAtCoordOnMap("v2_worldmap", point);
+		int id = getIdAtCoordOnMap(currentMap, point);
 		logger.info("Open menu ID "+id+"@ "+point.x+";"+point.y);
 		editor = new IdEditMenu(point);
 		Gdx.input.setInputProcessor(editor);
@@ -271,10 +273,10 @@ public class MapManager implements Screen{
 	}
 
 	public static void setIdEditList(Map<Integer, Point> idEditList) {
-		MapManager.idEditList = idEditList;
+		GameScreen.idEditList = idEditList;
 	}
 	
-	public MapManager(ScreenManager sm){
+	public GameScreen(ScreenManager sm){
 		screenManager = sm;
 		setManager(this);
 	}
@@ -286,7 +288,7 @@ public class MapManager implements Screen{
 	/**
 	 * @return the Screen
 	 */
-	public static MapManager getScreen() {
+	public static GameScreen getScreen() {
 		return getManager();
 	}
 	
@@ -345,7 +347,7 @@ public class MapManager implements Screen{
 	 * @return the camera
 	 */
 	public static OrthographicCamera getCamera() {
-		return MapManager.camera;
+		return GameScreen.camera;
 	}
 	
 	/**
@@ -404,7 +406,7 @@ public class MapManager implements Screen{
 	}
 
 	public static void setHighlighted(boolean highlighted) {
-		MapManager.highlighted = highlighted;
+		GameScreen.highlighted = highlighted;
 	}
 
 	/**
@@ -466,7 +468,7 @@ public class MapManager implements Screen{
 	}
 
 	public static void setId_maps(Map<String,ByteBuffer> id_maps) {
-		MapManager.id_maps = id_maps;
+		GameScreen.id_maps = id_maps;
 	}
 
 	public static boolean isIdEditListCreated() {
@@ -515,12 +517,12 @@ public class MapManager implements Screen{
 	public void resize(int width, int height) {
 	}
 
-	public static MapManager getManager() {
+	public static GameScreen getManager() {
 		return m;
 	}
 
-	public static void setManager(MapManager m) {
-		MapManager.m = m;
+	public static void setManager(GameScreen m) {
+		GameScreen.m = m;
 	}
 
 	public static void toggleRenderSmootinhg() {
@@ -563,5 +565,13 @@ public class MapManager implements Screen{
 				act.remove();
 			}
 		}
+	}
+
+	public static void setCurrentMap(String mapName) {
+		currentMap = mapName;
+	}
+
+	public static String getCurrentMap() {
+		return currentMap;
 	}
 }

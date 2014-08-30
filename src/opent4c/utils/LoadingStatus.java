@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import opent4c.Chunk;
 import opent4c.SourceDataManager;
 import opent4c.UpdateDataCheckStatus;
-import screens.MapManager;
+import screens.GameScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -312,7 +312,7 @@ public enum LoadingStatus {
 	}
 
 	private boolean areMapsLoaded() {
-		if(MapManager.getIdMaps().containsKey("v2_worldmap"))return true;
+		if(GameScreen.getIdMaps().containsKey("v2_worldmap"))return true;
 		return false;
 	}
 
@@ -323,7 +323,7 @@ public enum LoadingStatus {
 	}
 
 	private boolean isIdEditListCreate() {
-		if (MapManager.isIdEditListCreated())return true;
+		if (GameScreen.isIdEditListCreated())return true;
 		return false;
 	}
 

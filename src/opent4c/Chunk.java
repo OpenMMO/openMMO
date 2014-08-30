@@ -21,7 +21,7 @@ import opent4c.utils.ThreadsUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import screens.MapManager;
+import screens.GameScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -88,7 +88,7 @@ public class Chunk{
 		setLimits(point);
 		for(int y = getUpLimit() ; y <= getDownLimit() ; y++){
 			for(int x = getLeftLimit() ; x <= getRightLimit() ; x++){
-				int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x,y));
+				int id = GameScreen.getIdAtCoordOnMap(map,PointsManager.getPoint(x,y));
 				addActeurforIdAndPoint(id,PointsManager.getPoint(x, y));
 			}	
 		}
@@ -361,7 +361,7 @@ public class Chunk{
 		Acteur act = new Acteur(texRegion, point, px.getOffset());
 		act.setZIndex((int) act.getTop());
 		addActorToChunkEngine(act, SPRITE);
-		int id2 = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(point.x, point.y+1));
+		int id2 = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(point.x, point.y+1));
 		if (isTileId(id2)) {
 			addTileAtCoord(id2, point);
 			addAnchorTile(point);
@@ -386,7 +386,7 @@ public class Chunk{
 		Acteur mir = new Acteur(sp, point, px.getOffset2());
 		mir.setZIndex((int) mir.getTop());
 		addActorToChunkEngine(mir, SPRITE);
-		int id2 = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(point.x, point.y+1));
+		int id2 = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(point.x, point.y+1));
 		if (isTileId(id2)) {
 			addTileAtCoord(id2, point);
 			addAnchorTile(point);
@@ -641,7 +641,7 @@ public class Chunk{
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
 		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(getRightLimit(), y));
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getRightLimit(), y));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(getRightLimit(), y));
 		}
 	}
@@ -651,7 +651,7 @@ public class Chunk{
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
 		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(getLeftLimit(), y));
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
 		}
 	}
@@ -661,7 +661,7 @@ public class Chunk{
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
 		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x, getUpLimit()));
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getUpLimit()));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getUpLimit()));
 		}
 	}
@@ -671,7 +671,7 @@ public class Chunk{
 		setLimits(newCenter);
 		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
 		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = MapManager.getIdAtCoordOnMap("v2_worldmap",PointsManager.getPoint(x, getDownLimit()));
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
 			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
 		}
 	}

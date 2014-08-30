@@ -35,6 +35,7 @@ public class SpriteUtils {
 	
 	static boolean doTheWriting(MapPixel pixel, ByteBuffer buf){
 		boolean writen = false;
+		//logger.info("Sprite type : "+pixel.getType());
 		switch(pixel.getType()){
 			case 1 : SpriteWriter.writeType1SpriteToDisk(pixel, buf); break;
 			case 2 : SpriteWriter.writeType2SpriteToDisk(pixel, buf); break;

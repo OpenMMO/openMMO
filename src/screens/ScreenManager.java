@@ -18,7 +18,7 @@ public class ScreenManager extends Game{
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private DataCheckerScreen checkScreen = null;
 	OrthographicCamera camera;
-	MapManager map;
+	GameScreen map;
 	public int status = 0;
 
 	/**
@@ -38,7 +38,7 @@ public class ScreenManager extends Game{
 		setScreen(checkScreen);
 	}
 
-	public void switchGameScreen(final MapManager screen) {
+	public void switchGameScreen(final GameScreen screen) {
 		UpdateDataCheckStatus.setStatus("Initialisation.");
 		Gdx.app.postRunnable(new Runnable(){
 
@@ -63,11 +63,11 @@ public class ScreenManager extends Game{
 		Place.createDefault();
 		AssetsLoader.loadMappedSprites();
 		AssetsLoader.loadSols();
-		map = new MapManager(this);
+		map = new GameScreen(this);
 		loadingStatus.waitUntilTileAtlasAreLoaded();
 		Gdx.app.postRunnable(RunnableCreatorUtil.getMapInitializerRunnable());
-		MapManager.loadMaps();
-		MapManager.createIdEditMap();
+		GameScreen.loadMaps();
+		GameScreen.createIdEditMap();
 		loadingStatus.waitIdEditListCreated();
 		Chunk.cacheSmoothingTemplatePixmaps();
 		Chunk.startChunkEngine();

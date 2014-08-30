@@ -60,7 +60,11 @@ public class Place {
 		new Place("ar_druides", "v2_worldmap",PointsManager.getPoint(2790*32,176*16));//OK
 		new Place("rd_druides", "v2_worldmap",PointsManager.getPoint(1450*32,2868*16));//OK
 		new Place("sh_zo", "v2_worldmap",PointsManager.getPoint(992*32,99*16));//OK
-		new Place("center", "v2_worldmap",PointsManager.getPoint(1536*32,1536*16));//OK
+		new Place("worldmap", "v2_worldmap",PointsManager.getPoint(1536*32,1536*16));//OK
+		new Place("underworld", "v2_underworld",PointsManager.getPoint(1536*32,1536*16));//OK
+		new Place("leoworld", "v2_leoworld",PointsManager.getPoint(1536*32,1536*16));//OK
+		new Place("cavernmap", "v2_cavernmap",PointsManager.getPoint(1536*32,1536*16));//OK
+		new Place("dungeonmap", "v2_dungeonmap",PointsManager.getPoint(1536*32,1536*16));//OK
 
 	}
 }

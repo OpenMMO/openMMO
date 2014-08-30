@@ -3,9 +3,12 @@ package opent4c;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import opent4c.utils.FilesPath;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -31,6 +34,10 @@ public class SettingsManager {
 		cfg.backgroundFPS = 24;
 		cfg.foregroundFPS = 60;
 		cfg.resizable = true;
+		cfg.addIcon(FilesPath.get128IconFilePath(), Files.FileType.Internal);
+		cfg.addIcon(FilesPath.getIconFilePath(), Files.FileType.Internal);
+		cfg.addIcon(FilesPath.get32IconFilePath(), Files.FileType.Internal);
+		cfg.addIcon(FilesPath.get16IconFilePath(), Files.FileType.Internal);
 		cfg.vSyncEnabled = true;
 		cfg.allowSoftwareMode = true;
 		cfg.x = -1;

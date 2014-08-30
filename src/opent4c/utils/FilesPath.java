@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.files.FileHandle;
+
 public class FilesPath {
 	
 	private FilesPath () {}
@@ -300,7 +302,7 @@ public class FilesPath {
 	}
 
 	public static String getAtlasUtilsFilePath() {
-		StringBuilder sb = new StringBuilder(24 + 7);
+		StringBuilder sb = new StringBuilder();
 		
 		sb.append("data");
 		sb.append(File.separator);
@@ -308,4 +310,66 @@ public class FilesPath {
 		
 		return sb.toString();
 	}
+
+	public static String getFontFilePath() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("game_files");
+		sb.append(File.separator);
+		sb.append("t4cBeaulieux.fnt");
+		
+		return sb.toString();
+	}
+
+	public static String get128IconFilePath() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("game_files");
+		sb.append(File.separator);
+		sb.append("t4c128.png");
+		
+		return sb.toString();
+	}
+	
+	public static String getIconFilePath() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("game_files");
+		sb.append(File.separator);
+		sb.append("t4c48.png");
+		
+		return sb.toString();
+	}
+	
+	public static String get32IconFilePath() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("game_files");
+		sb.append(File.separator);
+		sb.append("t4c32.png");
+		
+		return sb.toString();
+	}
+	
+	public static String get16IconFilePath() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("data");
+		sb.append(File.separator);
+		sb.append("game_files");
+		sb.append(File.separator);
+		sb.append("t4c16.png");
+		
+		return sb.toString();
+	}
+
+
 }

@@ -10,8 +10,6 @@ import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.T4CMAP;
-import opent4c.utils.MD5Checker;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,15 +35,13 @@ public class DataChecker {
 	 * Checks everything is ok to be loaded.
 	 */
 	public static void runCheck() {
-		logger.info("Vérification des données source.");
-		UpdateDataCheckStatus.setStatus("Vérification des données source.");
+		UpdateDataCheckStatus.setStatus("Vérification.");
 		SourceDataManager.populate();
 		FilesPath.init();
 		SpriteData.loadIdFullFromFile();
 		checkWhatNeedsToBeDone();
 		doWhatNeedsToBeDone();
 		makeSureEverythingIsOk();
-		logger.info("Vérification terminée.");
 		UpdateDataCheckStatus.setStatus("Vérification terminée.");
 	}
 	
@@ -53,23 +49,10 @@ public class DataChecker {
 	 * Sets booleans to know what has to be done and what has already be done. With that, we only do what's needed.
 	 */
 	private static void checkWhatNeedsToBeDone() {
-		checkSourceData();
 		checkPixelIndex();
 		checkMaps();
 		checkAtlas();
 		checkSprites();
-	}
-	
-	/**
-	 * Checks the source data (presence and integrity).
-	 */
-	private static void checkSourceData() {
-		List<File> absentFiles = checkAbsentFiles();
-		stopIfAbsentFiles(absentFiles);
-		List<File> badChecksumFiles = checkChecksumFiles();
-		stopIfBadChecksum(badChecksumFiles);
-		UpdateDataCheckStatus.setStatus("TEST présence fichiers sources : true");
-		UpdateDataCheckStatus.setStatus("TEST présence fichiers sources : true");
 	}
 
 	/**
@@ -192,23 +175,6 @@ public class DataChecker {
 		loadingStatus.waitUntilTilesPackaged();
 	}
 
-
-	/**
-	 * Checks if source files are absent
-	 */
-	private static List<File> checkAbsentFiles() {
-		List<File> result = new ArrayList<File>();
-		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
-		while (iter_source.hasNext()){
-			File f = iter_source.next();
-			UpdateDataCheckStatus.setStatus("Vérification présence : "+f.getName());
-			if(!f.exists()){
-				result.add(f);
-			}
-		}
-		return result;
-	}
-
 	/**
 	 * Stops the program if source files are missing
 	 * @param absentFiles
@@ -227,36 +193,6 @@ public class DataChecker {
 	 */
 	private static void downloadGameFiles(List<File> files) {
 		//TODO intégrer ici la possibilité de télécharger ces fichiers à partir d'une liste de mirroirs		
-	}
-
-	/**
-	 * Checks source file integrity
-	 * @return a file list which did not pass the checksum test
-	 */
-	private static List<File> checkChecksumFiles() {
-		List<File> result = new ArrayList<File>();
-		Iterator<File> iter_source = SourceDataManager.getData().keySet().iterator();
-		while (iter_source.hasNext()){
-			File f = iter_source.next();
-			UpdateDataCheckStatus.setStatus("Vérification MD5 : "+f.getName());
-			if(!MD5Checker.check(f,SourceDataManager.getData().get(f))){
-				result.add(f);
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * Stops the program if source files are corrupted
-	 * @param badChecksumFiles
-	 */
-	private static void stopIfBadChecksum(List<File> badChecksumFiles) {
-		if (!badChecksumFiles.isEmpty()){
-			logger.fatal("Fichier(s) corrompu(s) : "+badChecksumFiles);
-			UpdateDataCheckStatus.setStatus("Fichier(s) corrompu(s) : "+badChecksumFiles);
-			downloadGameFiles(badChecksumFiles);
-			Gdx.app.exit();
-		}		
 	}
 
 	/**

@@ -16,7 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import screens.IdEditMenu;
-import screens.MapManager;
+import screens.GameScreen;
 import tools.DataInputManager;
 
 import com.badlogic.gdx.Gdx;
@@ -104,7 +104,7 @@ public class RunnableCreatorUtil {
 	public static Runnable getChunkMapWatcherRunnable() {
 		Runnable r = new Thread("Chunkmap watcher"){
 			public void run() {
-				MapManager.updateChunkPosition();
+				GameScreen.updateChunkPosition();
 			}
 		};
 		return r;
@@ -116,15 +116,15 @@ public class RunnableCreatorUtil {
 	public static Runnable getHighlighterRunnable() {
 		Runnable r = new Thread("Highlight"){
 			public void run(){
-				MapManager.tileFadeIn();
+				GameScreen.tileFadeIn();
 				try {
-					Thread.sleep((long) (500*MapManager.blink_period));
+					Thread.sleep((long) (500*GameScreen.blink_period));
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 					logger.fatal(e);
 					Gdx.app.exit();
 				}
-				MapManager.tileFadeOut();
+				GameScreen.tileFadeOut();
 			}
 		};
 		return r;
@@ -191,9 +191,9 @@ public class RunnableCreatorUtil {
 			public void run(){
 				logger.info("Création de la liste d'ID pour édition.");
 				UpdateDataCheckStatus.setStatus("Création de la liste d'ID pour édition.");
-				MapManager.setIdEditList(new HashMap<Integer, Point>());
+				GameScreen.setIdEditList(new HashMap<Integer, Point>());
 				int last = -1;
-				ByteBuffer map = MapManager.getIdMaps().get("v2_worldmap");
+				ByteBuffer map = GameScreen.getIdMaps().get("v2_worldmap");
 				map.rewind();
 				while(map.position()<map.capacity()){
 					byte b1=0,b2=0;
@@ -201,13 +201,13 @@ public class RunnableCreatorUtil {
 					b2 = map.get();
 					int id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
 					if(id != last){
-						if(!MapManager.getIdEditList().containsKey(id)){
-							MapManager.getIdEditList().put(id, PointsManager.getPoint((map.position()/2)%3072, (map.position()/6144)));
+						if(!GameScreen.getIdEditList().containsKey(id)){
+							GameScreen.getIdEditList().put(id, PointsManager.getPoint((map.position()/2)%3072, (map.position()/6144)));
 						}
 						last = id;
 					}
 				}
-				MapManager.setIdEditListCreated(true);
+				GameScreen.setIdEditListCreated(true);
 				logger.info("Création de la liste d'ID pour édition terminée.");
 				UpdateDataCheckStatus.setStatus("Création de la liste d'ID pour édition terminée.");
 			}
@@ -233,7 +233,7 @@ public class RunnableCreatorUtil {
 						Gdx.app.exit();
 					}
 					buf.rewind();
-					MapManager.getIdMaps().put(f.getName().substring(0, f.getName().indexOf('.')),buf);
+					GameScreen.getIdMaps().put(f.getName().substring(0, f.getName().indexOf('.')),buf);
 			}
 		};
 		return r;
@@ -244,7 +244,7 @@ public class RunnableCreatorUtil {
 		Runnable r = new Thread("Map initializer"){
 
 			public void run(){
-				MapManager.init();
+				GameScreen.init();
 			}
 		};
 		return r;
@@ -271,7 +271,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.teleport(place);
+				GameScreen.teleport(place);
 			}
 		};
 		return r;
@@ -315,7 +315,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.addActorToTiles(acteur);
+				GameScreen.addActorToTiles(acteur);
 			}
 		};
 		return r;
@@ -337,7 +337,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.addActorToSprites(acteur);
+				GameScreen.addActorToSprites(acteur);
 			}
 		};
 		return r;
@@ -359,7 +359,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.addActorToDebug(acteur);
+				GameScreen.addActorToDebug(acteur);
 			}
 		};
 		return r;
@@ -381,7 +381,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.addActorToSmooth(acteur);
+				GameScreen.addActorToSmooth(acteur);
 			}
 		};
 		return r;
@@ -392,7 +392,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.cleanMap();
+				GameScreen.cleanMap();
 			}
 		};
 		return r;
@@ -403,7 +403,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.clearStages();
+				GameScreen.clearStages();
 				ThreadsUtil.executeInThread(RunnableCreatorUtil.getChunkCreatorRunnable(place));
 			}
 		};
@@ -415,7 +415,7 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				MapManager.createChunk(place);
+				GameScreen.createChunk(place);
 			}
 		};
 		return r;

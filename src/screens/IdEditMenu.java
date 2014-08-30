@@ -47,7 +47,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 public class IdEditMenu implements Screen, InputProcessor{
 	private static Logger logger = LogManager.getLogger(IdEditMenu.class.getSimpleName());
 	private static TextButtonStyle style = new TextButtonStyle();
-	private static int CONSOLE_LINES = 25;
+	private static int CONSOLE_LINES = 35;
 	private static List<TextButton> consoleTexts = new ArrayList<TextButton>(CONSOLE_LINES );
 	private static TextButton input;
 	private static int id;
@@ -63,6 +63,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	private static String inputText = "";
 	private static boolean validate = false;
 	private static boolean editing = false;
+	private boolean shift = false;
 
 	/**
 	 * Opens GUI.
@@ -104,6 +105,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 		if (cmd == 6)editOffsets();
 		if (cmd == 7)editSpecificID();
 		if (cmd == 8)editIdsOnMap();
+		if (cmd == 9)teleport();
 		if (cmd == 42)showHiddenMenu();		
 	}
 
@@ -130,7 +132,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	public static void exit() {
 		printSepLine();
 		print("Au revoir Dave.");
-		MapManager.close_edit_menu();
+		GameScreen.close_edit_menu();
 	}
 	
 	/**
@@ -233,7 +235,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 		if(!editing ){
 			showConsoleMainCommand();
 		}else{
-			showConsoleEditCommand(MapManager.getIdEditList().size());
+			showConsoleEditCommand(GameScreen.getIdEditList().size());
 		}
 	}
 
@@ -366,7 +368,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 		if(!SpriteData.getIdfull().containsKey(editId)){
 			print("ID non mappée");
 		}else{
-			point = MapManager.getIdEditList().get(editId);
+			point = GameScreen.getIdEditList().get(editId);
 			setId(editId);
 			editID(editId);
 		}
@@ -377,12 +379,12 @@ public class IdEditMenu implements Screen, InputProcessor{
 	 */
 	private static void editIdsOnMap() {
 		printSepLine();
-		int nb_ids = MapManager.getIdEditList().size();
+		int nb_ids = GameScreen.getIdEditList().size();
 		print(nb_ids+" Ids à éditer.");
 		print("Auquel commencer à éditer? (Par défaut : "+index+")");
 		index  = readIntFromConsole(true, index);
 		unValidate();
-		Iterator<Integer> iter_ids = MapManager.getIdEditList().keySet().iterator();
+		Iterator<Integer> iter_ids = GameScreen.getIdEditList().keySet().iterator();
 		for(int i = 0 ; i < index ; i++){
 			iter_ids.next();
 		}
@@ -397,7 +399,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	}
 	
 	private static void showConsoleEditCommand(int nb_ids) {
-		point = MapManager.getIdEditList().get(getId());
+		point = GameScreen.getIdEditList().get(getId());
 		getEditInfos(point);
 		printIdEditCommands();
 		printSepLine();
@@ -410,6 +412,41 @@ public class IdEditMenu implements Screen, InputProcessor{
 		execEditIdsCommand(cmd);
 	}
 
+	/**
+	 * 9 - Teleport
+	 */
+	private static void teleport() {
+		printSepLine();
+		print("Téléportation");
+		print("Choisissez une carte : 1 worldmap / 2 leoworld / 3 cavernmap");
+		print("4 dungeonmap / 5 underworld / Entrée pour garder la carte actuelle");
+	    int mapNb = readIntFromConsole(true, 0);
+	    unValidate();
+	    if(mapNb > 5 || mapNb < 0) mapNb = 0;
+	    String mapName = GameScreen.getCurrentMap();
+	    if(mapNb == 1) mapName = "v2_worldmap";
+	    if(mapNb == 2) mapName = "v2_leoworld";
+	    if(mapNb == 3) mapName = "v2_cavernmap";
+	    if(mapNb == 4) mapName = "v2_dungeonmap";
+	    if(mapNb == 5) mapName = "v2_underworld";
+	    print("Choisissez une abscisse : (0-3071)");
+	    int x = readIntFromConsole(true, 1536);
+	    unValidate();
+	    if (x > 3071) x = 3071;
+		printSepLine();
+	    print("Choisissez une ordonnée : (0-3071)");
+	    int y = readIntFromConsole(true, 1536);
+	    unValidate();
+	    if (y > 3071) y = 3071;
+		printSepLine();
+		Place place = new Place("Teleport", mapName, PointsManager.getPoint(x*32, y*16));
+		print("Téléportation vers : "+place.getMapName()+" ("+place.getCoord().x/32+";"+place.getCoord().y/16+")");
+		if(askYesNo()){
+			GameScreen.teleport(place);
+			exit();
+		}
+	}
+	
 	/**
 	 * 42 - Show hidden menu.
 	 */
@@ -433,7 +470,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	 */
 	private static void getEditInfos(Point pt) {
 		point = pt;
-		id = MapManager.getIdAtCoordOnMap("v2_worldmap", point);
+		id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(), point);
 		tex = "";
 		if(SpriteData.getIdfull().containsKey(getId())){
 			tex = SpriteData.getTexFromId(getId());
@@ -628,7 +665,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	 * @return
 	 */
 	private static boolean askYesNo() {
-		print("Confirmer? (O/N)");
+		print("Confirmer? (o/n)");
 		String yesno = readStringFromConsole();
 		unValidate();
 		if(yesno.equalsIgnoreCase("y") || yesno.equalsIgnoreCase("yes") || yesno.equalsIgnoreCase("o") || yesno.equalsIgnoreCase("oui"))return true;
@@ -670,7 +707,8 @@ public class IdEditMenu implements Screen, InputProcessor{
 		print("5 - Editer un smoothing");
 		print("6 - Editer un Offset");
 		print("7 - Editer un ID spécifique");
-		print("8 - Editer les ID dans l'ordre");		
+		print("8 - Editer les ID dans l'ordre");
+		print("9 - Se téléporter");
 	}
 	
 	/**
@@ -728,7 +766,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	@Override
 	public void show() {
 		Gdx.graphics.setTitle("EDIT : "+point.x+";"+point.y);
-		style.font = new BitmapFont();
+		style.font = new BitmapFont(Gdx.files.internal((FilesPath.getFontFilePath())));
 		input = new TextButton("", style);
 		input.setPosition(Gdx.graphics.getWidth()/2, 20);
 		stage = new Stage();
@@ -779,8 +817,10 @@ public class IdEditMenu implements Screen, InputProcessor{
 
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
+		if (keycode == Keys.SHIFT_LEFT || keycode == Keys.SHIFT_RIGHT){
+			shift  = true;
+		}
+		return true;
 	}
 
 	@Override
@@ -805,11 +845,13 @@ public class IdEditMenu implements Screen, InputProcessor{
 		}else if(keycode == Keys.F12){
 		}else if(keycode == Keys.TAB){
 		}else if(keycode == Keys.SHIFT_LEFT){
+			shift = false;
 		}else if(keycode == Keys.CONTROL_LEFT){
 		}else if(keycode == Keys.ALT_LEFT){
 		}else if(keycode == Keys.ALT_RIGHT){
 		}else if(keycode == Keys.CONTROL_RIGHT){
 		}else if(keycode == Keys.SHIFT_RIGHT){
+			shift = false;
 		}else if(keycode == Keys.LEFT){
 		}else if(keycode == Keys.DOWN){
 		}else if(keycode == Keys.RIGHT){
@@ -842,25 +884,65 @@ public class IdEditMenu implements Screen, InputProcessor{
 		}else if(keycode == Keys.NUMPAD_9){
 			typeChar("9");
 		}else if(keycode == Keys.NUM_0){
-			typeChar("à");
+			if(!shift){
+				typeChar("à");
+			}else{
+				typeChar("0");
+			}
 		}else if(keycode == Keys.NUM_1){
-			typeChar("&");
+			if(!shift){
+				typeChar("&");
+			}else{
+				typeChar("1");
+			}
 		}else if(keycode == Keys.NUM_2){
-			typeChar("é");
+			if(!shift){
+				typeChar("é");
+			}else{
+				typeChar("2");
+			}
 		}else if(keycode == Keys.NUM_3){
-			typeChar("\"");
+			if(!shift){
+				typeChar("\"");
+			}else{
+				typeChar("3");
+			}
 		}else if(keycode == Keys.NUM_4){
-			typeChar("\'");
+			if(!shift){
+				typeChar("\'");
+			}else{
+				typeChar("4");
+			}
 		}else if(keycode == Keys.NUM_5){
-			typeChar("(");
+			if(!shift){
+				typeChar("(");
+			}else{
+				typeChar("5");
+			}
 		}else if(keycode == Keys.NUM_6){
-			typeChar("-");
+			if(!shift){
+				typeChar("-");
+			}else{
+				typeChar("6");
+			}
 		}else if(keycode == Keys.NUM_7){
-			typeChar("è");
+			if(!shift){
+				typeChar("è");
+			}else{
+				typeChar("7");
+			}
 		}else if(keycode == Keys.NUM_8){
-			typeChar("_");
+			if(!shift){
+				typeChar("_");
+			}else{
+				typeChar("8");
+			}
 		}else if(keycode == Keys.NUM_9){
-			typeChar("ç");
+			if(!shift){
+				typeChar("ç");
+			}else{
+				typeChar("9");
+			}
 		}else if(keycode == Keys.LEFT_BRACKET){
 			typeChar(")");
 		}else if(keycode == Keys.ENTER){

@@ -11,7 +11,7 @@ import opent4c.utils.Place;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
 import opent4c.utils.ThreadsUtil;
-import screens.MapManager;
+import screens.GameScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -27,7 +27,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 public class InputManager implements InputProcessor{
 	private static Logger logger = LogManager.getLogger(InputManager.class.getSimpleName());
 
-	private MapManager manager = null;
+	private GameScreen manager = null;
 	private boolean mouseLeft = false;
 	private boolean mouseRight = false;
 	private boolean mouseMiddle = false;
@@ -46,9 +46,9 @@ public class InputManager implements InputProcessor{
 	private boolean control_left = false;
 
 	
-	public InputManager(MapManager mapManager) {
+	public InputManager(GameScreen mapManager) {
 		manager = mapManager;
-		camera = MapManager.getCamera();
+		camera = GameScreen.getCamera();
 	}
 
 	@Override
@@ -124,23 +124,23 @@ public class InputManager implements InputProcessor{
 			teleport(Place.getPlace("sh_rst"));
 		}
 		if (keycode == Keys.F8){
-			teleport(Place.getPlace("ar_druides"));
+			teleport(Place.getPlace("cavernmap"));
 		}
 		if (keycode == Keys.F9){
-			teleport(Place.getPlace("rd_druides"));
+			teleport(Place.getPlace("dungeonmap"));
 		}
 		if (keycode == Keys.F10){
-			teleport(Place.getPlace("sh_zo"));
+			teleport(Place.getPlace("underworld"));
 		}
 		if (keycode == Keys.F11){
-			teleport(Place.getPlace("origin"));
+			teleport(Place.getPlace("leoworld"));
 		}
 		if (keycode == Keys.F12){
-			teleport(Place.getPlace("center"));
+			teleport(Place.getPlace("worldmap"));
 		}
 		if (keycode == Keys.ENTER){
-			if(MapManager.isHighlighted()){
-				manager.editMapAtCoord(PointsManager.getPoint(MapManager.getHighlight_tile().getX()/32,MapManager.getHighlight_tile().getY()/16));
+			if(GameScreen.isHighlighted()){
+				manager.editMapAtCoord(PointsManager.getPoint(GameScreen.getHighlight_tile().getX()/32,GameScreen.getHighlight_tile().getY()/16));
 			}
 		}
 		if (keycode == Keys.ESCAPE){
@@ -148,11 +148,11 @@ public class InputManager implements InputProcessor{
 		}
 		if (keycode == Keys.SPACE){
 			if(!(control_left||control_right)){
-				MapManager.toggleRenderSprites();
-				MapManager.toggleRenderDebug();
-				MapManager.toggleRenderSmootinhg();
+				GameScreen.toggleRenderSprites();
+				GameScreen.toggleRenderDebug();
+				GameScreen.toggleRenderSmootinhg();
 			}else{
-				MapManager.toggleRenderDebug();
+				GameScreen.toggleRenderDebug();
 			}
 			
 		}
@@ -289,11 +289,11 @@ public class InputManager implements InputProcessor{
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		if (button == Buttons.LEFT){
-			if(!MapManager.isHighlighted()){
+			if(!GameScreen.isHighlighted()){
 				Point tuile_on_map = PointsManager.getPoint((int)((screenX+camera.position.x-camera.viewportWidth/2)/(32/camera.zoom)),(int)((screenY+camera.position.y-camera.viewportHeight/2)/(16/camera.zoom)));
-				MapManager.highlight(tuile_on_map);
+				GameScreen.highlight(tuile_on_map);
 			}else{
-				MapManager.unHighlight();
+				GameScreen.unHighlight();
 			}
 			mouseLeft = false;
 		}
