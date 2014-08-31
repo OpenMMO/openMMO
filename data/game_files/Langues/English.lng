@@ -1,0 +1,140 @@
+Files
+Load Dda
+Save Dda
+Quit
+Sprites and pals
+Export Pal
+Export all Pals
+Replace Pal
+Edit Pal
+Export Sprite
+Export All Sprites
+Replace Sprite
+Options
+Show Shade
+Allow Shade Modification
+Allow Translucent color modification 
+Automatic selection of Translucent color 
+Help
+About...
+Pal and Sprite List
+Sprite Informations : 
+(No sprite Loaded)
+Used Pal :
+Sprite Type :
+Shade :
+Width :
+Height :
+Transparent :
+Trans. Color :
+Data Offset :
+Offset X : 
+Offset X2 : 
+Offset Y : 
+Offset Y2 : 
+Pict. Size :
+Com. Size :
+Dda File :
+Zlib Compression :
+Draw Style :
+Zoom
+Scaling
+Normal
+Sprite / Pal 
+Pals
+Sprites
+Not file
+in application folder
+Application quit now !
+Load sprite.
+Sprite file
+You must chose a 8bits bitmap !
+Replacement of sprite
+done.
+You must chose a sprite before replacing it.
+You have to load a dda file before that.
+Compressed
+Void
+Double compression
+Unknown
+Compression enabled
+Compression disabled
+On the back burner.
+Loading pals.
+Loading Sprites Information.
+Loading Sprites.
+Loading done.
+Sprite exportation
+Exporting all sprites (may slow down your system).
+You have to load dda files before running complete exportation !
+Sprites exportation done.
+Pal exportation
+You have to select a pel before exporting
+Exporting All pals (may slow down your system).
+You have to select a pal before exporting !
+Pals exporting done.
+Loading pal.
+Pal file
+Pal importation
+You have to select a pal before replace it !
+Saving pals.
+Saving sprites informations.
+Saving sprites.
+Save done.
+YOu have to select a sprite to edit its pal !
+Unable to save !
+You have to load dda files before saving !
+Editing Pal From Sprite
+Pal
+Sprite
+available commands
+Unselect colors
+Revert to original pal
+Select all colors
+Edit a color
+Color Index :
+Red
+Green
+Blue
+Choose Color
+Color Selection modify
+Select Threshold
+More
+Less
+Right click to select with treshold, Left click to select only one color
+Save modifications 
+Cancel Modifications
+Confirmation commands :
+Graph type options :
+Are you sure to modify a multiple usage pal ?
+(Not choose)
+Information
+Select the translucid color with the mouse pointer on the image below. If the image doesn't have translucid color, just close this window with a save button of color selection.
+Translucid color
+Old translucid color :
+New translucid color :
+Save translucid color
+Sorting and grouping all folders (slow loading)
+NMS version
+Languages 
+French 
+English
+Simple compression
+Rename Pal
+Rename Sprite
+Enter the new pal name :
+Enter the new sprite name :
+Invalid picture !
+Find pal
+Find sprite
+French translation
+English translation
+Select translucent color
+Pals export color format 
+Standard pal (*.pal)
+Adobe Photoshop (*.act)
+Enter the pal name :
+Enter the sprite name :
+Save offsets
+Only numbers are allowed.
+Only numbers are allowed.

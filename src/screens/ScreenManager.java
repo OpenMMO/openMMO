@@ -69,6 +69,7 @@ public class ScreenManager extends Game{
 		GameScreen.loadMaps();
 		GameScreen.createIdEditMap();
 		loadingStatus.waitIdEditListCreated();
+		GameScreen.printIdEditList();
 		Chunk.cacheSmoothingTemplatePixmaps();
 		Chunk.startChunkEngine();
 		switchGameScreen(map);

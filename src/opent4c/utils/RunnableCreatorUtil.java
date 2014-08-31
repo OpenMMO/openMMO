@@ -192,21 +192,11 @@ public class RunnableCreatorUtil {
 				logger.info("Création de la liste d'ID pour édition.");
 				UpdateDataCheckStatus.setStatus("Création de la liste d'ID pour édition.");
 				GameScreen.setIdEditList(new HashMap<Integer, Point>());
-				int last = -1;
-				ByteBuffer map = GameScreen.getIdMaps().get("v2_worldmap");
-				map.rewind();
-				while(map.position()<map.capacity()){
-					byte b1=0,b2=0;
-					b1 = map.get();
-					b2 = map.get();
-					int id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
-					if(id != last){
-						if(!GameScreen.getIdEditList().containsKey(id)){
-							GameScreen.getIdEditList().put(id, PointsManager.getPoint((map.position()/2)%3072, (map.position()/6144)));
-						}
-						last = id;
-					}
-				}
+				GameScreen.creatIdEditListforMap("v2_underworld");
+				GameScreen.creatIdEditListforMap("v2_dungeonmap");
+				GameScreen.creatIdEditListforMap("v2_cavernmap");
+				GameScreen.creatIdEditListforMap("v2_leoworld");
+				GameScreen.creatIdEditListforMap("v2_worldmap");
 				GameScreen.setIdEditListCreated(true);
 				logger.info("Création de la liste d'ID pour édition terminée.");
 				UpdateDataCheckStatus.setStatus("Création de la liste d'ID pour édition terminée.");

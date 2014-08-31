@@ -1,0 +1,139 @@
+Fichier
+Chargement des dda
+Sauvegarde des dda
+Quitter
+Sprites et Palettes
+Exporter une palette
+Exporter toutes les palettes
+Remplacement d'une palette
+Edition d'une palette
+Exporter un sprite
+Exporter tous les sprites
+Remplacement d'un sprite
+Options
+Affichage de l'ombre
+Autoriser la modification de l'ombre
+Autoriser la modification de la couleur transparente 
+Sélectionner automatiquement la couleur transparente
+Aide
+A propos de...
+Liste des palettes et sprites
+Information concernant le sprite
+(Aucun sprite charger)
+Palette utilisée :
+Type de sprite :
+Ombre :
+Largeur :
+Hauteur :
+Transparent :
+Couleur transp. :
+Offset de lect. :
+Offset X : 
+Offset X2 : 
+Offset Y : 
+Offset Y2 : 
+Taille ima. :
+Taille com. :
+Fich. dda :
+Est ce que la compression Zlib est activée :
+Type d'affichage :
+Zoom sur le sprite
+Ajuster la taille
+Normal
+Affichage de la palette / du sprite
+Palettes
+Sprites
+Fichier
+manquant...
+L''application se termine maintenant !
+Chargement d''un sprite.
+Fichier Sprite
+Vous devez choisir une image bitmap 8 bits !
+Remplacement du sprite
+terminée.
+Vous devez choisir un sprite avant de le remplacer !
+Vous devez au minimum charger les fichiers dda avant !
+Compressé
+Vide
+Double compression
+Inconnu
+Compression activée
+Compression désactivée
+En attente.
+Chargement des palettes en cours.
+Chargement des informations de sprites en cours.
+Chargement des sprites en cours.
+Chargements terminés.
+Exportation du sprite
+Exportation complète des sprites en cours (Cela peut ralentir le système).
+Vous devez au minimum charger les fichiers dda avant de lancer une exportation complète !
+Exportation des sprites terminée.
+Exportation de la palette
+Vous devez choisir une palette avant d''exporter !
+Exportation complètes des palettes en cours (Cela peut ralentir l''application).
+Vous devez choisir un sprite avant d''exporter !
+Exportation des palettes terminée.
+Chargement d''une palette.
+Fichier Palette
+Importation de la palette
+Vous devez choisir une palette avant de la remplacée !
+Sauvegarde des palettes en cours.
+Sauvegarde des informations de sprites en cours.
+Sauvegarde des sprites en cours.
+Sauvegarde terminées.
+Vous devez choisir un sprite avant de pouvoir éditer sa palette !
+Impossible de sauvegarder !
+Vous devez au minimum charger les fichiers dda avant de lancer une sauvegarde !
+Edition de la palette provenant du sprite
+Palette
+Sprite
+Commande disponibles
+Annuler la sélection de couleur
+Recharger la palette d'origine
+Sélection de toutes les couleurs
+Editer une couleur
+Numéro de la couleur en cours :
+Rouge
+Vert
+Bleu
+Choix couleur
+Modifier la selection de couleur
+Seuil de sélection des couleurs :
+Plus
+Moins
+Le clique droit permet d'utiliser le seuil de sélection tandis que le gauche sélectionne une seule couleur de la palette.
+Sauvegarder la modification
+Annuler la modification
+Commandes de confirmations
+Type d'affichage du sprite :
+Etes-vous certain de vouloir modifier une palette à usage multiple ?
+(Non choisi)
+Information
+Veuillez choisir la couleur de transparence du sprite en utilisant le pointeur de la souris sur l'image ci-dessous. Si vous n'avez pas de couleur transparente sur votre sprite, il vous suffit de fermer la fenêtre avec le bouton de sauvegarde du choix de la couleur.
+Couleur transparente
+Ancienne couleur transparente :
+Nouvelle couleur transparente :
+Sauvegarder la couleur transparente
+Tri et regroupement des dossiers (ralenti le chargement)
+Version NMS
+Langages
+Français
+Anglais
+Simple compression
+Renommer une palette
+Renommer un sprite
+Entrez le nouveau nom de la palette :
+Entrez le nouveau nom du sprite :
+Image invalide !
+Rechercher une palette
+Rechercher un sprite
+Traduction Française
+Traduction Anglaise
+Sélection de la couleur transparente
+Format d'exportation des palettes de couleurs
+Palette standard (*.pal)
+Adobe Photoshop (*.act)
+Entrez le nom de la palette :
+Entrez le nom du sprite :
+Sauvegarde les offsets
+Uniquement les chiffres sont autorisés.

@@ -3,6 +3,9 @@ package screens;
 import java.awt.Point;
 import java.io.File;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -573,5 +576,35 @@ public class GameScreen implements Screen{
 
 	public static String getCurrentMap() {
 		return currentMap;
+	}
+
+	public static void creatIdEditListforMap(String mapName) {
+		int last = -1;
+		ByteBuffer map = GameScreen.getIdMaps().get(mapName);
+		map.rewind();
+		while(map.position()<map.capacity()){
+			byte b1=0,b2=0;
+			b1 = map.get();
+			b2 = map.get();
+			int id = tools.ByteArrayToNumber.bytesToInt(new byte[]{0,0,b2,b1});
+			if(id != last){
+				if(!GameScreen.getIdEditList().containsKey(id)){
+					GameScreen.getIdEditList().put(id, PointsManager.getPoint((map.position()/2)%3072, (map.position()/6144)));
+				}
+				last = id;
+			}
+		}		
+	}
+
+	public static void printIdEditList() {
+		Collection<Integer> keys = idEditList.keySet();
+		List<Integer> tempList = new ArrayList<Integer>(keys);
+		Collections.sort(tempList);
+		Iterator<Integer> iter = tempList.iterator();
+		while (iter.hasNext()){
+			//TODO liste des idfull
+			int id = iter.next();
+			System.out.println(id+":");
+		}
 	}
 }
