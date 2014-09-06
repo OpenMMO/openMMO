@@ -4,11 +4,13 @@ import opent4c.utils.FilesPath;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.opengl.GL30;
 
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 public class SettingsManager {
 	
@@ -16,15 +18,15 @@ public class SettingsManager {
 	private static Logger logger = LogManager.getLogger(SettingsManager.class.getSimpleName());
 	
 	private static final String title = "OpenT4C";
-	private static final int screen_columns = 16;//32
-	private static final int screen_rows = 24;//48
+	private static final int screen_columns = 32;//32
+	private static final int screen_rows = 48;//48
 	private static final int background_fps = 24;
-	private static final int foreground_fps = 48;
+	private static final int foreground_fps = 60;
 	private static final boolean fullscreen = false;
 	private static final boolean use_opengl3_if_possible = false;
 	private static final boolean resizable = false;
 	private static final boolean vertical_sync = true;
-	private static final boolean allow_software_mode_if_hardware_fails = false;
+	private static final boolean allow_software_mode_if_hardware_fails = true;
 	private static final Color initial_background_color = Color.CLEAR;
 	private static final String preferences_directory = ".openT4C/";
 
@@ -50,7 +52,6 @@ public class SettingsManager {
 		
 		//cfg.forceExit;
 		//cfg.setDisplayModeCallback;
-		
 		cfg.title = title;
 		cfg.preferencesDirectory = preferences_directory;
 		cfg.initialBackgroundColor = initial_background_color;

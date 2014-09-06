@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
+import opent4c.Main;
 import opent4c.Player;
 import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.FilesPath;
@@ -34,6 +35,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -77,7 +79,7 @@ public class GameScreen implements Screen{
 	private static Acteur highlight_tile;
 	private static Map<Integer, Point> idEditList;
 	private static Point playerPosition;
-	private static Point cameraPosition;
+	private static Point cameraPosition = PointsManager.getPoint(0,0);
 	public static final float blink_period = 1;
 	private static Player player;
 	private static IdEditMenu editor;
@@ -93,7 +95,7 @@ public class GameScreen implements Screen{
 		debugStage = new Stage();
 		smoothStage = new Stage();
 		uiStage = new Stage();
-		batch = new SpriteBatch();
+		batch = new SpriteBatch(5460, Main.getShader());
 		camera = new OrthographicCamera();
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();
@@ -137,6 +139,7 @@ public class GameScreen implements Screen{
 
 	@Override
 	public void render(float delta) {
+		cleanStageBug();
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		render_camera();
 		tileStage.act(delta);
@@ -362,7 +365,7 @@ public class GameScreen implements Screen{
 		//logger.info("HIGHLIGHT");
 		highlight_point = point;
 		TextureRegion tex = getHighlightTile();
-		highlight_tile = new Acteur(tex,highlight_point, PointsManager.getPoint(0, 0));
+		highlight_tile = new Acteur(new Sprite(tex),highlight_point, PointsManager.getPoint(0, 0));
 		highlight_tile.getColor().a = 0f;
 		spriteStage.addActor(highlight_tile);
 		setHighlighted(true);
@@ -551,22 +554,31 @@ public class GameScreen implements Screen{
 
 	/**
 	 * Removes actors that are not in chunk's limits
+	 * @param lign 
 	 */
-	public static void cleanMap() {
-		cleanStage(tileStage);
-		cleanStage(spriteStage);
-		cleanStage(debugStage);
-		cleanStage(smoothStage);
-	}
+	/*public static void cleanMap(List<Point> list) {
+		cleanStage(list, tileStage);
+		cleanStage(list, spriteStage);
+		cleanStage(list, debugStage);
+		cleanStage(list, smoothStage);
+	}*/
 	
-	private static void cleanStage(Stage stage){
+	public static void cleanStageBug(){
 		//TODO voir pourquoi l'itération se passe un peu mal, on n'a que la moitié des tuiles à chaque fois...
+		cleanBug(tileStage);
+		cleanBug(spriteStage);
+		cleanBug(debugStage);
+		cleanBug(smoothStage);
+
+	}
+
+	private static void cleanBug(Stage stage) {
 		for(Actor act : stage.getActors()){
-			Point point = PointsManager.getPoint(act.getX()/32, act.getY()/16);
+			Point point = PointsManager.getPoint(act.getX()/32, act.getTop()/16);
 			if(!Chunk.isPointInChunk(point)){
 				act.remove();
 			}
-		}
+		}		
 	}
 
 	public static void setCurrentMap(String mapName) {

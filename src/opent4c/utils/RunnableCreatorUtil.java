@@ -362,7 +362,11 @@ public class RunnableCreatorUtil {
 
 			@Override
 			public void run() {
-				GameScreen.cleanMap();
+				ThreadsUtil.executeInGraphicalThread(new Thread("Map Cleaner"){
+					public void run(){
+						GameScreen.cleanStageBug();
+					}
+				});
 			}
 		};
 		return r;

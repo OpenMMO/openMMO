@@ -47,13 +47,13 @@ public class Chunk{
 	private static ScheduledFuture<?> watcher;
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static Map<String, Pixmap> cached_pixmaps = new HashMap<String, Pixmap>();
-	//public static final Point chunk_size = PointsManager.getPoint(3+Gdx.graphics.getWidth()/16,3+Gdx.graphics.getHeight()/8);
-	public static final Point chunk_size = PointsManager.getPoint(Gdx.graphics.getWidth()/64,Gdx.graphics.getHeight()/32);
+	public static final Point chunk_size = PointsManager.getPoint(72,64);
+	//public static final Point chunk_size = PointsManager.getPoint(Gdx.graphics.getWidth()/64,Gdx.graphics.getHeight()/32);
 	private static final int SMOOTHING_DELTA = 50000;
-	private static final int tileEnginePeriod_µs = 500; // objectif 100 sans perdre de fps
-	private static final int spriteEnginePeriod_ms = 10; // objectif 1 sans perdre de fps
-	private static final int debugEnginePeriod_ms = 10; // objectif 1 sans perdre de fps
-	private static final int smoothEnginePeriod_ms = 100; // objectif 50 sans perdre de fps
+	private static final int tileEnginePeriod_µs = 10; // objectif 100 sans perdre de fps
+	private static final int spriteEnginePeriod_ms = 1; // objectif 1 sans perdre de fps
+	private static final int debugEnginePeriod_ms = 1; // objectif 1 sans perdre de fps
+	private static final int smoothEnginePeriod_ms = 50; // objectif 10 sans perdre de fps
 	private static final int TILE = 1;
 	private static final int SPRITE = 2;
 	private static final int DEBUG = 3;
@@ -68,6 +68,7 @@ public class Chunk{
 	private static int downLimit;
 	private static int leftLimit;
 	private static int rightLimit;
+	private static final int delta_clean = 4;
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -121,13 +122,13 @@ public class Chunk{
 			addTileAtCoord(id, point);
 			return;
 		}else if(ID.isSmoothId(id)){
-			//addSmoothingAtCoord(id, point);
+			addSmoothingAtCoord(id, point);
 			return;
 		}else if(ID.isMirrorId(id)){
-			//addMirrorSpriteAtCoord(Integer.parseInt(ID.getTexFromId(id)), point);
+			addMirrorSpriteAtCoord(Integer.parseInt(ID.getTexFromId(id)), point);
 			return;
 		}else if(ID.isSpriteId(id)){
-			//addSpriteAtCoord(id, point);
+			addSpriteAtCoord(id, point);
 			return;
 		}
 	}
@@ -144,7 +145,7 @@ public class Chunk{
 	*/
 	private static void addTileAtCoord(int id, Point point) {
 		TextureRegion texRegion = getTileTextureRegionFromIdAndPoint(id, point);
-		Acteur act = new Acteur(texRegion,point,PointsManager.getPoint(0, 0));
+		Acteur act = new Acteur(new Sprite(texRegion),point,PointsManager.getPoint(0, 0));
 		act.setZIndex(0);
 		addActorToChunkEngine(act,TILE);
 	}
@@ -202,7 +203,7 @@ public class Chunk{
 	 */
 	private static void addSmoothTile1(int id1, Point point) {
 		TextureRegion tex = getTileTextureRegionFromIdAndPoint(id1, point);
-		Acteur act = new Acteur(tex, point, PointsManager.getPoint(0, 0));
+		Acteur act = new Acteur(new Sprite(tex), point, PointsManager.getPoint(0, 0));
 		act.setZIndex(0);
 		addActorToChunkEngine(act,TILE);
 	}
@@ -216,7 +217,7 @@ public class Chunk{
 	 */
 	public static void addSmoothingTile2(Smooth smooth) {
 		TextureRegion smooth_tex = new TextureRegion(new Texture(getSmoothedTile(smooth)));
-		Acteur act = new Acteur(smooth_tex, smooth.getPoint(), PointsManager.getPoint(0, 0));
+		Acteur act = new Acteur(new Sprite(smooth_tex), smooth.getPoint(), PointsManager.getPoint(0, 0));
 		act.setZIndex(1);
 		addActorToChunkEngine(act, SMOOTH);
 	}
@@ -229,7 +230,7 @@ public class Chunk{
 	public static void addTemplateTile(String tmpl, Point point) {
 		Pixmap template = getCachedPixmap(tmpl);
 		TextureRegion tmplTex = new TextureRegion(new Texture(template));
-		Acteur act = new Acteur(tmplTex, point, PointsManager.getPoint(0, 0));
+		Acteur act = new Acteur(new Sprite(tmplTex), point, PointsManager.getPoint(0, 0));
 		act.setZIndex(2);
 		act.getColor().a = 0.3f;
 		addActorToChunkEngine(act, DEBUG);
@@ -264,7 +265,7 @@ public class Chunk{
 		int regionX = tile.getRegionX();
 		int regionY = tile.getRegionY();
 		//FileHandle handle = new FileHandle(FilesPath.getAtlasTuileDirectoryPath()+atlas+"1.png");
-		Pixmap source = new Pixmap(Gdx.files.internal(FilesPath.getAtlasTuileDirectoryPath()+atlas+".png"));
+		Pixmap source = new Pixmap(Gdx.files.internal(FilesPath.getAtlasTuileDirectoryPath()+atlas+"-1.png"));
 		Pixmap result = new Pixmap(32, 16, Format.RGBA8888);
 		for(int y = 0 ; y < 16 ; y++){
 			for(int x = 0 ; x < 32 ; x++){
@@ -355,7 +356,7 @@ public class Chunk{
 			return;
 		}
 		TextureRegion texRegion = getSpriteTextureRegionFromIdAndPoint(id, point);
-		Acteur act = new Acteur(texRegion, point, px.getOffset());
+		Acteur act = new Acteur(new Sprite(texRegion), point, px.getOffset());
 		act.setZIndex((int) act.getTop());
 		addActorToChunkEngine(act, SPRITE);
 		int id2 = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(point.x, point.y+1));
@@ -404,7 +405,6 @@ public class Chunk{
 		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapDebugEngineRunnable(), 0, debugEnginePeriod_ms, TimeUnit.MILLISECONDS);
 		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothEngineRunnable(), 0, smoothEnginePeriod_ms, TimeUnit.MILLISECONDS);
 		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothQueueRunnable(), 0, smoothEnginePeriod_ms, TimeUnit.MILLISECONDS);
-		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapCleanEngineRunnable(), 0, 100, TimeUnit.MILLISECONDS);
 	}
 	
 	private static void addActorToChunkEngine(Acteur act, int type) {
@@ -528,17 +528,17 @@ public class Chunk{
 	/**
 	 * @return the "Unknown" tile
 	 */
-	private static TextureRegion getUnknownTile(){
+	private static Sprite getUnknownTile(){
 		TextureAtlas texAtlas = getUtilsAtlas();
-		return texAtlas.findRegion("Unknown");
+		return new Sprite(texAtlas.findRegion("Unknown"));
 	}
 	
 	/**
 	 * @return the "Anchor" tile
 	 */
-	private static TextureRegion getAnchorTile(){
+	private static Sprite getAnchorTile(){
 		TextureAtlas texAtlas = getUtilsAtlas();
-		return texAtlas.findRegion("Anchor");
+		return new Sprite(texAtlas.findRegion("Anchor"));
 	}
 	
 	/**
@@ -565,134 +565,91 @@ public class Chunk{
 	public static void move(int direction){
 		switch(direction){
 		case 1 :
-			moveDownLeft();
+			setLimits(PointsManager.getPoint(getCenter().x-1,getCenter().y+1));
+			addColumn(getLeftLimit());
+			addLign(getDownLimit());
+			//delColumn(getRightLimit());
+			//delLign(getUpLimit());
 			break;
 		case 2 :
-			moveDown();
+			setLimits(PointsManager.getPoint(getCenter().x,getCenter().y+1));
+			addLign(getDownLimit());
+			//delLign(getUpLimit());
 			break;
 		case 3 :
-			moveDownRight();
+			setLimits(PointsManager.getPoint(getCenter().x+1,getCenter().y+1));
+			addColumn(getRightLimit());
+			addLign(getDownLimit());
+			//delColumn(getLeftLimit());
+			//delLign(getUpLimit());
 			break;
 		case 4 :
-			moveLeft();
+			setLimits(PointsManager.getPoint(getCenter().x-1,getCenter().y));
+			addColumn(getLeftLimit());
+			//delColumn(getRightLimit());
 			break;
 		case 6 :
-			moveRight();
+			setLimits(PointsManager.getPoint(getCenter().x+1,getCenter().y));
+			addColumn(getRightLimit());
+			//delColumn(getLeftLimit());
 			break;
 		case 7 :
-			moveUpLeft();
+			setLimits(PointsManager.getPoint(getCenter().x-1,getCenter().y-1));
+			addColumn(getLeftLimit());
+			addLign(getUpLimit());
+			//delColumn(getRightLimit());
+			//delLign(getDownLimit());
 			break;
 		case 8 :
-			moveUp();
+			setLimits(PointsManager.getPoint(getCenter().x,getCenter().y-1));
+			addLign(getUpLimit());
+			//delLign(getDownLimit());
 			break;
 		case 9 :
-			moveUpRight();
+			setLimits(PointsManager.getPoint(getCenter().x+1,getCenter().y-1));
+			addColumn(getRightLimit());
+			addLign(getUpLimit());
+			//delColumn(getLeftLimit());
+			//delLign(getDownLimit());
 			break;
 		}
 	}
 
-	private static void moveRight() {
-		Point newCenter = PointsManager.getPoint(getCenter().x+1,getCenter().y);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getRightLimit(), y));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(getRightLimit(), y));
-		}
-	}
-	
-	private static void moveLeft() {
-		Point newCenter = PointsManager.getPoint(getCenter().x-1,getCenter().y);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
-		}
-	}
-	
-	private static void moveUp() {
-		Point newCenter = PointsManager.getPoint(getCenter().x,getCenter().y-1);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getUpLimit()));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getUpLimit()));
+	private static void addLign(int limit) {
+		for(int x = getLeftLimit() ; x <= getRightLimit() ; x++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, limit));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(x, limit));
 		}
 	}
 
-	private static void moveDown() {
-		Point newCenter = PointsManager.getPoint(getCenter().x,getCenter().y+1);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
-		}
+	private static void addColumn(int limit) {
+		for(int y = getUpLimit() ; y <= getDownLimit() ; y++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(limit, y));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(limit, y));
+		}	
 	}
 	
-	private static void moveDownRight() {
-		Point newCenter = PointsManager.getPoint(getCenter().x+1,getCenter().y+1);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
-		}
-		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
-		}
+	/*private static void delLign(int limit) {
+		List<Point> lign = new ArrayList<Point>();
+		for(int x = getLeftLimit() ; x <= getRightLimit() ; x++){
+			lign.add(PointsManager.getPoint(x, limit));
+		}		
+		GameScreen.cleanMap(lign);
 	}
 
-	private static void moveDownLeft() {
-		Point newCenter = PointsManager.getPoint(getCenter().x-1,getCenter().y+1);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
-		}
-		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
-		}
-	}
-	
-	private static void moveUpRight() {
-		Point newCenter = PointsManager.getPoint(getCenter().x+1,getCenter().y-1);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
-		}
-		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
-		}
-	}
-	
-	private static void moveUpLeft() {
-		Point newCenter = PointsManager.getPoint(getCenter().x-1,getCenter().y-1);
-		setLimits(newCenter);
-		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
-		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
-		}
-		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
-			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
-			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
-		}
-	}
-	
+	private static void delColumn(int limit) {
+		List<Point> column = new ArrayList<Point>();
+		for(int y = getUpLimit() ; y <= getDownLimit() ; y++){
+			column.add(PointsManager.getPoint(limit, y));
+		}		
+		GameScreen.cleanMap(column);	
+	}*/
 	
 	public static boolean isPointInChunk(Point point){
-		if(point.x < getLeftLimit()) return false;
-		if(point.x > getRightLimit()) return false;
-		if(point.y < getUpLimit()) return false;
-		if(point.y > getDownLimit()) return false;
+		if(point.x < getLeftLimit()-delta_clean) return false;
+		if(point.x > getRightLimit()+delta_clean) return false;
+		if(point.y < getUpLimit()-delta_clean) return false;
+		if(point.y > getDownLimit()+delta_clean) return false;
 		return true;
 	}
 	
