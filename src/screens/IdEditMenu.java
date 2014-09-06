@@ -18,9 +18,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import opent4c.MapPixel;
-import opent4c.SpriteData;
+import opent4c.PixelIndex;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
+import opent4c.utils.ID;
 import opent4c.utils.Place;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
@@ -54,7 +55,6 @@ public class IdEditMenu implements Screen, InputProcessor{
 	private static Point point;
 	private static String tex;
 	private static String atlas;
-	private static List<String> badPalettes = new ArrayList<String>();
 	private static boolean MIRROR = false;
 	private static int historique = 0;
 	private static int index = 0;
@@ -63,7 +63,8 @@ public class IdEditMenu implements Screen, InputProcessor{
 	private static String inputText = "";
 	private static boolean validate = false;
 	private static boolean editing = false;
-	private boolean shift = false;
+	private static boolean shift = false;
+	private static MapPixel px = null;
 
 	/**
 	 * Opens GUI.
@@ -71,7 +72,6 @@ public class IdEditMenu implements Screen, InputProcessor{
 	 */
 	public IdEditMenu(Point point) {
 		unValidate();
-		loadBadPalettes();
 		getEditInfos(point);
 	}
 
@@ -82,7 +82,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 		printCommands();
 		printSepLine();
 		printIdInfos();
-		MapPixel px = SpriteData.getPixelFromIdAndPoint(getId(), point);
+		MapPixel px = PixelIndex.getPixelFromIdAndPoint(id, point);
 		if(px != null)printPixelInfos(px);
 		print("Choisir une commande :");
 		int cmd = readIntFromConsole(true, 0);
@@ -141,7 +141,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	public static void editID(int id){
 		printSepLine();
 		printIdInfos();
-		MapPixel px = SpriteData.getPixelFromIdAndPoint(id, point);
+		MapPixel px = PixelIndex.getPixelFromIdAndPoint(id, point);
 		if(px != null){
 			printPixelInfos(px);
 		}
@@ -150,21 +150,21 @@ public class IdEditMenu implements Screen, InputProcessor{
 		String input_atlas = readStringFromConsole();
 		unValidate();
 		if(input_atlas.equals("")){
-			input_atlas = SpriteData.getAtlasFromId(id);
+			input_atlas = ID.getAtlasFromId(id);
 		}
 		printSepLine();
 		print("Entrez un nouveau nom de texture. (Entrée pour laisser tel quel)");
 		String input_tex = readStringFromConsole();
 		unValidate();
 		if(input_tex.equals("")){
-			input_tex = SpriteData.getTexFromId(id);
+			input_tex = ID.getTexFromId(id);
 		}
 		String input = input_atlas+":"+input_tex;
 		printSepLine();
 		printIdInfos();
 		print("Modifier en - ID : "+id+" Dossier : "+input_atlas+" Nom : "+input_tex);
 		if(askYesNo()){
-			updateIdFile(input);
+			updateIdFile(id, input);
 			updatePixelIndex();
 		}else{
 			print("Annuler");
@@ -185,9 +185,9 @@ public class IdEditMenu implements Screen, InputProcessor{
 		if(input_id != -1){
 			printSepLine();
 			printIdInfos();
-			print("Modifier en - ID : "+getId()+" Type : MIRROR ID : "+input_id);
+			print("Modifier en - ID : "+id+" Type : MIRROR ID : "+input_id);
 			if(askYesNo()){
-				updateIdFile("MIRROR:"+input_id);
+				updateIdFile(id, "MIRROR:"+input_id);
 				updatePixelIndex();
 			}
 		}else{
@@ -207,9 +207,9 @@ public class IdEditMenu implements Screen, InputProcessor{
 		printIdInfos();
 		print("Marquer la palette comme mauvaise.");
 		if(askYesNo()){
-			badPalettes.add(getId()+" : "+tex);
-			saveBadPalettes();
+			px.setValidPalette(false);
 			print("Palette marquée");
+			updatePixelIndex();
 		}
 		if(!editing ) showConsoleMainCommand();
 	}
@@ -270,12 +270,12 @@ public class IdEditMenu implements Screen, InputProcessor{
 			if(!editing ) showConsoleMainCommand();
 			return;
 		}
-		String input = SpriteData.getAtlasFromId(getId())+":"+input_template+" T1 "+input_tex1+" T2 "+input_tex2;
+		String input = ID.getAtlasFromId(id)+":"+input_template+" T1 "+input_tex1+" T2 "+input_tex2;
 		printSepLine();
 		printIdInfos();
 		print("Modifier en : "+input);
 		if(askYesNo()){
-			IdEditMenu.updateIdFile(input);
+			IdEditMenu.updateIdFile(id, input);
 			updatePixelIndex();
 		}else{
 			print("Annuler");
@@ -288,7 +288,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	 */
 	private static void editOffsets() {
 		if(!MIRROR){
-			MapPixel px = SpriteData.getPixelFromId(id);
+			MapPixel px = PixelIndex.getPixelFromId(id);
 			if(px != null){
 				editOffset(px);
 			}else{
@@ -296,7 +296,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 				print("Pas de pixel dans l'index pour l'ID : "+id);
 			}
 		}else{
-			MapPixel mirror = SpriteData.getPixelFromId(Integer.parseInt(tex));
+			MapPixel mirror = PixelIndex.getPixelFromId(Integer.parseInt(tex));
 			if(mirror != null){
 				editOffset2(mirror);
 			}else{
@@ -365,7 +365,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 		print("Entrer un ID : ");
 		int editId = readIntFromConsole(true,1);
 		unValidate();
-		if(!SpriteData.getIdfull().containsKey(editId)){
+		if(!ID.containsId(editId)){
 			print("ID non mappée");
 		}else{
 			point = GameScreen.getIdEditList().get(editId);
@@ -399,12 +399,12 @@ public class IdEditMenu implements Screen, InputProcessor{
 	}
 	
 	private static void showConsoleEditCommand(int nb_ids) {
-		point = GameScreen.getIdEditList().get(getId());
+		point = GameScreen.getIdEditList().get(id);
 		getEditInfos(point);
 		printIdEditCommands();
 		printSepLine();
 		printIdInfos();
-		MapPixel px = SpriteData.getPixelFromIdAndPoint(getId(), point);
+		MapPixel px = PixelIndex.getPixelFromIdAndPoint(id, point);
 		if(px != null)printPixelInfos(px);
 		print(index+"/"+nb_ids+" Ids édités.");		
 		print("Choisir une commande :");
@@ -472,14 +472,19 @@ public class IdEditMenu implements Screen, InputProcessor{
 		point = pt;
 		id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(), point);
 		tex = "";
-		if(SpriteData.getIdfull().containsKey(getId())){
-			tex = SpriteData.getTexFromId(getId());
-			atlas = SpriteData.getAtlasFromId(getId());
+		if(ID.containsId(id)){
+			tex = ID.getTexFromId(id);
+			atlas = ID.getAtlasFromId(id);
 		}else{
+			print("ID inexistant : "+id);
 			tex = "non mappée";
 			atlas = "non mappé";	
 		}
-		if(atlas.equals("MIRROR")){
+		px = PixelIndex.getPixelFromIdAndPoint(id, point);
+		if (px == null){
+			print("Pas de pixel associé dans l'index : "+id+" "+atlas+" "+tex);
+		}
+		if(ID.isMirrorId(id)){
 			MIRROR = true;
 		}else{
 			MIRROR = false;
@@ -518,82 +523,14 @@ public class IdEditMenu implements Screen, InputProcessor{
 		printSepLine();
 	}
 	
-	/**
-	 * Loads bad_palette file.
-	 */
-	private void loadBadPalettes() {
-		File bad_palette_file = new File(FilesPath.getBadPaletteFilePath());
-		if(!bad_palette_file.exists())return;
-		try{
-			BufferedReader buff = new BufferedReader(new FileReader(bad_palette_file.getPath()));			 
-			try {
-				String line;
-				while ((line = buff.readLine()) != null) {
-					badPalettes.add(line);
-				}
-			} finally {
-				buff.close();
-			}
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-			Gdx.app.exit();
-		}		
-	}
 	
 	/**
-	 * Saves bad_palette file
-	 */
-	private static void saveBadPalettes() {
-		File badPalettesFile = new File(FilesPath.getBadPaletteFilePath());
-		if (!badPalettesFile.exists()){
-			try {
-				badPalettesFile.createNewFile();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				Gdx.app.exit();
-			}
-		}else{
-			badPalettesFile.delete();
-			try {
-				badPalettesFile.createNewFile();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				Gdx.app.exit();
-			}
-		}
-		OutputStreamWriter dat_file = null;
-		try {
-			dat_file = new OutputStreamWriter(new FileOutputStream(FilesPath.getBadPaletteFilePath()));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			Gdx.app.exit();
-		}
-		Iterator<String> iter = badPalettes.iterator();
-		while (iter.hasNext()){
-			String bad = iter.next();
-			try {
-				dat_file.write(bad+System.lineSeparator());
-			} catch (IOException e) {
-				e.printStackTrace();
-				Gdx.app.exit();
-			}	
-		}
-		try {
-			dat_file.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			Gdx.app.exit();
-		}		
-	}
-	
-	/**
-	 * Updates idFull.txt
+	 * Updates an id
 	 * @param input
 	 */
-	public static void updateIdFile(String input) {
-		print("Mise à jour de idFull.txt");
-		SpriteData.getIdfull().put(getId(), input);
-		SpriteData.writeIdFullToFile();
+	public static void updateIdFile(int id, String input) {
+		print("Mise à jour de id.txt");
+		ID.updateId(id, input);
 	}
 	
 	/**
@@ -602,7 +539,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	private static void updatePixelIndex() {
 		print("Mise à jour de l'index");
 		ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getPixelIndexFileUpdaterRunnable(PointsManager.getPoint(point.x*32, point.y*16)));
-		ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(new Place("editId", "v2_worldmap", point)));
+		GameScreen.teleport(new Place("editId", "v2_worldmap", point));
 	}
 	
 	/**
@@ -730,7 +667,7 @@ public class IdEditMenu implements Screen, InputProcessor{
 	 * Prints an ID's infos.
 	 */
 	private static void printIdInfos() {
-		print("Édition d'un ID : "+id+" Dossier : "+SpriteData.getAtlasFromId(id)+" Nom : "+SpriteData.getTexFromId(id));		
+		print("Édition d'un ID : "+id+" Dossier : "+ID.getAtlasFromId(id)+" Nom : "+ID.getTexFromId(id));		
 	}
 	
 	/**
@@ -745,7 +682,8 @@ public class IdEditMenu implements Screen, InputProcessor{
 		print("Pixel Offset : "+px.getOffset().x+";"+px.getOffset().y);
 		print("Pixel Offset2 : "+px.getOffset2().x+";"+px.getOffset2().y);
 		print("Pixel Largeur : "+px.getLargeur());
-		print("Pixel Hauteur : "+px.getHauteur());		
+		print("Pixel Hauteur : "+px.getHauteur());
+		print("Pixel palette valide : "+px.isPaletteValid());
 	}
 
 	@Override
@@ -1011,10 +949,6 @@ public class IdEditMenu implements Screen, InputProcessor{
 
 	public static boolean isValid() {
 		return validate;
-	}
-
-	public static int getId() {
-		return id;
 	}
 
 	public static void setId(int id) {

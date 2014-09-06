@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import opent4c.MapPixel;
-import opent4c.SpriteData;
 import opent4c.UpdateDataCheckStatus;
 
 import org.apache.logging.log4j.LogManager;
@@ -194,13 +193,11 @@ public enum AssetsLoader {
 		loadingStatus.waitUntilSpritesPackaged();
 		List<String> sprite_atlas_to_load = new ArrayList<String>();
 		sprite_atlas_to_load.add("Utils");
-		Iterator<Integer> iter = SpriteData.getIdfull().keySet().iterator();
+		Iterator<Integer> iter = ID.getSpriteIds().keySet().iterator();
 		while(iter.hasNext()){
 			int id = iter.next();
-			if(!SpriteData.isTuileId(id)){
-				String atl = SpriteData.getAtlasFromId(id);
-				if(!sprite_atlas_to_load.contains(atl))sprite_atlas_to_load.add(atl);
-			}
+			String atl = ID.getAtlasFromId(id);
+			if(!sprite_atlas_to_load.contains(atl))sprite_atlas_to_load.add(atl);
 		}
 		Iterator<String> iter_load = sprite_atlas_to_load.iterator();
 		while(iter_load.hasNext()){

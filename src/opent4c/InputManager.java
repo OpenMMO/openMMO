@@ -82,19 +82,15 @@ public class InputManager implements InputProcessor{
 	public boolean keyUp(int keycode) {
 		if (keycode == Keys.LEFT){
 			moveleft = false;
-			stopMoveLeft();
 		}
 		if (keycode == Keys.RIGHT){
 			moveright = false;
-			stopMoveRight();
 		}
 		if (keycode == Keys.UP){
 			moveup = false;
-			stopMoveUp();
 		}
 		if (keycode == Keys.DOWN){
 			movedown = false;
-			stopMoveDown();
 		}
 		if (keycode == Keys.CONTROL_LEFT){
 			control_left = false;
@@ -166,15 +162,13 @@ public class InputManager implements InputProcessor{
 		Runnable r = new Runnable(){
 			@Override
 			public void run() {
-				if (moveleft){
-					int direction = 0;
-					if(camera.position.x > Gdx.graphics.getWidth()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
-				}else{
-					
+				while(moveleft){
+					moveCam(4);
+					sleep(movedelay_ms);
 				}
 			}
 		};
-		movingleft = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executeInThread(r);
 	}
 
 	/**
@@ -184,15 +178,13 @@ public class InputManager implements InputProcessor{
 		Runnable r = new Runnable(){
 			@Override
 			public void run() {
-				if (moveright){
-					int direction = 1;
-					if(camera.position.x < (3072 * 32)-Gdx.graphics.getWidth()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
-				}else{
-					
+				while(moveright){
+					moveCam(6);
+					sleep(movedelay_ms);
 				}
 			}
 		};
-		movingright = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executeInThread(r);
 	}
 
 	/**
@@ -202,15 +194,13 @@ public class InputManager implements InputProcessor{
 		Runnable r = new Runnable(){
 			@Override
 			public void run() {
-				if (moveup){
-					int direction = 2;
-					if(camera.position.y > Gdx.graphics.getHeight()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
-				}else{
-					
+				while(moveup){
+					moveCam(8);
+					sleep(movedelay_ms);
 				}
 			}
 		};
-		movingup = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executeInThread(r);
 	}
 
 	/**
@@ -220,53 +210,34 @@ public class InputManager implements InputProcessor{
 		Runnable r = new Runnable(){
 			@Override
 			public void run() {
-				if (movedown){
-					int direction = 3;
-					if(camera.position.y < (3072 * 16)-1-Gdx.graphics.getHeight()/2) Gdx.app.postRunnable(RunnableCreatorUtil.getCameraMoverRunnable(camera, direction));					
-				}else{
-					
+				while(movedown){
+					moveCam(2);
+					sleep(movedelay_ms);
 				}
 			}
 		};
-		movingdown = ThreadsUtil.executePeriodicallyInThread(r, 0, movedelay_ms, TimeUnit.MILLISECONDS);
+		ThreadsUtil.executeInThread(r);
 	}
 	
+	/**
+	 * @param time
+	 */
+	protected void sleep(int time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			logger.fatal(e);
+			System.exit(1);
+		}
+	}
+
 	/**
 	 * teleports player in a new Place (and a nexwThread)
 	 * @param place
 	 */
 	private void teleport(Place place) {
-		ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(place));		
-	}
-
-	/**
-	 * stops moving right
-	 */
-	private void stopMoveRight() {
-		movingright.cancel(false);
-		
-	}
-
-	/**
-	 * stops moving up
-	 */
-	private void stopMoveUp() {
-		movingup.cancel(false);
-		
-	}
-
-	/**
-	 * Stops moving down
-	 */
-	private void stopMoveDown() {
-		movingdown.cancel(false);
-	}
-
-	/**
-	 * Stops moving left
-	 */
-	private void stopMoveLeft() {
-		movingleft.cancel(false);
+		GameScreen.teleport(place);
 	}
 
 	@Override
@@ -308,8 +279,7 @@ public class InputManager implements InputProcessor{
 
 	@Override
 	public boolean touchDragged(int screenX, int screenY, int pointer) {
-		//if (mouseRight)camera.translate(-Gdx.input.getDeltaX()*camera.zoom,-Gdx.input.getDeltaY()*camera.zoom);
-		return true;
+		return false;
 	}
 
 	@Override
@@ -324,5 +294,14 @@ public class InputManager implements InputProcessor{
 
 	public static float getMovespeed() {
 		return movespeed;
+	}
+	
+	public void moveCam(int direction){
+		switch(direction){
+		case 4 : camera.translate(-2*InputManager.getMovespeed(),0); break;
+		case 6 : camera.translate(2*InputManager.getMovespeed(),0); break;
+		case 8 : camera.translate(0,-InputManager.getMovespeed()); break;
+		case 2 : camera.translate(0,InputManager.getMovespeed()); break;
+		}
 	}
 }

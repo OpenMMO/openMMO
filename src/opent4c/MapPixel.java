@@ -2,6 +2,7 @@ package opent4c;
 
 import java.awt.Point;
 import java.io.Serializable;
+
 import opent4c.utils.PointsManager;
 import opent4c.utils.SpriteName;
 
@@ -37,6 +38,7 @@ public class MapPixel implements Serializable{
 	private int bufPosition;
 	private String paletteName;
 	private boolean tuile = false;
+	private boolean valid_palette = true;
 
 	/**
 	 * 
@@ -424,5 +426,19 @@ public class MapPixel implements Serializable{
 	
 	public int getOffsetY2() {
 		return offset2.y;
+	}
+
+	/**
+	 * @param b
+	 */
+	public void setValidPalette(boolean b) {
+		valid_palette  = b;
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean isPaletteValid() {
+		return valid_palette;
 	}
 }

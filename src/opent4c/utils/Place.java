@@ -47,7 +47,7 @@ public class Place {
 		return places.get(name);
 	}
 	
-	public static void createDefault(){
+	public static void createDefaultPlaces(){
 		new Place("startpoint", "v2_worldmap",PointsManager.getPoint(2940*32,1065*16));//OK
 		new Place("origin", "v2_worldmap",PointsManager.getPoint(0,0));//OK
 		new Place("lh_temple", "v2_worldmap",PointsManager.getPoint(2951*32,1053*16));//OK

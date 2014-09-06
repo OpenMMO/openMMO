@@ -340,20 +340,20 @@ public class SpriteWriter {
 			buf.get(data.array());
 		}catch(BufferUnderflowException e){
 			e.printStackTrace();
-			SpriteUtils.logger.info("sprite : "+pixel.getTex());
-			SpriteUtils.logger.info("chemin : "+pixel.getAtlas());
-			SpriteUtils.logger.info("type : "+pixel.getType());
-			SpriteUtils.logger.info("ombre : "+pixel.getOmbre());
-			SpriteUtils.logger.info("hauteur : "+pixel.getHauteur());
-			SpriteUtils.logger.info("largeur : "+pixel.getLargeur());
-			SpriteUtils.logger.info("offsetX : "+pixel.getOffset().x);
-			SpriteUtils.logger.info("offsetY : "+pixel.getOffset().y);
-			SpriteUtils.logger.info("offsetX2 : "+pixel.getOffset2().x);
-			SpriteUtils.logger.info("offsetY2 : "+pixel.getOffset2().y);
-			SpriteUtils.logger.info("Inconnu : "+pixel.getInconnu9());
-			SpriteUtils.logger.info("Couleur trans : "+pixel.getCouleurTrans());
-			SpriteUtils.logger.info("taille_zip : "+pixel.getTaille_zip());
-			SpriteUtils.logger.info("taille_unzip : "+pixel.getTaille_unzip());
+			logger.info("sprite : "+pixel.getTex());
+			logger.info("chemin : "+pixel.getAtlas());
+			logger.info("type : "+pixel.getType());
+			logger.info("ombre : "+pixel.getOmbre());
+			logger.info("hauteur : "+pixel.getHauteur());
+			logger.info("largeur : "+pixel.getLargeur());
+			logger.info("offsetX : "+pixel.getOffset().x);
+			logger.info("offsetY : "+pixel.getOffset().y);
+			logger.info("offsetX2 : "+pixel.getOffset2().x);
+			logger.info("offsetY2 : "+pixel.getOffset2().y);
+			logger.info("Inconnu : "+pixel.getInconnu9());
+			logger.info("Couleur trans : "+pixel.getCouleurTrans());
+			logger.info("taille_zip : "+pixel.getTaille_zip());
+			logger.info("taille_unzip : "+pixel.getTaille_unzip());
 			Gdx.app.exit();
 		}
 		data.rewind();

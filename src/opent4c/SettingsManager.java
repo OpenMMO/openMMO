@@ -1,8 +1,5 @@
 package opent4c;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
 import opent4c.utils.FilesPath;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,92 +8,67 @@ import org.apache.logging.log4j.Logger;
 import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.graphics.Color;
 
 public class SettingsManager {
 	
 	private static LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 	private static Logger logger = LogManager.getLogger(SettingsManager.class.getSimpleName());
-	private static int nb_tile_dim = 40;
 	
-	//TODO Faire un truc plus complet.
+	private static final String title = "OpenT4C";
+	private static final int screen_columns = 16;//32
+	private static final int screen_rows = 24;//48
+	private static final int background_fps = 24;
+	private static final int foreground_fps = 48;
+	private static final boolean fullscreen = false;
+	private static final boolean use_opengl3_if_possible = false;
+	private static final boolean resizable = false;
+	private static final boolean vertical_sync = true;
+	private static final boolean allow_software_mode_if_hardware_fails = false;
+	private static final Color initial_background_color = Color.CLEAR;
+	private static final String preferences_directory = ".openT4C/";
+
+	
+	
+	
 	/**
-	 * Creates settings to apply to a new LwjglApplication
+	 * Creates settings for a new LwjglApplication
 	 */
 	public static void create(){
-		cfg.title = "OpenT4C v0.0";
-		cfg.useGL30 = false;
-		//cfg.width = getWidth();
-		//cfg.height = getHeight();
-		cfg.fullscreen = false;
-		cfg.width = 32 * 32;
-		cfg.height = 48 * 16;
-		//cfg.fullscreen = true;
-		cfg.backgroundFPS = 24;
-		cfg.foregroundFPS = 60;
-		cfg.resizable = true;
+		//cfg.r;
+		//cfg.g;
+		//cfg.b;
+		//cfg.a;
+		//cfg.depth;
+		//cfg.samples;
+		//cfg.stencil;
+		//cfg.overrideDensity;
+		
+		//cfg.audioDeviceBufferCount;
+		//cfg.audioDeviceBufferSize;
+		//cfg.audioDeviceSimultaneousSources;
+		
+		//cfg.forceExit;
+		//cfg.setDisplayModeCallback;
+		
+		cfg.title = title;
+		cfg.preferencesDirectory = preferences_directory;
+		cfg.initialBackgroundColor = initial_background_color;
+		cfg.useGL30 = use_opengl3_if_possible;
+		cfg.width = screen_columns * 32;
+		cfg.height = screen_rows * 16;
+		cfg.fullscreen = fullscreen;
+		cfg.backgroundFPS = background_fps;
+		cfg.foregroundFPS = foreground_fps;
+		cfg.resizable = resizable;
 		cfg.addIcon(FilesPath.get128IconFilePath(), Files.FileType.Internal);
 		cfg.addIcon(FilesPath.getIconFilePath(), Files.FileType.Internal);
 		cfg.addIcon(FilesPath.get32IconFilePath(), Files.FileType.Internal);
 		cfg.addIcon(FilesPath.get16IconFilePath(), Files.FileType.Internal);
-		cfg.vSyncEnabled = true;
-		cfg.allowSoftwareMode = true;
+		cfg.vSyncEnabled = vertical_sync;
+		cfg.allowSoftwareMode = allow_software_mode_if_hardware_fails;
 		cfg.x = -1;
 		cfg.y = -1;
-	}
-
-	/**
-	 * sets windows height to the biggest 16 multiple below screen resolution
-	 * @return
-	 */
-	private static int getHeight() {
-		int result = 800;
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		result = getMultiple16Inferieur(screenSize.height);
-		logger.info("Height : "+result);
-		return result;
-	}
-
-	/**
-	 * gives a 16 multiple below a given value
-	 * @param height
-	 * @return
-	 */
-	private static int getMultiple16Inferieur(int height) {
-		int result = height;
-		if (height % 16 == 0){
-			result = result - (4*(result/16));
-		}else{
-			result = result - (2*(result % 16));			
-		}
-		//return result;
-		return (nb_tile_dim*16);
-	}
-
-	/**
-	 * sets windows width to the biggest 32 multiple below screen resolution
-	 * @return
-	 */
-	private static int getWidth() {
-		int result = 400;
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		result = getMultiple32Inferieur(screenSize.width);
-		logger.info("Width : "+result);
-		//return result;
-		return (nb_tile_dim*32);
-	}
-	
-	/**
-	 * gives a 32 multiple below a given value
-	 * @param width
-	 * @return
-	 */
-	private static int getMultiple32Inferieur(int width) {
-		int result = width;
-		if (width % 32 == 0){
-			result = result - (2*(result/32));
-		}else{
-			result = result - (2*(result % 32));			
-		}		return result;
 	}
 
 	/**

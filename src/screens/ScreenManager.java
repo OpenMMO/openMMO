@@ -40,11 +40,11 @@ public class ScreenManager extends Game{
 
 	public void switchGameScreen(final GameScreen screen) {
 		UpdateDataCheckStatus.setStatus("Initialisation.");
+		GameScreen.teleport(Place.getPlace("lh_temple"));
 		Gdx.app.postRunnable(new Runnable(){
 
 			@Override
 			public void run() {
-				ThreadsUtil.queueInSingleThread(RunnableCreatorUtil.getTeleporterRunnable(Place.getPlace("lh_temple")));
 				setScreen(screen);				
 			}
 		});
@@ -60,16 +60,15 @@ public class ScreenManager extends Game{
 	}
 	
 	public void initMap(){
-		Place.createDefault();
+		Place.createDefaultPlaces();
 		AssetsLoader.loadMappedSprites();
 		AssetsLoader.loadSols();
 		map = new GameScreen(this);
 		loadingStatus.waitUntilTileAtlasAreLoaded();
 		Gdx.app.postRunnable(RunnableCreatorUtil.getMapInitializerRunnable());
 		GameScreen.loadMaps();
-		GameScreen.createIdEditMap();
-		loadingStatus.waitIdEditListCreated();
-		GameScreen.printIdEditList();
+		//GameScreen.createIdEditMap();
+		//loadingStatus.waitIdEditListCreated();
 		Chunk.cacheSmoothingTemplatePixmaps();
 		Chunk.startChunkEngine();
 		switchGameScreen(map);

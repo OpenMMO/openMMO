@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import opent4c.utils.ID;
 import opent4c.utils.SpriteName;
 
 import org.apache.logging.log4j.LogManager;
@@ -168,7 +169,7 @@ public class SpriteManager {
 			bufUnZip.array()[i] ^= clef;
 		}
 		nb_sprites_from_did = (header_taille_unZip/(64 + 256 + 4 + 8));
-		
+		DataChecker.setNbSprites(nb_sprites_from_did);
 		for(int i=1 ; i<=nb_sprites_from_did ; i++){
 			addSprite(bufUnZip);
 			UpdateDataCheckStatus.setStatus("Sprites lus depuis le fichier DID : "+i+"/"+nb_sprites_from_did);
@@ -190,8 +191,8 @@ public class SpriteManager {
 		pixel.setAtlas(atlas);
 		pixel.setIndexation(indexation);
 		pixel.setNumDDA(numDDA);
-		SpriteData.matchIdWithPixel(pixel);
-		SpriteData.putOriginPixel(pixel);
+		ID.matchIdWithPixel(pixel);
+		PixelIndex.putOriginPixel(pixel);
 	}
 	
 	public static boolean isDid_done() {
@@ -233,7 +234,7 @@ public class SpriteManager {
 		ByteBuffer buf = SpriteUtils.readDDA(f);
 		byte[] signature = new byte[4];
 		signature = SpriteUtils.extractBytes(buf,signature.length);
-		Iterator<MapPixel> iter = SpriteData.getOrigin().iterator();
+		Iterator<MapPixel> iter = PixelIndex.getOrigin().iterator();
 		while(iter.hasNext()){
 			MapPixel pixel = iter.next();
 			int indexation = (pixel.getIndexation()+4);
@@ -282,7 +283,7 @@ public class SpriteManager {
 
 	public static void setDda_done(boolean done) {
 		dda_done = done;
-		SpriteData.getOrigin().clear();
+		PixelIndex.getOrigin().clear();
 	}
 }
 

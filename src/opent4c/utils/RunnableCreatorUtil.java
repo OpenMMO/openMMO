@@ -9,7 +9,7 @@ import java.util.HashMap;
 import opent4c.Acteur;
 import opent4c.Chunk;
 import opent4c.InputManager;
-import opent4c.SpriteData;
+import opent4c.PixelIndex;
 import opent4c.UpdateDataCheckStatus;
 
 import org.apache.logging.log4j.LogManager;
@@ -131,26 +131,6 @@ public class RunnableCreatorUtil {
 	}
 
 	/**
-	 * @param camera
-	 * @param direction
-	 * @return
-	 */
-	public static Runnable getCameraMoverRunnable(final OrthographicCamera camera, final int direction) {
-		Runnable r = new Thread("Camera move"){
-		public void run(){
-			switch(direction){
-			case 0 : camera.translate(-2*InputManager.getMovespeed(),0); break;
-			case 1 : camera.translate(2*InputManager.getMovespeed(),0); break;
-			case 2 : camera.translate(0,-InputManager.getMovespeed()); break;
-			case 3 : camera.translate(0,InputManager.getMovespeed()); break;
-
-			}
-		}
-	};
-	return r;
-	}
-
-	/**
 	 * @param point 
 	 * @return
 	 */
@@ -158,11 +138,11 @@ public class RunnableCreatorUtil {
 		Runnable r = new Thread("Pixel index update"){
 
 			public void run(){
-				logger.info("mise à jour du fichier pixel_index en tâche de fond, l'affichage sera mis à jour lorsque ce sera terminé");
-				SpriteData.loadIdFullFromFile();
-				SpriteData.createPixelIndex();
-				SpriteData.initPixelIndex();
-				SpriteData.loadPixelIndex();
+				logger.info("mise à jour du fichier pixel_index en tâche de fond.");
+				ID.loadIdFile();
+				PixelIndex.createPixelIndex();
+				PixelIndex.initPixelIndex();
+				PixelIndex.loadIndexFile();
 				logger.info("mise à jour terminée");
 			}
 		};

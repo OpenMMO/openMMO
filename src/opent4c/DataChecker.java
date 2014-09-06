@@ -8,8 +8,10 @@ import java.util.List;
 import opent4c.utils.AssetsLoader;
 import opent4c.utils.FileLister;
 import opent4c.utils.FilesPath;
+import opent4c.utils.ID;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.T4CMAP;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +30,7 @@ public class DataChecker {
 	private static boolean atlas_are_ok = false;
 	private static boolean sprites_are_ok = false;
 	private static boolean pixel_index_is_ok = false;
-	public final static int nb_expected_sprites = 68435;
+	public static int nb_expected_sprites = -1;
 	public final static int nb_expected_atlas = 649;
 	
 	/**
@@ -38,7 +40,7 @@ public class DataChecker {
 		UpdateDataCheckStatus.setStatus("Vérification.");
 		SourceDataManager.populate();
 		FilesPath.init();
-		SpriteData.loadIdFullFromFile();
+		ID.loadIdFile();
 		checkWhatNeedsToBeDone();
 		doWhatNeedsToBeDone();
 		makeSureEverythingIsOk();
@@ -148,7 +150,7 @@ public class DataChecker {
 			if(!SpriteManager.isDid_done())SpriteManager.decryptDID();
 			if(!SpriteManager.isDda_done())SpriteManager.decryptDDA(false);
 			//SpriteData.computeModulos();
-			SpriteData.createPixelIndex();
+			PixelIndex.createPixelIndex();
 		}
 	}
 
@@ -214,5 +216,9 @@ public class DataChecker {
 		}
 		logger.info("Cartes Décryptées");
 		UpdateDataCheckStatus.setStatus("Cartes Décryptées");
-	}		
+	}
+	
+	public static void setNbSprites(int nb){
+		nb_expected_sprites = nb;
+	}
 }

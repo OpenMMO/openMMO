@@ -31,7 +31,7 @@ import tools.UnsignedShort;
  */
 public class SpriteUtils {
 
-	static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
+	private static Logger logger = LogManager.getLogger(SpriteUtils.class.getSimpleName());
 	
 	static boolean doTheWriting(MapPixel pixel, ByteBuffer buf){
 		boolean writen = false;
@@ -75,7 +75,7 @@ public class SpriteUtils {
 		pixel.setTaille_zip(new UnsignedInt(extractInt(header_buf,true)));		
 		pixel.setBufPos(buf.position());
 		extractTuileInfo(pixel);
-		SpriteData.putPixel(pixel);
+		PixelIndex.putPixel(pixel);
 		//logger.info("Type : "+sprite.getType().getValue());
 	}
 

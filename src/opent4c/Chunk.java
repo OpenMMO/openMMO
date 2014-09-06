@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import opent4c.utils.AssetsLoader;
 import opent4c.utils.FilesPath;
+import opent4c.utils.ID;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.PointsManager;
 import opent4c.utils.RunnableCreatorUtil;
@@ -24,7 +25,6 @@ import org.apache.logging.log4j.Logger;
 import screens.GameScreen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
@@ -47,8 +47,8 @@ public class Chunk{
 	private static ScheduledFuture<?> watcher;
 	private static LoadingStatus loadingStatus = LoadingStatus.INSTANCE;
 	private static Map<String, Pixmap> cached_pixmaps = new HashMap<String, Pixmap>();
-	public static final Point chunk_size = PointsManager.getPoint(3+Gdx.graphics.getWidth()/16,3+Gdx.graphics.getHeight()/8);
-	//public static final Point chunk_size = PointsManager.getPoint(Gdx.graphics.getWidth()/64,3);
+	//public static final Point chunk_size = PointsManager.getPoint(3+Gdx.graphics.getWidth()/16,3+Gdx.graphics.getHeight()/8);
+	public static final Point chunk_size = PointsManager.getPoint(Gdx.graphics.getWidth()/64,Gdx.graphics.getHeight()/32);
 	private static final int SMOOTHING_DELTA = 50000;
 	private static final int tileEnginePeriod_µs = 500; // objectif 100 sans perdre de fps
 	private static final int spriteEnginePeriod_ms = 10; // objectif 1 sans perdre de fps
@@ -117,19 +117,17 @@ public class Chunk{
 	 * @param point
 	 */
 	public static void addActeurforIdAndPoint(int id, Point point) {
-		String atlas = SpriteData.getAtlasFromId(id);
-		String tex = SpriteData.getTexFromId(id);
-		if (isTileId(id)){
+		if (ID.isTileId(id)){
 			addTileAtCoord(id, point);
 			return;
-		}else if(isSmoothingId(id)){
-			addSmoothingAtCoord(id, point);
+		}else if(ID.isSmoothId(id)){
+			//addSmoothingAtCoord(id, point);
 			return;
-		}else if(atlas.equals("MIRROR")){
-			addMirrorSpriteAtCoord(Integer.parseInt(tex), point);
+		}else if(ID.isMirrorId(id)){
+			//addMirrorSpriteAtCoord(Integer.parseInt(ID.getTexFromId(id)), point);
 			return;
-		}else{
-			addSpriteAtCoord(id, point);
+		}else if(ID.isSpriteId(id)){
+			//addSpriteAtCoord(id, point);
 			return;
 		}
 	}
@@ -162,7 +160,7 @@ public class Chunk{
 	 * @param point
 	 */
 	private static void addSmoothingAtCoord(int id, Point point) {
-		String smooth_info = SpriteData.getTexFromId(id);
+		String smooth_info = ID.getTexFromId(id);
 		String tmpl = smooth_info.substring(0, smooth_info.indexOf(" T1"));
 		String t1 = smooth_info.substring(smooth_info.indexOf("T1")+3, smooth_info.indexOf(" T2"));
 		String t2 = smooth_info.substring(smooth_info.indexOf("T2")+3).trim();
@@ -184,7 +182,6 @@ public class Chunk{
 		Pixmap template = getCachedPixmap(tmpl);
 		addSmoothTile1(Integer.parseInt(t1), point);
 		addSmoothTile2ToQueue(new Smooth(Integer.parseInt(t2), point, template, color));
-		//ThreadsUtil.executeInGraphicalThread(RunnableCreatorUtil.getSmoothTile2Runnable(Integer.parseInt(t2), point, template, color, this));
 	}
 
 	/**
@@ -263,11 +260,11 @@ public class Chunk{
 	 */
 	private static Pixmap getSmoothedTile(Smooth smooth) {
 		TextureRegion tile = getTileTextureRegionFromIdAndPoint(smooth.getId(), smooth.getPoint());
-		String atlas = SpriteData.getAtlasFromId(smooth.getId());
+		String atlas = ID.getAtlasFromId(smooth.getId());
 		int regionX = tile.getRegionX();
 		int regionY = tile.getRegionY();
-		FileHandle handle = new FileHandle(FilesPath.getAtlasTuileDirectoryPath()+atlas+"-1.png");
-		Pixmap source = new Pixmap(handle);
+		//FileHandle handle = new FileHandle(FilesPath.getAtlasTuileDirectoryPath()+atlas+"1.png");
+		Pixmap source = new Pixmap(Gdx.files.internal(FilesPath.getAtlasTuileDirectoryPath()+atlas+".png"));
 		Pixmap result = new Pixmap(32, 16, Format.RGBA8888);
 		for(int y = 0 ; y < 16 ; y++){
 			for(int x = 0 ; x < 32 ; x++){
@@ -351,7 +348,7 @@ public class Chunk{
 	 * @param point
 	 */
 	private static void addSpriteAtCoord(int id, Point point) {
-		MapPixel px = SpriteData.getPixelFromId(id);
+		MapPixel px = PixelIndex.getPixelFromId(id);
 		if (px == null){
 			//logger.warn("Not Present in pixel_index : "+id+" => "+point.x+";"+point.y);
 			addUnknownTile(point);
@@ -362,7 +359,7 @@ public class Chunk{
 		act.setZIndex((int) act.getTop());
 		addActorToChunkEngine(act, SPRITE);
 		int id2 = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(point.x, point.y+1));
-		if (isTileId(id2)) {
+		if (ID.isTileId(id2)) {
 			addTileAtCoord(id2, point);
 			addAnchorTile(point);
 		}
@@ -374,7 +371,7 @@ public class Chunk{
 ////////////////////////////////////////////////////////////////////////////////////
 	
 	private static void addMirrorSpriteAtCoord(int id, final Point point) {
-		MapPixel px = SpriteData.getPixelFromId(id);
+		MapPixel px = PixelIndex.getPixelFromId(id);
 		if (px == null){
 			logger.warn("Not Present in pixel_index : "+id+" => "+point.x+";"+point.y);
 			addUnknownTile(point);
@@ -387,7 +384,7 @@ public class Chunk{
 		mir.setZIndex((int) mir.getTop());
 		addActorToChunkEngine(mir, SPRITE);
 		int id2 = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(point.x, point.y+1));
-		if (isTileId(id2)) {
+		if (ID.isTileId(id2)) {
 			addTileAtCoord(id2, point);
 			addAnchorTile(point);
 		}
@@ -407,7 +404,7 @@ public class Chunk{
 		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapDebugEngineRunnable(), 0, debugEnginePeriod_ms, TimeUnit.MILLISECONDS);
 		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothEngineRunnable(), 0, smoothEnginePeriod_ms, TimeUnit.MILLISECONDS);
 		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapSmoothQueueRunnable(), 0, smoothEnginePeriod_ms, TimeUnit.MILLISECONDS);
-		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapCleanEngineRunnable(), 0, 1, TimeUnit.SECONDS);
+		ThreadsUtil.executePeriodicallyInThread(RunnableCreatorUtil.getChunkMapCleanEngineRunnable(), 0, 100, TimeUnit.MILLISECONDS);
 	}
 	
 	private static void addActorToChunkEngine(Acteur act, int type) {
@@ -436,7 +433,7 @@ public class Chunk{
 	private static TextureRegion getTileTextureRegionFromIdAndPoint(int id, Point point) {
 		TextureRegion texRegion = null;
 		TextureAtlas texAtlas = null;
-		String atlas = SpriteData.getAtlasFromId(id);
+		String atlas = ID.getAtlasFromId(id);
 		if (atlas.equals("Atlas non mappé") | atlas.equals("NA")){
 			logger.warn(id+" => "+atlas+" @ "+point.x+";"+point.y);
 			return getUnknownTile();
@@ -449,9 +446,9 @@ public class Chunk{
 					return getUnknownTile();
 			}
 		}
-		texRegion = texAtlas.findRegion(getModuledTexNameFromPoint(atlas, id, point));
+		texRegion = texAtlas.findRegion(ID.getModuledTexNameFromPoint(id, point));
 		if(texRegion == null){
-			logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+getModuledTexNameFromPoint(atlas, id, point)+" @ "+point.x+";"+point.y);
+			logger.warn("TextureRegion missing : "+id+" => "+atlas+" : "+ID.getModuledTexNameFromPoint(id, point)+" @ "+point.x+";"+point.y);
 			return getUnknownTile();
 		}
 		return texRegion;
@@ -464,8 +461,8 @@ public class Chunk{
 	 * @return
 	 */
 	private static TextureRegion getSpriteTextureRegionFromIdAndPoint(int id, Point point) {
-		String atlas = SpriteData.getAtlasFromId(id);
-		String tex = SpriteData.getTexFromId(id);
+		String atlas = ID.getAtlasFromId(id);
+		String tex = ID.getTexFromId(id);
 		if (atlas.equals("Atlas non mappé") | atlas.equals("NA")){
 			//logger.warn(id+" => "+atlas+" : "+tex+" @ "+point.x+";"+point.y);
 			return getUnknownTile();
@@ -495,30 +492,6 @@ public class Chunk{
 		act.setZIndex(100000);
 		addActorToChunkEngine(act, DEBUG);
 	}
-	
-	/**
-	 * True if ID is smoothing.
-	 * @param id
-	 * @return
-	 */
-	private static boolean isSmoothingId(int id) {
-		String atlas = SpriteData.getAtlasFromId(id);
-		if (!atlas.equals("NA"))return false;
-		String tex = SpriteData.getTexFromId(id);
-		if (!(tex.startsWith("Tmpl3 ") || tex.startsWith("Tmpl1 ")))return false;
-		if(tex.contains("Tmpl") && tex.contains("T1") && tex.contains("T2"))return true;
-		return false;
-	}
-
-	/**
-	 * True if ID is a tile
-	 * @param id
-	 * @return
-	 */
-	private static boolean isTileId(int id) {
-		if(SpriteData.getTexFromId(id).startsWith("modulos(")) return true;
-		return false;
-	}
 
 	/**
 	 * Adds an Unknown Tile on a point.
@@ -535,20 +508,6 @@ public class Chunk{
 	 */
 	public static TextureAtlas getUtilsAtlas() {
 		return loadingStatus.getTextureAtlasSprite("Utils");
-	}
-
-	/**
-	 * @param moduloY2 
-	 * @param moduloX 
-	 * @param px
-	 * @param point
-	 * @return a textureRegion name with zone effect
-	 */
-	public static String getModuledTexNameFromPoint(String atlas, int id, Point point) {
-		String tx = SpriteData.getTexFromId(id);
-		int moduloX = Integer.parseInt(tx.substring(tx.indexOf('(')+1,tx.indexOf(',')));
-		int moduloY = Integer.parseInt(tx.substring(tx.indexOf(',')+1,tx.indexOf(')')));
-		return atlas+" ("+((point.x % moduloX)+1)+", "+((point.y % moduloY)+1)+")";	
 	}
 
 	/**
@@ -606,15 +565,13 @@ public class Chunk{
 	public static void move(int direction){
 		switch(direction){
 		case 1 :
-			moveDown();
-			moveLeft();
+			moveDownLeft();
 			break;
 		case 2 :
 			moveDown();
 			break;
 		case 3 :
-			moveDown();
-			moveRight();
+			moveDownRight();
 			break;
 		case 4 :
 			moveLeft();
@@ -623,15 +580,13 @@ public class Chunk{
 			moveRight();
 			break;
 		case 7 :
-			moveUp();
-			moveLeft();
+			moveUpLeft();
 			break;
 		case 8 :
 			moveUp();
 			break;
 		case 9 :
-			moveUp();
-			moveRight();
+			moveUpRight();
 			break;
 		}
 	}
@@ -676,7 +631,63 @@ public class Chunk{
 		}
 	}
 	
+	private static void moveDownRight() {
+		Point newCenter = PointsManager.getPoint(getCenter().x+1,getCenter().y+1);
+		setLimits(newCenter);
+		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
+		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
+		}
+		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
+		}
+	}
 
+	private static void moveDownLeft() {
+		Point newCenter = PointsManager.getPoint(getCenter().x-1,getCenter().y+1);
+		setLimits(newCenter);
+		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
+		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
+		}
+		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
+		}
+	}
+	
+	private static void moveUpRight() {
+		Point newCenter = PointsManager.getPoint(getCenter().x+1,getCenter().y-1);
+		setLimits(newCenter);
+		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
+		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
+		}
+		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
+		}
+	}
+	
+	private static void moveUpLeft() {
+		Point newCenter = PointsManager.getPoint(getCenter().x-1,getCenter().y-1);
+		setLimits(newCenter);
+		//logger.info("Camera Moving to : "+newCenter.x+";"+newCenter.y);
+		for(int x = getLeftLimit() ; x < getRightLimit() ; x++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(x, getDownLimit()));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(x, getDownLimit()));
+		}
+		for(int y = getUpLimit() ; y < getDownLimit() ; y++){
+			int id = GameScreen.getIdAtCoordOnMap(GameScreen.getCurrentMap(),PointsManager.getPoint(getLeftLimit(), y));
+			addActeurforIdAndPoint(id, PointsManager.getPoint(getLeftLimit(), y));
+		}
+	}
+	
+	
 	public static boolean isPointInChunk(Point point){
 		if(point.x < getLeftLimit()) return false;
 		if(point.x > getRightLimit()) return false;

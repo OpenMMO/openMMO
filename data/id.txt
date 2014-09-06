@@ -1,0 +1,2644 @@
+0:TODOATLAS:TODOTEX
+1:NormalGrass:modulos(32,32)
+2:EarthTile:modulos(32,32)
+3:Water3:modulos(32,32)
+4:Water4:modulos(32,32)
+5:Grass:modulos(32,32)
+6:HardRock:modulos(32,32)
+7:DGrass:modulos(32,32)
+8:Desert:modulos(32,32)
+9:DungeonRockFloor:modulos(7,6)
+11:EarthTile:modulos(32,32)
+12:TownRoadDale:modulos(4,4)
+13:Rock:modulos(16,16)
+14:Wooden:modulos(2,3)
+17:CavernFloor:modulos(14,14)
+18:TODODTM:Dtm4 1
+20:Black:Black Tile
+31:TODOATLAS:TODOTEX
+32:TODOATLAS:TODOTEX
+35:TODOATLAS:TODOTEX
+36:TODOATLAS:TODOTEX
+37:TODOATLAS:TODOTEX
+38:TODOATLAS:TODOTEX
+39:TODOATLAS:TODOTEX
+41:DungeonFloorTorch:modulos(5,5)
+42:TODODTM:Dtm1 1
+43:DungeonOverhead1:modulos(10,10)
+44:DungeonFloorOverHead2:modulos(15,15)
+45:TODOATLAS:TODOTEX
+46:TODOATLAS:TODOTEX
+47:TODOATLAS:TODOTEX
+52:TODOATLAS:TODOTEX
+54:TODOATLAS:TODOTEX
+55:TODOATLAS:TODOTEX
+56:TODOATLAS:TODOTEX
+57:TODOATLAS:TODOTEX
+66:TODOATLAS:TODOTEX
+68:TODOATLAS:TODOTEX
+193:TODOATLAS:TODOTEX
+194:TODOATLAS:TODOTEX
+260:NormalGrass:modulos(32,32)
+261:NormalGrass:modulos(32,32)
+276:TODOSRF:srf 1
+277:TODOSRF:srf 1
+278:TODOSRF:srf 1
+279:TODOSRF:srf 1
+280:SMOOTH:Tmpl1 2 T1 1 T2 11
+281:SMOOTH:Tmpl1 1 T1 1 T2 11
+282:SMOOTH:Tmpl1 4 T1 1 T2 11
+283:SMOOTH:Tmpl1 3 T1 1 T2 11
+284:SMOOTH:Tmpl1 23 T1 1 T2 11
+285:SMOOTH:Tmpl1 8 T1 1 T2 11
+286:SMOOTH:Tmpl1 21 T1 1 T2 11
+287:SMOOTH:Tmpl1 6 T1 1 T2 11
+288:SMOOTH:Tmpl1 11 T1 1 T2 11
+289:SMOOTH:Tmpl1 12 T1 1 T2 11
+290:SMOOTH:Tmpl1 9 T1 1 T2 11
+291:SMOOTH:Tmpl1 10 T1 1 T2 11
+292:SMOOTH:Tmpl1 15 T1 1 T2 11
+293:SMOOTH:Tmpl1 16 T1 1 T2 11
+294:SMOOTH:Tmpl1 13 T1 1 T2 11
+295:SMOOTH:Tmpl1 14 T1 1 T2 11
+296:SMOOTH:Tmpl1 19 T1 1 T2 11
+297:SMOOTH:Tmpl1 20 T1 1 T2 11
+298:SMOOTH:Tmpl1 17 T1 1 T2 11
+299:SMOOTH:Tmpl1 18 T1 1 T2 11
+300:SMOOTH:Tmpl1 23 T1 1 T2 11
+301:SMOOTH:Tmpl1 24 T1 1 T2 11
+302:SMOOTH:Tmpl1 21 T1 1 T2 11
+303:SMOOTH:Tmpl1 22 T1 1 T2 11
+304:SMOOTH:Tmpl1 25 T1 1 T2 11
+305:SMOOTH:Tmpl1 28 T1 1 T2 11
+306:SMOOTH:Tmpl1 26 T1 1 T2 11
+307:SMOOTH:Tmpl1 27 T1 1 T2 11
+308:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+309:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+310:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+311:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+312:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+313:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+314:SMOOTH:Tmpl3 25 T1 7000 T2 8
+315:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+316:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+319:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+320:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+321:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+324:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+325:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+328:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+329:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+331:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+333:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+335:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+337:TODOSMOOTH:tmpl3 1 T1 Desert T2 Floor Wooden 1
+340:SMOOTH:Tmpl3 2 T1 3 T2 8
+341:SMOOTH:Tmpl3 1 T1 3 T2 8
+342:SMOOTH:Tmpl3 4 T1 3 T2 8
+343:SMOOTH:Tmpl3 3 T1 3 T2 8
+344:SMOOTH:Tmpl3 7 T1 3 T2 8
+345:SMOOTH:Tmpl3 8 T1 3 T2 8
+346:SMOOTH:Tmpl3 5 T1 3 T2 8
+347:SMOOTH:Tmpl3 6 T1 3 T2 8
+348:SMOOTH:Tmpl3 11 T1 3 T2 8
+349:SMOOTH:Tmpl3 12 T1 3 T2 8
+350:SMOOTH:Tmpl3 9 T1 3 T2 8
+351:SMOOTH:Tmpl3 10 T1 3 T2 8
+352:SMOOTH:Tmpl3 15 T1 3 T2 8
+353:SMOOTH:Tmpl3 16 T1 3 T2 8
+354:SMOOTH:Tmpl3 13 T1 3 T2 8
+355:SMOOTH:Tmpl3 14 T1 3 T2 8
+356:SMOOTH:Tmpl3 19 T1 3 T2 8
+357:SMOOTH:Tmpl3 20 T1 3 T2 8
+358:SMOOTH:Tmpl3 17 T1 3 T2 8
+359:SMOOTH:Tmpl3 18 T1 3 T2 8
+360:SMOOTH:Tmpl3 23 T1 3 T2 8
+361:SMOOTH:Tmpl3 24 T1 3 T2 8
+362:SMOOTH:Tmpl3 21 T1 3 T2 8
+363:SMOOTH:Tmpl3 22 T1 3 T2 8
+364:SMOOTH:Tmpl3 25 T1 3 T2 8
+365:SMOOTH:Tmpl3 28 T1 3 T2 8
+366:SMOOTH:Tmpl3 26 T1 3 T2 8
+367:SMOOTH:Tmpl3 27 T1 3 T2 8
+373:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+374:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+375:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+376:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+377:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+378:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+379:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+380:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+381:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+382:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+383:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+384:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+385:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+386:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+387:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+388:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+389:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+390:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+391:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+392:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+393:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+394:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+395:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+396:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+397:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+398:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+399:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+400:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+401:SMOOTH:Tmpl1 2 T1 1 T2 5
+402:SMOOTH:Tmpl1 1 T1 1 T2 5
+403:SMOOTH:Tmpl1 4 T1 1 T2 5
+404:SMOOTH:Tmpl1 3 T1 1 T2 5
+405:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+406:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+407:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+408:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+409:SMOOTH:Tmpl1 11 T1 1 T2 5
+410:SMOOTH:Tmpl1 12 T1 1 T2 5
+411:SMOOTH:Tmpl1 9 T1 1 T2 5
+412:SMOOTH:Tmpl1 10 T1 1 T2 5
+413:SMOOTH:Tmpl1 30 T1 1 T2 5
+414:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+415:SMOOTH:Tmpl1 5 T1 1 T2 5
+416:SMOOTH:Tmpl1 14 T1 1 T2 5
+417:SMOOTH:Tmpl1 19 T1 1 T2 5
+418:SMOOTH:Tmpl1 20 T1 1 T2 5
+419:SMOOTH:Tmpl1 17 T1 1 T2 5
+420:SMOOTH:Tmpl1 18 T1 1 T2 5
+421:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+422:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+423:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+424:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+425:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+426:SMOOTH:Tmpl1 28 T1 1 T2 5
+427:SMOOTH:Tmpl1 26 T1 1 T2 5
+428:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+429:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+430:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+431:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+432:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+433:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+434:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+435:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+436:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+437:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+438:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+439:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+440:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+441:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+442:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+443:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+444:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+445:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+446:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+447:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+448:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+449:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+450:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+451:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+452:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+453:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+454:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+455:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+456:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+457:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+458:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+459:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+460:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+461:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+462:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+463:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+464:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+465:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+466:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+467:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+468:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+469:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+470:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+471:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+472:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+473:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+474:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+475:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+476:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+477:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+478:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+479:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+480:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+481:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+482:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+483:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+484:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+493:SMOOTH:Tmpl1 12 T1 1 T2 11
+494:SMOOTH:Tmpl1 11 T1 1 T2 11
+495:SMOOTH:Tmpl1 31 T1 1 T2 11
+496:SMOOTH:Tmpl1 9 T1 1 T2 11
+497:SMOOTH:Tmpl3 29 T1 3 T2 8
+498:SMOOTH:Tmpl3 30 T1 3 T2 8
+499:SMOOTH:Tmpl3 31 T1 3 T2 8
+500:SMOOTH:Tmpl3 32 T1 3 T2 8
+501:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+502:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+503:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+504:TODOSMOOTH:tmpl3 1 T1 Water3 T2 NormalGrass
+505:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+506:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+507:SMOOTH:Tmpl1 31 T1 1 T2 5
+508:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 Grass
+509:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+510:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+511:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+512:TODOSMOOTH:tmpl3 1 T1 Water3 T2 Grass
+513:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+514:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+515:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+516:TODOSMOOTH:tmpl1 1 T1 Grass T2 EarthTile
+517:SMOOTH:Tmpl3 1 T1 8 T2 1
+518:SMOOTH:Tmpl3 2 T1 8 T2 1
+519:SMOOTH:Tmpl3 3 T1 8 T2 1
+520:SMOOTH:Tmpl3 4 T1 8 T2 1
+521:SMOOTH:Tmpl3 10 T1 8 T2 1
+522:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Desert
+523:SMOOTH:Tmpl3 27 T1 7000 T2 8
+524:SMOOTH:Tmpl3 28 T1 7000 T2 8
+525:SMOOTH:Tmpl3 14 T1 8 T2 1
+526:SMOOTH:Tmpl3 13 T1 8 T2 1
+527:SMOOTH:Tmpl3 16 T1 8 T2 1
+528:SMOOTH:Tmpl3 15 T1 8 T2 1
+529:SMOOTH:Tmpl3 10 T1 8 T2 1
+530:SMOOTH:Tmpl3 9 T1 8 T2 1
+531:SMOOTH:Tmpl3 12 T1 8 T2 1
+532:SMOOTH:Tmpl3 11 T1 8 T2 1
+533:SMOOTH:Tmpl3 22 T1 8 T2 1
+534:SMOOTH:Tmpl3 21 T1 8 T2 1
+535:SMOOTH:Tmpl3 24 T1 8 T2 1
+536:SMOOTH:Tmpl3 23 T1 8 T2 1
+537:SMOOTH:Tmpl3 18 T1 8 T2 1
+538:SMOOTH:Tmpl3 17 T1 8 T2 1
+539:SMOOTH:Tmpl3 20 T1 8 T2 1
+540:SMOOTH:Tmpl3 19 T1 8 T2 1
+541:SMOOTH:Tmpl3 27 T1 8 T2 1
+542:SMOOTH:Tmpl3 26 T1 8 T2 1
+543:SMOOTH:Tmpl3 28 T1 8 T2 1
+544:SMOOTH:Tmpl3 25 T1 8 T2 1
+545:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Desert
+546:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Desert
+547:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Desert
+548:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Desert
+549:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+550:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+551:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+552:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+553:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+554:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+555:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+556:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+557:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+558:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+559:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+560:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+561:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+562:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+563:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+564:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+565:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+566:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+567:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+568:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+569:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+570:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+571:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+572:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+573:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+574:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+575:TODOATLAS:TODOTEX
+576:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+577:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+578:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+579:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+580:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Desert
+581:SMOOTH:Tmpl3 1 T1 5 T2 8
+582:SMOOTH:Tmpl3 2 T1 5 T2 8
+583:SMOOTH:Tmpl3 3 T1 5 T2 8
+584:SMOOTH:Tmpl3 4 T1 5 T2 8
+585:SMOOTH:Tmpl3 31 T1 5 T2 8
+586:TODOSMOOTH:tmpl3 1 T1 Grass T2 Desert
+587:TODOSMOOTH:tmpl3 1 T1 Grass T2 Desert
+588:TODOSMOOTH:tmpl3 1 T1 Grass T2 Desert
+589:SMOOTH:Tmpl3 14 T1 5 T2 8
+590:SMOOTH:Tmpl3 13 T1 5 T2 8
+591:SMOOTH:Tmpl3 16 T1 5 T2 8
+592:SMOOTH:Tmpl3 15 T1 5 T2 8
+593:SMOOTH:Tmpl3 10 T1 5 T2 8
+594:SMOOTH:Tmpl3 9 T1 5 T2 8
+595:SMOOTH:Tmpl3 12 T1 5 T2 8
+596:SMOOTH:Tmpl3 11 T1 5 T2 8
+597:SMOOTH:Tmpl3 22 T1 5 T2 8
+598:SMOOTH:Tmpl3 21 T1 5 T2 8
+599:SMOOTH:Tmpl3 24 T1 5 T2 8
+600:SMOOTH:Tmpl3 23 T1 5 T2 8
+601:SMOOTH:Tmpl3 18 T1 5 T2 8
+602:SMOOTH:Tmpl3 17 T1 5 T2 8
+603:SMOOTH:Tmpl3 20 T1 5 T2 8
+604:SMOOTH:Tmpl3 19 T1 5 T2 8
+605:SMOOTH:Tmpl3 27 T1 5 T2 8
+606:SMOOTH:Tmpl3 26 T1 5 T2 8
+607:SMOOTH:Tmpl3 28 T1 5 T2 8
+608:SMOOTH:Tmpl3 25 T1 5 T2 8
+609:TODOSMOOTH:tmpl3 1 T1 Grass T2 Desert
+610:TODOSMOOTH:tmpl3 1 T1 Grass T2 Desert
+611:TODOSMOOTH:tmpl3 1 T1 Grass T2 Desert
+612:TODOSMOOTH:tmpl3 1 T1 Grass T2 Desert
+619:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+620:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+621:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+622:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+623:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+624:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+625:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+626:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+627:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+628:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+629:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+630:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+631:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+632:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+633:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+634:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+635:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+636:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+637:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+638:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+639:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+640:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+641:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+642:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+643:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+644:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+645:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+646:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+647:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+648:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+649:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+650:TODOSMOOTH:tmpl3 1 T1 Water3 T2 CavernFloor
+651:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+652:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+653:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+654:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+655:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+656:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+657:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+658:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+659:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+660:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+661:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+662:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+663:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+664:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+665:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+666:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+667:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+668:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+669:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+670:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+671:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+672:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+673:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+674:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+675:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+676:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+677:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+678:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+679:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+680:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+681:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+682:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Grass
+683:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+684:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+685:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+686:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+687:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+688:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+689:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+690:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+691:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+692:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+693:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+694:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+695:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+696:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+697:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+698:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+699:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+700:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+701:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+702:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+703:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+704:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+705:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+706:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+707:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+708:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+709:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+710:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+711:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+712:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+713:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+714:TODOSMOOTH:tmpl1 1 T1 HardRock T2 EarthTile
+715:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+716:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+717:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+718:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+719:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+720:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+721:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+722:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+723:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+724:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+725:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+726:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+727:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+728:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+729:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+730:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+731:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+732:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+733:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+734:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+735:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+736:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+737:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+738:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+739:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+740:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+741:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+742:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+743:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+744:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+745:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+746:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+747:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+748:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+749:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+750:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+751:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+752:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+753:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+754:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+755:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+756:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+757:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+758:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+759:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+760:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+761:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+762:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+763:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+764:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+765:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+766:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+767:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+768:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+769:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+770:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+771:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+772:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+773:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+774:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+775:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+776:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+777:TODOSMOOTH:tmpl3 1 T1 Water3 T2 EarthTile
+778:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+779:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+780:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+781:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+782:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+783:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+784:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+785:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+786:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+787:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+788:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+789:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+790:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+791:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+792:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+793:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+794:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+795:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+796:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+797:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+798:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+799:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+800:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+801:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+802:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+803:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+804:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+805:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+806:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+807:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+808:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+809:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+810:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+811:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+812:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+813:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+814:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+815:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+816:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+817:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+818:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+819:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+820:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+821:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+822:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+823:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+824:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+825:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+826:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+827:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+828:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+829:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+830:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+831:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+832:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+833:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+834:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+835:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+836:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+837:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+838:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+839:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+840:TODOSMOOTH:tmpl1 1 T1 HardRock T2 Desert
+841:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+842:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+843:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+844:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+845:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+846:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+847:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+848:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+849:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+850:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+851:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+853:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+854:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+855:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+856:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+857:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+858:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+859:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+860:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+861:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+862:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+863:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+864:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+865:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+866:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+867:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+868:TODOWTF:chepas
+869:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+870:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+872:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 Floor Wooden 1
+873:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+874:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+875:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+876:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+877:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+878:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+879:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+880:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+883:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+884:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+887:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+888:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+889:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+890:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+891:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+893:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+894:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+895:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+896:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+897:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+898:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+899:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+900:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+901:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+902:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+903:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+904:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+905:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+906:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+908:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+909:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+910:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+911:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+912:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+913:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+914:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+915:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+916:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+917:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+918:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+919:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+920:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+921:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+922:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+923:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+924:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+925:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+926:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 Floor Wooden 1
+927:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+928:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+929:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+930:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+931:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+932:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+933:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+934:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+935:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+936:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+937:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+938:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+939:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+940:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+941:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+942:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+943:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+944:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+945:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+946:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+947:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+948:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+949:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+950:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+951:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+952:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+953:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+954:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+955:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+956:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 DungeonRockFloor
+959:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+960:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+961:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+963:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+964:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+965:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+968:TODOSMOOTH:tmpl3 1 T1 Grass T2 Floor Wooden 1
+969:TODOSMOOTH:tmpl1 1 T1 HardRock T2 NormalGrass
+970:TODOSMOOTH:tmpl3 1 T1 Water3 T2 HardRock
+971:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+972:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+973:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+974:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+975:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+976:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+977:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+978:TODOSMOOTH:TownRoadDale T1 NormalGrass T2 tmpl4 2
+979:TODOSMOOTH:TownRoadDale T1 HardRock T2 tmpl4 2
+980:TODOSMOOTH:TownRoadDale T1 HardRock T2 tmpl4 2
+981:TODOSMOOTH:TownRoadDale T1 HardRock T2 tmpl4 2
+982:TODOSMOOTH:TownRoadDale T1 HardRock T2 tmpl4 2
+983:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl4 2
+984:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl4 2
+985:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl4 2
+986:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl4 2
+987:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+988:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+989:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+990:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+991:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+992:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+993:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+994:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+995:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+996:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+997:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+998:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+999:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1000:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1001:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1002:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1003:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1004:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1005:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1006:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1007:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1008:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1009:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1010:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1011:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1012:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1013:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1014:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1015:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1017:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1018:TODOSMOOTH:tmpl1 1 T1 NormalGrass T2 CavernFloor
+1019:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1020:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1021:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1022:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1023:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1024:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1026:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1027:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1028:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1029:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1030:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1031:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1032:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1033:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1034:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1035:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1036:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1037:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1038:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1039:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1040:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1041:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1042:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1043:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1044:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1045:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1046:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1047:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1048:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1049:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1050:TODOSMOOTH:tmpl3 1 T1 DGrass T2 Water3
+1051:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1052:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1053:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1054:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1055:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1056:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1057:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1058:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1059:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1060:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1061:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1062:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1063:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1064:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1065:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1066:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1067:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1068:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1069:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1070:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1071:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1072:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1073:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1074:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1075:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1076:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1077:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1078:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1079:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1080:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1081:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1082:TODOSMOOTH:tmpl1 1 T1 DGrass T2 HardRock
+1083:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1084:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1085:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1086:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1087:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1088:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1089:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1090:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1091:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1092:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1093:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1094:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1095:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1096:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1097:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1098:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1099:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1100:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1101:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1102:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1103:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1104:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1105:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1106:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1107:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1108:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1109:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1110:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1111:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1112:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1113:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1114:TODOSMOOTH:tmpl1 1 T1 DGrass T2 EarthTile
+1115:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1116:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1117:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1118:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1119:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1120:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1121:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1122:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1123:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1124:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1125:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1126:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1127:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1128:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1129:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1130:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1131:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1132:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1133:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1134:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1135:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1136:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1137:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1138:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1139:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1140:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1141:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1142:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1143:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1144:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1145:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1146:TODOSMOOTH:tmpl1 1 T1 DGrass T2 NormalGrass
+1147:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1148:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1149:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1150:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1151:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1152:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1153:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1154:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1155:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1156:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1157:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1158:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1159:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1160:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1161:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1162:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1163:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1164:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1165:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1166:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1167:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1168:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1169:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1170:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1171:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1172:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1173:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1174:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1175:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1176:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1177:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1178:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Grass
+1179:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1180:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1181:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1182:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1183:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1184:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1185:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1186:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1187:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1188:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1189:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1190:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1191:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1192:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1193:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1194:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1195:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1196:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1197:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1198:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1199:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1200:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1201:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1202:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1203:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1204:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1205:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1206:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1210:TODOSMOOTH:tmpl1 1 T1 DGrass T2 Desert
+1248:TODOATLAS:TODOTEX
+1251:Root:Tapisall 1
+1252:MIRROR:1251
+1253:Root:Tapisall 2
+1254:MIRROR:1257
+1255:TapisRouge:TapisRouge 1
+1256:TapisRouge:TapisRouge 3
+1257:TapisRouge:TapisRouge 2
+1258:MIRROR:1255
+1259:MIRROR:1256
+1260:Miscs-B:Blood1
+1261:Miscs-S:SkeletonCorpsePile1
+1262:Miscs-H:Heads
+1263:Miscs-M:Manacle 1
+1264:Miscs-M:Manacle 2
+1265:Root:Painting1
+1266:MIRROR:1265
+1267:Miscs-B:Bridge1
+1268:Miscs-B:Bridge2
+1269:Miscs-B:Bridge1
+1270:MIRROR:1268
+1271:Miscs-B:Bridge3
+1272:Miscs-B:Bridge3
+1273:Miscs-B:Border1
+1274:MIRROR:1273
+1275:TODOWTF:Border2
+1276:TODOWTF:Border2
+1277:Miscs-L:LHBridge
+1278:GlaceEtNeige:HuteGobG1Ffoor
+1279:GlaceEtNeige:HuteGobG1Ffoor
+1280:Miscs-F:FBridgeCastleTop
+1282:Escalier:EscEscalier
+1283:Escalier:EscEscalier
+1284:Escalier:EscEscalier
+1285:Escalier:EscEscalier
+1286:Escalier:EscEscalier
+1287:Escalier:EscEscalier
+1288:Escalier:EscEscalier
+1289:Miscs-T:TiPontLH
+1290:Miscs-T:TiPontLH
+1291:Static:Drake Skeleton01
+1292:Static:Drake Skeleton02
+1295:Pentacles:CleanPentacle
+1296:Pentacles:DarkPentacle
+1297:Pentacles:OldPentacle
+1301:Miscs-B:BarCounter
+1302:Root:Table2
+1303:MIRROR:1402
+1304:MIRROR:1404
+1305:Mount1:Mount1
+1306:Mount1:Mount1
+1307:Mount1:Mount1
+1308:Mount1:Mount1
+1309:Root:WeaponRacks 2
+1310:Root:WeaponRacks 1
+1311:Miscs-G:Golden Mirror
+1312:Miscs-D:Display2
+1313:MIRROR:1413
+1314:TODOSMOOTH:T1 CavernFloor T2
+1315:Miscs-S:Stone3
+1401:MIRROR:1302
+1402:Root:ShopTable1
+1403:Miscs-B:BarCounter
+1404:Miscs-B:Banquet
+1405:Mount1:Mount1
+1406:Mount1:Mount1
+1407:Mount1:Mount1
+1408:Mount2:Mount2
+1409:MIRROR:1309
+1410:MIRROR:1310
+1411:Miscs-G:Golden Mirror
+1412:Miscs-D:Display2
+1413:Miscs-D:Display3
+1414:TODOSMOOTH:T1 CavernFloor T2
+1415:Miscs-S:Stone1H
+2501:OldDungeonArcatureCorrection:DungeonMainArc 1
+2502:OldDungeonArcatureCorrection:DungeonMainArc 1
+2505:TODOATLAS:TODOTEX
+2506:OldDungeonArcatureCorrection:DungeonMainArc 1
+2507:OldDungeonArcatureCorrection:DungeonMainArc 1
+2508:OldDungeonArcatureCorrection:DungeonMainArc 1
+2509:OldDungeonArcatureCorrection:DungeonMainArc 1
+2510:OldDungeonArcatureCorrection:DungeonMainArc 1
+2511:OldDungeonArcatureCorrection:DungeonMainArc 1
+2512:OldDungeonArcatureCorrection:DungeonMainArc 1
+2513:OldDungeonArcatureCorrection:DungeonMainArc 1
+2514:OldDungeonArcatureCorrection:DungeonMainArc 1
+2517:TODOATLAS:TODOTEX
+2518:TODOATLAS:TODOTEX
+2519:TODOATLAS:TODOTEX
+2520:TODOATLAS:TODOTEX
+2521:TODOATLAS:TODOTEX
+2522:TODOATLAS:TODOTEX
+2523:TODOATLAS:TODOTEX
+2524:TODOATLAS:TODOTEX
+2530:OldDungeonArcatureCorrection:DungeonMainArc 1
+2531:OldDungeonArcatureCorrection:DungeonMainArc 1
+2537:OldDungeonArcatureCorrection:DungeonMainArc 1
+2538:OldDungeonArcatureCorrection:DungeonMainArc 1
+2545:OldDungeonArcatureCorrection:DungeonMainArc 1
+2546:OldDungeonArcatureCorrection:DungeonMainArc 1
+2551:OldDungeonArcatureCorrection:DungeonMainArc 1
+2552:OldDungeonArcatureCorrection:DungeonMainArc 1
+2553:OldDungeonArcatureCorrection:DungeonMainArc 1
+2554:OldDungeonArcatureCorrection:DungeonMainArc 1
+2555:OldDungeonArcatureCorrection:DungeonMainArc 1
+2556:OldDungeonArcatureCorrection:DungeonMainArc 1
+2561:OldDungeonArcatureCorrection:DungeonMainArc 1
+2562:OldDungeonArcatureCorrection:DungeonMainArc 1
+2563:OldDungeonArcatureCorrection:DungeonMainArc 1
+2564:OldDungeonArcatureCorrection:DungeonMainArc 1
+2565:OldDungeonArcatureCorrection:DungeonMainArc 1
+2566:OldDungeonArcatureCorrection:DungeonMainArc 1
+2567:OldDungeonArcatureCorrection:DungeonMainArc 1
+2568:OldDungeonArcatureCorrection:DungeonMainArc 1
+2569:OldDungeonArcatureCorrection:DungeonMainArc 1
+2570:OldDungeonArcatureCorrection:DungeonMainArc 1
+2571:OldDungeonArcatureCorrection:DungeonMainArc 1
+2572:OldDungeonArcatureCorrection:DungeonMainArc 1
+2573:OldDungeonArcatureCorrection:DungeonMainArc 1
+2574:OldDungeonArcatureCorrection:DungeonMainArc 1
+2575:OldDungeonArcatureCorrection:DungeonMainArc 1
+2576:OldDungeonArcatureCorrection:DungeonMainArc 1
+2577:OldDungeonArcatureCorrection:DungeonMainArc 1
+2578:OldDungeonArcatureCorrection:DungeonMainArc 1
+2579:OldDungeonArcatureCorrection:DungeonMainArc 1
+2580:OldDungeonArcatureCorrection:DungeonMainArc 1
+2581:OldDungeonArcatureCorrection:DungeonMainArc 1
+2582:OldDungeonArcatureCorrection:DungeonMainArc 1
+2585:TODOATLAS:TODOTEX
+2586:OldDungeonArcatureCorrection:DungeonMainArc 1
+2587:OldDungeonArcatureCorrection:DungeonMainArc 1
+2588:OldDungeonArcatureCorrection:DungeonMainArc 1
+2589:OldDungeonArcatureCorrection:DungeonMainArc 1
+2590:OldDungeonArcatureCorrection:DungeonMainArc 1
+2591:OldDungeonArcatureCorrection:DungeonMainArc 1
+2592:OldDungeonArcatureCorrection:DungeonMainArc 1
+2593:OldDungeonArcatureCorrection:DungeonMainArc 1
+2594:OldDungeonArcatureCorrection:DungeonMainArc 1
+2597:TODOATLAS:TODOTEX
+2598:TODOATLAS:TODOTEX
+2599:TODOATLAS:TODOTEX
+2600:TODOATLAS:TODOTEX
+2601:TODOATLAS:TODOTEX
+2602:TODOATLAS:TODOTEX
+2603:TODOATLAS:TODOTEX
+2604:TODOATLAS:TODOTEX
+2610:OldDungeonArcatureCorrection:DungeonMainArc 1
+2611:OldDungeonArcatureCorrection:DungeonMainArc 1
+2617:OldDungeonArcatureCorrection:DungeonMainArc 1
+2618:OldDungeonArcatureCorrection:DungeonMainArc 1
+2625:OldDungeonArcatureCorrection:DungeonMainArc 1
+2626:OldDungeonArcatureCorrection:DungeonMainArc 1
+2631:OldDungeonArcatureCorrection:DungeonMainArc 1
+2632:OldDungeonArcatureCorrection:DungeonMainArc 1
+2633:OldDungeonArcatureCorrection:DungeonMainArc 1
+2634:OldDungeonArcatureCorrection:DungeonMainArc 1
+2635:OldDungeonArcatureCorrection:DungeonMainArc 1
+2636:OldDungeonArcatureCorrection:DungeonMainArc 1
+2641:OldDungeonArcatureCorrection:DungeonMainArc 1
+2642:OldDungeonArcatureCorrection:DungeonMainArc 1
+2643:OldDungeonArcatureCorrection:DungeonMainArc 1
+2644:OldDungeonArcatureCorrection:DungeonMainArc 1
+2645:OldDungeonArcatureCorrection:DungeonMainArc 1
+2646:OldDungeonArcatureCorrection:DungeonMainArc 1
+2647:OldDungeonArcatureCorrection:DungeonMainArc 1
+2648:OldDungeonArcatureCorrection:DungeonMainArc 1
+2649:OldDungeonArcatureCorrection:DungeonMainArc 1
+2650:OldDungeonArcatureCorrection:DungeonMainArc 1
+2651:OldDungeonArcatureCorrection:DungeonMainArc 1
+2652:OldDungeonArcatureCorrection:DungeonMainArc 1
+2653:OldDungeonArcatureCorrection:DungeonMainArc 1
+2654:OldDungeonArcatureCorrection:DungeonMainArc 1
+2655:OldDungeonArcatureCorrection:DungeonMainArc 1
+2656:OldDungeonArcatureCorrection:DungeonMainArc 1
+2657:OldDungeonArcatureCorrection:DungeonMainArc 1
+2658:OldDungeonArcatureCorrection:DungeonMainArc 1
+2659:OldDungeonArcatureCorrection:DungeonMainArc 1
+2660:OldDungeonArcatureCorrection:DungeonMainArc 1
+2662:Miscs-6:64kTrollBed
+2663:Miscs-6:64kTrollBed
+2664:Miscs-6:64kTrollBed
+2665:Miscs-6:64kTrollBed
+2666:Miscs-6:64kTrollBed
+2667:Miscs-6:64kTrollBed
+2668:Miscs-6:64kTrollBed
+2669:Miscs-6:64kTrollBed
+3001:Root:Wooden Armoir SW
+3002:MIRROR:3004
+3003:Root:Wooden Armoir SW
+3004:Root:Wooden Armoir SW
+3005:Root:Red-Wooden Armoir SW
+3006:Root:Red-Wooden Armoir SW
+3007:Root:Red-Wooden Armoir SW
+3008:Root:Red-Wooden Armoir SW
+3015:MIRROR:3016
+3016:Miscs-B:Bureau SW
+3017:Miscs-C:Colonne Cercle Bas
+3018:Miscs-C:Colonne Cercle Bas-Haut
+3019:Miscs-C:Colonne Carrer Bas-Haut
+3020:Miscs-C:Colonne Greque
+3021:Root:Tomb Carrer
+3022:Root:Tomb Hemisphere
+3023:Miscs-K:Knight
+3024:Miscs-D:Display
+3025:TODOSMOOTH:T1 CavernFloor T2
+3026:TODOSMOOTH:T1 CavernFloor T2
+3027:TODOSMOOTH:T1 CavernFloor T2
+3028:TODOSMOOTH:T1 CavernFloor T2
+3031:MIRROR:3032
+3032:Root:Horloge Grand Pere
+3034:Miscs-R:Roche 1
+3035:Miscs-M:Menhir de Roche
+3036:Miscs-M:Menhir Noir
+3037:Root:Moyenne Table Ronde Bois
+3038:Root:Petite Table Bois Rectangle
+3039:Root:Petite Table Bois Rectangle
+3040:Root:Petite Table Ronde Bois
+3041:Root:Table Carre Moyenne Bois
+3042:Miscs-O:Obelisk 1
+3043:Miscs-S:SmallTreeInBowl
+3044:Miscs-S:Stone2h
+3045:Miscs-B:Bed Simple
+3046:Miscs-B:Bed Double Type 1
+3047:Miscs-B:Bed Double Type 2
+3048:MIRROR:3045
+3049:MIRROR:3046
+3050:MIRROR:3047
+3051:StuccoWallV2:StuccoDarkSmallWallB
+3052:StuccoWallV2:StuccoMainSmallWallB
+3053:StuccoWallV2:StuccoDarkWindowB
+3054:StuccoWallV2:StuccoMainWindowC
+3056:StuccoWallV2:StuccoCornerN
+3057:StuccoWallV2:StuccoCorner2
+3058:StuccoWallV2:StuccoCorner
+3059:StuccoWallV2:StuccoCornerV
+3060:StuccoWallV2:StuccoCornerTNE
+3061:StuccoWallV2:StuccoCornerTSE
+3062:StuccoWallV2:StuccoCornerTSW
+3063:StuccoWallV2:StuccoCornerTNW
+3064:StuccoWallV2:StuccoMainSmallWallB
+3080:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3081:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3082:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3083:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3084:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3085:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3086:MIRROR:3087
+3087:CemeteryGates:Cemetery Gates2
+3088:TODOWTF:Cemetery Gates
+3089:CemeteryGates:Gate
+3091:CemeteryGates:Cemetery Gates7
+3092:MIRROR:3093
+3093:CemeteryGates:Cemetery Gates6
+3094:CemeteryGates:Cemetery Gates4
+3095:CemeteryGates:Cemetery Gates3
+3097:CemeteryGates:Cemetery Gates1
+3101:TODOWTF:Cemetery Gates
+3121:Root:TortureChair
+3122:Miscs-F:Fontaine
+3123:TODOWTF:WoodPile
+3125:Root:Small Rock
+3126:Miscs-M:Medium Rock
+3128:Miscs-6:64kDeadForestTree1
+3129:Miscs-6:64kDeadForestTree1
+3131:Root:Plaque Wood
+3132:Root:Plaque Marble
+3133:Root:Small Wood Sign
+3134:Root:Small Gold Sign
+3135:Root:Small Marble Sign
+3139:Root:Small Wood Sign
+3140:Root:Small Gold Sign
+3141:Root:Small Marble Sign
+3142:Root:Wood Sign 1
+3143:Root:Wood Sign 2
+3144:Root:Wood Sign 2
+3145:StuccoWallV2:StuccoDarkWindowA
+3146:StuccoWallV2:StuccoMainSmallWallA
+3147:StuccoWallV2:StuccoDarkWall 2
+3148:StuccoWallV2:StuccoMainWall 2
+3149:StuccoWallV2:StuccoDarkWall 3
+3150:StuccoWallV2:StuccoMainWall 1
+3166:Miscs-P:PrisonBed
+3167:Miscs-P:PrisonBed
+3168:Miscs-S:SmallTree1
+3169:Miscs-H:HighTree2
+3170:Miscs-L:LeafLessTree2
+3171:Miscs-L:LargeBasedLowLeafedTree1
+3172:Miscs-M:MultiTrunkTree2
+3173:Miscs-P:PalmTree2
+3174:Miscs-H:HighPine1
+3175:Miscs-C:CityTree1
+3176:Miscs-A:AppleTree1
+3177:Miscs-D:DeadTree1
+3178:Miscs-P:PinkTree1
+3179:Miscs-B:Bush2
+3180:Miscs-F:Fougere2
+3181:Miscs-C:Cactus1
+3182:Miscs-H:HighTree1
+3183:Miscs-D:DarkTree1
+3184:ClotureBois:FenceCornerN
+3185:ClotureBois:FenceCorner
+3186:ClotureBois:FenceCorner2
+3187:ClotureBois:FenceCornerV
+3188:ClotureBois:FenceDark 1
+3189:ClotureBois:Fence 3
+3190:TODOATLAS:TODOTEX
+3191:TODOATLAS:TODOTEX
+3192:TODOATLAS:TODOTEX
+3193:TODOATLAS:TODOTEX
+3216:TODOSMOOTH:T1 CavernFloor T2
+3217:TODOSMOOTH:T1 CavernFloor T2
+3218:TODOSMOOTH:T1 CavernFloor T2
+3219:TODOSMOOTH:T1 CavernFloor T2
+3220:MIRROR:3230
+3221:MIRROR:3231
+3222:MIRROR:3232
+3223:Root:RuinedTable1
+3224:Root:RuinedMirror1
+3225:Root:RuinedBed1
+3226:Root:RuinedBed1
+3227:Miscs-A:Anvil
+3228:Root:Sword
+3229:MIRROR:3228
+3230:Miscs-A:Archer
+3231:Miscs-A:ArmorOnARack
+3232:Miscs-D:Dummy2
+3233:Root:RuinedMirror1
+3234:Miscs-B:Border1
+3235:Miscs-B:Border1
+3236:TODOWTF:Border2
+3237:TODOWTF:Border2
+3240:MIRROR:3268
+3241:Miscs-M:Misc 4 - Part 2 2
+3242:MIRROR:3243
+3243:Root:Misc 7 - All 8
+3244:Root:Misc 8 - All 3
+3245:Root:Misc 8 - All 3
+3246:Root:Misc 8 - All 4
+3247:Root:Misc 8 - All 4
+3248:Miscs-L:Lights 3
+3249:Root:Lights 4
+3250:Root:Lights 4
+3251:Root:Lights 5
+3252:MIRROR:3251
+3253:Root:Kitchen 1
+3254:MIRROR:3255
+3255:Miscs-C:Chairs 1
+3256:Miscs-S:Shito 6
+3257:Miscs-S:Shito 6
+3264:Miscs-S:Shito 2
+3265:MIRROR:3264
+3266:Miscs-S:Shito 1
+3267:Miscs-S:Shito 1
+3268:Miscs-D:Desk2
+3269:MIRROR:3270
+3270:Miscs-D:Desk
+3271:Miscs-C:Cerebus
+3278:Miscs-A:Autel
+3279:Miscs-A:Autel
+3280:Root:Well
+3281:Root:TownBoard 1
+3284:Root:Ble
+3285:Fountain02:Fountaine20000
+3289:Miscs-C:Cerebus
+3290:Root:Monkstudy
+3291:TODOATLAS:TODOTEX
+3292:OldBrickWall:BrickDarkWall 1
+3293:OldBrickWall:BrickDarkWall 1
+3297:OldBrickWall:BrickDarkWall 1
+3298:OldBrickWall:BrickDarkWall 1
+3299:OldBrickWall:BrickDarkWall 1
+3300:OldBrickWall:BrickDarkWall 1
+3301:OldBrickWall:BrickDarkWall 1
+3303:OldBrickWall:BrickDarkWall 1
+3321:OldBrickWall:BrickDarkWall 1
+3322:OldBrickWall:BrickDarkWall 1
+3323:OldBrickWall:BrickDarkWall 1
+3324:OldBrickWall:BrickDarkWall 1
+3337:TODOWTF:MonkStudy
+3338:Root:Lutrin
+3339:Root:Lutrin
+3340:Root:Throne
+3341:Root:Throne
+3342:Mount1:Mount1
+3344:Mount1:Mount1
+3346:Mount1:Mount1
+3347:Mount1:Mount1
+3349:Mount1:Mount1
+3352:Mount1:Mount1
+3353:Mount1:Mount1
+3354:Mount1:Mount1
+3355:Rampart Wall:Rampart 2
+3356:Rampart:Rampart 2
+3357:Rampart Wall:Rampart 2
+3358:Rampart Wall:Rampart 2
+3359:Rampart:Rampart 3
+3360:Rampart:Tour
+3361:Miscs-F:FirePlace1
+3362:MIRROR:3361
+3363:Miscs-O:Oven
+3364:MIRROR:3363
+3365:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3366:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3370:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3371:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3372:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3373:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3374:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3375:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3376:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3377:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3378:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3394:TODOATLAS:TODOTEX
+3395:TODOATLAS:TODOTEX
+3401:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3402:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3409:TODOATLAS:TODOTEX
+3410:TODOATLAS:TODOTEX
+3411:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3412:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3415:TODOATLAS:TODOTEX
+3416:TODOATLAS:TODOTEX
+3417:Miscs-D:DebrisPile1
+3418:Miscs-D:DebrisPile1
+3419:Miscs-G:GiantWell
+3420:Miscs-B:BigVase
+3421:Miscs-D:DungeonWell
+3422:Root:Crypt
+3424:StuccoWallV2:StuccoDarkSmallWallC
+3425:StuccoWallV2:StuccoMainSmallWallB
+3426:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3427:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3428:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3429:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3430:Miscs-D:DungeonTomb1
+3431:TODOWTF:HeadPile
+3433:Miscs-D:DungeonTomb1
+3434:Root:Crypt
+3435:StuccoWallV2:StuccoMainWallDoor 2
+3436:StuccoWallV2:StuccoDarkWallDoor 2
+3437:StuccoWallV2:StuccoDarkWallDoor 1
+3438:StuccoWallV2:StuccoMainWallDoor 1
+3439:Root:Shelf
+3440:OldBrickWall:BrickDarkWall 1
+3441:OldBrickWall:BrickDarkWall 1
+3442:OldBrickWall:BrickDarkWall 1
+3443:OldBrickWall:BrickDarkWall 1
+3444:OldBrickWall:BrickDarkWall 1
+3445:OldBrickWall:BrickDarkWall 1
+3446:OldBrickWall:BrickDarkWall 1
+3447:OldBrickWall:BrickDarkWall 1
+3448:OldBrickWall:BrickDarkWall 1
+3450:OldBrickWall:BrickDarkWall 1
+3451:OldBrickWall:BrickDarkWall 1
+3454:OldBrickWall:BrickDarkWall 1
+3455:OldBrickWall:BrickDarkWall 1
+3456:OldBrickWall:BrickDarkWall 1
+3457:OldBrickWall:BrickDarkWall 1
+3458:OldBrickWall:BrickDarkWall 1
+3459:OldBrickWall:BrickDarkWall 1
+3460:OldBrickWall:BrickDarkWall 1
+3461:OldBrickWall:BrickDarkWall 1
+3462:OldBrickWall:BrickDarkWall 1
+3463:OldBrickWall:BrickDarkWall 1
+3464:OldBrickWall:BrickDarkWall 1
+3465:OldBrickWall:BrickDarkWall 1
+3466:OldBrickWall:BrickDarkWall 1
+3467:OldBrickWall:BrickDarkWall 1
+3468:OldBrickWall:BrickDarkWall 1
+3469:OldBrickWall:BrickDarkWall 1
+3470:OldBrickWall:BrickDarkWall 1
+3471:OldBrickWall:BrickDarkWall 1
+3472:OldBrickWall:BrickDarkWall 1
+3485:TODOWTF:HeadPile
+3486:Miscs-A:Anvil
+3487:Miscs-D:DebrisPile2
+3488:Miscs-D:DebrisPile2
+3489:Miscs-D:DebrisPile3
+3490:Miscs-D:DebrisPile3
+3491:Miscs-D:DebrisPile4
+3492:Miscs-D:DebrisPile4
+3493:Miscs-D:DebrisPile5
+3494:Miscs-D:DebrisPile5
+3495:Miscs-R:Rock1
+3496:Miscs-R:Rock2
+3497:Miscs-R:Rock3
+3498:Miscs-R:Rock4
+3499:MIRROR:3500
+3500:Miscs-S:Stairs
+3501:Miscs-S:Stair2
+3502:Miscs-S:Stair2
+3503:TODOWTF:StairUp
+3504:Miscs-S:Stairup
+3505:TODOWTF:Stair2Up
+3506:Miscs-S:Stair2up
+3507:Miscs-T:Trunk1
+3508:Miscs-W:Web1
+3509:Miscs-W:Web1
+3510:Miscs-W:Web2
+3511:Miscs-W:Web2
+3512:Miscs-W:Web3
+3513:Miscs-W:Web3
+3514:Miscs-W:Web4
+3515:Miscs-W:Web4
+3516:Miscs-W:Web5
+3517:Miscs-W:Web5
+3518:Miscs-W:Web6
+3519:Miscs-W:Web6
+3520:Miscs-W:Web7
+3521:Miscs-W:Web7
+3522:Miscs-W:Web8
+3523:Miscs-W:Web8
+3524:Miscs-W:Web9
+3525:Miscs-W:Web9
+3526:Miscs-W:Web10
+3527:Miscs-W:Web10
+3529:TODOSMOOTH:T1 CavernFloor T2
+3530:TODOSMOOTH:T1 CavernFloor T2
+3534:TODOSMOOTH:T1 CavernFloor T2
+3535:TODOSMOOTH:T1 CavernFloor T2
+3536:TODOSMOOTH:T1 CavernFloor T2
+3537:TODOSMOOTH:T1 CavernFloor T2
+3543:TODOSMOOTH:T1 CavernFloor T2
+3558:TODOSMOOTH:T1 CavernFloor T2
+3559:TODOSMOOTH:T1 CavernFloor T2
+3564:TODOSMOOTH:T1 CavernFloor T2
+3565:TODOSMOOTH:T1 CavernFloor T2
+3566:TODOSMOOTH:T1 CavernFloor T2
+3567:TODOSMOOTH:T1 CavernFloor T2
+3568:TODOSMOOTH:T1 CavernFloor T2
+3569:TODOSMOOTH:T1 CavernFloor T2
+3570:TODOSMOOTH:T1 CavernFloor T2
+3571:TODOSMOOTH:T1 CavernFloor T2
+3572:TODOSMOOTH:T1 CavernFloor T2
+3573:TODOSMOOTH:T1 CavernFloor T2
+3574:TODOSMOOTH:T1 CavernFloor T2
+3575:TODOSMOOTH:T1 CavernFloor T2
+3576:Miscs-S:Stal1
+3577:Miscs-S:Stal2
+3578:Miscs-S:Stal3
+3579:Miscs-S:Stal4
+3580:Miscs-S:Stal5
+3581:Miscs-S:Stal6
+3582:Miscs-S:Stal7
+3583:TODOWTF:LargeC1
+3584:TODOWTF:LargeC2
+3585:TODOWTF:LargeC3
+3586:Mount1:Mount1
+3587:Mount1:Mount1
+3588:Mount1:Mount1
+3589:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3590:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3591:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3592:OldDungeonArcatureCorrection:DungeonMainArcEnd1
+3593:OldDungeonArcatureCorrection:DungeonMainArc 1
+3594:OldDungeonArcatureCorrection:DungeonMainArc 1
+3597:TODOATLAS:TODOTEX
+3598:OldDungeonArcatureCorrection:DungeonMainArc 1
+3599:OldDungeonArcatureCorrection:DungeonMainArc 1
+3601:OldDungeonArcatureCorrection:DungeonMainArc 1
+3602:OldDungeonArcatureCorrection:DungeonMainArc 1
+3603:OldDungeonArcatureCorrection:DungeonMainArc 1
+3604:OldDungeonArcatureCorrection:DungeonMainArc 1
+3605:OldDungeonArcatureCorrection:DungeonMainArc 1
+3606:OldDungeonArcatureCorrection:DungeonMainArc 1
+3607:OldDungeonArcatureCorrection:DungeonMainArc 1
+3610:TODOATLAS:TODOTEX
+3611:TODOATLAS:TODOTEX
+3612:TODOATLAS:TODOTEX
+3613:TODOATLAS:TODOTEX
+3614:TODOATLAS:TODOTEX
+3615:TODOATLAS:TODOTEX
+3616:TODOATLAS:TODOTEX
+3617:TODOATLAS:TODOTEX
+3623:TODOATLAS:TODOTEX
+3624:TODOATLAS:TODOTEX
+3630:OldDungeonArcatureCorrection:DungeonMainArc 1
+3631:OldDungeonArcatureCorrection:DungeonMainArc 1
+3638:TODOATLAS:TODOTEX
+3639:TODOATLAS:TODOTEX
+3644:TODOATLAS:TODOTEX
+3645:TODOATLAS:TODOTEX
+3646:OldDungeonArcatureCorrection:DungeonMainArc 1
+3647:OldDungeonArcatureCorrection:DungeonMainArc 1
+3648:OldDungeonArcatureCorrection:DungeonMainArc 1
+3649:OldDungeonArcatureCorrection:DungeonMainArc 1
+3654:TODOATLAS:TODOTEX
+3655:TODOATLAS:TODOTEX
+3656:TODOATLAS:TODOTEX
+3657:TODOATLAS:TODOTEX
+3658:TODOATLAS:TODOTEX
+3659:TODOATLAS:TODOTEX
+3660:TODOATLAS:TODOTEX
+3661:TODOATLAS:TODOTEX
+3662:TODOATLAS:TODOTEX
+3663:TODOATLAS:TODOTEX
+3664:TODOATLAS:TODOTEX
+3665:TODOATLAS:TODOTEX
+3666:TODOATLAS:TODOTEX
+3667:TODOATLAS:TODOTEX
+3668:TODOATLAS:TODOTEX
+3669:TODOATLAS:TODOTEX
+3670:TODOATLAS:TODOTEX
+3671:TODOATLAS:TODOTEX
+3672:TODOATLAS:TODOTEX
+3673:TODOATLAS:TODOTEX
+3674:CastleWall:CastleWall 1
+3675:CastleWall:CastleDarkWall 1
+3679:CastleWall:CastleWall 1
+3680:CastleWall:CastleWallCorner2
+3681:CastleWall:CastleWall 1
+3682:CastleWall:CastleWallCornerv
+3683:CastleWall:CastleWall 1
+3684:CastleWall:CastleWall 1
+3685:CastleWall:CastleWall 1
+3686:CastleWall:CastleWall 1
+3687:CastleWall:CastleWall 1
+3703:CastleWall:CastleWall 1
+3704:CastleWall:CastleWall 1
+3718:CastleWall:CastleWall 1
+3719:CastleWall:CastleWall 1
+3724:CastleWall:CastleWall 1
+3725:CastleWall:CastleWall 1
+3726:CastleWallBorder:CastleEnd3
+3727:CastleWall:CastleWall 1
+3728:CastleWall:CastleWall 1
+3729:CastleWall:CastleWall 1
+3754:MIRROR:3439
+3755:Miscs-B:Bonfire
+3758:Miscs-B:Bonfire
+3760:StuccoWallV2:StuccoDarkSmallWallB
+3761:StuccoWallV2:StuccoMainSmallWallB
+3764:StuccoWallV2:StuccoDarkSmallWallB
+3765:StuccoWallV2:StuccoCornerN
+3766:StuccoWallV2:StuccoCorner2
+3767:StuccoWallV2:StuccoCorner
+3768:StuccoWallV2:StuccoCornerV
+3769:StuccoWallV2:StuccoCornerTNE
+3770:StuccoWallV2:StuccoCornerTSE
+3771:StuccoWallV2:StuccoCornerTSW
+3772:StuccoWallV2:StuccoCornerTNW
+3774:StuccoWallV2:StuccoDarkSmallWallB
+3776:StuccoWallV2:StuccoDarkSmallWallB
+3777:StuccoWallV2:StuccoDarkSmallWallB
+3778:StuccoWallV2:StuccoDarkSmallWallB
+3779:StuccoWallV2:StuccoDarkSmallWallB
+3780:StuccoWallV2:StuccoDarkSmallWallB
+3781:StuccoWallV2:StuccoDarkSmallWallB
+3782:StuccoWallV2:StuccoDarkSmallWallB
+3783:StuccoWallV2:StuccoDarkSmallWallB
+3800:StuccoWallV2:StuccoMainWallDoor 2
+3801:StuccoWallV2:StuccoDarkWallDoor 2
+3802:StuccoWallV2:StuccoDarkWallDoor 1
+3803:StuccoWallV2:StuccoMainWallDoor 1
+3804:Miscs-B:BlackSmithForgery
+3806:Miscs-O:ObjectLightHavenFountain
+3807:Miscs-O:ObjectCatapultBoulder01
+3808:Miscs-O:ObjectCatapultBoulder02
+3809:Miscs-D:DungeonGreenColumn
+3810:Objects:DungeonBlueColumn
+3811:Objects:DungeonBrownColumn
+3812:Miscs-B:Balista
+3813:TODOWTF:BalistaF
+3814:Miscs-C:Catapult
+3815:Miscs-T:Trebuchet
+3816:Miscs-T:Trebuchet2
+3817:MIRROR:3805
+3818:Miscs-O:ObjectLightHavenFountain
+3820:TODOWTF:BalistaF
+3821:Miscs-C:Catapult
+3822:Miscs-T:Trebuchet
+3824:MoulinD:MoulinD-0024
+3825:MoulinG:MoulinG-0024
+3826:TODOWTF:SapinNoelBased
+3854:OldDungeonArcatureCorrection:DungeonMainArc 1
+3855:OldDungeonArcatureCorrection:DungeonMainArc 1
+3858:TODOATLAS:TODOTEX
+3859:OldDungeonArcatureCorrection:DungeonMainArc 1
+3861:OldDungeonArcatureCorrection:DungeonMainArc 1
+3862:OldDungeonArcatureCorrection:DungeonMainArc 1
+3863:OldDungeonArcatureCorrection:DungeonMainArc 1
+3864:OldDungeonArcatureCorrection:DungeonMainArc 1
+3865:OldDungeonArcatureCorrection:DungeonMainArc 1
+3866:OldDungeonArcatureCorrection:DungeonMainArc 1
+3867:OldDungeonArcatureCorrection:DungeonMainArc 1
+3870:OldDungeonArcatureCorrection:DungeonMainArc 1
+3871:TODOATLAS:TODOTEX
+3872:TODOATLAS:TODOTEX
+3873:TODOATLAS:TODOTEX
+3874:TODOATLAS:TODOTEX
+3875:TODOATLAS:TODOTEX
+3876:TODOATLAS:TODOTEX
+3877:TODOATLAS:TODOTEX
+3883:OldDungeonArcatureCorrection:DungeonMainArc 1
+3884:OldDungeonArcatureCorrection:DungeonMainArc 1
+3890:OldDungeonArcatureCorrection:DungeonMainArc 1
+3898:OldDungeonArcatureCorrection:DungeonMainArc 1
+3899:OldDungeonArcatureCorrection:DungeonMainArc 1
+3904:OldDungeonArcatureCorrection:DungeonMainArc 1
+3905:OldDungeonArcatureCorrection:DungeonMainArc 1
+3906:OldDungeonArcatureCorrection:DungeonMainArc 1
+3907:OldDungeonArcatureCorrection:DungeonMainArc 1
+3908:OldDungeonArcatureCorrection:DungeonMainArc 1
+3909:OldDungeonArcatureCorrection:DungeonMainArc 1
+3914:OldDungeonArcatureCorrection:DungeonMainArc 1
+3915:OldDungeonArcatureCorrection:DungeonMainArc 1
+3916:OldDungeonArcatureCorrection:DungeonMainArc 1
+3917:OldDungeonArcatureCorrection:DungeonMainArc 1
+3918:OldDungeonArcatureCorrection:DungeonMainArc 1
+3919:OldDungeonArcatureCorrection:DungeonMainArc 1
+3920:OldDungeonArcatureCorrection:DungeonMainArc 1
+3921:OldDungeonArcatureCorrection:DungeonMainArc 1
+3922:OldDungeonArcatureCorrection:DungeonMainArc 1
+3923:OldDungeonArcatureCorrection:DungeonMainArc 1
+3934:WoodPrison:WoodPrison
+3939:Root:Shito 6
+3941:Miscs-F:Forge1
+3942:Miscs-F:Forge1
+3943:Miscs-H:HuteGob1
+3944:Miscs-H:HuteGob1
+3945:Miscs-O:OrgueSmall
+3946:Miscs-T:TableForge1
+3947:Miscs-T:TableTemple1
+3949:Miscs-T:Torture2
+3950:Miscs-T:Torture3
+3951:Miscs-T:Torture4
+3952:Miscs-T:Torture5
+3953:Miscs-T:Torture6
+3954:Miscs-T:Trone1King
+3955:Miscs-T:Trone2King
+3956:Decors:Blockfleches
+3957:Decors:Entreemine
+3958:Decors:Pontdepierre
+3960:Decors:Tente1
+3961:Decors:Tente2
+3962:Decors:Tente3
+3963:Miscs-L:LanterneSimple
+3964:Miscs-L:LHBridgeB
+3965:GlaceEtNeige:HuteGobGlace1
+3966:GlaceEtNeige:HuteGobGlace1
+3967:GlaceEtNeige:FontaineNeige1
+3969:GlaceEtNeige:EntreeMontG
+3970:GlaceEtNeige:EntreeMontG
+3971:GlaceEtNeige:MontG
+3972:GlaceEtNeige:MontG
+3973:GlaceEtNeige:Mont2G
+3974:GlaceEtNeige:Mont2G
+3975:MIRROR:3947
+3976:Miscs-H:HorseWater
+3977:Miscs-H:HorseWater
+3978:Miscs-B:BarBar
+3979:MIRROR:3978
+3980:Miscs-O:OrgueSmall
+3981:Miscs-T:TableForge1
+3983:WoodWall:WoodWallSE
+3984:WoodWall:WoodWallNE
+3985:WoodWall:WoodWallSEWindow
+3986:WoodWall:WoodWallNEWindow
+3987:WoodWall:WoodWallNEDoorB
+3988:WoodWall:WoodWallNEDoorT
+3989:WoodWall:WoodWallSEDoorB
+3990:WoodWall:WoodWallSEDoorT
+3991:WoodWall:WoodWallCornerR
+3992:WoodWall:WoodWallCornerT
+3993:WoodWall:WoodWallCornerL
+3994:WoodWall:WoodWallCornerB
+3995:WoodWall:WoodWallSE
+3996:WoodWall:WoodWallTNE
+3997:WoodWall:WoodWallTNW
+3998:WoodWall:WoodWallTSE
+3999:WoodWall:WoodWallTSW
+4000:WoodWall:MidWoodWallNEWindow
+4001:WoodWall:MidWoodWallSEWindow
+4005:TODOATLAS:TODOTEX
+4008:Miscs-B:BridgeCastleTop1
+4010:NewBrickWall:NBrickWallSE
+4011:NewBrickWall:NBrickWallNE
+4012:BrickCorrection:NBrickWallSEWindow
+4013:BrickCorrection:NBrickWallNEWindow
+4016:NewBrickWall:NBrickWallSE
+4018:NewBrickWall:NBrickWallCoinE
+4019:NewBrickWall:NBrickWallCoinN
+4020:NewBrickWall:NBrickWallCoinW
+4021:NewBrickWall:NBrickWallCoinS
+4027:Small:NBrickWallSSE
+4028:Small:NBrickWallSNE
+4029:Small:NBrickWallSSE
+4030:Small:NBrickWallSNEWindow
+4031:Small:NBrickWallSNEDoorB
+4032:Small:NBrickWallSNEDoorT
+4033:Small:NBrickWallSSEDoorB
+4034:Small:NBrickWallSSEDoorT
+4035:Small:NBrickWallSCoinE
+4036:Small:NBrickWallSCoinN
+4037:Small:NBrickWallSCoinW
+4038:Small:NBrickWallSCoinS
+4040:Small:NBrickWallSTNE
+4041:Small:NBrickWallSTNW
+4042:Small:NBrickWallSTSE
+4043:Small:NBrickWallSTSW
+4044:Small:NBrickWallSSE
+4045:Small:NBrickWallSSEE
+4046:Small:NBrickWallSNES
+4047:Small:NBrickWallSNEE
+4048:Small2C:NBrickWallS2SE
+4049:Small2C:NBrickWallS2NE
+4050:Small2C:NBrickWallS2SE
+4051:Small2C:NBrickWallS2NEWindow
+4052:Small2C:NBrickWallS2NEDoorB
+4053:Small2C:NBrickWallS2NEDoorT
+4054:Small2C:NBrickWallS2SEDoorB
+4055:Small2C:NBrickWallS2SEDoorT
+4056:Small2C:NBrickWallS2CoinE
+4057:Small2C:NBrickWallS2CoinN
+4058:Small2C:NBrickWallS2CoinW
+4059:Small2C:NBrickWallS2CoinS
+4060:Small2C:NBrickWallS2SE
+4061:Small2C:NBrickWallS2SE
+4062:Small2C:NBrickWallS2TNW
+4063:Small2C:NBrickWallS2TSE
+4065:TODOSMOOTH:T1 CavernG T2
+4067:TODOSMOOTH:T1 CavernG T2
+4068:TODOSMOOTH:T1 CavernG T2
+4070:TODOSMOOTH:T1 CavernG T2
+4072:TODOSMOOTH:T1 CavernG T2
+4073:TODOSMOOTH:T1 CavernG T2
+4074:TODOSMOOTH:T1 CavernG T2
+4075:TODOSMOOTH:T1 CavernG T2
+4076:TODOSMOOTH:T1 CavernG T2
+4080:TODOSMOOTH:T1 CavernG T2
+4085:GlaceEtNeige:GStal1
+4086:GlaceEtNeige:GStal2
+4087:GlaceEtNeige:GStal3
+4088:GlaceEtNeige:GStal4
+4089:GlaceEtNeige:GStal5
+4090:GlaceEtNeige:GStal6
+4091:GlaceEtNeige:GStal7
+4092:TODOWTF:GLargeC1
+4093:TODOWTF:GLargeC2
+4094:TODOWTF:GLargeC3
+4095:03BrunFonce:3NBrickWallS3SE
+4096:03BrunFonce:3NBrickWallS3NE
+4097:03BrunFonce:3NBrickWallS3SEWindow
+4098:03BrunFonce:3NBrickWallS3NEWindow
+4099:03BrunFonce:3NBrickWallS3NEDoorB
+4100:03BrunFonce:3NBrickWallS3NEDoorT
+4101:03BrunFonce:3NBrickWallS3SEDoorB
+4102:03BrunFonce:3NBrickWallS3SEDoorT
+4103:03BrunFonce:3NBrickWallS3CoinE
+4104:03BrunFonce:3NBrickWallS3CoinN
+4105:03BrunFonce:3NBrickWallS3CoinW
+4106:03BrunFonce:3NBrickWallS3CoinS
+4107:03BrunFonce:3NBrickWallS3CoinX
+4108:03BrunFonce:3NBrickWallS3TNE
+4109:03BrunFonce:3NBrickWallS3TNW
+4110:03BrunFonce:3NBrickWallS3TSE
+4111:03BrunFonce:3NBrickWallS3TSW
+4112:04BrunPale:4NBrickWallS4SE
+4113:04BrunPale:4NBrickWallS4NE
+4114:04BrunPale:4NBrickWallS4SEWindow
+4115:04BrunPale:4NBrickWallS4NEWindow
+4116:04BrunPale:4NBrickWallS4NEDoorB
+4117:04BrunPale:4NBrickWallS4NEDoorT
+4118:04BrunPale:4NBrickWallS4SEDoorB
+4119:04BrunPale:4NBrickWallS4SEDoorT
+4120:04BrunPale:4NBrickWallS4CoinE
+4121:04BrunPale:4NBrickWallS4CoinN
+4122:04BrunPale:4NBrickWallS4CoinW
+4123:04BrunPale:4NBrickWallS4CoinS
+4124:04BrunPale:4NBrickWallS4CoinX
+4125:04BrunPale:4NBrickWallS4TNE
+4126:04BrunPale:4NBrickWallS4TNW
+4127:04BrunPale:4NBrickWallS4TSE
+4128:04BrunPale:4NBrickWallS4TSW
+4129:05GrisFonce:5NBrickWallS5SE
+4130:05GrisFonce:5NBrickWallS5NE
+4131:05GrisFonce:5NBrickWallS5SEWindow
+4132:05GrisFonce:5NBrickWallS5NEWindow
+4133:05GrisFonce:5NBrickWallS5NEDoorB
+4134:05GrisFonce:5NBrickWallS5NEDoorT
+4135:05GrisFonce:5NBrickWallS5SEDoorB
+4136:05GrisFonce:5NBrickWallS5SEDoorT
+4137:05GrisFonce:5NBrickWallS5CoinE
+4138:05GrisFonce:5NBrickWallS5CoinN
+4139:05GrisFonce:5NBrickWallS5CoinW
+4140:05GrisFonce:5NBrickWallS5CoinS
+4141:05GrisFonce:5NBrickWallS5SE
+4142:05GrisFonce:5NBrickWallS5TNE
+4143:05GrisFonce:5NBrickWallS5TNW
+4144:05GrisFonce:5NBrickWallS5TSE
+4145:05GrisFonce:5NBrickWallS5TSW
+4146:06GrisPale:6NBrickWallS6SE
+4147:06GrisPale:6NBrickWallS6NE
+4148:06GrisPale:6NBrickWallS6SEWindow
+4149:06GrisPale:6NBrickWallS6NEWindow
+4150:06GrisPale:6NBrickWallS6NEDoorB
+4151:06GrisPale:6NBrickWallS6NEDoorT
+4152:06GrisPale:6NBrickWallS6SEDoorB
+4153:06GrisPale:6NBrickWallS6SEDoorT
+4154:06GrisPale:6NBrickWallS6CoinE
+4155:06GrisPale:6NBrickWallS6CoinN
+4156:06GrisPale:6NBrickWallS6CoinW
+4157:06GrisPale:6NBrickWallS6CoinS
+4158:06GrisPale:6NBrickWallS6SE
+4159:06GrisPale:6NBrickWallS6TNE
+4160:06GrisPale:6NBrickWallS6TNW
+4161:06GrisPale:6NBrickWallS6TSE
+4162:06GrisPale:6NBrickWallS6TSW
+4163:03BrunFonce:3RuinedCoinS
+4164:03BrunFonce:3RuinedCoinS
+4165:03BrunFonce:3RuinedCoinS
+4166:03BrunFonce:3RuinedCoinS
+4167:03BrunFonce:3RuinedCoinS
+4173:05GrisFonce:5RuinedCoinS
+4174:05GrisFonce:5RuinedCoinS
+4175:05GrisFonce:5RuinedCoinS
+4176:05GrisFonce:5RuinedCoinS
+4177:05GrisFonce:5RuinedCoinS
+4178:06GrisPale:6RuinedCoinS
+4179:06GrisPale:6RuinedSEWall
+4180:06GrisPale:6RuinedCoinS
+4181:06GrisPale:6RuinedSEWindow
+4182:06GrisPale:6RuinedNEWindow
+4183:Miscs-T:Torture6
+4184:Miscs-B:BarilPied
+4185:Miscs-B:BarilPied
+4186:Miscs-F:FTourFront
+4187:Miscs-F:FTourFront
+4188:Miscs-B:BTourBack
+4189:Miscs-B:BTourBack
+4190:!Flower:V2Flower01
+4191:!Flower:V2Flower02
+4192:!Flower:V2Flower03
+4193:!Flower:V2Flower04
+4194:!Flower:V2Flower05
+4195:!Flower:V2Flower06
+4196:!Flower:V2Flower07
+4197:CastleWall:CastleSE1
+4198:CastleWall:CastleNE1
+4199:CastleWall:CastleNEDoorB
+4200:CastleWall:CastleNEDoorT
+4201:CastleWall:CastleSEDoorB
+4202:CastleWall:CastleSEDoorT
+4203:CastleWall:CastleCornerR
+4204:CastleWall:CastleCornerT
+4205:CastleWall:CastleCornerL
+4206:CastleWall:CastleCornerB
+4207:CastleWall:CastleSE1
+4208:CastleWall:CastleTNE
+4209:CastleWall:CastleTNW
+4210:CastleWall:CastleTSE
+4211:CastleWall:CastleTSW
+4212:CastleWall:CaltlePoutre
+4213:CastleRampart:V2RampartSE
+4214:CastleRampart:V2RampartNE
+4215:CastleRampart:V2RampartSE
+4216:CastleRampart:V2RampartNETour
+4217:CastleRampart:V2RampartCoinL
+4218:CastleRampart:V2RampartCoinT
+4219:CastleRampart:V2RampartCoinR
+4220:CastleRampart:V2RampartCoinB
+4221:CastleRampart:V2RampartD
+4222:CastleRampart:V2RampartF
+4223:CastleWall:CastleCollonne
+4224:TODOWTF:CedreNain
+4225:CastleWallS:SCastleSE1
+4226:CastleWallS:SCastleSE1
+4227:CastleWallS:SCastleSE1
+4228:CastleWallS:SCastleSE1
+4229:CastleWallS:SCastleSE1
+4230:CastleWallS:SCastleSE1
+4231:CastleWallS:SCastleSE1
+4232:CastleWallS:SCastleSE1
+4233:CastleWallS:SCastleSE1
+4234:CastleWallS:SCastleSE1
+4240:CastleWall:CaltlePoutre
+4241:CastleWall:CaltlePoutre
+4242:CastleWall:CaltlePoutre
+4243:CastleWall:CastleNEDDoorB
+4244:CastleWall:CastleNEDDoorT
+4245:CastleWall:CastleSE1
+4246:CastleWall:CastleSE1
+4247:Miscs-B:BridgeCastleTop2
+4249:Miscs-L:Lights 3
+4250:Miscs-L:Lights 3
+4251:Miscs-B:BancTempleNoir
+4252:MIRROR:4251
+4253:Miscs-M:MummyBox1
+4254:Miscs-M:MummyBox1
+4255:Miscs-M:MummyBox1
+4256:Miscs-M:MummyBox1
+4257:Miscs-S:SquareTower1
+4258:Miscs-S:SquareTower1
+4259:Miscs-S:SquareTower1
+4260:Miscs-S:SquareTower1
+4261:Miscs-S:StatueModel11
+4262:Miscs-S:StatueModel11
+4263:Miscs-S:StatueModel11
+4264:Miscs-S:StatueModel11
+4265:Miscs-S:StatueModel11
+4266:Miscs-S:StatueModel12
+4267:Miscs-S:StatueModel13
+4269:NewStuco:StucoNewSE1
+4270:NewStuco:StucoNewSE1
+4271:NewStuco:StucoNewSE1
+4272:NewStuco:StucoNewSE1
+4273:NewStuco:StucoNewSE1
+4274:NewStuco:StucoNewSE1
+4275:NewStuco:StucoNewSE1
+4276:NewStuco:StucoNewSE1
+4277:NewStuco:StucoNewSE1
+4278:NewStuco:StucoNewSE1
+4279:NewStuco:StucoNewSE1
+4280:NewStuco:StucoNewSE1
+4281:NewStuco:StucoNewSE1
+4282:NewStuco:StucoNewSE1
+4283:NewStuco:StucoNewSE1
+4284:NewStuco:StucoNewSE1
+4285:NewStuco:StucoNewSE1
+4286:NewStuco:StucoNewSE1
+4287:NewStuco:StucoNewSE1
+4288:NewStuco:StucoNewSE1
+4289:NewStuco:StucoNewSE1
+4290:Poutre:Poutre01
+4291:TODOATLAS:TODOTEX
+4292:TODOATLAS:TODOTEX
+4293:TODOATLAS:TODOTEX
+4294:TODOATLAS:TODOTEX
+4296:TODOATLAS:TODOTEX
+4297:GardeTour:TourGardeHG
+4298:GardeTour:TourGardeHG
+4299:GardeTour:TourGardeHG
+4300:GardeTour:TourGardeHG
+4364:TODOATLAS:TODOTEX
+6000:Snow:modulos(16,16)
+6001:TODOWTF:EarthI
+6002:TODOWTF:CavernG
+6003:TODOWTF:IceFloor
+6004:BlancNoirBig:modulos(16,16)
+6005:TODOSMOOTH:TuileTmpl2
+6006:Miscs-R:Rock2
+6007:BlancNoir:modulos(8,8)
+6008:RougeBeige:modulos(8,8)
+6009:AnimWater01:modulos(16,16)
+6011:NewLava:modulos(32,32)
+6013:Cendre:modulos(32,32)
+6500:TODOSMOOTH:tmpl1 1 T1 Grass T2 Snow
+6532:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6534:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6535:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6537:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6544:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6545:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6548:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6549:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6552:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6553:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6554:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6557:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6559:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 Snow
+6564:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6565:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6566:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6567:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6568:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6569:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6570:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6571:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6572:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6573:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6574:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6575:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6576:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6577:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6578:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6579:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6580:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6581:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6582:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6583:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6584:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6585:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6586:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6587:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6588:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6589:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6590:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6591:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6592:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6593:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6594:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6595:TODOSMOOTH:tmpl1 1 T1 Snow T2 EarthI
+6628:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6629:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6630:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6631:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6632:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6633:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6634:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6635:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6636:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6637:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6638:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6639:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6640:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6641:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6642:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6643:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6644:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6645:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6646:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6647:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6648:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6649:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6650:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6651:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6652:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6653:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6654:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6655:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6656:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6657:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6658:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6659:TODOSMOOTH:tmpl1 1 T1 EarthTile T2 EarthI
+6660:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6661:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6662:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6663:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6664:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6665:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6666:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6667:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6668:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6669:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6670:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6671:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6672:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6673:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6674:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6675:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6676:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6677:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6678:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6679:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6680:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6681:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6682:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6683:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6684:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6685:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6686:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6687:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6688:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6689:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6690:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6691:TODOSMOOTH:tmpl1 1 T1 Snow T2 CavernG
+6692:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6693:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6694:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6695:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6696:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6697:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6699:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6700:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6701:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6702:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6703:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6704:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6705:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6706:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6707:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6708:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6709:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6710:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6711:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6712:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6713:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6714:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6715:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6716:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6717:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6718:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6719:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6720:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6721:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6722:TODOSMOOTH:tmpl1 1 T1 EarthI T2 CavernG
+6724:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6725:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6726:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6727:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6728:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6729:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6730:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6731:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6732:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6733:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6734:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6735:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6736:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6737:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6738:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6739:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6740:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6741:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6742:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6743:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6744:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6745:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6746:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6747:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6748:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6749:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6750:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6751:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6752:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6753:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6754:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6755:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Water3
+6756:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6757:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6758:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6759:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6760:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6761:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6762:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6763:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6764:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6765:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6766:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6767:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6768:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6769:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6770:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6771:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6772:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6773:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6774:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6775:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6776:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6777:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6778:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6779:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6780:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6781:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6782:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6783:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6784:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6785:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6786:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6787:TODOSMOOTH:tmpl1 1 T1 IceFloor T2 Snow
+6788:TODOSMOOTH:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6789:TODOSMOOTH:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6790:TODOSMOOTH:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6791:TODOSMOOTH:TuileTmpl1 T1 NormalGrass T2 tmpl4 2
+6794:TODOSMOOTH:TuileTmpl1 T1 RockFloor T2 tmpl4 2
+6796:TODOSMOOTH:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6797:TODOSMOOTH:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6798:TODOSMOOTH:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6799:TODOSMOOTH:TuileTmpl2 T1 NormalGrass T2 tmpl4 2
+6800:TODOSMOOTH:TuileTmpl2 T1 RockFloor T2 tmpl4 2
+6803:TODOSMOOTH:TuileTmpl2 T1 RockFloor T2 tmpl4 2
+6804:TODOSMOOTH:TuileTmpl2 T1 2Wooden T2 tmpl4 2
+6805:TODOSMOOTH:TuileTmpl2 T1 2Wooden T2 tmpl4 2
+6806:TODOSMOOTH:TuileTmpl2 T1 2Wooden T2 tmpl4 2
+6808:TODOSMOOTH:TuileTmpl2 T1 TownRoadDale T2 tmpl4 2
+6810:TODOSMOOTH:TuileTmpl2 T1 TownRoadDale T2 tmpl4 2
+6811:TODOSMOOTH:TuileTmpl2 T1 TownRoadDale T2 tmpl4 2
+6812:TODOSMOOTH:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6813:TODOSMOOTH:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6814:TODOSMOOTH:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6815:TODOSMOOTH:TuileTmpl2 T1 TuileTmpl1 T2 tmpl4 2
+6816:TODOSMOOTH:TuileTmpl1 T1 Snow T2 tmpl4 2
+6817:TODOSMOOTH:TuileTmpl1 T1 Snow T2 tmpl4 2
+6820:TODOSMOOTH:TuileTmpl2 T1 Snow T2 tmpl4 2
+6821:TODOSMOOTH:TuileTmpl2 T1 Snow T2 tmpl4 2
+6822:TODOSMOOTH:TuileTmpl2 T1 Snow T2 tmpl4 2
+6823:TODOSMOOTH:TuileTmpl2 T1 Snow T2 tmpl4 2
+7000:Wooden2:modulos(8,8)
+7001:Wooden3:modulos(8,8)
+7004:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7006:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7007:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7008:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7009:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7010:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7012:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7016:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7017:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7018:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7023:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7024:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7025:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7026:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7027:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7028:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7029:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7030:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7031:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7032:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 2Wooden
+7036:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7037:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7039:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7040:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7041:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7045:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7052:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7053:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7055:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7056:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7061:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 2Wooden
+7062:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 2Wooden
+7063:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 2Wooden
+7064:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 2Wooden
+7079:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 2Wooden
+7083:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 2Wooden
+7094:TODOSMOOTH:tmpl3 1 T1 Desert T2 2Wooden
+7095:TODOSMOOTH:tmpl3 1 T1 Desert T2 2Wooden
+7096:TODOSMOOTH:tmpl3 1 T1 Desert T2 2Wooden
+7105:TODOSMOOTH:tmpl3 1 T1 Desert T2 2Wooden
+7116:TODOSMOOTH:tmpl3 1 T1 Desert T2 2Wooden
+7117:TODOSMOOTH:tmpl3 1 T1 Desert T2 2Wooden
+7123:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7124:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7125:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7126:SMOOTH:Tmpl3 7 T1 1 T2 7001
+7127:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7128:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7129:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7130:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7140:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7141:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7145:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7146:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7147:WoodenDoor:RockDoor1
+7149:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7150:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7151:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7153:TODOSMOOTH:tmpl3 1 T1 NormalGrass T2 3Wooden
+7155:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7158:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7159:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7160:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7161:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7171:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7173:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7174:TODOSMOOTH:tmpl3 1 T1 Grass T2 3Wooden
+7180:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 3Wooden
+7182:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 3Wooden
+7192:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 3Wooden
+7197:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 3Wooden
+7201:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 3Wooden
+7203:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 3Wooden
+7207:TODOSMOOTH:tmpl3 1 T1 EarthTile T2 3Wooden
+7213:TODOSMOOTH:tmpl3 1 T1 Desert T2 3Wooden
+7215:TODOSMOOTH:tmpl3 1 T1 Desert T2 3Wooden
+7216:TODOSMOOTH:tmpl3 1 T1 Desert T2 3Wooden
+7219:TODOSMOOTH:tmpl3 1 T1 Desert T2 3Wooden
+7223:TODOSMOOTH:tmpl3 1 T1 Desert T2 3Wooden
+7232:TODOSMOOTH:tmpl3 1 T1 Desert T2 3Wooden
+7234:TODOSMOOTH:tmpl3 1 T1 Desert T2 3Wooden
+7241:TODOSMOOTH:tmpl3 1 T1 Grass T2 2Wooden
+7261:WoodenDoor:RockDoor1
+7262:MIRROR:7263
+7263:WoodenDoor:RockDoor1
+7264:TODOSRF:2srf1
+7265:TODOSRF:3srf1
+7266:TODOSRF:3srf1
+7267:WoodenDoor:RockDoor1
+7268:TODOSRF:3srf1
+7269:WoodenSmooth:4srf1
+7270:WoodenSmooth:4Srf1
+7271:TODOSRF:4srf1
+7272:TODOSRF:4srf1
+7273:TODOSRF:5srf1
+7274:TODOSRF:5srf1
+7275:TODOSRF:5srf1
+7276:TODOSRF:5srf1
+7279:TODOSRF:6srf1
+7281:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7282:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7283:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7284:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7285:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7287:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7288:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7289:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7290:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7291:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7293:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7294:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7295:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7297:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7298:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7299:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7300:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7301:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7302:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7303:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7304:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7305:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7306:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7307:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7308:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7309:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7312:TODOSMOOTH:Snow T1 RockFloor T2 tmpl3 1
+7313:TODOSMOOTH:Snow T1 Floor Wooden 1 T2 tmpl4 2
+7315:TODOSMOOTH:Snow T1 Floor Wooden 1 T2 tmpl4 2
+7316:TODOSMOOTH:Snow T1 Floor Wooden 1 T2 tmpl4 2
+7319:TODOSMOOTH:Snow T1 2Wooden T2 tmpl4 2
+7320:TODOSMOOTH:Snow T1 2Wooden T2 tmpl4 2
+7323:TODOSMOOTH:Snow T1 3Wooden T2 tmpl4 2
+7325:TODOSMOOTH:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7326:TODOSMOOTH:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7327:TODOSMOOTH:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7328:TODOSMOOTH:TuileTmpl1 T1 Rock2Floor T2 tmpl4 2
+7338:TODOSMOOTH:STuileTmpl1 T1 NormalGrass T2 tmpl4 2
+7339:TODOSMOOTH:STuileTmpl1 T1 NormalGrass T2 tmpl4 2
+7340:TODOSMOOTH:STuileTmpl1 T1 NormalGrass T2 tmpl4 2
+7341:TODOSMOOTH:STuileTmpl2 T1 NormalGrass T2 tmpl4 2
+7343:TODOSMOOTH:STuileTmpl2 T1 NormalGrass T2 tmpl4 2
+7344:TODOSMOOTH:STuileTmpl2 T1 NormalGrass T2 tmpl4 2
+7348:TODOSMOOTH:STuileTmpl1 T1 RockFloor T2 tmpl4 2
+7349:TODOSMOOTH:STuileTmpl2 T1 RockFloor T2 tmpl4 2
+7352:TODOSMOOTH:STuileTmpl2 T1 RockFloor T2 tmpl4 2
+7360:TODOSMOOTH:STuileTmpl2 T1 Snow T2 tmpl4 2
+7362:TODOSMOOTH:STuileTmpl2 T1 STuileTmpl1 T2 tmpl4 2
+7363:TODOSMOOTH:STuileTmpl2 T1 STuileTmpl1 T2 tmpl4 2
+7373:TODOSMOOTH:STuileTmpl1 T1 2Wooden T2 tmpl4 2
+7375:TODOSMOOTH:STuileTmpl1 T1 2Wooden T2 tmpl4 2
+7376:TODOSMOOTH:STuileTmpl1 T1 2Wooden T2 tmpl4 2
+7386:TODOSMOOTH:STuileTmpl2 T1 3Wooden T2 tmpl4 2
+7387:TODOSMOOTH:STuileTmpl2 T1 3Wooden T2 tmpl4 2
+7393:TODOSMOOTH:STuileTmpl2 T1 TuileTmpl2 T2 tmpl4 2
+7396:TODOSMOOTH:STuileTmpl2 T1 TuileTmpl2 T2 tmpl4 2
+7398:TODOSMOOTH:Water3 T1 RockFloor T2 tmpl3 1
+7400:TODOSMOOTH:Water3 T1 RockFloor T2 tmpl3 1
+7404:TODOSMOOTH:Water3 T1 RockFloor T2 tmpl3 1
+7413:TODOSMOOTH:Water3 T1 RockFloor T2 tmpl3 1
+7417:TODOSMOOTH:Water3 T1 RockFloor T2 tmpl3 1
+7422:TODOSMOOTH:Water3 T1 RockFloor T2 tmpl3 1
+7429:SMOOTH:Tmpl3 1 T1 4 T2 3
+7430:SMOOTH:Tmpl3 2 T1 4 T2 3
+7431:SMOOTH:Tmpl3 3 T1 4 T2 3
+7432:SMOOTH:Tmpl3 4 T1 4 T2 3
+7433:SMOOTH:Tmpl3 31 T1 4 T2 3
+7434:SMOOTH:Tmpl3 32 T1 4 T2 3
+7435:SMOOTH:Tmpl3 29 T1 4 T2 3
+7436:SMOOTH:Tmpl3 30 T1 4 T2 3
+7437:SMOOTH:Tmpl3 14 T1 4 T2 3
+7438:SMOOTH:Tmpl3 13 T1 4 T2 3
+7439:SMOOTH:Tmpl3 16 T1 4 T2 3
+7440:SMOOTH:Tmpl3 15 T1 4 T2 3
+7441:SMOOTH:Tmpl3 10 T1 4 T2 3
+7442:SMOOTH:Tmpl3 9 T1 4 T2 3
+7443:SMOOTH:Tmpl3 12 T1 4 T2 3
+7444:SMOOTH:Tmpl3 11 T1 4 T2 3
+7445:SMOOTH:Tmpl3 22 T1 4 T2 3
+7446:SMOOTH:Tmpl3 21 T1 4 T2 3
+7447:SMOOTH:Tmpl3 24 T1 4 T2 3
+7448:SMOOTH:Tmpl3 23 T1 4 T2 3
+7449:SMOOTH:Tmpl3 18 T1 4 T2 3
+7450:SMOOTH:Tmpl3 17 T1 4 T2 3
+7451:SMOOTH:Tmpl3 20 T1 4 T2 3
+7452:SMOOTH:Tmpl3 6 T1 4 T2 3
+7453:SMOOTH:Tmpl3 27 T1 4 T2 3
+7454:SMOOTH:Tmpl3 26 T1 4 T2 3
+7455:SMOOTH:Tmpl3 28 T1 4 T2 3
+7456:SMOOTH:Tmpl3 25 T1 4 T2 3
+7457:SMOOTH:Tmpl3 5 T1 4 T2 3
+7458:SMOOTH:Tmpl3 6 T1 4 T2 3
+7459:SMOOTH:Tmpl3 7 T1 4 T2 3
+7460:SMOOTH:Tmpl3 8 T1 4 T2 3
+7461:SMOOTH:Tmpl3 16 T1 1 T2 13
+7462:SMOOTH:Tmpl3 13 T1 1 T2 13
+7463:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7464:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7465:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7466:SMOOTH:Tmpl3 8 T1 1 T2 13
+7467:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7468:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7469:SMOOTH:Tmpl3 11 T1 1 T2 13
+7470:SMOOTH:Tmpl3 12 T1 1 T2 13
+7471:1:Tmpl3 9 T1 1 T2 13
+7472:SMOOTH:Tmpl3 10 T1 1 T2 13
+7473:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7474:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7475:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7476:SMOOTH:Tmpl3 14 T1 1 T2 13
+7477:SMOOTH:Tmpl3 28 T1 1 T2 13
+7478:SMOOTH:Tmpl3 20 T1 1 T2 13
+7479:SMOOTH:Tmpl3 25 T1 1 T2 13
+7480:SMOOTH:Tmpl3 18 T1 1 T2 13
+7481:SMOOTH:Tmpl3 23 T1 1 T2 13
+7482:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7483:SMOOTH:Tmpl3 21 T1 1 T2 13
+7484:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7485:SMOOTH:Tmpl3 25 T1 1 T2 13
+7486:SMOOTH:Tmpl3 28 T1 1 T2 13
+7487:SMOOTH:Tmpl3 26 T1 1 T2 13 
+7488:SMOOTH:Tmpl3 27 T1 1 T2 13
+7489:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7490:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7491:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7492:TODOSMOOTH:RockFloor T1 NormalGrass T2 tmpl3 1
+7557:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7558:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7559:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7560:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7561:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7562:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7563:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7564:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7565:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7566:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7567:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7568:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7569:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7570:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7571:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7572:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7573:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7574:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7575:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7576:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7577:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7578:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7579:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7580:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7581:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7582:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7583:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7584:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7585:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7587:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7588:TODOSMOOTH:Water3 T1 Cendre T2 tmpl3 1
+7850:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7851:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7852:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7853:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7854:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7855:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7856:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7857:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7858:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7859:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7860:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7861:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7862:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7863:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7864:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7865:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7866:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7867:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7868:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7869:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7870:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7871:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7872:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7873:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7874:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7875:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7876:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7877:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7878:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7879:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7880:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7881:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 EarthTile
+7882:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7883:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7884:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7885:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7886:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7887:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7888:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7889:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7890:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7891:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7892:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7893:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7894:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7895:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7896:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7897:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7898:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7899:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7900:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7901:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7902:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7903:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7904:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7905:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7906:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7907:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7908:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7909:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7912:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7913:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 HardRock
+7946:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7947:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7948:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7949:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7954:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7955:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7956:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7957:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7958:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7959:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7960:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7961:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7962:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7963:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7964:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7965:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7966:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7967:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7968:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7969:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7970:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7971:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7972:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7973:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7974:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Desert
+7978:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7979:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7980:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7981:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7982:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7983:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7984:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7985:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7986:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7987:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7988:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7989:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7990:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7991:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7992:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7993:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7994:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7995:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7996:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7997:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7998:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+7999:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8000:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8001:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8002:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8003:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8004:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8005:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8006:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8007:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8008:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8009:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 NormalGrass
+8010:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8011:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8012:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8013:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8015:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8016:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8017:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8018:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8019:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8020:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8021:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8022:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8023:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8024:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8025:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8026:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8027:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8028:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8029:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8030:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8031:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8032:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8033:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8034:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8035:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8036:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8037:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8039:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8041:TODOSMOOTH:tmpl3 1 T1 %02dAnimWater01 T2 Grass
+8042:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8043:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8044:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8045:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8046:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8047:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8048:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8049:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8050:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8051:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8052:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8053:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8054:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8055:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8056:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8057:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8058:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8059:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8060:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8061:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8062:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8063:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8064:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8065:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8066:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8067:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8068:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8069:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8070:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8071:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8072:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre
+8073:TODOSMOOTH:tmpl3 1 T1 NewLava T2 Cendre

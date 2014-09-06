@@ -19,6 +19,7 @@ import opent4c.InputManager;
 import opent4c.Player;
 import opent4c.UpdateDataCheckStatus;
 import opent4c.utils.FilesPath;
+import opent4c.utils.ID;
 import opent4c.utils.LoadingStatus;
 import opent4c.utils.Place;
 import opent4c.utils.PointsManager;
@@ -560,9 +561,7 @@ public class GameScreen implements Screen{
 	
 	private static void cleanStage(Stage stage){
 		//TODO voir pourquoi l'itération se passe un peu mal, on n'a que la moitié des tuiles à chaque fois...
-		Iterator<Actor> iter_actors = stage.getActors().iterator();
-		while(iter_actors.hasNext()){
-			Actor act = iter_actors.next();
+		for(Actor act : stage.getActors()){
 			Point point = PointsManager.getPoint(act.getX()/32, act.getY()/16);
 			if(!Chunk.isPointInChunk(point)){
 				act.remove();
@@ -594,17 +593,5 @@ public class GameScreen implements Screen{
 				last = id;
 			}
 		}		
-	}
-
-	public static void printIdEditList() {
-		Collection<Integer> keys = idEditList.keySet();
-		List<Integer> tempList = new ArrayList<Integer>(keys);
-		Collections.sort(tempList);
-		Iterator<Integer> iter = tempList.iterator();
-		while (iter.hasNext()){
-			//TODO liste des idfull
-			int id = iter.next();
-			System.out.println(id+":");
-		}
 	}
 }

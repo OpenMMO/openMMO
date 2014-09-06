@@ -14,7 +14,7 @@ public class Main {
 
 	private static Logger logger = LogManager.getLogger(Main.class.getSimpleName());
 	private static ScreenManager sm = null;
-	private static boolean debug_GDX = false;
+	private static final boolean debug_GDX = false;
 	
 	public static void main(String[] args) {
 		
@@ -40,7 +40,6 @@ public class Main {
 	 * Creates a DataChecker 
 	 */
 	private static void verifier() {
-		logger.info("Vérification des données.");
 		UpdateDataCheckStatus.setStatus("Vérification des données.");
 		DataChecker.runCheck();
 	}
@@ -49,9 +48,8 @@ public class Main {
 	 * Loads Data
 	 */
 	public static void charger() {
-		logger.info("Chargement des données.");
 		UpdateDataCheckStatus.setStatus("Chargement des données.");
-		SpriteData.loadPixelIndex();
+		PixelIndex.loadIndexFile();
 		sm.initMap();
 	}
 }

@@ -272,11 +272,11 @@ public class FilesPath {
 		return sb.toString();
 	}
 
-	public static String getIdFullFilePath() {
+	public static String getIdFilePath() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("data");		
 		sb.append(File.separator);
-		sb.append("idfull.txt");		
+		sb.append("id.txt");		
 		
 		return sb.toString();
 	}
